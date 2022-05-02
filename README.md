@@ -1,16 +1,44 @@
-# Bold BI Enterprise Edition
+# Bold BI and Reports Aziure App Service Deployment
+
+This repository contains the Azure App Service package for Bold BI and Bold Reports, which you can use to spin up a combined Bold BI and Bold Reports instance in Azure App Service using ARM templates.
+
+The instructions for deploying the new Bold BI and Bold Reports Azure App Service can be found [here](https://github.com/boldbi/bi_and_reports_azure-arm-template/blob/main/deployment_guidelines.md).
+
+Please use the links below to deploy a specific product. 
+
+* [Bold BI](https://github.com/boldbi/azure-arm-template)
+* [Bold Reports](https://github.com/boldreports/bold-reports-azure)
+
+
+## Bold BI Enterprise Edition
 The Bold BI Enterprise Edition is an end-to-end solution for creating, managing, and sharing interactive business dashboards. It includes a powerful dashboard server application for easily composing, managing, and sharing the dashboards.
 
-Deploying of Bold BI Enterprise Edition can be done in Windows and Azure App Service.
+Bold BI Enterprise Edition can be installed in the following environments. 
 
-Learn how to deploy the Bold BI Enterprise Edition in Windows client and server OS machines [here](https://help.syncfusion.com/bold-bi/on-premise/setup/installation-and-deployment).
-
-## Deploy Bold BI Enterprise Edition as Azure Web App using ARM Template
-This repository holds the Azure App Service package of the Bold BI which you can deploy in the Azure using ARM templates to spin a Bold BI Enterprise Edition instance. It holds the package according to the release versions of the main application.
-
-New Bold BI Enterprise Edition Azure App Service deployment can be done by following the instructions from [here](https://github.com/boldbi/azure-arm-template/blob/master/How%20to%20deploy%20Bold%20BI%20Enterprise%20Application%20in%20Azure%20App%20service%20.md).
+* [Windows](https://help.boldbi.com/embedded-bi/setup/deploying-in-windows/)
+* [New Windows VM - Azure Marketplace](https://help.boldbi.com/embedded-bi/setup/deploying-in-azure/)
+* [Linux](https://help.boldbi.com/embedded-bi/setup/deploying-in-linux/)
+* [Kubernetes](https://help.boldbi.com/embedded-bi/setup/deploying-in-kubernetes/)
+* [Docker](https://help.boldbi.com/embedded-bi/setup/deploying-in-docker/)
 
 ## Reference Link
 * [Documentation](https://help.syncfusion.com/bold-bi/on-premise/setup/application-startup)
 
 * [Feature tour](https://www.boldbi.com/embedded/features)
+
+## Bold Reports Enterprise Edition
+
+The Bold Reports Enterprise Edition is an end-to-end solution for creating, managing and sharing interactive business Reports. The Bold Reports gives a complete solution for enterprise reporting. It shuns proprietary reporting standards, and builds the open Report Definition Language (RDL) specification by using products such as the SQL Server. Reporting Server comes with a designer and a rich deployment environment, that provides support for a variety of platforms, out of the box.
+ 
+Bold Reports Enterprise Edition can be installed in the following environments. 
+
+* [Windows](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/windows-installer/)
+* [Linux](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-linux/)
+* [Kubernetes](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-kubernetes//)
+* [Docker](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-docker/)
+
+## Reference Link
+
+* [Documentation](https://redirect.boldbi.com/?id=4007)
+* [Feature tour](https://www.boldreports.com/features)
+
