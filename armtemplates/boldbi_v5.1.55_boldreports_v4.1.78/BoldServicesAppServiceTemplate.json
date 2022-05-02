@@ -4,15 +4,20 @@
   "parameters": {
     "WebAppName": {
       "type": "string",
+      "maxLength": 24,
+      "minLength": 3,
       "metadata": {
-        "description": "App name for Bold BI Server. The name must be between 3 and 24 characters long, and can contain only numbers and lowercase letters."
+        "description": "App name for Bold BI and Reports services. The name must be between 3 and 24 characters long, and can contain only numbers and lowercase letters."
       }
     },
     "storageAccountName": {
       "type": "string",
+      "maxLength": 24,
+      "minLength": 3,
       "metadata": {
-        "description": "Storage account name for Bold BI Server. The name must be between 3 to 24 characters long, and can contain only numbers and lowercase letters."
-      }
+        "description": "Storage account name for Bold BI and Reports Server. The name must be between 3 to 24 characters long, and can contain only numbers and lowercase letters."
+      },
+      "defaultValue": "boldservices"
     },
     "storageAccountType": {
       "type": "string",
@@ -62,6 +67,14 @@
       },
       "properties": {
         "name": "[parameters('WebAppName')]",
+        "siteConfig": {
+          "metadata": [
+            {
+              "name": "CURRENT_STACK",
+              "value": "dotnetcore"
+            }
+          ]
+        },
         "clientAffinityEnabled": "false",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('WebAppSvcPlanName'))]"
       },
@@ -77,7 +90,7 @@
             "displayName": "WebAppConfig"
           },
           "properties": {
-            "netFrameworkVersion": "v4.6",
+            "netFrameworkVersion": "v4.0",
             "use32BitWorkerProcess": true,
             "webSocketsEnabled": true,
             "alwaysOn": true,
@@ -85,33 +98,50 @@
             "virtualApplications": [
               {
                 "virtualPath": "/",
-                "physicalPath": "site\\wwwroot\\IDP"
+                "physicalPath": "site\\wwwroot\\idp\\web"
               },
               {
                 "virtualPath": "/api",
-                "physicalPath": "site\\wwwroot\\IDP\\api"
+                "physicalPath": "site\\wwwroot\\idp\\api"
               },
               {
                 "virtualPath": "/ums",
-                "physicalPath": "site\\wwwroot\\IDP\\ums"
+                "physicalPath": "site\\wwwroot\\idp\\ums"
               },
               {
                 "virtualPath": "/bi",
-                "physicalPath": "site\\wwwroot\\Dashboard Server"
+                "physicalPath": "site\\wwwroot\\bi\\web"
               },
               {
                 "virtualPath": "/bi/api",
-                "physicalPath": "site\\wwwroot\\Dashboard Server\\api"
+                "physicalPath": "site\\wwwroot\\bi\\api"
               },
               {
                 "virtualPath": "/bi/jobs",
-                "physicalPath": "site\\wwwroot\\Dashboard Server\\jobs"
+                "physicalPath": "site\\wwwroot\\bi\\jobs"
               },
               {
                 "virtualPath": "/bi/designer",
-                "physicalPath": "site\\wwwroot\\Dashboard Designer"
+                "physicalPath": "site\\wwwroot\\bi\\dataservice"
+              },
+              {
+                "virtualPath": "/reporting",
+                "physicalPath": "site\\wwwroot\\reporting\\web"
+              },
+              {
+                "virtualPath": "/reporting/api",
+                "physicalPath": "site\\wwwroot\\reporting\\api"
+              },
+              {
+                "virtualPath": "/reporting/jobs",
+                "physicalPath": "site\\wwwroot\\reporting\\jobs"
+              },
+              {
+                "virtualPath": "/reporting/reportservice",
+                "physicalPath": "site\\wwwroot\\reporting\\reportservice"
               }
-            ]
+            ],
+            "http20Enabled": true
           }
         },
         {
@@ -122,8 +152,8 @@
             "[resourceId('Microsoft.Web/Sites', parameters('WebAppName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/boldbi/azure-arm-template.git",
-            "branch": "v3.3.88",
+            "RepoUrl": "https://github.com/boldbi/bi_and_reports_azure-arm-template.git",
+            "branch": "boldbi_v5.1.55_boldreports_v4.1.78",
             "IsManualIntegration": true
           }
         },
@@ -140,23 +170,25 @@
             "displayName": "WebAppSettings"
           },
           "properties": {
-            "IdP:AzureBlobStorageAccountName": "[parameters('storageAccountName')]",
-            "IdP:AzureBlobServiceEndpoint": "[concat('https://',parameters('storageAccountName'), '.blob.core.windows.net/')]",
-            "IdP:AzureBlobStorageAccessKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]",
+            "IdP:AzureBlobStorageAccountName": "[toLower(parameters('storageAccountName'))]",
+            "IdP:AzureBlobServiceEndpoint": "[concat('https://',toLower(parameters('storageAccountName')), '.blob.core.windows.net/')]",
+            "IdP:AzureBlobStorageAccessKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', toLower(parameters('storageAccountName'))), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]",
             "IdP:AzureBlobContainerName": "boldbicontainer",
             "IdP:AzureBlobConnectionType": "https",
-            "IdP:AzureBlobStorageUri": "[concat('https://',parameters('storageAccountName'), '.blob.core.windows.net/')]",
+            "IdP:AzureBlobStorageUri": "[concat('https://',toLower(parameters('storageAccountName')), '.blob.core.windows.net/')]",
             "IdP:StorageType": "AzureBlob",
             "StorageType": "AzureBlob",
             "IsAzureApplication": "true",
             "log4net.Config": "logs\\log4net.config",
-            "WEBSITE_DYNAMIC_CACHE": "0"
+            "WEBSITE_DYNAMIC_CACHE": "0",
+            "WEBSITE_LOAD_USER_PROFILE": "1",
+            "ApplicationUrl": "[concat('https://',parameters('WebAppName'), '.azurewebsites.net')]"
           }
         }
       ]
     },
     {
-      "name": "[parameters('storageAccountName')]",
+      "name": "[toLower(parameters('storageAccountName'))]",
       "type": "Microsoft.Storage/storageAccounts",
       "location": "[resourceGroup().location]",
       "apiVersion": "2015-06-15",
