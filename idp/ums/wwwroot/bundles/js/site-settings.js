@@ -615,13 +615,20 @@ $(document).ready(function () {
                         window.location.href = document.getElementById("enable-ssl").ej2_instances[0].value + "://" + location.host + location.pathname;
                     }
                 } else {
-                    $("#application-logo").attr("src", window.baseRootUrl + "content/images/application/" + systemSettingsData.MainScreenLogo);
-                    $("#poweredbysyncfusion img").attr("src", window.baseRootUrl + "content/images/application/" + systemSettingsData.PoweredByLogo);
+                    if (systemSettingsData.MainScreenLogo != "main_logo.svg") {
+                        $("#application-logo").attr("src", window.baseRootUrl + "content/images/application/" + systemSettingsData.MainScreenLogo);
+                    }
+                    
+                    if (systemSettingsData.PoweredByLogo != "powered_by_logo.svg") {
+                        $("#poweredbysyncfusion img").attr("src", window.baseRootUrl + "content/images/application/" + systemSettingsData.PoweredByLogo);
+                    }
                     $("#copyrightinfo").html(systemSettingsData.CopyrightInformation);
                     var link = document.createElement("link");
                     link.type = "image/x-icon";
                     link.rel = "shortcut icon";
-                    link.href = window.baseRootUrl + "content/images/application/" + systemSettingsData.FavIcon;
+                    if (systemSettingsData.FavIcon != "favicon.ico") {
+                        link.href = window.baseRootUrl + "content/images/application/" + systemSettingsData.FavIcon;
+                    }
                     document.getElementsByTagName("head")[0].appendChild(link);
                     var pageTitle = document.title.split("-")[0] + " - " + $("#site-orgname").val();
                     document.title = pageTitle;

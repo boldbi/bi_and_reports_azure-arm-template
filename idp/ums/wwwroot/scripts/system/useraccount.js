@@ -137,6 +137,7 @@
             $("#image-parent-container .startup-image").hide().attr("src", serverSetupImageUrl).fadeIn();
             $(".startup-content span.first-content").hide().text(window.TM.App.LocalizationContent.YourSite).slideDown();
             $(".startup-content span.second-content").hide().text(window.TM.App.LocalizationContent.YourSite2 + displayName + window.TM.App.LocalizationContent.YourSite3).slideDown();
+            $("#help-link").attr("href", databaseConfigurationUrl);
             $("#system-settings-db-selection-container").show();
             $("#db-content-holder,#db-config-submit").show();
             $("#sql-existing-db-submit, .sql-server-existing-db").hide();

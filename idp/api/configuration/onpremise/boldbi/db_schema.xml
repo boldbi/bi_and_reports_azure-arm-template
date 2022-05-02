@@ -29,7 +29,6 @@
     <ItemId>ItemId</ItemId>
     <UserId>UserId</UserId>
     <ParentId>ParentId</ParentId>
-    <ParentItemId>ParentItemId</ParentItemId>
     <CreatedDate>CreatedDate</CreatedDate>
     <ModifiedDate>ModifiedDate</ModifiedDate>
     <ModifiedById>ModifiedById</ModifiedById>
@@ -87,9 +86,6 @@
     <ItemId>ItemId</ItemId>
     <GroupId>GroupId</GroupId>
     <IsActive>IsActive</IsActive>
-    <SettingsTypeId>SettingsTypeId</SettingsTypeId>
-    <ScopeGroupId>ScopeGroupId</ScopeGroupId>
-    <ItemTypeId>ItemTypeId</ItemTypeId>
   </DB_GroupPermission>
   <DB_Item>
     <DB_TableName>Item</DB_TableName>
@@ -110,7 +106,6 @@
     <IsActive>IsActive</IsActive>
     <IsDraft>IsDraft</IsDraft>
     <IsLocked>IsLocked</IsLocked>
-    <IsUnlisted>IsUnlisted</IsUnlisted>
   </DB_Item>
   <DB_ItemCommentLog>
     <DB_TableName>ItemCommentLog</DB_TableName>
@@ -145,7 +140,6 @@
     <ToCategoryId>ToCategoryId</ToCategoryId>
     <UpdatedUserId>UpdatedUserId</UpdatedUserId>
     <SourceTypeId>SourceTypeId</SourceTypeId>
-	<EventTypeId>EventTypeId</EventTypeId>
     <ModifiedDate>ModifiedDate</ModifiedDate>
     <IsActive>IsActive</IsActive>
   </DB_ItemLog>
@@ -206,7 +200,6 @@
     <DB_TableName>ItemWatch</DB_TableName>
     <Id>Id</Id>
     <ItemId>ItemId</ItemId>
-    <ParentItemId>ParentItemId</ParentItemId>
     <UserId>UserId</UserId>
     <ModifiedDate>ModifiedDate</ModifiedDate>
     <IsWatched>IsWatched</IsWatched>
@@ -217,7 +210,7 @@
     <Id>Id</Id>
     <ParentDashboardId>ParentDashboardId</ParentDashboardId>
     <ChildDashboardId>ChildDashboardId</ChildDashboardId>
-    <DashboardDesignerId>DashboardDesignerId</DashboardDesignerId>    
+    <DashboardDesignerId>DashboardDesignerId</DashboardDesignerId>
     <OrderNumber>OrderNumber</OrderNumber>
     <ModifiedDate>ModifiedDate</ModifiedDate>
     <IsActive>IsActive</IsActive>
@@ -287,7 +280,6 @@
     <Name>Name</Name>
     <RecurrenceTypeId>RecurrenceTypeId</RecurrenceTypeId>
     <RecurrenceInfo>RecurrenceInfo</RecurrenceInfo>
-	<ScheduleExportInfo>ScheduleExportInfo</ScheduleExportInfo>
     <StartDate>StartDate</StartDate>
     <EndDate>EndDate</EndDate>
     <EndAfter>EndAfter</EndAfter>
@@ -423,7 +415,7 @@
     <IsActive>IsActive</IsActive>
     <IsDeleted>IsDeleted</IsDeleted>
     <IsCloseRequest>IsCloseRequest</IsCloseRequest>
-	<CanSync>CanSync</CanSync>
+    <CanSync>CanSync</CanSync>
   </DB_User>
   <DB_UserGroup>
     <DB_TableName>UserGroup</DB_TableName>
@@ -471,9 +463,6 @@
     <ItemId>ItemId</ItemId>
     <UserId>UserId</UserId>
     <IsActive>IsActive</IsActive>
-    <SettingsTypeId>SettingsTypeId</SettingsTypeId>
-    <ScopeGroupId>ScopeGroupId</ScopeGroupId>
-    <ItemTypeId>ItemTypeId</ItemTypeId>
   </DB_UserPermission>
   <DB_UserPreference>
     <DB_TableName>UserPreference</DB_TableName>
@@ -505,49 +494,49 @@
     <ModifiedDate>ModifiedDate</ModifiedDate>
     <IsActive>IsActive</IsActive>
   </DB_DashboardDataSource>
-   <DB_DBCredential>
+  <DB_DBCredential>
     <DB_TableName>DBCredential</DB_TableName>
-	<Id>Id</Id>
-	<DatabaseType>DatabaseType</DatabaseType>
-	<ConnectionString>ConnectionString</ConnectionString>
-	<EmailRelationId>EmailRelationId</EmailRelationId>
+    <Id>Id</Id>
+    <DatabaseType>DatabaseType</DatabaseType>
+    <ConnectionString>ConnectionString</ConnectionString>
+    <EmailRelationId>EmailRelationId</EmailRelationId>
     <FirstNameRelationId>FirstNameRelationId</FirstNameRelationId>
-	<LastNameRelationId>LastNameRelationId</LastNameRelationId>
-	<IsActiveRelationId>IsActiveRelationId</IsActiveRelationId>
+    <LastNameRelationId>LastNameRelationId</LastNameRelationId>
+    <IsActiveRelationId>IsActiveRelationId</IsActiveRelationId>
     <EmailColumn>EmailColumn</EmailColumn>
-	<EmailSchema>EmailSchema</EmailSchema>
-    <EmailTable>EmailTable</EmailTable>	
+    <EmailSchema>EmailSchema</EmailSchema>
+    <EmailTable>EmailTable</EmailTable>
     <FirstNameColumn>FirstNameColumn</FirstNameColumn>
     <FirstNameSchema>FirstNameSchema</FirstNameSchema>
-    <FirstNameTable>FirstNameTable</FirstNameTable>	
+    <FirstNameTable>FirstNameTable</FirstNameTable>
     <LastNameColumn>LastNameColumn</LastNameColumn>
     <LastNameSchema>LastNameSchema</LastNameSchema>
     <LastNameTable>LastNameTable</LastNameTable>
     <UserNameColumn>UserNameColumn</UserNameColumn>
     <UserNameSchema>UserNameSchema</UserNameSchema>
     <UserNameTable>UserNameTable</UserNameTable>
-	<IsActiveColumn>IsActiveColumn</IsActiveColumn>
+    <IsActiveColumn>IsActiveColumn</IsActiveColumn>
     <IsActiveSchema>IsActiveSchema</IsActiveSchema>
     <IsActiveTable>IsActiveTable</IsActiveTable>
-	<Status>Status</Status>
+    <Status>Status</Status>
     <ActiveStatusValue>ActiveStatusValue</ActiveStatusValue>
     <IsActive>IsActive</IsActive>
-   </DB_DBCredential>
-   <DB_TableRelation>
-   <DB_TableName>TableRelation</DB_TableName>
-   <Id>Id</Id>
-   <LeftTable>LeftTable</LeftTable>
-   <LeftTableColumnName>LeftTableColumnName</LeftTableColumnName>
-   <LeftTableCondition>LeftTableCondition</LeftTableCondition>
-   <LeftTableName>LeftTableName</LeftTableName>
-   <LeftTableSchema>LeftTableSchema</LeftTableSchema>
-   <Relationship>Relationship</Relationship>
-   <RightTable>RightTable</RightTable>
-   <RightTableColumnName>RightTableColumnName</RightTableColumnName>
-   <RightTableCondition>RightTableCondition</RightTableCondition>
-   <RightTableName>RightTableName</RightTableName>
-   <RightTableSchema>RightTableSchema</RightTableSchema>
-   </DB_TableRelation>
+  </DB_DBCredential>
+  <DB_TableRelation>
+    <DB_TableName>TableRelation</DB_TableName>
+    <Id>Id</Id>
+    <LeftTable>LeftTable</LeftTable>
+    <LeftTableColumnName>LeftTableColumnName</LeftTableColumnName>
+    <LeftTableCondition>LeftTableCondition</LeftTableCondition>
+    <LeftTableName>LeftTableName</LeftTableName>
+    <LeftTableSchema>LeftTableSchema</LeftTableSchema>
+    <Relationship>Relationship</Relationship>
+    <RightTable>RightTable</RightTable>
+    <RightTableColumnName>RightTableColumnName</RightTableColumnName>
+    <RightTableCondition>RightTableCondition</RightTableCondition>
+    <RightTableName>RightTableName</RightTableName>
+    <RightTableSchema>RightTableSchema</RightTableSchema>
+  </DB_TableRelation>
   <DB_Homepage>
     <DB_TableName>Homepage</DB_TableName>
     <Id>Id</Id>
@@ -600,24 +589,24 @@
     <DB_TableName>UmsCredential</DB_TableName>
     <Id>Id</Id>
     <UmsUrl>UmsUrl</UmsUrl>
-	<ClientId>ClientId</ClientId>
+    <ClientId>ClientId</ClientId>
     <ClientSecret>ClientSecret</ClientSecret>
-	<ModifiedById>ModifiedById</ModifiedById>
-	<IsActive>IsActive</IsActive>  
-</DB_UmsCredential>
+    <ModifiedById>ModifiedById</ModifiedById>
+    <IsActive>IsActive</IsActive>
+  </DB_UmsCredential>
   <DB_UmsUser>
     <DB_TableName>UmsUser</DB_TableName>
     <Id>Id</Id>
-	<UmsUserId>UmsUserId</UmsUserId>
-	<UserId>UserId</UserId>
-	<IsActive>IsActive</IsActive>	
+    <UmsUserId>UmsUserId</UmsUserId>
+    <UserId>UserId</UserId>
+    <IsActive>IsActive</IsActive>
   </DB_UmsUser>
   <DB_UmsGroup>
     <DB_TableName>UmsGroup</DB_TableName>
     <Id>Id</Id>
-	<UmsGroupId>UmsGroupId</UmsGroupId>
-	<GroupId>GroupId</GroupId>
-	<IsActive>IsActive</IsActive>	
+    <UmsGroupId>UmsGroupId</UmsGroupId>
+    <GroupId>GroupId</GroupId>
+    <IsActive>IsActive</IsActive>
   </DB_UmsGroup>
   <DB_Source>
     <DB_TableName>Source</DB_TableName>
@@ -629,7 +618,7 @@
     <DB_TableName>SlideshowInfo</DB_TableName>
     <Id>Id</Id>
     <SlideshowId>SlideshowId</SlideshowId>
-	  <ItemInfo>ItemInfo</ItemInfo>
+    <ItemInfo>ItemInfo</ItemInfo>
     <LoopInterval>LoopInterval</LoopInterval>
     <IsActive>IsActive</IsActive>
   </DB_SlideshowInfo>
@@ -730,8 +719,8 @@
     <AutosaveFilter>AutosaveFilter</AutosaveFilter>
     <DefaultViewId>DefaultViewId</DefaultViewId>
     <ModifiedDate>ModifiedDate</ModifiedDate>
-    <IsActive>IsActive</IsActive>  
-</DB_ItemUserPreference>
+    <IsActive>IsActive</IsActive>
+  </DB_ItemUserPreference>
   <DB_PublishedItem>
     <DB_TableName>PublishedItem</DB_TableName>
     <Id>Id</Id>
@@ -768,7 +757,6 @@
     <CategoryName>CategoryName</CategoryName>
     <IsDashboardLocked>IsDashboardLocked</IsDashboardLocked>
     <IsDatasourceLocked>IsDatasourceLocked</IsDatasourceLocked>
-    <ItemInfo>ItemInfo</ItemInfo>
     <CreatedById>CreatedById</CreatedById>
     <CreatedDate>CreatedDate</CreatedDate>
     <ModifiedDate>ModifiedDate</ModifiedDate>
@@ -834,30 +822,4 @@
     <CreatedDate>CreatedDate</CreatedDate>
     <IsActive>IsActive</IsActive>
   </DB_ExternalSites>
-  <DB_SettingsType>
-    <DB_TableName>SettingsType</DB_TableName>
-    <Id>Id</Id>
-    <Name>Name</Name>
-    <IsActive>IsActive</IsActive>
-  </DB_SettingsType>
-<DB_EmailActivityLog>
-    <DB_TableName>EmailActivityLog</DB_TableName>
-    <Id>Id</Id>
-    <Event>Event</Event>
-    <RecipientEmail>RecipientEmail</RecipientEmail>
-    <SenderEmail>SenderEmail</SenderEmail>
-    <MailSubject>MailSubject</MailSubject>
-    <MailBody>MailBody</MailBody>
-    <CreatedDate>CreatedDate</CreatedDate>
-    <ModifiedDate>ModifiedDate</ModifiedDate>
-    <InitiatedBy>InitiatedBy</InitiatedBy>
-    <UserId>UserId</UserId>
-    <GroupId>GroupId</GroupId>
-    <ItemId>ItemId</ItemId>
-    <CommentId>CommentId</CommentId>
-    <PermissionId>PermissionId</PermissionId>
-    <Status>Status</Status>
-    <StatusMessage>StatusMessage</StatusMessage>
-    <IsActive>IsActive</IsActive>
-  </DB_EmailActivityLog>
 </DB_SyncUMP>

@@ -3,16 +3,23 @@
     "Idp": "http://localhost:51894/",
     "Bi": "http://localhost:51894/bi",
     "BiDesigner": "http://localhost:51894/bi/designer",
-    "Reports": "",
-    "ReportsService": ""
+    "Reports": "http://localhost:51894/reporting",
+    "ReportsService": "http://localhost:51894/reporting/reportservice"
   },
   "BoldProducts": [
     {
       "Name": "BoldBI",
       "SetupName": "BoldBIEnterpriseEdition",
       "Version": "5.1.55",
-      "IDPVersion": "3.1.18",
-      "IsCommonLogin": false
+      "IDPVersion": "3.1.19",
+      "IsCommonLogin": true
+    },
+	{
+      "Name": "BoldReports",
+      "SetupName": "BoldReports_EnterpriseReporting",
+      "Version": "4.1.78",
+      "IDPVersion": "3.1.19",
+      "IsCommonLogin": true
     }
   ]
 }
