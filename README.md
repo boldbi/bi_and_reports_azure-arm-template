@@ -1,4 +1,4 @@
-# Bold BI and Reports Aziure App Service Deployment
+# Bold BI and Reports Azure App Service Deployment
 
 This repository contains the Azure App Service package for Bold BI and Bold Reports, which you can use to spin up a combined Bold BI and Bold Reports instance in Azure App Service using ARM templates.
 
