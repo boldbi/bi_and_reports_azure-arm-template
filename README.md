@@ -9,6 +9,13 @@ Please use the links below to deploy a specific product.
 * [Bold BI](https://github.com/boldbi/azure-arm-template)
 * [Bold Reports](https://github.com/boldreports/bold-reports-azure)
 
+## Release History
+
+Please refer to the below table for release history.
+
+| Branch Name                        | Updated On   | Is Latest? | Release Details                                                                                                                                                                |
+|------------------------------------|--------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| boldbi_v5.1.55_boldreports_v4.1.78 | May 02, 2022 | Yes        | This branch contains the following version of Bold BI and Bold Reports.<br> * Bold BI v5.1.55 released on April 11, 2022.<br> * Bold Reports v4.1.78 released on April 29, 2022. |
 
 ## Bold BI Enterprise Edition
 The Bold BI Enterprise Edition is an end-to-end solution for creating, managing, and sharing interactive business dashboards. It includes a powerful dashboard server application for easily composing, managing, and sharing the dashboards.
