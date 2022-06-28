@@ -5,17 +5,16 @@
 [CmdletBinding()]
 Param(
     [string]$ClientLibraries,
-    [string]$clientlibraryextractpath = "Libraries"
+    [string]$clientlibraryextractpath = "clientlibraries"
 )
 
-$rootPath = "../reporting"
+$rootPath = "../../reporting"
 $pluginDirectories = "api","jobs","web","reportservice"
 $apijson="${rootPath}/api/appsettings.Production.json;"
 $jobsjson="${rootPath}/jobs/appsettings.Production.json;"
 $webjson="${rootPath}/web/appsettings.Production.json;"
-$servicejson="${rootPath}/reportservice/appsettings.json;"
-$datajson="${rootPath}/web/wwwroot/cdn/scripts/datasource/dataconnectors.json"
-$jsonfiles="$apijson$jobsjson$webjson$servicejson$datajson"
+$servicejson="${rootPath}/reportservice/appsettings.json"
+$jsonfiles="$apijson$jobsjson$webjson$servicejson"
 $mysqlassemblies=""
 $postgresqlassemblies=""
 $oracleassemblies=""
