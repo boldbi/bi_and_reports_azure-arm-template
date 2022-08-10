@@ -1,18 +1,17 @@
-﻿@import "../themes/default.scss";
+﻿@import "../default/default.scss";
 
 .e-upload {
-    background: $upload-box-button-bg;
-    border: 1px dashed $grey-200;
+    border: 1px dashed $logo-section-border-color;
     box-sizing: border-box;
     border-radius: 4px;
     height: 100px;
     width: 200px;
 
-    .e-btn {
-        background-color: $upload-box-button-bg !important;
-        border: 1px solid $grey-200 !important;
+    .e-btn, .e-css.e-btn {
+        background: $secondary-button-bg-normal-color;
+        border: 1px solid $secondary-button-border-normal-color;
+        color: $secondary-button-text-normal-color;
         box-shadow: none !important;
-        color: $grey-800;
         font-weight: 600;
         font-size: 13px;
         height: 28px;
@@ -22,10 +21,17 @@
         left: 55px;
         top: 49px;
         text-transform: none;
+
+        &:hover {
+            background: $secondary-button-bg-hover-color;
+            border: 1px solid $secondary-button-border-normal-color;
+            color: $secondary-button-text-hover-color;
+            outline: 0px;
+        }
     }
 
     .e-file-drop {
-        color: $grey-500 !important;
+        color: $dialog-content-text-normal-color !important;
         font-weight: 600;
         font-size: 12px !important;
         font-style: normal;

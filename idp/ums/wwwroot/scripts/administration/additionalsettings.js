@@ -32,7 +32,7 @@
                 }
                 else {
                     document.getElementById("edit-files").ej2_instances[0].text = $(".file-name").val();
-                    WarningAlert(window.TM.App.LocalizationContent.Configuration, result.Status, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.Configuration, result.Status, result.Message, 7000);
                 }
                 hideWaitingPopup('server-app-container');
             }

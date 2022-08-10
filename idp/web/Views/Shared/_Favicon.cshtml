@@ -1,8 +1,4 @@
-﻿@using Syncfusion.Server.Base;
-@using Syncfusion.Server.Base.DataClasses;
-
-@{
-    var favicon = (ViewBag.Favicon != null) ? ViewBag.Favicon : GlobalAppSettings.SystemSettings.FavIcon;
+﻿@{
+    var favicon = (ViewBag.Favicon != null) ? ViewBag.Favicon : Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=favicon"); ;
 }
-
 <link rel="icon" href="@favicon" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.Favicon)';" />

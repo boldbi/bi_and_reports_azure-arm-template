@@ -1,7 +1,7 @@
-﻿@import "../themes/default.scss";
+﻿@import "../default/default.scss";
 
 .e-spinner-bg {
-    background-color: $bg-color !important;
+    background-color: $spinner-bg-color !important;
     color: #282827;
     display: block;
     width: 100%;

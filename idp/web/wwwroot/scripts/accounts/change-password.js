@@ -4,7 +4,7 @@ var regexIe8 = new RegExp("Trident(\/4.0)|(Trident\/5.0)");
 $(document).ready(function () {
 
     var changePassword = new ejs.inputs.TextBox({
-        cssClass: 'e-outline',
+        cssClass: 'e-outline e-custom e-account',
         floatLabelType: 'Auto',
     });
     changePassword.appendTo('#firstname');
@@ -15,7 +15,7 @@ $(document).ready(function () {
     changePassword.appendTo('#confirm-password');
 
     var recoverEmail = new ejs.inputs.TextBox({
-        cssClass: 'e-outline',
+        cssClass: 'e-outline e-custom e-account',
         floatLabelType: 'Always',
         created: function () {
             outlineEmail.focusIn();
@@ -119,14 +119,6 @@ $(document).ready(function () {
             hideWaitingPopup('body');
         }
     });
-});
-
-$(document).on("change", "#agreement", function () {
-    if ($("#agreement").is(":checked")) {
-        $(".proceed-button").removeAttr("disabled");
-    } else {
-        $(".proceed-button").attr("disabled", "disabled");
-    }
 });
 
 function IsValidName(validationType, inputString) {

@@ -10,19 +10,6 @@
         margin-bottom: 10px;
     }
 
-    .activation-mode {
-        display: inline-block;
-
-        .radio-btn-label {
-            margin-bottom: 0px !important;
-            font-size: $app-text-size;
-            font-weight: normal;
-            letter-spacing: 0.3px;
-            line-height: 18px;
-            padding-left: 26px !important;
-        }
-    }
-
     .email-settings-validation {
         margin-top: 24px;
         width: 584px;
@@ -31,8 +18,8 @@
         letter-spacing: 0.26px;
         font-size: $app-text-size;
         padding: 12px;
-        background-color: $embed-warning-bg-normal-color;
-        border: 1px solid $embed-warning-border-normal-color;
+        background-color: $warning-bg-normal-color;
+        border: 1px solid $warning-border-normal-color;
     }
 
     .activation {

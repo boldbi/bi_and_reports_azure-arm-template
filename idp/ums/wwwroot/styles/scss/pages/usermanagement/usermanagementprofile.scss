@@ -54,11 +54,11 @@
         }
 
         .profile-img-name {
-            border-bottom: 1px solid $grey-100;
+            border-bottom: 1px solid $grey-300;
         }
 
         .img-view-holder {
-            border: 0.5px solid $grey-100;
+            border: 0.5px solid $grey-300;
             border-radius: 2px;
             float: left;
             height: 64px;
@@ -89,13 +89,13 @@
                     width: 100%;
 
                     #user-id {
-                        background-color: $admin-page-bg;
+                        background-color: $surface;
                         overflow: hidden;
                         border-radius: 4px 0 0 4px;
                         resize: none;
                         height: 28px;
                         box-shadow: none;
-                        border: 1px solid $grey-200;
+                        border: 1px solid $grey-300;
                         padding: 5px;
                         margin-left: 30px !important;
                     }
@@ -116,7 +116,7 @@
                         background-color: var(--surface);
                         box-shadow: none;
                         border-left: none;
-                        border: 1px solid $grey-200;
+                        border: 1px solid $grey-300;
                     }
 
                     .tooltip {
@@ -165,7 +165,6 @@
     }
 
     #avatar-upload-box {
-        @include modal($app-text-size,$textbox-height);
         padding: 0px !important;
 
         .modal-dialog {
@@ -200,7 +199,7 @@
                         }
 
                         #upload-picture {
-                            border: 1px solid $profile-border-color;
+                            border: 1px solid $section-separator-color;
                             padding: 0 !important;
                             width: 60px !important;
                             height: 0 !important;
@@ -213,10 +212,10 @@
                                 width: 60px;
 
                                 &:hover {
-                                    background-color: $admin-pages-border-color;
+                                    background-color: $background;
 
                                     #upload-picture_SelectButton {
-                                        color: $primary-black;
+                                        color: $black;
                                         margin-top: -3px;
                                     }
                                 }
@@ -245,7 +244,7 @@
 
 
                     .image-selection-holder {
-                        border: 1px solid $profile-border-color;
+                        border: 1px solid $section-separator-color;
                         float: left;
                         margin-left: 60px;
                         overflow: hidden;
@@ -282,7 +281,7 @@
                                 background-image: none !important;
                                 border: 1px solid rgba(255, 255, 255, 0.4);
                                 border-radius: 50%;
-                                box-shadow: 1px 1px 26px $primary-black;
+                                box-shadow: 1px 1px 26px $black;
                                 height: 100%;
                                 left: 0;
                                 opacity: 0.5 !important;
@@ -317,11 +316,11 @@
     #messageBox {
         .message-box-close {
             right: 10px;
-            color: $icon-color;
+            color: $dialog-header-close-icon-normal-color;
             opacity: 1;
 
             &:hover {
-                color: $icon-hover-color;
+                color: $dialog-header-close-icon-hover-color;
             }
         }
 
@@ -388,8 +387,6 @@
     #userprofile-delete-confirmation {
         height: 150px !important;
         width: 400px !important;
-
-        @include modal();
 
         .modal-content {
             height: 150px;
@@ -666,8 +663,6 @@
     }
 
     #avatar-upload-box {
-        @include modal($app-large-text-size,$textbox-lg-height);
-
         .modal-dialog {
             .modal-content {
                 .modal-body {
@@ -708,8 +703,6 @@
 @media screen and (min-width:1400px) {
     #userprofile-delete-confirmation_wrapper {
         #userprofile-delete-confirmation {
-            @include modal($app-large-text-size,$textbox-height);
-
             .modal-content {
                 .modal-footer {
                     .margin-top {

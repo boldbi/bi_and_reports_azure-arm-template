@@ -1,14 +1,9 @@
 ﻿@using Syncfusion.Server.Base;
 @using Syncfusion.Server.Base.DataClasses;
-@using Syncfusion.Server.IdentityProvider.Models;
-@using Syncfusion.Server.Base.Middlewares;
 @using Microsoft.AspNetCore.Http;
 @using Microsoft.AspNetCore.Http.Extensions;
-@using Microsoft.AspNetCore.Session;
 @using System.Linq;
 @using System.Security.Claims;
-@using Newtonsoft.Json
-
 @{
     var displayName = Context.Session.GetString("displayname") != null ? Context.Session.GetString("displayname").ToString() : string.Empty;
     var requestUrl = new Uri(Context.Request.GetDisplayUrl());
@@ -26,9 +21,9 @@
     var profilePageUrl = $"{idPUrl}/user/profile";
 
     var isAdmin = await new UserManagement().IsAdmin(Guid.Parse(Context.User.Claims.First(c => c.Type == ClaimTypes.NameIdentifier).Value));
-    var tenantSitesUrl = "/" + @CloudAppConfig.TenantManagementUrl.Trim('/') + "/sites";
-    var tenantUsersUrl = "/" + @CloudAppConfig.TenantManagementUrl.Trim('/') + "/administration/user-management/users";
-    var tenantSettingsUrl = "/" + @CloudAppConfig.TenantManagementUrl.Trim('/') + "/administration";
+    var tenantSitesUrl = CloudAppConfig.TenantManagementUrl + "/sites";
+    var tenantUsersUrl = CloudAppConfig.TenantManagementUrl + "/administration/user-management/users";
+    var tenantSettingsUrl = CloudAppConfig.TenantManagementUrl + "/administration";
     AdminType adminType = (AdminType)Enum.Parse(typeof(AdminType), Context.Session.GetString("AdminType"));
     var emailAddress = Context.Session.GetString("emailaddress") != null ? Context.Session.GetString("emailaddress").ToString() : string.Empty;
     var username = Context.Session.GetString("username") != null ? Context.Session.GetString("username").ToString() : string.Empty;
@@ -41,7 +36,7 @@
         <ul id="items-menu">
             <li>
                 <a href="@imageUrl" class="home-link" style="background-color:transparent;" title=@GlobalAppSettings.SystemSettings.OrganizationName>
-                    <img alt="[[[Application Logo]]]" id="application-logo" src="@GlobalAppSettings.SystemSettings.MainScreenLogo" onerror="this.onerror=null;this.src='@GlobalAppSettings.CdnDomain/images/boldid/application/@IconFileNames.MainLogo';" />
+                    <img alt="[[[Application Logo]]]" id="application-logo" src="@Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=header")" onerror="this.onerror=null;this.src='@GlobalAppSettings.CdnDomain/images/boldid/application/@IconFileNames.MainLogo';" />
                 </a>
             </li>
             @if (isAdmin)

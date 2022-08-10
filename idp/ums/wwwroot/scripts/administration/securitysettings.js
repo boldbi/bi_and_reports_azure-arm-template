@@ -35,7 +35,7 @@ $(document).on("click", "#update-password-settings", function () {
             hideWaitingPopup('body');
         },
         error: function () {
-            WarningAlert(window.TM.App.LocalizationContent.SecuritySettings, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, 7000);
+            WarningAlert(window.TM.App.LocalizationContent.SecuritySettings, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, data.Message, 7000);
             hideWaitingPopup('body');
         }
     });

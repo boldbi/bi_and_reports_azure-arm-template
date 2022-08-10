@@ -5,13 +5,13 @@
 
         .table-section {
             border-collapse: collapse;
-            border: 1px solid $border-color;
+            border: 1px solid $section-separator-color;
             margin-bottom: 5px;
             width: auto;
 
             th {
                 background-color: $white;
-                border-bottom: 1px solid $border-color;
+                border-bottom: 1px solid $section-separator-color;
                 height: 47px;
                 padding: 12px 10px 10px 10px !important;
             }

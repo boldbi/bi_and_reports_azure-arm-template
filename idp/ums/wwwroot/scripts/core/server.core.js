@@ -869,26 +869,36 @@ function SuccessAlert(header, content, duration) {
     window.top.$("#message-header").html(header);
     window.top.$("#message-content").html(content);
     window.top.$("#success-alert").css("display", "table");
-    
+
     toastTimeout = setTimeout(function () {
-        window.top.$('#success-alert').fadeOut()
+        window.top.$('#success-alert').fadeOut();
     }, duration);
+
+    $(document).on("click", ".close-div", function () {
+        window.top.$('#success-alert').fadeOut();
+    });
 }
 
-function WarningAlert(header, content, duration) {
+function WarningAlert(header, content, error, duration) {
     clearTimeout(toastTimeout);
     parent.$('#warning-alert').css("display", "none");
     parent.$("#warning-alert #message-header").html(header);
     parent.$(" #warning-alert #message-content").html(content);
+    $("#container #text-error-area").val(error);
     parent.$("#warning-alert").css("display", "table");
-    
+
+    if (error != null) {
+        $("#view").show();
+    }
+
     if (duration != null && duration != "") {
         toastTimeout = setTimeout(function () {
-            parent.$('#warning-alert').fadeOut()
+            parent.$('#warning-alert').fadeOut();
         }, duration);
     }
+  
     $(document).on("click", ".close-div", function () {
-        parent.$('#warning-alert').fadeOut()
+        parent.$('#warning-alert').fadeOut();
     });
 }
 
@@ -1106,3 +1116,29 @@ function ValidateIsolationCode(code, id) {
 
     return isValid;
 }
+
+   $("#container, #view").hide();
+    $(document).on("click", ".view-more", function () {
+        $("#container").show();
+        $("#warning-alert").css('height', '200px')
+        $("#view").addClass("view-less");
+        $("#view").removeClass("view-more");
+        $("#view").html(window.TM.App.LocalizationContent.ViewLess);
+        clearTimeout(toastTimeout);
+    });
+    $(document).on("click", ".view-less", function () {
+        $("#container").hide();
+        $("#warning-alert").css('height', '84px')
+        $("#view").addClass("view-more");
+        $("#view").removeClass("view-less");
+        $("#view").html(window.TM.App.LocalizationContent.ViewMore);
+    });
+
+    $('[data-toggle="tooltip"]').tooltip();
+    $(document).on("click", "#copy-error-area", function (e) {
+        $("#text-error-area").select();
+        document.execCommand('copy');
+        $("#copy-error-area").attr("data-original-title", window.TM.App.LocalizationContent.Copied);
+        $("#copy-error-area").tooltip("hide").attr("data-original-title", window.TM.App.LocalizationContent.Copied).tooltip("fixTitle").tooltip("show");
+        setTimeout(function () { $("#copy-error-area").attr("data-original-title", window.TM.App.LocalizationContent.LinkCopy); $("#copy-error-area").tooltip(); }, 3000);
+    });

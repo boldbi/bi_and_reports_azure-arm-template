@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     var loginEmail = new ejs.inputs.TextBox({
-        cssClass: 'e-outline e-input-focus',
+        cssClass: 'e-outline e-custom e-account',
         floatLabelType: 'Always',
         created: function () {
             loginEmail.focusIn();
@@ -10,7 +10,7 @@ $(document).ready(function () {
     loginEmail.appendTo('#login-email');
 
     var loginPassword = new ejs.inputs.TextBox({
-        cssClass: 'e-outline',
+        cssClass: 'e-outline e-custom e-account',
         floatLabelType: 'Always'
     });
     loginPassword.appendTo('#current-password');

@@ -35,10 +35,10 @@
         </div>
         <div id="site-url-validation" class="col-xs-12 no-padding validation-errors site-url-validation"></div>
         <div class=" exist-domain-info hide">
-            @Html.CheckBox("DomainInfo", true, new { id = "domain-change" })
-            <label class="app-textbox-label no-margin">[[[Update the URL of the ]]]<a target="_blank" href="@existingDomainUrl">[[[sites]]]</a>[[[ that are deployed to the same URL.]]]</label>
+            @Html.CheckBox("domain-change", true, new { @class = "material-checkbox", id = "domain-change" })
+            @Html.Hidden("domain-change")
+            <label for="domain-change" class="app-textbox-label no-margin">[[[Update the URL of the ]]]<a target="_blank" href="@existingDomainUrl">[[[sites]]]</a>[[[ that are deployed to the same URL.]]]</label>
         </div>
-
 
         @if (!CloudAppConfig.IsSelfHosted)
         {

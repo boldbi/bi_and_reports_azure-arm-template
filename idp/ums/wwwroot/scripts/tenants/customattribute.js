@@ -204,7 +204,7 @@ function saveCustomAttribute() {
                     $("#custom-attribute-name").addClass("e-error");
                     $("#custom-attribute-form").valid();
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.AddCustomAttribute, window.TM.App.LocalizationContent.CustomAttributeFailure, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.AddCustomAttribute, window.TM.App.LocalizationContent.CustomAttributeFailure, result.ErrorMessage, 7000);
                     dialog[0].hide();
                 }
             }
@@ -281,7 +281,7 @@ function updateCustomAttribute(attributeId) {
                     $("#custom-attribute-name").addClass("e-error");
                     $("#custom-attribute-form").valid();
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.EditCustomAttribute, window.TM.App.LocalizationContent.UpdateCustomAttributeFailure, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.EditCustomAttribute, window.TM.App.LocalizationContent.UpdateCustomAttributeFailure, result.ErrorMessage, 7000);
                     dialog[0].hide();
                 }
             }
@@ -308,7 +308,7 @@ function removeCustomAttribute(item) {
                 SuccessAlert(window.TM.App.LocalizationContent.DeleteCustomAttribute, window.TM.App.LocalizationContent.DeleteCustomAttributeSuccess, 7000);
             } else {
                 hideWaitingPopup('messageBox');
-                WarningAlert(window.TM.App.LocalizationContent.DeleteCustomAttribute, window.TM.App.LocalizationContent.DeleteCustomAttributeFailure, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.DeleteCustomAttribute, window.TM.App.LocalizationContent.DeleteCustomAttributeFailure, result.Message, 7000);
             }
             hideWaitingPopup('messageBox');
             onCloseMessageBox();

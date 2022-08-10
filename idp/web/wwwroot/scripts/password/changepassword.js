@@ -2,7 +2,7 @@
 $(document).ready(function () {
     $('[data-toggle="popover"]').popover();
     var outlineEditPassword = new ejs.inputs.TextBox({
-        cssClass: 'e-outline e-custom',
+        cssClass: 'e-outline e-custom e-non-float',
         floatLabelType: 'Never',
     });
     outlineEditPassword.appendTo('#current-password');
@@ -143,7 +143,7 @@ function onChangePasswordClick() {
                 }
                 else if (!result.Data.status && result.Data.key == "error") {
                     hideWaitingPopup('content-area');
-                    WarningAlert(window.Server.App.LocalizationContent.UpdatePassword, window.Server.App.LocalizationContent.PasswordFailure, 7000);
+                    WarningAlert(window.Server.App.LocalizationContent.UpdatePassword, window.Server.App.LocalizationContent.PasswordFailure, result.Message, 7000);
                 }
                 else {
                     if (result.Data.isTenantUserEdit) {

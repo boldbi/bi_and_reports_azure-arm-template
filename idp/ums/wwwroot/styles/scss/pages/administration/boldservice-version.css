@@ -6,12 +6,12 @@
   padding: 30px; }
   .admin-page-content-container .admin-page-body .table-section {
     border-collapse: collapse;
-    border: 1px solid #cccccc;
+    border: 1px solid var(--section-separator-color);
     margin-bottom: 5px;
     width: auto; }
     .admin-page-content-container .admin-page-body .table-section th {
-      background-color: #fff;
-      border-bottom: 1px solid #cccccc;
+      background-color: var(--grey-white);
+      border-bottom: 1px solid var(--section-separator-color);
       height: 47px;
       padding: 12px 10px 10px 10px !important; }
     .admin-page-content-container .admin-page-body .table-section td {

@@ -418,8 +418,10 @@ $(document).ready(function () {
 
     function updatesamlSetting() {
         var isEnabled = $("#enable-sso").is(":checked");
+        var isSloEnabled = $("#enable-slo").is(":checked");
         var ssoSettingsData = {
             IsEnabled: isEnabled,
+            IsSloEnabled: isSloEnabled,
             ApplicationId: $("input[name='ApplicationId']").val().trim(),
             ApplicationIdURI: $("input[name='ApplicationIdURI']").val().trim(),
             TenantName: $("input[name='TenantName']").val().trim(),
@@ -431,11 +433,11 @@ $(document).ready(function () {
             data: { samlSettingsData: ssoSettingsData },
             success: function (data) {
                 scope.categories = data;
-                if (data) {
+                if (data.result) {
                     SuccessAlert(window.TM.App.LocalizationContent.SSOSettings, window.TM.App.LocalizationContent.SSOSettingsUpdated, 7000);
                     window.location.href = window.location.href;
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.SSOSettings, window.TM.App.LocalizationContent.SSOSettingsUpdateError, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.SSOSettings, window.TM.App.LocalizationContent.SSOSettingsUpdateError, data.Message, 7000);
                 }
             },
             error: function (data) {
@@ -461,7 +463,7 @@ $(document).ready(function () {
                     SuccessAlert(window.TM.App.LocalizationContent.WindowsAdSettings, window.TM.App.LocalizationContent.WindowsAdSettingsUpdated, 7000);
                 }
                 else {
-                    WarningAlert(window.TM.App.LocalizationContent.WindowsAdSettings, window.TM.App.LocalizationContent.WindowsAdSettingsUpdateError, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.WindowsAdSettings, window.TM.App.LocalizationContent.WindowsAdSettingsUpdateError, result.Message, 7000);
                 }
             },
             error: function () {
@@ -497,7 +499,7 @@ $(document).ready(function () {
 
                 }
                 else {
-                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
                 }
             },
             error: function () {
@@ -522,7 +524,7 @@ $(document).ready(function () {
                 }
                 else {
                     hideWaitingPopup('server-app-container');
-                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
                 }
             },
             error: function () {
@@ -549,7 +551,7 @@ $(document).ready(function () {
                     window.location.href = window.location.href;
                 }
                 else {
-                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
                 }
             },
             error: function () {
@@ -815,7 +817,7 @@ function fnCopySigningKey(inputId, buttonId) {
 }
 
 function signingKeyConfirmationDlg() {
-    var footerTemplate = '<button id="sendButton" class="e-control e-btn e-primary">' + window.TM.App.LocalizationContent.OKButton + ' </button>';
+    var footerTemplate = '<button id="sendButton" class="e-control e-btn e-primary secondary-button">' + window.TM.App.LocalizationContent.OKButton + ' </button>';
     var sendbutton = new ej.buttons.Button();
     dialog = new ej.popups.Dialog({
         header: 'Regenerate Signing Key',

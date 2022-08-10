@@ -104,19 +104,18 @@
       "wwwroot/styles/bootstrap/bootstrap.min.css",
       "wwwroot/styles/fonts/font-server.css",
       "wwwroot/styles/scss/ej2customization/spinner-customization.min.css",
+      "wwwroot/styles/scss/pages/components/buttons.css",
       "wwwroot/styles/scss/pages/newmaster.css",
-      "wwwroot/styles/scss/pages/dialogs.css",
+      "wwwroot/styles/scss/pages/components/dialogs.css",
       "wwwroot/styles/scss/pages/footer-onpremise.min.css",
-      "wwwroot/styles/scss/pages/applicationnavigation.css"
+      "wwwroot/styles/scss/pages/error/error-message.min.css"
     ],
     "outputFileName": "wwwroot/bundles/css/layout.css"
   },
   {
     "inputFiles": [
-      "wwwroot/styles/essentialjs2/material-theme/material.min.css",
       "wwwroot/styles/scss/accounts/login.min.css",
-      "wwwroot/styles/scss/pages/accounts/login.css",
-      "wwwroot/styles/scss/accounts/input-box-customization.min.css"
+      "wwwroot/styles/scss/pages/accounts/login.css"
     ],
     "outputFileName": "wwwroot/bundles/css/accounts.css"
   },
@@ -124,9 +123,11 @@
     "inputFiles": [
       "wwwroot/styles/bootstrap/bootstrap.min.css",
       "wwwroot/styles/fonts/font-server.css",
-      "wwwroot/styles/scss/pages/newthemes/mixins.css",
+      "wwwroot/styles/scss/pages/components/buttons.css",
+      "wwwroot/styles/scss/pages/newmaster.css",
       "wwwroot/styles/scss/pages/footer-onpremise.min.css",
       "wwwroot/styles/scss/pages/accounts/layout.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.min.css",
       "wwwroot/styles/scss/ej2customization/spinner-customization.min.css",
       "wwwroot/styles/essentialjs2/material-theme/material.min.css"
     ],
@@ -134,15 +135,13 @@
   },
   {
     "inputFiles": [
-      "wwwroot/styles/scss/pages/accounts/forgetpassword.css",
-      "wwwroot/styles/scss/accounts/input-box-customization.min.css"
+      "wwwroot/styles/scss/pages/accounts/forgetpassword.css"
     ],
     "outputFileName": "wwwroot/bundles/css/accounts-forget-password.css"
   },
   {
     "inputFiles": [
-      "wwwroot/styles/scss/pages/accounts/changepassword.css",
-      "wwwroot/styles/scss/accounts/input-box-customization.min.css"
+      "wwwroot/styles/scss/pages/accounts/changepassword.css"
     ],
     "outputFileName": "wwwroot/bundles/css/accounts-change-password.css"
   },
@@ -165,10 +164,8 @@
       "wwwroot/styles/scss/ej2customization/dialog-customization.min.css",
       "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
       "wwwroot/styles/scss/ej2customization/input-box-customization.css",
-      "wwwroot/styles/scss/ej2customization/spinner-customization.min.css",
       "wwwroot/styles/scss/ej2customization/uploader-customization.min.css",
-      "wwwroot/styles/scss/pages/components/pagewrapper.css",
-      "wwwroot/styles/scss/pages/profile.css",
+      "wwwroot/styles/scss/pages/profile/profile.css",
       "wwwroot/styles/scss/pages/manageaccount.css"
     ],
     "outputFileName": "wwwroot/bundles/css/profile.css"
@@ -177,29 +174,9 @@
     "inputFiles": [
       "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
       "wwwroot/styles/scss/ej2customization/input-box-customization.css",
-      "wwwroot/styles/scss/pages/userpreference.css"
+      "wwwroot/styles/scss/pages/profile/userpreference.css"
     ],
     "outputFileName": "wwwroot/bundles/css/user-preference.css"
-  },
-  {
-    "inputFiles": [
-      "wwwroot/styles/bootstrap/bootstrap.min.css"
-    ],
-    "outputFileName": "wwwroot/bundles/css/user-profile.css"
-  },
-  {
-    "inputFiles": [
-      "wwwroot/styles/scss/pages/components/pagewrapper.css",
-      "wwwroot/styles/scss/pages/adminpage.css"
-    ],
-    "outputFileName": "wwwroot/bundles/css/adminpage.css"
-  },
-  {
-    "inputFiles": [
-      "wwwroot/styles/fonts/font-server.css",
-      "wwwroot/styles/scss/pages/errorpage.css"
-    ],
-    "outputFileName": "wwwroot/bundles/css/oauth-authorization-error.css"
   },
   {
     "inputFiles": [
@@ -209,18 +186,11 @@
   },
   {
     "inputFiles": [
-      "wwwroot/styles/scss/pages/errorpage.css"
-    ],
-    "outputFileName": "wwwroot/bundles/css/error-page.css"
-  },
-  {
-    "inputFiles": [
       "wwwroot/styles/bootstrap/bootstrap.min.css",
-      "wwwroot/styles/scss/global.min.css",
       "wwwroot/styles/scss/pages/footer-onpremise.min.css",
       "wwwroot/styles/scss/pages/error/error-page.min.css"
     ],
-    "outputFileName": "wwwroot/bundles/css/error-page-new.css"
+    "outputFileName": "wwwroot/bundles/css/error-page.css"
   },
   {
     "inputFiles": [
@@ -230,16 +200,9 @@
   },
   {
     "inputFiles": [
-      "wwwroot/styles/essentialjs2/material-theme/material.css"
-    ],
-    "outputFileName": "wwwroot/bundles/css/ej2-material-theme.css"
-  },
-  {
-    "inputFiles": [
-      "wwwroot/styles/essentialjs2/material-theme/material.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.min.css",
       "wwwroot/styles/scss/pages/passwordpolicyrules.css",
-      "wwwroot/styles/scss/pages/changepassword.css",
-      "wwwroot/styles/scss/pages/components/popup.css"
+      "wwwroot/styles/scss/pages/profile/changepassword.css"
     ],
     "outputFileName": "wwwroot/bundles/css/change-password.css"
   },
@@ -255,11 +218,5 @@
       "wwwroot/styles/fonts/font-server.css"
     ],
     "outputFileName": "wwwroot/bundles/css/statushealthcheck.css"
-  },
-  {
-    "inputFiles": [
-      "wwwroot/styles/scss/themes/light_theme.css"
-    ],
-    "outputFileName": "wwwroot/bundles/css/light_theme.css"
   }
 ]

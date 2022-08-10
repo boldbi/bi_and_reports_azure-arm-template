@@ -14,7 +14,7 @@
             margin-left: 15px;
 
             .caret {
-                margin-bottom: 5px;
+                margin-bottom: 2px;
             }
         }
 
@@ -90,16 +90,6 @@
         }
 
         #user_grid {
-            .e-gridcontent {
-                table {
-                    tr {
-                        .e-active {
-                            background: $selected-color !important;
-                        }
-                    }
-                }
-            }
-
             table {
                 th:last-child {
                     cursor: default;
@@ -168,19 +158,11 @@
         .modal-footer {
             height: 43px !important;
             padding: 0px !important;
-            background: $backgroud !important;
-            border-top: 1px solid $grey-100 !important;
+            background: $dialog-footer-bg-normal-color !important;
+            border-top: 1px solid $dialog-footer-border-normal-color !important;
 
             .secondary-button {
-                border: 1px solid $footer-border-color;
-                margin: 8px 0px 7px 0;
-                @include dialogButton();
-            }
-
-            .primary-button {
-                border: 1px solid $footer-primary-border-color;
                 margin: 8px 16px 7px 12px;
-                @include dialogButton();
             }
         }
     }
@@ -280,7 +262,7 @@
             .title-row {
                 height: 50px;
                 border-bottom: 2px solid $grey-200;
-                background-color: $grey-40;
+                background-color: $background;
 
                 td {
                     font-weight: 600;
@@ -315,7 +297,7 @@
 }
 
 .e-grid .e-gridcontent tr:first-child td, .e-grid tr:first-child.e-editedrow td.e-rowcell, .e-grid .e-gridcontent .e-firstrow > td {
-    border-top: 1px solid $grid-border-color;
+    border-top: 1px solid $grid-content-border-normal-color;
 }
 
 #popup-container {
@@ -400,7 +382,7 @@
                         max-width: 200px;
 
                         > .active > a {
-                            color: $admin-page-bg !important;
+                            color: $surface !important;
                             background-color: $primary-color;
                         }
 
@@ -417,8 +399,8 @@
                 }
 
                 .modal-footer {
-                    border-top: 1px solid $footer-border-color;
-                    background-color: $dialog-footer-bgcolor;
+                    border-top: 1px solid $dialog-footer-border-normal-color;
+                    background-color: $dialog-footer-bg-normal-color;
                     margin-top: 190px;
                     padding: 12.5px 10px;
                     text-align: right;

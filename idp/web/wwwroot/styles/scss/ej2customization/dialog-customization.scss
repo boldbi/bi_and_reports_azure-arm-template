@@ -20,7 +20,6 @@
             font-weight: 600;
             font-size: 14px;
             letter-spacing: 0.3px;
-            color: $grey-800;
         }
 
         .su {
@@ -40,13 +39,11 @@
         padding: 0px !important;
 
         .e-btn, .secondary-button {
-            border: 1px solid $footer-border-color;
             margin: 8px 0 7px 0;
             @include dialogButton();
         }
 
         .e-btn.e-primary, .critical-action-button {
-            border: 1px solid $footer-primary-border-color;
             margin: 8px 16px 7px 12px;
             @include dialogButton();
         }
