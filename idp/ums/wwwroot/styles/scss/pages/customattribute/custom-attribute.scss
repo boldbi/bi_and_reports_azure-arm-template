@@ -1,9 +1,9 @@
 ﻿@import "../mixins.scss";
 @import "../../core/_typography.scss";
-@import "../../themes/default.scss";
+@import "../../default/default.scss";
 
 #custom-attribute-dialog {
-    background: $admin-page-bg;
+    background: $surface;
 
     .attribute-name {
         .e-float-input {
@@ -34,7 +34,7 @@
 
     .e-dlg-content {
         padding: 18px;
-        background: $admin-page-bg;
+        background: $surface;
 
         .app-textbox-label{
             padding: 0 !important;
@@ -111,7 +111,7 @@
     }
 
     .e-footer-content {
-        background: $admin-container-bg;
+        background: $background;
     }
 
     .has-error {

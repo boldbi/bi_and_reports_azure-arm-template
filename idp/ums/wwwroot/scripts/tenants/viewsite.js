@@ -204,7 +204,7 @@ $(document).ready(function () {
                                 }
                                 else {
                                     onUserAddDialogClose();
-                                    WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, 7000);
+                                    WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
                                     g.refresh();
                                 }
                             }
@@ -735,7 +735,7 @@ function provideAccesstoUsers() {
                     var content = window.TM.App.LocalizationContent.GrantedAccessTo + " " + result.count + " " + window.TM.App.LocalizationContent.UsersSuccessfully;
                     SuccessAlert(window.TM.App.LocalizationContent.GrantSiteAccess, content, 7000);
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.GrantSiteAccess, window.TM.App.LocalizationContent.GrantSiteAccessError, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.GrantSiteAccess, window.TM.App.LocalizationContent.GrantSiteAccessError, result.Message, 7000);
                 }
             }
         });
@@ -788,7 +788,7 @@ function removeUserAccess(users) {
                     var content = window.TM.App.LocalizationContent.RevokedAccessFor + " " + result.count + " " + window.TM.App.LocalizationContent.UsersSuccessfully;
                     SuccessAlert(window.TM.App.LocalizationContent.RevokeSiteAccess, content, 7000);
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.RevokeSiteAccess, window.TM.App.LocalizationContent.RevokeSiteAccessError, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.RevokeSiteAccess, window.TM.App.LocalizationContent.RevokeSiteAccessError, result.Message, 7000);
                 }
                 singleUserRemove = false;
                 users = [];
@@ -852,7 +852,7 @@ $(document).on("click", ".tenant-action", function (e) {
         headerIcon = "delete";
         headerText = window.TM.App.LocalizationContent.Delete;
         actionUrl = deleteTenantUrl;
-        messageContent += "<br/><br/><div><span class='material'><input type='checkbox' id='delete-database-checkbox' /><label for='delete-database-checkbox' class='label-database'>" + window.TM.App.LocalizationContent.DeleteDatabase + "</label></span ></div><div class='tenant-delete-warning'> <span>" + window.TM.App.LocalizationContent.WarningColon + "</span><div class = 'warning-content'> " + window.TM.App.LocalizationContent.DeleteAllResourceWithoutDataBase + "</div></div>";
+        messageContent += "<br/><br/><div><span><input type='checkbox' class='material-checkbox' id='delete-database-checkbox' /><input id='delete-database-checkbox' type='hidden'/><label for='delete-database-checkbox' class='label-database'>" + window.TM.App.LocalizationContent.DeleteDatabase + "</label></span ></div><div class='tenant-delete-warning'> <span>" + window.TM.App.LocalizationContent.WarningColon + "</span><div class = 'warning-content'> " + window.TM.App.LocalizationContent.DeleteAllResourceWithoutDataBase + "</div></div>";
     }
     if (action !== "edit") {
         messageBox("su-" + headerIcon, headerText + " " + window.TM.App.LocalizationContent.SiteLetter, messageContent, "error", function () {
@@ -912,7 +912,7 @@ function updateTenantStatus(actionUrl, tenantId, action) {
                 tenantGridObj.refresh();
             }
             else {
-                WarningAlert(actionName + " " + window.TM.App.LocalizationContent.SiteLetter, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, 7000);
+                WarningAlert(actionName + " " + window.TM.App.LocalizationContent.SiteLetter, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
             }
         },
         complete: function () {
@@ -962,7 +962,7 @@ $(document).on("click", "#update-isolation-code", function (e) {
                 SuccessAlert(window.TM.App.LocalizationContent.IsolationCode, window.TM.App.LocalizationContent.IsolationCodeSucess, 7000);
                 $("#update-isolation-code").attr("disabled", true);
             } else {
-                WarningAlert(window.TM.App.LocalizationContent.IsolationCode, window.TM.App.LocalizationContent.IsolationCodeError, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.IsolationCode, window.TM.App.LocalizationContent.IsolationCodeError, result.Message,  7000);
             }
             hideWaitingPopup('content-area');
         }

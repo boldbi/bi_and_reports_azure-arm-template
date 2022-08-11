@@ -143,7 +143,6 @@
         $(".form input[type='text']").val('');
         var usergrid = document.getElementById('user_grid').ej2_instances[0];
         usergrid.clearSelection();
-        $("#add-user-in-group").removeClass("show").addClass("hide");
         $(".validation").closest("div").removeClass("has-error");
         $(".useradd-validation-messages").css("display", "none");
     });

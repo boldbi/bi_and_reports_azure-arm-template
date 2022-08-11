@@ -3,6 +3,10 @@
 
 #admin-menu-nav-bar {
     @include navmenu();
+
+    #license-icon {
+        padding-right: 6px;
+    }
 }
 
 #server-app-container {
@@ -65,3 +69,4 @@
         }
     }
 }
+

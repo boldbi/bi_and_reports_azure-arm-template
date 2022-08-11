@@ -1,19 +1,46 @@
-﻿@import "../themes/default.scss";
+﻿@import "../default/default.scss";
 
 .e-float-input {
     height: 28px !important;
+
+    &.e-outline:not(.e-input-focus):not(.e-numeric):not(.e-disabled):not(.e-error):not(.e-non-float) {
+        .e-float-text {
+            color: $input-box-placeholder-text-normal-color !important;
+        }
+    }
+
+    &.e-disabled {
+        -webkit-text-fill-color: $input-box-text-disable-color !important;
+    }
 }
 
 .e-custom {
     font-family: var(--font-family) !important;
     font-size: 14px !important;
+    border-color: $input-box-border-normal-color !important;
+    color: $input-box-text-normal-color !important;
+    background: $input-box-bg-normal-color !important;
 
     input {
         min-height: 40px !important;
     }
 
-    &:hover:not(.e-input-focus):not(.e-input-group):not(.e-success):not(.e-error):not(.e-disabled) {
-        border-color: $primary-color !important;
+    &.e-valid-input:not(.e-numeric):not(.e-disabled):not(.e-error):not(.e-non-float) {
+        border-top-color: transparent !important;
+
+        .e-float-text {
+            color: $input-box-text-normal-color !important;
+
+            &.e-label-top, &.e-label-bottom {
+                &::after, &::before {
+                    border-top: solid 1px $input-box-border-normal-color !important;
+                }
+            }
+        }
+    }
+
+    &:hover:not(.e-input-focus):not(.e-input-group):not(.e-success):not(.e-error):not(.e-disabled):not(.e-popup) {
+        border-color: $input-box-border-active-color !important;
 
         input:valid ~ label.e-float-text {
             color: $primary-color !important;
@@ -33,8 +60,7 @@
 
             &.e-label-top, &.e-label-bottom {
                 &::after, &::before {
-                    border-top: solid 1px !important;
-                    border-color: $primary-color !important;
+                    border-top: solid 1px $primary-color !important;
                 }
             }
         }
@@ -50,24 +76,25 @@
 
             &.e-label-top, &.e-label-bottom {
                 &::after, &::before {
-                    border-top: solid 1px !important;
-                    border-color: $primary-color !important;
+                    border-top: solid 1px $primary-color !important;
                 }
             }
         }
     }
 
     &.e-error {
+        border-color: $input-box-border-alert-color !important;
         box-shadow: inset 0.1px 0 $validation-text-color, inset -0.1px 0 $validation-text-color, inset 0 -0.1px $validation-text-color !important;
 
-        &.e-input-focus {
+        &.e-input-focus, &.e-valid-input {
+            border-top-color: transparent !important;
+
             .e-float-text {
                 color: $validation-text-color !important;
 
                 &.e-label-top, &.e-label-bottom {
                     &::after, &::before {
-                        border-top: solid 1px !important;
-                        border-color: $validation-text-color !important;
+                        border-top: solid 1px $input-box-border-alert-color !important;
                     }
                 }
             }
@@ -75,17 +102,17 @@
     }
 
     &.e-disabled {
-        background-color: $input-box-disabled !important;
+        background-color: $input-box-bg-disable-color !important;
         border: 1px solid $input-box-border-disable-color !important;
         color: $input-box-text-disable-color !important;
         border-top-color: transparent !important;
+        -webkit-text-fill-color: $input-box-text-disable-color !important;
 
         .e-float-text {
 
             &.e-label-top {
                 &::after, &::before {
-                    border-top: solid 1px !important;
-                    border-color: $grey-200 !important;
+                    border-top: solid 1px $input-box-border-disable-color !important;
                 }
             }
         }
@@ -98,29 +125,22 @@
     }
 
     &.e-input-group {
+        .e-disabled {
+            -webkit-text-fill-color: $input-box-text-disable-color !important;
+        }
+
         .e-input-group-icon {
             font-size: 10px !important;
             margin-top: 4px !important;
         }
     }
+}
 
-    .e-radio:checked + label::after {
-        background-color: $primary-color !important;
-        color: $primary-color !important;
-    }
-
-    .e-radio:checked + label::before {
-        background-color: $white !important;
-        border-color: $primary-color !important;
-    }
-
-    .e-radio + label .e-label {
-        font-family: var(--font-family) !important;
-        font-size: 14px !important;
-    }
+input.e-input::placeholder, textarea.e-input::placeholder, .e-input-group input.e-input::placeholder, .e-input-group.e-control-wrapper input.e-input::placeholder, .e-float-input input::placeholder, .e-float-input.e-control-wrapper input::placeholder, .e-input-group textarea.e-input::placeholder, .e-input-group.e-control-wrapper textarea.e-input::placeholder, .e-float-input textarea::placeholder, .e-float-input.e-control-wrapper textarea::placeholder {
+    color: $input-box-placeholder-text-normal-color !important;
 }
 
 input.e-input::selection, textarea.e-input::selection, .e-input-group input.e-input::selection, .e-input-group.e-control-wrapper input.e-input::selection, .e-float-input input::selection, .e-float-input.e-control-wrapper input::selection, .e-input-group textarea.e-input::selection, .e-input-group.e-control-wrapper textarea.e-input::selection, .e-float-input textarea::selection, .e-float-input.e-control-wrapper textarea::selection {
     background: $browser-default-select-color-ej2-custom !important;
-    color: $white !important;
+    color: $primary-text-color !important;
 }

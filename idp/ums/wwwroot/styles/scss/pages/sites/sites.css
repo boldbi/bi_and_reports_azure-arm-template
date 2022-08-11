@@ -11,7 +11,7 @@
     width: 14px;
     height: 14px; }
   #messageBox .message-content .tenant-name {
-    color: var(--colorPrimary);
+    color: var(--primary-branding-bg-color);
     font-style: italic; }
   #messageBox .message-content .tenant-delete-warning {
     margin-top: 15px; }
@@ -19,11 +19,6 @@
       font-weight: bold; }
     #messageBox .message-content .tenant-delete-warning div {
       padding-top: 5px; }
-  #messageBox .message-content .material input[type=checkbox] {
-    position: absolute; }
-  #messageBox .message-content .material .label-database {
-    margin-left: 25px;
-    font-weight: 400; }
 
 #add-tenant-popup_wrapper {
   top: 0 !important; }
@@ -34,7 +29,6 @@
   padding: 0;
   width: 100% !important;
   height: 100% !important;
-  max-height: 760px !important;
   top: 0px !important; }
   #add-tenant-popup .e-dlg-content {
     overflow: hidden !important;

@@ -197,7 +197,7 @@
 
     .dropdown-toggle {
         span {
-            color: $menu-label-color;
+            color: $primary-text-color;
         }
     }
 
@@ -214,13 +214,13 @@
         border: 0;
 
         .e-inputbtn {
-            background: $admin-page-bg;
+            background: $surface;
             color: $primary-text-color;
             font-size: $app-text-size;
             font-weight: bolder;
 
             &:hover {
-                background: $admin-container-bg;
+                background: $background;
             }
         }
     }
@@ -323,5 +323,10 @@
                 }
             }
         }
+    }
+}
+#warning-alert{
+    #view{
+        left:220px;
     }
 }

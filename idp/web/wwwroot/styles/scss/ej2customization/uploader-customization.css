@@ -1,15 +1,14 @@
 .e-upload {
-  background: #FFFFFF;
-  border: 1px dashed #cccccc;
+  border: 1px dashed var(--logo-section-border-color);
   box-sizing: border-box;
   border-radius: 4px;
   height: 100px;
   width: 200px; }
-  .e-upload .e-btn {
-    background-color: #FFFFFF !important;
-    border: 1px solid #cccccc !important;
+  .e-upload .e-btn, .e-upload .e-css.e-btn {
+    background: var(--secondary-button-bg-normal-color);
+    border: 1px solid var(--secondary-button-border-normal-color);
+    color: var(--secondary-button-text-normal-color);
     box-shadow: none !important;
-    color: #333333;
     font-weight: 600;
     font-size: 13px;
     height: 28px;
@@ -19,8 +18,13 @@
     left: 55px;
     top: 49px;
     text-transform: none; }
+    .e-upload .e-btn:hover, .e-upload .e-css.e-btn:hover {
+      background: var(--secondary-button-bg-hover-color);
+      border: 1px solid var(--secondary-button-border-normal-color);
+      color: var(--secondary-button-text-hover-color);
+      outline: 0px; }
   .e-upload .e-file-drop {
-    color: #808080 !important;
+    color: var(--dialog-content-text-normal-color) !important;
     font-weight: 600;
     font-size: 12px !important;
     font-style: normal;

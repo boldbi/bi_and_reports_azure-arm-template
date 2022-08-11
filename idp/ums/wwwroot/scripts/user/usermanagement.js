@@ -215,7 +215,7 @@ $(document).ready(function () {
                                         $("#zero-user-acc").show();
                                     }
                                     else {
-                                        WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, 7000);
+                                        WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
                                         userGrid.refresh();
                                     }
                                     onUserAddDialogClose();
@@ -233,22 +233,6 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on("click", "#addnew-group", function () {
-        $(".group-validation").closest("div").removeClass("has-error");
-        $("#existing-group").hide();
-        $("#addnew-group").hide();
-        $("#add-existing-group").show();
-        $("#new-group").show();
-    });
-
-    $(document).on("click", "#add-existing-group", function () {
-        $(".group-validation").css("display", "none");
-        $("#existing-group").show();
-        $("#add-existing-group").hide();
-        $("#addnew-group").show();
-        $("#new-group").hide();
-    });
-
     $(document).on("click", "#cancel-addgroup-button,#group-close-button", function () {
         parent.$(".modal[data-dialog='add-users-in-group'], .modal-backdrop, #user-add-dialog-wrapper").remove();
     });
@@ -260,7 +244,6 @@ $(document).ready(function () {
         if (e.keyCode == 13 && ($("#new-group").css("display") == "none")) {
             return false;
         } else if (e.keyCode == 13 && $("#existing-group").css("display") == "none") {
-            AddUserGroup();
             return false;
         }
     });
@@ -269,7 +252,6 @@ $(document).ready(function () {
         if (e.keyCode == 13 && ($("#new-group").css("display") == "none")) {
             return false;
         } else if (e.keyCode == 13 && $("#existing-group").css("display") == "none") {
-            AddUserGroup();
             return false;
         }
     });
@@ -279,85 +261,6 @@ $(document).ready(function () {
             MakeFlyDeleteUsers();
         }
     });
-
-    $(document).on("click", "#add-user-group-button", function () {
-        AddUserGroup();
-    });
-
-    function AddUserGroup() {
-        $("#group-name-validation").closest("div").addClass("has-error");
-        var userGrid = document.getElementById('user_grid').ej2_instances[0];
-        showWaitingPopup('movable-dialog');
-        if ($("#new-group").css("display") == "none") {
-            var GroupNameDropdown = $("#groupname-dropdown").val();
-
-            var GroupUsers = document.getElementsByName("hiddenUserName[]");
-            var GrList = '';
-            for (var t = 0; t < GroupUsers.length; t++) {
-                if (GrList == '')
-                    GrList = GroupUsers[t].value;
-                else
-                    GrList = GrList + "," + GroupUsers[t].value;
-            }
-            var values = "GroupId=" + GroupNameDropdown + "&GroupUsers=" + GrList;
-            var msg = '';
-
-            if (GroupNameDropdown == '') {
-                msg += "Test";
-                $("#groupname-dropdown").css("border", "1px solid #ff0000");
-            } else
-                $("#groupName-dropdown").css("border", "");
-            doAjaxPost("POST", updateUserIntoGroupUrl, values, function (data) {
-                hideWaitingPopup('movable-dialog');
-                if ($.type(data) == "string") {
-                    CloseGroup();
-                    $("#success-message").append(data);
-                    userGrid.refresh();
-                } else {
-                }
-            });
-        } else if ($("#existing-group").css("display") == "none") {
-            var userGrid = document.getElementById('user_grid').ej2_instances[0];
-            var isValid = $(".new-group-form").valid();
-            if (isValid) {
-                doAjaxPost("POST", checkGroupnameUrl, { GroupName: $("#group-name").val() }, function (data) {
-                    if (data.toLowerCase() != "true") {
-                        var GroupName = $("#group-name").val();
-                        var GroupColor = "";
-                        var GroupDescription = $("#group-description").val();
-                        var GroupUsers = document.getElementsByName("hiddenUserName[]");
-                        var GrList = '';
-                        for (var t = 0; t < GroupUsers.length; t++) {
-                            if (GrList == '')
-                                GrList = GroupUsers[t].value;
-                            else
-                                GrList = GrList + "," + GroupUsers[t].value;
-                        }
-                        var values = "GroupName=" + GroupName + "&GroupColor=" + GroupColor + "&GroupDescription=" + GroupDescription + "&GroupUsers=" + GrList;
-                        doAjaxPost("POST", saveUserIntoGroupUrl, values, function (data) {
-                            if ($.type(data) == "object") {
-                                hideWaitingPopup('movable-dialog');
-                                if (data.Data.status) {
-                                    CloseGroup();
-                                    $("#existing-group").show();
-                                    $("#new-group").hide();
-                                    userGrid.refresh();
-                                } else {
-                                }
-                            }
-                        });
-                    } else {
-                        hideWaitingPopup('movable-dialog');
-                        $("#group-name-validation").html(window.TM.App.LocalizationContent.GroupExists).css("display", "block");
-                        $("#group-name-validation").closest("div").addClass("has-error");
-                    }
-                });
-            }
-            else {
-                hideWaitingPopup('movable-dialog');
-            }
-        }
-    }
 
     $(document).on("click", "#assign-user-role-button", function () {
         document.getElementById("multiple-admin-confirmation").ej2_instances[0].show();
@@ -425,6 +328,12 @@ function fnOnUserGridLoad(args) {
     args.model.enableTouch = false;
 }
 
+function fnbeforeDataBound(args) {
+    if (args.count == 0) {
+        WarningAlert(window.TM.App.LocalizationContent.Users, window.TM.App.LocalizationContent.FailedToGetUsers, args.result, 7000);
+    }
+}
+
 function fnOnUserRowSelected(args) {
     var usergrid = document.getElementById('user_grid').ej2_instances[0];
     var selectedUsers = usergrid.getSelectedRecords();
@@ -452,18 +361,15 @@ function fnUserRowSelected(args) {
     if (usergrid.getSelectedRecords().length == 1) {
         jQuery.each(selectedUsers, function (index, record) {
             if (record.Email.toLowerCase() == loggeduser) {
-                $("#add-user-in-group").removeClass("hide").addClass("show");
                 $(".user-delete-button").css("display", "none");
             }
             else {
-                $("#add-user-in-group").removeClass("hide").addClass("show");
                 $(".user-delete-button").css("display", "block");
                 $("#grant-user-").css("disabled", true);
             }
         });
     }
     else if (usergrid.getSelectedRecords().length > 1) {
-        $('#add-user-in-group').removeClass("hide").addClass("show");
         $(".user-delete-button").css("display", "block");
         jQuery.each(selectedUsers, function (index, record) {
             if (record.Email.toLowerCase() == loggeduser) {
@@ -472,9 +378,6 @@ function fnUserRowSelected(args) {
                 return false;
             }
         });
-    }
-    else {
-        $('#add-user-in-group').removeClass("show").addClass("hide");
     }
 }
 
@@ -500,13 +403,6 @@ function fnOnUserGridActionComplete(args) {
     if (args.currentViewData.length == 0) {
         rowBound();
     }
-    var usergrid = document.getElementById('user_grid').ej2_instances[0];
-    if (usergrid.getSelectedRecords().length != 0) {
-        $("#add-user-in-group").removeClass("hide").addClass("show");
-    }
-    else {
-        $("#add-user-in-group").removeClass("show").addClass("hide");
-    }
 }
 
 function rowBound() {
@@ -521,100 +417,6 @@ $(document).on("click", ".single-delete", function () {
 
 $(document).on("click", ".multiple-delete", function () {
     MakeFlyDeleteUsers();
-});
-
-
-
-$(document).on("click", ".user-add-group", function () {
-
-    $("body").ejWaitingPopup();
-    $("body").ejWaitingPopup("show");
-
-    setTimeout(function () {
-        var container;
-        $.ajax({
-            type: "POST",
-            url: getAddUserInGroupDialogUrl,
-            data: {},
-            async: false,
-            success: function (result) {
-                container = result;
-            }
-        });
-
-        $("#content-area").append(container);
-        var usergrid = document.getElementById('user_grid').ej2_instances[0];
-        addPlacehoder("#new-group");
-
-        $.validator.addMethod("isValidName", function (value, element) {
-            return IsValidName("name", value)
-        }, "Please avoid special characters");
-
-        $(".new-group-form").validate({
-            errorElement: 'span',
-            onkeyup: function (element) { $(element).valid(); },
-            onfocusout: function (element) { $(element).valid(); },
-            rules: {
-                "group-name": {
-                    isRequired: true,
-                    isValidName: true
-                }
-            },
-            highlight: function (element) {
-                $(element).closest('div').addClass("has-error");
-                $(".group-validation").css("display", "block");
-            },
-            unhighlight: function (element) {
-                if ($(element).attr('name') == 'group-name') {
-                    $(element).closest('div').removeClass('has-error');
-                    $(element).closest('div').find("span").html("");
-                }
-            },
-            errorPlacement: function (error, element) {
-                $(element).closest('div').find("span").html(error.html());
-            },
-            messages: {
-                "group-name": {
-                    isRequired: window.TM.App.LocalizationContent.GroupNameValidator
-                }
-            }
-        });
-        var selectedUsers = usergrid.getSelectedRecords();
-        var UserList = "";
-        var GroupList = "";
-        var groupList;
-        $("#usersCount").html(selectedUsers.length);
-        $("#add-existing-group").css("display", "none");
-        jQuery.each(selectedUsers, function (index, record) {
-            UserList += "<div class='RoleItems'><input type='hidden' name='hiddenUserName[]' value='" + record.UserId + "'>" + record.FirstName + " " + record.LastName + "</div>";
-        });
-        $("#modal-footer").append(UserList);
-        $("#confirm-modal, .modal").css("display", "block");
-        $(".modal-backdrop").fadeIn(function () {
-            $(".modal-dialog").fadeIn();
-            $(".modal.fade.in").css("display", "block");
-        });
-        $.ajax({
-            type: "POST",
-            url: getAllActiveGroupListUrl,
-            data: {},
-            async: false,
-            success: function (result) {
-                groupList = result;
-            }
-        });
-        for (var g = 0; g < groupList.length; g++) {
-            GroupList += "<option value='" + groupList[g].GroupId + "'>" + groupList[g].GroupName + "</option>";
-        }
-        $("#groupname-dropdown").append(GroupList);
-        $("#groupname-dropdown").selectpicker("refresh");
-        for (var i = 0; i < $("#existing-group .btn-group .dropdown-menu .selectpicker li").length; i++) {
-            var hoveredtext = $("#existing-group .btn-group .dropdown-menu .selectpicker li").eq(i).find("a .text").text();
-            $("#existing-group .btn-group .dropdown-menu .selectpicker li ").eq(i).find("a").attr("title", hoveredtext);
-        }
-        //$("#groupname-dropdown").focus();
-        $("body").ejWaitingPopup("hide");
-    }, 1500);
 });
 
 function MakeFlyDeleteUsers() {
@@ -1133,7 +935,7 @@ function deleteSingleUser() {
             hideWaitingPopup('singleuser-delete-confirmation');
             onSingleDeleteDialogClose();
         } else {
-            WarningAlert(window.TM.App.LocalizationContent.DeleteUser, window.TM.App.LocalizationContent.FailedToDeleteUser, 7000);
+            WarningAlert(window.TM.App.LocalizationContent.DeleteUser, window.TM.App.LocalizationContent.FailedToDeleteUser, data.Message, 7000);
             onSingleDeleteDialogClose();
         }
     });
@@ -1149,12 +951,14 @@ $(document).on("change", "#csvfile", function (e) {
     var value = $(this).val();
     if ($(this).val().substring($(this).val().lastIndexOf('.') + 1) != "csv") {
         $("#csv-upload").attr("disabled", true);
-        $("#filename").val(window.TM.App.LocalizationContent.CsvFileValidator).css("color", "#c94442");
-        $("#filename,#trigger-file").addClass("error-file-upload");
+        $("#filename").val(window.TM.App.LocalizationContent.CsvFileValidator);
+        $("#filename,#trigger-file").addClass("validation-message");
+        $(".upload-box").addClass("e-error");
     } else {
         $("#csv-upload").attr("disabled", false);
-        $("#filename,#trigger-file").removeClass("error-file-upload");
-        $("#filename").val(value).css("color", "#333");
+        $("#filename,#trigger-file").removeClass("validation-message");
+        $("#filename").val(value);
+        $(".upload-box").removeClass("e-error");
         $('#csvfile').attr('title', value);
     }
 });
@@ -1227,7 +1031,7 @@ function MakeSingleUserAdmin() {
                 onMakeAdminDialogClose();
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdminError, 7000)
+                WarningAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdminError, result.Message, 7000)
                 userGrid.refresh();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup('make-admin-confirmation')
@@ -1266,7 +1070,7 @@ function MakeMultipleUserAdmin() {
                 onMultipleAdminDialogClose();
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdminError, 7000)
+                WarningAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdminError, result.Message, 7000)
                 userGrid.refresh();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup("multiple-admin-confirmation");
@@ -1293,7 +1097,7 @@ function removeAdmin() {
                 document.getElementById("remove-admin-confirmation").ej2_instances[0].hide();
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.RemoveRole, window.TM.App.LocalizationContent.RemoveAdminError, 7000)
+                WarningAlert(window.TM.App.LocalizationContent.RemoveRole, window.TM.App.LocalizationContent.RemoveAdminError, result.Message, 7000)
                 userGrid.refresh();
                 hideWaitingPopup("remove-admin-confirmation");
                 document.getElementById("remove-admin-confirmation").ej2_instances[0].hide();

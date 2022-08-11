@@ -128,7 +128,7 @@ function testMailTrigger() {
             ],
             animationSettings: { effect: 'Zoom' },
             beforeOpen: showTestMailBox,
-            width: '472px',
+            width: '400px',
             isModal: true,
         });
         testMailDialogobj.appendTo(createDialogId);

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-07-12 20:21+05:30\n"
+"POT-Creation-Date: 2022-08-04 19:19+05:30\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,13 +12,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: en\n"
 
-msgid "  or "
-msgstr ""
-
 msgid " @productName Server"
-msgstr ""
-
-msgid " and Bold enterprise solutions "
 msgstr ""
 
 msgid " characters"
@@ -45,9 +39,6 @@ msgstr ""
 msgid " to reset your password."
 msgstr ""
 
-msgid " to unlock the enterprise feature."
-msgstr ""
-
 msgid " you need to configure TenantServer first."
 msgstr ""
 
@@ -62,9 +53,6 @@ msgid ""
 "Azure Active Directory, Office 365, database and Syncfusion.com accounts."
 msgstr ""
 
-msgid ", "
-msgstr ""
-
 msgid ", but you do not have access to the site "
 msgstr ""
 
@@ -72,9 +60,6 @@ msgid ", but your account is not yet activated in the site "
 msgstr ""
 
 msgid "."
-msgstr ""
-
-msgid ". "
 msgstr ""
 
 msgid ""
@@ -395,6 +380,12 @@ msgstr ""
 msgid "API Validator"
 msgstr ""
 
+msgid "Appearance"
+msgstr ""
+
+msgid "Application Custom Theme"
+msgstr ""
+
 msgid "Application Id"
 msgstr ""
 
@@ -600,9 +591,6 @@ msgstr ""
 msgid "Cannot access your account?"
 msgstr ""
 
-msgid "Change"
-msgstr ""
-
 msgid "Change Favicon"
 msgstr ""
 
@@ -619,12 +607,6 @@ msgid "Change Profile picture"
 msgstr ""
 
 msgid "Change Profile Picture"
-msgstr ""
-
-msgid "Change Subscription"
-msgstr ""
-
-msgid "Check License"
 msgstr ""
 
 msgid ""
@@ -651,6 +633,9 @@ msgid "Choose file"
 msgstr ""
 
 msgid "Choose site to enter"
+msgstr ""
+
+msgid "Choose Theme File"
 msgstr ""
 
 msgid "Clear"
@@ -793,22 +778,16 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
-msgid "cookie policy"
-msgstr ""
-
-msgid "Cookie Policy"
-msgstr ""
-
 msgid "Copied"
+msgstr ""
+
+msgid "Copy"
 msgstr ""
 
 msgid "Copy to clipboard"
 msgstr ""
 
 msgid "Copyright"
-msgstr ""
-
-msgid "Copyright © 2001 - "
 msgstr ""
 
 msgid "Couldn’t recover your account"
@@ -844,13 +823,13 @@ msgstr ""
 msgid "Current Password"
 msgstr ""
 
-msgid "Custom branding"
-msgstr ""
-
 msgid "Customize the look and feel of the application."
 msgstr ""
 
-msgid "Dashboard Tenants"
+msgid "Dark"
+msgstr ""
+
+msgid "Dashboard Theme"
 msgstr ""
 
 msgid "dashboards."
@@ -974,6 +953,9 @@ msgstr ""
 msgid "Edit profile picture"
 msgstr ""
 
+msgid "Edit Subscription"
+msgstr ""
+
 msgid "Email"
 msgstr ""
 
@@ -990,9 +972,6 @@ msgid "Email address cannot exceed 254 characters"
 msgstr ""
 
 msgid "Email address is Invalid"
-msgstr ""
-
-msgid "Email already exists"
 msgstr ""
 
 msgid "Email logo"
@@ -1061,6 +1040,9 @@ msgstr ""
 msgid "Enable OpenID Connect"
 msgstr ""
 
+msgid "Enable Single Logout"
+msgstr ""
+
 msgid "Enable SSL"
 msgstr ""
 
@@ -1086,15 +1068,6 @@ msgstr ""
 msgid "Enter copyright information"
 msgstr ""
 
-msgid ""
-"Enter your email address and we will send you a link to activate your "
-"account."
-msgstr ""
-
-msgid ""
-"Enter your email address and we will send you a link to recover your account."
-msgstr ""
-
 msgid "Enter your Organization Name"
 msgstr ""
 
@@ -1109,11 +1082,6 @@ msgstr ""
 msgid ""
 "Enter your username or email address and we will send you a link to recover "
 "your account."
-msgstr ""
-
-msgid ""
-"Enterprise features come with additional pricing. You can unlock below "
-"feature with the Enterprise Plan"
 msgstr ""
 
 msgid "Equal"
@@ -1140,19 +1108,28 @@ msgstr ""
 msgid "Error occurred while updating password. Please try again later."
 msgstr ""
 
+msgid "Error occurred while updating the look and feel settings."
+msgstr ""
+
 msgid "Error while generating client secret."
 msgstr ""
 
 msgid "Error while generating signing key."
 msgstr ""
 
-msgid "Error while updating notification settings."
+msgid "Error while updating embed settings."
 msgstr ""
 
 msgid "Error while updating settings."
 msgstr ""
 
 msgid "Error while updating the configuration."
+msgstr ""
+
+msgid "ErrorMessage"
+msgstr ""
+
+msgid "ErrorStacktrace"
 msgstr ""
 
 msgid ""
@@ -1184,6 +1161,9 @@ msgstr ""
 msgid "Failed to enable the embed authentication"
 msgstr ""
 
+msgid "Failed to get users"
+msgstr ""
+
 msgid "Failed to update attribute."
 msgstr ""
 
@@ -1200,6 +1180,9 @@ msgid "Favicon"
 msgstr ""
 
 msgid "Fetching information..."
+msgstr ""
+
+msgid "File already exists."
 msgstr ""
 
 msgid "File Loaded"
@@ -1232,7 +1215,10 @@ msgstr ""
 msgid "Font name"
 msgstr ""
 
-msgid "Font Settings"
+msgid "Font Style"
+msgstr ""
+
+msgid "Fonts"
 msgstr ""
 
 msgid "footer logo"
@@ -1322,14 +1308,6 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-msgid "I have read and agree to Syncfusion's "
-msgstr ""
-
-msgid ""
-"I understand I will receive transactional emails relating to my account, "
-"including invoices, and documentation."
-msgstr ""
-
 msgid "i.e "
 msgstr ""
 
@@ -1373,11 +1351,6 @@ msgstr ""
 
 msgid ""
 "If you should have access to this site, contact your system administrator."
-msgstr ""
-
-msgid ""
-"If you’re behind a firewall, please upload the license file downloaded from "
-"the"
 msgstr ""
 
 msgid "If you’re behind a firewall, please upload the offline license file."
@@ -1500,9 +1473,6 @@ msgstr ""
 msgid "License file is corrupted. Please get the new license file from"
 msgstr ""
 
-msgid "License Renewal"
-msgstr ""
-
 msgid "License Version"
 msgstr ""
 
@@ -1513,6 +1483,9 @@ msgid "Licensed"
 msgstr ""
 
 msgid "Licensed To"
+msgstr ""
+
+msgid "Light"
 msgstr ""
 
 msgid "link"
@@ -1536,9 +1509,6 @@ msgstr ""
 msgid "Log in to your account"
 msgstr ""
 
-msgid "Log in to your account portal to update the license."
-msgstr ""
-
 msgid "Log into your account portal to change the subscription."
 msgstr ""
 
@@ -1549,9 +1519,6 @@ msgid "LOG OUT"
 msgstr ""
 
 msgid "Login"
-msgstr ""
-
-msgid "Login - "
 msgstr ""
 
 msgid "Login Error"
@@ -1593,6 +1560,12 @@ msgstr ""
 msgid "Look and Feel"
 msgstr ""
 
+msgid "Look and feel settings were updated successfully."
+msgstr ""
+
+msgid "Look and feel settings."
+msgstr ""
+
 msgid ""
 "Looks like something went wrong while establishing a connection. Please "
 "refresh the page and try again."
@@ -1602,6 +1575,15 @@ msgid "Maintenance Database"
 msgstr ""
 
 msgid "Make Admin"
+msgstr ""
+
+msgid "Manage"
+msgstr ""
+
+msgid "Manage Application Theme"
+msgstr ""
+
+msgid "Manage Dashboard Theme"
 msgstr ""
 
 msgid "Manage License"
@@ -1732,9 +1714,6 @@ msgstr ""
 msgid "NotEqual"
 msgstr ""
 
-msgid "Notification settings has been updated successfully."
-msgstr ""
-
 msgid "OAuth User"
 msgstr ""
 
@@ -1791,9 +1770,6 @@ msgstr ""
 msgid "Page Not Found"
 msgstr ""
 
-msgid "Particulars"
-msgstr ""
-
 msgid "Password"
 msgstr ""
 
@@ -1848,10 +1824,7 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-msgid "Plan"
-msgstr ""
-
-msgid "Plan Details"
+msgid "Plan & Subscription"
 msgstr ""
 
 msgid "Plan Name"
@@ -2207,18 +2180,6 @@ msgstr ""
 msgid "Powered by logo"
 msgstr ""
 
-msgid "privacy policy"
-msgstr ""
-
-msgid "Privacy Policy"
-msgstr ""
-
-msgid "Privacy Policy Confirmation"
-msgstr ""
-
-msgid "Privacy Policy Confirmation | "
-msgstr ""
-
 msgid "Proceed"
 msgstr ""
 
@@ -2267,9 +2228,6 @@ msgstr ""
 msgid "Pull your data from"
 msgstr ""
 
-msgid "Read More"
-msgstr ""
-
 msgid "Read more."
 msgstr ""
 
@@ -2282,6 +2240,9 @@ msgid "Recommended resolution is 200x200 pixels."
 msgstr ""
 
 msgid "Redirect URI"
+msgstr ""
+
+msgid "Refresh License"
 msgstr ""
 
 msgid "Refresh the page"
@@ -2299,9 +2260,6 @@ msgid "Regenerate Signing Key"
 msgstr ""
 
 msgid "Region"
-msgstr ""
-
-msgid "Remaining"
 msgstr ""
 
 msgid "Remember me"
@@ -2328,7 +2286,10 @@ msgstr ""
 msgid "Remove Role"
 msgstr ""
 
-msgid "Report Tenants"
+msgid "Renew License"
+msgstr ""
+
+msgid "Renew Subscription"
 msgstr ""
 
 msgid "reports."
@@ -2467,6 +2428,9 @@ msgid "Select files"
 msgstr ""
 
 msgid "Select license file"
+msgstr ""
+
+msgid "Select only .css file"
 msgstr ""
 
 msgid "Select Site Administrator"
@@ -2726,9 +2690,6 @@ msgstr ""
 msgid "Subdomain name should match with the account name"
 msgstr ""
 
-msgid "Subscription"
-msgstr ""
-
 msgid "Subscription Id"
 msgstr ""
 
@@ -2741,9 +2702,6 @@ msgstr ""
 msgid "Success"
 msgstr ""
 
-msgid "Success Icon"
-msgstr ""
-
 msgid "supported collation."
 msgstr ""
 
@@ -2751,12 +2709,6 @@ msgid "Suspend"
 msgstr ""
 
 msgid "syncfusion"
-msgstr ""
-
-msgid "Syncfusion"
-msgstr ""
-
-msgid "Syncfusion Inc. All Rights Reserved."
 msgstr ""
 
 msgid "Take me back to home page"
@@ -2775,15 +2727,6 @@ msgid "Tenant Status"
 msgstr ""
 
 msgid "Tenant Type"
-msgstr ""
-
-msgid "Tenants"
-msgstr ""
-
-msgid "terms of use"
-msgstr ""
-
-msgid "Terms of Use"
 msgstr ""
 
 msgid "Test email sent successfully."
@@ -2878,6 +2821,12 @@ msgstr ""
 msgid "The verification link expires in 2 days!"
 msgstr ""
 
+msgid "Theme"
+msgstr ""
+
+msgid "Theme Name"
+msgstr ""
+
 msgid ""
 "There is already a site configured with this domain. Please use a different "
 "domain."
@@ -2891,9 +2840,6 @@ msgid ""
 "These claims are normally represented by a JSON object that contains a "
 "collection of name and value pairs for each claim. Provide the JSON key to "
 "identify the unique identity (email) of the user."
-msgstr ""
-
-msgid "Third party logins"
 msgstr ""
 
 msgid "this"
@@ -3006,6 +2952,9 @@ msgstr ""
 msgid "This will delete all the resources and this action cannot be undone."
 msgstr ""
 
+msgid "ticket with application logs by referring to this"
+msgstr ""
+
 msgid "Time format"
 msgstr ""
 
@@ -3067,9 +3016,6 @@ msgstr ""
 msgid "Unable to send test email."
 msgstr ""
 
-msgid "Unlock Enterprise Features!"
-msgstr ""
-
 msgid "Unlock User"
 msgstr ""
 
@@ -3085,9 +3031,6 @@ msgstr ""
 msgid "Update License"
 msgstr ""
 
-msgid "Update Notification Settings"
-msgstr ""
-
 msgid "Update Password"
 msgstr ""
 
@@ -3101,9 +3044,6 @@ msgid "Update the configuration of the application"
 msgstr ""
 
 msgid "Update the URL of the "
-msgstr ""
-
-msgid "upgrade your license"
 msgstr ""
 
 msgid "upgrade your plan"
@@ -3142,9 +3082,6 @@ msgid ""
 msgstr ""
 
 msgid "Use the same blob used for tenant registration."
-msgstr ""
-
-msgid "Used"
 msgstr ""
 
 msgid "user"
@@ -3263,6 +3200,11 @@ msgstr ""
 msgid "Users - CSV import"
 msgstr ""
 
+msgid ""
+"Users can log out of both the application and Azure AD using single logout "
+"(SLO)."
+msgstr ""
+
 msgid "Users who already have access to the selected site(s) were skipped."
 msgstr ""
 
@@ -3301,13 +3243,13 @@ msgstr ""
 msgid "View"
 msgstr ""
 
+msgid "View less"
+msgstr ""
+
+msgid "View more"
+msgstr ""
+
 msgid "View More"
-msgstr ""
-
-msgid "View my profile"
-msgstr ""
-
-msgid "Warning Icon"
 msgstr ""
 
 msgid "Warning:"
@@ -3339,9 +3281,6 @@ msgid ""
 msgstr ""
 
 msgid "We support logout endpoints that have static request parameters."
-msgstr ""
-
-msgid "website. If you don’t have the license file, download it"
 msgstr ""
 
 msgid "Welcome back!"
@@ -3435,9 +3374,6 @@ msgid "Your Embedded BI license has expired."
 msgstr ""
 
 msgid "Your Enterprise Reporting license has expired."
-msgstr ""
-
-msgid "Your Quota"
 msgstr ""
 
 msgid "Your verification link has expired. Please "

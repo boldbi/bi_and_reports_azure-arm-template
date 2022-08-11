@@ -1,9 +1,12 @@
-﻿@import "../themes/default.scss";
+﻿@import "../default/default.scss";
 
 .e-custom.e-numeric.e-valid-input, .e-custom.e-numeric {
     min-height: 28px !important;
     width: 103px !important;
     height: 30px !important;
+    border-color: $numeric-text-box-border-normal-color !important;
+    background: $numeric-text-box-bg-normal-color !important;
+    color: $numeric-text-box-text-normal-color !important;
 
     .e-numerictextbox {
         font-size: 12px;
@@ -22,6 +25,7 @@
     .e-input-group-icon {
         margin: 7px 3px 8px 0 !important;
         min-width: 23px;
+        color: $numeric-text-box-icon-text-normal-color !important;
 
         &.e-input-btn-ripple {
             &::after {
@@ -32,7 +36,7 @@
 
     span.e-input-group-icon {
         &.e-spin-down {
-            border-color: $grey-200 !important;
+            border-color: $numeric-text-box-border-normal-color !important;
             border-right-width: 1px !important;
         }
     }
@@ -40,19 +44,19 @@
     .e-spin-down {
         margin: 0px !important;
         width: 0;
-        border-right: 1px solid $grey-200;
+        border-right: 1px solid $numeric-text-box-border-normal-color;
 
         &::after {
             margin-bottom: -11px;
             margin-left: 48px;
-            border-top: 1px solid $grey-200;
+            border-top: 1px solid $numeric-text-box-border-normal-color;
             width: 23px;
         }
 
         &::before {
             margin-bottom: -11px;
             margin-left: 48px;
-            border-top: 1px solid $grey-200;
+            border-top: 1px solid $numeric-text-box-border-normal-color;
             width: 23px;
         }
     }
@@ -72,17 +76,4 @@
             width: 23px;
         }
     }
-}
-
-#error-min-len {
-    color: $validation-text-color !important;
-    padding-left: 110px;
-}
-
-.min-len-validation-messages {
-    color: var(--danger);
-    display: block;
-    font-size: 12px;
-    margin-bottom: -1px;
-    padding-left: 110px;
 }

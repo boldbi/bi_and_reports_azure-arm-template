@@ -634,8 +634,9 @@ $(document).ready(function () {
                     }
                     SuccessAlert(messageHeader, window.TM.App.LocalizationContent.SiteSettingsUpdated, 7000);
                     SetCookie();
+                    
                 } else {
-                    WarningAlert(messageHeader, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, 7000);
+                    WarningAlert(messageHeader, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, result.Message, 7000);
                     $(".error-message, .success-message").css("display", "none");
                 }
                 hideWaitingPopup('server-app-container');
@@ -804,38 +805,6 @@ $(document).on("click", "#UpdateAzureADSettings-bottom", function () {
         }
     });
 });
-
-function ActiveDirectoryFormValidate() {
-    $(".success-message").hide();
-    var postData = {
-        username: $("#username").val().trim(),
-        password: $("#password").val().trim(),
-        ldapurl: $("#ldapurl").val().trim(),
-        portNo: $("#ldap-port-number").val().trim()
-    }
-
-    $.ajax({
-        type: "POST",
-        url: window.adTestconnectionUrl,
-        data: postData,
-        beforeSend: showWaitingPopup('server-app-container'),
-        success: function (data) {
-            if (data.status) {
-                $("#active-directory-setting .success-message").html("<span style='color:green'>" + data.value + "</span>");
-                $("#active-directory-setting .error-message").css("display", "none");
-                $("#active-directory-setting .success-message").css("display", "block");
-            }
-            else {
-                $("#active-directory-setting .error-message").html("<span style='color:red'>" + data.value + "</span>");
-                $("#active-directory-setting .success-message").css("display", "none");
-                $("#active-directory-setting .error-message").css("display", "block");
-            }
-        },
-        complete: function () {
-            hideWaitingPopup('server-app-container');
-        }
-    });
-}
 
 function AzureADFormValidate() {
     $(".success-message").hide();

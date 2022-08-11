@@ -1,6 +1,5 @@
 ﻿var windowRef;
 var changeSubscriptionDialog;
-
 $(document).ready(function () {
     if (location.href.match(/boldbi/) != null) {
         history.pushState(null, '', '?product=embedded-bi');
@@ -59,11 +58,11 @@ $(document).ready(function () {
     });
 
     changeSubscriptionDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.ChangeSubscriptionDialogHeader,
+        header: window.TM.App.LocalizationContent.EditSubscriptionDialogHeader,
         content: document.getElementById("change-subscription-dialog"),
         showCloseIcon: true,
-        width: '599px',
-        height: '275px',
+        width: '546px',
+        height: '279px',
         isModal: true,
         visible: false,
         beforeOpen: fnBeforeOpen,
@@ -74,8 +73,16 @@ $(document).ready(function () {
     changeSubscriptionDialog.appendTo('#change-subscription-content');
 
     $('[data-toggle="tooltip"]').tooltip();
-});
 
+    if (isBoldBILicenseExpired) {
+        $("#bold-bi-tab #details-information").css('padding-top', '20px');
+        $("#change-subscription-content_title").html(window.TM.App.LocalizationContent.RenewSubscriptionDialogHeader);
+    }
+    if (isBoldReportsLicenseExpired) {
+        $("#bold-reports-tab #details-information").css('padding-top', '20px');
+        $("#change-subscription-content_title").html(window.TM.App.LocalizationContent.RenewSubscriptionDialogHeader);
+    }
+});
 
 function fnBeforeOpen() {
     document.getElementById('change-subscription-dialog').style.visibility = 'visible';
@@ -87,6 +94,14 @@ function fnOnClose() {
 }
 
 $(document).on("click", "#change-subscription", function () {
+    $(".online-change-subscription").attr("license-service-url", $(this).attr("license-service-url") + "&change_subscription=true");
+    $(".offline-change-subscription").attr("data-offlinelicense-url", $(this).attr("data-offlinelicense-url")).attr("data-tenant-type", $(this).attr("data-tenant-type"));
+    $("#change-subscription-help").attr("href", $(this).attr("data-offlinelicense-url"));
+
+    changeSubscriptionDialog.show();
+});
+
+$(document).on("click", ".edit-link", function () {
     $(".online-change-subscription").attr("license-service-url", $(this).attr("license-service-url") + "&change_subscription=true");
     $(".offline-change-subscription").attr("data-offlinelicense-url", $(this).attr("data-offlinelicense-url")).attr("data-tenant-type", $(this).attr("data-tenant-type"));
     $("#change-subscription-help").attr("href", $(this).attr("data-offlinelicense-url"));
@@ -124,7 +139,7 @@ function handleApplyLicense(addButtonObj, evt) {
                     }
                     else {
                         hideWaitingPopup('server-app-container');
-                        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, 0);
+                        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
                     }
                 }
             });

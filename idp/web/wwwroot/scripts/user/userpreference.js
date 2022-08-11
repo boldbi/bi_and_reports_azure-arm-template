@@ -38,7 +38,7 @@ function SaveUserPreference() {
                     }
                 } else {
                     hideWaitingPopup('content-area');
-                    WarningAlert(window.Server.App.LocalizationContent.UpdateAccountPreference, result.Data.value, 7000);
+                    WarningAlert(window.Server.App.LocalizationContent.UpdateAccountPreference, result.Data.value, result.Message, 7000);
                     location.reload();
                 }
             }

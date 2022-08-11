@@ -11,7 +11,6 @@
 @section scripts{
 
     <script src="~/bundles/js/additional-settings.js" asp-append-version="true"></script>
-    <script src="~/bundles/js/ej2.js" asp-append-version="true"></script>
     <script>
         var getFilesUrl = "@Url.Action("GetFiles", "Administration")";
         var loadFileUrl = "@Url.Action("LoadFile", "Administration")";
@@ -28,7 +27,6 @@
             var isRequestSuccess = "@updateConfigValues.Value";
             var isValidFile = "@isValidFile";
             var selectedPath = "@ViewBag.FilePath";
-
             $(document).ready(function () {
 
                 if (isRequestSuccess.toLowerCase() === "true" && isValidFile.toLowerCase() === "true") {

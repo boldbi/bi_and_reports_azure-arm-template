@@ -392,6 +392,7 @@ CREATE TABLE [BOLDTC_SAMLSettings] (
 	ApplicationIdURI nvarchar(4000),
 	TenantName nvarchar(100),
 	MobileApplicationId nvarchar(100),
+	IsSloEnabled bit NOT NULL,
 	IsEnabled bit NOT NULL,
   CONSTRAINT [PK_BOLDTC_SAMLSETTINGS] PRIMARY KEY CLUSTERED
   (

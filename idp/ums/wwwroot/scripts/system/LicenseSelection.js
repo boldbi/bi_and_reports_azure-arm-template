@@ -2,6 +2,7 @@
 var licenseKey;
 var getLicenseUrl;
 var licenseToken;
+var offlineLicenseToken;
 $(document).ready(function () {
     $(document).on("click", "#online-license", function (e) {
         showWaitingPopup('startup-page-container-waiting-element');
@@ -133,6 +134,7 @@ function sendData(data, url) {
     if (validJSON) {
         var key = JSON.parse(data.content).unlock_key;
         var boldLicenseToken = JSON.parse(data.content).license_token;
+        offlineLicenseToken = JSON.parse(data.content).offline_license_token;
         licenseKey = key;
         licenseToken = boldLicenseToken;
         if (key !== undefined && !isEmptyOrSpaces(key)) {
@@ -230,7 +232,7 @@ function confirmLicenseUpdate() {
         $.ajax({
             type: "POST",
             url: updateLicenseKeyUrl,
-            data: { licenseKey: licenseKey, licenseType: "2", currentUrl: window.location.origin, boldLicenseToken: licenseToken   },
+            data: { licenseKey: licenseKey, licenseType: "2", currentUrl: window.location.origin, offlineLicenseToken: offlineLicenseToken, boldLicenseToken: licenseToken },
             beforeSend: showWaitingPopup('startup-page-container-waiting-element'),
             success: function (result) {
                 if (result.Status) {
@@ -254,7 +256,7 @@ function confirmLicenseUpdate() {
     }
     else {
         hideWaitingPopup('startup-page-container-waiting-element');
-        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, 0);
+        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
     }
 }
 

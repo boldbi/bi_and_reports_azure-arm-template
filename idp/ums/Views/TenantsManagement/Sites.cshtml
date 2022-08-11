@@ -9,7 +9,6 @@
 
 @section scripts{
     <script src="~/bundles/js/sites.js" asp-append-version="true"></script>
-    <script src="~/bundles/js/ej2.js" asp-append-version="true"></script>
     <script>
 			var fileUploadUrl = "@Url.Action("Upload", "fileupload")";
 			var addTenantUrl = "@Url.Action("AddTenants", "TenantsManagement")";
@@ -131,7 +130,7 @@
 					load: fnOnApplicationGridLoad,
 					actionBegin: fnOnApplicationGridActionBegin,
                     actionComplete: fnOnApplicationGridActionComplete,
-					dataBound: fnOnApplicationGridActionComplete,
+                    dataBound: fnOnApplicationGridActionComplete,
                     enableHover: true,
                     enableAltRow: false,
                     rowDataBound: function () {

@@ -2,10 +2,6 @@
 
 #admin-menu-nav-bar {
     @include navmenu();
-
-    ul {
-        margin-top: 18px;
-    }
 }
 
 #server-app-container {

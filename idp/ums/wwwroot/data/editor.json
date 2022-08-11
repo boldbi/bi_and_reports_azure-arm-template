@@ -17,6 +17,12 @@
   },
   {
     "Name": "bi/config.xml",
-    "Path": "/bi/configuration/config.xml"
+    "Path": "/bi/configuration/config.xml",
+    "IsBoldBI": true
+  },
+  {
+    "Name": "reporting/config.xml",
+    "Path": "/reporting/configuration/config.xml",
+    "IsBoldReports": true
   }
 ]

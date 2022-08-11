@@ -187,15 +187,6 @@ $(document).ready(function () {
         }
     });
 
-    $(".password-fields-user-profile-edit").on("keypress", function (e) {
-        if (e.keyCode == 13) {
-            e.preventDefault();
-            onUserChangePasswordClick();
-            this.blur();
-            return false;
-        }
-    });
-
     $(document).on('click', "#activate-button-click", function () {
         $(".success-message").hide();
         $("#activate-button-click").attr("disabled", true).css("cursor", "default");
@@ -530,7 +521,6 @@ function successMessage() {
     }
 }
 
-
 function onUserChangePasswordClick() {
     var userId = $("#user-id").val();
     $(".validation-message").html("");
@@ -556,7 +546,7 @@ function onUserChangePasswordClick() {
             $("#password_policy_rules").remove();
             $("#confirm-password-section").removeAttr("style");
             if (!result.Data.status) {
-                WarningAlert(window.TM.App.LocalizationContent.UpdatePassword, window.TM.App.LocalizationContent.PasswordFailure, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.UpdatePassword, window.TM.App.LocalizationContent.PasswordFailure, result.Data.Message, 7000);
             }
             else {
                 SuccessAlert(window.TM.App.LocalizationContent.UpdatePassword, window.TM.App.LocalizationContent.PasswordSuccess, 7000);

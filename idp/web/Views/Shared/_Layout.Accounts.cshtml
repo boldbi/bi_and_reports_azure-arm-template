@@ -4,7 +4,7 @@
 @{
     var includeHeader = ViewBag.IncludeHeader != null ? ViewBag.IncludeHeader : false;
     var loginBackgroundImage = ViewBag.LoginBackgroundImage;
-    var headerLogo = (ViewBag.LoginLogo != null) ? ViewBag.LoginLogo : CloudAppConfig.FallbackLoginLogoUrl;
+    var headerLogo = (ViewBag.LoginLogo != null) ? ViewBag.LoginLogo : Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=login");
 }
 <!DOCTYPE html>
 <html>
@@ -31,9 +31,10 @@
         var imageUrl = GlobalAppSettings.SystemSettings.InternalAppUrls.Idp.TrimEnd('/') + "/content/images/application/" + loginBackgroundImage;
         <style>
             body {
-                background-image: url(@imageUrl);
+                background-image: url(@imageUrl) !important;
                 background-size: cover;
                 background-repeat: no-repeat;
+                background-color:var(--surface);
             }
 
             .account-parent {
@@ -41,7 +42,7 @@
             }
 
             .account-bg {
-                background-color: white;
+                background-color: var(--surface);
                 box-shadow: 0px 0px 5px #c9ced0;
             }
         </style>
@@ -137,14 +138,7 @@
         <div class="account-child">
             <div class="account-bg">
                 <div class="account-header">
-                    @if (!CloudAppConfig.IsSelfHosted)
-                    {
-                        <img alt="[[[Login Logo]]]" src="@headerLogo" onerror="if (this.src != '@Url.Content(CloudAppConfig.FallbackLoginLogoUrl)') this.src = '@Url.Content(CloudAppConfig.FallbackLoginLogoUrl)';" />
-                    }
-                    else
-                    {
-                        <img alt="Login Logo" src="@headerLogo" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.DefaultErrorImage)';" />
-                    }
+                    <img alt="Login Logo" src="@headerLogo" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.DefaultErrorImage)';" />
                 </div>
                 @RenderSection("MainSection", true)
             </div>

@@ -11,19 +11,13 @@
 
 @section scripts{
     <script src="~/bundles/js/user-management.js" asp-append-version="true"></script>
-    <script src="~/bundles/js/ej2.js" asp-append-version="true"></script>
 
     <script>
         var checkMailSettingUrl = "@Url.Action("checkmailsettingsexist", "Administration")";
         var postactionUrl = "@Url.Action("postaction", "UserManagement")";
         var isPresentUserNameAndEmailId = "@Url.Action("isPresentUserNameAndEmailId", "UserManagement")";
         var isPresentusernameUrl = "@Url.Action("IsPresentusername", "UserManagement")";
-        var updateUserIntoGroupUrl = "@Url.Action("UpdateUserIntoGroup", "UserManagement")";
-        var checkGroupnameUrl = "@Url.Action("CheckGroupname", "Group")";
-        var getAddUserInGroupDialogUrl = "@Url.Action("GetAddUserInGroupDialog", "UserManagement")";
-        var saveUserIntoGroupUrl = "@Url.Action("SaveUserIntoGroup", "UserManagement")";
         var avatarUrl = "@(idPUrl + Url.Action("Avatar", "User"))";
-        var getAllActiveGroupListUrl = "@Url.Action("GetAllActiveGroupList", "UserManagement")";
         var deleteFromUserListUrl = "@Url.Action("DeleteFromUserList", "UserManagement")";
         var userPageUrl = "@Url.Action("Index", "UserManagement")";
         var deleteSingleFromUserListUrl = "@Url.Action("DeleteSingleFromUserList", "UserManagement")";
@@ -34,7 +28,6 @@
         var removeAdminUrl = "@Url.Action("RemoveRole", "UserManagement")";
         var getUserSUrl = "@Url.Action("GetAllUserList", "TenantsManagement")";
         var unlockUserUrl = "@Url.Action("UnlockUser", "UserManagement")";
-
     </script>
     <script>
         window.data = JSON.parse(@Html.Raw(Json.Serialize(ViewBag.users)));
@@ -195,6 +188,7 @@
                 rowSelecting: function (e) {
                     this.multiSelectCtrlRequest = true;
                 },
+                beforeDataBound: fnbeforeDataBound,
                 dataBound: function (args) {
                     $('[data-toggle="tooltip"]').tooltip(
                         {

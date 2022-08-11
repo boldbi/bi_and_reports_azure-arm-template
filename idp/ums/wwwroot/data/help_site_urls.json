@@ -358,5 +358,20 @@
         "redirect_id": "4054"
       }
     }
+  },
+  {
+    "url_name": "LicenseError",
+    "boldbi": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": ""
+      }
+    },
+    "boldreports": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": ""
+      }
+    }
   }
 ]

@@ -11,4 +11,4 @@
   opacity: 0.85; }
 
 .e-spinner-pane .e-spinner-inner .e-spin-material {
-  stroke: var(--colorPrimary) !important; }
+  stroke: var(--primary-branding-bg-color) !important; }

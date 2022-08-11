@@ -55,7 +55,7 @@ $(document).on("click", "#update-user-settings", function () {
             if (result.status) {
                 SuccessAlert(window.TM.App.LocalizationContent.UserSettings, window.TM.App.LocalizationContent.SiteSettingsUpdated, 7000);
             } else {
-                WarningAlert(window.TM.App.LocalizationContent.UserSettings, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.UserSettings, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, result.Message, 7000);
             }
             hideWaitingPopup('body');
         }

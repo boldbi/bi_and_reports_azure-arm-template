@@ -824,7 +824,7 @@ function updateTenant(waitingPopUpElement, connectionString) {
 
 function Resize() {
     if ($(".tenant-registration-form, .tenant-database-form, .tenant-intermediate-database-form, .storage-form, .data-security-form, .tenant-user-form").hasClass("show")) {
-        var height = $(window).height() - $(".modal-header").height() - 63;
+        var height = $(window).height() - $(".modal-header").height() - $(".modal-footer").height();
         $(".modal-tenant-body").addClass("adjustment");
         $(".adjustment").css("height", height);
     } else {

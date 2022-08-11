@@ -18,6 +18,9 @@
             UserNameValidator: "[[[Please enter username.]]]",
             PasswordValidator: "[[[Please enter password.]]]",
             BrowsePath: "[[[Browse file path]]]",
+            ViewMore: "[[[View more]]]",
+            ViewLess: "[[[View less]]]",
+            RenewLicense: "[[[Renew License]]]",
 
             //Authentication Settings
             DefaultAuthenticationSettings: "[[[Default Authentication Provider]]]",
@@ -52,7 +55,8 @@
             UploadLicense: "[[[Upload License]]]",
             LicenseUpdated: "[[[The license has been updated successfully.]]]",
             LicenseUpdateFailed: "[[[Failed to update the license.]]]",
-            ChangeSubscriptionDialogHeader: "[[[Change Subscription]]]",
+            EditSubscriptionDialogHeader: "[[[Edit Subscription]]]",
+            RenewSubscriptionDialogHeader: "[[[Renew Subscription]]]",
 
             //SystemSettings.js
             TimeZone: "[[[Time Zone]]]",
@@ -332,6 +336,8 @@
             UserUnlockedError: "[[[An error occured while unlocking user]]]",
             MinLengthEmpty: "[[[Please enter the value.]]]",
             MinLengthNeeded: "[[[Passwords must be at least 6 characters long.]]]",
+            Users: "[[[Users]]]",
+            FailedToGetUsers: "[[[Failed to get users]]]",
 
             //UserManagementProfile.js
             PhoneNumberValidator: "[[[Please enter the valid phone number]]]",
@@ -347,11 +353,6 @@
             DeleteProfilePictureConfirm: "[[[Are you sure you want to delete the profile picture?]]]",
             BrowseImagePath: "[[[browse image path]]]",
             NoFileSelected: "[[[No file selected.]]]",
-
-            //UserNotificationSettings.js
-            NotificationSettings: "[[[Update Notification Settings]]]",
-            NotificationSettingsUpdated: "[[[Notification settings has been updated successfully.]]]",
-            NotificationSettingsUpdateFailed: "[[[Error while updating notification settings.]]]",
 
             //CustomAttributes
             AttributeNameValidator: "[[[Please enter the attribute name.]]]",
@@ -376,6 +377,8 @@
             EmbedSettings: "[[[Embed Settings]]]",
             ResetSecretSuccessAlert: "[[[Embed Secret has been updated successfully]]]",
             EmbedInvalidMessage: "[[[The embed dashboard URL must be used in an iframe.]]]",
+            ResetSecretFailureAlert: "[[[Error while updating embed settings.]]]",
+            JsonFileValidator: "[[[Please upload a valid json file.]]]",
 
             //Popover Content
             biStorePopoverContent: "[[[This database is to store data pulled from files and web data sources to visualize them in dashboards.]]]",
@@ -391,11 +394,19 @@
             LookAndFeel: "[[[Font Family]]]",
             UploadFont: "[[[Upload Font]]]",
             BrowseFont: "[[[Browse file path (.woff2)]]]",
-            FontSettings: "[[[Font Settings]]]",
+            LookAndFeelSettings: "[[[Look and feel settings.]]]",
+            LookAndFeelSettingsSuccess: "[[[Look and feel settings were updated successfully.]]]",
+            LookAndFeelSettingsFailure: "[[[Error occurred while updating the look and feel settings.]]]",
             //API Validation
             IdpTokenAPI: "[[[IdP Token API]]]",
             APIResponse: "[[[API Response]]]",
-            AutoDeployment: "[[[Auto Deployment]]]"
+            AutoDeployment: "[[[Auto Deployment]]]",
+
+            //upload-theme
+            ApplicationTheme: "[[[Manage Application Theme]]]",
+            DashboardTheme: "[[[Manage Dashboard Theme]]]",
+            CssFile: "[[[Select only .css file]]]",
+            CssFileExist: "[[[File already exists.]]]"
         }
     }
 };
