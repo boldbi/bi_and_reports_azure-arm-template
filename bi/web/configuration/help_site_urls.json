@@ -388,5 +388,113 @@
     "BoldBiUrl": "/boldbi/samples/SDK Samples/C#/ASP.NET Core",
     "RedirectOnPremiseId": 80,
     "RedirectCloudId": 2052
+  },
+  {
+    "UrlName": "LookAndFeelSettings",
+    "BoldBiUrl": "/cloud-bi/site-administration/look-and-feel-settings",
+    "RedirectOnPremiseId": 107,
+    "RedirectCloudId": 2054
+  },
+  {
+    "UrlName": "ManagePublishedDashboards",
+    "BoldBiUrl": "/embedded-bi/managing-resources/manage-dashboards/publish-dashboards/#manage-published-dashboards",
+    "RedirectOnPremiseId": 90,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "WidgetSettings",
+    "BoldBiUrl": "/embedded-bi/site-administration/widget-settings/",
+    "RedirectOnPremiseId": 91,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "WebhookListing",
+    "BoldBiUrl": "/embedded-bi/site-administration/integrations/webhook-listing/",
+    "RedirectOnPremiseId": 92,
+    "RedirectCloudId": 2058
+  },
+  {
+    "UrlName": "WebhookFailureLogs",
+    "BoldBiUrl": "/embedded-bi/site-administration/integrations/failure-logs/",
+    "RedirectOnPremiseId": 93,
+    "RedirectCloudId": 2059
+  },
+  {
+    "UrlName": "CORSSettings",
+    "BoldBiUrl": "/embedded-bi/security-configuration/cors-settings/",
+    "RedirectOnPremiseId": 94,
+    "RedirectCloudId": 2056
+  },
+  {
+    "UrlName": "ManageWebhook",
+    "BoldBiUrl": "/embedded-bi/manage-webhooks/",
+    "RedirectOnPremiseId": 95,
+    "RedirectCloudId": 2060
+  },
+  {
+    "UrlName": "ProfileConnectedSites",
+    "BoldBiUrl": "/embedded-bi/managing-resources/user-profile/#connected-sites",
+    "RedirectOnPremiseId": 96,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "DefaultAuthentication",
+    "BoldBiUrl": "/embedded-bi/multi-tenancy/site-administration/authentication/default-authentication/",
+    "RedirectOnPremiseId": 97,
+    "RedirectCloudId": 2062
+  },
+  {
+    "UrlName": "OAuthAuthentication",
+    "BoldBiUrl": "/embedded-bi/multi-tenancy/site-administration/authentication/oauth-2.0-support/",
+    "RedirectOnPremiseId": 98,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "OpenIDAuthentication",
+    "BoldBiUrl": "/embedded-bi/multi-tenancy/site-administration/authentication/openid-settings/",
+    "RedirectOnPremiseId": 99,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "EmailSettingsConfiguration",
+    "BoldBiUrl": "/embedded-bi/site-administration/email-settings/email-settings-configuration/",
+    "RedirectOnPremiseId": 100,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "EmailSettingsLogs",
+    "BoldBiUrl": "/embedded-bi/site-administration/email-settings/email-activity-logs/",
+    "RedirectOnPremiseId": 101,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "DeploymentDashboard",
+    "BoldBiUrl": "/embedded-bi/site-administration/dashboard-settings/deployment-dashboard/",
+    "RedirectOnPremiseId": 102,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "ContentSecurityPolicy",
+    "BoldBiUrl": "/embedded-bi/security-configuration/content-security-policy/",
+    "RedirectOnPremiseId": 103,
+    "RedirectCloudId": 2057
+  },
+  {
+    "UrlName": "XFrameOption",
+    "BoldBiUrl": "/embedded-bi/security-configuration/x-frame-options/",
+    "RedirectOnPremiseId": 104,
+    "RedirectCloudId": 2061
+  },
+  {
+    "UrlName": "KnownDomainConfiguration",
+    "BoldBiUrl": "/embedded-bi/security-configuration/known-domain-configuration/",
+    "RedirectOnPremiseId": 106,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "CustomAttribute",
+    "BoldBiUrl": "/cloud-bi/",
+    "RedirectOnPremiseId": null,
+    "RedirectCloudId": 2055
   }
 ] 

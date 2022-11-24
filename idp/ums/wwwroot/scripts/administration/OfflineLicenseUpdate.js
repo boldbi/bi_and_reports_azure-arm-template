@@ -3,9 +3,16 @@ var getLicenseUrl;
 var licenseToken;
 var offlineLicenseToken;
 $(document).ready(function () {
-    
+    String.prototype.format = function () {
+        a = this;
+        for (k in arguments) {
+            a = a.replace("{" + k + "}", arguments[k])
+        }
+        return a
+    }
+
     var offlineLicenseDialog = new ejs.popups.Dialog({
-        header: window.TM.App.LocalizationContent.UploadLicense,
+        header: window.Server.App.LocalizationContent.UploadLicense,
         showCloseIcon: true,
         width: '472px',
         close: "uploadLicenseDialogClose",
@@ -15,7 +22,7 @@ $(document).ready(function () {
                     uploadLicenseDialogClose();
                 },
                 buttonModel: {
-                    content: window.TM.App.LocalizationContent.CancelButton
+                    content: window.Server.App.LocalizationContent.CancelButton
                 }
             },
             {
@@ -23,7 +30,7 @@ $(document).ready(function () {
                     confirmLicenseUpdate();
                 },
                 buttonModel: {
-                    content: window.TM.App.LocalizationContent.UpdateLicense,
+                    content: window.Server.App.LocalizationContent.UpdateLicense,
                     isPrimary: true,
                     cssClass: 'upload-license-button'
                 }
@@ -64,7 +71,7 @@ $(document).ready(function () {
         }
         else {
             $("#file-name").val('');
-            $(".validation-error-message").html(window.TM.App.LocalizationContent.InvalidLicFileFormat);
+            $(".validation-error-message").html(window.Server.App.LocalizationContent.InvalidLicFileFormat);
             $(".validation-error-message").removeClass("display-none");
         }
 
@@ -101,7 +108,7 @@ function sendData(data, url) {
         validJSON = true;
     }
     catch {
-        $(".validation-error-message").html(window.TM.App.LocalizationContent.LicenseFileCorrupt + "<a target='_blank' href='" + getLicenseUrl + "'>" + window.TM.App.LocalizationContent.Here + "</a>");
+        $(".validation-error-message").html(window.Server.App.LocalizationContent.LicenseFileCorrupt.format("<a target='_blank' href='" + getLicenseUrl + "'>", "</a>"));
         $(".validation-error-message").removeClass("display-none");
     }
 
@@ -187,7 +194,7 @@ function sendData(data, url) {
             });
         }
         else {
-            $(".validation-error-message").html(window.TM.App.LocalizationContent.LicenseFileCorrupt + "<a target='_blank' href='" + getLicenseUrl + "'>" + window.TM.App.LocalizationContent.Here + "</a>");
+            $(".validation-error-message").html(window.Server.App.LocalizationContent.LicenseFileCorrupt.format("<a target='_blank' href='" + getLicenseUrl + "'>", "</a>"));
             $(".validation-error-message").removeClass("display-none");
         }
     }
@@ -224,14 +231,14 @@ function confirmLicenseUpdate() {
                     }
                     else {
                         hideWaitingPopup('offline-license-update-dialog');
-                        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
+                        WarningAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
                         uploadLicenseDialogClose();
                     }
                 }
                 else {
                     if (result.Status) {
                         hideWaitingPopup('offline-license-update-dialog');
-                        SuccessAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdated, 7000);
+                        SuccessAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdated, 7000);
                         uploadLicenseDialogClose();
 
                         setTimeout(function () {
@@ -240,7 +247,7 @@ function confirmLicenseUpdate() {
                     }
                     else {
                         hideWaitingPopup('offline-license-update-dialog');
-                        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
+                        WarningAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
                         uploadLicenseDialogClose();
                     }
                 }
@@ -249,7 +256,7 @@ function confirmLicenseUpdate() {
     }
     else {
         hideWaitingPopup('offline-license-update-dialog');
-        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
+        WarningAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
     }
 }
 

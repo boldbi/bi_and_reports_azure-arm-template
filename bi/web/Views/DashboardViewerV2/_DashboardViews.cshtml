@@ -146,6 +146,7 @@
     var getParameterToRenderDashboardUrl = "@Url.Action("getparametertorenderdashboard", "FileRender")";
     var isMultiTab = @Json.Serialize(isMultiTab);
     var emptyGuid = "@Guid.Empty";
+    var enableApplicationEmbed =@ServerAppConfig.EnableSameTabLinkTarget.ToString().ToLower();
 </script>
 
 <div class="list-group server-dashboard-view custom-bootstrap-styles" id="dashboard-view-toogle" style="display: none">

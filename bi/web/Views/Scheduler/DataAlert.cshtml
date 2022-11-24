@@ -31,4 +31,7 @@
         var version = "@ViewBag.Version";
         var designerToken = "@ViewBag.AccessToken";
         var canEdit = @Json.Serialize(canEdit);
+        var dashboardCustomThemename = "@(ServerAppConfig.IsSelfHosted && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : _globalAppSettings.SystemSettings.CustomDashboardTheme)";
+        var customThemeAppearance = "@(ServerAppConfig.IsSelfHosted && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.Appearance : _globalAppSettings.SystemSettings.ThemeAppearance)";
+        var applicationTheme = "@(ServerAppConfig.IsSelfHosted && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.ApplicationTheme : _globalAppSettings.SystemSettings.CustomApplicationTheme)";
 </script>

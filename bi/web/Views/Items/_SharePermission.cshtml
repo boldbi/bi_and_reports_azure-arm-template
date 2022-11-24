@@ -14,12 +14,12 @@
     var data = new List<ItemUsers>();
     var accessModeDetail = new List<Syncfusion.Server.Dashboards.Models.SearchObject>();
     var idPUrl = globalAppSettings.SystemSettings.IDPUrl;
-    var IsMarkItemsPublic = globalAppSettings.SystemSettings.IsMarkItemsPublic;
     var helpSiteBaseUrl = ServerAppConfig.AppSettings.Documentation.BaseUri;
     var granularPermissions = ViewBag.GranularPermissions as Dictionary<object, bool>;
     var specificGroupEntity = (int)PermissionEntity.SpecificGroup;
     var currentuserId = _identityResponse.User.UserId;
     bool isSelfHosted = ServerAppConfig.IsSelfHosted;
+    var getDashboardEmbedCode = globalAppSettings.SystemSettings.GetDashboardEmbedCode;
 }
 
 <script>
@@ -37,7 +37,7 @@
     var addGroupOwnerPermissionUrl = "@Url.Action("AddGroupOwnerPermission","Permission")";
     var idpUrl = "@idPUrl";
     var baseUrl = "@globalAppSettings.SystemSettings.BaseUrl";
-    var isMarkItemsPublic = @Json.Serialize(globalAppSettings.SystemSettings.IsMarkItemsPublic);
+    var getDashboardEmbedCode = @Json.Serialize(getDashboardEmbedCode);
     window.currentUserId = "@currentUserId";
     window.sharedUserGroupList = @Html.Raw(Json.Serialize(@data));
     window.accessModeList = @Html.Raw(Json.Serialize(@data));
@@ -99,7 +99,7 @@
                 <input onClick="this.setSelectionRange(0, this.value.length)" id="item-url" class="form-control" readonly />
                 <div class="form-control text focus" id="item-url-copy" readonly="" data-original-title="@T["Click to copy"]">@T["Copy link"]</div>
             </div>
-            <div class="get-item-embed-link-section col-xs-12 no-padding" ng-show="currentItemType != @categoryType && currentItemType != @datasourceType && currentItemType != @slideShowType && currentItemType !=@userManagement">
+            <div class="get-item-embed-link-section col-xs-12 no-padding" ng-show="currentItemType != @categoryType && currentItemType != @datasourceType && currentItemType != @slideShowType && currentItemType !=@userManagement && getDashboardEmbedCode">
                 <a class="get-embed-link app-hyperlink pull-left" href="javascript:void(0)" onclick="getEmbedCode()">&lt;/&gt; @T["Get Embed code"]</a>
             </div>
             <div class="share-with-label slideshow-note" ng-if="currentItemType == @slideShowType">@Html.Raw("<b>" + T["Note: "].Value + "</b>" + T["Anyone can navigate to this link, but only users with appropriate permissions to access dashboards used in the slideshow will be able to view the items in the slideshow."].Value)</div>
@@ -195,7 +195,7 @@
         <div id="access-mode-container" style="display:none;">
             <div class="access-mode-change-section">
                 <form id="accessModeForm">
-                    <div class="share-permission-dashboard-setting-section" style="display:none" ng-show="!@IsMarkItemsPublic && currentItemType != @itemViewType">
+                    <div class="share-permission-dashboard-setting-section" style="display:none" ng-show="!isMarkItemsPublic && currentItemType != @itemViewType">
                         <div class="col-xs-12 public-private-content-section">
                             <div class="public-private-content" ng-show="hasDashboardSettingsPermission">
                                 <div class="private-public-description"><span>@Html.Raw(String.Format(T["Public Dashboards are disabled in {0}dashboard settings{1}."].Value, "<a class='app-hyperlink' target='_blank' href=" + Url.Action("DashboardSettings", "Administration") + ">", "</a>"))</span></div>
@@ -227,9 +227,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="access-mode-change-public-section">
+                    <div class="access-mode-change-public-section" ng-class="{'enable-element-opacity': !isMarkItemsPublic }">
                         <div class="col-xs-1 radio-btn">
-                            @Html.RadioButton("access-mode", "public", new { @class = "css-radio", @id = "public-access-mode" })
+                            @Html.RadioButton("access-mode", "public", new { @class = "css-radio", @id = "public-access-mode", ng_disabled= "!isMarkItemsPublic" })
                             @Html.Label("public-access-mode", " ", new { @class = "pointer normal-font pull-left notransition" })
                         </div>
                         <div class="col-xs-1 public-icon-section">
@@ -284,7 +284,7 @@
                 <textarea id="embed-code" class="form-control" readonly></textarea>
             </div>
             <div class="embed-configuration col-xs-12">
-                <div class="embed-config-row col-xs-12 no-padding" style="margin-bottom: 10px;" ng-show="currentItemType == @dashboardType">
+                <div class="embed-config-row col-xs-12 no-padding datasource-hide" style="margin-bottom: 10px;" ng-show="currentItemType == @dashboardType">
                     <div class="col-xs-5 no-padding">
                         <label>@T["Mode"]</label>
                         <div class="info-popup">
@@ -294,12 +294,12 @@
                     </div>
                     <div class="col-xs-5 no-padding" style="width:120px">
                         <select id="mode-selection" class="selectpicker no-padding mode-selection" title="@string.Format(T["Select {0} provider"].Value, "SSO")">
-                            <option class="no-margin-dropdown-ul" value="edit" selected="">Edit</option>
-                            <option class="no-margin-dropdown-ul" value="view" selected="">View</option>
+                            <option class="no-margin-dropdown-ul" value="edit" selected="">@T["Edit"]</option>
+                            <option class="no-margin-dropdown-ul" value="view" selected="">@T["View"]</option>
                         </select>
                     </div>
                 </div>
-                <div class="embed-config-row col-xs-12 no-padding" ng-show="currentItemType == @dashboardType">
+                <div class="embed-config-row col-xs-12 no-padding datasource-hide" ng-show="currentItemType == @dashboardType">
                     <div class="col-xs-5 no-padding">
                         <label>@T["Dashboard Comments"]</label>
                         <div class="info-popup">
@@ -312,7 +312,7 @@
                         <label for="embed-dashboard-comments" class="label-primary"></label>
                     </span>
                 </div>
-                <div class="embed-config-row col-xs-12 no-padding" ng-show="currentItemType == @dashboardType">
+                <div class="embed-config-row col-xs-12 no-padding datasource-hide" ng-show="currentItemType == @dashboardType">
                     <div class="col-xs-5 no-padding">
                         <label>@T["Widget Comments"]</label>
                         <div class="info-popup">
@@ -325,7 +325,7 @@
                         <label for="embed-widget-comments" class="label-primary"></label>
                     </span>
                 </div>
-                <div class="embed-config-row col-xs-12 no-padding" ng-show="currentItemType == @dashboardType">
+                <div class="embed-config-row col-xs-12 no-padding datasource-hide" ng-show="currentItemType == @dashboardType">
                     <div class="col-xs-5 no-padding">
                         <label>@T["Views"]</label>
                         <div class="info-popup">
@@ -338,7 +338,7 @@
                         <label for="embed-views" class="label-primary"></label>
                     </span>
                 </div>
-                <div class="embed-config-row col-xs-12 no-padding" ng-show="currentItemType == @dashboardType">
+                <div class="embed-config-row col-xs-12 no-padding datasource-hide" ng-show="currentItemType == @dashboardType">
                     <div class="col-xs-5 no-padding">
                         <label>@T["Export"]</label>
                         <div class="info-popup">

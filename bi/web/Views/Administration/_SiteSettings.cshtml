@@ -247,7 +247,7 @@
                         </label>
                     </div>
                     <div>
-                        @Html.CheckBox("enablecheckboxconsent", ViewBag.SystemSettings.LoginDisclaimer.IsConsentCheckboxEnabled, new { @class = "material-checkbox", ng_click = "enableConsentContent()", ng_disabled = !ViewBag.SystemSettings.LoginDisclaimer.IsEnabled })
+                        @Html.CheckBox("enablecheckboxconsent", ViewBag.SystemSettings.LoginDisclaimer.IsConsentCheckboxEnabled, new { @class = "material-checkbox", ng_click = "enableConsentContent()", ng_disabled = "!loginDisclaimerEnabled" })
                         @Html.Hidden("enablecheckboxconsent")
                         <label for="enablecheckboxconsent">
                             <span>

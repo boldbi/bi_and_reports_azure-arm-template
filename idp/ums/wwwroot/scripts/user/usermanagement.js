@@ -24,12 +24,12 @@ $(document).ready(function () {
     createWaitingPopup('singleuser-delete-confirmation');
 
     var singleUserDeleteDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.DeleteUser,
+        header: window.Server.App.LocalizationContent.DeleteUser,
         content: document.getElementById("singleuser-delete-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: deleteSingleUser, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onSingleDeleteDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
+            { click: deleteSingleUser, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onSingleDeleteDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -40,12 +40,12 @@ $(document).ready(function () {
     singleUserDeleteDialog.appendTo("#singleuser-delete-confirmation");
 
     var makeAdminDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.AssignRole,
+        header: window.Server.App.LocalizationContent.AssignRole,
         content: document.getElementById("make-admin-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: MakeSingleUserAdmin, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onMakeAdminDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
+            { click: MakeSingleUserAdmin, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onMakeAdminDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -57,12 +57,12 @@ $(document).ready(function () {
     makeAdminDialog.appendTo("#make-admin-confirmation");
 
     var makeMultipleAdminDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.AssignRole,
+        header: window.Server.App.LocalizationContent.AssignRole,
         content: document.getElementById("multiple-admin-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: MakeMultipleUserAdmin, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onMultipleAdminDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
+            { click: MakeMultipleUserAdmin, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onMultipleAdminDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -74,12 +74,12 @@ $(document).ready(function () {
     makeMultipleAdminDialog.appendTo("#multiple-admin-confirmation");
 
     var removeAdminDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.RemoveRole,
+        header: window.Server.App.LocalizationContent.RemoveRole,
         content: document.getElementById("remove-admin-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: removeAdmin, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onRemoveAdminDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
+            { click: removeAdmin, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onRemoveAdminDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -92,13 +92,13 @@ $(document).ready(function () {
 
 
     var grantAccessDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.GrantSiteAcessHeaderTitle,
+        header: window.Server.App.LocalizationContent.GrantSiteAcessHeaderTitle,
         content: document.getElementById("add-tenants-dialog-content"),
         showCloseIcon: true,
         close: onAddTenantsDialogClose,
         buttons: [
-            { click: onAddTenantsDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.CancelButton } },
-            { click: provideAccesstoTenants, buttonModel: { content: window.TM.App.LocalizationContent.GrantSiteAccessButton, isPrimary: true, cssClass: 'provide-access-button' } }
+            { click: onAddTenantsDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.CancelButton } },
+            { click: provideAccesstoTenants, buttonModel: { content: window.Server.App.LocalizationContent.GrantSiteAccessButton, isPrimary: true, cssClass: 'provide-access-button' } }
         ],
         width: "900px",
         height: "539px",
@@ -110,11 +110,11 @@ $(document).ready(function () {
     grantAccessDialog.appendTo("#grant-access-dialog");
 
     var addTenantsReportDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.ManageUserAccess,
+        header: window.Server.App.LocalizationContent.ManageUserAccess,
         content: document.getElementById("add-tenants-report-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: onTenantsReportDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.OKButton } }
+            { click: onTenantsReportDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.OKButton } }
         ],
         width: "900px",
         height: "300px",
@@ -129,7 +129,7 @@ $(document).ready(function () {
     $(document).ready(function () {
         if (document.getElementById("existing-user-count") != null) {
             if ($("#existing-user-count").attr("data-value").toLowerCase() == "true" && $("#csv-file-error").attr("data-value").toLowerCase() != "error") {
-                parent.messageBox("su-single-user", window.TM.App.LocalizationContent.ImportFromCSV, window.TM.App.LocalizationContent.NoDataInUploadedFile, "success", function () {
+                parent.messageBox("su-single-user", window.Server.App.LocalizationContent.ImportFromCSV, window.Server.App.LocalizationContent.NoDataInUploadedFile, "success", function () {
                     parent.onCloseMessageBox();
                 });
                 $("#import-button").attr("disabled", "disabled");
@@ -164,13 +164,13 @@ $(document).ready(function () {
                     if (data.IsUserNameExist || data.IsEmailExist) {
                         if (data.IsUserNameExist) {
                             $('#username').closest('div').addClass("has-error");
-                            $("#invalid-username").html(window.TM.App.LocalizationContent.UsernameExists).css("display", "block");
+                            $("#invalid-username").html(window.Server.App.LocalizationContent.UsernameExists).css("display", "block");
                             $(".useradd-validation-messages").css("display", "block");
                             hideWaitingPopup('user-add-dialog');
                         }
                         if (data.IsEmailExist) {
                             $('#mailid').closest('div').addClass("has-error");
-                            $("#invalid-email").html(window.TM.App.LocalizationContent.EmailAddressExists).css("display", "block");
+                            $("#invalid-email").html(window.Server.App.LocalizationContent.EmailAddressExists).css("display", "block");
                             $(".useradd-validation-messages").css("display", "block");
                             hideWaitingPopup('user-add-dialog');
                         }
@@ -197,13 +197,13 @@ $(document).ready(function () {
                                             success: function (result) {
                                                 var messageText = "";
                                                 if (result.activation == 0) {
-                                                    SuccessAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.UserAddedActivated, 7000);
+                                                    SuccessAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.UserAddedActivated, 7000);
                                                 }
                                                 else if (result.result == "success" && result.activation == 1) {
-                                                    SuccessAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.UserAdded, 7000);
+                                                    SuccessAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.UserAdded, 7000);
                                                 }
                                                 else if (result.result == "failure" && result.isAdmin == true && result.activation == 1) {
-                                                    WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.UserActivationEmailCannotSent, 7000);
+                                                    WarningAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.UserActivationEmailCannotSent, 7000);
                                                 }
                                                 userGrid.refresh();
                                             }
@@ -215,7 +215,7 @@ $(document).ready(function () {
                                         $("#zero-user-acc").show();
                                     }
                                     else {
-                                        WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
+                                        WarningAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
                                         userGrid.refresh();
                                     }
                                     onUserAddDialogClose();
@@ -330,7 +330,7 @@ function fnOnUserGridLoad(args) {
 
 function fnbeforeDataBound(args) {
     if (args.count == 0) {
-        WarningAlert(window.TM.App.LocalizationContent.Users, window.TM.App.LocalizationContent.FailedToGetUsers, args.result, 7000);
+        WarningAlert(window.Server.App.LocalizationContent.Users, window.Server.App.LocalizationContent.FailedToGetUsers, args.result, 7000);
     }
 }
 
@@ -441,7 +441,7 @@ function MakeFlyDeleteUsers() {
     doAjaxPost("POST", deleteFromUserListUrl, values, function (data) {
         if (data.status) {
             hideWaitingPopup('user-delete-confirmation');
-            parent.messageBox("su-open", window.TM.App.LocalizationContent.DeleteUsers, window.TM.App.LocalizationContent.UsersDeleted, "success", function () {
+            parent.messageBox("su-open", window.Server.App.LocalizationContent.DeleteUsers, window.Server.App.LocalizationContent.UsersDeleted, "success", function () {
                 var count = parent.$("#user-count-text").val();
                 var currentVal = parseInt(count) - deleteUserCount;
                 parent.$("#user-count").html(currentVal);
@@ -462,14 +462,14 @@ function MakeFlyDeleteUsers() {
         }
         else {
             hideWaitingPopup('user-delete-confirmation');
-            parent.messageBox("su-open", window.TM.App.LocalizationContent.DeleteUsers, window.TM.App.LocalizationContent.UsersDeleteFailed, "success", function () {
+            parent.messageBox("su-open", window.Server.App.LocalizationContent.DeleteUsers, window.Server.App.LocalizationContent.UsersDeleteFailed, "success", function () {
                 $("#user-delete-confirmation").ejDialog("close");
                 parent.onCloseMessageBox();
             });
         }
     }, function () {
         hideWaitingPopup('user-delete-confirmation');
-        parent.messageBox("su-open", window.TM.App.LocalizationContent.DeleteUsers, window.TM.App.LocalizationContent.UsersDeleteFailed, "error", function () {
+        parent.messageBox("su-open", window.Server.App.LocalizationContent.DeleteUsers, window.Server.App.LocalizationContent.UsersDeleteFailed, "error", function () {
             $("#user-delete-confirmation").ejDialog("close");
             parent.onCloseMessageBox();
         });
@@ -814,7 +814,7 @@ function checkUserImported(t) {
     if (typeof ejGrid != 'undefined'  && ejGrid.getRows().length > 0) {
         $("#messageBox_wrapper, .e-dialog-scroller, #messageBox").removeClass("failed-msg-box-height").addClass("msg-box-height"); //Message box height adjustment 
         $(".message-content").removeClass("text-center");
-        messageBox("su-single-user", window.TM.App.LocalizationContent.ImportFromCSV, window.TM.App.LocalizationContent.UserImportIncomplete, "error", function () {
+        messageBox("su-single-user", window.Server.App.LocalizationContent.ImportFromCSV, window.Server.App.LocalizationContent.UserImportIncomplete, "error", function () {
             parent.onCloseMessageBox();
             window.location.href = $(t).attr("href");
         }, function () {
@@ -874,7 +874,7 @@ function SaveUserListFromCSV() {
                     hideWaitingPopup('content-area');
                     $("#messageBox_wrapper, .e-dialog-scroller, #messageBox").removeClass("failed-msg-box-height").addClass("msg-box-height");//Message box height adjustment
                     $(".message-content").addClass("text-center");
-                    messageBox("su-single-user", window.TM.App.LocalizationContent.ImportFromCSV, window.TM.App.LocalizationContent.DuplicateOrInvalidData, "success", function () {
+                    messageBox("su-single-user", window.Server.App.LocalizationContent.ImportFromCSV, window.Server.App.LocalizationContent.DuplicateOrInvalidData, "success", function () {
                         parent.onCloseMessageBox();
                     });
                     $("#import-button").attr("disabled", "disabled");
@@ -882,10 +882,10 @@ function SaveUserListFromCSV() {
                     $(".import-file #user-import-validation-msg").css("display", "none");
                     var gridObj = document.getElementById("user_import_grid").ej2_instances[0]
                     gridObj.dataSource = [];
-                    var messageText = result.activation == 0 ? " " + window.TM.App.LocalizationContent.UsersHasAddedActivated : " " + window.TM.App.LocalizationContent.UsersHasAdded;
+                    var messageText = result.activation == 0 ? " " + window.Server.App.LocalizationContent.UsersHasAddedActivated : " " + window.Server.App.LocalizationContent.UsersHasAdded;
                     $("#messageBox_wrapper, .e-dialog-scroller, #messageBox").removeClass("failed-msg-box-height").addClass("msg-box-height");//Message box height adjustment
                     $(".message-content").addClass("text-center");
-                    messageBox("su-single-user", window.TM.App.LocalizationContent.ImportFromCSV, result.Count + messageText, "success", function () {
+                    messageBox("su-single-user", window.Server.App.LocalizationContent.ImportFromCSV, result.Count + messageText, "success", function () {
                         parent.onCloseMessageBox();
                         window.location.href = userPageUrl;
                     });
@@ -895,7 +895,7 @@ function SaveUserListFromCSV() {
             } else {
                 $("#messageBox_wrapper, .e-dialog-scroller, #messageBox").removeClass("msg-box-height").addClass("failed-msg-box-height");//Message box height adjustment               
                 $(".message-content").addClass("text-center");
-                messageBox("su-single-user", window.TM.App.LocalizationContent.ImportFromCSV, result.Message, "success", function () {
+                messageBox("su-single-user", window.Server.App.LocalizationContent.ImportFromCSV, result.Message, "success", function () {
                     parent.onCloseMessageBox();
                 });
                 hideWaitingPopup('content-area');
@@ -930,12 +930,12 @@ function deleteSingleUser() {
             if (data.AzureADUserCount == 0) {
                 $("#azure-ad-indication").html("");
             }
-            SuccessAlert(window.TM.App.LocalizationContent.DeleteUser, window.TM.App.LocalizationContent.UserHasDeleted, 7000);
+            SuccessAlert(window.Server.App.LocalizationContent.DeleteUser, window.Server.App.LocalizationContent.UserHasDeleted, 7000);
             onConfirmDeleteUser("1");
             hideWaitingPopup('singleuser-delete-confirmation');
             onSingleDeleteDialogClose();
         } else {
-            WarningAlert(window.TM.App.LocalizationContent.DeleteUser, window.TM.App.LocalizationContent.FailedToDeleteUser, data.Message, 7000);
+            WarningAlert(window.Server.App.LocalizationContent.DeleteUser, window.Server.App.LocalizationContent.FailedToDeleteUser, data.Message, 7000);
             onSingleDeleteDialogClose();
         }
     });
@@ -951,7 +951,7 @@ $(document).on("change", "#csvfile", function (e) {
     var value = $(this).val();
     if ($(this).val().substring($(this).val().lastIndexOf('.') + 1) != "csv") {
         $("#csv-upload").attr("disabled", true);
-        $("#filename").val(window.TM.App.LocalizationContent.CsvFileValidator);
+        $("#filename").val(window.Server.App.LocalizationContent.CsvFileValidator);
         $("#filename,#trigger-file").addClass("validation-message");
         $(".upload-box").addClass("e-error");
     } else {
@@ -1024,14 +1024,14 @@ function MakeSingleUserAdmin() {
         data: "&users=" + userId,
         success: function (result) {
             if (result.Status) {
-                SuccessAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdmin, 7000)
+                SuccessAlert(window.Server.App.LocalizationContent.AssignRole, window.Server.App.LocalizationContent.MakeAdmin, 7000)
                 userGrid.refresh();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup('make-admin-confirmation')
                 onMakeAdminDialogClose();
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdminError, result.Message, 7000)
+                WarningAlert(window.Server.App.LocalizationContent.AssignRole, window.Server.App.LocalizationContent.MakeAdminError, result.Message, 7000)
                 userGrid.refresh();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup('make-admin-confirmation')
@@ -1063,14 +1063,14 @@ function MakeMultipleUserAdmin() {
         data: "&users=" + userList,
         success: function (result) {
             if (result.Status) {
-                SuccessAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdmin, 7000)
+                SuccessAlert(window.Server.App.LocalizationContent.AssignRole, window.Server.App.LocalizationContent.MakeAdmin, 7000)
                 userGrid.refresh();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup("multiple-admin-confirmation");
                 onMultipleAdminDialogClose();
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.AssignRole, window.TM.App.LocalizationContent.MakeAdminError, result.Message, 7000)
+                WarningAlert(window.Server.App.LocalizationContent.AssignRole, window.Server.App.LocalizationContent.MakeAdminError, result.Message, 7000)
                 userGrid.refresh();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup("multiple-admin-confirmation");
@@ -1091,13 +1091,13 @@ function removeAdmin() {
         data: { "userId": userId },
         success: function (result) {
             if (result.Status) {
-                SuccessAlert(window.TM.App.LocalizationContent.RemoveRole, window.TM.App.LocalizationContent.RemoveAdmin, 7000)
+                SuccessAlert(window.Server.App.LocalizationContent.RemoveRole, window.Server.App.LocalizationContent.RemoveAdmin, 7000)
                 userGrid.refresh();
                 hideWaitingPopup("remove-admin-confirmation");
                 document.getElementById("remove-admin-confirmation").ej2_instances[0].hide();
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.RemoveRole, window.TM.App.LocalizationContent.RemoveAdminError, result.Message, 7000)
+                WarningAlert(window.Server.App.LocalizationContent.RemoveRole, window.Server.App.LocalizationContent.RemoveAdminError, result.Message, 7000)
                 userGrid.refresh();
                 hideWaitingPopup("remove-admin-confirmation");
                 document.getElementById("remove-admin-confirmation").ej2_instances[0].hide();

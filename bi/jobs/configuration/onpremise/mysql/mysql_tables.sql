@@ -248,6 +248,7 @@ CREATE TABLE {database_name}.BOLDBI_ScheduleDetail(
 	Name varchar(150) NOT NULL,
 	RecurrenceTypeId int NULL,
 	RecurrenceInfo varchar(4000) NULL,
+	Subject varchar(4000) NULL,
 	EmailContent varchar(4000) NULL,
 	IsDataChanges tinyint NOT NULL DEFAULT 0,
 	IsTimeInterval tinyint NOT NULL DEFAULT 0,
@@ -563,6 +564,7 @@ CREATE TABLE {database_name}.BOLDBI_MultiTabDashboard(
 	OrderNumber int NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
+	TabName varchar(255) NULL,
 	PRIMARY KEY (Id))
 ;
 
@@ -851,7 +853,10 @@ CREATE TABLE {database_name}.BOLDBI_ExternalSites(
 	ClientSecret varchar(255) NOT NULL,
 	SiteURL varchar(255) NOT NULL,
 	CreatedById int NOT NULL,
-    CreatedDate datetime NOT NULL,
+	CreatedDate datetime NOT NULL,
+	ModifiedById int NULL,
+	ModifiedDate datetime NULL,
+	SiteType int NOT NULL DEFAULT 0,
 	IsActive tinyint NOT NULL,
 	PRIMARY KEY (Id))
 ;
@@ -992,7 +997,7 @@ INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ('Dashboa
 ;
 INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ('Embed Settings',1)
 ;
-INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ('Data Store Settings',1)
+INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ('Data Process',1)
 ;
 INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ('Connectors',1)
 ;
@@ -1017,6 +1022,12 @@ INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ( 'Paymen
 INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ( 'Widgets',1)
 ;
 INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ( 'Security',1)
+;
+INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) Values ( 'Integrations',1)
+;
+INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ( 'CORS Settings',1)
+;
+INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) VALUES ( 'Look and Feel',1)
 ;
 
 INSERT into {database_name}.BOLDBI_ItemLogType (Name,IsActive) VALUES ( 'Added',1)
@@ -1860,8 +1871,6 @@ INSERT INTO {database_name}.BOLDBI_EventPayloadsMapping (EventType, PayloadType,
 INSERT INTO {database_name}.BOLDBI_EventPayloadsMapping (EventType, PayloadType, IsActive) VALUES (2,8,1)
 ;
 INSERT INTO {database_name}.BOLDBI_EventPayloadsMapping (EventType, PayloadType, IsActive) VALUES (2,9,1)
-;
-INSERT into {database_name}.BOLDBI_SettingsType (Name,IsActive) Values (N'Integrations',1)
 ;
 
 -- -- PASTE ALTER Queries below this section --------

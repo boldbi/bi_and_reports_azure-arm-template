@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    var forReportsWidgetsConfiguration = ViewBag.forReportsWidgetsConfiguration;
 }
 
 @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
@@ -7,8 +8,9 @@
 
 <head>
     <script>
-        var addExternalSitesUrl = "@Url.Action("AddExternalSites", "Publish")";
-        var isSiteNameExistsUrl = "@Url.Action("IsExternalSiteNameExists", "Publish")";
+        var forReportsWidgetsConfiguration = "@forReportsWidgetsConfiguration";
+        var addExternalSitesUrl = forReportsWidgetsConfiguration == "True" ? "@Url.Action("AddReportsWidgetSites", "Administration")" : "@Url.Action("AddExternalSites", "Publish")";
+        var isSiteNameExistsUrl = forReportsWidgetsConfiguration == "True" ? "@Url.Action("IsReportsSiteNameExists", "Administration")" : "@Url.Action("IsExternalSiteNameExists", "Publish")";
         var connectedSitesUrl = "@Url.Action("ConnectedSites", "User")";
     </script>
 </head>

@@ -12,6 +12,7 @@
     var supportTicketsUrl = Url.Action("TicketList", "Support");
     var connectedSitesPageUrl = Url.Action("ConnectedSites", "User");
     var isMobile = new DeviceDetection(Context).IsMobile;
+    var enablePublishModule = ServerAppConfig.IsSelfHosted ? ServerAppConfig.EnablePublishModule : _globalAppSettings.SystemSettings.PreviewFeatures.EnablePublishModule;
 }
 
 <nav id="bi-side-nav-bar" class="no-margin profile-nav-bar @(isMobile ? "mobile-profile-menu" : string.Empty)">
@@ -38,20 +39,23 @@
             </li>
         }
 
-        @if (ServerAppConfig.EnablePublishModule)
+        @if (enablePublishModule)
         {
             <li class="admin-menu-item @(currentUrl.IndexOf(connectedSitesPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                 <a id="connected-sites-settings-link" href="@connectedSitesPageUrl" role="tab">
-                    <i class="su su-connected-sites" style="padding-right:3px;"><span class="su-connected-sites path1"></span><span class="su-connected-sites path2"></span></i>
+                    <i class="su su-connected-sites"></i>
                     <span>@T["Connected Sites"]</span>
                 </a>
             </li>
         }
-        <li class="admin-menu-item @(currentUrl.IndexOf(webhookPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ||  currentUrl.IndexOf(editWebhookPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 || currentUrl.IndexOf(addWebhookPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
-            <a id="dashboard-settings-link" href="@webhookPageUrl" role="tab">
-                <i class="su su-webhook"></i>
-                <span>@T["Webhooks"]</span>
-            </a>
-        </li>
-    </ul>
+        @if (!isMobile)
+        {
+            <li class="admin-menu-item @(currentUrl.IndexOf(webhookPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 || currentUrl.IndexOf(editWebhookPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 || currentUrl.IndexOf(addWebhookPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
+                <a id="dashboard-settings-link" href="@webhookPageUrl" role="tab">
+                    <i class="su su-webhook"></i>
+                    <span>@T["Webhooks"]</span>
+                </a>
+            </li>
+        }
+        </ul>
 </nav>

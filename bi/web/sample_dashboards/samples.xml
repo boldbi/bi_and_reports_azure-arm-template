@@ -204,12 +204,12 @@
       <Description>Check our Sample dashboards.</Description>
       <Dashboards>
         <Dashboard>
-          <Name>Production Analysis</Name>
+          <Name>Production Monitoring Dashboard</Name>
 		  <ImageName>production-analysis.svg</ImageName>
           <Description>This dashboard shows the key metrics of a manufacturing company for improving the effectiveness of their processes: production quantity vs. target quantity, rework quantity, manufacturing cost, labor cost, runtime vs. downtime.</Description>
-          <FileName>production analysis.sydj</FileName>
-          <Tags>Combo Box, Card, Spline Chart, Column Chart, Gauge</Tags>
-         <Features>Master Filter, Forecasting-Spline_Chart</Features>
+          <FileName>production-monitoring-dashboard.sydj</FileName>
+          <Tags>Combo Box, KPI Card, Spline Chart, Bar Chart, Radial Gauge</Tags>
+         <Features>Master Filter, Forecasting-Spline_Chart, Releative_Date_Filter-Spline_Chart</Features>
        </Dashboard>
       </Dashboards>
     </Category>
@@ -529,9 +529,9 @@
 		  <Name>Insurance Analysis Dashboard</Name>
 		  <ImageName>insurance.svg</ImageName>
 		  <Description>This dashboard provides an overview of the insurance company’s performance through visualization of key metrics such as APE, Profit w.r.t time, and region.</Description>
-		  <FileName>insurance analysis dashboard.sydj</FileName>
-		  <Tags>Combo Box, Card, Bubble Map, Heat Map, Column Chart, Bar Chart, Doughnut Chart</Tags>
-		  <Features>Master Filter, Drill_Down-Column_Chart</Features>
+		  <FileName>insurance-analysis-dashboard.sydj</FileName>
+		  <Tags>Combo Box, Number Card, Column Chart, Bar Chart, Doughnut Chart, Bubble Map, Heat Map,</Tags>
+		  <Features>Master Filter, Drill_Down-Column_Chart, Conditional-formatting-Doughnut_Chart</Features>
 		</Dashboard>
 	  </Dashboards>
 	</Category>
@@ -1529,6 +1529,76 @@
                   <FileName>podio-project-mangement-dashboard.sydj</FileName>
                   <Tags>Combo Box, Number Card, KPI card, Radial Gauge, Pie Chart, Heat Map, Column Chart, Stacked Column Chart, Bar Chart, Combo Chart, Grid</Tags>
                   <Features>Master Filter, Conditional_Formatting-Grid</Features>
+              </Dashboard>
+          </Dashboards>
+      </Category>
+      <Category>
+          <Name>Human Resources</Name>
+          <Description>Check our Sample dashboards.</Description>
+          <Dashboards>
+              <Dashboard>
+                  <Name>HR Employee Attendance Details Dashboard</Name>
+                  <ImageName>hr.svg</ImageName>
+                  <Description>This HR Employee Attendance Details Dashboard helps HR admins to monitor each employee's attendance details and create reports easily. This dashboard showcases metrics such as the top 5 employees by attendance, overall attendance percentage, absenteeism rate by month, working status, leave type distribution, performance rating, employee details, and upcoming absences.</Description>
+                  <FileName>hr-employee-attendance-details-dashboard.sydj</FileName>
+                  <Tags>Date Picker, Combo Box, Number Card, KPI card, Radial Gauge, Doughnut Chart, Stacked Column Chart, Line Chart, Area Chart, Spline Chart, Grid</Tags>
+                  <Features>Top-N-Rank-Filter-Bar_Chart, Drill_Down-Doughnut_Chart, Relative_Date_Filter-Spline_Chart, Relative_Date_Filter-Line_Chart, Relative_Date_Filter-Area_Chart, Relative_Date_Filter-Grid, Conditional_Formatting-Grid</Features>
+              </Dashboard>
+          </Dashboards>
+      </Category>
+	  <Category>
+          <Name>Healthcare</Name>
+          <Description>Check our Sample dashboards.</Description>
+          <Dashboards>
+              <Dashboard>
+                  <Name>Healthcare Executive Dashboard</Name>
+                  <ImageName>healthcare.svg</ImageName>
+                  <Description>The dashboard is used to monitor the healthcare KPIs in a dynamic and interactive way, and that enables healthcare professionals to access important patient statistics in real-time to increase the overall hospital performance and patient satisfaction.</Description>
+                  <FileName>healthcare-executive-dashboard.sydj</FileName>
+                  <Tags>Combo Box, Number Card, KPI card, Radial Gauge, Stacked Column Chart, Spline Chart, Pie Chart, Doughnut Chart, Bar Chart, Line Chart, Area Chart, Heat Map, Stacked Bar Chart</Tags>
+                  <Features>Releative_Date_Filter-Stacked_Column_Chart,Releative_Date_Filter-Spline_Chart, Relative_Date_Filter-Line_Chart, Relative_Date_Filter-Area_Chart, Relative_Date_Filter-Heat_Map</Features>
+              </Dashboard>
+          </Dashboards>
+      </Category>
+      <Category>
+          <Name>Marketing</Name>
+          <Description>Check our Sample dashboards.</Description>
+          <Dashboards>
+              <Dashboard>
+                  <Name>Bitly Links Analysis Dashboard</Name>
+                  <ImageName>marketing.svg</ImageName>
+                  <Description>The Bitly Links Analysis Dashboard provides a high-level overview of a Bitly account's links and activities. It tracks the total number of links, clicks, where they came from, and when they happened. It also gives insight into the Bitly tags available.</Description>
+                  <FileName>bitly-links-analysis-dashboard.sydj</FileName>
+                  <Tags>Image, Date Picker, Number Card, Spline Chart, Doughnut Chart, Bar Chart, Choropleth Map</Tags>
+                  <Features>Relative_Date_Filter-Spline_Chart, Top-N-Rank-Filter-Bar_Chart, Master Filter</Features>
+              </Dashboard>
+          </Dashboards>
+      </Category>
+      <Category>
+          <Name>Human Resources</Name>
+          <Description>Check our Sample dashboards.</Description>
+          <Dashboards>
+              <Dashboard>
+                  <Name>HR Resignation Details Dashboard</Name>
+                  <ImageName>hr.svg</ImageName>
+                  <Description>This HR Resignation Details Dashboard helps HR admins track employee resignation details, including attrition rate, tenure rate, team changes, attrition trend, employee retention rate, voluntary vs. involuntary resignations, attrition rate by department and gender, employee rating by month, attrition rate by month, total vs. resigned employees by department, average tenure rate by month, and employee resignation details.</Description>
+                  <FileName>hr-resignation-details-dashboard.sydj</FileName>
+                  <Tags>Combo Box, Date Picker, Number Card, Line Chart, Pyramid Chart, Doughnut Chart, Bar Chart, Pie Chart, Spline Chart, Column Chart, Grid</Tags>
+                  <Features>Conditional_Formatting-Grid, Master Filter, Relative_Date_Filter-Spline_Chart, Relative_Date_Filter-Column_Chart, Relative_Date_Filter-Line_Chart</Features>
+              </Dashboard>
+          </Dashboards>
+      </Category>
+	  <Category>
+          <Name>Survey Analysis</Name>
+          <Description>Check our Sample dashboards.</Description>
+          <Dashboards>
+              <Dashboard>
+                  <Name>SurveyMonkey Survey Overview Dashboard</Name>
+                  <ImageName>survey-analysis.svg</ImageName>
+                  <Description>The SurveyMonkey Survey Overview Dashboard allows the user to have a broader insight into the number of respondents who participate in a survey and their responses. The time frame in which a survey is completed is also captured to get a glimpse of the survey's level of engagement.</Description>
+                  <FileName>surveymonkey-survey-overview-dashboard.sydj</FileName>
+                  <Tags>Combo Box, Date Picker, Number Card, Spline Chart, Doughnut Chart, Bar Chart, Grid</Tags>
+                  <Features>Master Filter, Top-N-Rank-Filter_Doughnut-Chart, Relative-Date-Filter_Line-Chart, Top-N-Rank-Filter-Bar_Chart</Features>
               </Dashboard>
           </Dashboards>
       </Category>

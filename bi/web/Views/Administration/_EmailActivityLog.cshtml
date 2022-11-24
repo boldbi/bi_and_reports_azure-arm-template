@@ -26,7 +26,7 @@
         <input type="text" name="email-log-filter-date-range" class="form-control full-width" id="datePicker">
     </div>
     <div class="dropdown email-settings-drop-down col-xs-12">
-        @Html.DropDownList("emailEvent", ViewBag.EmailEvent as IEnumerable<SelectListItem>, new { id = "email-event", @class = "selectpicker form-control", data_none_results_text = T["No results match"].Value, data_size = "10", title = T["Event"].Value, data_live_search = "true", data_live_search_placeholder = T["Search"].Value })
+        @Html.DropDownList("emailEvent", ViewBag.EmailEvent as IEnumerable<SelectListItem>, new { id = "email-event", @class = "selectpicker form-control", data_none_results_text = T["No results match"].Value, data_size = "10", title = T["All Event"].Value, data_live_search = "true", data_live_search_placeholder = T["Search"].Value })
     </div>
     <button type="button" id="email-log-filter-apply-button" class="btn apply-button">@T["Apply"]</button>
 </div>

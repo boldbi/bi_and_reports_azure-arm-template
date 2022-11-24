@@ -1,6 +1,7 @@
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
+    var themeBasedImageHelper = new ThemeBasedImageHelper(globalAppSettings);
     var cdnLink = string.Empty;
     var faviconLogo = string.Empty;
     var dashboardServerResourceUrl = string.Empty;
@@ -16,34 +17,36 @@
         dashboardServerResourceUrl = ServerAppConfig.AppSettings.EndPoints.CdnLink.TrimEnd('/');
         faviconLogo = dashboardServerResourceUrl + "/cdn/images/application/" + @ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + @IconFileNames.Favicon;
     }
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
+}
 }
 <!DOCTYPE html>
 <html class="dashboard-server">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@T["Site Suspended"] - @GlobalAppSettings.BrandingDisplayName</title>
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/light.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/error-page.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/light.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/error-page.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     </environment>
-
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
-<link rel="icon" href="@faviconLogo" onerror="if (this.href !== null && this.href.toLowerCase() !== '@dashboardServerResourceUrl/cdn/images/application/@ServerAppConfig.AppSettings.AppBranding.Identifier/@IconFileNames.Favicon') this.href = '@dashboardServerResourceUrl/cdn/images/application/@ServerAppConfig.AppSettings.AppBranding.Identifier/@IconFileNames.Favicon';" />
+    <link rel="icon" href="@faviconLogo" onerror="if (this.href !== null && this.href.toLowerCase() !== '@dashboardServerResourceUrl/cdn/images/application/@ServerAppConfig.AppSettings.AppBranding.Identifier/@IconFileNames.Favicon') this.href = '@dashboardServerResourceUrl/cdn/images/application/@ServerAppConfig.AppSettings.AppBranding.Identifier/@IconFileNames.Favicon';" />
 </head>
 <body>
     <div class="suspended-container-bg">
         <div class="suspended-conatiner" id="suspended-conatiner">
             <div id="suspended-main-div">
                 <div class="suspended-logo">
-                    <img src="@dashboardServerResourceUrl/cdn/images/application/suspended.svg" />
+                    <img src="@themeBasedImageHelper.SuspendedErrorImage()" />
                 </div>
                 <div class="suspended-secondary-div">
                     <div class="suspended-page-title">
@@ -55,7 +58,7 @@
                         {
                             <div>
                                 @Html.Raw(string.Format(T["If you are a subscription administrator for {0}, you can activate your suspended site {1}here{2}."].Value, globalAppSettings.SystemSettings.OrganizationName, "<a href='https://www." + GlobalAppSettings.BrandingDomain + "'/account/sites/cloud' class='redirect-link' target='_blank'>", "</a>"))
-                            </div> 
+                            </div>
                         }
                         else
                         {

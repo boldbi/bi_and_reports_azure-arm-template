@@ -1,5 +1,6 @@
 ﻿@{
     var groupIdValue = ViewBag.groupId;
+    var isAdmin = _identityResponse.IsAdmin;
 }
 <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog col-lg-12 no-padding" id="popup-container" role="document">
@@ -23,14 +24,17 @@
                         <input type="radio" id="specific-permission" class="css-radio" value="specific-permission" name="permissionType" ng-click="onClickSpecificResource(true)">
                         <label for="specific-permission" class="app-textbox-label radio-label"><span class="text">@T["Specific Resources"]</span></label>
                     </div>
-                    <div class="all-permission select-permission all-permission-settings">
-                        <input type="radio" id="all-permission-settings" class="css-radio" value="all-permission-settings" name="permissionType" ng-click="onClickAllSettings(true)">
-                        <label for="all-permission-settings" class="app-textbox-label radio-label"><span class="text">@T["All Settings"]</span></label>
-                    </div>
-                    <div class="specific-permission select-permission specific-permission-settings">
-                        <input type="radio" id="specific-permission-settings" class="css-radio" value="specific-permission-settings" name="permissionType" ng-click="onClickSpecificSettings(true)">
-                        <label for="specific-permission-settings" class="app-textbox-label radio-label"><span class="text">@T["Specific Settings"]</span></label>
-                    </div>
+                    @if (isAdmin)
+                    {
+                        <div class="all-permission select-permission all-permission-settings">
+                            <input type="radio" id="all-permission-settings" class="css-radio" value="all-permission-settings" name="permissionType" ng-click="onClickAllSettings(true)">
+                            <label for="all-permission-settings" class="app-textbox-label radio-label"><span class="text">@T["All Settings"]</span></label>
+                        </div>
+                        <div class="specific-permission select-permission specific-permission-settings">
+                            <input type="radio" id="specific-permission-settings" class="css-radio" value="specific-permission-settings" name="permissionType" ng-click="onClickSpecificSettings(true)">
+                            <label for="specific-permission-settings" class="app-textbox-label radio-label"><span class="text">@T["Specific Settings"]</span></label>
+                        </div>
+                    }
                 </div>
                 <div class="col-xs-12 no-padding all-permission-div permission-modes">
                     <div class="col-xs-4 no-padding entity-div">

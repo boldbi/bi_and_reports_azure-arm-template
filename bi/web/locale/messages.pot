@@ -4490,7 +4490,7 @@ msgstr ""
 msgid "Enter the alert message to be added in the scheduled email"
 msgstr ""
 
-msgid "Enter a message to be added in the scheduled email"
+msgid "Customize the email for your schedule"
 msgstr ""
 
 msgid "Please provide the email content"

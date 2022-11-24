@@ -7,6 +7,8 @@
     var defaultView = Convert.ToBoolean(ViewBag.DefaultViewSettings);
     var autosavedFilter = Convert.ToBoolean(ViewBag.AutosaveFilterSettings);
     var theming = Convert.ToBoolean(ViewBag.Theming);
+    var getDashboardEmbedcode = Convert.ToBoolean(ViewBag.GetDashboardEmbedCode);
+    var getWidgetEmbedCode = Convert.ToBoolean(ViewBag.GetWidgetEmbedCode);
     var helpSiteBaseUrl = ServerAppConfig.AppSettings.Documentation.BaseUri;
     var defaultViewHelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DefaultViews);
     var autoSaveHelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.AutoSaveFilter);
@@ -36,6 +38,9 @@
     </environment>
     <script>
         var isSelfHosted =  @Json.Serialize(isSelfHosted);
+        var dashboardSettingsUrl = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DashboardSiteSettings)";
+        var deploymentDashboardUrl = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DeploymentDashboard)";
+        var customAttributeUrl = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.CustomAttribute)";
     </script>
 }
 
@@ -166,7 +171,7 @@
                     </li>
                     @if (isSelfHosted)
                     {
-                        <li class="dashboard-settings-list">
+                        <li class="dashboard-settings-list usage-analytics-list">
                             @Html.CheckBox("usage-analytics-setting", usageAnalytics, new { @class = "material-checkbox", @autocomplete = "off" })
                             <label for="usage-analytics-setting">
                                 <span>@T["Usage analytics"]</span>
@@ -176,6 +181,24 @@
                             </div>
                         </li>
                     }
+                    <li class="dashboard-settings-list">
+                        @Html.CheckBox("get-emebed-code-dashboard", getDashboardEmbedcode, new { @class = "material-checkbox", @autocomplete = "off" })
+                        <label for="get-emebed-code-dashboard">
+                            <span>@T["Show get Embed code for Dashboards"]</span>
+                        </label>
+                        <div class="info-message">
+                            @T["This setting will allow the user to hide or show the Get Embed Code option in the context menu of the dashboard in the listing page and also in the share dialog of the dashboard."]
+                        </div>
+                    </li>
+                    <li class="dashboard-settings-list">
+                        @Html.CheckBox("get-emebed-code-widget", getWidgetEmbedCode, new { @class = "material-checkbox", @autocomplete = "off" })
+                        <label for="get-emebed-code-widget">
+                            <span>@T["Show get Embed code for Widgets"]</span>
+                        </label>
+                        <div class="info-message">
+                            @T["This setting will allow the user to hide or show the Get Embed Code option in the context menu of the widget in the dashboard view page."]
+                        </div>
+                    </li>
                 </ul>
                 <div class="bi-page-footer no-padding col-xs-12">
                     <div class="bi-page-actions col-xs-12 col-md-12">

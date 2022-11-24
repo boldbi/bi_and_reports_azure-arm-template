@@ -20,7 +20,7 @@
     </title>
 
     @await Html.PartialAsync("_Favicon")
-
+    <link rel="stylesheet" href="@CloudAppConfig.TenantManagementUrl.TrimEnd('/')/bundles/css/cssloader.css" asp-append-version="true" />
     @await Html.PartialAsync("../Shared/_FontReference")
     @await Html.PartialAsync("../Shared/_ThemeReference")
     <link rel="stylesheet" href="~/bundles/css/accounts-layout.css" asp-append-version="true" />
@@ -47,83 +47,6 @@
             }
         </style>
     }
-
-    <style>
-        .loader-icon {
-            display: block;
-        }
-
-        .loader-icon {
-            left: 0px !important;
-            position: relative;
-            margin: 0px auto;
-            width: 54px;
-            height: 54px;
-        }
-
-            .loader-icon .circular {
-                -webkit-animation: rotate 2s linear infinite;
-                animation: rotate 2s linear infinite;
-                height: 54px;
-                width: 54px;
-                position: relative;
-            }
-
-            .loader-icon .path {
-                stroke-dasharray: 1,200;
-                stroke-dashoffset: 0;
-                -webkit-animation: dash 1.5s ease-in-out infinite;
-                animation: dash 1.5s ease-in-out infinite;
-                stroke: #5592FB;
-                stroke-linecap: square;
-            }
-
-        @@keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @@-webkit-keyframes rotate {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @@keyframes dash {
-            0% {
-                stroke-dasharray: 1,200;
-                stroke-dashoffset: 0;
-            }
-
-            50% {
-                stroke-dasharray: 89,200;
-                stroke-dashoffset: -35;
-            }
-
-            100% {
-                stroke-dasharray: 89,200;
-                stroke-dashoffset: -124;
-            }
-        }
-
-        @@-webkit-keyframes dash {
-            0% {
-                stroke-dasharray: 1,200;
-                stroke-dashoffset: 0;
-            }
-
-            50% {
-                stroke-dasharray: 89,200;
-                stroke-dashoffset: -35;
-            }
-
-            100% {
-                stroke-dasharray: 89,200;
-                stroke-dashoffset: -124;
-            }
-        }
-    </style>
 </head>
 <body id="body">
     @await Html.PartialAsync("~/Views/Shared/_LocalizationContent.cshtml")

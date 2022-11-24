@@ -16,7 +16,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>[[[Home]]] - @GlobalAppSettings.SystemSettings.OrganizationName</title>
+    <title>@T["Home"] - @GlobalAppSettings.SystemSettings.OrganizationName</title>
     @await Html.PartialAsync("../Shared/_Favicon")
     @await Html.PartialAsync("../Shared/_FontReference")
     @await Html.PartialAsync("../Shared/_ThemeReference")
@@ -34,18 +34,18 @@
     <div id="site-down-alert"></div>
     @await Html.PartialAsync("_SiteDownAlert")
     <div id="header-container">
-        <img class="boldbi-logo" src="@Url.Content("~/logos?type=login")" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.DefaultErrorRectangleImage)';" alt="[[[Bold BI logo]]]">
+        <img class="boldbi-logo" src="@Url.Content("~/logos?type=login")" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.DefaultErrorRectangleImage)';" alt="@T["Embedded BI Logo"]">
         <div class="logout-container">
-            <a class="logout" href="@Url.Action("logout", "accounts")">[[[LOGOUT]]]</a>
+            <a class="logout" href="@Url.Action("logout", "accounts")">@T["Log out"]</a>
         </div>
         @if (adminType == AdminType.SuperAdmin)
         {
             if (ViewBag.IsMultiTenant)
             {
-                <a class="create-site primary-button" href="@createSiteUrl">[[[Create new site]]]</a>
+                <a class="create-site primary-button" href="@createSiteUrl">@T["Create new site"]</a>
             }
 
-            <a class="manage-sites secondary-button" href="@Url.Action("Sites", "TenantsManagement")">[[[Manage sites]]]</a>
+            <a class="manage-sites secondary-button" href="@Url.Action("Sites", "TenantsManagement")">@T["Manage sites"]</a>
         }
     </div>
 
@@ -53,17 +53,17 @@
         <div class="user-image-container">
             @if (!string.IsNullOrWhiteSpace(ViewBag.UserDetails.Picture))
             {
-                <img class="user-image" rel="alternate" hreflang="en" href="" src="@profilePicture" alt="[[[user]]]">
+                <img class="user-image" rel="alternate" hreflang="en" href="" src="@profilePicture" alt="@T["User's Display Name"]">
             }
             else
             {
                 <div class="profile-pic-tag" data-id="@userId" data-type="user" data-display-name="@displayName" data-image-size="100" data-toggle="tooltip" title="@displayName" data-placement="top" data-url="@imageUrl" style="border-radius:50%;margin:auto"></div>
             }
         </div>
-        <div class="user-name">[[[Hello, ]]]@displayName</div>
-        <div class="welcome-note">[[[Welcome back!]]]</div>
+        <div class="user-name">@T["Hello, "]@displayName</div>
+        <div class="welcome-note">@T["Welcome back!"]</div>
         <div class="line"></div>
-        <div class="choose-site">[[[Choose site to enter]]]</div>
+        <div class="choose-site">@T["Choose site to enter"]</div>
 
         <div id="site-container">
             <div class="row">
@@ -97,8 +97,8 @@
             <div class="copyright">@Html.Raw(GlobalAppSettings.SystemSettings.CopyrightInformation.Replace("$$CurrentYear$$", DateTime.UtcNow.Year.ToString()))</div>
         </div>
         <div class="footer-logo-container" style="display:@poweredbyClass">
-            <div class="powered-by">[[[Powered by]]]</div>
-            <img class="footer-logo" src="@Url.Content("~/logos?type=poweredby")" alt="[[[footer logo]]]">
+            <div class="powered-by">@T["Powered by"]</div>
+            <img class="footer-logo" src="@Url.Content("~/logos?type=poweredby")" alt="@T["Footer Logo"]">
         </div>
     </div>
 

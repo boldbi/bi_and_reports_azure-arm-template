@@ -181,6 +181,21 @@
         "background": "#3e4658"
       }
     },
+    "tabwidget": {
+      "tabHeader": {
+        "color": "#ffffff",
+        "selection": {
+          "color": "#0565ff",
+        },
+        "fontSettings": {
+          "autoFontSettings": true,
+          "fontSize": "",
+          "fontWeight": "",
+          "fontFamily": "",
+          "fontSrc": ""
+        }
+      }
+    },
     "map": {
       "widgetHeader": {
         "title": {
@@ -516,7 +531,7 @@
         "checkedBorder": "#0450cc"
       }
     },
-	"textfilter": {
+    "textfilter": {
       "widgetHeader": {
         "title": {
           "fontSettings": {
@@ -540,19 +555,19 @@
       "placeHolderTextColor": "#e5ebf8",
       "borderColor": "#a7b2c7",
       "boxShadow": "#0000001a",
-	  "background": "",
-	  "font": {
-          "color": "#e5ebf8",
-          "fontSettings": {
-            "autoFontSettings": true,
-            "fontSize": "",
-            "fontWeight": "",
-            "fontFamily": "",
-            "fontSrc": ""
-			}
-		},  
+      "background": "",
+      "font": {
+        "color": "#e5ebf8",
+        "fontSettings": {
+          "autoFontSettings": true,
+          "fontSize": "",
+          "fontWeight": "",
+          "fontFamily": "",
+          "fontSrc": ""
+        }
+      }
     },
-	
+
     "dategroup": {
       "widgetHeader": {
         "title": {
@@ -1697,7 +1712,7 @@
           "fontFamily": "",
           "fontSrc": ""
         }
-       }
+      }
     },
     "scatter": {
       "widgetHeader": {
@@ -1721,18 +1736,18 @@
         }
       },
       "axis": {
-		"title": {
-		  "font": {
-			"color": "#c6d0e8",
-			"fontSettings": {
-				"autoFontSettings": true,
-				"fontSize": "",
-				"fontWeight": "",
-				"fontFamily": "",
-				"fontSrc": ""
-			}
-			}
-		},
+        "title": {
+          "font": {
+            "color": "#c6d0e8",
+            "fontSettings": {
+              "autoFontSettings": true,
+              "fontSize": "",
+              "fontWeight": "",
+              "fontFamily": "",
+              "fontSrc": ""
+            }
+          }
+        },
         "label": {
           "font": {
             "color": "#c6d0e8",

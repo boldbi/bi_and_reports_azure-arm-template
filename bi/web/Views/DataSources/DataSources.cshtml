@@ -65,6 +65,7 @@
     <script>
         var createDatasourceIframeUrl = "@Url.Action("Connection", "DataSourceDesigner")";
         var dataPreviewIframeUrl = "@Url.Action("DataPreview", "DataSourceDesigner")";
+        var edittableorcolumnUrl = "@Url.Action("EditTableOrColumn", "DataSourceDesigner")";
         var datasourceId = "@ViewBag.DataSourceId";
         var datasourceName = "@ViewBag.DataSourceName";
         var designerInstallationHelpUrl = "@(ServerAppConfig.AppSettings.Documentation.Uri + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DesignerInstallation))";
@@ -112,8 +113,11 @@
                                 <button type="button" id="create-datasource-connection" class="pull-right primary-button app-btn-primary">@T["Create Data Source"]</button>
                             }
                             <a href="@Url.Action("ConnectedAccounts", "User")" id="my-connection" class="link-button app-btn-link pull-right connected-accounts-button" title="">@T["My Connections"]</a>
-                            <button type="button" id="merge-datasource" class="pull-right link-button app-btn-link">@T["Combine Data Source"]</button>
-                        </div>
+                            @if (itemPermissions[ItemType.Datasource])
+                            {
+                                <button type="button" id="merge-datasource" class="pull-right link-button app-btn-link">@T["Combine Data Source"]</button>
+                            }
+                            </div>
                     </div>
                     <div class="col-xs-12 bi-page-body">
                         <div id="search-area" class="pull-right">
@@ -156,6 +160,9 @@
     </div>
     <div id="create-merge-datasource-popup" class="fluent-popup display-none">
         <iframe id="create-merge-datasource-iframe" class="datasource-create-frame"></iframe>
+    </div>
+    <div id="datasource-edit-table-column-popup" class=" display-none">
+        <iframe id="datasource-edit-table-column-iframe" class="datasource-popup-frame"></iframe>
     </div>
 
     @if (!isMobile)

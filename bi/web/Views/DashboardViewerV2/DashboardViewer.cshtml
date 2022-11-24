@@ -46,6 +46,7 @@
     var multiTabUrl = ViewBag.MultiTabDashboardDetails != null ? Url.Action("Dashboards", "Dashboards") + "/" + ViewBag.MultiTabDashboardDetails.Id + "/" + ViewBag.MultiTabDashboardDetails.CategoryName + "/" + ViewBag.MultiTabDashboardDetails.Name : string.Empty;
     var granularPermissions = ViewBag.GranularPermissions as Dictionary<object, bool>;
     var isUsageAnalytics = ViewBag.IsUsageAnalytics != null;
+    var getWidgetEmbedCode = globalAppSettings.SystemSettings.GetWidgetEmbedCode;
     var isViewNotFound = (ViewBag.ViewNotFound != null && ViewBag.ViewNotFound ) ? true : false;
     var isCommentNotFound = (ViewBag.CommentNotFound != null && ViewBag.CommentNotFound) ? true : false;
 }
@@ -79,7 +80,26 @@
     <meta name="globalization:date_format" content="@_clientDateTimeInfo.ClientDateTime.DateFormat" />
     <meta name="globalization:time_format" content="@_clientDateTimeInfo.ClientDateTime.TimeFormat" />
 
+    <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings, true)" />
+
     <link rel="icon" href="@globalAppSettings.SystemSettings.FavIcon" onerror="if (this.href != '@faviconFallbackUrl') this.href = '@faviconFallbackUrl';" />
+
+    @if (!ServerAppConfig.IsSelfHosted || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
+    {
+        <style>
+            :root {
+                --designer-font: 'Roboto','Heebo','Segoes UI' !important;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            :root {
+                --designer-font: var(--font-family) !important;
+            }
+        </style>
+    }
 
     @await Html.PartialAsync("_OGPContent", new ViewDataDictionary(ViewData) { { "PageTitle", ViewBag.Title }, { "OrganizationName", globalAppSettings.SystemSettings.OrganizationName }, { "Logo", loginImage }, { "Description", itemDetail.Description } })
 <script>
@@ -178,6 +198,11 @@
         var parentItemId = "@ViewBag.ParentItemId";
         var isViewNotFound = @Html.Raw(Json.Serialize(isViewNotFound));
         var isCommentNotFound = @Html.Raw(Json.Serialize(isCommentNotFound));
+        var dashboardCustomThemename = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : globalAppSettings.SystemSettings.CustomDashboardTheme)";
+        var customThemeAppearance = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.Appearance : globalAppSettings.SystemSettings.ThemeAppearance)";
+        var applicationTheme = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.ApplicationTheme : globalAppSettings.SystemSettings.CustomApplicationTheme)";
+        var getWidgetEmbedCode = @Json.Serialize(getWidgetEmbedCode);
+        var enableApplicationEmbed = @ServerAppConfig.EnableSameTabLinkTarget.ToString().ToLower();
 </script>
     <style>
         #warning-alert, #success-alert {

@@ -48,7 +48,7 @@
                 margin: 0;
                 vertical-align: middle;*/
 /*color: $primary-btn-text-color !important;*/
-/*}
+            /*}
         }
 
         #upload-item-section {
@@ -57,7 +57,7 @@
                 border: none;
                 border-radius: 0;*/
 /*color: $primary-btn-text-color;*/
-/*height: $height;
+                /*height: $height;
                 width: 120px;
             }
         }
@@ -306,12 +306,12 @@
     }
 }*/
 /*@media (min-width:1040px) and (max-width: 1200px) {
-        .app-header {
-            #application-list {
-                text-align: center !important;
-            }
+    .app-header {
+        #application-list {
+            text-align: center !important;
         }
-    }*/
+    }
+}*/
 html, body {
   height: 100%;
   width: 100%;

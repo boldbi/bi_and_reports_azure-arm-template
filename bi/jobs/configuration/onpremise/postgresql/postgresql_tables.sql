@@ -228,6 +228,7 @@ CREATE TABLE SyncDS_ScheduleDetail(
 	Name varchar(150) NOT NULL,
 	RecurrenceTypeId int NULL,
 	RecurrenceInfo varchar(4000) NULL,
+	Subject varchar(4000) NULL,
 	EmailContent varchar(4000) NULL,
 	IsDataChanges smallint NOT NULL DEFAULT 0,
 	IsTimeInterval smallint NOT NULL DEFAULT 0,
@@ -516,7 +517,8 @@ CREATE TABLE SyncDS_MultiTabDashboard(
 	DashboardDesignerId uuid NOT NULL,
 	OrderNumber int NULL,
 	ModifiedDate timestamp NOT NULL,
-	IsActive smallint NOT NULL)
+	IsActive smallint NOT NULL,
+	TabName varchar(255) NULL)
 ;
 
 CREATE TABLE SyncDS_DataNotification(
@@ -779,6 +781,9 @@ CREATE TABLE SyncDS_ExternalSites(
 	SiteURL varchar(255) NULL,
 	CreatedById int NOT NULL,
 	CreatedDate timestamp NOT NULL,
+	ModifiedById int NULL,
+	ModifiedDate timestamp NULL,
+	SiteType int not null DEFAULT 0,
 	IsActive smallint NOT NULL)
 ;
 
@@ -874,6 +879,7 @@ CREATE TABLE SyncDS_EventPayloadsMapping(
 	PayloadType int NOT NULL,
 	IsActive smallint NOT NULL)
 ;
+
 ---- PASTE INSERT Queries below this section --------
 
 INSERT into SyncDS_ItemType (Name,IsActive) VALUES (N'Category',1)
@@ -909,7 +915,7 @@ INSERT into SyncDS_SettingsType (Name, IsActive) VALUES (N'Dashboard Settings',1
 ;
 INSERT into SyncDS_SettingsType (Name, IsActive) VALUES (N'Embed Settings',1)
 ;
-INSERT into SyncDS_SettingsType (Name, IsActive) VALUES (N'Data Store Settings',1)
+INSERT into SyncDS_SettingsType (Name, IsActive) VALUES (N'Data Process',1)
 ;
 INSERT into SyncDS_SettingsType (Name, IsActive) VALUES (N'Connectors',1)
 ;
@@ -934,6 +940,12 @@ INSERT into SyncDS_SettingsType (Name, IsActive) Values (N'Payments',1)
 INSERT into SyncDS_SettingsType (Name, IsActive) Values (N'Widgets',1)
 ;
 INSERT into SyncDS_SettingsType (Name, IsActive) Values (N'Security',1)
+;
+INSERT into SyncDS_SettingsType (Name,IsActive) Values (N'Integrations',1)
+;
+INSERT into SyncDS_SettingsType (Name, IsActive) Values (N'CORS Settings',1)
+;
+INSERT into SyncDS_SettingsType (Name,IsActive) Values (N'Look and Feel',1)
 ;
 
 INSERT into SyncDS_ItemLogType (Name,IsActive) VALUES ( N'Added',1)
@@ -1776,8 +1788,6 @@ INSERT INTO SyncDS_EventPayloadsMapping (EventType, PayloadType, IsActive) VALUE
 INSERT INTO SyncDS_EventPayloadsMapping (EventType, PayloadType, IsActive) VALUES (2,8,1)
 ;
 INSERT INTO SyncDS_EventPayloadsMapping (EventType, PayloadType, IsActive) VALUES (2,9,1)
-;
-INSERT into SyncDS_SettingsType (Name,IsActive) Values (N'Integrations',1)
 ;
 
 ---- PASTE ALTER Queries below this section --------

@@ -57,9 +57,9 @@
         var getDatabaseUrl = "@Url.Action("GetDatabaseList", "UserManagement")";
         var getTableRelationUrl = "@Url.Action("GetTableRelation", "UserManagement")";
         var addUserDirectoryLogUrl = "@Url.Action("AddSystemLogForUserDirectory", "Administration")";
-        var userDirectoryAzure = helpSiteBaseUrl + "/site-settings/azure-active-directory";
-        var userDirectoryDatabase = helpSiteBaseUrl + "/site-settings/database-settings";
-        var userDirectoryWindows = helpSiteBaseUrl + "/site-settings/windows-ad-settings";
+        var userDirectoryAzure = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.AzureAdSettings)";
+        var userDirectoryDatabase = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DatabaseSettings)";
+        var userDirectoryWindows = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ADSettings)";
         var SystemSettingsProperties = @Html.Raw(Json.Serialize(ViewBag.SystemSettings));
         var isAzureApplication = @Json.Serialize(isAzureApplication);
         var enableWindowsAD = @Json.Serialize(enableWindowsAD);
@@ -482,6 +482,15 @@
                                                     <circle class="path" cx="27" cy="27" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
                                                 </svg>
                                             </div>
+                                            <span class="validation-txt-errors"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-12 form-fields-top-margin no-padding">
+                                        <div class="col-xs-12 no-padding">
+                                            <label class="app-textbox-label">@T["Table names"]</label>
+                                        </div>
+                                        <div class="col-xs-12 no-padding connect-database-padding data-base-fields">
+                                            <input type="text" id="postgresql-tablenames" name="tablename" class="form-control txt-holder validation-padding" placeholder="@T["Existing table names separated by commas"]" title="" autocomplete="off">
                                             <span class="validation-txt-errors"></span>
                                         </div>
                                     </div>

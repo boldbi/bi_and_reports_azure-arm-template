@@ -1,23 +1,18 @@
 ﻿@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
+    var themeBasedImageHelper = new ThemeBasedImageHelper(globalAppSettings);
     var faviconLogo = globalAppSettings.SystemSettings.FavIcon;
     var requestUrl = new Uri(Context.Request.GetDisplayUrl());
     var isSlideshow = Convert.ToBoolean(requestUrl.Query.ToLower().Contains("isslideshow"));
-    var cdnLink = (GlobalAppSettings.HttpPathBase.ToString().Equals("/") ? string.Empty : GlobalAppSettings.HttpPathBase.ToString()) + ServerAppConfig.AppSettings.EndPoints.CdnLink + "/cdn/images";
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
-    var themeCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".css";
-    var themeMinCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".min.css";
-    var themeBaseColors = globalAppSettings.SystemSettings.AppTheme.BaseColors;
     var contactAdmin = T["Please contact your site administrator for help."];
     if (ServerAppConfig.IsSelfHosted)
     {
-        cdnLink = (GlobalAppSettings.HttpPathBase.ToString().Equals("/") ? string.Empty : GlobalAppSettings.HttpPathBase.ToString()) + ServerAppConfig.AppSettings.EndPoints.CdnLink + "/cdn/images";
         dashboardServerResourceUrl = GlobalAppSettings.HttpPathBase + ServerAppConfig.AppSettings.EndPoints.CdnLink;
     }
     else
     {
-        cdnLink = @GlobalAppSettings.CdnDomain;
         dashboardServerResourceUrl = ServerAppConfig.AppSettings.EndPoints.CdnLink.TrimEnd('/');
     }
 
@@ -50,32 +45,28 @@
         ViewBag.Title = T["No Dashboards Found"].Value;
     }
     ViewBag.Title += " - " + globalAppSettings.SystemSettings.OrganizationName;
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 <!DOCTYPE html>
 <html class="dashboard-server">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/error-page-new.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/error-page.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeMinCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/error-page-new.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/error-page.min.js"></script>
     </environment>
-
-    <style>
-          :root {
-              @themeBaseColors
-          }
-    </style>
 
     <script>
         var setPermissionUrl = "@Url.Action("SetCookieStoragePermission", "Accounts")";
@@ -96,7 +87,7 @@
                 @if (ViewBag.ItemType != null)
                 {
                     <div class="error-image-center-2">
-                        <img src="@cdnLink/static/error-pages/v1/dashboard-not-found.svg" class="error-image-2">
+                        <img src="@themeBasedImageHelper.DashboardNotFoundImage()" class="error-image-2">
                     </div>
                     <div class="error-type">@T["No dashboards found"]</div>
                     <div class="error-text">
@@ -116,7 +107,7 @@
                     if (ViewBag.Item == ItemType.Slideshow.ToString())
                     {
                         <div class="error-image-center-2">
-                            <img src="@cdnLink/static/error-pages/v1/slideshow-not-found.svg" class="error-image-2">
+                            <img src="@themeBasedImageHelper.SlideshowNotFoundImage()" class="error-image-2">
                         </div>
                         <div class="error-type">@T["Slideshow not found"]</div>
                         <div class="error-text">
@@ -126,7 +117,7 @@
                     else if (ViewBag.Item == ItemType.Datasource.ToString())
                     {
                         <div class="error-image-center-2">
-                            <img src="@cdnLink/static/error-pages/v1/datasource-not-found.svg" class="error-image-2">
+                            <img src="@themeBasedImageHelper.DatasourceNotFoundImage()" class="error-image-2">
                         </div>
                         <div class="error-type">@T["Data source not found"]</div>
                         <div class="error-text">
@@ -136,7 +127,7 @@
                     else if (ViewBag.Item == "user")
                     {
                         <div class="error-image-center-2">
-                            <img src="@cdnLink/static/error-pages/v1/user-not-found.svg" class="error-image-2">
+                            <img src="@themeBasedImageHelper.UserNotFoundImage()" class="error-image-2">
                         </div>
                         <div class="error-type">@T["User not found"]</div>
                         <div class="error-text">
@@ -146,7 +137,7 @@
                     else if (ViewBag.Item == "group")
                     {
                         <div class="error-image-center-2">
-                            <img src="@cdnLink/static/error-pages/v1/group-not-found.svg" class="error-image-2">
+                            <img src="@themeBasedImageHelper.GroupNotFoundImage()" class="error-image-2">
                         </div>
                         <div class="error-type">@T["Group not found"]</div>
                         <div class="error-text">
@@ -156,7 +147,7 @@
                     else if (ViewBag.Item == "pinboard")
                     {
                         <div class="error-image-center-2">
-                            <img src="@cdnLink/static/error-pages/v1/pinboard-not-found.svg" class="error-image-2">
+                            <img src="@themeBasedImageHelper.PinboardNotFoundImage()" class="error-image-2">
                         </div>
                         <div class="error-type">@T["Pinboard not found"]</div>
                         <div class="error-text">
@@ -167,7 +158,7 @@
                 else
                 {
                     <div class="error-image-center-2">
-                        <img src="@cdnLink/static/error-pages/v1/dashboard-not-found.svg" class="error-image-2">
+                        <img src="@themeBasedImageHelper.DashboardNotFoundImage()" class="error-image-2">
                     </div>
                     if (ViewBag.VersionNotFound != null && ViewBag.VersionNotFound == true)
                     {

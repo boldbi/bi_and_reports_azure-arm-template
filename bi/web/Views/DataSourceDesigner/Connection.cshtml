@@ -19,6 +19,8 @@
         hasSettingsPagePermissionFlag = hasSettingsPagePermissionFlag || granularPermissions[SettingsScopes.Connectors];
     }
     var hasSettingsPagePermission = hasSettingsPagePermissionFlag.ToString();
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var isEmbedTrue = (Convert.ToBoolean(url.Query.ToLower().Contains("embed_signature")) || Context.Request.QueryString.ToString().ToLower().Contains("isembed")) && !string.IsNullOrWhiteSpace(Context.Request.Query["embed_theme"]);
 }
 <!DOCTYPE html>
 
@@ -45,7 +47,33 @@
 
     <meta name="globalization:date_format" content="@_clientDateTimeInfo.ClientDateTime.DateFormat" />
     <meta name="globalization:time_format" content="@_clientDateTimeInfo.ClientDateTime.TimeFormat" />
-
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    @if (!ServerAppConfig.IsSelfHosted || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
+    {
+        <style>
+            :root {
+                --designer-font: 'Roboto','Heebo','Segoes UI' !important;
+            }
+        </style>
+    }
+    else
+    {
+        <style>
+            :root {
+                --designer-font: var(--font-family) !important;
+            }
+        </style>
+    }
+    @if (isEmbedTrue)
+    {
+        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings)" />
+    }
+    else
+    {
+        @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
+        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings)" />
+        @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    }
     <script>
         var rootUrlAction = "@rootUrl";
         var datasourceDesignerUrl = "@Url.Action("Index", "DataSourceDesigner")";
@@ -58,7 +86,10 @@
         var customHelpLinkDomain = "@(ServerAppConfig.AllowCustomHelpLink ? ServerAppConfig.AppSettings.Documentation.BaseUri : string.Empty)";
         var custombrandName = "@ServerAppConfig.CustomBrandName";
         var timeZone = "@_clientDateTimeInfo.ClientDateTime.TimeZone";
-         var isEmbed = "@isEmbed";
+        var isEmbed = "@isEmbed";
+        var dashboardCustomThemename = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : globalAppSettings.SystemSettings.CustomDashboardTheme)";
+        var customThemeAppearance = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.Appearance : globalAppSettings.SystemSettings.ThemeAppearance)";
+        var applicationTheme = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.ApplicationTheme : globalAppSettings.SystemSettings.CustomApplicationTheme)";
     </script>
     @if (isEmbed == "true")
     {

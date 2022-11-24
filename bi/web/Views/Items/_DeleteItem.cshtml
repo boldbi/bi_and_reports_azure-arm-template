@@ -88,11 +88,26 @@ else
             @switch ((ItemType)Model.Value)
             {
                 case ItemType.Category:
-                    <div class="delete-item">
-                        <span>
-                            @Html.Raw(String.Format(T["Cannot delete {0} as the Category contains dashboards."].Value, "</span><span class='delete-item-body highlight-name'>" + @ViewData["ItemName"] + "</span><span>"))
-                        </span>
-                    </div>
+                    @if (ViewBag.HasHiddenItem != null && ViewBag.HasHiddenItem)
+                    {
+                        <div class="delete-item">
+                            <span>
+                                @Html.Raw(String.Format(T["Cannot delete {0} as the Category contains dashboards."].Value, "</span><span class='delete-item-body highlight-name'>" + @ViewData["ItemName"] + "</span><span>"))
+                            </span>
+                            <strong style="float:left;padding-top:15px;width:100%" class="note">@T["Note:"]</strong>
+                            <span style="white-space:normal;float:left;padding-top:5px" class="text">
+                                @T["This category may contain a dashboard that is not listed here due to its visibility settings."]
+                            </span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="delete-item">
+                            <span>
+                                @Html.Raw(String.Format(T["Cannot delete {0} as the Category contains dashboards."].Value, "</span><span class='delete-item-body highlight-name'>" + @ViewData["ItemName"] + "</span><span>"))
+                            </span>
+                        </div>
+                    }
                     break;
                 case ItemType.Report:
                     <div class="delete-item">

@@ -23,6 +23,7 @@
     var dashboardBIUrl = new DashboardServerEndPoints(globalAppSettings).DashboardServerBIUrl();
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var dashboardDesignerResourceUrl = globalAppSettings.SystemSettings.DesignerCdnLink.TrimEnd('/');
+    var ipAddress = Context.Connection.RemoteIpAddress;
 
 }
 @section styles{
@@ -120,6 +121,7 @@ else
         var cdnLink = "@cdnLink";
         var cdnPath = "@dashboardDesignerResourceUrl/cdn/scripts/designer/";
         var isSyncfusionIdentifier = @Json.Serialize(isSyncfusionIdentifier);
+        var ipAddress = "@ipAddress";
 
         serverApp.controller("homepagesController", ["$scope", function ($scope) {
             $scope.allHomepages=allHomepages;

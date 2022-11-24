@@ -1,7 +1,6 @@
 [
   {
-    "outputFileName": "wwwroot/cdn/css/layout.css",
-    "inputFiles": [
+    "cdn/css/layout.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
       "wwwroot/Styles/EssentialJS2/fusion-theme-compatability/ej.theme.css",
@@ -20,8 +19,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/layout.js",
-    "inputFiles": [
+    "cdn/scripts/layout.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/respond.min.js",
@@ -43,22 +41,19 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/ej2-tab.js",
-    "inputFiles": [
+    "cdn/scripts/ej2-tab.js": [
       "wwwroot/Scripts/EssentialJS2/ej2.tab.min.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/signalr-bundle.js",
-    "inputFiles": [
+    "cdn/scripts/signalr-bundle.js": [
       "wwwroot/Scripts/Signalr/iwc-all.min.js",
       "wwwroot/Scripts/Signalr/iwc-signalr.js",
       "wwwroot/Scripts/Signalr/signalr-patch.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/layout-mobile.js",
-    "inputFiles": [
+    "cdn/scripts/layout-mobile.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Bootstrap/respond.min.js",
       "wwwroot/Scripts/AngularJS/angular.min.js",
@@ -78,8 +73,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/connector-page-layout.js",
-    "inputFiles": [
+    "cdn/scripts/connector-page-layout.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/respond.min.js",
@@ -96,14 +90,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/account-page.css",
-    "inputFiles": [
+    "cdn/css/account-page.css": [
       "wwwroot/Styles/scss/pages/Accounts/login.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/iframe.css",
-    "inputFiles": [
+    "cdn/css/iframe.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
@@ -112,8 +104,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/scheduleiframe.css",
-    "inputFiles": [
+    "cdn/css/scheduleiframe.css": [
       "wwwroot/Styles/Bootstrap/custom-bootstrap.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -121,8 +112,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/iframe.js",
-    "inputFiles": [
+    "cdn/scripts/iframe.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
@@ -137,8 +127,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/datasources.css",
-    "inputFiles": [
+    "cdn/css/datasources.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -152,8 +141,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/add-datasource.css",
-    "inputFiles": [
+    "cdn/css/add-datasource.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -162,8 +150,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/update-datasource.css",
-    "inputFiles": [
+    "cdn/css/update-datasource.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -172,8 +159,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/datasource-page.js",
-    "inputFiles": [
+    "cdn/scripts/datasource-page.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -212,8 +198,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/datasource-page-mobile.js",
-    "inputFiles": [
+    "cdn/scripts/datasource-page-mobile.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -246,8 +231,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/add-datasource.js",
-    "inputFiles": [
+    "cdn/scripts/add-datasource.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -258,8 +242,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/view-linked-dashboards.js",
-    "inputFiles": [
+    "cdn/scripts/view-linked-dashboards.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -292,8 +275,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/edit-datasource.js",
-    "inputFiles": [
+    "cdn/scripts/edit-datasource.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -304,8 +286,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/update-datasource.js",
-    "inputFiles": [
+    "cdn/scripts/update-datasource.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -319,8 +300,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/add-widget.css",
-    "inputFiles": [
+    "cdn/css/add-widget.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-server.css",
@@ -330,8 +310,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/widget-page.js",
-    "inputFiles": [
+    "cdn/scripts/widget-page.js": [
       "wwwroot/Scripts/EssentialJS/ej.button.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
@@ -365,8 +344,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/add-widget.js",
-    "inputFiles": [
+    "cdn/scripts/add-widget.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -375,8 +353,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/edit-widget.js",
-    "inputFiles": [
+    "cdn/scripts/edit-widget.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -385,8 +362,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/files-page.css",
-    "inputFiles": [
+    "cdn/css/files-page.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -396,8 +372,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/files-page.js",
-    "inputFiles": [
+    "cdn/scripts/files-page.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -432,8 +407,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/files-page-mobile.js",
-    "inputFiles": [
+    "cdn/scripts/files-page-mobile.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -467,8 +441,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/add-files.css",
-    "inputFiles": [
+    "cdn/css/add-files.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -479,8 +452,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/edit-files.css",
-    "inputFiles": [
+    "cdn/css/edit-files.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -491,8 +463,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/add-files.js",
-    "inputFiles": [
+    "cdn/scripts/add-files.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -508,8 +479,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/edit-files.js",
-    "inputFiles": [
+    "cdn/scripts/edit-files.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -527,22 +497,19 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/category-page.css",
-    "inputFiles": [
+    "cdn/css/category-page.css": [
       "wwwroot/Styles/scss/pages/Items.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/category-page.js",
-    "inputFiles": [
+    "cdn/scripts/category-page.js": [
       "wwwroot/Scripts/Items/Items.js",
       "wwwroot/Scripts/Items/items.add.js",
       "wwwroot/Scripts/Category/Category.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/add-category.css",
-    "inputFiles": [
+    "cdn/css/add-category.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
@@ -551,15 +518,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/add-category.js",
-    "inputFiles": [
+    "cdn/scripts/add-category.js": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Category/AddCategory.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/edit-category.css",
-    "inputFiles": [
+    "cdn/css/edit-category.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
@@ -568,15 +533,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/edit-category.js",
-    "inputFiles": [
+    "cdn/scripts/edit-category.js": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Category/EditCategory.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/tile-dashboards-page.css",
-    "inputFiles": [
+    "cdn/css/tile-dashboards-page.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Items.css",
@@ -586,8 +549,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/tile-dashboards-page.js",
-    "inputFiles": [
+    "cdn/scripts/tile-dashboards-page.js": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
       "wwwroot/Scripts/Items/items.get-link.js",
@@ -613,16 +575,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/dashboards-page.css",
-    "inputFiles": [
+    "cdn/css/dashboards-page.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/ItemsList.css",
       "wwwroot/Styles/scss/pages/ItemsView.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/dashboards-page.js",
-    "inputFiles": [
+    "cdn/scripts/dashboards-page.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -661,19 +621,18 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/add-dashboards.css",
-    "inputFiles": [
+    "cdn/css/add-dashboards.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
       "wwwroot/Styles/scss/pages/Items.css",
-      "wwwroot/Styles/scss/pages/Dialogs.css"
+      "wwwroot/Styles/scss/pages/Dialogs.css",
+      "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/add-dashboards.js",
-    "inputFiles": [
+    "cdn/scripts/add-dashboards.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/AngularJS/angular.min.js",
@@ -684,8 +643,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/edit-dashboards.css",
-    "inputFiles": [
+    "cdn/css/edit-dashboards.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-server.css",
@@ -695,8 +653,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/edit-dashboards.js",
-    "inputFiles": [
+    "cdn/scripts/edit-dashboards.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -705,23 +662,20 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/itemaction.js",
-    "inputFiles": [
+    "cdn/scripts/itemaction.js": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Items/ItemActions.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/itemversion.css",
-    "inputFiles": [
+    "cdn/css/itemversion.css": [
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/ItemVersion.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/itemversion.js",
-    "inputFiles": [
+    "cdn/scripts/itemversion.js": [
       "wwwroot/Scripts/Items/ItemVersion.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.data.min.js",
@@ -748,14 +702,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/item-user-group-suggestion.js",
-    "inputFiles": [
+    "cdn/scripts/item-user-group-suggestion.js": [
       "wwwroot/Scripts/AutoComplete/AccessibleUserGroup.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/permissionpage.css",
-    "inputFiles": [
+    "cdn/css/permissionpage.css": [
       "wwwroot/Styles/scss/pages/Permission.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -763,8 +715,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/permissionpage.js",
-    "inputFiles": [
+    "cdn/scripts/permissionpage.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -795,14 +746,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/signalr/signalr.js",
-    "inputFiles": [
+    "cdn/scripts/signalr/signalr.js": [
       "wwwroot/Scripts/Signalr/dist/browser/signalr.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/adduserpermission.css",
-    "inputFiles": [
+    "cdn/css/adduserpermission.css": [
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Permission.css",
@@ -812,8 +761,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/adduserpermission.js",
-    "inputFiles": [
+    "cdn/scripts/adduserpermission.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.globalize.min.js",
@@ -827,8 +775,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/addgrouppermission.css",
-    "inputFiles": [
+    "cdn/css/addgrouppermission.css": [
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Permission.css",
@@ -839,8 +786,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/addgrouppermission.js",
-    "inputFiles": [
+    "cdn/scripts/addgrouppermission.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.globalize.min.js",
@@ -856,8 +802,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/grouppermission.css",
-    "inputFiles": [
+    "cdn/css/grouppermission.css": [
       "wwwroot/Styles/scss/pages/Permission.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -865,8 +810,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/grouppermission.js",
-    "inputFiles": [
+    "cdn/scripts/grouppermission.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -895,8 +839,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/schedules.css",
-    "inputFiles": [
+    "cdn/css/schedules.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -908,8 +851,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/scheduleslisting.js",
-    "inputFiles": [
+    "cdn/scripts/scheduleslisting.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -948,8 +890,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/scheduleslisting-mobile.js",
-    "inputFiles": [
+    "cdn/scripts/scheduleslisting-mobile.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -983,8 +924,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/profile.js",
-    "inputFiles": [
+    "cdn/scripts/profile.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
@@ -1001,8 +941,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/profile.css",
-    "inputFiles": [
+    "cdn/css/profile.css": [
       "wwwroot/Styles/Jcrop/Jcrop.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -1011,8 +950,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/change-password.css",
-    "inputFiles": [
+    "cdn/css/change-password.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/PasswordPolicyRules.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -1020,8 +958,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/change-password.js",
-    "inputFiles": [
+    "cdn/scripts/change-password.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/ej.waitingpopup.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -1032,8 +969,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/user-active-directory.css",
-    "inputFiles": [
+    "cdn/css/user-active-directory.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -1044,8 +980,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/user-active-directory.js",
-    "inputFiles": [
+    "cdn/scripts/user-active-directory.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1074,8 +1009,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/group-active-directory.css",
-    "inputFiles": [
+    "cdn/css/group-active-directory.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -1085,8 +1019,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/group-active-directory.js",
-    "inputFiles": [
+    "cdn/scripts/group-active-directory.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1115,8 +1048,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/authentication-group-import.css",
-    "inputFiles": [
+    "cdn/css/authentication-group-import.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -1126,8 +1058,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/authentication-group-import.js",
-    "inputFiles": [
+    "cdn/scripts/authentication-group-import.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1156,8 +1087,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/user-management-module.css",
-    "inputFiles": [
+    "cdn/css/user-management-module.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -1168,8 +1098,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/user-management.js",
-    "inputFiles": [
+    "cdn/scripts/user-management.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1203,8 +1132,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/user-database-import.css",
-    "inputFiles": [
+    "cdn/css/user-database-import.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -1214,8 +1142,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/user-database-import.js",
-    "inputFiles": [
+    "cdn/scripts/user-database-import.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1246,8 +1173,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/users-groups-sync.css",
-    "inputFiles": [
+    "cdn/css/users-groups-sync.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/UsersGroupsSync.css",
@@ -1257,8 +1183,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/import-database-users-sync.css",
-    "inputFiles": [
+    "cdn/css/import-database-users-sync.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/ImportDatabaseUserSync.css",
@@ -1268,8 +1193,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/synchronize-users.js",
-    "inputFiles": [
+    "cdn/scripts/synchronize-users.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1299,8 +1223,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/synchronize-groups.js",
-    "inputFiles": [
+    "cdn/scripts/synchronize-groups.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1330,16 +1253,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/user-permissions.css",
-    "inputFiles": [
+    "cdn/css/user-permissions.css": [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/userpermission.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/user-permissions.js",
-    "inputFiles": [
+    "cdn/scripts/user-permissions.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1367,8 +1288,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/user-management-profile.css",
-    "inputFiles": [
+    "cdn/css/user-management-profile.css": [
       "wwwroot/Styles/Jcrop/Jcrop.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Pagewrapper.css",
@@ -1381,8 +1301,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/user-management-profile.js",
-    "inputFiles": [
+    "cdn/scripts/user-management-profile.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1421,8 +1340,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/groups.css",
-    "inputFiles": [
+    "cdn/css/groups.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/GroupManagement.css",
       "wwwroot/Styles/scss/pages/ItemsView.css",
@@ -1433,8 +1351,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/groups.js",
-    "inputFiles": [
+    "cdn/scripts/groups.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1465,15 +1382,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/storage-page.css",
-    "inputFiles": [
+    "cdn/css/storage-page.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Admin/SystemSettings.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/storage-page.js",
-    "inputFiles": [
+    "cdn/scripts/storage-page.js": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap-select.min.js",
@@ -1481,8 +1396,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/site-settings.css",
-    "inputFiles": [
+    "cdn/css/site-settings.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -1494,8 +1408,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/site-settings.js",
-    "inputFiles": [
+    "cdn/scripts/site-settings.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1531,58 +1444,53 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/emailActivityLog.js",
-    "inputFiles": [
+    "cdn/scripts/emailActivityLog.js": [
       "wwwroot/Scripts/Administration/EmailActivityLog.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/cors-settings.js",
-    "inputFiles": [
+    "cdn/scripts/cors-settings.js": [
       "wwwroot/Scripts/Administration/CorsSettings.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/bootstrap.js",
-    "inputFiles": [
+    "cdn/scripts/content-security-policy.js": [
+      "wwwroot/Scripts/Administration/ContentSecurityPolicy.js"
+    ]
+  },
+  {
+    "cdn/scripts/bootstrap.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/custom-domain.css",
-    "inputFiles": [
+    "cdn/css/custom-domain.css": [
       "wwwroot/Styles/scss/pages/Admin/CustomDomain.css",
       "wwwroot/Styles/scss/pages/Payment/UpdateCard.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/custom-domain.js",
-    "inputFiles": [
-      "wwwroot/Scripts/Administration/CustomDomain.js",
-      "wwwroot/Scripts/Payment/UpdateCard.js"
+    "cdn/scripts/custom-domain.js": [
+      "wwwroot/Scripts/Administration/CustomDomain.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/emailConfiguration.js",
-    "inputFiles": [
+    "cdn/scripts/emailConfiguration.js": [
       "wwwroot/Scripts/Administration/EmailConfiguration.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/intermediatedb-configuration.js",
-    "inputFiles": [
+    "cdn/scripts/intermediatedb-configuration.js": [
       "wwwroot/Scripts/Administration/InterMediateDBConfiguration.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/user-settings.js",
-    "inputFiles": [
+    "cdn/scripts/user-settings.js": [
       "wwwroot/Scripts/Administration/AccountSettings.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/schedule-synchronization.css",
-    "inputFiles": [
+    "cdn/css/schedule-synchronization.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Radiobutton.css",
       "wwwroot/Styles/scss/pages/ScheduleSynchronization.css",
@@ -1592,8 +1500,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/schedule-synchronization.js",
-    "inputFiles": [
+    "cdn/scripts/schedule-synchronization.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.globalize.min.js",
@@ -1614,8 +1521,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/notification-settings.css",
-    "inputFiles": [
+    "cdn/css/notification-settings.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -1623,8 +1529,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/notification-settings.js",
-    "inputFiles": [
+    "cdn/scripts/notification-settings.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/ej.checkbox.min.js",
       "wwwroot/Scripts/EssentialJS/ej.waitingpopup.min.js",
@@ -1633,8 +1538,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/license-settings.css",
-    "inputFiles": [
+    "cdn/css/license-settings.css": [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Admin/LicenseSettings.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
@@ -1646,8 +1550,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/license-settings.js",
-    "inputFiles": [
+    "cdn/scripts/license-settings.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.globalize.min.js",
       "wwwroot/Scripts/EssentialJS/ej.editor.min.js",
@@ -1661,22 +1564,19 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/credentials.css",
-    "inputFiles": [
+    "cdn/css/credentials.css": [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Admin/credentials.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/credentials.js",
-    "inputFiles": [
+    "cdn/scripts/credentials.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Administration/credentials.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/dashboard-settings.css",
-    "inputFiles": [
+    "cdn/css/dashboard-settings.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -1687,8 +1587,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/dashboard-settings.js",
-    "inputFiles": [
+    "cdn/scripts/dashboard-settings.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1712,23 +1611,20 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/embed-settings.css",
-    "inputFiles": [
+    "cdn/css/embed-settings.css": [
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/administration/embed-settings.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/embed-settings.js",
-    "inputFiles": [
+    "cdn/scripts/embed-settings.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Administration/embed.settings.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/update-card.css",
-    "inputFiles": [
+    "cdn/css/update-card.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -1739,8 +1635,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/update-card.js",
-    "inputFiles": [
+    "cdn/scripts/update-card.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap-select.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
@@ -1748,8 +1643,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/home.css",
-    "inputFiles": [
+    "cdn/css/home.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Home.css",
@@ -1758,8 +1652,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/home.js",
-    "inputFiles": [
+    "cdn/scripts/home.js": [
       "wwwroot/Scripts/jQuery/jsrender.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.data.min.js",
@@ -1783,8 +1676,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/addgroup.css",
-    "inputFiles": [
+    "cdn/css/addgroup.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
@@ -1794,8 +1686,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/addgroup.js",
-    "inputFiles": [
+    "cdn/scripts/addgroup.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -1805,8 +1696,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/viewgroup.css",
-    "inputFiles": [
+    "cdn/css/viewgroup.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -1816,8 +1706,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/viewgroup.js",
-    "inputFiles": [
+    "cdn/scripts/viewgroup.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -1854,16 +1743,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/editgroup.css",
-    "inputFiles": [
+    "cdn/css/editgroup.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/GroupManagement.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/deleteconfirm.css",
-    "inputFiles": [
+    "cdn/css/deleteconfirm.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/GroupManagement.css",
@@ -1874,8 +1761,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/deleteconfirm.js",
-    "inputFiles": [
+    "cdn/scripts/deleteconfirm.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -1886,8 +1772,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/editdelete.css",
-    "inputFiles": [
+    "cdn/css/editdelete.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
@@ -1897,8 +1782,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/deletegroupuser.js",
-    "inputFiles": [
+    "cdn/scripts/deletegroupuser.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
@@ -1908,8 +1792,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/schedulerdialog.js",
-    "inputFiles": [
+    "cdn/scripts/schedulerdialog.js": [
       "wwwroot/Scripts/Bootstrap/custom-bootstrap.min.js",
       "wwwroot/Scripts/Core/Server.Common.js",
       "wwwroot/Scripts/Core/Server.Core.js",
@@ -1918,16 +1801,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/schedulerrecurrence.js",
-    "inputFiles": [
+    "cdn/scripts/schedulerrecurrence.js": [
       "wwwroot/Scripts/essentialjs/i18n/ej.cultures.en-US.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/Scheduler/recurrenceType.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/datasourcerecurrencedependency.js",
-    "inputFiles": [
+    "cdn/scripts/datasourcerecurrencedependency.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Core/Server.Common.js",
@@ -1943,8 +1824,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/datasourcerecurrencedependency.css",
-    "inputFiles": [
+    "cdn/css/datasourcerecurrencedependency.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
@@ -1952,8 +1832,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/datasourcerecurrencepage.js",
-    "inputFiles": [
+    "cdn/scripts/datasourcerecurrencepage.js": [
       "wwwroot/Scripts/essentialjs/ej.editor.min.js",
       "wwwroot/Scripts/essentialjs/i18n/ej.cultures.en-US.min.js",
       "wwwroot/Scripts/essentialjs/ej.datetimepicker.min.js",
@@ -1964,8 +1843,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/datasourcerecurrence.css",
-    "inputFiles": [
+    "cdn/css/datasourcerecurrence.css": [
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Scheduler.css",
@@ -1975,8 +1853,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/datachanges.js",
-    "inputFiles": [
+    "cdn/scripts/datachanges.js": [
       "wwwroot/Scripts/essentialjs/common/ej.core.min.js",
       "wwwroot/Scripts/essentialjs/ej.datepicker.min.js",
       "wwwroot/Scripts/essentialjs/ej.timepicker.min.js",
@@ -1985,21 +1862,18 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/schedulerrecipients.js",
-    "inputFiles": [
+    "cdn/scripts/schedulerrecipients.js": [
       "wwwroot/Scripts/Scheduler/scheduleRecipients.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/emaileditor.js",
-    "inputFiles": [
+    "cdn/scripts/emaileditor.js": [
       "wwwroot/Scripts/Editor/marked.min.js",
       "wwwroot/Scripts/Scheduler/SchedulerEmailEditor.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/customexpressioneditor.js",
-    "inputFiles": [
+    "cdn/scripts/customexpressioneditor.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
@@ -2018,8 +1892,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/schedulerdialog.css",
-    "inputFiles": [
+    "cdn/css/schedulerdialog.css": [
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
@@ -2028,15 +1901,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/datachanges.css",
-    "inputFiles": [
+    "cdn/css/datachanges.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/schedulerrecurrence.css",
-    "inputFiles": [
+    "cdn/css/schedulerrecurrence.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/scss/pages/Components/Radiobutton.css",
       "wwwroot/Styles/scss/pages/Components/TimePicker.css",
@@ -2046,14 +1917,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/emaileditor.css",
-    "inputFiles": [
+    "cdn/css/emaileditor.css": [
       "wwwroot/Styles/Editor/easymde.min.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/customexpressioneditor.css",
-    "inputFiles": [
+    "cdn/css/customexpressioneditor.css": [
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
@@ -2062,15 +1931,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/notification-listing.css",
-    "inputFiles": [
+    "cdn/css/notification-listing.css": [
       "wwwroot/Styles/scss/pages/notification/user-notification.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/notification-listing.js",
-    "inputFiles": [
+    "cdn/scripts/notification-listing.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/ej.waitingpopup.min.js",
@@ -2078,8 +1945,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/comments-page.js",
-    "inputFiles": [
+    "cdn/scripts/comments-page.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
@@ -2104,8 +1970,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/comments-page.css",
-    "inputFiles": [
+    "cdn/css/comments-page.css": [
       "wwwroot/Styles/EssentialJS/ej.scroller.min.css",
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
@@ -2119,14 +1984,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/comment.js",
-    "inputFiles": [
+    "cdn/scripts/comment.js": [
       "wwwroot/Scripts/Comments/Comment.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/file-render-dashboard.css",
-    "inputFiles": [
+    "cdn/css/file-render-dashboard.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
@@ -2141,8 +2004,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/file-render-dashboard-mobile.css",
-    "inputFiles": [
+    "cdn/css/file-render-dashboard-mobile.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
@@ -2156,8 +2018,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/viewer/dashboard-viewer-v1-utilities.js",
-    "inputFiles": [
+    "cdn/scripts/viewer/dashboard-viewer-v1-utilities.js": [
       "wwwroot/Scripts/Comments/DashboardComment.js",
       "wwwroot/Scripts/Dashboards/DashboardViews.js",
       "wwwroot/Scripts/Homepages/PinWidget.js",
@@ -2165,8 +2026,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/viewer/dashboard-viewer-v1-mobile-utilities.js",
-    "inputFiles": [
+    "cdn/scripts/viewer/dashboard-viewer-v1-mobile-utilities.js": [
       "wwwroot/Scripts/Comments/DashboardComment.js",
       "wwwroot/Scripts/Dashboards/DashboardViews.js",
       "wwwroot/Scripts/Dashboards/DashboardMobile.js",
@@ -2174,15 +2034,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/update-template-dashboard.js",
-    "inputFiles": [
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+    "cdn/scripts/update-template-dashboard.js": [
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/Dashboards/TemplateDashboard.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/homepage-viewer-page.js",
-    "inputFiles": [
+    "cdn/scripts/homepage-viewer-page.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
@@ -2200,8 +2058,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/homepage-viewer-page.css",
-    "inputFiles": [
+    "cdn/css/homepage-viewer-page.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/Components/Radiobutton.css",
@@ -2213,8 +2070,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/viewer/homepages-page-v1-dependency.js",
-    "inputFiles": [
+    "cdn/scripts/viewer/homepages-page-v1-dependency.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.globalize.min.js",
@@ -2229,8 +2085,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/viewer/homepages-page-v1-utilities.js",
-    "inputFiles": [
+    "cdn/scripts/viewer/homepages-page-v1-utilities.js": [
       "wwwroot/Scripts/Items/Items.js",
       "wwwroot/Scripts/Items/items.add.js",
       "wwwroot/Scripts/DataSourceDesigner/ConnectionDialog.js",
@@ -2238,16 +2093,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/homepages-page.css",
-    "inputFiles": [
+    "cdn/css/homepages-page.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Homepages.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/homepages-page-viewer-files.css",
-    "inputFiles": [
+    "cdn/css/homepages-page-viewer-files.css": [
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/ItemsList.css",
@@ -2255,8 +2108,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/viewer/homepage-add-item-v1-dependency.js",
-    "inputFiles": [
+    "cdn/scripts/viewer/homepage-add-item-v1-dependency.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
@@ -2284,16 +2136,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/viewer/homepage-add-item-v1-utilities.js",
-    "inputFiles": [
+    "cdn/scripts/viewer/homepage-add-item-v1-utilities.js": [
       "wwwroot/Scripts/Core/Server.Common.js",
       "wwwroot/Scripts/Core/Server.Core.js",
       "wwwroot/Scripts/Homepages/HomepageAddItem.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/homepage-add-item.css",
-    "inputFiles": [
+    "cdn/css/homepage-add-item.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
@@ -2302,8 +2152,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/save-view.js",
-    "inputFiles": [
+    "cdn/scripts/save-view.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
@@ -2320,8 +2169,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/save-view-v2.js",
-    "inputFiles": [
+    "cdn/scripts/save-view-v2.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
@@ -2338,8 +2186,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/save-view.css",
-    "inputFiles": [
+    "cdn/css/save-view.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/NewMaster.css",
@@ -2351,20 +2198,17 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/error-page.css",
-    "inputFiles": [
+    "cdn/css/error-page.css": [
       "wwwroot/Styles/scss/pages/ErrorPage.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/error-page-new.css",
-    "inputFiles": [
+    "cdn/css/error-page-new.css": [
       "wwwroot/Styles/scss/pages/error/error-page.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/error-page.js",
-    "inputFiles": [
+    "cdn/scripts/error-page.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Core/Server.Common.js",
@@ -2372,14 +2216,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/tenant-registration-page.css",
-    "inputFiles": [
+    "cdn/css/tenant-registration-page.css": [
       "wwwroot/Styles/scss/serverconfiguration/tenantregistration.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/create-datasource.css",
-    "inputFiles": [
+    "cdn/css/create-datasource.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/Fonts/font-server.css",
@@ -2387,14 +2229,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/create-datasource.js",
-    "inputFiles": [
+    "cdn/scripts/create-datasource.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/addsampleitem.css",
-    "inputFiles": [
+    "cdn/css/addsampleitem.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/Dialogs.css",
@@ -2404,18 +2244,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/addsampleitem.js",
-    "inputFiles": [
-      "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
-      "wwwroot/Scripts/AngularJS/angular.min.js",
-      "wwwroot/Scripts/AngularJS/angular-filter.min.js",
-      "wwwroot/Scripts/Core/Server.Common.js",
+    "cdn/scripts/addsampleitem.js": [
       "wwwroot/Scripts/Items/AddSampleItem.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/designer/dashboard-designer.css",
-    "inputFiles": [
+    "cdn/css/designer/dashboard-designer.css": [
       "wwwroot/Styles/Bootstrap/custom-bootstrap.css",
       "wwwroot/Styles/Fonts/font-Server.css",
       "wwwroot/Styles/scss/pages/general/navigation.css",
@@ -2424,36 +2258,32 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/dashboard-designer.js",
-    "inputFiles": [
+    "cdn/scripts/designer/dashboard-designer.js": [
       "wwwroot/Scripts/AngularJS/angular.min.js",
       "wwwroot/scripts/AngularJS/angular-filter.min.js",
       "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
       "wwwroot/Scripts/AngularJS/serverApp.js",
       "wwwroot/Scripts/Bootstrap/custom-bootstrap.min.js",
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/Dashboards/DesignerNotification.js",
       "wwwroot/Scripts/Core/Server.Common.js",
       "wwwroot/Scripts/Dashboards/DashboardDesigner.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/multi-tabbed-dashboard.css",
-    "inputFiles": [
+    "cdn/css/multi-tabbed-dashboard.css": [
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/multi-tabbed-dashboard/multi-tabbed-dashboard.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/multi-tabbed-dashboard.js",
-    "inputFiles": [
+    "cdn/scripts/multi-tabbed-dashboard.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/DashboardViewerV2/multi-tabbed-dashboard.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/designer/dashboard-viewer-v2.css",
-    "inputFiles": [
+    "cdn/css/designer/dashboard-viewer-v2.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/Bootstrap/custom-bootstrap.css",
       "wwwroot/Styles/Fonts/font-server.css",
@@ -2465,8 +2295,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/designer/dashboard-viewer-mobile-v2.css",
-    "inputFiles": [
+    "cdn/css/designer/dashboard-viewer-mobile-v2.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/Bootstrap/custom-bootstrap.css",
       "wwwroot/Styles/Fonts/font-server.css",
@@ -2477,8 +2306,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/designer/dashboard-options.css",
-    "inputFiles": [
+    "cdn/css/designer/dashboard-options.css": [
       "wwwroot/Styles/scss/pages/Components/popup.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
@@ -2490,8 +2318,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/dashboard-viewer-v2.js",
-    "inputFiles": [
+    "cdn/scripts/designer/dashboard-viewer-v2.js": [
       "wwwroot/Scripts/AngularJS/angular.min.js",
       "wwwroot/Scripts/AngularJS/angular-filter.min.js",
       "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
@@ -2505,8 +2332,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/multitab-viewer.js",
-    "inputFiles": [
+    "cdn/scripts/designer/multitab-viewer.js": [
       "wwwroot/Scripts/AngularJS/angular.min.js",
       "wwwroot/Scripts/AngularJS/angular-filter.min.js",
       "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
@@ -2519,8 +2345,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/dashboard-viewer-mobile-v2.js",
-    "inputFiles": [
+    "cdn/scripts/designer/dashboard-viewer-mobile-v2.js": [
       "wwwroot/Scripts/AngularJS/angular.min.js",
       "wwwroot/Scripts/AngularJS/angular-filter.min.js",
       "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
@@ -2534,8 +2359,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/multitab-viewer-mobile.js",
-    "inputFiles": [
+    "cdn/scripts/designer/multitab-viewer-mobile.js": [
       "wwwroot/Scripts/AngularJS/angular.min.js",
       "wwwroot/Scripts/AngularJS/angular-filter.min.js",
       "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
@@ -2549,8 +2373,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/dashboard-options.js",
-    "inputFiles": [
+    "cdn/scripts/designer/dashboard-options.js": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Links/ShareLink.js",
       "wwwroot/Scripts/DashboardViewerV2/DashboardViews.js",
@@ -2558,46 +2381,40 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/multitab-dashboard-options.js",
-    "inputFiles": [
+    "cdn/scripts/designer/multitab-dashboard-options.js": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/DashboardViewerV2/DashboardViews.js",
       "wwwroot/Scripts/Items/items.info.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/dashboard-server-tour.css",
-    "inputFiles": [
+    "cdn/css/dashboard-server-tour.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-tour.min.css",
       "wwwroot/Styles/scss/pages/ServerTour.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/dashboard-server-tour.js",
-    "inputFiles": [
+    "cdn/scripts/dashboard-server-tour.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap-tour.min.js",
       "wwwroot/Scripts/Tour/ServerTour.js",
       "wwwroot/Scripts/Tour/Tour.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/dashboard-designer-tour.css",
-    "inputFiles": [
+    "cdn/css/dashboard-designer-tour.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-tour-standalone.min.css",
       "wwwroot/Styles/scss/pages/DesignerTour.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/dashboard-designer-tour.js",
-    "inputFiles": [
+    "cdn/scripts/dashboard-designer-tour.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap-tour-standalone.min.js",
       "wwwroot/Scripts/Tour/DesignerTour.js",
       "wwwroot/Scripts/Tour/Tour.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/slideshow.css",
-    "inputFiles": [
+    "cdn/css/slideshow.css": [
       "wwwroot/Styles/EssentialJS/ej.theme.min.css",
       "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -2605,8 +2422,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/slideshow.js",
-    "inputFiles": [
+    "cdn/scripts/slideshow.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/EssentialJS/ej.rotator.min.js",
@@ -2615,15 +2431,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/create-slideshow.css",
-    "inputFiles": [
+    "cdn/css/create-slideshow.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Slideshow/CreateSlideshow.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/create-slideshow.js",
-    "inputFiles": [
+    "cdn/scripts/create-slideshow.js": [
       "wwwroot/Scripts/jQuery/jquery-ui.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap-select.min.js",
       "wwwroot/Scripts/Slideshow/CreateSlideshow.js",
@@ -2631,8 +2445,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/slideshow-listing.css",
-    "inputFiles": [
+    "cdn/css/slideshow-listing.css": [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/ItemsList.css",
@@ -2643,8 +2456,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/slideshow-listing.js",
-    "inputFiles": [
+    "cdn/scripts/slideshow-listing.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
@@ -2678,8 +2490,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/dashboard-feedback.css",
-    "inputFiles": [
+    "cdn/css/dashboard-feedback.css": [
       "wwwroot/Styles/scss/pages/Feedback.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css",
       "wwwroot/Styles/scss/pages/Support/Support.css",
@@ -2688,27 +2499,23 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/dashboard-feedback.js",
-    "inputFiles": [
+    "cdn/scripts/dashboard-feedback.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/ej.tooltip.min.js",
       "wwwroot/Scripts/EssentialJS/ej.uploadbox.min.js",
+      "wwwroot/Scripts/FeedBack/Feedback.js",
+      "wwwroot/Scripts/Editor/easymde.min.js"
+    ]
+  },
+  {
+    "cdn/scripts/dashboard-feedback-viewer.js": [
       "wwwroot/Scripts/Support/Support.js",
       "wwwroot/Scripts/FeedBack/Feedback.js",
       "wwwroot/Scripts/Editor/easymde.min.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/dashboard-feedback-viewer.js",
-    "inputFiles": [
-      "wwwroot/Scripts/Support/Support.js",
-      "wwwroot/Scripts/FeedBack/Feedback.js",
-      "wwwroot/Scripts/Editor/easymde.min.js"
-    ]
-  },
-  {
-    "outputFileName": "wwwroot/cdn/css/concierge-support.css",
-    "inputFiles": [
+    "cdn/css/concierge-support.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -2716,8 +2523,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/concierge-support.js",
-    "inputFiles": [
+    "cdn/scripts/concierge-support.js": [
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/ej.checkbox.min.js",
       "wwwroot/Scripts/EssentialJS/ej.waitingpopup.min.js",
@@ -2726,8 +2532,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/view-incident.css",
-    "inputFiles": [
+    "cdn/css/view-incident.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Fonts/font-server.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
@@ -2735,14 +2540,12 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/view-incident.js",
-    "inputFiles": [
+    "cdn/scripts/view-incident.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/list-tickets.js",
-    "inputFiles": [
+    "cdn/scripts/list-tickets.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -2769,15 +2572,13 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/list-tickets.css",
-    "inputFiles": [
+    "cdn/css/list-tickets.css": [
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/TicketListing.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/connected-accounts.js",
-    "inputFiles": [
+    "cdn/scripts/connected-accounts.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -2805,16 +2606,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/connected-accounts.css",
-    "inputFiles": [
+    "cdn/css/connected-accounts.css": [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/ConnectedAccount.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/webhooks.css",
-    "inputFiles": [
+    "cdn/css/webhooks.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
       "wwwroot/Styles/scss/pages/Components/RadioButton.css",
@@ -2825,52 +2624,50 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/onboard-experience.css",
-    "inputFiles": [
+    "cdn/css/look-and-feel.css": [
+      "wwwroot/Styles/scss/pages/Admin/LookAndFeel.css",
+      "wwwroot/Styles/scss/pages/Dialogs.css"
+    ]
+  },
+  {
+    "cdn/css/onboard-experience.css": [
       "wwwroot/Styles/scss/pages/OnBoardExperience/OnBoardExperience.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/onboard-experience.js",
-    "inputFiles": [
+    "cdn/scripts/onboard-experience.js": [
       "wwwroot/Scripts/OnBoardExperience/OnBoardExperience.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/create-item-menu.css",
-    "inputFiles": [
+    "cdn/css/create-item-menu.css": [
       "wwwroot/Styles/scss/pages/general/create-item-menu.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/create-item-menu.js",
-    "inputFiles": [
+    "cdn/scripts/create-item-menu.js": [
       "wwwroot/Scripts/Items/CreateItemMenu.js",
       "wwwroot/Scripts/Items/DraftItem.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/draft-item.js",
-    "inputFiles": [
+    "cdn/scripts/draft-item.js": [
       "wwwroot/Scripts/Items/DraftItem.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/create-dashboard.css",
-    "inputFiles": [
+    "cdn/css/create-dashboard.css": [
       "wwwroot/Styles/scss/pages/dashboards/create-dashboard.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/create-dashboard.js",
-    "inputFiles": [
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+    "cdn/scripts/create-dashboard.js": [
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/Items/CreateDashboard.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/designer/datasource-designer.css",
-    "inputFiles": [
+    "cdn/css/designer/datasource-designer.css": [
       "wwwroot/Styles/Bootstrap/custom-bootstrap.css",
       "wwwroot/Styles/Fonts/font-Server.css",
       "wwwroot/Styles/scss/pages/LoaderBlue.css",
@@ -2880,71 +2677,70 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/datasource-designer.js",
-    "inputFiles": [
+    "cdn/scripts/designer/datasource-designer.js": [
       "wwwroot/Scripts/AngularJS/angular.min.js",
       "wwwroot/Scripts/AngularJS/angular-filter.min.js",
       "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
       "wwwroot/Scripts/angularjs/serverApp.js",
       "wwwroot/Scripts/Bootstrap/custom-bootstrap.min.js",
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/Dashboards/DesignerNotification.js",
       "wwwroot/Scripts/DataSourceDesigner/DataSourceDesigner.js",
       "wwwroot/Scripts/Core/Server.Common.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/designer/connection-designer.css",
-    "inputFiles": [
+    "cdn/css/designer/connection-designer.css": [
       "wwwroot/Styles/Fonts/font-Server.css",
       "wwwroot/Styles/scss/pages/LoaderBlue.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/connection-designer.js",
-    "inputFiles": [
+    "cdn/scripts/designer/connection-designer.js": [
       "wwwroot/Scripts/AngularJS/angular.min.js",
       "wwwroot/Scripts/AngularJS/angular-filter.min.js",
       "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
       "wwwroot/Scripts/angularjs/serverApp.js",
       "wwwroot/Scripts/Bootstrap/custom-bootstrap.min.js",
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/DataSourceDesigner/Connection.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/datapreview-designer.js",
-    "inputFiles": [
+    "cdn/scripts/designer/datapreview-designer.js": [
       "wwwroot/Scripts/Bootstrap/custom-bootstrap.min.js",
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/DataSourceDesigner/DataPreview.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/designer/merge-datasource.js",
-    "inputFiles": [
+    "cdn/scripts/designer/edittableorcolumn-designer.js": [
       "wwwroot/Scripts/Bootstrap/custom-bootstrap.min.js",
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
+      "wwwroot/Scripts/DataSourceDesigner/EditTableOrColumn.js"
+    ]
+  },
+  {
+    "cdn/scripts/designer/merge-datasource.js": [
+      "wwwroot/Scripts/Bootstrap/custom-bootstrap.min.js",
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/DataSourceDesigner/MergeDataSource.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/embed-login.js",
-    "inputFiles": [
+    "cdn/scripts/embed-login.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Embed/Embed.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/embed-login.css",
-    "inputFiles": [
+    "cdn/css/embed-login.css": [
       "wwwroot/Styles/scss/pages/LoaderBlue.css",
       "wwwroot/Styles/scss/pages/EmbedLogin.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/share-permission.css",
-    "inputFiles": [
+    "cdn/css/share-permission.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/RadioButton.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
@@ -2953,45 +2749,39 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/share-permission.js",
-    "inputFiles": [
+    "cdn/scripts/share-permission.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap-select.min.js",
       "wwwroot/Scripts/Items/items.get-link.js",
       "wwwroot/Scripts/Items/items.share-permission.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/default-pages.css",
-    "inputFiles": [
+    "cdn/css/default-pages.css": [
       "wwwroot/Styles/scss/pages/default/default.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/unlock-features.css",
-    "inputFiles": [
+    "cdn/css/unlock-features.css": [
       "wwwroot/Styles/scss/pages/unlockfeatures/unlockfeatures.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/unlock-features.js",
-    "inputFiles": [
+    "cdn/scripts/unlock-features.js": [
       "wwwroot/Scripts/UnlockFeatures/UnlockFeatures.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/tenant-registration.js",
-    "inputFiles": [
-      "wwwroot/Scripts/jQuery/jquery-1.10.2.min.js",
-      "wwwroot/Scripts/jQuery/jquery.signalR-2.1.2.min.js",
+    "cdn/scripts/tenant-registration.js": [
+      "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
+      "wwwroot/Scripts/jQuery/jquery.signalR-2.2.1.min.js",
       "wwwroot/Scripts/serverconfiguration/circle-progress.min.js",
       "wwwroot/Scripts/serverconfiguration/deployment-progress.js",
       "wwwroot/Scripts/Core/Server.Common.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/connector-page.css",
-    "inputFiles": [
+    "cdn/css/connector-page.css": [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Admin/SystemSettings.css",
       "wwwroot/Styles/Fonts/font-Server.css",
@@ -2999,8 +2789,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/connector-page.js",
-    "inputFiles": [
+    "cdn/scripts/connector-page.js": [
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/Scripts/Administration/DataConnector.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
@@ -3008,45 +2797,38 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/custom-widget-page.js",
-    "inputFiles": [
-      "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
+    "cdn/scripts/custom-widget-page.js": [
       "wwwroot/Scripts/Administration/Widgets.js",
       "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
       "wwwroot/Scripts/EssentialJS/ej.waitingpopup.min.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/dashboard-security.css",
-    "inputFiles": [
+    "cdn/css/dashboard-security.css": [
       "wwwroot/Styles/scss/pages/dashboardsecurity/dashboard-security.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/dashboard-security.js",
-    "inputFiles": [
+    "cdn/scripts/dashboard-security.js": [
       "wwwroot/Scripts/Items/dashboard.security.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/publish-dashboard.css",
-    "inputFiles": [
+    "cdn/css/publish-dashboard.css": [
       "wwwroot/Styles/scss/pages/publishdashboard/publish-dashboard.css",
       "wwwroot/Styles/scss/pages/publishdashboard/external-sites.css",
       "wwwroot/Styles/scss/pages/Components/RadioButton.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/publish-dashboard.js",
-    "inputFiles": [
+    "cdn/scripts/publish-dashboard.js": [
       "wwwroot/Scripts/Items/publish.dashboard.js",
       "wwwroot/Scripts/Items/external.sites.js",
       "wwwroot/Scripts/Password/ShowHidePassword.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/published-items.css",
-    "inputFiles": [
+    "cdn/css/published-items.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
@@ -3054,8 +2836,7 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/published-items.js",
-    "inputFiles": [
+    "cdn/scripts/published-items.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -3085,16 +2866,14 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/connected-sites.css",
-    "inputFiles": [
+    "cdn/css/connected-sites.css": [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/publishdashboard/external-sites.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/connected-sites.js",
-    "inputFiles": [
+    "cdn/scripts/connected-sites.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -3118,12 +2897,12 @@
       "wwwroot/Scripts/EssentialJS/ej.toolbar.min.js",
       "wwwroot/Scripts/EssentialJS/ej.menu.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
+      "wwwroot/Scripts/Password/ShowHidePassword.js",
       "wwwroot/Scripts/Items/external.sites.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/webhooks.js",
-    "inputFiles": [
+    "cdn/scripts/webhooks.js": [
       "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
       "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
       "wwwroot/Scripts/jQuery/jsrender.min.js",
@@ -3149,88 +2928,95 @@
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/webhook-settings.js",
-    "inputFiles": [
+    "cdn/scripts/webhook-settings.js": [
       "wwwroot/Scripts/Administration/WebhookSettings.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/webhook-settings.css",
-    "inputFiles": [
+    "cdn/scripts/look-and-feel.js": [
+      "wwwroot/Scripts/Administration/LookAndFeel.js"
+    ]
+  },
+  {
+    "cdn/css/webhook-settings.css": [
       "wwwroot/Styles/scss/pages/ItemsView.css",
       "wwwroot/Styles/scss/pages/Admin/WebhookSettings.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/font-server.css",
-    "inputFiles": [
+    "cdn/css/font-server.css": [
       "wwwroot/Styles/Fonts/font-Server.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/custom-ui.css",
-    "inputFiles": [
+    "cdn/css/custom-ui.css": [
       "wwwroot/Styles/scss/pages/custom-ui.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/custom-ui.js",
-    "inputFiles": [
+    "cdn/scripts/custom-ui.js": [
       "wwwroot/Scripts/Core/custom.ui.js"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/theme/light.css",
-    "inputFiles": [
+    "cdn/css/theme/light.css": [
       "wwwroot/Styles/scss/apptheme/lighttheme.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/theme/dark.css",
-    "inputFiles": [
+    "cdn/css/theme/dark.css": [
       "wwwroot/Styles/scss/apptheme/darktheme.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/privacysettings.css",
-    "inputFiles": [
+    "cdn/css/theme/lightdefault.css": [
+      "wwwroot/Styles/theme/lightDefault.css"
+    ]
+  },
+  {
+    "cdn/css/theme/darkdefault.css": [
+      "wwwroot/Styles/theme/darkDefault.css"
+    ]
+  },
+  {
+    "cdn/css/privacysettings.css": [
       "wwwroot/Styles/scss/pages/PrivacySettings.css",
       "wwwroot/Styles/scss/Components/Radiobutton.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/fonts/font-RobotoRegular.css",
-    "inputFiles": [
+    "cdn/css/fonts/font-RobotoRegular.css": [
       "wwwroot/Styles/Fonts/font-RobotoRegular.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/pinboard-embed.css",
-    "inputFiles": [
+    "cdn/css/pinboard-embed.css": [
       "wwwroot/Styles/Bootstrap/bootstrap.min.css",
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/PinboardEmbed.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/admin-menu.css",
-    "inputFiles": [
+    "cdn/css/admin-menu.css": [
       "wwwroot/Styles/scss/pages/Admin/AdminMenu.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/css/embed-config.css",
-    "inputFiles": [
+    "cdn/css/embed-config.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Administration/embed-config.css"
     ]
   },
   {
-    "outputFileName": "wwwroot/cdn/scripts/embed-config.js",
-    "inputFiles": [
+    "cdn/scripts/embed-config.js": [
       "wwwroot/Scripts/jQuery/jquery-ui.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap-select.min.js",
       "wwwroot/Scripts/Administration/embed.config.js"
+    ]
+  },
+  {
+    "cdn/scripts/jquery-ui.js": [
+      "wwwroot/Scripts/jQuery/jquery-ui.min.js"
     ]
   }
 ]

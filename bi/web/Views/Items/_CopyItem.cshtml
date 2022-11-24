@@ -7,6 +7,8 @@
     var isDashboard = ViewBag.ItemType == "Dashboard" ? true : false;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var usageAnalytics = ViewBag.IsUsageAnalytics;
+    var permision = ViewBag.ItemAddOptions as Dictionary<ItemType, bool>;
+    var hacCreateDataSourcePermission = permision.ContainsKey(ItemType.Datasource) && permision[ItemType.Datasource];
 }
 
 <script>
@@ -16,7 +18,7 @@
     var canCreateCategory = "@canCreateCategory";
     var isUsageAnalytics = "@ViewBag.IsUsageAnalytics";
     var hasAllLiveDataSource ="@ViewBag.HasAllLiveDataSource"
-
+    var hacCreateDataSourcePermission = "@hacCreateDataSourcePermission"
     function load() {
         if (($(parent.window).width()) > 1400) {
             $(".dialog").addClass("iframe");
@@ -78,7 +80,7 @@
                 {
                     <div class="col-xs-12 no-padding" id="copy-datasource-checkbox">
                         <div class="copy-datasource-division">
-                            @if (@ViewBag.HasAllLiveDataSource)
+                            @if (@ViewBag.DatasourceCount != 0 && permision.ContainsKey(ItemType.Datasource) && permision[ItemType.Datasource])
                             {
                                 @Html.CheckBox("copy-datasource", new { @class = "material-checkbox" })
                                 @Html.Hidden("copy-datasource")
@@ -88,14 +90,14 @@
                             }
                             else
                             {
-                                @Html.CheckBox("copy-datasource", new { @class = "material-checkbox", disabled = true })
+                                @Html.CheckBox("copy-datasource", new { @class = "material-checkbox", disabled = true})
                                 @Html.Hidden("copy-datasource")
-                                <label for="copy-datasource">
+                                <label for="copy-datasource" id="copy-datasource-label">
                                     <span>@T["Copy the data source"]</span>
                                 </label>
                             }
                             <div class="copy-datasource-description">
-                                @T["If this option is checked, data sources used in the dashboard will be copied and used in the copied dashboard. This option will be enabled only if all the data sources used in this dashboard has a live connection."]
+                                @T["If this option is checked, data sources used in the dashboard will be copied and used in the copied dashboard. This option will be enabled only if this dashboard has data sources."]
                             </div>
                         </div>
                     </div>

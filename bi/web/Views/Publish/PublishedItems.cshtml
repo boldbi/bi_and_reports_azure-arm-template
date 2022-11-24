@@ -1,6 +1,8 @@
 ﻿@{ var globalAppSettings = _globalAppSettings;
     ViewBag.Title = T["Published Resources"].Value + " - " + globalAppSettings.SystemSettings.OrganizationName;
-    var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/'); }
+    var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
+    ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ManagePublishedDashboards);
+}
 @section MainSection{
     <environment include="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/published-items.css" />
@@ -71,9 +73,15 @@
                                 </div>
                             </script>
                             <script type="text/x-jsrender" id="dashboard-template">
+                                {{if ItemType == "Dashboard"}}
                                 <div class="item-dashboard grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
                                     <span><a class="grid-content" href="@Url.Action("Dashboards", "Dashboards")/{{:ItemId}}/{{:CategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a></span>
                                 </div>
+                                {{else}}
+                                <div class="item-dashboard grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
+                                    <span>{{:Name}}</span>
+                                </div>
+                                {{/if}}
                             </script>
                             <script type="text/x-jsrender" id="site-name-template">
                                 <div class="item-dashboard grid-content" title="{{:SiteURL}}" data-toggle="tooltip" data-placement="top">

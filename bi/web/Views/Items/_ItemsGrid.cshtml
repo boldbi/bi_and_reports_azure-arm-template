@@ -8,9 +8,9 @@
     var isMobile = new DeviceDetection(Context).IsMobile;
     var query = ViewBag.SearchQuery;
     var customUI = globalAppSettings.SystemSettings.CustomUI;
-    var schemes = customUI?.Profiles != null ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].DataSources.Scheme).FirstOrDefault() : null;
+    var schemes = customUI?.Profiles != null && customUI.Profiles[0].DataSources != null ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].DataSources.Scheme).FirstOrDefault() : null;
     var granularPermissions = ViewBag.GranularPermissions as Dictionary<object, bool>;
-    var enablePublishModule = ServerAppConfig.EnablePublishModule;
+    var enablePublishModule = ServerAppConfig.IsSelfHosted ? ServerAppConfig.EnablePublishModule : globalAppSettings.SystemSettings.PreviewFeatures.EnablePublishModule;
 }
 <script>
     var copyIframeUrl = "@Url.Action("copyviewitem", "items")";
@@ -211,7 +211,19 @@
             </li>
             <li role="separator" class="divider @(schemes != null && !schemes.Preview ? "hide" : string.Empty)"></li>
             {{/if}}
-
+            @*{{if ItemType == "@((int)ItemType.Datasource)"}}
+            @if (ServerAppConfig.IsSelfHosted)
+            {
+                <li class="@(schemes != null && !schemes.Edit ? "hide" : string.Empty)">
+                    <a href="javascript:void(0);" title="" id="edit-table-column" data-item-id="{{:Id}}">
+                        <i class="su su-update-schema" style="padding: 0px 8px;">
+                        </i>
+                        <span>@T["Update Schema"]</span>
+                    </a>
+                </li>
+                <li role="separator" class="divider @(schemes != null && !schemes.Edit ? "hide" : string.Empty)"></li>
+            }
+            {{/if}}*@
             {{if ItemType == "@((int)ItemType.Datasource)"}}
             <li>
                 <a href="javascript:void(0);" class="get-embed-code-option-click">
@@ -283,17 +295,9 @@
             {{if !IsLocked}}
             {{if ~checkMobile()}}
             {{if CanCopy}}
-            {{if DatasourceType=="@((int)ConnectionMode.Live)" && !IsDraft}}
+            {{if !IsDraft}}
             <li class="@(schemes != null && !schemes.Copy ? "hide" : string.Empty)">
                 <a href="javascript:void(0);" title="" class="copyItem" data-action='Copy' data-itemId="{{:Id}}" data-itemname="{{:Name}}">
-                    <i class="su su-copy"></i>
-                    <span>@T["Copy Data Source"]</span>
-                </a>
-            </li>
-            <li role="separator" class="divider @(schemes != null && !schemes.Copy ? "hide" : string.Empty)"></li>
-            {{else !IsDraft}}
-            <li class="@(schemes != null && !schemes.Copy ? "hide" : string.Empty)">
-                <a title="@T["Only available for live connections"]" class="copy-disable" onclick="event.stopPropagation()" data-toggle="tooltip" data-placement="top">
                     <i class="su su-copy"></i>
                     <span>@T["Copy Data Source"]</span>
                 </a>

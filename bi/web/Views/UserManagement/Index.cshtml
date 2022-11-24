@@ -77,6 +77,8 @@
         <a class="item-name grid-content" title="{{:DisplayName}}" data-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:DisplayName}}</a>
         {{if DirectoryType == @((int)DirectoryType.AzureAD)}}
         <span class="su su-azure-ad grid-directory-icon"> </span>
+        {{else DirectoryType == @((int)DirectoryType.AzureADB2C)}}
+        <span class="su su-azure-b2c grid-directory-icon"> </span>
         {{else DirectoryType == @((int)DirectoryType.ExternalDatabase)}}
         <span class="su su-datasource grid-directory-icon"> </span>
         {{else DirectoryType == @((int)DirectoryType.WindowsAD)}}
@@ -503,6 +505,10 @@
                     @if (ViewBag.GoogleUserCount > 0)
                     {
                         <div id="ad-indication" class="ad-azure-indication"><span class="su su-google"><span class="su su-google path1"></span><span class="su su-google path2"></span><span class="su su-google path3"></span><span class="su su-google path4"></span></span> - @Html.Raw(String.Format(T["{0} User"].Value, "Google User"))</div>
+                    }
+                    @if (ViewBag.AzureADB2CUserCount > 0)
+                    {
+                        <div id="ad-indication" class="ad-azure-indication"><span class="su su-azure-b2c"></span> - @Html.Raw(String.Format(T["{0} User"].Value, "Azure AD B2C"))</div>
                     }
                 </div>
             </div>

@@ -16,6 +16,8 @@ var isIsolationCodeUpdated = false;
 var validateTimer;
 var validateInterval = 1000;
 var previousIndex = [];
+var tenantId;
+var UpdateTenantId;
 
 function fnCreate() {
     $("#checkbox-header").change(headCheckboxOnChange);
@@ -33,12 +35,12 @@ $(document).ready(function () {
     createWaitingPopup('grant-users-access-dialog');
 
     var grantUserAccessDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.GrantAccessToUsers + " - " + tenantName,
+        header: window.Server.App.LocalizationContent.GrantAccessToUsers + " - " + tenantName,
         content: document.getElementById("grant-users-access-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: provideAccesstoUsers, buttonModel: { content: window.TM.App.LocalizationContent.GrantSiteAccessButton, isPrimary: true, cssClass: 'provide-access-button' } },
-            { click: onAddUsersDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.CancelButton, cssClass: 'cancel-button' } }
+            { click: provideAccesstoUsers, buttonModel: { content: window.Server.App.LocalizationContent.GrantSiteAccessButton, isPrimary: true, cssClass: 'provide-access-button' } },
+            { click: onAddUsersDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.CancelButton, cssClass: 'cancel-button' } }
         ],
         width: "900px",
         height: "539px",
@@ -59,12 +61,12 @@ $(document).ready(function () {
     });
 
     var removeUserAccessDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.RevokeAccess,
+        header: window.Server.App.LocalizationContent.RevokeAccess,
         content: document.getElementById("user-remove-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: removeConfirm, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onUserRemoveDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.CancelButton, cssClass: 'cancel-button' } }
+            { click: removeConfirm, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onUserRemoveDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.CancelButton, cssClass: 'cancel-button' } }
         ],
         width: "472px",
         height: "auto",
@@ -162,13 +164,13 @@ $(document).ready(function () {
                     if (data.IsUserNameExist || data.IsEmailExist) {
                         if (data.IsUserNameExist) {
                             $('#username').closest('div').addClass("has-error");
-                            $("#invalid-username").html(window.TM.App.LocalizationContent.UsernameExists).css("display", "block");
+                            $("#invalid-username").html(window.Server.App.LocalizationContent.UsernameExists).css("display", "block");
                             $(".useradd-validation-messages").css("display", "block");
                             hideWaitingPopup('user-add-dialog');
                         }
                         if (data.IsEmailExist) {
                             $('#mailid').closest('div').addClass("has-error");
-                            $("#invalid-email").html(window.TM.App.LocalizationContent.EmailAddressExists).css("display", "block");
+                            $("#invalid-email").html(window.Server.App.LocalizationContent.EmailAddressExists).css("display", "block");
                             $(".useradd-validation-messages").css("display", "block");
                             hideWaitingPopup('user-add-dialog');
                         }
@@ -190,13 +192,13 @@ $(document).ready(function () {
                                         success: function (result) {
                                             var messageText = "";
                                             if (result.activation == 0) {
-                                                SuccessAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.UserAddedActivated, 7000)
+                                                SuccessAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.UserAddedActivated, 7000)
                                             }
                                             else if (result.result == "success" && result.activation == 1) {
-                                                SuccessAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.UserAdded, 7000);
+                                                SuccessAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.UserAdded, 7000);
                                             }
                                             else if (result.result == "failure" && result.isAdmin == true && result.activation == 1) {
-                                                WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.UserActivationEmailCannotSent, 7000);
+                                                WarningAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.UserActivationEmailCannotSent, 7000);
                                             }
                                             g.refresh();
                                         }
@@ -204,7 +206,7 @@ $(document).ready(function () {
                                 }
                                 else {
                                     onUserAddDialogClose();
-                                    WarningAlert(window.TM.App.LocalizationContent.AddUser, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
+                                    WarningAlert(window.Server.App.LocalizationContent.AddUser, window.Server.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
                                     g.refresh();
                                 }
                             }
@@ -325,8 +327,8 @@ function fnOnAddUserGridActionBegin(args) {
 
 function fnOnApplicationGridActionComplete(args) {
     $('[data-toggle="tooltip"]').tooltip({
-            container: 'body'
-        });
+        container: 'body'
+    });
     if (this.properties.pageSettings.totalRecordsCount != null) {
         $("#application-count").text(this.properties.pageSettings.totalRecordsCount);
     }
@@ -334,7 +336,7 @@ function fnOnApplicationGridActionComplete(args) {
         $("#application-count").text(0);
     }
 
-   
+
     if ($("#application-list-container").is(":visible")) {
         query = (window.location.search).toString();
         if (query === "?action=create-new-site") {
@@ -394,7 +396,7 @@ function getAppUsers() {
         allowPaging: true,
         allowSorting: true,
         allowSelection: true,
-        selectionSettings: { type: 'Multiple' ,mode: 'Row'},
+        selectionSettings: { type: 'Multiple', mode: 'Row' },
         pageSettings: { pageSize: 20 },
         rowSelecting: function (e) {
             this.multiSelectCtrlRequest = true;
@@ -415,7 +417,7 @@ function getAppUsers() {
             args.row.addEventListener('mouseleave', function (args) {
                 // Menu is hidden 
                 args.target.querySelector('.revoke-access').firstChild.style.visibility = "hidden";
-            }) 
+            })
         },
         dataBound: function (args) {
             $('[data-toggle="tooltip"]').tooltip(
@@ -495,10 +497,10 @@ function getAttributes() {
                 });
         },
         columns: [
-            { field: 'Name', template: "#attribute-name-template", headerText: 'Name', width: 40, allowSorting: true, allowFiltering: true },
-            { field: 'Value', template: "#attribute-value-template", headerText: 'Value', width: 60, allowSorting: true, allowFiltering: true },
-            { field: 'Description', template: "#attribute-description-template", headerText: 'Description', width: 50, allowSorting: true, allowFiltering: true },
-            { field: 'ModifiedDateString', headerText: 'Last Modified', width: 40, allowSorting: true, allowFiltering: false },
+            { field: 'Name', template: "#attribute-name-template", headerText: window.Server.App.LocalizationContent.Name, width: 40, allowSorting: true, allowFiltering: true },
+            { field: 'Value', template: "#attribute-value-template", headerText: window.Server.App.LocalizationContent.Value, width: 60, allowSorting: true, allowFiltering: true },
+            { field: 'Description', template: "#attribute-description-template", headerText: window.Server.App.LocalizationContent.Description, width: 50, allowSorting: true, allowFiltering: true },
+            { field: 'ModifiedDateString', headerText: window.Server.App.LocalizationContent.LastModified, width: 40, allowSorting: true, allowFiltering: false },
             { field: 'Options', headerText: '', template: "#options", width: 20, allowSorting: false, allowFiltering: false }
         ]
     });
@@ -524,7 +526,7 @@ function getUsersWithoutAccess() {
         url: requestUrl,
         adaptor: new ejs.data.UrlAdaptor()
     });
-    if (document.getElementById('add_users_grid').ej2_instances == null) {      
+    if (document.getElementById('add_users_grid').ej2_instances == null) {
         var addUsersGrid = new ejs.grids.Grid({
             dataSource: data,
             gridLines: 'None',
@@ -586,7 +588,8 @@ function getUsersWithoutAccess() {
 }
 
 function enableAccessButton() {
-    $(".provide-access-button").attr("disabled", selectedUsers.length == 0);}
+    $(".provide-access-button").attr("disabled", selectedUsers.length == 0);
+}
 
 function fnOnAddUserGridActionComplete(args) {
     var gridObj = document.getElementById('add_users_grid').ej2_instances[0];
@@ -639,7 +642,7 @@ $(document).on("change", ".checkbox-row", function (args) {
         previousIndex.push(index);
         gridObj.selectionModule.selectRows(previousIndex, index);
     }
-    
+
     else {
         var arrayIndex = selectedUsers.indexOf(currentId);
         var previousArrayIndex = previousIndex.indexOf(index)
@@ -732,10 +735,10 @@ function provideAccesstoUsers() {
                 userGridObj.refresh();
                 onAddUsersDialogClose();
                 if (result.status) {
-                    var content = window.TM.App.LocalizationContent.GrantedAccessTo + " " + result.count + " " + window.TM.App.LocalizationContent.UsersSuccessfully;
-                    SuccessAlert(window.TM.App.LocalizationContent.GrantSiteAccess, content, 7000);
+                    var content = window.Server.App.LocalizationContent.GrantedAccessTo.format(result.count);
+                    SuccessAlert(window.Server.App.LocalizationContent.GrantSiteAccess, content, 7000);
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.GrantSiteAccess, window.TM.App.LocalizationContent.GrantSiteAccessError, result.Message, 7000);
+                    WarningAlert(window.Server.App.LocalizationContent.GrantSiteAccess, window.Server.App.LocalizationContent.GrantSiteAccessError, result.Message, 7000);
                 }
             }
         });
@@ -767,7 +770,7 @@ function removeConfirm() {
     removeUserAccess(users);
 }
 
-function removeUserAccess(users) {
+function removeUserAccess(users) { 
     var requestUrl = $("meta[name='remove-app-access-link']").attr("content") + $("#application-id").val();
     if (users.length > 0) {
         showWaitingPopup('user-remove-confirmation-dialog');
@@ -785,10 +788,10 @@ function removeUserAccess(users) {
                 $("#remove-users-button").removeClass("show").addClass("hide");
                 document.getElementById("user-remove-confirmation-dialog").ej2_instances[0].hide();
                 if (result.status) {
-                    var content = window.TM.App.LocalizationContent.RevokedAccessFor + " " + result.count + " " + window.TM.App.LocalizationContent.UsersSuccessfully;
-                    SuccessAlert(window.TM.App.LocalizationContent.RevokeSiteAccess, content, 7000);
+                    var content = window.Server.App.LocalizationContent.RevokedAccessFor.format(result.count);
+                    SuccessAlert(window.Server.App.LocalizationContent.RevokeSiteAccess, content, 7000);
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.RevokeSiteAccess, window.TM.App.LocalizationContent.RevokeSiteAccessError, result.Message, 7000);
+                    WarningAlert(window.Server.App.LocalizationContent.RevokeSiteAccess, window.Server.App.LocalizationContent.RevokeSiteAccessError, result.Message, 7000);
                 }
                 singleUserRemove = false;
                 users = [];
@@ -832,15 +835,16 @@ $(document).on("click", ".tenant-action", function (e) {
     var action = $(this).attr("data-action").trim();
     var tenantId = $(this).attr("data-tenant-id").trim();
     var tenantName = $(this).attr("data-tenant-name").trim();
+    var tenantType = $(this).attr("data-tenant-type").trim();
     var messageContent = "Are you sure you want " + action + " site - <span class='tenant-name'>" + tenantName + "</span> ?";
     if (action === "activate") {
         headerIcon = "tick";
-        headerText = window.TM.App.LocalizationContent.Activate;
+        headerText = window.Server.App.LocalizationContent.Activate;
         actionUrl = activateTenantUrl;
     }
     else if (action === "suspend") {
         headerIcon = "suspend";
-        headerText = window.TM.App.LocalizationContent.Suspend;
+        headerText = window.Server.App.LocalizationContent.Suspend;
         actionUrl = suspendTenantUrl;
     }
     else if (action === "edit") {
@@ -850,12 +854,19 @@ $(document).on("click", ".tenant-action", function (e) {
     }
     else if (action === "delete") {
         headerIcon = "delete";
-        headerText = window.TM.App.LocalizationContent.Delete;
+        headerText = window.Server.App.LocalizationContent.Delete;
         actionUrl = deleteTenantUrl;
-        messageContent += "<br/><br/><div><span><input type='checkbox' class='material-checkbox' id='delete-database-checkbox' /><input id='delete-database-checkbox' type='hidden'/><label for='delete-database-checkbox' class='label-database'>" + window.TM.App.LocalizationContent.DeleteDatabase + "</label></span ></div><div class='tenant-delete-warning'> <span>" + window.TM.App.LocalizationContent.WarningColon + "</span><div class = 'warning-content'> " + window.TM.App.LocalizationContent.DeleteAllResourceWithoutDataBase + "</div></div>";
+        messageContent += "<br/><br/><div><span><input type='checkbox' class='material-checkbox' id='delete-database-checkbox' /><input id='delete-database-checkbox' type='hidden'/><label for='delete-database-checkbox' class='label-database'>" + window.Server.App.LocalizationContent.DeleteDatabase + "</label></span ></div><div class='tenant-delete-warning'> <span>" + window.Server.App.LocalizationContent.Warning + ":" + "</span><div class = 'warning-content'> " + window.Server.App.LocalizationContent.DeleteAllResourceWithoutDataBase + "</div></div>";
+
     }
-    if (action !== "edit") {
-        messageBox("su-" + headerIcon, headerText + " " + window.TM.App.LocalizationContent.SiteLetter, messageContent, "error", function () {
+    else if (action === "make-master") {
+        UpdateTenantId = tenantId;
+        onMasterDialogOpen(tenantName, tenantType)
+    }
+
+
+    if (action !== "edit" && action !== "make-master") {
+        messageBox("su-" + headerIcon, headerText + " " + window.Server.App.LocalizationContent.SiteLetter, messageContent, "error", function () {
             updateTenantStatus(actionUrl, tenantId, action);
         });
     }
@@ -863,15 +874,15 @@ $(document).on("click", ".tenant-action", function (e) {
 
 $(document).on("change", "#delete-database-checkbox", function () {
     if ($(this).is(":checked")) {
-        $(".warning-content").html(window.TM.App.LocalizationContent.DeleteAllResource);
+        $(".warning-content").html(window.Server.App.LocalizationContent.DeleteAllResource);
     } else {
-        $(".warning-content").html(window.TM.App.LocalizationContent.DeleteAllResourceWithoutDataBase);
+        $(".warning-content").html(window.Server.App.LocalizationContent.DeleteAllResourceWithoutDataBase);
     }
 });
 
 function updateTenantStatus(actionUrl, tenantId, action) {
     showWaitingPopup('messageBox');
-    var actionName = action === "suspend" ? window.TM.App.LocalizationContent.Suspend : action === "delete" ? window.TM.App.LocalizationContent.Delete : window.TM.App.LocalizationContent.Activate;
+    var actionName = action === "suspend" ? window.Server.App.LocalizationContent.Suspend : action === "delete" ? window.Server.App.LocalizationContent.Delete : window.Server.App.LocalizationContent.Activate;
     var isDeleteDatabase = $("#delete-database-checkbox").is(":checked");
     var input = {}
     if (action === "delete") {
@@ -891,28 +902,28 @@ function updateTenantStatus(actionUrl, tenantId, action) {
         success: function (data) {
             if (data.Success) {
                 if (action === "suspend") {
-                    SuccessAlert(actionName + " " + window.TM.App.LocalizationContent.SiteLetter, window.TM.App.LocalizationContent.SiteSuspendSuccess, 7000);
+                    SuccessAlert(actionName + " " + window.Server.App.LocalizationContent.SiteLetter, window.Server.App.LocalizationContent.SiteSuspendSuccess, 7000);
                 }
                 else if (action === "delete") {
                     if (!data.Value) {
-                        SuccessAlert(actionName + " " + window.TM.App.LocalizationContent.SiteLetter,
-                            window.TM.App.LocalizationContent.SiteDeleteSuccesswithoutdatabase,
+                        SuccessAlert(actionName + " " + window.Server.App.LocalizationContent.SiteLetter,
+                            window.Server.App.LocalizationContent.SiteDeleteSuccesswithoutdatabase,
                             7000);
                     } else {
-                        SuccessAlert(actionName + " " + window.TM.App.LocalizationContent.SiteLetter,
-                            window.TM.App.LocalizationContent.SiteDeleteSuccess,
+                        SuccessAlert(actionName + " " + window.Server.App.LocalizationContent.SiteLetter,
+                            window.Server.App.LocalizationContent.SiteDeleteSuccess,
                             7000);
                     }
                 }
                 else if (action === "activate") {
-                    SuccessAlert(actionName + " " + window.TM.App.LocalizationContent.SiteLetter, window.TM.App.LocalizationContent.SiteActivatedSuccess, 7000);
+                    SuccessAlert(actionName + " " + window.Server.App.LocalizationContent.SiteLetter, window.Server.App.LocalizationContent.SiteActivatedSuccess, 7000);
                 }
 
                 var tenantGridObj = document.getElementById('tenants_grid').ej2_instances[0];
                 tenantGridObj.refresh();
             }
             else {
-                WarningAlert(actionName + " " + window.TM.App.LocalizationContent.SiteLetter, window.TM.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
+                WarningAlert(actionName + " " + window.Server.App.LocalizationContent.SiteLetter, window.Server.App.LocalizationContent.InternalServerErrorTryAgain, data.Message, 7000);
             }
         },
         complete: function () {
@@ -939,7 +950,7 @@ function enableIsolationCode() {
 
     if ($("#isolation-code").val() == "" && isEnabled) {
         $("#update-isolation-code").attr("disabled", true);
-        $("#isolation-code-validation").html(window.TM.App.LocalizationContent.IsolationCodeValidator);
+        $("#isolation-code-validation").html(window.Server.App.LocalizationContent.IsolationCodeValidator);
     }
     else {
         $("#isolation-code-validation").html("");
@@ -959,10 +970,10 @@ $(document).on("click", "#update-isolation-code", function (e) {
         success: function (result) {
             if (result.Status) {
                 isIsolationCodeUpdated = true;
-                SuccessAlert(window.TM.App.LocalizationContent.IsolationCode, window.TM.App.LocalizationContent.IsolationCodeSucess, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.IsolationCode, window.Server.App.LocalizationContent.IsolationCodeSucess, 7000);
                 $("#update-isolation-code").attr("disabled", true);
             } else {
-                WarningAlert(window.TM.App.LocalizationContent.IsolationCode, window.TM.App.LocalizationContent.IsolationCodeError, result.Message,  7000);
+                WarningAlert(window.Server.App.LocalizationContent.IsolationCode, window.Server.App.LocalizationContent.IsolationCodeError, result.Message, 7000);
             }
             hideWaitingPopup('content-area');
         }

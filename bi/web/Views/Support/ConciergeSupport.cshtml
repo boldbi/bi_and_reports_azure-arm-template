@@ -43,7 +43,7 @@
                         </span>
                     </label>
                     <div class="info-message">
-                        <span>@Html.Raw(string.Format(T["Allow support team to access your site to check reported problem in your tenant. Please check our {0}license agreement{1}"].Value, "<a class='app-hyperlink' href='http://files2.syncfusion.com/syncfusionio/support/sla/syncfusion-concierge-service-agreement_v1.pdf' target='_blank'>", "</a>")) @T[" for this access."]</span>
+                        <span>@Html.Raw(string.Format(T["Allow support team to access your site to check reported problem in your tenant. Please check our {0}license agreement{1}"].Value, "<a class='app-hyperlink' href='https://cdn.boldbi.com/documents/concierge-support/v1/boldbi_concierge_agreement.pdf' target='_blank'>", "</a>")) @T[" for this access."]</span>
                     </div>
                 </div>
                 <div class="bi-page-footer no-padding col-xs-12">
@@ -54,6 +54,7 @@
                 </div>
             </div>
         </div>
+        @await Html.PartialAsync("../Shared/_Footer", new ViewDataDictionary(ViewData) { { "appsettings", globalAppSettings } })
     </div>
     <environment include="Development,CloudDevelopment">
         <script asp-append-version="true" src="~/js/localizationcontent.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>

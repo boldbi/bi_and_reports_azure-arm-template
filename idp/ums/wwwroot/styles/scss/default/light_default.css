@@ -31,10 +31,11 @@
   --grey-white: #ffffff;
   --input-box-border: #cccccc;
   --place-holder: #b3b3b3;
-  --section-backgroud:#ffffff;
+  --section-backgroud: #ffffff;
   --warning-900: #fff8ee;
   --warning-800: #ffebcf;
   --warning-700: #ff3b30;
+  --red-900: #fff2f2;
   --primary-branding-bg-color: var(--primary-branding-color);
   --primary-branding-border-common-color: var(--primary-branding-border-color);
   --primary-text-color: var(--primary-text-normal-color);
@@ -60,6 +61,13 @@
   --warning-bg-normal-color: var(--warning-900);
   --warning-border-normal-color: var(--warning-800);
   --warning-text-color: var(--warning-700);
+  --error-text-color: var(--warning-700);
+  --error-bg-color: var(--red-900);
+  --date-range-icon-color: var(--grey-700);
+  --date-range-popup-text-color: var(--primary-text-color);
+  --date-range-popup-date-hover-bg-color: var(--grey-200);
+  --date-range-popup-list-bg-color: var(--grey-200);
+  --date-range-bg-normal-color: var(--background);
   --warning-icon-color: #ffad42;
   --warning-toast-border: #fe5b45;
   --success-toast-border: #4bc870;

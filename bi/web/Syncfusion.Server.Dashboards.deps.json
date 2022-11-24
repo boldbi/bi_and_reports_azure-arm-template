@@ -31,11 +31,11 @@
   },
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Syncfusion.Server.Dashboards/5.2.48": {
+      "Syncfusion.Server.Dashboards/5.3.53": {
         "dependencies": {
           "AsyncFixer": "1.5.1",
           "Azure.Extensions.AspNetCore.DataProtection.Blobs": "1.2.0",
-          "Azure.Storage.Blobs": "12.10.0",
+          "Azure.Storage.Blobs": "12.13.0",
           "Exceptionless.Log4net": "4.5.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
           "Microsoft.AspNetCore.Authentication.OpenIdConnect": "3.1.8",
@@ -49,22 +49,24 @@
           "OrchardCore.Localization.Core": "1.1.0",
           "SecurityCodeScan": "3.5.4",
           "StyleCop.Analyzers": "1.2.0-beta.435",
-          "Syncfusion.Server.Base": "5.2.48",
-          "Syncfusion.Server.Base.ActiveDirectory": "5.2.48",
-          "Syncfusion.Server.Base.Collaboration": "5.2.48",
-          "Syncfusion.Server.Base.Data": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.DesignerService": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.IdPDirectory": "5.2.48",
-          "Syncfusion.Server.Base.Integrations": "5.2.48",
-          "Syncfusion.Server.Base.Item": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48",
-          "Syncfusion.Server.Base.Notification": "5.2.48",
-          "Syncfusion.Server.Base.Resources.Storage": "5.2.48",
-          "Syncfusion.Server.Base.Scheduler": "5.2.48",
-          "Syncfusion.Server.Base.TemplateGenerator": "5.2.48",
+          "Syncfusion.Server.Base": "5.3.53",
+          "Syncfusion.Server.Base.ActiveDirectory": "5.3.53",
+          "Syncfusion.Server.Base.Collaboration": "5.3.53",
+          "Syncfusion.Server.Base.Data": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.DesignerService": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.IdPDirectory": "5.3.53",
+          "Syncfusion.Server.Base.Integrations": "5.3.53",
+          "Syncfusion.Server.Base.Item": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53",
+          "Syncfusion.Server.Base.Notification": "5.3.53",
+          "Syncfusion.Server.Base.Resources.Storage": "5.3.53",
+          "Syncfusion.Server.Base.Scheduler": "5.3.53",
+          "Syncfusion.Server.Base.TemplateGenerator": "5.3.53",
+          "System.Text.Encodings.Web": "4.7.2",
+          "System.Text.RegularExpressions": "4.3.1",
           "TimeZoneConverter": "3.3.0",
           "log4net.Appender.Azure.Core": "1.0.3",
           "System.IdentityModel": "4.0.0.0",
@@ -215,7 +217,6 @@
           "System.Data": "4.0.0.0",
           "System.Diagnostics.Contracts": "4.0.4.0",
           "System.Diagnostics.Debug.Reference": "4.1.2.0",
-          "System.Diagnostics.DiagnosticSource.Reference": "4.0.5.0",
           "System.Diagnostics.EventLog": "4.0.2.0",
           "System.Diagnostics.FileVersionInfo": "4.0.4.0",
           "System.Diagnostics.Process": "4.2.2.0",
@@ -281,7 +282,6 @@
           "System.Resources.Reader": "4.1.2.0",
           "System.Resources.ResourceManager.Reference": "4.1.2.0",
           "System.Resources.Writer": "4.1.2.0",
-          "System.Runtime.CompilerServices.Unsafe.Reference": "4.0.6.0",
           "System.Runtime.CompilerServices.VisualC": "4.1.2.0",
           "System.Runtime.Reference": "4.2.2.0",
           "System.Runtime.Extensions.Reference": "4.2.2.0",
@@ -391,12 +391,10 @@
           "lib/netcoreapp3.1/AWSSDK.SimpleEmail.dll": {}
         }
       },
-      "Azure.Core/1.19.0": {
+      "Azure.Core/1.25.0": {
         "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "1.0.0",
-          "System.Buffers": "4.5.1",
-          "System.Diagnostics.DiagnosticSource": "4.6.0",
-          "System.Memory": "4.5.4",
+          "Microsoft.Bcl.AsyncInterfaces": "1.1.1",
+          "System.Diagnostics.DiagnosticSource": "6.0.0",
           "System.Memory.Data": "1.0.2",
           "System.Numerics.Vectors": "4.5.0",
           "System.Text.Encodings.Web": "4.7.2",
@@ -405,8 +403,8 @@
         },
         "runtime": {
           "lib/netcoreapp2.1/Azure.Core.dll": {
-            "assemblyVersion": "1.19.0.0",
-            "fileVersion": "1.1900.21.45105"
+            "assemblyVersion": "1.25.0.0",
+            "fileVersion": "1.2500.22.33004"
           }
         },
         "compile": {
@@ -415,7 +413,7 @@
       },
       "Azure.Extensions.AspNetCore.DataProtection.Blobs/1.2.0": {
         "dependencies": {
-          "Azure.Storage.Blobs": "12.10.0",
+          "Azure.Storage.Blobs": "12.13.0",
           "Microsoft.AspNetCore.DataProtection": "2.2.0"
         },
         "runtime": {
@@ -428,29 +426,30 @@
           "lib/netstandard2.0/Azure.Extensions.AspNetCore.DataProtection.Blobs.dll": {}
         }
       },
-      "Azure.Storage.Blobs/12.10.0": {
+      "Azure.Storage.Blobs/12.13.0": {
         "dependencies": {
-          "Azure.Storage.Common": "12.9.0",
+          "Azure.Storage.Common": "12.12.0",
           "System.Text.Json": "4.7.2"
         },
         "runtime": {
-          "lib/netstandard2.0/Azure.Storage.Blobs.dll": {
-            "assemblyVersion": "12.10.0.0",
-            "fileVersion": "12.1000.21.45803"
+          "lib/netstandard2.1/Azure.Storage.Blobs.dll": {
+            "assemblyVersion": "12.13.0.0",
+            "fileVersion": "12.1300.22.35704"
           }
         },
         "compile": {
-          "lib/netstandard2.0/Azure.Storage.Blobs.dll": {}
+          "lib/netstandard2.1/Azure.Storage.Blobs.dll": {}
         }
       },
-      "Azure.Storage.Common/12.9.0": {
+      "Azure.Storage.Common/12.12.0": {
         "dependencies": {
-          "Azure.Core": "1.19.0"
+          "Azure.Core": "1.25.0",
+          "System.IO.Hashing": "6.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/Azure.Storage.Common.dll": {
-            "assemblyVersion": "12.9.0.0",
-            "fileVersion": "12.900.21.45803"
+            "assemblyVersion": "12.12.0.0",
+            "fileVersion": "12.1200.22.35704"
           }
         },
         "compile": {
@@ -497,7 +496,7 @@
           "System.Net.Primitives": "4.3.0",
           "System.Net.Security": "4.3.2",
           "System.Net.Sockets": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading.Tasks": "4.3.0",
           "System.Threading.Thread": "4.3.0"
         },
@@ -713,7 +712,7 @@
           "Microsoft.Extensions.DependencyModel": "3.1.4",
           "Microsoft.Extensions.FileProviders.Abstractions": "2.2.0",
           "Microsoft.Extensions.Logging.Abstractions": "2.2.0",
-          "System.Diagnostics.DiagnosticSource": "4.6.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         }
       },
@@ -868,7 +867,7 @@
       },
       "Microsoft.Azure.KeyVault.Core/2.0.4": {
         "dependencies": {
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading.Tasks": "4.3.0"
         },
         "runtime": {
@@ -927,11 +926,11 @@
           "lib/netstandard2.0/Microsoft.Azure.Storage.Queue.dll": {}
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/1.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
             "assemblyVersion": "1.0.0.0",
-            "fileVersion": "4.700.19.46214"
+            "fileVersion": "4.700.20.21406"
           }
         },
         "compile": {
@@ -945,7 +944,7 @@
           "System.Collections.Immutable": "1.5.0",
           "System.Memory": "4.5.4",
           "System.Reflection.Metadata": "1.8.1",
-          "System.Runtime.CompilerServices.Unsafe": "4.7.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Text.Encoding.CodePages": "4.5.1",
           "System.Threading.Tasks.Extensions": "4.5.4"
         },
@@ -1261,7 +1260,7 @@
         }
       },
       "Microsoft.NetCore.Analyzers/3.3.2": {},
-      "Microsoft.NETCore.Platforms/3.1.0": {},
+      "Microsoft.NETCore.Platforms/3.1.4": {},
       "Microsoft.NETCore.Targets/1.1.3": {},
       "Microsoft.NetFramework.Analyzers/3.3.2": {},
       "Microsoft.OData.Core/7.6.4": {
@@ -1309,9 +1308,9 @@
       },
       "Microsoft.Win32.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "Microsoft.Win32.Registry/4.7.0": {
@@ -1322,7 +1321,7 @@
       },
       "Microsoft.Win32.SystemEvents/4.7.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "Microsoft.NETCore.Platforms": "3.1.4"
         }
       },
       "MySqlConnector/1.2.1": {
@@ -1338,7 +1337,7 @@
       },
       "NETStandard.Library/2.0.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "Microsoft.NETCore.Platforms": "3.1.4"
         }
       },
       "Newtonsoft.Json/12.0.3": {
@@ -1367,18 +1366,19 @@
           "lib/netstandard1.3/Newtonsoft.Json.Bson.dll": {}
         }
       },
-      "Npgsql/4.1.4": {
+      "Npgsql/6.0.7": {
         "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.7.0"
+          "System.Diagnostics.DiagnosticSource": "6.0.0",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         },
         "runtime": {
-          "lib/netcoreapp3.0/Npgsql.dll": {
-            "assemblyVersion": "4.1.4.0",
-            "fileVersion": "4.1.4.0"
+          "lib/netcoreapp3.1/Npgsql.dll": {
+            "assemblyVersion": "6.0.7.0",
+            "fileVersion": "6.0.7.0"
           }
         },
         "compile": {
-          "lib/netcoreapp3.0/Npgsql.dll": {}
+          "lib/netcoreapp3.1/Npgsql.dll": {}
         }
       },
       "OrchardCore.Localization.Abstractions/1.1.0": {
@@ -1429,7 +1429,7 @@
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.native.System/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
@@ -1442,13 +1442,13 @@
       },
       "runtime.native.System.Net.Http/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
       "runtime.native.System.Net.Security/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
@@ -1507,14 +1507,14 @@
         }
       },
       "SecurityCodeScan/3.5.4": {},
-      "SSH.NET/2020.0.1": {
+      "SSH.NET/2020.0.2": {
         "dependencies": {
           "SshNet.Security.Cryptography": "1.3.0"
         },
         "runtime": {
           "lib/netstandard2.0/Renci.SshNet.dll": {
-            "assemblyVersion": "2020.0.1.0",
-            "fileVersion": "2020.0.1.0"
+            "assemblyVersion": "2020.0.2.0",
+            "fileVersion": "2020.0.2.0"
           }
         },
         "compile": {
@@ -1552,9 +1552,9 @@
       },
       "System.Collections/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Collections.Concurrent/4.3.0": {
@@ -1565,7 +1565,7 @@
           "System.Globalization": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
@@ -1577,7 +1577,7 @@
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0"
         }
@@ -1588,14 +1588,14 @@
           "System.Globalization": "4.3.0",
           "System.Globalization.Extensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0"
         }
       },
       "System.ComponentModel/4.3.0": {
         "dependencies": {
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.ComponentModel.Annotations/4.5.0": {},
@@ -1603,7 +1603,7 @@
         "dependencies": {
           "System.ComponentModel": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.ComponentModel.TypeConverter/4.3.0": {
@@ -1620,7 +1620,7 @@
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0"
         }
@@ -1642,16 +1642,16 @@
       },
       "System.Console/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.IO": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Text.Encoding": "4.3.0"
         }
       },
       "System.Data.Odbc/4.7.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
+          "Microsoft.NETCore.Platforms": "3.1.4"
         },
         "runtime": {
           "lib/netstandard2.0/System.Data.Odbc.dll": {
@@ -1721,27 +1721,41 @@
       },
       "System.Diagnostics.Debug/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
-      "System.Diagnostics.DiagnosticSource/4.6.0": {},
+      "System.Diagnostics.DiagnosticSource/6.0.0": {
+        "dependencies": {
+          "System.Memory": "4.5.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/System.Diagnostics.DiagnosticSource.dll": {}
+        }
+      },
       "System.Diagnostics.Tools/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Diagnostics.TraceSource/4.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0",
           "runtime.native.System": "4.3.0"
@@ -1749,9 +1763,9 @@
       },
       "System.Diagnostics.Tracing/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.DirectoryServices.Protocols/6.0.1": {
@@ -1788,10 +1802,24 @@
           "lib/netcoreapp3.1/System.DirectoryServices.Protocols.dll": {}
         }
       },
-      "System.Drawing.Common/4.7.0": {
+      "System.Drawing.Common/4.7.2": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.Win32.SystemEvents": "4.7.0"
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.2",
+            "fileVersion": "4.700.21.6905"
+          },
+          "runtimes/win/lib/netcoreapp3.0/System.Drawing.Common.dll": {
+            "rid": "win",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.2.2",
+            "fileVersion": "4.700.21.6905"
+          }
         },
         "compile": {
           "ref/netcoreapp3.0/System.Drawing.Common.dll": {}
@@ -1810,32 +1838,32 @@
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0"
         }
       },
       "System.Globalization/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Globalization.Calendars/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Globalization": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Globalization.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0"
         }
@@ -1857,20 +1885,20 @@
       },
       "System.IO/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Text.Encoding": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
         }
       },
       "System.IO.FileSystem/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.IO": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Handles": "4.3.0",
           "System.Text.Encoding": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
@@ -1878,7 +1906,22 @@
       },
       "System.IO.FileSystem.Primitives/4.3.0": {
         "dependencies": {
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
+        }
+      },
+      "System.IO.Hashing/6.0.0": {
+        "dependencies": {
+          "System.Buffers": "4.5.1",
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.IO.Hashing.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/System.IO.Hashing.dll": {}
         }
       },
       "System.Linq/4.3.0": {
@@ -1886,7 +1929,7 @@
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0"
         }
       },
@@ -1906,7 +1949,7 @@
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0"
         }
@@ -1920,7 +1963,7 @@
           "System.Reflection": "4.3.0",
           "System.Reflection.Extensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Memory/4.5.4": {},
@@ -1941,10 +1984,10 @@
       },
       "System.Net.Http/4.3.4": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
-          "System.Diagnostics.DiagnosticSource": "4.6.0",
+          "System.Diagnostics.DiagnosticSource": "6.0.0",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.Globalization.Extensions": "4.3.0",
@@ -1952,7 +1995,7 @@
           "System.IO.FileSystem": "4.3.0",
           "System.Net.Primitives": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -1971,13 +2014,13 @@
       },
       "System.Net.NameResolution/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tracing": "4.3.0",
           "System.Globalization": "4.3.0",
           "System.Net.Primitives": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -1989,7 +2032,7 @@
       },
       "System.Net.NetworkInformation/4.1.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.Win32.Primitives": "4.3.0",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Tracing": "4.3.0",
@@ -2001,7 +2044,7 @@
           "System.Net.Primitives": "4.3.0",
           "System.Net.Sockets": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2016,15 +2059,15 @@
       },
       "System.Net.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Handles": "4.3.0"
         }
       },
       "System.Net.Requests/4.0.11": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Diagnostics.Tracing": "4.3.0",
@@ -2034,14 +2077,14 @@
           "System.Net.Primitives": "4.3.0",
           "System.Net.WebHeaderCollection": "4.0.1",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
         }
       },
       "System.Net.Security/4.3.2": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.Win32.Primitives": "4.3.0",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
@@ -2051,7 +2094,7 @@
           "System.IO": "4.3.0",
           "System.Net.Primitives": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2073,11 +2116,11 @@
       },
       "System.Net.Sockets/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.IO": "4.3.0",
           "System.Net.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading.Tasks": "4.3.0"
         }
       },
@@ -2085,7 +2128,7 @@
         "dependencies": {
           "System.Collections": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0"
         }
       },
@@ -2095,7 +2138,7 @@
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading": "4.3.0"
         }
       },
@@ -2114,12 +2157,12 @@
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Serialization.Primitives": "4.3.0",
           "System.Text.Encoding": "4.3.0",
           "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.1",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
@@ -2143,17 +2186,17 @@
       },
       "System.Private.Uri/4.3.2": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
       "System.Reflection/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.IO": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Reflection.DispatchProxy/4.5.0": {},
@@ -2162,16 +2205,16 @@
         "dependencies": {
           "System.Reflection": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Reflection.Emit.Lightweight/4.7.0": {},
       "System.Reflection.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Reflection.Metadata/1.8.1": {
@@ -2187,58 +2230,64 @@
       },
       "System.Reflection.Primitives/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Reflection.TypeExtensions/4.3.0": {
         "dependencies": {
           "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Resources.ResourceManager/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Globalization": "4.3.0",
           "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
-      "System.Runtime/4.3.0": {
+      "System.Runtime/4.3.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3"
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.7.0": {
+      "System.Runtime.CompilerServices.Unsafe/6.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
+          }
+        },
         "compile": {
-          "ref/netstandard2.0/System.Runtime.CompilerServices.Unsafe.dll": {}
+          "lib/netcoreapp3.1/System.Runtime.CompilerServices.Unsafe.dll": {}
         }
       },
       "System.Runtime.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Runtime.Handles/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Runtime.InteropServices/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
           "System.Reflection": "4.3.0",
           "System.Reflection.Primitives": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Handles": "4.3.0"
         }
       },
@@ -2246,14 +2295,14 @@
         "dependencies": {
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Runtime.Numerics/4.3.0": {
         "dependencies": {
           "System.Globalization": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0"
         }
       },
@@ -2262,7 +2311,7 @@
           "System.Collections": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Serialization.Primitives": "4.3.0"
         }
       },
@@ -2270,18 +2319,18 @@
         "dependencies": {
           "System.IO": "4.3.0",
           "System.Private.DataContractSerialization": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Runtime.Serialization.Primitives/4.3.0": {
         "dependencies": {
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Security.AccessControl/4.7.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
@@ -2291,18 +2340,18 @@
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Security.Principal": "4.3.0"
         }
       },
       "System.Security.Cryptography.Algorithms/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2317,11 +2366,11 @@
       "System.Security.Cryptography.Cng/4.5.0": {},
       "System.Security.Cryptography.Csp/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2334,12 +2383,12 @@
       },
       "System.Security.Cryptography.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Collections": "4.3.0",
           "System.Collections.Concurrent": "4.3.0",
           "System.Linq": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2353,7 +2402,7 @@
           "System.Collections": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2376,7 +2425,7 @@
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
         }
@@ -2399,7 +2448,7 @@
       },
       "System.Security.Cryptography.X509Certificates/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Collections": "4.3.0",
           "System.Diagnostics.Debug": "4.3.0",
           "System.Globalization": "4.3.0",
@@ -2408,7 +2457,7 @@
           "System.IO.FileSystem": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
@@ -2440,7 +2489,7 @@
       },
       "System.Security.Principal/4.3.0": {
         "dependencies": {
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Security.Principal.Windows/5.0.0": {
@@ -2470,9 +2519,9 @@
       },
       "System.Security.SecureString/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Handles": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Security.Cryptography.Primitives": "4.3.0",
@@ -2501,22 +2550,22 @@
       },
       "System.Text.Encoding/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Text.Encoding.CodePages/4.5.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
-          "System.Runtime.CompilerServices.Unsafe": "4.7.0"
+          "Microsoft.NETCore.Platforms": "3.1.4",
+          "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
       "System.Text.Encoding.Extensions/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Text.Encoding": "4.3.0"
         }
       },
@@ -2542,47 +2591,47 @@
           "lib/netcoreapp3.0/System.Text.Json.dll": {}
         }
       },
-      "System.Text.RegularExpressions/4.3.0": {
+      "System.Text.RegularExpressions/4.3.1": {
         "dependencies": {
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Threading/4.3.0": {
         "dependencies": {
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Threading.Tasks": "4.3.0"
         }
       },
       "System.Threading.Overlapped/4.0.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Handles": "4.3.0"
         }
       },
       "System.Threading.Tasks/4.3.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0",
+          "Microsoft.NETCore.Platforms": "3.1.4",
           "Microsoft.NETCore.Targets": "1.1.3",
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Threading.Tasks.Extensions/4.5.4": {},
       "System.Threading.Thread/4.3.0": {
         "dependencies": {
-          "System.Runtime": "4.3.0"
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Threading.ThreadPool/4.3.0": {
         "dependencies": {
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Handles": "4.3.0"
         }
       },
       "System.Windows.Extensions/4.7.0": {
         "dependencies": {
-          "System.Drawing.Common": "4.7.0"
+          "System.Drawing.Common": "4.7.2"
         }
       },
       "System.Xml.ReaderWriter/4.3.0": {
@@ -2594,12 +2643,12 @@
           "System.IO.FileSystem": "4.3.0",
           "System.IO.FileSystem.Primitives": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Runtime.InteropServices": "4.3.0",
           "System.Text.Encoding": "4.3.0",
           "System.Text.Encoding.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.1",
           "System.Threading.Tasks": "4.3.0",
           "System.Threading.Tasks.Extensions": "4.5.4"
         }
@@ -2613,7 +2662,7 @@
           "System.IO": "4.3.0",
           "System.Reflection": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Text.Encoding": "4.3.0",
           "System.Threading": "4.3.0",
@@ -2627,7 +2676,7 @@
           "System.Globalization": "4.3.0",
           "System.IO": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
           "System.Text.Encoding": "4.3.0",
           "System.Threading": "4.3.0",
@@ -2647,9 +2696,9 @@
           "System.Reflection.Primitives": "4.3.0",
           "System.Reflection.TypeExtensions": "4.3.0",
           "System.Resources.ResourceManager": "4.3.0",
-          "System.Runtime": "4.3.0",
+          "System.Runtime": "4.3.1",
           "System.Runtime.Extensions": "4.3.0",
-          "System.Text.RegularExpressions": "4.3.0",
+          "System.Text.RegularExpressions": "4.3.1",
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
@@ -2666,12 +2715,12 @@
           "lib/netstandard2.0/TimeZoneConverter.dll": {}
         }
       },
-      "Syncfusion.EmailSender.Base/5.2.48": {
+      "Syncfusion.EmailSender.Base/5.3.53": {
         "dependencies": {
           "AWSSDK.SimpleEmail": "3.5.0.34",
-          "Azure.Storage.Blobs": "12.10.0",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48"
+          "Azure.Storage.Blobs": "12.13.0",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53"
         },
         "runtime": {
           "Syncfusion.EmailSender.Base.dll": {}
@@ -2680,7 +2729,7 @@
           "Syncfusion.EmailSender.Base.dll": {}
         }
       },
-      "Syncfusion.Server.Base/5.2.48": {
+      "Syncfusion.Server.Base/5.3.53": {
         "dependencies": {
           "AWSSDK.CognitoIdentityProvider": "3.5.0.34",
           "AWSSDK.Core": "3.5.1.32",
@@ -2688,25 +2737,28 @@
           "Microsoft.AspNetCore.Mvc.ViewFeatures": "2.2.0",
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.6",
           "Newtonsoft.Json": "12.0.3",
-          "Npgsql": "4.1.4",
+          "Npgsql": "6.0.7",
           "OrchardCore.Localization.Core": "1.1.0",
           "RazorEngine.NetCore": "3.1.0",
-          "Syncfusion.EmailSender.Base": "5.2.48",
-          "Syncfusion.Server.Base.ActiveDirectory": "5.2.48",
-          "Syncfusion.Server.Base.Data": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.DesignerService": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.IdPDirectory": "5.2.48",
-          "Syncfusion.Server.Base.IntranetService": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48",
-          "Syncfusion.Server.Base.Resources.Storage": "5.2.48",
-          "Syncfusion.Server.Base.TemplateGenerator": "5.2.48",
+          "Syncfusion.EmailSender.Base": "5.3.53",
+          "Syncfusion.Server.Base.ActiveDirectory": "5.3.53",
+          "Syncfusion.Server.Base.Data": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.DesignerService": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.IdPDirectory": "5.3.53",
+          "Syncfusion.Server.Base.IntranetService": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53",
+          "Syncfusion.Server.Base.Resources.Storage": "5.3.53",
+          "Syncfusion.Server.Base.TemplateGenerator": "5.3.53",
           "System.CodeDom": "4.7.0",
           "System.Configuration.ConfigurationManager": "4.7.0",
-          "System.Drawing.Common": "4.7.0",
+          "System.Drawing.Common": "4.7.2",
           "System.IdentityModel.Tokens.Jwt": "6.5.1",
+          "System.Net.Http": "4.3.4",
+          "System.Text.Encodings.Web": "4.7.2",
+          "System.Text.RegularExpressions": "4.3.1",
           "TimeZoneConverter": "3.3.0"
         },
         "runtime": {
@@ -2716,12 +2768,13 @@
           "Syncfusion.Server.Base.dll": {}
         }
       },
-      "Syncfusion.Server.Base.ActiveDirectory/5.2.48": {
+      "Syncfusion.Server.Base.ActiveDirectory/5.3.53": {
         "dependencies": {
           "Microsoft.IdentityModel.Clients.ActiveDirectory": "5.2.7",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
           "System.DirectoryServices.Protocols": "6.0.1",
+          "System.Text.RegularExpressions": "4.3.1",
           "log4net": "2.0.12"
         },
         "runtime": {
@@ -2731,14 +2784,14 @@
           "Syncfusion.Server.Base.ActiveDirectory.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Collaboration/5.2.48": {
+      "Syncfusion.Server.Base.Collaboration/5.3.53": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
-          "Syncfusion.Server.Base": "5.2.48",
-          "Syncfusion.Server.Base.Data": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Item": "5.2.48",
-          "Syncfusion.Server.Base.Resources.Storage": "5.2.48",
+          "Syncfusion.Server.Base": "5.3.53",
+          "Syncfusion.Server.Base.Data": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Item": "5.3.53",
+          "Syncfusion.Server.Base.Resources.Storage": "5.3.53",
           "TimeZoneConverter": "3.3.0"
         },
         "runtime": {
@@ -2748,16 +2801,16 @@
           "Syncfusion.Server.Base.Collaboration.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Data/5.2.48": {
+      "Syncfusion.Server.Base.Data/5.3.53": {
         "dependencies": {
           "Microsoft.Win32.Registry": "4.7.0",
           "MySqlConnector": "1.2.1",
-          "Npgsql": "4.1.4",
-          "Syncfusion.Server.Base.ActiveDirectory": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48",
+          "Npgsql": "6.0.7",
+          "Syncfusion.Server.Base.ActiveDirectory": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53",
           "System.Data.Odbc": "4.7.0",
           "System.Data.SqlClient": "4.8.1"
         },
@@ -2768,13 +2821,13 @@
           "Syncfusion.Server.Base.Data.dll": {}
         }
       },
-      "Syncfusion.Server.Base.DataClasses/5.2.48": {
+      "Syncfusion.Server.Base.DataClasses/5.3.53": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.6",
           "Microsoft.Extensions.Localization.Abstractions": "6.0.0",
           "Newtonsoft.Json": "12.0.3",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53",
           "System.Configuration.ConfigurationManager": "4.7.0"
         },
         "runtime": {
@@ -2784,15 +2837,15 @@
           "Syncfusion.Server.Base.DataClasses.dll": {}
         }
       },
-      "Syncfusion.Server.Base.DesignerService/5.2.48": {
+      "Syncfusion.Server.Base.DesignerService/5.3.53": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.6",
           "Newtonsoft.Json": "12.0.3",
-          "Syncfusion.Server.Base.ActiveDirectory": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48"
+          "Syncfusion.Server.Base.ActiveDirectory": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53"
         },
         "runtime": {
           "Syncfusion.Server.Base.DesignerService.dll": {}
@@ -2801,7 +2854,7 @@
           "Syncfusion.Server.Base.DesignerService.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Encryption/5.2.48": {
+      "Syncfusion.Server.Base.Encryption/5.3.53": {
         "runtime": {
           "Syncfusion.Server.Base.Encryption.dll": {}
         },
@@ -2809,14 +2862,14 @@
           "Syncfusion.Server.Base.Encryption.dll": {}
         }
       },
-      "Syncfusion.Server.Base.IdPDirectory/5.2.48": {
+      "Syncfusion.Server.Base.IdPDirectory/5.3.53": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
-          "Syncfusion.Server.Base.ActiveDirectory": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48"
+          "Syncfusion.Server.Base.ActiveDirectory": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53"
         },
         "runtime": {
           "Syncfusion.Server.Base.IdPDirectory.dll": {}
@@ -2825,12 +2878,12 @@
           "Syncfusion.Server.Base.IdPDirectory.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Integrations/5.2.48": {
+      "Syncfusion.Server.Base.Integrations/5.3.53": {
         "dependencies": {
-          "Syncfusion.Server.Base": "5.2.48",
-          "Syncfusion.Server.Base.Data": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48"
+          "Syncfusion.Server.Base": "5.3.53",
+          "Syncfusion.Server.Base.Data": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53"
         },
         "runtime": {
           "Syncfusion.Server.Base.Integrations.dll": {}
@@ -2839,11 +2892,11 @@
           "Syncfusion.Server.Base.Integrations.dll": {}
         }
       },
-      "Syncfusion.Server.Base.IntranetService/5.2.48": {
+      "Syncfusion.Server.Base.IntranetService/5.3.53": {
         "dependencies": {
-          "Syncfusion.EmailSender.Base": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48"
+          "Syncfusion.EmailSender.Base": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53"
         },
         "runtime": {
           "Syncfusion.Server.Base.IntranetService.dll": {}
@@ -2852,12 +2905,12 @@
           "Syncfusion.Server.Base.IntranetService.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Item/5.2.48": {
+      "Syncfusion.Server.Base.Item/5.3.53": {
         "dependencies": {
-          "Syncfusion.Server.Base": "5.2.48",
-          "Syncfusion.Server.Base.Data": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Resources.Storage": "5.2.48",
+          "Syncfusion.Server.Base": "5.3.53",
+          "Syncfusion.Server.Base.Data": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Resources.Storage": "5.3.53",
           "TimeZoneConverter": "3.3.0"
         },
         "runtime": {
@@ -2867,10 +2920,11 @@
           "Syncfusion.Server.Base.Item.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Logger/5.2.48": {
+      "Syncfusion.Server.Base.Logger/5.3.53": {
         "dependencies": {
           "Exceptionless.Log4net": "4.5.0",
           "System.Configuration.ConfigurationManager": "4.7.0",
+          "System.Text.RegularExpressions": "4.3.1",
           "log4net": "2.0.12",
           "log4net.Appender.Azure.Core": "1.0.3"
         },
@@ -2881,7 +2935,7 @@
           "Syncfusion.Server.Base.Logger.dll": {}
         }
       },
-      "Syncfusion.Server.Base.MarkdownSharp/5.2.48": {
+      "Syncfusion.Server.Base.MarkdownSharp/5.3.53": {
         "dependencies": {
           "Microsoft.Extensions.Configuration.Abstractions": "3.1.6",
           "System.Configuration.ConfigurationManager": "4.7.0"
@@ -2893,13 +2947,13 @@
           "Syncfusion.Server.Base.MarkdownSharp.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Notification/5.2.48": {
+      "Syncfusion.Server.Base.Notification/5.3.53": {
         "dependencies": {
-          "Syncfusion.Server.Base": "5.2.48",
-          "Syncfusion.Server.Base.Collaboration": "5.2.48",
-          "Syncfusion.Server.Base.Data": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Item": "5.2.48"
+          "Syncfusion.Server.Base": "5.3.53",
+          "Syncfusion.Server.Base.Collaboration": "5.3.53",
+          "Syncfusion.Server.Base.Data": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Item": "5.3.53"
         },
         "runtime": {
           "Syncfusion.Server.Base.Notification.dll": {}
@@ -2908,11 +2962,11 @@
           "Syncfusion.Server.Base.Notification.dll": {}
         }
       },
-      "Syncfusion.Server.Base.NotificationSender/5.2.48": {
+      "Syncfusion.Server.Base.NotificationSender/5.3.53": {
         "dependencies": {
           "Newtonsoft.Json": "12.0.3",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48"
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53"
         },
         "runtime": {
           "Syncfusion.Server.Base.NotificationSender.dll": {}
@@ -2921,14 +2975,14 @@
           "Syncfusion.Server.Base.NotificationSender.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Resources.Storage/5.2.48": {
+      "Syncfusion.Server.Base.Resources.Storage/5.3.53": {
         "dependencies": {
-          "Azure.Storage.Blobs": "12.10.0",
-          "Syncfusion.Server.Base.ActiveDirectory": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48",
+          "Azure.Storage.Blobs": "12.13.0",
+          "Syncfusion.Server.Base.ActiveDirectory": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53",
           "log4net": "2.0.12"
         },
         "runtime": {
@@ -2938,25 +2992,26 @@
           "Syncfusion.Server.Base.Resources.Storage.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Scheduler/5.2.48": {
+      "Syncfusion.Server.Base.Scheduler/5.3.53": {
         "dependencies": {
           "FluentFTP": "35.2.1",
-          "SSH.NET": "2020.0.1",
-          "Syncfusion.Server.Base": "5.2.48",
-          "Syncfusion.Server.Base.ActiveDirectory": "5.2.48",
-          "Syncfusion.Server.Base.Data": "5.2.48",
-          "Syncfusion.Server.Base.DataClasses": "5.2.48",
-          "Syncfusion.Server.Base.DesignerService": "5.2.48",
-          "Syncfusion.Server.Base.Encryption": "5.2.48",
-          "Syncfusion.Server.Base.IdPDirectory": "5.2.48",
-          "Syncfusion.Server.Base.Integrations": "5.2.48",
-          "Syncfusion.Server.Base.Item": "5.2.48",
-          "Syncfusion.Server.Base.Logger": "5.2.48",
-          "Syncfusion.Server.Base.MarkdownSharp": "5.2.48",
-          "Syncfusion.Server.Base.NotificationSender": "5.2.48",
-          "Syncfusion.Server.Base.Resources.Storage": "5.2.48",
-          "Syncfusion.Server.Base.TemplateGenerator": "5.2.48",
-          "System.ServiceModel.Primitives": "4.7.0"
+          "SSH.NET": "2020.0.2",
+          "Syncfusion.Server.Base": "5.3.53",
+          "Syncfusion.Server.Base.ActiveDirectory": "5.3.53",
+          "Syncfusion.Server.Base.Data": "5.3.53",
+          "Syncfusion.Server.Base.DataClasses": "5.3.53",
+          "Syncfusion.Server.Base.DesignerService": "5.3.53",
+          "Syncfusion.Server.Base.Encryption": "5.3.53",
+          "Syncfusion.Server.Base.IdPDirectory": "5.3.53",
+          "Syncfusion.Server.Base.Integrations": "5.3.53",
+          "Syncfusion.Server.Base.Item": "5.3.53",
+          "Syncfusion.Server.Base.Logger": "5.3.53",
+          "Syncfusion.Server.Base.MarkdownSharp": "5.3.53",
+          "Syncfusion.Server.Base.NotificationSender": "5.3.53",
+          "Syncfusion.Server.Base.Resources.Storage": "5.3.53",
+          "Syncfusion.Server.Base.TemplateGenerator": "5.3.53",
+          "System.ServiceModel.Primitives": "4.7.0",
+          "System.Text.RegularExpressions": "4.3.1"
         },
         "runtime": {
           "Syncfusion.Server.Base.Scheduler.dll": {}
@@ -2965,9 +3020,9 @@
           "Syncfusion.Server.Base.Scheduler.dll": {}
         }
       },
-      "Syncfusion.Server.Base.TemplateGenerator/5.2.48": {
+      "Syncfusion.Server.Base.TemplateGenerator/5.3.53": {
         "dependencies": {
-          "Syncfusion.Server.Base.DataClasses": "5.2.48"
+          "Syncfusion.Server.Base.DataClasses": "5.3.53"
         },
         "runtime": {
           "Syncfusion.Server.Base.TemplateGenerator.dll": {}
@@ -3877,12 +3932,6 @@
         },
         "compileOnly": true
       },
-      "System.Diagnostics.DiagnosticSource.Reference/4.0.5.0": {
-        "compile": {
-          "System.Diagnostics.DiagnosticSource.dll": {}
-        },
-        "compileOnly": true
-      },
       "System.Diagnostics.EventLog/4.0.2.0": {
         "compile": {
           "System.Diagnostics.EventLog.dll": {}
@@ -4273,12 +4322,6 @@
         },
         "compileOnly": true
       },
-      "System.Runtime.CompilerServices.Unsafe.Reference/4.0.6.0": {
-        "compile": {
-          "System.Runtime.CompilerServices.Unsafe.dll": {}
-        },
-        "compileOnly": true
-      },
       "System.Runtime.CompilerServices.VisualC/4.1.2.0": {
         "compile": {
           "System.Runtime.CompilerServices.VisualC.dll": {}
@@ -4648,7 +4691,7 @@
     }
   },
   "libraries": {
-    "Syncfusion.Server.Dashboards/5.2.48": {
+    "Syncfusion.Server.Dashboards/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -4681,12 +4724,12 @@
       "path": "awssdk.simpleemail/3.5.0.34",
       "hashPath": "awssdk.simpleemail.3.5.0.34.nupkg.sha512"
     },
-    "Azure.Core/1.19.0": {
+    "Azure.Core/1.25.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lcDjG635DPE4fU5tqSueVMmzrx0QrIfPuY0+y6evHN5GanQ0GB+/4nuMHMmoNPwEow6OUPkJu4cZQxfHJQXPdA==",
-      "path": "azure.core/1.19.0",
-      "hashPath": "azure.core.1.19.0.nupkg.sha512"
+      "sha512": "sha512-X8Dd4sAggS84KScWIjEbFAdt2U1KDolQopTPoHVubG2y3CM54f9l6asVrP5Uy384NWXjsspPYaJgz5xHc+KvTA==",
+      "path": "azure.core/1.25.0",
+      "hashPath": "azure.core.1.25.0.nupkg.sha512"
     },
     "Azure.Extensions.AspNetCore.DataProtection.Blobs/1.2.0": {
       "type": "package",
@@ -4695,19 +4738,19 @@
       "path": "azure.extensions.aspnetcore.dataprotection.blobs/1.2.0",
       "hashPath": "azure.extensions.aspnetcore.dataprotection.blobs.1.2.0.nupkg.sha512"
     },
-    "Azure.Storage.Blobs/12.10.0": {
+    "Azure.Storage.Blobs/12.13.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-yaijs9DPfn34C/X4TX+0TAxANEhuKSrFE650gkF9g1pz/nQljv86zOOtDwNwD5UsAY5LyrOiCASGo2dhuIxvdg==",
-      "path": "azure.storage.blobs/12.10.0",
-      "hashPath": "azure.storage.blobs.12.10.0.nupkg.sha512"
+      "sha512": "sha512-h5ZxRwmS/U1NOFwd+MuHJe4To1hEPu/yeBIKS1cbAHTDc+7RBZEjPf1VFeUZsIIuHvU/AzXtcRaph9BHuPRNMQ==",
+      "path": "azure.storage.blobs/12.13.0",
+      "hashPath": "azure.storage.blobs.12.13.0.nupkg.sha512"
     },
-    "Azure.Storage.Common/12.9.0": {
+    "Azure.Storage.Common/12.12.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-GuoigTmzz9HrCGdcdu7LyjD4pDr2XPt72LlWWTDyno+nYrjyuNwpwRFBvK/brxJvQFRHofQcBskf8vOxVxnI8g==",
-      "path": "azure.storage.common/12.9.0",
-      "hashPath": "azure.storage.common.12.9.0.nupkg.sha512"
+      "sha512": "sha512-Ms0XsZ/D9Pcudfbqj+rWeCkhx/ITEq8isY0jkor9JFmDAEHsItFa2XrWkzP3vmJU6EsXQrk4snH63HkW/Jksvg==",
+      "path": "azure.storage.common/12.12.0",
+      "hashPath": "azure.storage.common.12.12.0.nupkg.sha512"
     },
     "Exceptionless/4.5.0": {
       "type": "package",
@@ -5017,12 +5060,12 @@
       "path": "microsoft.azure.storage.queue/11.2.2",
       "hashPath": "microsoft.azure.storage.queue.11.2.2.nupkg.sha512"
     },
-    "Microsoft.Bcl.AsyncInterfaces/1.0.0": {
+    "Microsoft.Bcl.AsyncInterfaces/1.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-K63Y4hORbBcKLWH5wnKgzyn7TOfYzevIEwIedQHBIkmkEBA9SCqgvom+XTuE+fAFGvINGkhFItaZ2dvMGdT5iw==",
-      "path": "microsoft.bcl.asyncinterfaces/1.0.0",
-      "hashPath": "microsoft.bcl.asyncinterfaces.1.0.0.nupkg.sha512"
+      "sha512": "sha512-yuvf07qFWFqtK3P/MRkEKLhn5r2UbSpVueRziSqj0yJQIKFwG1pq9mOayK3zE5qZCTs0CbrwL9M6R8VwqyGy2w==",
+      "path": "microsoft.bcl.asyncinterfaces/1.1.1",
+      "hashPath": "microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.Analyzers/3.0.0": {
       "type": "package",
@@ -5276,12 +5319,12 @@
       "path": "microsoft.netcore.analyzers/3.3.2",
       "hashPath": "microsoft.netcore.analyzers.3.3.2.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/3.1.0": {
+    "Microsoft.NETCore.Platforms/3.1.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-z7aeg8oHln2CuNulfhiLYxCVMPEwBl3rzicjvIX+4sUuCwvXw5oXQEtbiU2c0z4qYL5L3Kmx0mMA/+t/SbY67w==",
-      "path": "microsoft.netcore.platforms/3.1.0",
-      "hashPath": "microsoft.netcore.platforms.3.1.0.nupkg.sha512"
+      "sha512": "sha512-9/y05/CuxE+j184Nr4KihhB9KcUkvGojmD4JV4Vt/mHhVZR+eOCD5WCM+CXye9K0OFMsaPXbN+IcaIpjgBGZmg==",
+      "path": "microsoft.netcore.platforms/3.1.4",
+      "hashPath": "microsoft.netcore.platforms.3.1.4.nupkg.sha512"
     },
     "Microsoft.NETCore.Targets/1.1.3": {
       "type": "package",
@@ -5381,12 +5424,12 @@
       "path": "newtonsoft.json.bson/1.0.1",
       "hashPath": "newtonsoft.json.bson.1.0.1.nupkg.sha512"
     },
-    "Npgsql/4.1.4": {
+    "Npgsql/6.0.7": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qLwnSF7GAAxxrNFH3EprG352CJbhTCIDkk9PJ3/6aBeMOZBq+QMI1Yxsi9aUrBJwE51PaMLIYw0eq/bv9CGQTw==",
-      "path": "npgsql/4.1.4",
-      "hashPath": "npgsql.4.1.4.nupkg.sha512"
+      "sha512": "sha512-HhD5q/VUJY++tCzc0eCrhtsxmUdP7NxNhUMOdYW6sqpC6NRlFLvUDf5JyRj0gOGkXe3Tn49toaisgvLqlzQ2JQ==",
+      "path": "npgsql/6.0.7",
+      "hashPath": "npgsql.6.0.7.nupkg.sha512"
     },
     "OrchardCore.Localization.Abstractions/1.1.0": {
       "type": "package",
@@ -5556,12 +5599,12 @@
       "path": "securitycodescan/3.5.4",
       "hashPath": "securitycodescan.3.5.4.nupkg.sha512"
     },
-    "SSH.NET/2020.0.1": {
+    "SSH.NET/2020.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-DhVeQ8JzoS8Z25VwZfQ/9HEjTO8eWs4ldsMkcMsUFK7TFc8GnpxBeRBj3X8mc5+rwvzZNNmLDm08a8TpPZNF/g==",
-      "path": "ssh.net/2020.0.1",
-      "hashPath": "ssh.net.2020.0.1.nupkg.sha512"
+      "sha512": "sha512-G0dNlTBAM00KZXv1wWVwgg26d9/METcM6qWBpNQwllzQmmbu+Zu+FS1L1X4fFgGdPu3e8k9mmTBu6SwtQ0614g==",
+      "path": "ssh.net/2020.0.2",
+      "hashPath": "ssh.net.2020.0.2.nupkg.sha512"
     },
     "SshNet.Security.Cryptography/1.3.0": {
       "type": "package",
@@ -5696,12 +5739,12 @@
       "path": "system.diagnostics.debug/4.3.0",
       "hashPath": "system.diagnostics.debug.4.3.0.nupkg.sha512"
     },
-    "System.Diagnostics.DiagnosticSource/4.6.0": {
+    "System.Diagnostics.DiagnosticSource/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mbBgoR0rRfl2uimsZ2avZY8g7Xnh1Mza0rJZLPcxqiMWlkGukjmRkuMJ/er+AhQuiRIh80CR/Hpeztr80seV5g==",
-      "path": "system.diagnostics.diagnosticsource/4.6.0",
-      "hashPath": "system.diagnostics.diagnosticsource.4.6.0.nupkg.sha512"
+      "sha512": "sha512-frQDfv0rl209cKm1lnwTgFPzNigy2EKk1BS3uAvHvlBVKe5cymGyHO+Sj+NLv5VF/AhHsqPIUUwya5oV4CHMUw==",
+      "path": "system.diagnostics.diagnosticsource/6.0.0",
+      "hashPath": "system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512"
     },
     "System.Diagnostics.Tools/4.3.0": {
       "type": "package",
@@ -5731,12 +5774,12 @@
       "path": "system.directoryservices.protocols/6.0.1",
       "hashPath": "system.directoryservices.protocols.6.0.1.nupkg.sha512"
     },
-    "System.Drawing.Common/4.7.0": {
+    "System.Drawing.Common/4.7.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-v+XbyYHaZjDfn0ENmJEV1VYLgGgCTx1gnfOBcppowbpOAriglYgGCvFCPr2EEZyBvXlpxbEsTwkOlInl107ahA==",
-      "path": "system.drawing.common/4.7.0",
-      "hashPath": "system.drawing.common.4.7.0.nupkg.sha512"
+      "sha512": "sha512-I2y4KBK3VCvU/WqE2xv7NjQ67maXHttkFSHYKgU2evrG9Yqh0oFjfORXt5hZTk+BVjdyFo2h0/YQZsca33BGmg==",
+      "path": "system.drawing.common/4.7.2",
+      "hashPath": "system.drawing.common.4.7.2.nupkg.sha512"
     },
     "System.Dynamic.Runtime/4.3.0": {
       "type": "package",
@@ -5793,6 +5836,13 @@
       "sha512": "sha512-6QOb2XFLch7bEc4lIcJH49nJN2HV+OC3fHDgsLVsBVBk3Y4hFAnOBGzJ2lUu7CyDDFo9IBWkSsnbkT6IBwwiMw==",
       "path": "system.io.filesystem.primitives/4.3.0",
       "hashPath": "system.io.filesystem.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.IO.Hashing/6.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rfm2jYCaUeGysFEZjDe7j1R4x6Z6BzumS/vUT5a1AA/AWJuGX71PoGB0RmpyX3VmrGqVnAwtfMn39OHR8Y/5+g==",
+      "path": "system.io.hashing/6.0.0",
+      "hashPath": "system.io.hashing.6.0.0.nupkg.sha512"
     },
     "System.Linq/4.3.0": {
       "type": "package",
@@ -5990,19 +6040,19 @@
       "path": "system.resources.resourcemanager/4.3.0",
       "hashPath": "system.resources.resourcemanager.4.3.0.nupkg.sha512"
     },
-    "System.Runtime/4.3.0": {
+    "System.Runtime/4.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
-      "path": "system.runtime/4.3.0",
-      "hashPath": "system.runtime.4.3.0.nupkg.sha512"
+      "sha512": "sha512-abhfv1dTK6NXOmu4bgHIONxHyEqFjW8HwXPmpY9gmll+ix9UNo4XDcmzJn6oLooftxNssVHdJC1pGT9jkSynQg==",
+      "path": "system.runtime/4.3.1",
+      "hashPath": "system.runtime.4.3.1.nupkg.sha512"
     },
-    "System.Runtime.CompilerServices.Unsafe/4.7.0": {
+    "System.Runtime.CompilerServices.Unsafe/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IpU1lcHz8/09yDr9N+Juc7SCgNUz+RohkCQI+KsWKR67XxpFr8Z6c8t1iENCXZuRuNCc4HBwme/MDHNVCwyAKg==",
-      "path": "system.runtime.compilerservices.unsafe/4.7.0",
-      "hashPath": "system.runtime.compilerservices.unsafe.4.7.0.nupkg.sha512"
+      "sha512": "sha512-/iUeP3tq1S0XdNNoMz5C9twLSrM/TH+qElHkXWaPvuNOt+99G75NrV0OS2EqHx5wMN7popYjpc8oTjC1y16DLg==",
+      "path": "system.runtime.compilerservices.unsafe/6.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
     },
     "System.Runtime.Extensions/4.3.0": {
       "type": "package",
@@ -6214,12 +6264,12 @@
       "path": "system.text.json/4.7.2",
       "hashPath": "system.text.json.4.7.2.nupkg.sha512"
     },
-    "System.Text.RegularExpressions/4.3.0": {
+    "System.Text.RegularExpressions/4.3.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RpT2DA+L660cBt1FssIE9CAGpLFdFPuheB7pLpKpn6ZXNby7jDERe8Ua/Ne2xGiwLVG2JOqziiaVCGDon5sKFA==",
-      "path": "system.text.regularexpressions/4.3.0",
-      "hashPath": "system.text.regularexpressions.4.3.0.nupkg.sha512"
+      "sha512": "sha512-N0kNRrWe4+nXOWlpLT4LAY5brb8caNFlUuIRpraCVMDLYutKkol1aV079rQjLuSxKMJT2SpBQsYX9xbcTMmzwg==",
+      "path": "system.text.regularexpressions/4.3.1",
+      "hashPath": "system.text.regularexpressions.4.3.1.nupkg.sha512"
     },
     "System.Threading/4.3.0": {
       "type": "package",
@@ -6305,97 +6355,97 @@
       "path": "timezoneconverter/3.3.0",
       "hashPath": "timezoneconverter.3.3.0.nupkg.sha512"
     },
-    "Syncfusion.EmailSender.Base/5.2.48": {
+    "Syncfusion.EmailSender.Base/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base/5.2.48": {
+    "Syncfusion.Server.Base/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.ActiveDirectory/5.2.48": {
+    "Syncfusion.Server.Base.ActiveDirectory/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Collaboration/5.2.48": {
+    "Syncfusion.Server.Base.Collaboration/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Data/5.2.48": {
+    "Syncfusion.Server.Base.Data/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.DataClasses/5.2.48": {
+    "Syncfusion.Server.Base.DataClasses/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.DesignerService/5.2.48": {
+    "Syncfusion.Server.Base.DesignerService/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Encryption/5.2.48": {
+    "Syncfusion.Server.Base.Encryption/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.IdPDirectory/5.2.48": {
+    "Syncfusion.Server.Base.IdPDirectory/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Integrations/5.2.48": {
+    "Syncfusion.Server.Base.Integrations/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.IntranetService/5.2.48": {
+    "Syncfusion.Server.Base.IntranetService/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Item/5.2.48": {
+    "Syncfusion.Server.Base.Item/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Logger/5.2.48": {
+    "Syncfusion.Server.Base.Logger/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.MarkdownSharp/5.2.48": {
+    "Syncfusion.Server.Base.MarkdownSharp/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Notification/5.2.48": {
+    "Syncfusion.Server.Base.Notification/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.NotificationSender/5.2.48": {
+    "Syncfusion.Server.Base.NotificationSender/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Resources.Storage/5.2.48": {
+    "Syncfusion.Server.Base.Resources.Storage/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Scheduler/5.2.48": {
+    "Syncfusion.Server.Base.Scheduler/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.TemplateGenerator/5.2.48": {
+    "Syncfusion.Server.Base.TemplateGenerator/5.3.53": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -7145,11 +7195,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Diagnostics.DiagnosticSource.Reference/4.0.5.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
     "System.Diagnostics.EventLog/4.0.2.0": {
       "type": "referenceassembly",
       "serviceable": false,
@@ -7471,11 +7516,6 @@
       "sha512": ""
     },
     "System.Resources.Writer/4.1.2.0": {
-      "type": "referenceassembly",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "System.Runtime.CompilerServices.Unsafe.Reference/4.0.6.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

@@ -91,6 +91,7 @@ $(document).ready(function () {
         $(".selector-icons").addClass("icon-alignment");
         $(".selector").removeClass("selector-alignment");
         $(".selector-content").addClass("content-alignment");
+        $(".make-master-checkbox").hide();
         getTenant(tenantId);
     } else {
         if (isBoldBI) {
@@ -184,7 +185,7 @@ $(document).ready(function () {
                     $("#input-domain").closest("div").addClass("e-error");
                     $("#domain-validation-error").css("display", "block");
                     $("#enable-ssl").css("margin-bottom", "15px");
-                    $("#domain-validation-error").html(window.TM.App.LocalizationContent.InvalidDomain);
+                    $("#domain-validation-error").html(window.Server.App.LocalizationContent.InvalidDomain);
                 }
                 else {
                     $("#input-domain").closest("div").removeClass("e-error");
@@ -202,7 +203,7 @@ $(document).ready(function () {
         if (!useSiteIdentifierEnable && $("#tenant-identifier").val() != "" && actionType.toLowerCase() == "edit" && $("#tenant-registration-form").find(".e-error").length == 0) {
             $("#tenant-identifier").closest("div").addClass("e-error");
             $("#tenant-identifier-validation-error").css("display", "block");
-            $("#tenant-identifier-validation-error").html(window.TM.App.LocalizationContent.DisAllowTenantIdentifier);
+            $("#tenant-identifier-validation-error").html(window.Server.App.LocalizationContent.DisAllowTenantIdentifier);
         }
         if (($("#input-domain").val() != prevDomain || $('input[name="identifier"]').prop("checked")) && !useSiteIdentifierEnable) {
             siteIdentifierValidation();
@@ -409,12 +410,12 @@ $(document).ready(function () {
             $(".tenant-registration-form").removeClass("hide").addClass("show");
             $("#dialog-header").css("display", "none");
             $("#header-title").show();
-            $("#header-title").html(window.TM.App.LocalizationContent.SiteCreation);
+            $("#header-title").html(window.Server.App.LocalizationContent.SiteCreation);
             if (item === "dashboards") {
-                $("#header-description").html(window.TM.App.LocalizationContent.BoldBiMultiTenancy);
+                $("#header-description").html(window.Server.App.LocalizationContent.BoldBiMultiTenancy);
             }
             else {
-                $("#header-description").html(window.TM.App.LocalizationContent.BoldReportsMultiTenancy);
+                $("#header-description").html(window.Server.App.LocalizationContent.BoldReportsMultiTenancy);
             }
             if ($('input[name="identifier"]').prop("checked")) {
                 $("#tenant-identifier").attr("disabled", true);
@@ -425,14 +426,14 @@ $(document).ready(function () {
             $("#details-next").removeClass("user update").addClass("database");
             moveStepper("back", 1);
             $("#header-logo").css("display", "inline-block");
-            $("#details-next").attr("value", window.TM.App.LocalizationContent.NextButton).removeClass("next-alignment");
+            $("#details-next").attr("value", window.Server.App.LocalizationContent.NextButton).removeClass("next-alignment");
             if ($("#txt-password-db").is(":text")) {
                 $("#txt-password-db").parent().find(".show-hide-password").click();
                 $("#txt-password-db").parent().find(".tooltip").css("display", "none");
             }
         }
         else if ($("#details-next").hasClass("data-security")) {
-            $("#details-next").attr("value", window.TM.App.LocalizationContent.NextButton);
+            $("#details-next").attr("value", window.Server.App.LocalizationContent.NextButton);
             $(".tenant-registration-form").removeClass("show").addClass("hide");
             $(".tenant-user-form").removeClass("show").addClass("hide");
             $(".storage-form").removeClass("show").addClass("hide");
@@ -448,14 +449,14 @@ $(document).ready(function () {
 
                 $("#no-need-datastore").css("display", "none");
 
-                $("#header-title").html(window.TM.App.LocalizationContent.SelectDatabaseTitle);
-                $("#header-description").text(window.TM.App.LocalizationContent.PlaceToCreateShare + " " + window.TM.App.LocalizationContent.DashboardsDot).show();
+                $("#header-title").html(window.Server.App.LocalizationContent.SelectDatabaseTitle);
+                $("#header-description").text(window.Server.App.LocalizationContent.PlaceToCreateShare.format("dashboards")).show();
                 $("#search-area").hide();
                 $(".storage-form #system-settings-filestorage-container").hide();
             }
             else {
-                $("#header-title").html(window.TM.App.LocalizationContent.SelectDatabaseTitle);
-                $("#header-description").text(window.TM.App.LocalizationContent.PlaceToCreateShare + " " + window.TM.App.LocalizationContent.ReportsDot).show();
+                $("#header-title").html(window.Server.App.LocalizationContent.SelectDatabaseTitle);
+                $("#header-description").text(window.Server.App.LocalizationContent.PlaceToCreateShare.format("reports")).show();
             }
 
             $("#details-back").show().removeClass("back-button");
@@ -479,7 +480,7 @@ $(document).ready(function () {
             moveStepper("back", 3);
             $("#details-back").show().addClass("back-button");
             $("#search-area").hide();
-            $("#header-title").html(window.TM.App.LocalizationContent.SelectStorage);
+            $("#header-title").html(window.Server.App.LocalizationContent.SelectStorage);
             $("#header-title").show();
             if (getDropDownValue("database-type").toLowerCase() === "postgresql" || getDropDownValue("database-type").toLowerCase() === "mysql") {
                 $('.auth-type').removeClass("show").addClass("hide");
@@ -504,14 +505,14 @@ $(document).ready(function () {
 
             $(".tenant-user-form, #step-3").removeClass("show").addClass("hide");
             $(".data-security-form").removeClass("show").addClass("hide");
-            $("#details-next").attr("value", window.TM.App.LocalizationContent.NextButton);
+            $("#details-next").attr("value", window.Server.App.LocalizationContent.NextButton);
             $("#details-next").removeClass("user").addClass("data-security");
 
             if (!isBoldReportsTenantType()) {
-                $("#header-description").html(window.TM.App.LocalizationContent.StorageBIMsg).show();
+                $("#header-description").html(window.Server.App.LocalizationContent.StorageBIMsg).show();
             }
             else {
-                $("#header-description").text(window.TM.App.LocalizationContent.StorageReportsMsg).show();
+                $("#header-description").text(window.Server.App.LocalizationContent.StorageReportsMsg).show();
                 $("#details-back").show().removeClass("back-button");
 
                 if (!isBoldBI) {
@@ -531,12 +532,12 @@ $(document).ready(function () {
                 else {
                     $('.auth-type').removeClass("hide").addClass("show");
                 }
-                $("#header-title").html(window.TM.App.LocalizationContent.ConfigureDataSecurity);
+                $("#header-title").html(window.Server.App.LocalizationContent.ConfigureDataSecurity);
                 $("#header-description").hide();
                 $(".tenant-user-form, #step-3").removeClass("show").addClass("hide");
                 $(".data-security-form").removeClass("hide").addClass("show");
 
-                $("#details-next").attr("value", window.TM.App.LocalizationContent.NextButton);
+                $("#details-next").attr("value", window.Server.App.LocalizationContent.NextButton);
                 $("#details-next").removeClass("submit").addClass("user").removeAttr("disabled");
                 moveStepper("back", 4);
             }
@@ -557,14 +558,14 @@ $(document).ready(function () {
 
                 $(".tenant-user-form, #step-3").removeClass("show").addClass("hide");
                 $(".data-security-form").removeClass("show").addClass("hide");
-                $("#details-next").attr("value", window.TM.App.LocalizationContent.NextButton);
+                $("#details-next").attr("value", window.Server.App.LocalizationContent.NextButton);
                 $("#details-next").removeClass("user").addClass("data-security");
 
                 if (!isBoldReportsTenantType()) {
-                    $("#header-description").html(window.TM.App.LocalizationContent.StorageBIMsg).show();
+                    $("#header-description").html(window.Server.App.LocalizationContent.StorageBIMsg).show();
                 }
                 else {
-                    $("#header-description").text(window.TM.App.LocalizationContent.StorageReportsMsg).show();
+                    $("#header-description").text(window.Server.App.LocalizationContent.StorageReportsMsg).show();
                     $("#details-back").show().removeClass("back-button");
 
                     if (!isBoldBI) {
@@ -613,7 +614,8 @@ function addTenant() {
         TenantName: $("#tenant-name").val(),
         TenantIdentifier: $("#tenant-identifier").val(),
         DNS: $(".site-domain").html(),
-        UseSiteIdentifier: useSiteIdentifierEnable
+        UseSiteIdentifier: useSiteIdentifierEnable,
+        IsMaster: $(".make-master-checkbox").is(":checked")
     };
 
     var brandingType = getDropDownValue("branding-type");
@@ -633,7 +635,7 @@ function nextToUserPage() {
         $(".tenant-registration-form, #step-1").removeClass("show").addClass("hide");
         $("#stepper #current-step").text("3");
         $(".tenant-user-form, #step-3").removeClass("hide").addClass("show");
-        $("#details-next").attr("value", window.TM.App.LocalizationContent.CreateLaunchSite);
+        $("#details-next").attr("value", window.Server.App.LocalizationContent.CreateLaunchSite);
         $("#details-next").removeClass("data-security").addClass("submit").removeAttr("disabled");
         $("#details-next").removeClass("user").addClass("submit").removeAttr("disabled");
         $(".data-security-form").removeClass("show").addClass("hide");
@@ -642,8 +644,8 @@ function nextToUserPage() {
         $("#header-title").show();
         $("#header-description").show();
         $("#details-back").show().removeClass("back-button");
-        $("#header-title").html(window.TM.App.LocalizationContent.SelectSiteAdmin);
-        $("#header-description").text(window.TM.App.LocalizationContent.AdminControlSite);
+        $("#header-title").html(window.Server.App.LocalizationContent.SelectSiteAdmin);
+        $("#header-description").text(window.Server.App.LocalizationContent.AdminControlSite);
         $(".storage-form #system-settings-filestorage-container").hide();
         $(".storage-checkbox").hide();
         $(".storage-form, #step-2").removeClass("show").addClass("hide");
@@ -687,11 +689,11 @@ function getTenant(id) {
                 haveTenantIdentifier = data.TenantDetails.Tenant.UseSiteIdentifier;
                 if (isBoldReportsTenantType()) {
                     item = "reports";
-                    $("#header-description").html(window.TM.App.LocalizationContent.BoldReportsMultiTenancy);
+                    $("#header-description").html(window.Server.App.LocalizationContent.BoldReportsMultiTenancy);
                 }
                 else {
                     item = "dashboards";
-                    $("#header-description").html(window.TM.App.LocalizationContent.BoldBiMultiTenancy);
+                    $("#header-description").html(window.Server.App.LocalizationContent.BoldBiMultiTenancy);
                 }
                 if (useSiteIdentifierEnable && data.TenantDetails.Tenant.UseSiteIdentifier) {
                     $(".site-url-identifier").removeClass("hide");
@@ -805,7 +807,7 @@ function updateTenant(waitingPopUpElement, connectionString) {
             if (data.result == true) {
                 parent.hideWaitingPopup(waitingPopUpElement);
                 parent.document.getElementById("add-tenant-popup").ej2_instances[0].hide();
-                parent.messageBox("su-edit", window.TM.App.LocalizationContent.UpdateSite, window.TM.App.LocalizationContent.SiteUpdated, "success", function () {
+                parent.messageBox("su-edit", window.Server.App.LocalizationContent.UpdateSite, window.Server.App.LocalizationContent.SiteUpdated, "success", function () {
                     parent.onCloseMessageBox();
                 });
                 var tenantGridObj = parent.document.getElementById('tenants_grid').ej2_instances[0];
@@ -814,7 +816,7 @@ function updateTenant(waitingPopUpElement, connectionString) {
             else {
                 parent.hideWaitingPopup(waitingPopUpElement);
                 parent.document.getElementById("add-tenant-popup").ej2_instances[0].hide();
-                parent.messageBox("su-edit", window.TM.App.LocalizationContent.UpdateSite, window.TM.App.LocalizationContent.SiteUpdateFailed, "success", function () {
+                parent.messageBox("su-edit", window.Server.App.LocalizationContent.UpdateSite, window.Server.App.LocalizationContent.SiteUpdateFailed, "success", function () {
                     parent.onCloseMessageBox();
                 });
             }
@@ -878,7 +880,7 @@ function tenantNameIdentiferCheck(tenantName, tenantIdentifier) {
                     else if (data.Result && tenantName != tenantNameinDB) {
                         $("#tenant-name").closest("div").addClass("e-error");
                         $("#tenant-name-validation-error").css("display", "block");
-                        $("#tenant-name-validation-error").html(window.TM.App.LocalizationContent.SiteNameExists);
+                        $("#tenant-name-validation-error").html(window.Server.App.LocalizationContent.SiteNameExists);
                     } else {
                         $("#tenant-name").closest("div").removeClass("e-error");
                         $("#tenant-name-validation-error").css("display", "none");
@@ -900,7 +902,7 @@ function tenantNameIdentiferCheck(tenantName, tenantIdentifier) {
     } else {
         $("#tenant-identifier").closest("div").addClass("has-error");
         $("#tenant-identifier-validation-error").css("display", "block");
-        $("#tenant-identifier-validation-error").html(window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+        $("#tenant-identifier-validation-error").html(window.Server.App.LocalizationContent.AvoidSpecailCharacters);
         if (actionType.toLowerCase() != "edit") {
             $("#tenant-name, #details-next, #tenant-identifier").removeAttr("disabled");
         } else {
@@ -913,20 +915,20 @@ function tenantNameIdentiferCheck(tenantName, tenantIdentifier) {
 function nextToDatabasePage() {
     $("#dialog-header").css("display", "block");
     $("#header-logo").css("display", "none");
-    $("#header-title").html(window.TM.App.LocalizationContent.SelectDatabaseTitle);
-    $("#header-description").html(window.TM.App.LocalizationContent.PlaceToCreateShare + " " + item + ".");
+    $("#header-title").html(window.Server.App.LocalizationContent.SelectDatabaseTitle);
+    $("#header-description").html(window.Server.App.LocalizationContent.PlaceToCreateShare.format(item));
     $("#used-tenant-name").html($("#tenant-name").val());
 
     if (isBoldReportsTenantType()) {
         var helpData = "Enterprise Reporting";
         $("#used-tenant-identifier").html($(".url-part").text().replace(/\s/g, '').replace("i.e", ''));
-        $(".db-name-info").html(window.TM.App.LocalizationContent.DatabaseInfoReports);
+        $(".db-name-info").html(window.Server.App.LocalizationContent.DatabaseInfoReports.format("Enterprise Reporting"));
         $(".tenant-sql-db-content").html(helpData);
     }
     else {
         var helpData = "Embedded BI";
         $("#used-tenant-identifier").html($(".url-part").text().replace(/\s/g, '').replace("i.e", ''));
-        $(".db-name-info").html(window.TM.App.LocalizationContent.DatabaseInfoBI);
+        $(".db-name-info").html(window.Server.App.LocalizationContent.DatabaseInfoBI.format("Embedded BI"));
         $(".tenant-sql-db-content").html(helpData);
     }
 
@@ -956,10 +958,10 @@ function nextToDatabasePage() {
     }
     autoFocus("txt-servername");
     if (actionType.toLowerCase() === "edit") {
-        $("#details-next").attr("value", window.TM.App.LocalizationContent.UpdateButton);
+        $("#details-next").attr("value", window.Server.App.LocalizationContent.UpdateButton);
         $("#details-next").removeClass("database").addClass("update");
     } else {
-        $("#details-next").attr("value", window.TM.App.LocalizationContent.NextButton);
+        $("#details-next").attr("value", window.Server.App.LocalizationContent.NextButton);
         $("#details-next").removeClass("database").addClass("storage-config");
     }
 
@@ -968,12 +970,12 @@ function nextToDatabasePage() {
 
 function nextToStoragePage() {
     $("#header-title").show();
-    $("#header-title").html(window.TM.App.LocalizationContent.SelectStorage);
+    $("#header-title").html(window.Server.App.LocalizationContent.SelectStorage);
     $("#header-description").show();
     if (!isBoldReportsTenantType()) {
-        $("#header-description").html(window.TM.App.LocalizationContent.StorageBIMsg);
+        $("#header-description").html(window.Server.App.LocalizationContent.StorageBIMsg);
     } else {
-        $("#header-description").html(window.TM.App.LocalizationContent.StorageReportsMsg);
+        $("#header-description").html(window.Server.App.LocalizationContent.StorageReportsMsg);
     }
 
     moveStepper("front", 3);
@@ -1033,7 +1035,7 @@ function nextToStoragePage() {
 
 function nextToDataSecurityPage() {
     $("#header-title").show();
-    $("#header-title").html(window.TM.App.LocalizationContent.ConfigureDataSecurity);
+    $("#header-title").html(window.Server.App.LocalizationContent.ConfigureDataSecurity);
     $("#header-description").html("");
 
     if (isAzureApplication) {
@@ -1125,6 +1127,15 @@ function enableIsolationCode() {
         $("#isolation-code-validation").html("");
         document.getElementById("site-isolation-code").ej2_instances[0].value = null;
         $("#site-isolation-code").closest('div').removeClass("e-error");
+        $("#details-next").removeAttr("disabled");
+    }
+
+    if (document.getElementById("site-isolation-code").ej2_instances[0].value == null && isEnabled) {
+        $("#details-next").attr("disabled", true);
+        $("#isolation-code-validation").html(window.Server.App.LocalizationContent.IsolationCodeValidator);
+    }
+    else {
+        $("#isolation-code-validation").html("");
         $("#details-next").removeAttr("disabled");
     }
 }

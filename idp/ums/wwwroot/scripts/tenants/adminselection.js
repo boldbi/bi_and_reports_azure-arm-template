@@ -1,5 +1,6 @@
 ﻿var isSafari = navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1;
 var addAdminsGrid;
+var getMasterValue;
 
 $(document).ready(function () {
     createWaitingPopup('add-admin-element');
@@ -24,7 +25,7 @@ $(document).ready(function () {
             timeOut = setTimeout(function () {
                 PerformSearch(element);
             }, 900);
-        }
+        }  
     });
 });
 
@@ -69,7 +70,7 @@ function listUsersForAdminSelection() {
                 },
                 {
                     template: "#admin-template",
-                    headerText: window.TM.App.LocalizationContent.Name,
+                    headerText: window.Server.App.LocalizationContent.Name,
                     width: 115,
                     headerTemplate: "#admin-header",
                     field: "DisplayName",

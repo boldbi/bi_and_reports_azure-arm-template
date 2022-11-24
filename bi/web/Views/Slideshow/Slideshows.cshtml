@@ -12,7 +12,7 @@
     var isMobile = new DeviceDetection(Context).IsMobile;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var customUI = globalAppSettings.SystemSettings.CustomUI;
-    var schemes = customUI?.Profiles != null ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].Slideshows.Scheme).FirstOrDefault() : null;
+    var schemes = customUI?.Profiles != null && customUI.Profiles[0].Slideshows != null ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].Slideshows.Scheme).FirstOrDefault() : null;
     var granularPermissions = ViewBag.GranularPermissions as Dictionary<object, bool>;
 }
 

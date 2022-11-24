@@ -5,7 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>[[[Welcome to ]]]@displayName</title>
+    <title>
+        @Html.Raw(string.Format(T["Welcome to {0}"].Value, displayName))
+    </title>
     <link rel="icon" href="@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/favicon.ico")" />
     @await Html.PartialAsync("../Shared/_FontReference")
     @await Html.PartialAsync("../Shared/_ThemeReference")
@@ -38,15 +40,15 @@
         <div class="image-container">
             <img class="deployment-image" src="@Url.Content("~/images/static/error-pages/v1/deployment-error.png")" />
             <div id="auto-deployment-response">
-                <div class="response-message-header">Deployment Error!</div>
-                <div>We are unable to deploy the site using the values configured from the environment variables. <span><a class="help-link">Need help?</a></span></div>
+                <div class="response-message-header">@T["Deployment Error"]!</div>
+                <div>@T["We are unable to deploy the site using the values configured from the environment variables."] <span><a class="help-link">@T["Need help?"]</a></span></div>
                 <div id="deploy-message-container">
                     <textarea type="text" id="deploy-error-box" disabled></textarea>
                     <span class="su su-copy text focus" id="deploy-error-copy" data-toggle="tooltip" title="Click to copy"></span>
                 </div>
                 <div class="link-section">
-                    <span><a href="@Url.Action("Startup", "ServerConfiguration")?skipAutoDeploy=true">Proceed to the application startup page</a></span>
-                </div>
+                    <span><a href="@Url.Action("Startup", "ServerConfiguration")?skipAutoDeploy=true">@T["Proceed to the application startup page"]</a></span>
+</div>
             </div>
         </div>
     </div>

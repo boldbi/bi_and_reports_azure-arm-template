@@ -8,32 +8,27 @@
     var itemsCount = ViewBag.ItemsCount as Dictionary<ItemType, int>;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var customUI = globalAppSettings.SystemSettings.CustomUI;
-    var schemes = customUI?.Profiles != null ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].Schedules.Scheme).FirstOrDefault() : null;
+    var schemes = customUI?.Profiles != null && customUI.Profiles[0].Schedules != null ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].Schedules.Scheme).FirstOrDefault() : null;
     var userId = _identityResponse.User.UserId;
-    var themeCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".css";
-    var themeMinCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".min.css";
-    var themeBaseColors = globalAppSettings.SystemSettings.AppTheme.BaseColors;
     var cdnLink = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 @model List<ScheduleViewModel>
 
 @section styles{
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/schedules.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeMinCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/schedules.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     </environment>
 }
-<style>
-          :root {
-              @themeBaseColors
-          }
-</style>
+
 @section scripts{
 
     <script>
@@ -212,7 +207,7 @@
                 <div class="item-dashboard grid-content" title="{{:ItemName}}" data-toggle="tooltip" data-placement="top">
                     {{if IsScheduledItemDeleted}}
                     <span class="schedule-deleted-name">{{:DeletedItemName}}</span><span class="badge badge-secondary1 badge-secondary2">@T["Deleted"]</span>
-                    {{else MultiDashboardName}}                   
+                    {{else MultiDashboardName}}
                     <span><a class="grid-content" href="@Url.Action("Dashboards", "Dashboards")/{{:ParentItemId}}/{{:ItemCategoryName}}/{{:MultiDashboardName}}?tab={{:ItemName}}" target="_blank">{{:ItemName}}</a></span>
                     {{else}}
                     <span><a class="grid-content" href="@Url.Action("Dashboards", "Dashboards")/{{:ItemId}}/{{:ItemCategoryName}}/{{:ItemName}}" target="_blank">{{:ItemName}}</a></span>

@@ -235,6 +235,7 @@ CREATE TABLE [BOLDBI_ScheduleDetail](
 	[Name] [nvarchar](150) NOT NULL,
 	[RecurrenceTypeId] [int] NULL,
 	[RecurrenceInfo] [nvarchar](4000) NULL,
+	[Subject] [nvarchar](4000) NULL,
 	[EmailContent] [nvarchar](4000) NULL,
 	[IsDataChanges] [bit] NOT NULL DEFAULT 0,
 	[IsTimeInterval] [bit] NOT NULL DEFAULT 0,
@@ -523,7 +524,8 @@ CREATE TABLE [BOLDBI_MultiTabDashboard](
 	[DashboardDesignerId] [uniqueidentifier] NOT NULL,	
 	[OrderNumber] [int] NULL,
 	[ModifiedDate] [datetime] NOT NULL,
-	[IsActive] [bit] NOT NULL)
+	[IsActive] [bit] NOT NULL,
+	[TabName] [nvarchar](255) NULL)
 ;
 
 CREATE TABLE [BOLDBI_DataNotification](
@@ -785,7 +787,10 @@ CREATE TABLE [BOLDBI_ExternalSites](
 	[ClientSecret] [nvarchar](255) NOT NULL,
 	[SiteURL] [nvarchar](255) NOT NULL,
 	[CreatedById] [int] NOT NULL,
-    [CreatedDate] [datetime] NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[ModifiedById] [int] NULL,
+	[ModifiedDate] [datetime] NULL,
+	[SiteType] [int] NOT NULL DEFAULT 0,
 	[IsActive] [bit] NOT NULL)
 ;
 
@@ -881,6 +886,7 @@ CREATE TABLE [BOLDBI_EventPayloadsMapping](
 	[PayloadType] [int] NOT NULL,
 	[IsActive] [bit] NOT NULL)
 ;
+
 ---- PASTE INSERT Queries below this section --------
 
 INSERT into [BOLDBI_ItemType] (Name,IsActive) VALUES (N'Category',1)
@@ -916,7 +922,7 @@ INSERT into [BOLDBI_SettingsType] (Name,IsActive) VALUES (N'Dashboard Settings',
 ;
 INSERT into [BOLDBI_SettingsType] (Name,IsActive) VALUES (N'Embed Settings',1)
 ;
-INSERT into [BOLDBI_SettingsType] (Name,IsActive) VALUES (N'Data Store Settings',1)
+INSERT into [BOLDBI_SettingsType] (Name,IsActive) VALUES (N'Data Process',1)
 ;
 INSERT into [BOLDBI_SettingsType] (Name,IsActive) VALUES (N'Connectors',1)
 ;
@@ -942,7 +948,12 @@ INSERT into [BOLDBI_SettingsType] (Name,IsActive) Values (N'Widgets',1)
 ;
 INSERT into [BOLDBI_SettingsType] (Name,IsActive) Values (N'Security',1)
 ;
-
+INSERT into [BOLDBI_SettingsType] (Name,IsActive) Values (N'Integrations',1)
+;
+INSERT into [BOLDBI_SettingsType] (Name,IsActive) Values (N'CORS Settings',1)
+;
+INSERT into [BOLDBI_SettingsType] (Name,IsActive) Values (N'Look and Feel',1)
+;
 INSERT into [BOLDBI_ItemLogType] (Name,IsActive) VALUES ( N'Added',1)
 ;
 INSERT into [BOLDBI_ItemLogType] (Name,IsActive) VALUES ( N'Edited',1)
@@ -1786,8 +1797,7 @@ INSERT INTO [BOLDBI_EventPayloadsMapping] (EventType, PayloadType, IsActive) VAL
 ;
 INSERT INTO [BOLDBI_EventPayloadsMapping] (EventType, PayloadType, IsActive) VALUES (2,9,1)
 ;
-INSERT into [BOLDBI_SettingsType] (Name,IsActive) Values (N'Integrations',1)
-;
+
 ---- PASTE ALTER Queries below this section --------
 
 ALTER TABLE [BOLDBI_UserGroup]  ADD FOREIGN KEY([GroupId]) REFERENCES [BOLDBI_Group] ([Id])

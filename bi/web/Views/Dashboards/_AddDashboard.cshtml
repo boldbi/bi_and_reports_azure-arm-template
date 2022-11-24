@@ -15,6 +15,8 @@
     {
         allowedDashboardExtensions = ".sydj";
     }
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 <!DOCTYPE html>
 <html class="dashboard-server">
@@ -22,22 +24,24 @@
 {
 
     <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-        <title>
-            @ViewBag.Title
-        </title>
-        <script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>
+        @ViewBag.Title
+    </title>
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    <script>
             var isitemexistinsamecategoryUrl = "@Url.Action("isitemexistinsamecategory", "dashboards")";
             var canCreateCategory = "@canCreateCategory";
-        </script>
-        <style>
-            [contentEditable=false]:empty:not(:focus):before {
-                content: attr(data-text);
-            }
-        </style>
+    </script>
+    <style>
+        [contentEditable=false]:empty:not(:focus):before {
+            content: attr(data-text);
+        }
+    </style>
 
-        @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
     <environment include="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/add-dashboards.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
@@ -49,22 +53,22 @@
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/add-dashboards.min.js"></script>
     </environment>
 
-        <script>
-            $(document).ready(function () {
-                $(document).on("click", ".PopupClose", function (e) {
-                    closeAddDashboardPopup();
-                });
+    <script>
+        $(document).ready(function () {
+            $(document).on("click", ".PopupClose", function (e) {
+                closeAddDashboardPopup();
             });
-            function load() {
-                if (($(parent.window).width()) > 1400) {
-                    $(".dialog").addClass("iframe");
-                }
-
-                if (($(parent.window).width()) < 1400) {
-                    $(".dialog").removeClass("iframe");
-                }
+        });
+        function load() {
+            if (($(parent.window).width()) > 1400) {
+                $(".dialog").addClass("iframe");
             }
-        </script>
+
+            if (($(parent.window).width()) < 1400) {
+                $(".dialog").removeClass("iframe");
+            }
+        }
+    </script>
     </head>
     <body class="white-bg" onload="load();">
         <div id="PopupContainer" class="col-lg-12 no-padding add-dashboard-module dialog">

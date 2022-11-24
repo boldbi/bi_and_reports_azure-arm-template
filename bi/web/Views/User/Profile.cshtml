@@ -33,6 +33,7 @@
     var isProfileSettingsTab = (Context.Request.Query["tab"].ToString() == "profile-settings") ? "active" : string.Empty;
     var isProfileNotificationsTab = (Context.Request.Query["tab"].ToString() == "profile-notifications") ? "active" : string.Empty;
     List<string> groupName = new List<string>();
+    var isUserLanguagePreferenceDisabled = globalAppSettings.SystemSettings != null && globalAppSettings.SystemSettings.IsSystemLanguagePreference;
 }
 
 
@@ -67,13 +68,6 @@
         var profileSettingsUrl = "@Url.Action("UpdateProfileSettings", "User")";
         $(document).ready(function () {
 
-            if (@userHomepage.Count == 0) {
-                $('#default-homepage > option:first').hide();
-                $('.default-homepage-dropdown ul li:first').hide();
-                $("#default-homepage").find(".remove-default-homepage").remove();
-                $(".btn-group .bs-searchbox").after("<span class='no-result'>@T["No Results Found"]</span>");
-            }
-
             if ("@ViewBag.IsDefaultHomepage" == "True") {
                 $("#default-homepage").attr("data-original-value", "@ViewBag.DefaultHomePageId");
             }
@@ -81,6 +75,16 @@
             if("@ViewBag.DefaultHomePageName" == ""){
                 $("#no-default-homepage").removeClass("hide");
                 $("#homepage-name").addClass("hide");
+            }
+        });
+        $(document).on('show.bs.dropdown', '#homepage-list', function () {
+            if (@userHomepage.Count == 0) {
+                $('#default-homepage > option:first').hide();
+                $('.default-homepage-dropdown ul li:first').hide();
+                $("#default-homepage").find(".remove-default-homepage").remove();
+                if (!$("#homepage-list").find(".dropdown-menu span").hasClass("no-result")) {
+                    $("#homepage-list .btn-group .bs-searchbox").after("<span class='no-result'>@T["No Results Found"]</span>");
+                }
             }
         });
     </script>
@@ -201,6 +205,12 @@
                 </div>
                 <div role="tabpanel" id="profile-settings" class="col-xs-12 no-margin no-padding tab-pane @isProfileSettingsTab">
                     <div class="profile-section col-xs-12 no-margin  bi-page-body">
+                        @if (isUserLanguagePreferenceDisabled)
+                        {
+                            <div id="profile-settings-info" class="col-xs-12 no-padding profile-note-sec">
+                                <label>@T["Your preferred application and data language will not be applied here as the user preference for these settings is disabled."]</label>
+                            </div>
+                        }
                         <div id="profile-settings-form-div" class="col-xs-12 no-padding">
                             <form class="col-md-12 no-padding content-display text-wrap" autocomplete="off">
                                 <input type="hidden" class="page-title" data-page="ACCOUNT PREFERENCE">
@@ -283,12 +293,12 @@
                                     <label class="profile-textbox-label ">@T["Default pinboard"]</label>
                                     @if (!@ServerAppConfig.IsHideHelpLink)
                                     {
-                                        <h6 class="no-margin">@Html.Raw(string.Format(T["Click {0}here{1} to learn how to set a default pinboard."].Value, "<a href='"+(ServerAppConfig.AppSettings.Documentation.BaseUri + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.SetDefaultPinboards))+"' target='_blank'>", "</a>"))</h6>
+                                        <h6 class="no-margin">@Html.Raw(string.Format(T["Click {0}here{1} to learn how to set a default pinboard."].Value, "<a href='" + (ServerAppConfig.AppSettings.Documentation.BaseUri + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.SetDefaultPinboards)) + "' target='_blank'>", "</a>"))</h6>
                                     }
 
-                                <div class="txt-holder margin-top-12" id="homepage-list">
-                                    @Html.DropDownList("default-homepage", ViewBag.UserHomePages as IEnumerable<SelectListItem>, new { @class = "selectpicker default-homepage-dropdown pull-left", data_live_search = "true", data_size = 10 })
-                                </div>
+                                    <div class="txt-holder margin-top-12" id="homepage-list">
+                                        @Html.DropDownList("default-homepage", ViewBag.UserHomePages as IEnumerable<SelectListItem>, new { @class = "selectpicker default-homepage-dropdown pull-left", data_live_search = "true", data_size = 10 })
+                                    </div>
                                 </div>
                                 @await Html.PartialAsync("_UserDashboardSettings")
                             </form>

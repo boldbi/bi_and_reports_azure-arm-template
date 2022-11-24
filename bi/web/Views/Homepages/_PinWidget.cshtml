@@ -12,11 +12,7 @@
     var symbol = dashboardUrl.Contains("?") ? "&" : "?";
     var canShowFilter = ViewBag.IsNewVersion ? "display:none" : "";
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
-    var themeCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".css";
-    var themeMinCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".min.css";
-    var themeBaseColors = globalAppSettings.SystemSettings.AppTheme.BaseColors;
     var cdnLink = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
-
 }
 
 <!DOCTYPE html>
@@ -24,29 +20,25 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings, true)" />
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/homepage-viewer-page.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/homepage-viewer-page.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeMinCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/homepage-viewer-page.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/homepage-viewer-page.min.js"></script>
     </environment>
-    <style>
-          :root {
-              @themeBaseColors
-          }
-    </style>
     @*@if (isDebug)
         {
             <script asp-append-version="true" src="@(dashboardServiceResourceUrl + "/scripts/ej.dashboard.ejcommon.all.min.js")"></script>
             <script asp-append-version="true" src="@(dashboardServiceResourceUrl + "/scripts/ej.dashboard.viewer.all.min.js")"></script>
         }*@
-<script type="text/javascript">
+
+    <script type="text/javascript">
         var pinWidgetUrl = "@Url.Action("pinitemtohomepage", "boards")";
         var addHomepageUrl = "@Url.Action("addhomepage", "boards")";
         var checkHomepageNameExistUrl = "@Url.Action("checkhomepagenameexist", "boards")";
@@ -71,7 +63,7 @@
                 $("#select-homepage").selectpicker("refresh");
             }
         });
-</script>
+    </script>
 
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 

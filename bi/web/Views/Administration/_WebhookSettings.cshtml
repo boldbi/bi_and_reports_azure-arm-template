@@ -30,6 +30,8 @@
     </environment>
     <script>
         var dashboardServerResourceUrl = "@globalAppSettings.SystemSettings.CDNLink";
+        var webhookListingUrl = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.WebhookListing)";
+        var webhookFailureLogUrl = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.WebhookFailureLogs)";
     </script>
 
     <script type="text/x-jsrender" id="webhook-name-template">
@@ -132,7 +134,7 @@
                     {
                         templateID: "#webhook-name-template",
                         allowSorting: true,
-                        headerText: '@T["Name"]',
+                        headerText: "@T["Name"]",
                         width: 115,
                         field: "Name",
                         type: "string",
@@ -142,7 +144,7 @@
                     {
                         templateID: "#event-type-template",
                         field: "EventDescription",
-                        headerText: '@T["Event Type"]',
+                        headerText: "@T["Event Type"]",
                         type: "string",
                         width: 80,
                         allowSorting: true,
@@ -151,14 +153,14 @@
                     {
                         templateID: "#modified-by-template",
                         field: "ModifiedByName",
-                        headerText: '@T["Mobified By"]',
+                        headerText: '@T["Modified By"]',
                         width: 115,
                         allowSorting: true,
                         allowFiltering: false
                     },
                     {
                         field: "ModifiedDateString",
-                        headerText: '@T["Mobified On"]',
+                        headerText: '@T["Modified On"]',
                         width: 100,
                         allowSorting: true,
                         allowFiltering: false
@@ -166,7 +168,7 @@
                     {
                         template: true,
                         templateID: "#webhook-status",
-                        headerText: '@T["Status"]',
+                        headerText: "@T["Status"]",
                         width: 75,
                         allowSorting: false,
                         allowFiltering: false

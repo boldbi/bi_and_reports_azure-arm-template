@@ -1,4 +1,4 @@
-﻿@{ 
+﻿@{
     Layout = null;
     var isMobile = new DeviceDetection(Context).IsMobile;
     var requestUrl = new Uri(Context.Request.GetDisplayUrl());
@@ -75,7 +75,7 @@
                             </li>
                         }
 
-                        if (ServerAppConfig.IsSelfHosted && isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dashboard) && itemPermissions[ItemType.Dashboard] && isDashboardTab)
+                        if (ServerAppConfig.IsSelfHosted && !ServerAppConfig.HideSampleDashboard && isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dashboard) && itemPermissions[ItemType.Dashboard] && isDashboardTab)
                         {
                             <li class="deploy-template-dashboard add-sample-button">
                                 <div class="create-item-list-section">
@@ -89,7 +89,7 @@
                                 </div>
                             </li>
                         }
-                     }
+                    }
 
                     @if (!ServerAppConfig.IsSelfHosted && isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dashboard) && itemPermissions[ItemType.Dashboard] && showUpload)
                     {
@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </li>
-                     }
+                    }
 
                     @if (!ServerAppConfig.IsSelfHosted)
                     {
@@ -211,6 +211,10 @@
         </div>
     </form>
 </div>
+@if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dashboard) && itemPermissions[ItemType.Dashboard] && isDashboardTab)
+{
+    @await Html.PartialAsync("../Items/_AddSampleItems")
+}
 <environment include="Development,CloudDevelopment">
     <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/create-item-menu.css" />
     <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/create-item-menu.js"></script>

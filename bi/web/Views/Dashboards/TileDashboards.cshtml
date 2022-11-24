@@ -15,15 +15,17 @@
     var isMobile = new DeviceDetection(Context).IsMobile;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var customUI = globalAppSettings.SystemSettings.CustomUI;
-    var schemes = customUI?.Profiles != null ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].Dashboards.Scheme).FirstOrDefault() : null;
-    var samePagePreview = customUI?.Profiles != null ? customUI.Profiles[0].Dashboards.SamePagePreview : false;
-    var hideAuthorName = samePagePreview && customUI?.Profiles != null && customUI.Profiles[0].Dashboards.SamePagePreviewUI != null ? customUI.Profiles[0].Dashboards.SamePagePreviewUI.HideAuthorName : false;
-    var hideMultitabText = samePagePreview && customUI?.Profiles != null && customUI.Profiles[0].Dashboards.SamePagePreviewUI != null ? customUI.Profiles[0].Dashboards.SamePagePreviewUI.HideMultiTabText : false;
-    var hideSortOption = customUI?.Profiles != null ? customUI.Profiles[0].Dashboards.HideSorting : false;
+    var iscustomUIProfile = customUI?.Profiles != null && customUI.Profiles[0].Dashboards != null;
+    var schemes = iscustomUIProfile ? customUI.Schemes.Where(x => x.Name == customUI.Profiles[0].Dashboards.Scheme).FirstOrDefault() : null;
+    var samePagePreview = iscustomUIProfile ? customUI.Profiles[0].Dashboards.SamePagePreview : false;
+    var hideAuthorName = samePagePreview && iscustomUIProfile && customUI.Profiles[0].Dashboards.SamePagePreviewUI != null ? customUI.Profiles[0].Dashboards.SamePagePreviewUI.HideAuthorName : false;
+    var hideMultitabText = samePagePreview && iscustomUIProfile && customUI.Profiles[0].Dashboards.SamePagePreviewUI != null ? customUI.Profiles[0].Dashboards.SamePagePreviewUI.HideMultiTabText : false;
+    var hideSortOption = iscustomUIProfile ? customUI.Profiles[0].Dashboards.HideSorting : false;
     var customSortOption = customUI?.Profiles != null && !string.IsNullOrWhiteSpace(customUI.Profiles[0].ItemSorting) ? customUI.Profiles[0].ItemSorting : null;
     var customSortName = customSortOption != null && (customSortOption.ToLower() == "itemnameascending" || customSortOption.ToLower() == "itemnamedescending") ? "Name" : "ModifiedDate";
     var customSortDirection = customSortOption != null && customSortOption.ToLower() == "itemnameascending" ? "ascending" : "descending";
     var usageAnalytics = globalAppSettings.SystemSettings.UsageAnalytics;
+    var getDashboardEmbedCode = globalAppSettings.SystemSettings.GetDashboardEmbedCode;
     var granularPermissions = ViewBag.GranularPermissions as Dictionary<object, bool>;
 }
 
@@ -68,6 +70,7 @@
         var hideSortOption = @Json.Serialize(hideSortOption);
         var schemesDetails = @Html.Raw(Json.Serialize(schemes));
         var usageAnalytics = @Json.Serialize(usageAnalytics);
+        var getDashboardEmbedCode = @Json.Serialize(getDashboardEmbedCode);
         var designerInstallationHelpUrl = "@(ServerAppConfig.AppSettings.Documentation.BaseUri + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DesignerInstallation))";
         var categoryList;
         if ('@categories' != '') {
@@ -189,7 +192,7 @@
                         </span>
                         <span class="dashboard-category-owner pull-left" ng-bind="categoryCreatedBy"></span>
                     </div>
-                    <div class="dashboard-dropdown-container col-xs-7 col-lg-8 no-padding">
+                    <div class="dashboard-dropdown-container col-xs-7 col-lg-8 no-padding" ng-show="activeMenu !== @((int)DisplayCategory.UsageAnalytics)">
                         <div class="no-padding item-searchbox-container" ng-class="showSearch ? 'search-active' : ''">
                             <span ng-show="(isTablet || samePagePreview) && !showSearch" ng-init="showSearch=false" ng-click="onMobileSearchClicked()" class="su su-search pull-right mobile-dashboard-search ng-hide"></span>
                             <div ng-show="(!isTablet && !samePagePreview) || showSearch" class="col-xs-3 no-padding item-searchbox-container">
@@ -415,7 +418,7 @@
                                                             <span>@T["Get Link"]</span>
                                                         </span>
                                                     </li>
-                                                    <li ng-if="dashboardItem.ItemType == @((int)ItemType.Dashboard) && !isTablet" ng-hide="schemesDetails != null && !schemesDetails.GetEmbedCode || activeMenu === @((int)DisplayCategory.UsageAnalytics)">
+                                                    <li ng-if="dashboardItem.ItemType == @((int)ItemType.Dashboard) && !isTablet && getDashboardEmbedCode" ng-hide="schemesDetails != null && !schemesDetails.GetEmbedCode || activeMenu === @((int)DisplayCategory.UsageAnalytics)">
                                                         <span title="" class="get-embed-code option-click" ng-click="getEmbedCodeFromContext()">
                                                             <i class="su su-embed"></i>
                                                             <span>@T["Get Embed code"]</span>
@@ -682,7 +685,7 @@
         <iframe id="scheduler-popup-iframe" class="datasource-popup-frame"></iframe>
     </div>
 
-    <div id="ItemAction" style="display:none" title="@T["Item Actions"]" class="no-padding"><iframe></iframe></div>
+    <div id="ItemAction" style="display:none" title="@T["Item Actions"]" class="no-padding"></div>
 
     <div id="Copy_Item" style="display:none" class="no-padding"></div>
 

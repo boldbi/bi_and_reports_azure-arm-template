@@ -92,6 +92,7 @@
     </script>
     <script type="text/javascript">
         $(document).ready(function () {
+        GridLocalization();
         var dashboards = @Html.Raw(Json.Serialize(Model));
         $("#view_linked_dashboards").ejGrid({
             dataSource: dashboards,
@@ -185,7 +186,10 @@
                             <button type="button" id="create-datasource-connection" class="pull-right primary-button app-btn-primary">@T["Create Data Source"]</button>
                         }
                         <a href="@Url.Action("ConnectedAccounts", "User")" id="my-connection" class="link-button app-btn-link pull-right connected-accounts-button" title="">@T["My Connections"]</a>
-                        <button type="button" id="merge-datasource" class="pull-right link-button app-btn-link">@T["Combine Data Source"]</button>
+                        @if (itemPermissions[ItemType.Datasource])
+                        {
+                            <button type="button" id="merge-datasource" class="pull-right link-button app-btn-link">@T["Combine Data Source"]</button>
+                        }
                     </div>
                 </div>
                 <div class="col-xs-12 bi-page-body">

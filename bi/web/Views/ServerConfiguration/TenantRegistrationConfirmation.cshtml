@@ -16,9 +16,9 @@
     }
     else
     {
-        headerLogo = dashboardServerResourceUrl + "/cdn/images/application/boldbi/deployment_header_logo.svg";
+        headerLogo = dashboardServerResourceUrl + "/cdn/images/application/boldbi/" + ServerAppConfig.Theme.Appearance + "/deployment_header_logo.svg";
         favLogo = dashboardServerResourceUrl + "/cdn/images/application/boldbi/favicon.ico";
-        footerlogo = dashboardServerResourceUrl + "/cdn/images/application/boldbi/footer_logo.svg";
+        footerlogo = dashboardServerResourceUrl + "/cdn/images/application/boldbi/" + ServerAppConfig.Theme.Appearance + "/footer_logo.svg";
         orgName = @GlobalAppSettings.BrandingDisplayName + " Enterprise";
     }
     var pathbase = GlobalAppSettings.HttpPathBase;
@@ -26,17 +26,21 @@
     var baseUrl = ViewBag.BaseUrl;
     var isFirstTenant = ViewBag.IsFirstTenant;
     var globalAppSettings = _globalAppSettings;
+    var themeBasedImageHelper = new ThemeBasedImageHelper(globalAppSettings);
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 <!DOCTYPE html>
 <html class="dashboard-server">
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Registration - @orgName Dashboards</title>
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
     <link rel="icon" href="@favLogo" />
     <environment include="Development,CloudDevelopment">
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/tenant-registration.js"></script>
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/signalr/signalr.js"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/light.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/tenant-registration-page.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(_globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
@@ -45,7 +49,6 @@
     <environment exclude="Development,CloudDevelopment">
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/tenant-registration.min.js"></script>
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/signalr/signalr.min.js"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/light.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/tenant-registration-page.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(_globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
@@ -185,7 +188,7 @@
     <div class="welcome-tenant-parent hide">
         <div class="welcome-tenant-child">
             <div class="welcome-tenant-bg">
-                <div id="user-profile-picture">
+                <div id="user-profile-picture" style="background-image: url('@themeBasedImageHelper.ProfilePictureBackgroundImage()');">
                     <div class="profile-pic-tag" data-type="user" data-image-size="100" data-toggle="tooltip" data-placement="top"></div>
                 </div>
                 <div class="user-name">@Html.Raw(string.Format(T["Hello, {0}Welcome to {1} Enterprise Dashboards"].Value, "<span></span></div><div class='welcome-content'>","Bold BI"))</div>

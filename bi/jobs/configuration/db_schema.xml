@@ -221,6 +221,7 @@
 		<OrderNumber>OrderNumber</OrderNumber>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
 		<IsActive>IsActive</IsActive>
+		<TabName>TabName</TabName>
 	</DB_MultiTabDashboard>
 	<DB_PermissionAccess>
 		<DB_TableName>PermissionAccess</DB_TableName>
@@ -292,6 +293,7 @@
 		<EndDate>EndDate</EndDate>
 		<EndAfter>EndAfter</EndAfter>
 		<EmailContent>EmailContent</EmailContent>
+		<Subject>Subject</Subject>
 		<NextSchedule>NextSchedule</NextSchedule>
 		<ExportTypeId>ExportTypeId</ExportTypeId>
 		<IsEnabled>IsEnabled</IsEnabled>
@@ -832,6 +834,9 @@
 		<SiteURL>SiteURL</SiteURL>
 		<CreatedById>CreatedById</CreatedById>
 		<CreatedDate>CreatedDate</CreatedDate>
+    <ModifiedDate>ModifiedDate</ModifiedDate>
+		<ModifiedById>ModifiedById</ModifiedById>
+    <SiteType>SiteType</SiteType>
 		<IsActive>IsActive</IsActive>
 	</DB_ExternalSites>
 	<DB_SettingsType>
@@ -928,4 +933,13 @@
 		<PayloadType>PayloadType</PayloadType>
 		<IsActive>IsActive</IsActive>
 	</DB_EventPayloadsMapping>
+    <DB_CustomTheme>
+		<DB_TableName>CustomTheme</DB_TableName>
+		<Id>Id</Id>
+		<ThemeName>ThemeName</ThemeName>
+		<ThemeValue>ThemeValue</ThemeValue>
+		<ThemeType>ThemeType</ThemeType>
+		<ModifiedDate>ModifiedDate</ModifiedDate>
+	    <IsActive>IsActive</IsActive>
+	</DB_CustomTheme>
 </DB_SyncUMP>

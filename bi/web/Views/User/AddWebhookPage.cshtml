@@ -40,7 +40,6 @@
 
 <script type="text/javascript">
         var addWebhookDetailsUrl = "@Url.Action("AddWebhook", "User")";
-        var editWebhookDetailsUrl= "@Url.Action("EditWebhook", "User")";
         var checkWebhookNameExistsUrl = "@Url.Action("IsWebhookNameExist", "User")";
         var getPayloadUrl = "@Url.Action("GetEventPayloads", "User")";
         var webhookDetails = "@jsondata";
@@ -197,6 +196,7 @@
                             <span class="col-xs-1 input-group-btn no-padding" id="add-headers">
                                 <button class="btn btn-default" type="button" data-placement="right" title="@T["Add Headers"]" data-toggle="tooltip"><span class="su-add"></span></button>
                             </span>
+                            <span class="col-xs-12 no-padding validation-errors" id="custom-header-validation-message"></span>
                         </div>
                         <table id="custom-header-table" class="hide table table-custom-header">
                             <thead class='thead-default'>

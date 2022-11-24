@@ -3,37 +3,37 @@
     //user account validation methods
     $.validator.addMethod("isRequired", function (value, element) {
         return !isEmptyOrWhitespace(value);
-    }, window.TM.App.LocalizationContent.EnterName);
+    }, window.Server.App.LocalizationContent.EnterName);
 
     $.validator.addMethod("additionalSpecialCharValidation", function (value, element) {
         if (/^[a-zA-Z_0-9`~!\$\^()=\-\.\{\} ]+$/.test(value) || value === "") {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("isValidName", function (value, element) {
         return IsValidName("name", value);
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("hasWhiteSpace", function (value, element) {
         return /\s/.test(value);
-    }, window.TM.App.LocalizationContent.HasSpace);
+    }, window.Server.App.LocalizationContent.HasSpace);
 
     $.validator.addMethod("isValidUser", function (value, element) {
         return isValidUserName(value)
-    }, window.TM.App.LocalizationContent.UsernameInvalidChar);
+    }, window.Server.App.LocalizationContent.UsernameInvalidChar);
 
     $.validator.addMethod("isValidUsername", function (value, element) {
         return IsValidUsername(value);
-    }, window.TM.App.LocalizationContent.InvalidUsername);
+    }, window.Server.App.LocalizationContent.InvalidUsername);
 
     $.validator.addMethod("isValidUsernameLength", function (value, element) {
         return IsValidUsernameLength(value);
-    }, window.TM.App.LocalizationContent.UsernameExceeds);
+    }, window.Server.App.LocalizationContent.UsernameExceeds);
 
     $.validator.addMethod("isValidEmail", function (value, element) {
         return IsEmail(value);
-    }, window.TM.App.LocalizationContent.EnterValidEmail);
+    }, window.Server.App.LocalizationContent.EnterValidEmail);
 
     //database validation methods
 
@@ -43,23 +43,23 @@
         } else {
             return false;
         }
-    }, window.TM.App.LocalizationContent.AvoidNumberSpace);
+    }, window.Server.App.LocalizationContent.AvoidNumberSpace);
 
     $.validator.addMethod("isValidDatabaseName", function (value, element) {
         if (/^[a-zA-Z_0-9@~!#\$\^&()+=\-,\.\/\{\} ]+$/.test(value) && !/^[\s]+|[\s]+$/g.test(value)) {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " (<>%*?\":`;'[]|\\) " + window.TM.App.LocalizationContent.AvoidLeadingTrailingSpace);
+    }, window.Server.App.LocalizationContent.AvoidLeadingTrailingSpace.format("(<>%*?\":`;'[]|\\)"));
 
     $.validator.addMethod("sqlUsernamevalidation", function (value, element) {
         if (/^[a-zA-Z_0-9@`~!#\$\^%&*()+=\-\[\]\\\',\.\/\{\}\|:<>\? ]+$/.test(value) && !/^[\s]/g.test(value)) {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " (\";) " + window.TM.App.LocalizationContent.AvoidLeadingSpace);
+    }, window.Server.App.LocalizationContent.AvoidLeadingTrailingSpace.format("(\";)"));
 
     $.validator.addMethod("isValidCredentials", function (value, element) {
         return /^[a-zA-Z_0-9@`~!#\$\^%&*()+=\-\[\]\\\',\.\/\{\}\|:<>\? ]+$/.test(value);
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " (\";)");
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters + " (\";)");
 
 
 
@@ -67,52 +67,52 @@
         if ((/^[a-zA-Z_0-9@`~!#\$\^%&*()+=\-\[\]\\\',\.\/\{\}\|\":<>\? ]+$/.test(value) && !/^[\s]+|[\s]+$/g.test(value)) || value === "") {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " ; " + window.TM.App.LocalizationContent.MySqlAvoidLeadingTrailingSpace);
+    }, window.Server.App.LocalizationContent.AvoidLeadingTrailingSpace.format(";"));
 
     $.validator.addMethod("oraclePasswordValidation", function (value, element) {
         if (/^[a-zA-Z_0-9@`~!#\$\^%&*()+=\-\[\]\\,\.\/\{\}\|:<>\? ]+$/.test(value) && !/^[\s]+|[\s]+$/g.test(value)) {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " (';\") " + window.TM.App.LocalizationContent.OracleAvoidLeadingTrailingSpace);
+    }, window.Server.App.LocalizationContent.AvoidLeadingTrailingSpace.format("(';\")"));
 
     $.validator.addMethod("oracleUsernameValidation", function (value, element) {
         if (/^[a-zA-Z_0-9@`~!#\$\^%&*()+=\-\[\]\\,\.\/\{\}\|:<>\? ]+$/.test(value)) {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " (';\")");
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters + " (';\")");
 
     $.validator.addMethod("additionalSpecialCharValidation", function (value, element) {
         if (/^[a-zA-Z_0-9`~!\$\^()=\-\.\{\} ]+$/.test(value) || value === "") {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("postgresqlUsernamevalidation", function (value, element) {
         if (/^[a-zA-Z_0-9@`~!#\$\^%&*()+=\-\[\]\',\.\/\{\}\|:<>\? ]+$/.test(value) && !/^[\s]+|[\s]+$/g.test(value)) {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " (\"\\;) " + window.TM.App.LocalizationContent.PostgresqlAvoidLeadingTrailingSpace);
+    }, window.Server.App.LocalizationContent.AvoidLeadingTrailingSpace.format("(\"\\;)"));
 
     $.validator.addMethod("isValidPostgresqlCredentials", function (value, element) {
         return /^[a-zA-Z_0-9@`~!#\$\^%&*()+=\-\[\]\',\.\/\{\}\|:<>\? ]+$/.test(value);
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters + " (\"\\;)");
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters + " (\"\\;)");
 
     $.validator.addMethod("isValidPortNumber", function (value, element) {
         return /^\d{1,5}$/.test(value) && value < 65536 && !/^[\s]/g.test(value);
-    }, window.TM.App.LocalizationContent.IsValidPort);
+    }, window.Server.App.LocalizationContent.IsValidPort);
 
 
     //storage validation
     $.validator.addMethod("IsValidEndPoint", function (value, element) {
         return IsValidEndPoint(value);
-    }, window.TM.App.LocalizationContent.EndPoint);
+    }, window.Server.App.LocalizationContent.EndPoint);
 
     $.validator.addMethod("IsCustomEndpoint", function (value, element) {
         return IsCustomEndPoint(value, element);
-    }, window.TM.App.LocalizationContent.IsValidCustomEndPoint);
+    }, window.Server.App.LocalizationContent.IsValidCustomEndPoint);
     $.validator.addMethod("IsValidCustomEndPoint", function (value, element) {
         return IsValidCustomEndPoint(value, element);
-    }, window.TM.App.LocalizationContent.IsValidCustomEndPoint);
+    }, window.Server.App.LocalizationContent.IsValidCustomEndPoint);
 
 
     //site configuration validation
@@ -122,7 +122,7 @@
 
     $.validator.addMethod("isDomainRequired", function (value, element) {
         return !isEmptyOrWhitespace(value);
-    }, window.TM.App.LocalizationContent.Urlvalidator);
+    }, window.Server.App.LocalizationContent.Urlvalidator);
 
     $.validator.addMethod("isValidName", function (value, element) {
         return parent.IsValidName("name", value);
@@ -140,7 +140,7 @@
             return false;
         else
             return true;
-    }, window.TM.App.LocalizationContent.DomainValidator);
+    }, window.Server.App.LocalizationContent.DomainValidator);
 });
 
 function isValidUserName(userName) {

@@ -2,7 +2,7 @@
     addPlacehoder("#user-add-dialog");
     createWaitingPopup('user-add-dialog');
     var addUserDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.AddUser,
+        header: window.Server.App.LocalizationContent.AddUser,
         content: document.getElementById("dialog-container"),
         showCloseIcon: true,
         width: "500px",
@@ -17,19 +17,19 @@
 
     $.validator.addMethod("isRequired", function (value, element) {
         return !isEmptyOrWhitespace(value);
-    }, window.TM.App.LocalizationContent.EnterName);
+    }, window.Server.App.LocalizationContent.EnterName);
 
     $.validator.addMethod("hasWhiteSpace", function (value, element) {
         return hasWhiteSpace(value)
-    }, window.TM.App.LocalizationContent.UserNameHasWhiteSpace);
+    }, window.Server.App.LocalizationContent.UserNameHasWhiteSpace);
 
     $.validator.addMethod("isValidUsername", function (value, element) {
         return IsValidUsername(value);
-    }, window.TM.App.LocalizationContent.UserNameSpecialCharacterValicator);
+    }, window.Server.App.LocalizationContent.UserNameSpecialCharacterValicator);
 
     $.validator.addMethod("isValidUsernameLength", function (value, element) {
         return IsValidUsernameLength(value);
-    }, window.TM.App.LocalizationContent.UsernameExceeds);
+    }, window.Server.App.LocalizationContent.UsernameExceeds);
 
     $.validator.addMethod("isValidEmail", function (value, element) {
         if (value.trim() == "") {
@@ -37,17 +37,17 @@
         } else {
             return IsEmail(value);
         }
-    }, window.TM.App.LocalizationContent.InvalidEmailAddress);
+    }, window.Server.App.LocalizationContent.InvalidEmailAddress);
 
     $.validator.addMethod("isValidName", function (value, element) {
         return IsValidName("name", value)
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("additionalSpecialCharValidation", function (value, element) {
         if (/^[a-zA-Z_0-9`~!\$\^()=\-\.\{\} ]+$/.test(value) || value === "") {
             return true;
         }
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $("#dialog-container").validate({
         errorElement: 'span',
@@ -100,16 +100,16 @@
         },
         messages: {
 			"email-address": {
-                isRequired: window.TM.App.LocalizationContent.EmailValidator
+                isRequired: window.Server.App.LocalizationContent.EmailValidator
             },
             "username": {
-                isRequired: window.TM.App.LocalizationContent.UserNameValidator
+                isRequired: window.Server.App.LocalizationContent.UserNameValidator
             },
             "first-name": {
-                isRequired: window.TM.App.LocalizationContent.FirstNameValidator
+                isRequired: window.Server.App.LocalizationContent.FirstNameValidator
             },
             "user-password": {
-                isValidPassword: window.TM.App.LocalizationContent.EnterPassword
+                isValidPassword: window.Server.App.LocalizationContent.PasswordValidator
             },
         }
     });
@@ -176,5 +176,5 @@ function onUserAddDialogOpen() {
     $(".e-dialog-icon").attr("title", "Close");
     $(".validation").closest("div").removeClass("has-error");
     $(".useradd-validation-messages").css("display", "none");
-    CheckMailSettingsAndNotify(window.TM.App.LocalizationContent.ToSendAccountActivation, $(".validation-message"), "");
+    CheckMailSettingsAndNotify(window.Server.App.LocalizationContent.ToSendAccountActivation, $(".validation-message"), "");
 }

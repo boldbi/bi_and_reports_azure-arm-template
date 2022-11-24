@@ -3,17 +3,18 @@
 @{
     Layout = "~/Views/Shared/_Layout.Accounts.cshtml";
     var organizationName = (ViewBag.OrganizationName != null) ? ViewBag.OrganizationName : GlobalAppSettings.SystemSettings.OrganizationName;
-    ViewBag.Title = "[[[Login]]] - " + organizationName;
+    ViewBag.Title = $"{T["Log in"].Value} - {organizationName}";
     var isAdfsUserNotFound = TempData["IsAdfsUserNotFound"] as string;
     var authMessage = TempData["AuthMessage"] as string;
     var isAuthError = TempData["AuthError"];
     var IsAdfsUserStatus = (TempData["AdfsUserStatus"] as string) ?? string.Empty;
     var callBackUri = ViewBag.CallBackUri;
     var showBoldSignUp = ViewBag.IsBoldSign ?? false;
+    var isAzureResetPassword = TempData["AzureResetPassword"];
 }
 
 @section styles{
-    <link rel="stylesheet" href="~/bundles/css/accounts.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/bundles/css/accounts.css" asp-append-version="true" />
     @if (TempData["show_demo_account"].ToString() == "block")
     {
         <style>
@@ -32,15 +33,14 @@
         var showBoldSignUp = "@showBoldSignUp";
         var isAuthError = "@isAuthError";
         var authMessage = "@authMessage";
+        var isAzureResetPassword = "@isAzureResetPassword";
         var IsAdfsUserNotFound = '@isAdfsUserNotFound';
         var isWindowADDefaultAuth = "@ViewBag.IsWindowADDefaultAuth";
 		var IsWindowADEmbedSSOAuth = "@ViewBag.IsWindowADEmbedSSOAuth";
         var WindowADCallBackUrl = "@ViewBag.WindowADCallBackUrl";
-            var rootUrl = "@Url.Content("~/")";
-            if (rootUrl.toLowerCase() === "/")
-                rootUrl = "";
-            var homeUrl = "@Url.Action("Index", "Home")";
-
+        var rootUrl = "@Url.Content("~/")";
+        var homeUrl = "@Url.Action("Index", "Home")";
+        var mfaVerificationPageUrl = "@Url.Action("LoginMfaVerificationCodeValidation", "Accounts")";
     </script>
 
     <script src="~/bundles/js/accounts-login.js" asp-append-version="true"></script>
@@ -52,22 +52,19 @@
             @await Html.PartialAsync("~/Views/Shared/_LoginForm.cshtml")
             @await Html.PartialAsync("~/Views/Shared/_ExternalAuthentication.cshtml")
 
-            <div id="access-denied" class="error-message validation-holder bg-danger">
-                <span class="su su-login-error text-danger"></span><span id="login-input-error">[[[Access denied]]]</span>
+            <div id="azure-b2c-password-reset" class="error-message validation-holder bg-danger">
+                <span class="auth-error-text">
+                    @Html.Raw(string.Format(T["We are unable to process password reset request. Please refer to {0} this documentation {1} and enable self-service password reset."].Value, $"<a target='_blank' href={await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.Azure_B2C_Self_Reset_password)}>", "</a>"))
+                </span>
             </div>
-            @if (CloudAppConfig.IsSelfHosted)
-            {
-                <div id="validate-auth-user" class="error-message validation-holder bg-danger">
-                    <span class="auth-error-text"></span>
-                </div>
-            }
-            <div class="forget-password-align"><a href="@Url.Action("RecoverAccount", "Accounts")" class="forgot-pwd-link" tabindex="6">[[[Cannot access your account?]]]</a></div>
+            <div id="access-denied" class="error-message validation-holder bg-danger">
+                <span class="su su-login-error text-danger"></span><span id="login-input-error">@T["Access denied"]</span>
+            </div>
 
-            @if (!CloudAppConfig.IsSelfHosted)
-            {
-                @await Html.PartialAsync("~/Views/Shared/_BoldAuthentication.cshtml")
-            }
-
+            <div id="validate-auth-user" class="error-message validation-holder bg-danger">
+                <span class="auth-error-text"></span>
+            </div>
+            <div class="forget-password-align"><a href="@Url.Action("RecoverAccount", "Accounts")" class="forgot-pwd-link" tabindex="6">@T["Cannot access your account?"]</a></div>
         </div>
     </div>
 }

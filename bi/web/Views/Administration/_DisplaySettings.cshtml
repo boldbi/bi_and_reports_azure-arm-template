@@ -24,20 +24,6 @@
         </div>
     </div>
 </div>
-@*Designer implementation is still pending  so that, we have hidden this*@
-@*<div class="col-lg-12 look-and-feel-section site-settings-page-section no-padding">
-        <h3 class="title col-lg-12 sub-section-heading">[[[Look and Feel]]]</h3>
-        @if (ServerAppConfig.IsSelfHosted)
-        {
-            <div class="form-group">
-                @Html.Label("application-font", "[[[Application font]]]", new { @class = "app-textbox-label col-xs-12 user-model-language-container section-label" })
-                <div class="dropdown site-settings-drop-down no-padding">
-                    @Html.DropDownList("application-font", ViewBag.CustomFontList as IEnumerable<SelectListItem>, new { id = "application-font", @class = "selectpicker form-control", data_live_search = "false" })
-                    <input type="hidden" id="app_font" value="@ViewBag.SystemSettings.FontPreference">
-                </div>
-            </div>
-        }
-    </div>*@
 <div class="col-lg-12 language-section site-settings-page-section no-padding">
     <h3 class="title sub-section-heading">@T["Language"]</h3>
     @if (ServerAppConfig.IsSelfHosted)

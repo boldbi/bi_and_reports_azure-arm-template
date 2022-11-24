@@ -2,7 +2,7 @@
     var globalAppSettings = _globalAppSettings;
     var isMobile = new DeviceDetection(Context).IsMobile;
     var customUI = globalAppSettings.SystemSettings.CustomUI;
-    var samePagePreview = customUI?.Profiles != null ? customUI.Profiles[0].Dashboards.SamePagePreview : false;
+    var samePagePreview = customUI?.Profiles != null && customUI.Profiles[0].Dashboards != null ? customUI.Profiles[0].Dashboards.SamePagePreview : false;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 }
 

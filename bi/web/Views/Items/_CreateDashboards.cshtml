@@ -5,17 +5,18 @@
     var data = new List<TemplateDataSource>();
     var permissions = Model as Dictionary<ItemType, bool>;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
+    var themeAppearanceName = globalAppSettings != null && globalAppSettings.SystemSettings != null ? globalAppSettings.SystemSettings.ThemeAppearance : "light";
 }
 
 <!DOCTYPE html>
 <head>
     <style>
-        #loader-icon {
+        #create-dashboard-popup #loader-icon {
             position: absolute;
             margin-left: 38px;
         }
 
-        .loader-gif {
+        #create-dashboard-popup .loader-gif {
             position: absolute;
             top: 140px;
         }
@@ -98,7 +99,7 @@
                                 <div class="col-xs-6 template-dashboard-content">
                                     <h4 class="template-dashboard-name">{{dashboard.ShowCaseName}}</h4>
                                     <p class="template-dashboard-description">{{dashboard.Description}}</p>
-                                    <img class="service-image" title="{{datasource.Name}}" data-toggle="tooltip" ng-src="@globalAppSettings.SystemSettings.CDNLink.TrimEnd('/')/cdn/css/designer/images/datasource/{{datasource.Provider | lowercase}}/{{datasource.Service | lowercase}}.png" />
+                                    <img class="service-image" title="{{datasource.Name}}" data-toggle="tooltip" ng-src="@globalAppSettings.SystemSettings.CDNLink.TrimEnd('/')/cdn/css/designer/@themeAppearanceName.Trim()/images/datasource/{{datasource.Provider | lowercase}}/{{datasource.Service | lowercase}}.png" />
                                     <div class="template-dashboard-buttons-div">
                                         <button ng-if="canCreateDataSource && !IsNullorWhitespace(dashboard.Type)" data-authorize-url="@ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/')/v1.0/connection/authorize?provider={{datasource.Provider}}&service={{datasource.Service}}&type={{dashboard.Type}}&token={{accessToken}}&server=@(new DashboardServerApiEndPoints(globalAppSettings, true).DashboardServerApiUrl())"
                                                 class="template-dashboard-add-button primary-button app-btn-primary" data-access-token="{{accessToken}}"

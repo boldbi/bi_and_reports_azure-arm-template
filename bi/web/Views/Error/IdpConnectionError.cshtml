@@ -2,24 +2,27 @@
     Layout = null;
     var cdnLink = GlobalAppSettings.CdnDomain;
     var globalAppSettings = _globalAppSettings;
+    var themeBasedImageHelper = new ThemeBasedImageHelper(globalAppSettings);
     var favicon = ServerAppConfig.InternalAppIdpUrl + "/ums/logos?type=favicon";
     var loginLogo = ServerAppConfig.InternalAppIdpUrl + "/ums/logos?type=login";
     var dashboardServerResourceUrl = (GlobalAppSettings.HttpPathBase + ServerAppConfig.AppSettings.EndPoints.CdnLink).TrimEnd('/');
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 <!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@T["Login Error"]</title>
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/light.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/error-page-new.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/error-page.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/light.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/error-page-new.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
@@ -44,7 +47,7 @@
                     <img src="@loginLogo" onerror="OnLoginLogoLoadError()" class="error-image-1">
                 </div>
                 <div class="error-image-center-2">
-                    <img src="@GlobalAppSettings.CdnDomain/static/error-pages/v1/login-failed.svg" class="error-image-2">
+                    <img src="@themeBasedImageHelper.LoginFailedImage()" class="error-image-2">
                 </div>
                 <div class="error-type">@T["Login Error!"]</div>
 

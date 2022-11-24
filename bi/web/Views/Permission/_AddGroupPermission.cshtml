@@ -3,31 +3,25 @@
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
-    var themeCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".css";
-    var themeMinCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".min.css";
-    var themeBaseColors = globalAppSettings.SystemSettings.AppTheme.BaseColors;
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+@await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+@await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
 <environment include="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeCss" />
     <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/addgrouppermission.css" />
     <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/addgrouppermission.js"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeMinCss" />
     <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/addgrouppermission.min.css" />
     <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/addgrouppermission.min.js"></script>
     <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
 </environment>
-<style>
-          :root {
-              @themeBaseColors
-          }
-</style>
 
 @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 

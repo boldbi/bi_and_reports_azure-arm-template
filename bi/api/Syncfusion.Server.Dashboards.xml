@@ -30,6 +30,26 @@
             <param name="user">User ID or Email address of the user.</param>
             <returns>Group details retrieved successfully.</returns>
         </member>
+        <member name="M:Syncfusion.Server.API.Controllers.Internal.DataSourceController.AddDataSourceJson(Syncfusion.Server.Base.DataClasses.ApiDataSourceAdd)">
+            <summary>
+            Add a new data source to the server
+            </summary>
+            <remarks>
+            Users who have a create access for data sources, can add a new data source to the server by providing respective data source details in the request body.
+            </remarks>
+            <param name="apiDataSourceAdd">Details about the data source passed will be added to the server.</param>
+            <returns>The response is sent as ApiItemResponse object</returns>
+        </member>
+        <member name="M:Syncfusion.Server.API.Controllers.Internal.DataSourceController.UpdateDataSourceJson(Syncfusion.Server.Base.DataClasses.ApiDataSourceUpdate)">
+            <summary>
+            Update the data source to the server
+            </summary>
+            <remarks>
+            Users who have a write access for data source, can update an existing data source on the server by providing respective data source details in the request body.
+            </remarks>
+            <param name="apiDataSourceUpdate">Details about the data source passed will be updated to the specified data source id.</param>
+            <returns>The response is sent as ApiResponse object</returns>
+        </member>
         <member name="M:Syncfusion.Server.API.Controllers.ItemsApiController.AddItemViewJson(Syncfusion.Server.Base.DataClasses.ItemRequest)">
             <summary>
             Add Dashboard views/filters in dashboard Server
@@ -448,16 +468,6 @@
             <param name="scheduleId">Schedule ID</param>
             <returns>The response is sent as ApiScheduleItemDetail object</returns>
         </member>
-        <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.AddDataSourceJson(Syncfusion.Server.Base.DataClasses.ApiDataSourceAdd)">
-            <summary>
-            Add a new data source to the server
-            </summary>
-            <remarks>
-            Users who have a create access for data sources, can add a new data source to the server by providing respective data source details in the request body.
-            </remarks>
-            <param name="apiDataSourceAdd">Details about the data source passed will be added to the server.</param>
-            <returns>The response is sent as ApiItemResponse object</returns>
-        </member>
         <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.CopyDataSourceJson(System.Guid,Syncfusion.Server.Base.DataClasses.ApiCopyDataSourceRequestV4)">
             <summary>
             Get the copy datasource Id from the request
@@ -466,16 +476,6 @@
             <param name="itemId">item id.</param>
             <param name="apiCopyDatasource">Details about the data source passed will be added to the server.</param>
             <returns>The response is sent as ApiCopyItemResponse object</returns>
-        </member>
-        <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.UpdateDataSourceJson(Syncfusion.Server.Base.DataClasses.ApiDataSourceUpdate)">
-            <summary>
-            Update the data source to the server
-            </summary>
-            <remarks>
-            Users who have a write access for data source, can update an existing data source on the server by providing respective data source details in the request body.
-            </remarks>
-            <param name="apiDataSourceUpdate">Details about the data source passed will be updated to the specified data source id.</param>
-            <returns>The response is sent as ApiResponse object</returns>
         </member>
         <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.UpdateDataSourcesColumnsJson(System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ApiUpdateDataSourceColumn})">
             <summary>
@@ -495,6 +495,16 @@
             Users who have write access for data source, can update an existing data source connection information by providing respective data source connection details in the request body.
             </remarks>
             <param name="apiUpdateDatasourceConnection">Connection details about the data source passed will be updated to the specified data source id.</param>
+            <returns>The response is sent as ApiResponse object</returns>
+        </member>
+        <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.UpdateDataSourcesTablesJson(System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ApiUpdateDataSourceTable})">
+            <summary>
+            Update the existing table details in the data source
+            </summary>
+            <remarks>
+            Users who have write access for data source, can update an existing data source table details by providing respective data source details in the request body.
+            </remarks>
+            <param name="apiUpdateDataSourceTable">Details about the data source passed will be updated to the specified data source id.</param>
             <returns>The response is sent as ApiResponse object</returns>
         </member>
         <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.DeleteDatasource(System.Guid)">
@@ -535,9 +545,16 @@
             </remarks>
             <returns>The response is sent as an API items object list</returns>
         </member>
-        <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.AddDatasourceConnectionJson(Syncfusion.Server.Base.DataClasses.ApiAddDataSourceConnectionV4)">
+        <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.AddDatasourceJson(Syncfusion.Server.Base.DataClasses.ApiAddDataSourceConnectionV4)">
             <summary>
             Add a new datasource.
+            </summary>
+            <param name="apiDataSourceConnectionAdd">Details about the data source passed will be added to the server.</param>
+            <returns>The response is sent as ApiResponse object</returns>
+        </member>
+        <member name="M:Syncfusion.Server.API.Controllers.V4.DataSourceController.UpdateDatasourceJson(Syncfusion.Server.Base.DataClasses.ApiEditDataSourceConnectionV4)">
+            <summary>
+            Update the datasource.
             </summary>
             <param name="apiDataSourceConnectionAdd">Details about the data source passed will be added to the server.</param>
             <returns>The response is sent as ApiResponse object</returns>
@@ -899,6 +916,12 @@
             </summary>
             <returns>The response is sent as ApiResponse Object</returns>
         </member>
+        <member name="M:Syncfusion.Server.API.Controllers.V4.SystemSettingsController.ResetEmbedSecretJson">
+            <summary>
+            Generate embed secret key
+            </summary>
+            <returns>The response is sent as ApiResponse Object</returns>
+        </member>
         <member name="T:Syncfusion.Server.API.Controllers.V4.TenantController">
             <summary>
             Controller for Tenant related actions
@@ -1008,7 +1031,7 @@
             <param name="authenticationType"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Server.API.Models.ItemsModel.AddMultiDashboardItems(System.Guid,System.String,System.Int32,System.String)">
+        <member name="M:Syncfusion.Server.API.Models.ItemsModel.AddMultiDashboardItems(System.Guid,System.String,System.String)">
             <summary>
             This method used for two purpose
             If multi tabbed dashboard : add the multi tabbed dashboard's inside dashboard and their widgets
@@ -1031,6 +1054,13 @@
         <member name="M:Syncfusion.Server.API.Models.ItemsModel.AddDatasource(Syncfusion.Server.Base.DataClasses.ApiAddDataSourceConnectionV4)">
             <summary>
             Method to add datasource.
+            </summary>
+            <param name="requestObj">Details about the data source passed will be added to the server.</param>
+            <returns>The response is sent as DesignerApiResponse object</returns>
+        </member>
+        <member name="M:Syncfusion.Server.API.Models.ItemsModel.UpdateDatasource(Syncfusion.Server.Base.DataClasses.ApiEditDataSourceConnectionV4)">
+            <summary>
+            Method to update datasource.
             </summary>
             <param name="requestObj">Details about the data source passed will be added to the server.</param>
             <returns>The response is sent as DesignerApiResponse object</returns>

@@ -1,13 +1,13 @@
 ﻿$(document).ready(function () {
     var getResponseDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.APIResponse,
+        header: window.Server.App.LocalizationContent.APIResponse,
         content: document.getElementById("get-request-response-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: onGetResponseDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.OKButton } }
+            { click: onGetResponseDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.OKButton } }
         ],
         animationSettings: { effect: 'Zoom' },
-        width: "472px",
+        width: "600px",
         height: "auto",
         isModal: true,
         visible: false
@@ -19,7 +19,7 @@
         if ($(this).val() != "") {
             if (!urlRegex.test($(this).val())) {
                 $("#get-request-end-point").closest('div').addClass('has-error');
-                $(".validation-message").html(window.TM.App.LocalizationContent.IsValidUrl);
+                $(".validation-message").html(window.Server.App.LocalizationContent.IsValidUrl);
                 $("#get-response").prop("disabled", true);
             }
             else {
@@ -30,7 +30,7 @@
         }
         else {
             $("#get-request-end-point").closest('div').addClass('has-error');
-            $(".validation-message").html(window.TM.App.LocalizationContent.Urlvalidator);
+            $(".validation-message").html(window.Server.App.LocalizationContent.Urlvalidator);
             $("#get-response").prop("disabled", true);
         }
     });
@@ -42,7 +42,7 @@
             beforeSend: showWaitingPopup('server-app-container'),
             success: function (data) {
                 hideWaitingPopup('server-app-container');
-                messageBox("", window.TM.App.LocalizationContent.IdpTokenAPI, data.Message, "success", function () {
+                messageBox("", window.Server.App.LocalizationContent.IdpTokenAPI, data.Message, "success", function () {
                     onCloseMessageBox();
                 });
             },

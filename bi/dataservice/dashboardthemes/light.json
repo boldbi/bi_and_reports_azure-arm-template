@@ -181,6 +181,21 @@
         "background": "#EEEEEE"
       }
     },
+    "tabWidget": {
+      "tabHeader": {
+        "color": "#000000",
+        "selection": {
+          "color": "#0565ff"
+        },
+        "fontSettings": {
+          "autoFontSettings": true,
+          "fontSize": "",
+          "fontWeight": "",
+          "fontFamily": "",
+          "fontSrc": ""
+        }
+      }
+    },
     "map": {
       "widgetHeader": {
         "title": {
@@ -516,7 +531,7 @@
         "checkedBorder": "#c8c8c8"
       }
     },
-	"textfilter": {
+    "textfilter": {
       "widgetHeader": {
         "title": {
           "fontSettings": {
@@ -540,19 +555,19 @@
       "placeHolderTextColor": "#333333",
       "borderColor": "#c8c8c8",
       "boxShadow": "#d3d3d3",
-	  "background": "#ffffff",
-        "font": {
-          "color": "#333333",
-          "fontSettings": {
-            "autoFontSettings": true,
-            "fontSize": "",
-            "fontWeight": "",
-            "fontFamily": "",
-            "fontSrc": ""
-          }
-        },	  
+      "background": "#ffffff",
+      "font": {
+        "color": "#333333",
+        "fontSettings": {
+          "autoFontSettings": true,
+          "fontSize": "",
+          "fontWeight": "",
+          "fontFamily": "",
+          "fontSrc": ""
+        }
+      }
     },
-	
+
     "dategroup": {
       "widgetHeader": {
         "title": {
@@ -1718,18 +1733,18 @@
         }
       },
       "axis": {
-		"title": {
-		  "font": {
-			"color": "#000000",
-			"fontSettings": {
-				"autoFontSettings": true,
-				"fontSize": "",
-				"fontWeight": "",
-				"fontFamily": "",
-				"fontSrc": ""
-			}
-			}
-		},
+        "title": {
+          "font": {
+            "color": "#000000",
+            "fontSettings": {
+              "autoFontSettings": true,
+              "fontSize": "",
+              "fontWeight": "",
+              "fontFamily": "",
+              "fontSrc": ""
+            }
+          }
+        },
         "label": {
           "font": {
             "color": "#000000",
@@ -1742,9 +1757,9 @@
             }
           }
         },
-         "gridLines": {
+        "gridLines": {
           "color": "#DFDFDF"
-        },
+        }
       },
       "dataLabel": {
         "font": {

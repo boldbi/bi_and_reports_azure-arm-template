@@ -419,5 +419,15 @@
     "tokenRevokeUrl": "",
     "meUrl": ""
   },
+  {
+    "provider": "XeroWorkflowMax",
+    "clientId": "",
+    "clientSecret": "",
+    "authorizationUrl": "https://login.xero.com/identity/connect/authorize?",
+    "tokenUrl": "https://identity.xero.com/connect/token",
+    "tokenRefreshUrl": "https://identity.xero.com/connect/token",
+    "tokenRevokeUrl": "https://identity.xero.com/connect/revocation",
+    "meUrl": ""
+  }
 
 ]

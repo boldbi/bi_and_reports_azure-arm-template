@@ -46,7 +46,7 @@
                         border:0px
                     }
 
-                    #login-email {
+                    .login-email {
                         letter-spacing: 0.3px;
                     }
 
@@ -89,6 +89,13 @@
     }
 }
 
+.mfaVerification-wrapper {
+    .backtologin-align {
+        margin-left: 0px !important;
+        text-align: center;
+    }
+}
+
 .layout-footer {
     background: transparent;
 }
@@ -102,6 +109,12 @@
         padding-top: 80px;
 
         .login-wrapper {
+            width: 338px;
+            margin: auto;
+            padding: 15px 0 !important;
+        }
+
+        .mfaVerification-wrapper {
             width: 338px;
             margin: auto;
             padding: 15px 0 !important;

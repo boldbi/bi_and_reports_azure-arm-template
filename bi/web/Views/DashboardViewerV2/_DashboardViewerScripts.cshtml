@@ -9,12 +9,10 @@
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var dashboardDesignerResourceUrl = globalAppSettings.SystemSettings.DesignerCdnLink.TrimEnd('/');
     var isMultiTab = ViewBag.MultiTabId != null && ViewBag.MultiTabId.ToString() != string.Empty;
-    var themeCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".css";
-    var themeMinCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".min.css";
-    var themeBaseColors = globalAppSettings.SystemSettings.AppTheme.BaseColors;
 }
 
-
+@await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+<link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings, true)" />
 <script asp-append-version="true" src="@ServerAppConfig.InternalAppDataServiceUrl/scripts/designerlocalization.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
 <script asp-append-version="true" src="~/js/localizationcontent.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
 
@@ -38,24 +36,18 @@ else
 
 }
 <environment include="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeCss" />
     <link rel="stylesheet" asp-append-version="true" href="@dashboardDesignerResourceUrl/cdn/css/designer/dashboard-viewer-component.css" />
     <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/dashboard-designer-dependency.js"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeMinCss" />
     <link rel="stylesheet" asp-append-version="true" href="@dashboardDesignerResourceUrl/cdn/css/designer/dashboard-viewer-component.min.css" />
     <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/dashboard-designer-dependency.min.js"></script>
 </environment>
 
-<style>
-          :root {
-              @themeBaseColors
-          }
-</style>
-
 <script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol" async></script>
-
+<script>
+    var dataCache = @Json.Serialize(@globalAppSettings.SystemSettings.DataCacheSetting);
+</script>
 @*Referred directly in the view page due to pivot grid changes and sfcompressor minification issue*@
 <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/ej1.common.all.min.js"></script>
 <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/ej2.common.all.min.js"></script>
@@ -67,21 +59,35 @@ else
     <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/bbi-dashboard.min.js"></script>
 </environment>
 
+@if (!ServerAppConfig.IsSelfHosted || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
+{
+    <style>
+        :root {
+            --designer-font: 'Roboto','Heebo','Segoes UI' !important;
+        }
+    </style>
+}
+else
+{
+    <style>
+        :root {
+            --designer-font: var(--font-family) !important;
+        }
+    </style>
+}
 
 @if (!isSelfHosted)
 {
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
 
 }
-else
-{
-    <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
-    </environment>
-    <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
-    </environment>
-}
+
+<environment include="Development,CloudDevelopment">
+    <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
+</environment>
+<environment exclude="Development,CloudDevelopment">
+    <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
+</environment>
 
 @if (isMobile)
 {

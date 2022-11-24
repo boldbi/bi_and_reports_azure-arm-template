@@ -9,23 +9,22 @@
     var isSelfHosted = ServerAppConfig.IsSelfHosted;
     var minimumTime = ViewBag.MinimumTime;
     var helpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DatasourceRefreshScheduleFailure);
-    var themeCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".css";
-    var themeMinCss = globalAppSettings.SystemSettings.AppTheme.BaseTheme + ".min.css";
-    var themeBaseColors = globalAppSettings.SystemSettings.AppTheme.BaseColors;
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 <!DOCTYPE html>
 <html class="dashboard-server">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/datasourcerecurrencedependency.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/schedulerrecurrence.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/datasourcerecurrence.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/theme/@themeMinCss" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/datasourcerecurrencedependency.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/schedulerrecurrence.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/datasourcerecurrence.min.css" />
@@ -42,11 +41,6 @@
         <script asp-append-version="true" src="~/js/localizationcontent.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/datasourcerecurrencedependency.min.js"></script>
     </environment>
-    <style>
-          :root {
-              @themeBaseColors
-          }
-    </style>
     <script>
         var getRecurrenceTypeUrl = "@Url.Action("GetRecurrenceTypeForDatasourceSchedule", "DataSources")";
         var getNextScheduleUrl = "@Url.Action("GetNextScheduleDate", "Scheduler")";
@@ -63,6 +57,7 @@
         var clientDateFormat = "@_clientDateTimeInfo.ClientDateTime.DateFormat";
         var timezone = "@globalAppSettings.SystemSettings.TimeZone";
         var clientTimeZone = "@_clientDateTimeInfo.ClientDateTime.TimeZone";
+        var enableApplicationEmbed =@ServerAppConfig.EnableSameTabLinkTarget.ToString().ToLower();
     </script>
 </head>
 <body class="recurrence-view">
