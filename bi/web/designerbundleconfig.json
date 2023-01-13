@@ -125,5 +125,15 @@
     "cdn/css/designer/data-cache-configuration.css": [
       "wwwroot/webdesignerservice/themes/dashboard-designer-component.min.css"
     ]
+  },
+  {
+    "cdn/scripts/designer/dashboard-upload.js": [
+      "wwwroot/webdesignerservice/Scripts/bbi.dashboard.upload.min.js"
+    ]
+  },
+  {
+    "cdn/css/designer/dashboard.upload.css": [
+      "wwwroot/webdesignerservice/themes/bbi.dashboard.upload.min.css"
+    ]
   }
 ]

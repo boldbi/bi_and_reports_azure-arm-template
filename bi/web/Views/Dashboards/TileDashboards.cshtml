@@ -59,6 +59,11 @@
         var deleteConfirmationUrl = "@Url.Action("deleteconfirmation", "items")";
         var getViewsByItemIdUrl = "@Url.Action("GetViewsByItemId","Items")";
         var dashboardsUrl = "@Url.Action("dashboards", "dashboards")";
+        var downloadIframeUrl = "@Url.Action("DownloadViewItem", "items")";
+        var downloadedResourcesUrl = "@Url.Action("GetPublishedItems", "publish")" + "?tab=offline-files";
+        var uploadIframeUrl = "@Url.Action("UploadIframe", "Dashboards")";
+        var uploadDashboardStatusUrl = "@Url.Action("UploadDashboardStatus", "Dashboards")";
+        var editDashboardEmbedUrl = "@Url.Action("DashboardDesigner", "Designer")";
         var currentUserId = @currentUserId;
         var isMaster = @Json.Serialize(globalAppSettings.SystemSettings.IsMaster);
         var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
@@ -111,7 +116,7 @@
                         <span class="category-icon su su-all-dashboards"></span>
                         <span class="category-bar-header">@T["All"]</span>
                     </li>
-                    <li class="category-item" ng-class="{active : activeMenu === @((int)DisplayCategory.DraftItems)}" ng-click="setActive(@((int)DisplayCategory.DraftItems), '@T["Drafts"]', $event)">
+                    <li class="category-item" id="draft-items" ng-class="{active : activeMenu === @((int)DisplayCategory.DraftItems)}" ng-click="setActive(@((int)DisplayCategory.DraftItems), '@T["Drafts"]', $event)">
                         <span class="category-icon su su-draft"></span>
                         <span class="category-bar-header">@T["Drafts"]</span>
                     </li>
@@ -304,7 +309,7 @@
                 <hr class="dashboard-list-separator col-xs-12 no-padding" />
                 <div class="dashboard-list-container col-xs-12 no-padding">
                     <div class="col-xs-12 public-dashboard-disabled ng-hide" ng-show="dashboardDataBindComplete && !isMarkItemsPublic && selectedFilter === @((int)DisplayCategory.PublicItems) && activeMenu !== @((int)DisplayCategory.DraftItems)">
-                        <span class="bg-warning text-warning" ng-show="hasDashboardSettingsPermission">@Html.Raw(String.Format(T["Public dashboards are disabled in {0}dashboard settings{1}."].Value, "<a class='app-hyperlink' href="+Url.Action("DashboardSettings", "Administration") + ">", "</a>"))</span>
+                        <span class="bg-warning text-warning" ng-show="hasDashboardSettingsPermission">@Html.Raw(String.Format(T["Public dashboards are disabled in {0}dashboard settings{1}."].Value, "<a class='app-hyperlink' href=" + Url.Action("DashboardSettings", "Administration") + ">", "</a>"))</span>
                         <span class="bg-warning text-warning" ng-show="!hasDashboardSettingsPermission">@T["Public dashboards are disabled by the system administrator. Please contact your system administrator to enable this."]</span>
                     </div>
                     <div class="dashboard-list-header col-xs-12 ng-hide" ng-show="totalDashboardCount != 0 && dashboardDataBindComplete && !isTablet && !samePagePreview">
@@ -481,12 +486,15 @@
                                                             <span>@T["Publish"]</span>
                                                         </span>
                                                     </li>
-                                                    @*<li ng-if="(dashboardItem.CreatedById==currentUserId || isAdmin) && !isTablet">
-                <a title="" class="item-download option-click" href="@Url.Action("DownloadDashboardTemplate", "Items")?itemId={{dashboardItem.Id}}" target="_blank">
-                    <i class="su su-download"></i>
-                    <span>@T["Download"]</span>
-                </a>
-            </li>*@
+                                                    @if (ServerAppConfig.CanShowDownloadDashboardOption)
+                                                    {
+                                                        <li ng-if="(dashboardItem.CreatedById==currentUserId || isAdmin) && !isTablet && !dashboardItem.IsMultiDashboard" ng-hide="activeMenu === @((int)DisplayCategory.UsageAnalytics)">
+                                                            <span title="" class="option-click" data-action="Download" ng-click="downloadDashboard()">
+                                                                <i class="su su-download"></i>
+                                                                <span>@T["Download"]</span>
+                                                            </span>
+                                                        </li>
+                                                    }
                                                     <li ng-if="((dashboardItem.ItemType == @((int)ItemType.Dashboard) && dashboardItem.CanSchedule) || dashboardItem.CreatedById==currentUserId || isAdmin) && !isTablet && !dashboardItem.IsMultiDashboard" role="separator" class="divider" ng-hide="schemesDetails != null && !schemesDetails.CreateSchedule || activeMenu === @((int)DisplayCategory.UsageAnalytics)"></li>
                                                     <li ng-if="dashboardItem.ItemType == @((int)ItemType.Dashboard) && dashboardItem.CanSchedule && !isTablet && !dashboardItem.IsMultiDashboard" ng-hide="schemesDetails != null && !schemesDetails.CreateSchedule">
                                                         <span href="javascript:void(0);" class="schedule-dashboards option-click" title="" ng-click="scheduleDashboard()">
@@ -526,7 +534,7 @@
                                         <div ng-if="dashboardItem.IsDraft" class="col-xs-12 no-padding">
                                             <span class="su favorite" ng-hide="schemesDetails != null && !schemesDetails.Favorite" data-favorite="{{dashboardItem.IsFavorite}}" ng-click="toggleFavorite()" ng-class="!dashboardItem.IsDraft ? (dashboardItem.IsFavorite ? 'su-favorite' : 'su-dis-favorite') : ''"></span>
                                             <div class="col-xs-12 open-link">
-                                                <a class="col-xs-12 no-padding" ng-href="{{isTablet ? '' : editDraftDashboardUrl(dashboardItem.Id, dashboardItem.Name)}}" href="#" target="_blank">
+                                                <a class="col-xs-12 no-padding" ng-href="{{isTablet || dashboardItem.IsUploadDraft ? '' : editDraftDashboardUrl(dashboardItem.Id, dashboardItem.Name)}}" ng-click="dashboardItem.IsUploadDraft ? editDraftDashboard() : '' " href="#" target="_blank">
                                                     <span class="col-xs-12 no-padding">
                                                         <span class="dashboard-name no-padding" ng-class="isTablet ? 'col-xs-12' : 'col-xs-8'">
                                                             {{dashboardItem.Name}}
@@ -684,10 +692,11 @@
     <div id="popup-container" style="display:none" class="no-padding">
         <iframe id="scheduler-popup-iframe" class="datasource-popup-frame"></iframe>
     </div>
+    <div id="upload-popup-container" style="display: none;" class="no-padding">
+        <iframe id="upload-popup-iframe" class="datasource-popup-frame"></iframe>
+    </div>
 
-    <div id="ItemAction" style="display:none" title="@T["Item Actions"]" class="no-padding"></div>
-
-    <div id="Copy_Item" style="display:none" class="no-padding"></div>
+    <div id="Download_Item" style="display:none" class="no-padding"></div>
 
     <div id="make_item_public" class="no-padding pull-left" style="display:none"></div>
 
@@ -703,6 +712,8 @@
         @await Html.PartialAsync("../Items/_DashboardSecurity")
         @await Html.PartialAsync("../Items/_PublishDashboard")
         @await Html.PartialAsync("../Items/_GetExternalSites")
+        @await Html.PartialAsync("../Items/_CopyItem")
+        @await Html.PartialAsync("../Items/_MoveItem")
     }
 
     @if (samePagePreview && !isMobile)
@@ -711,4 +722,10 @@
     }
 
     @await Html.PartialAsync("../Items/_ItemInfo")
+
+    <script>
+        $(document).ready(function () {
+            $('#user-group-search-input_suggestion').addClass("hide-suggesstion");
+        });
+    </script>
 }

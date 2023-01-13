@@ -100,6 +100,7 @@
 <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings)" />
     @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
     @await Html.PartialAsync("~/Views/Shared/_BaseThemeStyleSheet.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
     <title>
         @ViewBag.Title
     </title>
@@ -117,7 +118,7 @@
             margin-top: -27px;
         }
     </style>
-    @if (!ServerAppConfig.IsSelfHosted || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
+    @if ((!ServerAppConfig.IsSelfHosted && string.IsNullOrWhiteSpace(_globalAppSettings.SystemSettings.FontPreference)) || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
     {
         <style>
             :root {
@@ -142,7 +143,7 @@
     <!--Prefetch viewer & designer resources-->
     @if (!isSelfHosted)
     {
-        <link rel="prefetch" href="@ServerAppConfig.InternalAppDataServiceUrl/health-check">
+        <link rel="prefetch" href="@ServerAppConfig.GetServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings)/health-check">
     }
     <script>
         var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
@@ -181,12 +182,10 @@
     <environment include="Development,CloudDevelopment">
         <script asp-append-version="true" src="~/js/localizationcontent.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.css" />
-        <link rel="stylesheet" class= "font-stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl, true)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
         <script asp-append-version="true" src="~/js/localizationcontent.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/layout.min.css" />
-        <link rel="stylesheet" class= "font-stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
     </environment>
 
     @RenderSection("styles", false)
@@ -205,9 +204,11 @@
         {
             <environment include="Development,CloudDevelopment">
                 <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/layout.js"></script>
+                <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/itemaction.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
                 <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/layout.min.js"></script>
+                <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/itemaction.min.js"></script>
             </environment>
         }
 
@@ -222,7 +223,7 @@
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/layout-mobile.min.js"></script>
         </environment>
     }
-<script type="text/javascript">
+    <script type="text/javascript">
         $.extend(ej, Syncfusion);
         var baseUrl = "@globalAppSettings.SystemSettings.BaseUrl";
         var isAdmin = "@isAdmin";
@@ -249,10 +250,10 @@
         $(document).ready(function () {
             generateProfileAvatar();
         });
-</script>
+    </script>
     @if (isMobile)
     {
-        <script type="text/javascript">
+     <script type="text/javascript">
         $(document).ready(function () {
             GetGridName();
 
@@ -444,6 +445,7 @@
         </div>
         <div id="loader_text" align="center" style="font-family:@globalAppSettings.SystemSettings.FontPreference,Segoe UI,SegoeUI,Helvetica Neue,Helvetica,Arial,sans-serif;position:relative;top: 42%;font-size:21px;font-weight:400;"></div>
     </div>
+    <div class="e-dlg-overlay" id="common-overlay" style="display: none"></div>
     <div class="page-additional-navigation">
         <input id="userName" type="hidden" value="@identityResponse.User.Email" />
         <input id="BaseUrlHidden" type="hidden" value="/" />

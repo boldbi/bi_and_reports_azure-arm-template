@@ -3,7 +3,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.Accounts.cshtml";
-    ViewBag.Title = $"{T["Account Recovery"]} - {GlobalAppSettings.SystemSettings.OrganizationName}";
+    ViewBag.Title = $"{T["Account Recovery"].Value} - {GlobalAppSettings.SystemSettings.OrganizationName}";
     var email = ViewBag.Email;
 }
 

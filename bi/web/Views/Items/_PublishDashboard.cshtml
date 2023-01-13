@@ -58,19 +58,19 @@
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Data Source Description"]</label>
                 <textarea ng-if="itemType == '@((int)ItemType.Dashboard)'" id="publish-dashboard-description" autocomplete="off" class="form-control" placeholder="@T["Write a description of the dashboard"]" ng-model="PublishedItems.Description" maxlength="1024" rows="3"> </textarea>
                 <textarea ng-if="itemType == '@((int)ItemType.Datasource)'" id="publish-dashboard-description" autocomplete="off" class="form-control description-text-area" placeholder="@T["Write a description of the data source"]" ng-model="PublishedItems.Description" maxlength="1024" rows="3"> </textarea>
-                <div id="publish-dashboard-checkbox" ng-if="publishType == '@PublishType.Internal.ToString()' && itemType == '@((int)ItemType.Dashboard)'">
+                <div id="publish-dashboard-checkbox" ng-if="itemType == '@((int)ItemType.Dashboard)'">
                     @Html.CheckBox("publish-dashboard-edit", new { @class = "material-checkbox" })
                     @Html.Label("publish-dashboard-edit", T["Lock dashboard editing in published site."].Value, new { @class = "toggle-space" })
                 </div>
-                <div id="publish-dashboard-checkbox" ng-if="publishType == '@PublishType.Internal.ToString()' && itemType == '@((int)ItemType.Datasource)'">
+                <div id="publish-dashboard-checkbox" ng-if="itemType == '@((int)ItemType.Datasource)'">
                     @Html.CheckBox("publish-dashboard-edit", new { @class = "material-checkbox" })
                     @Html.Label("publish-dashboard-edit", T["Lock data source editing in the published site."].Value, new { @class = "toggle-space" })
                 </div>
-                <div id="publish-datasource-checkbox" ng-if="publishType == '@PublishType.Internal.ToString()' && itemType == '@((int)ItemType.Dashboard)'">
+                <div id="publish-datasource-checkbox" ng-if="itemType == '@((int)ItemType.Dashboard)'">
                     @Html.CheckBox("publish-datasource-edit", new { @class = "material-checkbox" })
                     @Html.Label("publish-datasource-edit", T["Lock data source editing in published site."].Value, new { @class = "toggle-space" })
                 </div>
-                <div id="publish-datasource-checkbox" ng-if="publishType == '@PublishType.Internal.ToString()' && itemType == '@((int)ItemType.Datasource)'">
+                <div id="publish-datasource-checkbox" ng-if="itemType == '@((int)ItemType.Datasource)'">
                     @Html.CheckBox("publish-datasource-edit", new { @class = "material-checkbox" })
                     @Html.Label("publish-datasource-edit", T["Lock linked data source editing in the published site."].Value, new { @class = "toggle-space" })
                 </div>
@@ -135,20 +135,18 @@
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Data Source Description"]</label>
                 <textarea ng-if="itemType == '@((int)ItemType.Dashboard)'" ng-model="p.PublishItem.Description" id="advanced-dashboard-description" autocomplete="off" class="form-control" placeholder="@T["Write a description of the dashboard"]" maxlength="1024"></textarea>
                 <textarea ng-if="itemType == '@((int)ItemType.Datasource)'" ng-model="p.PublishItem.Description" id="advanced-dashboard-description" autocomplete="off" class="form-control" placeholder="@T["Write a description of the data source"]" maxlength="1024"></textarea>
-                <div ng-if="publishType == '@PublishType.Internal.ToString()'">
-                    <div id="advanced-dashboard-checkbox">
-                        <input type="checkbox" id="advanced-dashboard-edit" class="material-checkbox" ng-model="p.PublishItem.IsLocked" />
-                        <input name="advanced-dashboard-edit" type="hidden" value="false" ng-model="p.PublishItem.IsLocked">
-                        <label for="advanced-dashboard-edit" ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Lock dashboard editing in published site"] </label>
-                        <label for="advanced-dashboard-edit" ng-if="itemType == '@((int)ItemType.Datasource)'" class="datasource-edit-label">@T["Lock this data source editing in published site"] </label>
-                    </div>
+                <div id="advanced-dashboard-checkbox">
+                    <input type="checkbox" id="advanced-dashboard-edit" class="material-checkbox" ng-model="p.PublishItem.IsLocked" />
+                    <input name="advanced-dashboard-edit" type="hidden" value="false" ng-model="p.PublishItem.IsLocked">
+                    <label for="advanced-dashboard-edit" ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Lock dashboard editing in published site"] </label>
+                    <label for="advanced-dashboard-edit" ng-if="itemType == '@((int)ItemType.Datasource)'" class="datasource-edit-label">@T["Lock this data source editing in published site"] </label>
                 </div>
                 <div ng-if="itemType == '@((int)ItemType.Dashboard)'" id="advanced-make-public-checkbox">
                     <input type="checkbox" id="advanced-make-public" class="material-checkbox" ng-model="p.PublishItem.IsPublic" />
                     <input name="advanced-make-public" type="hidden" value="false" ng-model="p.PublishItem.IsPublic">
                     <label for="advanced-make-public">@T["Make dashboard as public in published site."] </label>
                 </div>
-                <div ng-if="publishType == '@PublishType.Internal.ToString()'">
+                <div>
                     <label ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Select data sources that you want to lock from editing in the destination site."]</label>
                     <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Select the linked data sources that you want to lock from editing in the destination site."]</label>
                     <div id="selected-datasources" class="selectpicker dropup">

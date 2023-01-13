@@ -539,6 +539,66 @@
     ]
   },
   {
+    "cdn/css/upload-iframe.css": [
+      "wwwroot/Styles/EssentialJS/ej.theme.min.css",
+      "wwwroot/Styles/EssentialJS/ej.widgets.core.min.css",
+      "wwwroot/Styles/EssentialJS2/fusion-theme-compatability/ej.theme.css",
+      "wwwroot/Styles/Bootstrap/bootstrap.min.css",
+      "wwwroot/Styles/Bootstrap/bootstrap-select.css",
+      "wwwroot/Styles/Fonts/font-Server.css",
+      "wwwroot/Styles/scss/global.css",
+      "wwwroot/Styles/scss/pages/NewMaster.css",
+      "wwwroot/Styles/scss/pages/Layout.css",
+      "wwwroot/Styles/scss/pages/general/navigation.css",
+      "wwwroot/Styles/scss/pages/Dialogs.css",
+      "wwwroot/Styles/scss/pages/Accounts/footer.css",
+      "wwwroot/Styles/scss/pages/notification/notification-banner.css",
+      "wwwroot/Styles/scss/pages/notification/user-notification.css",
+      "wwwroot/Styles/scss/pages/Components/Toast.css",
+      "wwwroot/Styles/scss/pages/general/create-item-menu.css",
+      "wwwroot/Styles/scss/pages/Items.css",
+      "wwwroot/Styles/scss/pages/TileDashboards.css",
+      "wwwroot/Styles/scss/pages/CategoryDialog.css",
+      "wwwroot/Styles/scss/pages/Components/Buttons.css"
+    ]
+  },
+  {
+    "cdn/scripts/upload-dashboard.js": [
+      "wwwroot/Scripts/jQuery/jquery.validate.min.js",
+      "wwwroot/Scripts/jQuery/jquery.easing-1.3.min.js",
+      "wwwroot/Scripts/jQuery/jquery.globalize.min.js",
+      "wwwroot/Scripts/jQuery/jsrender.min.js",
+      "wwwroot/Scripts/AngularJS/angular.min.js",
+      "wwwroot/Scripts/AngularJS/angular-filter.min.js",
+      "wwwroot/Scripts/AngularJS/angular-sanitize.min.js",
+      "wwwroot/Scripts/EssentialJS/common/ej.core.min.js",
+      "wwwroot/Scripts/EssentialJS/common/ej.data.min.js",
+      "wwwroot/Scripts/EssentialJS/common/ej.draggable.min.js",
+      "wwwroot/Scripts/EssentialJS/common/ej.globalize.min.js",
+      "wwwroot/Scripts/EssentialJS/common/ej.scroller.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.grid.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.pager.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.waitingpopup.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.radiobutton.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.dropdownlist.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.dialog.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.button.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.autocomplete.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.checkbox.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.datepicker.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.datetimepicker.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.editor.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.toolbar.min.js",
+      "wwwroot/Scripts/EssentialJS/ej.menu.min.js",
+      "wwwroot/Scripts/Bootstrap/bootstrap-select.min.js",
+      "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
+      "wwwroot/Scripts/Core/Server.Common.js",
+      "wwwroot/Scripts/Core/Server.Core.js",
+      "wwwroot/Scripts/Category/AddCategory.js",
+      "wwwroot/Scripts/Dashboards/UploadDashboard.js"
+    ]
+  },
+  {
     "cdn/css/tile-dashboards-page.css": [
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/Components/Switch.css",
@@ -2728,6 +2788,11 @@
     ]
   },
   {
+    "cdn/scripts/designer/datasource-mapping.js": [
+      "wwwroot/Scripts/Dashboards/DataSourceMapping.js"
+    ]
+  },
+  {
     "cdn/scripts/embed-login.js": [
       "wwwroot/Scripts/jQuery/jquery-3.2.1.min.js",
       "wwwroot/Scripts/Embed/Embed.js"
@@ -2866,7 +2931,12 @@
     ]
   },
   {
-    "cdn/css/connected-sites.css": [
+    "cdn/scripts/download-items.js": [
+      "wwwroot/Scripts/Items/download-items.js"
+    ]
+  },
+  {
+    "cdn/css/connected-sites.css" : [
       "wwwroot/Styles/scss/pages/Components/PageWrapper.css",
       "wwwroot/Styles/scss/pages/Grid.css",
       "wwwroot/Styles/scss/pages/publishdashboard/external-sites.css"

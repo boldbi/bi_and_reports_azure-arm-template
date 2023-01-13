@@ -2013,6 +2013,17 @@
 							}
                         ]
                 },
+                gohighlevel: {
+                    name: 'GoHighLevel',
+                    templates: [
+                        { 
+                            projects: { 
+                                name: '', 
+                                desc: '' 
+                            }
+                        }
+                    ]
+                },
                 },
                 oauthConnectors: {
                     facebook: "Facebook",
@@ -2070,6 +2081,7 @@
                     zoom: "Zoom",
                     fitbit: "Fitbit",
                     xeroWorkflowMax: "Xero WorkflowMax",
+                    gohighlevel: "GoHighLevel",
                 },
                 errorMessageForTotalExpressionContainsRowExpression: "Total expression must not contains any ROW expression.",
                 parameterMustBeAnAggregated: "Parameter must be an aggregated expression.",
@@ -6160,6 +6172,47 @@
                 allCategories: "All Categories",
                 showCategories: "Show Category",
             },
+            gohighlevelDataSource: {
+                businesses: 'Businesses',
+                businessesbylocation: 'Businesses By Location',
+                calender: "Calendar",
+                calenderEvents: "CalenderEvents",
+                campaigns: "Campaigns",
+                contacts: "Contacts",
+                tasks: "Tasks",
+                appointments: "Appointments",
+                notes: "Notes",
+                search: "Search",
+                conversations: "Conversations",
+                forms: "Forms",
+                triggerLinks: "TriggerLinks",
+                location: "Location",
+                opportunities: "Opportunities",
+                surveys: "Surveys",
+                users: "Users",
+                workFlows: "WorkFlows",
+                allGroups: "All Groups",
+                allCalenders: "All Calenders",
+                allCampaigns: "All Campaigns",
+                allContacts: "All Contacts",
+                allTasks: "All Tasks",
+                allAppointmentsByContact: "All Appointments By Contact",
+                allNotes: "All Notes",
+                allDuplicateContacts: "All Duplicate Contacts",
+                allFormsSubmissions: "All Forms Submissions",
+                allForms: "All Forms",
+                allLinks: "All Links",
+                allTagsByLocation: "All Tags By Location",
+                allCustomFields: "All Custom Fields",
+                allCustomValues: "All Custom Values",
+                allTemplates: "All Templates",
+                searchOpportunities: "Search Opportunities",
+                allPipelines: "All Pipelines",
+                allSubmissions: "All Submissions",
+                allSurveys: "All Surveys",
+                allUsers: "All Users",
+                allWorkFlows: "All Work Flows",
+            },
             xeroDataSource: {
                 accounts: "Accounts",
                 allAccounts: "All Accounts",
@@ -6862,6 +6915,12 @@
                 tabOrder: "Tab Order",
                 widgetOrder: "Widget Order"
             },
+			downloadUpload: {
+                selectDataSource: "Please select a data source to map.",
+				configureDataSource: "Configure the data source",
+                mapToExistingDataSource: "Map to an existing data source",
+				dsPermissionInfoMessage: "You do not have permission to create data source. Please contact your System Administrator"
+            }
         }
     }
 }

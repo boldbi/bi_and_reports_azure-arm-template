@@ -254,11 +254,14 @@ CREATE TABLE [BOLDTC_User] (
 CREATE TABLE [BOLDTC_UserLogin] (
 	Id uniqueidentifier NOT NULL,
 	UserId uniqueidentifier NOT NULL,
+	SessionId uniqueidentifier NULL,
 	DirectoryTypeId int not null,
 	ClientToken nvarchar(4000) NOT NULL,
-	IpAddress nvarchar(50) NOT NULL,
 	LoggedInDomain nvarchar(255) NOT NULL,
+	IpAddress nvarchar(50) NOT NULL,
+	Browser nvarchar(255) NULL,
 	LoggedInTime datetime NOT NULL,
+	LastActive datetime NULL,
 	IsActive bit NOT NULL,
   CONSTRAINT [PK_BOLDTC_USERLOGIN] PRIMARY KEY CLUSTERED
   (

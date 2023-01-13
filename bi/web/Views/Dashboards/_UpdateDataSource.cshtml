@@ -22,14 +22,13 @@
         <script>
             var updatedatasource = "@Url.Action("updatedatasource", "dashboards")";
         </script>
+        @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
         <environment include="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/update-datasource.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/update-datasource.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/update-datasource.min.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/update-datasource.min.js"></script>
         </environment>
 
@@ -110,14 +109,13 @@ else
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
         <environment include="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/update-datasource.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/update-datasource.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/update-datasource.min.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/update-datasource.min.js"></script>
         </environment>
         <script>

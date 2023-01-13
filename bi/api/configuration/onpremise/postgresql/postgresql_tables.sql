@@ -111,7 +111,8 @@ CREATE TABLE SyncDS_Item(
 	IsDraft smallint NULL DEFAULT 0,
 	IsLocked smallint NULL DEFAULT 0,
 	IsActive smallint NULL,
-	IsUnlisted smallint NOT NULL DEFAULT 0)
+	IsUnlisted smallint NOT NULL DEFAULT 0,
+	IsUploadDraft smallint NOT NULL DEFAULT 0)
 ;
 
 CREATE TABLE SyncDS_ItemView(
@@ -877,6 +878,32 @@ CREATE TABLE SyncDS_EventPayloadsMapping(
 	Id SERIAL PRIMARY KEY NOT NULL,
 	EventType int NOT NULL,
 	PayloadType int NOT NULL,
+	IsActive smallint NOT NULL)
+;
+
+CREATE TABLE SyncDS_UserSession(
+	Id uuid primary key NOT NULL,
+	IdpReferenceId uuid NOT NULL,
+	SessionId uuid NOT NULL,
+	DirectoryTypeId int NOT NULL DEFAULT 0,
+	IpAddress varchar(255) NULL,
+	Browser varchar(1024) NULL,
+	LoggedInTime timestamp NULL,
+	LastActive timestamp NULL,
+	IsActive smallint NOT NULL)
+;
+
+CREATE TABLE SyncDS_BackgroundJobs (
+	Id SERIAL primary key NOT NULL,
+	JobType int NOT NULL,
+	ItemId uuid NULL,
+	UserId int NULL,
+	JobDetails text NOT NULL,
+	CreatedDate timestamp NOT NULL,
+	CompletedDate timestamp NOT NULL,
+	Status varchar(255) NOT NULL,
+	ResourceInfo text NULL,
+	CanIncludeSensitiveInfo smallint NOT NULL,
 	IsActive smallint NOT NULL)
 ;
 

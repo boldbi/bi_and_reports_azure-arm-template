@@ -1,4 +1,5 @@
 ﻿@using Syncfusion.Server.Base;
+@using System.IO;
 
 @{
     Layout = "~/Views/Shared/_Layout.Accounts.cshtml";
@@ -11,6 +12,7 @@
     var callBackUri = ViewBag.CallBackUri;
     var showBoldSignUp = ViewBag.IsBoldSign ?? false;
     var isAzureResetPassword = TempData["AzureResetPassword"];
+    var customCssPath = System.IO.Path.GetFullPath(AppEnvironment.GetAppDataFolderPath() + "/idp/content/styles/login.css");
 }
 
 @section styles{
@@ -21,6 +23,13 @@
             .mail-loader-div.email-loader {
                 bottom: 55px !important;
             }
+        </style>
+    }
+
+    @if (File.Exists(customCssPath))
+    {
+        <style type="text/css">
+			@File.ReadAllText(customCssPath)
         </style>
     }
 }

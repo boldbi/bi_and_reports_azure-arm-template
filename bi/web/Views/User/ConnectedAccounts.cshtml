@@ -80,7 +80,7 @@
             </span>
             <ul class="dropdown-menu" role="menu">
                 <li>
-                    <a href="javascript:void(0);" class="re-authorize-account" data-content="{{:Id}}" data-reauthorize-url="@ServerAppConfig.InternalAppDataServiceUrl/v1.0/oauth/re-authorize?token=@ViewBag.AccessToken&id={{:Id}}&server=@serverApiUrl{{:OrganizationUrl ? '&resourceurl=' + OrganizationUrl : ''}}">
+                    <a href="javascript:void(0);" class="re-authorize-account" data-content="{{:Id}}" data-reauthorize-url="@ServerAppConfig.GetServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings)/v1.0/oauth/re-authorize?token=@ViewBag.AccessToken&id={{:Id}}&server=@serverApiUrl{{:OrganizationUrl ? '&resourceurl=' + OrganizationUrl : ''}}">
                         <i class="su su-re-authorize"></i>
                         <span>@T["Reauthorize"]</span>
                     </a>

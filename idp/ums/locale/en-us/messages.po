@@ -183,7 +183,7 @@ msgstr ""
 msgid "Delete Attribute"
 msgstr ""
 
-msgid "Are you sure you want to delete the attribute {0}{1}{2}?{3}"
+msgid "Are you sure you want to delete the attribute {0}{1}{2}?"
 msgstr ""
 
 msgid "Username should not contain any white space."

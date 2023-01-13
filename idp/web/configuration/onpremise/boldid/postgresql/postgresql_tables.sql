@@ -194,11 +194,14 @@ CREATE TABLE BOLDTC_User (
 CREATE TABLE BOLDTC_UserLogin (
 	Id uuid NOT NULL,
 	UserId uuid NOT NULL,
+	SessionId uuid NULL,
 	DirectoryTypeId int NOT NULL,
 	ClientToken varchar(4000) NOT NULL,
-	IpAddress varchar(50) NOT NULL,
 	LoggedInDomain varchar(255) NOT NULL,
+	IpAddress varchar(50) NOT NULL,
+	Browser varchar(255) NULL,
 	LoggedInTime timestamp NOT NULL,
+	LastActive timestamp NULL,
 	IsActive smallint NOT NULL,
   CONSTRAINT PK_BOLDTC_USERLOGIN PRIMARY KEY (Id)
 )

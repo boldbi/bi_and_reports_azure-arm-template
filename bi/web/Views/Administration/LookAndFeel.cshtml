@@ -22,6 +22,8 @@
 
     }
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.LookAndFeelSettings);
+    var url = new Uri(Context.Request.GetDisplayUrl());
+    var dns = url.GetLeftPart(UriPartial.Authority);
 }
 
 @section styles{
@@ -107,6 +109,7 @@
         var themeDashboardThemeUms = @Html.Raw(Json.Serialize(themeDashboardThemeUms));
         var fontUms = @Html.Raw(Json.Serialize(fontUms));
         var defaultFont = @Html.Raw(Json.Serialize(ServerAppConfig.DefaultFont));
+        var dns = @Html.Raw(Json.Serialize(dns));
     </script>
 }
 
@@ -114,6 +117,7 @@
     @await Html.PartialAsync("_AdminMenu")
     @await Html.PartialAsync("_UploadApplicationTheme")
     @await Html.PartialAsync("_UploadDashboardTheme")
+    @await Html.PartialAsync("_UploadFont")
 
     <div id="look-and-feel-container" class="bi-page-container col-xs-12 @(canShowAdminMenu ? string.Empty : "admin-panel-full-width")">
         <div id="organization-block" class="bi-page-content col-xs-12 no-padding">
@@ -139,17 +143,18 @@
                             </div>
                         </div>
                     }
-                    @if (ServerAppConfig.IsSelfHosted)
+                <div class="look-and-feel-section app-font-div form-group">
+                    @Html.Label("font-label", T["Fonts"].Value, new { @class = "app-textbox-label app-font-label" })
+                    @if (!ServerAppConfig.IsSelfHosted)
                     {
-                        <div class="col-lg-12 look-and-feel-section site-settings-page-section no-padding">
-                            @Html.Label("font-label", T["Fonts"].Value, new { @class = "app-textbox-label" })
-                            <div class="form-group">
-                                <div id="app-font-customize" class="no-padding app-font-customize">
-                                    @Html.DropDownList("application-font", ViewBag.CustomFontList as IEnumerable<SelectListItem>, new { id = "application-font", @class = "selectpicker form-control", data_live_search = "true", data_size = "5" })
-                                </div>
-                            </div>
-                        </div>
+                        <p class="manage-font-box">
+                            <a href="javascript:void(0)" onclick="onUploadFontDialogOpen()" id="woff-upload" title="@T["Upload the font file here."]">@T["Add a new font"]</a>
+                        </p>
                     }
+                    <div id="app-font-customize" class="col-lg-12  no-padding app-font-customize">
+                        @Html.DropDownList("application-font", ViewBag.CustomFontList as IEnumerable<SelectListItem>, new { id = "application-font", @class = "selectpicker form-control", data_live_search = "true", data_size = "5" })
+                    </div>
+                </div>
                     <div class="form-group appearance-div">
                         @Html.Label("appearance", T["Theme Mode"].Value, new { @class = "app-textbox-label" })
                         <div id="appearance-container">

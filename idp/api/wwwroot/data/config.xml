@@ -51,4 +51,5 @@
   <EnableSameTabLinkTarget>false</EnableSameTabLinkTarget>
   <HideMobileAppRedirectURI>false</HideMobileAppRedirectURI>
   <ResourceModifiedDate></ResourceModifiedDate>
+  <IsCustomBranding>false</IsCustomBranding>
 </SystemSettings>

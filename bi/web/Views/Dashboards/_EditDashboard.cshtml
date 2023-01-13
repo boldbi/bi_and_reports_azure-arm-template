@@ -21,6 +21,7 @@
             @ViewBag.Title
         </title>
         @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
+        @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
 
         <script>
 			var isitemexistinsamecategoryUrl = "@Url.Action("isitemexistinsamecategory", "dashboards")";
@@ -28,12 +29,10 @@
         </script>
         <environment include="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/edit-dashboards.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-dashboards.min.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/edit-dashboards.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-dashboards.min.js"></script>
         </environment>
 
@@ -174,17 +173,16 @@ else
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+        @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
         <environment include="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/iframe.css" />
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/edit-dashboards.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/iframe.js"></script>
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-dashboards.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/iframe.min.css" />
             <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/edit-dashboards.min.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/iframe.min.js"></script>
             <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-dashboards.min.js"></script>
         </environment>

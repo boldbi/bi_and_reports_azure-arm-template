@@ -1580,6 +1580,12 @@ var Designer = {
                             { projects: { name: '', desc: '' } }
                         ]
                     },
+                    gohighlevel: {
+                        name: 'GoHighLevel',
+                        templates: [
+                            { projects: { name: '', desc: '' } }
+                        ]
+                    },
                 },
                 oauthConnectors: {
                     facebook: "Facebook",
@@ -1637,6 +1643,7 @@ var Designer = {
                     zoom: "Zoom",
                     fitbit: "Fitbit",
                     xeroWorkflowMax: "Xero WorkflowMax",
+                    gohighlevel: "GoHighLevel"
                 },
                 errorMessageForTotalExpressionContainsRowExpression: "Total expression must not contains any ROW expression.",
                 parameterMustBeAnAggregated: "Parameter must be an aggregated expression.",
@@ -2801,6 +2808,7 @@ var Designer = {
                 almaApplicationText: "Application Key",
                 emptyApplicationnameValidation: "The Application name should not be empty",
                 validApplicationNameValidation: "Please enter a valid Application Key",
+                locationIdDisplayText: "Location Id",
             },
             asanaWebDataSource: {
                 showAttachment: "Show Attachment",
@@ -5935,6 +5943,47 @@ var Designer = {
                 allWebhooks: 'All Webhooks',
                 getWebhookById: 'Get webhook By Id',
                 allLinkedItems: 'All Linked Items',
+            },
+            gohighlevelDataSource: {
+                businesses: 'Businesses',
+                businessesbylocation: 'Businesses By Location',
+                calender: "Calendar",
+                calenderEvents: "CalenderEvents",
+                campaigns: "Campaigns",
+                contacts: "Contacts",
+                tasks: "Tasks",
+                appointments: "Appointments",
+                notes: "Notes",
+                search: "Search",
+                conversations: "Conversations",
+                forms: "Forms",
+                triggerLinks: "TriggerLinks",
+                location: "Location",
+                opportunities: "Opportunities",
+                surveys: "Surveys",
+                users: "Users",
+                workFlows: "WorkFlows",
+                allGroups: "All Groups",
+                allCalenders: "All Calenders",
+                allCampaigns: "All Campaigns",
+                allContacts: "All Contacts",
+                allTasks: "All Tasks",
+                allAppointmentsByContact: "All Appointments By Contact",
+                allNotes: "All Notes",
+                allDuplicateContacts: "All Duplicate Contacts",
+                allFormsSubmissions: "All Forms Submissions",
+                allForms: "All Forms",
+                allLinks: "All Links",
+                allTagsByLocation: "All Tags By Location",
+                allCustomFields: "All Custom Fields",
+                allCustomValues: "All Custom Values",
+                allTemplates: "All Templates",
+                searchOpportunities: "Search Opportunities",
+                allPipelines: "All Pipelines",
+                allSubmissions: "All Submissions",
+                allSurveys: "All Surveys",
+                allUsers: "All Users",
+                allWorkFlows: "All Work Flows",
             },
             almaDataSource: {
                 ping: "Ping",

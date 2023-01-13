@@ -47,11 +47,6 @@ $destination="$pluginpath/oracle"
 Copy-Item -Path $clientlibraryextractpath/Oracle.ManagedDataAccess.dll -Destination $destination
 echo "oracle libraries are installed"
 }
-"npgsql"{
-$destination="$pluginpath/postgresql"
-Copy-Item -Path $clientlibraryextractpath/Npgsql.dll -Destination $destination
-echo "postgresql libraries are installed"
-}
 "google"{
 $destination="$pluginpath/google"
 Copy-Item -Path $clientlibraryextractpath/Google.Cloud.BigQuery.V2.dll -Destination $destination

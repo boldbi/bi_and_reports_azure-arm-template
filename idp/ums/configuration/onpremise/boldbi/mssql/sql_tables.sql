@@ -118,7 +118,8 @@ CREATE TABLE [BOLDBI_Item](
 	[IsDraft] [bit] NULL DEFAULT 0,
 	[IsLocked] [bit] NULL DEFAULT 0,
 	[IsActive] [bit] NULL,
-	[IsUnlisted] [bit] NOT NULL DEFAULT 0)
+	[IsUnlisted] [bit] NOT NULL DEFAULT 0,
+	[IsUploadDraft] [bit] NOT NULL DEFAULT 0)
 ;
 
 CREATE TABLE [BOLDBI_ItemView](
@@ -885,6 +886,32 @@ CREATE TABLE [BOLDBI_EventPayloadsMapping](
 	[EventType] [int] NOT NULL,
 	[PayloadType] [int] NOT NULL,
 	[IsActive] [bit] NOT NULL)
+;
+
+CREATE TABLE [BOLDBI_UserSession](
+	[Id] [uniqueidentifier] PRIMARY KEY NOT NULL,
+	[IdpReferenceId]  [uniqueidentifier] NOT NULL,
+	[SessionId]  [uniqueidentifier] NOT NULL,
+	[DirectoryTypeId] [int] NOT NULL,
+	[IpAddress] [nvarchar](255) NOT NULL,
+	[Browser] [nvarchar](255) NOT NULL,
+	[LoggedInTime] [datetime] NOT NULL,
+	[LastActive] [datetime] NULL,
+	[IsActive] [bit] NOT NULL)
+;
+
+CREATE TABLE [BOLDBI_BackgroundJobs](
+    [Id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    [JobType] int NOT NULL,
+    [ItemId] [uniqueidentifier] NULL,
+    [UserId] [int] NULL,
+    [JobDetails] [nvarchar](max) NOT NULL,
+    [CreatedDate] [datetime] NOT NULL,
+    [CompletedDate] [datetime] NOT NULL,
+    [Status] [nvarchar](255) NOT NULL,
+	[ResourceInfo] [nvarchar](max) NULL,
+	[CanIncludeSensitiveInfo] [bit] NOT NULL,
+    [IsActive] [bit] NOT NULL)
 ;
 
 ---- PASTE INSERT Queries below this section --------

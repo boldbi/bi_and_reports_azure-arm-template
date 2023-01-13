@@ -10,6 +10,7 @@
     var scopeList = ServerAppConfig.SettingsScopesList;
     var isBIWidgetssTab = (string.IsNullOrWhiteSpace(Context.Request.Query["tab"]) || Context.Request.Query["tab"] == "bi-widgets") ? "active" : string.Empty;
     var isReportsWidgetsTab = (Context.Request.Query["tab"].ToString() == "reports-widgets") ? "active" : string.Empty;
+    var designerServiceUrl = ServerAppConfig.GetServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings);
     var canShowAdminMenu = _identityResponse.IsAdmin || model[SettingsScopes.All] || model.Select(x => x).Where(x => scopeList.Contains(x.Key.ToString()) && x.Value == true).Count() > 1 || (model.Select(x => x).Where(x => scopeList.Contains(x.Key.ToString()) && x.Value == true).Count() == 1 && (model[PermissionEntity.UsersandGroups] || model[PermissionEntity.SpecificGroup] || model[PermissionEntity.AllGroups])) || model[PermissionEntity.UsersandGroups]; }
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.WidgetSettings);
 }
@@ -17,7 +18,7 @@
 @section meta{
     <meta name="dashboard_server:url" content="@dashboardServerApiUrl" />
     <meta name="user:is_admin" content="@isAdmin.ToString()" />
-    <meta name="designer_service:url" content="@ServerAppConfig.InternalAppDataServiceUrl" />
+    <meta name="designer_service:url" content="@designerServiceUrl" />
     <meta name="designer_service:access_token" content="@ViewBag.AccessToken" />
 }
 
@@ -34,7 +35,7 @@
     </environment>
 }
 @section scripts {
-    <script asp-append-version="true" src="@ServerAppConfig.InternalAppDataServiceUrl/scripts/designerlocalization.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <script asp-append-version="true" src="@designerServiceUrl/scripts/designerlocalization.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
 
     <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/ej1.web.all.min.js"></script>
     <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/ej2.web.all.min.js"></script>

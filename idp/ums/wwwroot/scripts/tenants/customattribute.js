@@ -363,7 +363,7 @@ function deleteConfirmation(item) {
     setTimeout(function () {
         var attributeGridObj = document.getElementById('SiteAttributesGrid').ej2_instances[0];
         var attribute = attributeGridObj.getCurrentViewRecords()[attributeGridObj.getSelectedRowIndexes()];
-        messageBox("su-delete", window.Server.App.LocalizationContent.DeleteCustomAttribute, window.Server.App.LocalizationContent.DeleteAttributeConfirm.format(" - " + "<span class ='highlight-name'>" + attribute.Name + "</span>"), "error", function () {
+        messageBox("su-delete", window.Server.App.LocalizationContent.DeleteCustomAttribute, window.Server.App.LocalizationContent.DeleteAttributeConfirm.format(" - <span class ='highlight-name'>", attribute.Name, "</span>"), "error", function () {
             removeCustomAttribute(item)
         }, function () {
                 clearAttributeSelection() 

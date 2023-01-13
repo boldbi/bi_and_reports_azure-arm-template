@@ -36,7 +36,7 @@
 <body class="startup-page-container-body">
     <div id="loader"></div>
     @await Html.PartialAsync("_Header.OnpremiseStartup")
-    <div class="auto-deploy-container">
+    <div class="auto-deploy-container"  style="display:none">
         <div class="image-container">
             <img class="deployment-image" src="@Url.Content("~/images/static/error-pages/v1/deployment-error.png")" />
             <div id="auto-deployment-response">

@@ -45,7 +45,18 @@
     var dashboardDesignerResourceUrl = globalAppSettings.SystemSettings.DesignerCdnLink.TrimEnd('/');
     var rootUrl = Context.Request.RouteValues["tenantName"] != null ? (GlobalAppSettings.HttpPathBase + "/" + ServerAppConfig.TenantIdentifierPrefix + "/" + Context.Request.RouteValues["tenantName"]).TrimEnd('/') : GlobalAppSettings.HttpPathBase.ToString();
     var url = new Uri(Context.Request.GetDisplayUrl());
-    var isEmbedTrue = (Convert.ToBoolean(url.Query.ToLower().Contains("embed_signature")) || Context.Request.QueryString.ToString().ToLower().Contains("isembed")) && !string.IsNullOrWhiteSpace(Context.Request.Query["embed_theme"]);
+    var designerServiceUrl = ServerAppConfig.GetServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings);
+    var dashboardCutomTheme = string.Empty;
+    var isEmbedSignature = url.Query.ToLower().Contains("embed_signature") && globalAppSettings.GetLicenseSettings().EnterpriseFeatures.Embed;
+    var isEmbedTrue = ((Context.Request.Query["isembed"].ToString() != null && Context.Request.Query["isembed"].ToString().ToLower() == "true") || isEmbedSignature) && !string.IsNullOrWhiteSpace(Context.Request.Query["embed_theme"]);
+    if (isEmbedTrue)
+    {
+        dashboardCutomTheme = Context.Request.Query["embed_theme"];
+    }
+    else
+    {
+        dashboardCutomTheme = ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : globalAppSettings.SystemSettings.CustomDashboardTheme;
+    }
 }
 <!DOCTYPE html>
 
@@ -59,9 +70,9 @@
     }
     <meta name="dashboard_service:url" content="@globalAppSettings.SystemSettings.InternalAppDataServiceUrl" />
     <meta name="dashboard_server:url" content="@dashboardServerApiUrl" />
-    <meta name="designer_service:url" content="@ServerAppConfig.InternalAppDataServiceUrl" />
+    <meta name="designer_service:url" content="@designerServiceUrl" />
     <meta name="designer_service:access_token" content="@ViewBag.AccessToken" />
-    <meta name="data_service:url" content="@ServerAppConfig.InternalAppDataServiceUrl" />
+    <meta name="data_service:url" content="@designerServiceUrl" />
     <meta name="datasource_schedule:url" content="@Url.Action("GetRecurrenceTypeView", "DataSources")" />
 
     <meta name="datasource:connectionlist" content="@ViewBag.Datasources" />
@@ -80,7 +91,7 @@
 
     <title>@(ViewBag.DataSourceName != null ? ViewBag.DataSourceName : T["Untitled"].Value) - @T["Design Datasource"] - @globalAppSettings.SystemSettings.OrganizationName</title>
     @await Html.PartialAsync("~/Views/Shared/_ApplicationThemeStyleSheet.cshtml")
-    @if (!ServerAppConfig.IsSelfHosted || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
+    @if ((!ServerAppConfig.IsSelfHosted && string.IsNullOrWhiteSpace(_globalAppSettings.SystemSettings.FontPreference)) || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
     {
         <style>
             :root {
@@ -141,7 +152,7 @@
         var custombrandName = "@ServerAppConfig.CustomBrandName";
         var timeZone = "@_clientDateTimeInfo.ClientDateTime.TimeZone";
         var datasourceDesignerUrl = "@Url.Action("Index", "DataSourceDesigner")";
-        var dashboardCustomThemename = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : globalAppSettings.SystemSettings.CustomDashboardTheme)";
+        var dashboardCustomThemename = "@dashboardCutomTheme";
         var customThemeAppearance = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.Appearance : globalAppSettings.SystemSettings.ThemeAppearance)";
         var applicationTheme = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.ApplicationTheme : globalAppSettings.SystemSettings.CustomApplicationTheme)";
         var enableApplicationEmbed =@ServerAppConfig.EnableSameTabLinkTarget.ToString().ToLower();
@@ -197,7 +208,7 @@
         <script asp-append-version="true" src="@dashboardDesignerResourceUrl/cdn/scripts/designer/dashboard-designer-dependency.min.js"></script>
     </environment>
 
-    <script asp-append-version="true" src="@ServerAppConfig.InternalAppDataServiceUrl/scripts/designerlocalization.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <script asp-append-version="true" src="@designerServiceUrl/scripts/designerlocalization.js?v=@ServerAppConfig.ProductVersion&c=@System.Globalization.CultureInfo.CurrentCulture"></script>
 
     @*Referred directly in the view page due to pivot grid changes and sfcompressor minification issue*@
 
@@ -266,12 +277,7 @@
     }
     else
     {
-        <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
-        </environment>
-        <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
-        </environment>
+        @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
     }
 
     <environment include="Development,CloudDevelopment">

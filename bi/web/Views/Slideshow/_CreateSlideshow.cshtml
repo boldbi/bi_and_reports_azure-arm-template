@@ -20,15 +20,13 @@
         var geteditMultiTabDashboardDetailUrl = "@Url.Action("GetEditMultiTabDashboardDetail", "Slideshow")";
         var canCreateCategory = @Json.Serialize(canCreateCategory);
     </script>
-
+    @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
     <environment include="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/create-slideshow.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/create-slideshow.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/create-slideshow.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/create-slideshow.min.js"></script>
     </environment>
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")

@@ -5,6 +5,7 @@
     var data = new List<TemplateDataSource>();
     var permissions = Model as Dictionary<ItemType, bool>;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
+    var designerServiceUrl = ServerAppConfig.GetServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings);
     var themeAppearanceName = globalAppSettings != null && globalAppSettings.SystemSettings != null ? globalAppSettings.SystemSettings.ThemeAppearance : "light";
 }
 
@@ -32,7 +33,7 @@
         var getTemplateDashboardUrl = "@Url.Action("GetTemplateDashboards", "items")";
         var dashboardServerResourceUrl = "@globalAppSettings.SystemSettings.CDNLink";
         window.templatedashboardsList = @Html.Raw(Json.Serialize(@data));
-        var dataServiceUrl = "@ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/')";
+        var dataServiceUrl = "@designerServiceUrl.TrimEnd('/')";
         window.canCreateDataSource = "@Json.Serialize(permissions[ItemType.Datasource])";
         var serverAppPathBase = "@GlobalAppSettings.HttpPathBase";
     </script>
@@ -101,7 +102,7 @@
                                     <p class="template-dashboard-description">{{dashboard.Description}}</p>
                                     <img class="service-image" title="{{datasource.Name}}" data-toggle="tooltip" ng-src="@globalAppSettings.SystemSettings.CDNLink.TrimEnd('/')/cdn/css/designer/@themeAppearanceName.Trim()/images/datasource/{{datasource.Provider | lowercase}}/{{datasource.Service | lowercase}}.png" />
                                     <div class="template-dashboard-buttons-div">
-                                        <button ng-if="canCreateDataSource && !IsNullorWhitespace(dashboard.Type)" data-authorize-url="@ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/')/v1.0/connection/authorize?provider={{datasource.Provider}}&service={{datasource.Service}}&type={{dashboard.Type}}&token={{accessToken}}&server=@(new DashboardServerApiEndPoints(globalAppSettings, true).DashboardServerApiUrl())"
+                                        <button ng-if="canCreateDataSource && !IsNullorWhitespace(dashboard.Type)" data-authorize-url="@designerServiceUrl.TrimEnd('/')/v1.0/connection/authorize?provider={{datasource.Provider}}&service={{datasource.Service}}&type={{dashboard.Type}}&token={{accessToken}}&server=@(new DashboardServerApiEndPoints(globalAppSettings, true).DashboardServerApiUrl())"
                                                 class="template-dashboard-add-button primary-button app-btn-primary" data-access-token="{{accessToken}}"
                                                 data-category-name="{{datasource.Provider}}" data-template-filename="{{dashboard.FileName}}"
                                                 data-template-description="{{dashboard.Description}}" data-template-name="{{dashboard.Name}}"
@@ -109,7 +110,7 @@
                                                 data-type="{{dashboard.Type}}" type="button">
                                             @T["Connect your data"]
                                         </button>
-                                        <button ng-if="canCreateDataSource && IsNullorWhitespace(dashboard.Type)" data-authorize-url="@ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/')/v1.0/connection/authorize?provider={{datasource.Provider}}&service={{datasource.Service}}&token={{accessToken}}&server=@(new DashboardServerApiEndPoints(globalAppSettings, true).DashboardServerApiUrl())"
+                                        <button ng-if="canCreateDataSource && IsNullorWhitespace(dashboard.Type)" data-authorize-url="@designerServiceUrl.TrimEnd('/')/v1.0/connection/authorize?provider={{datasource.Provider}}&service={{datasource.Service}}&token={{accessToken}}&server=@(new DashboardServerApiEndPoints(globalAppSettings, true).DashboardServerApiUrl())"
                                                 class="template-dashboard-add-button primary-button app-btn-primary" data-access-token="{{accessToken}}"
                                                 data-category-name="{{datasource.Provider}}" data-template-filename="{{dashboard.FileName}}"
                                                 data-template-description="{{dashboard.Description}}" data-template-name="{{dashboard.Name}}"

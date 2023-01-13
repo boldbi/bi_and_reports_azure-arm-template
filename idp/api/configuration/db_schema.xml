@@ -501,11 +501,14 @@
     <DB_TableName>UserLogin</DB_TableName>
     <Id>Id</Id>
     <UserId>UserId</UserId>
+    <SessionId>SessionId</SessionId>
     <DirectoryTypeId>DirectoryTypeId</DirectoryTypeId>
     <ClientToken>ClientToken</ClientToken>
-    <IpAddress>IpAddress</IpAddress>
     <LoggedInDomain>LoggedInDomain</LoggedInDomain>
+    <IpAddress>IpAddress</IpAddress>
+    <Browser>Browser</Browser>
     <LoggedInTime>LoggedInTime</LoggedInTime>
+    <LastActive>LastActive</LastActive>
     <IsActive>IsActive</IsActive>
   </DB_UserLogin>
   <DB_UserPreference>

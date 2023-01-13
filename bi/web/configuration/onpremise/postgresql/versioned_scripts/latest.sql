@@ -1,23 +1,28 @@
-INSERT INTO SyncDS_SettingsType (Name, IsActive) SELECT N'CORS Settings', 1
-WHERE NOT EXISTS (SELECT Name FROM SyncDS_SettingsType WHERE Name = N'CORS Settings')
+CREATE TABLE SyncDS_UserSession(
+	Id uuid primary key NOT NULL,
+	IdpReferenceId uuid NOT NULL,
+	SessionId uuid NOT NULL,
+	DirectoryTypeId int NOT NULL DEFAULT 0,
+	IpAddress varchar(255) NULL,
+	Browser varchar(1024) NULL,
+	LoggedInTime timestamp NULL,
+	LastActive timestamp NULL,
+	IsActive smallint NOT NULL)
 ;
 
-ALTER TABLE SyncDS_ExternalSites ADD COLUMN ModifiedById int NULL
-;
-ALTER TABLE SyncDS_ExternalSites ADD COLUMN ModifiedDate timestamp NULL
-;
-ALTER TABLE SyncDS_ExternalSites ADD COLUMN SiteType int not null DEFAULT 0
+ALTER TABLE SyncDS_Item ADD COLUMN IsUploadDraft smallint NOT NULL default 0
 ;
 
-ALTER TABLE SyncDS_MultiTabDashboard ADD COLUMN TabName varchar(255) NULL
-;
-
-ALTER TABLE SyncDS_ScheduleDetail ADD COLUMN Subject varchar(4000) NULL
-;
-
-INSERT INTO SyncDS_SettingsType (Name, IsActive) SELECT N'Look and Feel', 1
-WHERE NOT EXISTS (SELECT Name FROM SyncDS_SettingsType WHERE Name = N'Look and Feel')
-;
-
-UPDATE SyncDS_SettingsType SET Name='Data Process' WHERE Name = 'Data Store Settings'
+CREATE TABLE SyncDS_BackgroundJobs (
+	Id SERIAL primary key NOT NULL,
+	JobType int NOT NULL,
+	ItemId uuid NULL,
+	UserId int NULL,
+	JobDetails text NOT NULL,
+	CreatedDate timestamp NOT NULL,
+	CompletedDate timestamp NOT NULL,
+	Status varchar(255) NOT NULL,
+	ResourceInfo text NULL,
+	CanIncludeSensitiveInfo smallint NOT NULL,
+	IsActive smallint NOT NULL)
 ;

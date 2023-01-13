@@ -14,15 +14,16 @@
 <!DOCTYPE html>
 <html class="dashboard-server">
 	<head>
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-	    <title>
-	        @ViewBag.Title
-	    </title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+    <title>
+        @ViewBag.Title
+    </title>
 
-	    @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
+    @await Html.PartialAsync("~/Views/Shared/_BaseFontStyleSheet.cshtml")
 
-	    <script>
+    <script>
 	        var canCreateDashboard = @Json.Serialize(model[ItemType.Dashboard]);
 	        var isCategoryExistUrl = "@Url.Action("iscategoryexist", "category")";
 	        var addCategoryUrl = "@Url.Action("addcategory", "category")";
@@ -30,17 +31,15 @@
 	        var getCategoryItem = "@Url.Action("RefreshCategoryList", "Dashboards")";
 	        var editcategoryUrl = "@Url.Action("editcategory", "category")";
 	        var dashboardsUrl = "@Url.Action("dashboards", "dashboards")";
-	    </script>
-	    <environment include="Development,CloudDevelopment">
-	        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/add-category.css" />
-	        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
-	        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-category.js"></script>
-	    </environment>
-	    <environment exclude="Development,CloudDevelopment">
-	        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/add-category.min.css" />
-	        <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, dashboardServerResourceUrl)" />
-	        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-category.min.js"></script>
-	    </environment>
+    </script>
+    <environment include="Development,CloudDevelopment">
+        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/add-category.css" />
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-category.js"></script>
+    </environment>
+    <environment exclude="Development,CloudDevelopment">
+        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/add-category.min.css" />
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/edit-category.min.js"></script>
+    </environment>
 	</head>
 	<body>
     @if (model[ItemType.Category])

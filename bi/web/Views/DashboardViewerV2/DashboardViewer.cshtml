@@ -20,7 +20,7 @@
     var isPublic = globalAppSettings.SystemSettings.IsMarkItemsPublic && itemDetail.IsPublic;
     var canEdit = itemDetail.CanWrite;
     var loginImage = globalAppSettings.SystemSettings.LoginLogo;
-    var dataServiceUrl = ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/');
+    var dataServiceUrl = ServerAppConfig.GetServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings).TrimEnd('/');
     var provider = itemDetail.IsSampleData ? (ViewBag.DataSourceProviders == null ? string.Empty : ViewBag.DataSourceProviders[0].Provider) : string.Empty;
     var service = itemDetail.IsSampleData ? (ViewBag.DataSourceProviders == null ? string.Empty : (ViewBag.DataSourceProviders[0] == null ? string.Empty : ViewBag.DataSourceProviders[0].Service[0])) : string.Empty;
     var permissions = ViewBag.ItemAddOptions as Dictionary<ItemType, bool>;
@@ -49,6 +49,16 @@
     var getWidgetEmbedCode = globalAppSettings.SystemSettings.GetWidgetEmbedCode;
     var isViewNotFound = (ViewBag.ViewNotFound != null && ViewBag.ViewNotFound ) ? true : false;
     var isCommentNotFound = (ViewBag.CommentNotFound != null && ViewBag.CommentNotFound) ? true : false;
+    var dashboardCutomTheme = string.Empty;
+    var isEmbedSignature = requestUrl.Query.ToLower().Contains("embed_signature") && globalAppSettings.GetLicenseSettings().EnterpriseFeatures.Embed;
+    if (((Context.Request.Query["isembed"].ToString() != null && Context.Request.Query["isembed"].ToString().ToLower() == "true") || isEmbedSignature) && !string.IsNullOrWhiteSpace(Context.Request.Query["embed_theme"]))
+    {
+        dashboardCutomTheme = Context.Request.Query["embed_theme"];
+    }
+    else
+    {
+        dashboardCutomTheme = ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : globalAppSettings.SystemSettings.CustomDashboardTheme;
+    }
 }
 <!DOCTYPE html>
 
@@ -64,10 +74,10 @@
     }
     <meta name="dashboard_service:url" content="@globalAppSettings.SystemSettings.InternalAppDataServiceUrl" />
     <meta name="dashboard_server:url" content="@dashboardServerApiUrl" />
-    <meta name="designer_service:url" content="@ServerAppConfig.InternalAppDataServiceUrl" />
+    <meta name="designer_service:url" content="@dataServiceUrl" />
     <meta name="designer_service:access_token" content="@ViewBag.AccessToken" />
-    <meta name="data_service:url" content="@ServerAppConfig.InternalAppDataServiceUrl" />
-    <meta name="data_service_host:url" content="@ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/')" />
+    <meta name="data_service:url" content="@dataServiceUrl" />
+    <meta name="data_service_host:url" content="@dataServiceUrl.TrimEnd('/')" />
     <meta name="dashboard:version" content="@ViewBag.Version" />
     <meta name="dashboard:id" content="@ViewBag.ItemId" />
     <meta name="dashboard:name" content="@ViewBag.ItemName" />
@@ -80,11 +90,11 @@
     <meta name="globalization:date_format" content="@_clientDateTimeInfo.ClientDateTime.DateFormat" />
     <meta name="globalization:time_format" content="@_clientDateTimeInfo.ClientDateTime.TimeFormat" />
 
-    <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings, true)" />
+    <link rel="stylesheet" class="dashboard-custom-theme-file" asp-append-version="true" href="@ServerAppConfig.GetCustomThemeDesignerUrl(dashboardServerResourceUrl, Context, globalAppSettings, true)" />
 
     <link rel="icon" href="@globalAppSettings.SystemSettings.FavIcon" onerror="if (this.href != '@faviconFallbackUrl') this.href = '@faviconFallbackUrl';" />
 
-    @if (!ServerAppConfig.IsSelfHosted || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
+    @if ((!ServerAppConfig.IsSelfHosted && string.IsNullOrWhiteSpace(_globalAppSettings.SystemSettings.FontPreference)) || (ServerAppConfig.FontFamily == "Robotoregular" && _globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings))
     {
         <style>
             :root {
@@ -156,6 +166,7 @@
         var Commentswidgets = "@Url.Action("WidgetCommentPartialView", "Comments")";
         var editDashboardUrl = encodeURI("@Url.Action("DashboardDesigner", "Designer")" + "/@itemDetail.Id/@itemDetail.CategoryName/@itemDetail.Name");
         var myDashboardsUrl = encodeURI("@Url.Action("Dashboards", "Dashboards")" + "?view=all");
+        var editDashboardEmbedUrl = "@Url.Action("DashboardDesigner", "Designer")";
         var isSlideshow = @Json.Serialize(isSlideshow);
         var parentId = "@parentId";
         var isFavorite = "@ViewBag.IsFavorite";
@@ -198,7 +209,7 @@
         var parentItemId = "@ViewBag.ParentItemId";
         var isViewNotFound = @Html.Raw(Json.Serialize(isViewNotFound));
         var isCommentNotFound = @Html.Raw(Json.Serialize(isCommentNotFound));
-        var dashboardCustomThemename = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : globalAppSettings.SystemSettings.CustomDashboardTheme)";
+        var dashboardCustomThemename = "@dashboardCutomTheme";
         var customThemeAppearance = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.Appearance : globalAppSettings.SystemSettings.ThemeAppearance)";
         var applicationTheme = "@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.ApplicationTheme : globalAppSettings.SystemSettings.CustomApplicationTheme)";
         var getWidgetEmbedCode = @Json.Serialize(getWidgetEmbedCode);
@@ -321,11 +332,11 @@
     </div>
     @if (!ViewData.ContainsKey("GlobalSettings"))
     {
-        @await Html.PartialAsync("~/Views/DashboardViewerV2/_DashboardViewerScripts.cshtml", new ViewDataDictionary(ViewData) { { "GlobalSettings", ViewBag.GlobalSettings } })
+        @await Html.PartialAsync("~/Views/DashboardViewerV2/_DashboardViewerScripts.cshtml", new ViewDataDictionary(ViewData) { { "GlobalSettings", ViewBag.GlobalSettings}, {"PinWidget", pinWidget } })
     }
     else
     {
-        @await Html.PartialAsync("~/Views/DashboardViewerV2/_DashboardViewerScripts.cshtml", new ViewDataDictionary(ViewData))
+        @await Html.PartialAsync("~/Views/DashboardViewerV2/_DashboardViewerScripts.cshtml", new ViewDataDictionary(ViewData) {{ "PinWidget", pinWidget }})
     }
 
 

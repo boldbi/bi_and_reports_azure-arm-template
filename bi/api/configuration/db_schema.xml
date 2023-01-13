@@ -111,7 +111,8 @@
 		<IsDraft>IsDraft</IsDraft>
 		<IsLocked>IsLocked</IsLocked>
 		<IsUnlisted>IsUnlisted</IsUnlisted>
-	</DB_Item>
+		<IsUploadDraft>IsUploadDraft</IsUploadDraft>
+    </DB_Item>
 	<DB_ItemCommentLog>
 		<DB_TableName>ItemCommentLog</DB_TableName>
 		<Id>Id</Id>
@@ -942,4 +943,38 @@
 		<ModifiedDate>ModifiedDate</ModifiedDate>
 	    <IsActive>IsActive</IsActive>
 	</DB_CustomTheme>
+    <DB_CustomFont>
+		<DB_TableName>CustomFont</DB_TableName>
+		<Id>Id</Id>
+		<FontName>FontName</FontName>
+		<FontValue>FontValue</FontValue>
+		<ModifiedDate>ModifiedDate</ModifiedDate>
+	    <IsActive>IsActive</IsActive>
+	</DB_CustomFont>
+	<DB_UserSession>
+		<DB_TableName>UserSession</DB_TableName>
+		<Id>Id</Id>
+		<IdpReferenceId>IdpReferenceId</IdpReferenceId>
+		<DirectoryTypeId>DirectoryTypeId</DirectoryTypeId>
+		<IpAddress>IpAddress</IpAddress>
+		<LoggedInTime>LoggedInTime</LoggedInTime>
+		<IsActive>IsActive</IsActive>
+		<SessionId>SessionId</SessionId>
+		<Browser>Browser</Browser>
+		<LastActive>LastActive</LastActive>
+	</DB_UserSession>
+	<DB_BackgroundJobs>
+		<DB_TableName>BackgroundJobs</DB_TableName>
+		<Id>Id</Id>
+		<JobType>JobType</JobType>
+		<UserId>UserId</UserId>
+		<ItemId>ItemId</ItemId>
+		<JobDetails>JobDetails</JobDetails>
+		<CreatedDate>CreatedDate</CreatedDate>
+		<CompletedDate>CompletedDate</CompletedDate>
+		<Status>Status</Status>
+		<ResourceInfo>ResourceInfo</ResourceInfo>
+		<CanIncludeSensitiveInfo>CanIncludeSensitiveInfo</CanIncludeSensitiveInfo>
+		<IsActive>IsActive</IsActive>
+	</DB_BackgroundJobs>
 </DB_SyncUMP>

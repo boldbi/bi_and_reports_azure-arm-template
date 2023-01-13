@@ -1,23 +1,28 @@
-INSERT INTO [BOLDBI_SettingsType] (Name, IsActive) SELECT 'CORS Settings', 1
-WHERE NOT EXISTS (SELECT Name FROM [BOLDBI_SettingsType] WHERE Name = 'CORS Settings')
+CREATE TABLE [BOLDBI_UserSession](
+	[Id] [uniqueidentifier] PRIMARY KEY NOT NULL,
+	[IdpReferenceId]  [uniqueidentifier] NOT NULL,
+	[SessionId]  [uniqueidentifier] NOT NULL,
+	[DirectoryTypeId] [int] NOT NULL,
+	[IpAddress] [nvarchar](255) NOT NULL,
+	[Browser] [nvarchar](255) NOT NULL,
+	[LoggedInTime] [datetime] NOT NULL,
+	[LastActive] [datetime] NULL,
+	[IsActive] [bit] NOT NULL)
 ;
 
-ALTER TABLE [BOLDBI_ExternalSites] ADD [ModifiedById] [int] NULL
-;
-ALTER TABLE [BOLDBI_ExternalSites] ADD [ModifiedDate] [datetime] NULL
-;
-ALTER TABLE [BOLDBI_ExternalSites] ADD [SiteType] [int] NOT NULL DEFAULT 0
+ALTER TABLE [BOLDBI_Item] ADD [IsUploadDraft] Bit Not Null default '0'
 ;
 
-ALTER TABLE [BOLDBI_MultiTabDashboard]  ADD [TabName] [nvarchar](255) NULL  
-;
-
-ALTER TABLE [BOLDBI_ScheduleDetail] ADD [Subject] [nvarchar](4000) NULL
-;
-
-INSERT INTO [BOLDBI_SettingsType] (Name, IsActive) SELECT 'Look and Feel', 1
-WHERE NOT EXISTS (SELECT Name FROM [BOLDBI_SettingsType] WHERE Name = 'Look and Feel')
-;
-
-UPDATE [BOLDBI_SettingsType] SET Name='Data Process' WHERE Name = 'Data Store Settings'
+CREATE TABLE [BOLDBI_BackgroundJobs](
+    [Id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    [JobType] int NOT NULL,
+    [ItemId] [uniqueidentifier] NULL,
+    [UserId] [int] NULL,
+    [JobDetails] [nvarchar](max) NOT NULL,
+    [CreatedDate] [datetime] NOT NULL,
+    [CompletedDate] [datetime] NOT NULL,
+    [Status] [nvarchar](255) NOT NULL,
+	[ResourceInfo] [nvarchar](max) NULL,
+	[CanIncludeSensitiveInfo] [bit] NOT NULL,
+    [IsActive] [bit] NOT NULL)
 ;
