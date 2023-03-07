@@ -20,19 +20,19 @@
 }
 
     <nav id="admin-menu-nav-bar" class="admin-nav-bar">
-        <h2 class="header">@T["Settings"]</h2>
+        <h2 class="header">[[[Settings]]]</h2>
         <ul>
             <li class="admin-menu-item @(currentUrl.IndexOf(siteSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 || currentUrl.Equals(adminHomeUrl, StringComparison.CurrentCultureIgnoreCase) ? "active" : string.Empty)">
                 <a id="site-settings-link" href="@siteSettingsUrl" role="tab">
                     <i class="su su-url"></i>
-                    <span>@T["Site"]</span>
+                    <span>[[[Site]]]</span>
                 </a>
             </li>
 
             <li class="admin-menu-item @(currentUrl.IndexOf(lookandfeelUrl, StringComparison.CurrentCultureIgnoreCase) > -1  ? "active" : string.Empty)">
                 <a id="site-settings-link" href="@lookandfeelUrl" role="tab">
                     <i class="su su-look-and-feel"></i>
-                    <span>@T["Look and Feel"]</span>
+                    <span>[[[Look and Feel]]]</span>
                 </a>
             </li>
 
@@ -41,26 +41,26 @@
                 <li class="admin-menu-item @(currentUrl.IndexOf(embedSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                     <a id="embed-settings-link" href="@embedSettingsUrl" role="tab">
                         <i class="su su-embed"></i>
-                        <span>@T["Embed"]</span>
+                        <span>[[[Embed]]]</span>
                     </a>
                 </li>
             }
             <li class="admin-menu-item @(currentUrl.IndexOf(emailSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                 <a id="email-settings-link" href="@emailSettingsUrl" role="tab">
                     <i class="su su-e-mail"></i>
-                    <span>@T["Email"]</span>
+                    <span>[[[Email]]]</span>
                 </a>
             </li>
             <li class="admin-menu-item @(currentUrl.IndexOf(userSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                 <a id="user-settings-link" href="@userSettingsUrl" role="tab">
                     <i class="su su-user-settings"></i>
-                    <span>@T["Accounts"]</span>
+                    <span>[[[Accounts]]]</span>
                 </a>
             </li>
             <li class="admin-menu-item @(currentUrl.IndexOf(authSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                 <a id="oauth-settings-link" href="@authSettingsUrl" role="tab">
                     <i class="su su-lock"></i>
-                    <span>@T["Authentication"]</span>
+                    <span>[[[Authentication]]]</span>
                 </a>
             </li>
             @if (GlobalAppSettings.IsBoldBIOnPremise)
@@ -68,30 +68,33 @@
                 <li class="admin-menu-item @(currentUrl.IndexOf(securitySettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                     <a href="@securitySettingsUrl" role="tab">
                         <i class="su su-shield"></i>
-                        <span>@T["Security"]</span>
+                        <span>[[[Security]]]</span>
                     </a>
                 </li>
             }
             <li class="admin-menu-item @(currentUrl.IndexOf(apiKeysUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                 <a id="api-keys-link" href="@apiKeysUrl" role="tab">
                     <i class="su su-api-keys"></i>
-                    <span>@T["API Keys"]</span>
+                    <span>[[[API Keys]]]</span>
                 </a>
             </li>
             <li class="admin-menu-item @(currentUrl.IndexOf(additionalSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                 <a id="additional-settings-link" href="@additionalSettingsUrl" role="tab">
                     <i class="su su-nav-settings"></i>
-                    <span>@T["Configuration"]</span>
+                    <span>[[[Configuration]]]</span>
                 </a>
             </li>
             <li class="admin-menu-item @(currentUrl.IndexOf(manageLicenseUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                 <a id="license-settings-link" href="@manageLicenseUrl" role="tab">
-                    <i class="su su-license-settings"></i>
                     @if (licenseExpired.IsBoldBILicenseExpired || licenseExpired.IsBoldReportsLicenseExpired)
                     {
-                        <span id="license-notification-indicator"></span>
+                        <span class="su su-license-notification" id="license-icon"><span class="su su-license-notification path1"></span><span class="su su-license-notification path2"></span></span>
                     }
-                    <span>@T["Manage License"]</span>
+                    else
+                    {
+                        <span class="su su-license-notification" id="license-icon"><span class="su su-license-notification path1"></span></span>
+                    }
+                    <span>[[[Manage License]]]</span>
                 </a>
             </li>
             @*<li>

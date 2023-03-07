@@ -48,7 +48,7 @@
                 margin: 0;
                 vertical-align: middle;*/
 /*color: $primary-btn-text-color !important;*/
-            /*}
+/*}
         }
 
         #upload-item-section {
@@ -57,7 +57,7 @@
                 border: none;
                 border-radius: 0;*/
 /*color: $primary-btn-text-color;*/
-                /*height: $height;
+/*height: $height;
                 width: 120px;
             }
         }
@@ -306,12 +306,12 @@
     }
 }*/
 /*@media (min-width:1040px) and (max-width: 1200px) {
-    .app-header {
-        #application-list {
-            text-align: center !important;
+        .app-header {
+            #application-list {
+                text-align: center !important;
+            }
         }
-    }
-}*/
+    }*/
 #profile-menu-nav-bar {
   background: var(--sub-nav-menu-bg-color);
   border-right: 1px solid var(--sub-nav-menu-border-color);
@@ -392,6 +392,7 @@
 
 #server-app-container #content-area {
   height: 100%; }
+
 #server-app-container .admin-page-content-container {
   background: var(--surface);
   height: 100%;
@@ -464,17 +465,6 @@
         padding: 32px 0 0 0; }
         #server-app-container .admin-page-content-container .admin-page-content .admin-page-footer .admin-page-actions .secondary-button, #server-app-container .admin-page-content-container .admin-page-content .admin-page-footer .admin-page-actions .primary-button {
           margin-left: 15px; }
-    #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar {
-      background: var(--background); }
-      #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav {
-        padding-left: 24px; }
-        #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav > li > a {
-          position: relative;
-          display: block;
-          padding: 0px 12px 10px 12px;
-          line-height: 14px; }
-        #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav .active a {
-          padding-bottom: 8px; }
   #server-app-container .admin-page-content-container #base-footer-div {
     margin: 0;
     padding: 52px 24px 24px 24px; }

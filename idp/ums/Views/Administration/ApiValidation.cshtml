@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = T["API Validator"].Value + " - " + GlobalAppSettings.SystemSettings.OrganizationName;
+    ViewBag.Title = "[[[API Validator]]] - " + GlobalAppSettings.SystemSettings.OrganizationName;
     var idpUrl = GlobalAppSettings.SystemSettings.InternalAppUrls.Idp.Trim('/');
 }
 
@@ -23,38 +23,38 @@
             <div class="col-xs-12 col-md-12 col-sm-12 admin-page-header">
                 <hgroup class="admin-page-header-description">
                     <h1 class="h2 page-title">
-                        @T["API Validator"]
+                        [[[API Validator]]]
                     </h1>
                     <h5 class="page-description">
-                        @T["Validate the functionality of REST APIs."]
+                        [[[Validate the functionality of REST APIs]]]
                     </h5>
                 </hgroup>
             </div>
             <div class="col-xs-12 admin-page-body">
                 <div class="col-md-12 no-padding">
                     <div class="col-md-12 no-padding">
-                        <label class="app-textbox-label">@T["Token Endpoint"]</label>
+                        <label class="app-textbox-label">[[[Token Endpoint]]]</label>
                     </div>
                     <div>
                         <input class="form-control end-point-textbox" disabled value="@idpUrl/api/token" readonly />
                     </div>
                     <div>
-                        <button id="validate-token" class="primary-button">@T["Validate"]</button>
+                        <button id="validate-token" class="primary-button">[[[Validate]]]</button>
                     </div>
                 </div>
 
                 <div class="col-md-12 no-padding input-field-margin">
                     <div class="col-md-12 no-padding">
-                        <label class="app-textbox-label">@T["API Endpoint"]</label>
+                        <label class="app-textbox-label">[[[API Endpoint]]]</label>
                     </div>
                     <div>
                         <input id="get-request-end-point" type="text" class="form-control end-point-textbox" required />
                     </div>
                     <div>
-                        <button id="get-response" class="primary-button" disabled="disabled">@T["Get Response"]</button>
+                        <button id="get-response" class="primary-button" disabled="disabled">[[[Get Response]]]</button>
                     </div>
                     <div class="validation-message"></div>
-                    <div class="info-message no-padding">@T["Provide the endpoint that supports GET requests."]</div>
+                    <div class="info-message no-padding">[[[Provide the endpoint that supports GET requests.]]]</div>
                 </div>
             </div>
         </div>

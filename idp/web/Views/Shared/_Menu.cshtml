@@ -36,7 +36,7 @@
         <ul id="items-menu">
             <li>
                 <a href="@imageUrl" class="home-link" style="background-color:transparent;" title=@GlobalAppSettings.SystemSettings.OrganizationName>
-                    <img alt="@T["Application Logo"]" id="application-logo" src="@Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=header")" onerror="this.onerror=null;this.src='@GlobalAppSettings.CdnDomain/images/boldid/application/@IconFileNames.MainLogo';" />
+                    <img alt="[[[Application Logo]]]" id="application-logo" src="@Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=header")" onerror="this.onerror=null;this.src='@GlobalAppSettings.CdnDomain/images/boldid/application/@IconFileNames.MainLogo';" />
                 </a>
             </li>
             @if (isAdmin)
@@ -47,7 +47,7 @@
                         <span class="menu-icon-container">
                             <i class="su su-applications"></i>
                         </span>
-                        <span class="menu-label">@T["Sites"]</span>
+                        <span class="menu-label">[[[Sites]]]</span>
                     </a>
                 </li>
                 <li>
@@ -55,7 +55,7 @@
                         <span class="menu-icon-container">
                             <i class="su su-user"></i>
                         </span>
-                        <span class="menu-label">@T["Users"]</span>
+                        <span class="menu-label">[[[Users]]]</span>
                     </a>
                 </li>
                 <li class="sf-nav-separator logo-separator mobile-hidden"></li>
@@ -64,7 +64,7 @@
                         <span class="menu-icon-container">
                             <i class="su su-nav-settings"></i>
                         </span>
-                        <span class="menu-label">@T["Settings"]</span>
+                        <span class="menu-label">[[[Settings]]]</span>
                     </a>
                 </li>
             }
@@ -79,7 +79,7 @@
                 <ul class="dropdown-menu sub-menu" role="menu">
                     <li class="sub-menu-item sub-menu-profile">
 
-                        <div class="sub-menu-profile-text-padding">@T["Profile"]</div>
+                        <div class="sub-menu-profile-text-padding">[[[Profile]]]</div>
                         <a href="/user/profile">
 
                             <div class="sub-menu-profile-hover">
@@ -102,7 +102,7 @@
                     <li class="sf-sub-menu-separator"></li>
                     <li class="sub-menu-item">
                         <a href="@Url.Action("logout", "accounts")?returnUrl=@currentUrlLocalPath">
-                            @T["Log out"]
+                            [[[Logout]]]
                         </a>
                     </li>
                 </ul>

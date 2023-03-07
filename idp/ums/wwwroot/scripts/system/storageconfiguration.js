@@ -67,22 +67,22 @@ $(document).ready(function () {
         },
         messages: {
             accountname: {
-                isRequired: window.Server.App.LocalizationContent.StorageAccount
+                isRequired: window.TM.App.LocalizationContent.StorageAccount
             },
             endpoint: {
-                isRequired: window.Server.App.LocalizationContent.EndPoint,
-                IsValidEndPoint: window.Server.App.LocalizationContent.IsValidEndpoint,
+                isRequired: window.TM.App.LocalizationContent.EndPoint,
+                IsValidEndPoint: window.TM.App.LocalizationContent.IsValidEndpoint,
             },
             accesskey: {
-                isRequired: window.Server.App.LocalizationContent.AccessKey
+                isRequired: window.TM.App.LocalizationContent.AccessKey
             },
             containername: {
-                required: window.Server.App.LocalizationContent.ContainerName
+                required: window.TM.App.LocalizationContent.ContainerName
             },
             bloburl: {
-                IsCustomEndpoint: window.Server.App.LocalizationContent.BlobUrl,
-                IsValidEndPoint: window.Server.App.LocalizationContent.IsValidBlobUrl,
-                IsValidCustomEndPoint: window.Server.App.LocalizationContent.IsValidCustomBlobUrl
+                IsCustomEndpoint: window.TM.App.LocalizationContent.BlobUrl,
+                IsValidEndPoint: window.TM.App.LocalizationContent.IsValidBlobUrl,
+                IsValidCustomEndPoint: window.TM.App.LocalizationContent.IsValidCustomBlobUrl
             }
         }
 

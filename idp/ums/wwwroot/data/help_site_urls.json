@@ -364,59 +364,14 @@
     "boldbi": {
       "onpremise": {
         "uri": "",
-        "redirect_id": "87"
+        "redirect_id": ""
       }
     },
     "boldreports": {
       "onpremise": {
         "uri": "",
-        "redirect_id": "4056"
+        "redirect_id": ""
       }
     }
-  },
-  {
-    "url_name": "LookAndFeel",
-    "boldbi": {
-      "onpremise": {
-        "uri": "",
-        "redirect_id": "88"
-      }
-    },
-    "boldreports": {
-      "onpremise": {
-        "uri": "",
-        "redirect_id": "4057"
-      }
-    }
-  },
-  {
-    "url_name": "LocalizationFile",
-    "boldbi": {
-      "onpremise": {
-        "uri": "",
-        "redirect_id": "89"
-      }
-    },
-      "boldreports": {
-        "onpremise": {
-          "uri": "",
-          "redirect_id": "4058"
-        }
-      }
-    },
-  {
-    "url_name": "Azure_B2C_Self_Reset_password",
-      "boldbi": {
-        "onpremise": {
-          "uri": "",
-          "redirect_id": "10007"
-        }
-       },
-      "boldreports": {
-        "onpremise": {
-          "uri": "",
-          "redirect_id": "10007" 
-        }
-      }
   }
 ]

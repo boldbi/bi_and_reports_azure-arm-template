@@ -5,11 +5,10 @@
 
 @{
     Layout = null;
-    var apprunning = Model.All(s => s.IsRunning);
+    var apprunning = Model.TrueForAll(s => s.IsRunning);
     var tenantmanagementurl = GlobalAppSettings.SystemSettings.InternalAppUrls.Idp.TrimEnd('/') + "/ums/startup";
     var querystringerror = @Context.Request.Query["error"];
 }
-
 <html>
 <head>
     <title>Application Healthcheck</title>
@@ -20,64 +19,56 @@
 <body>
     <div class="container">
         <div class="image">
-            <img alt="@T["Login Logo"]" src="@Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=login")" onerror="if (this.src != '@Url.Content(CloudAppConfig.FallbackLoginLogoUrl)') this.src = '@Url.Content(CloudAppConfig.FallbackLoginLogoUrl)';" />
+            <img alt="[[[Login Logo]]]" src="@Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=login")" onerror="if (this.src != '@Url.Content(CloudAppConfig.FallbackLoginLogoUrl)') this.src = '@Url.Content(CloudAppConfig.FallbackLoginLogoUrl)';" />
         </div>
-        @if (Model.Count != 0)
-        {
-            <div>
+        <div>
 
-                @if (apprunning)
-                {
-                    <h3 class="status-header status-success">All services are up and running</h3>
-                }
-                else
-                {
+            @if (apprunning)
+            {
+                <h3 class="status-header status-success">All services are up and running</h3>
+            }
+            else
+            {
 
-                    <h3 class="status-header status-warning">
-                        <span>One or more services are down.</span>
-                        @if (querystringerror == "startup")
-                        {
-                            <span>  Please resolve the issues and retry the <a href=@tenantmanagementurl>application startup.</a></span>
-                        }
-                    </h3>
-                }
+                <h3 class="status-header status-warning">
+                    <span>One or more services are down.</span>
+                    @if (querystringerror == "startup")
+                    {
+                        <span>  Please resolve the issues and retry the <a href=@tenantmanagementurl>application startup.</a></span>
+                    }
+                </h3>
+            }
 
-            </div>
+        </div>
 
-            <div class="border">
-                <table class="table">
-                    <tbody class="tbody">
+        <div class="border">
+            <table class="table">
+                <tbody class="tbody">
 
-                        @foreach (var platform in Model)
-                        {
-                            <tr class="row">
-                                <td>
-                                    <p class="left">  @platform.ApplicationName </p>
+                    @foreach (var platform in Model)
+                    {
+                        <tr class="row">
+                            <td>
+                                <p class="left">  @platform.ApplicationName </p>
 
-                                    <p class="right">
+                                <p class="right">
 
-                                        @if (platform.IsRunning)
-                                        {
-                                            <span style="color:forestgreen">Online</span>
-                                        }
-                                        else
-                                        {
-                                            <span style="color:red">Down</span>
-                                        }
-                                    </p>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        }
-        else
-        {
-            <h3 class="status-header status-warning">
-                <span>All services are down.</span>
-            </h3>
-        }
+                                    @if (platform.IsRunning)
+                                    {
+                                        <span style="color:forestgreen">Online</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="color:red">Down</span>
+                                    }
+                                </p>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
     </div>
 </body>
 </html>

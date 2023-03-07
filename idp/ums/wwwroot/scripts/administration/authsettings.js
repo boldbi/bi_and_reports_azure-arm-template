@@ -1,7 +1,6 @@
 ﻿var oauthLogoChanged = false;
 var openidLogoChanged = false;
 var jwtLogoChanged = false;
-var azureB2CLogoChanged = false;
 var dialog;
 
 $(document).ready(function () {
@@ -36,7 +35,7 @@ $(document).ready(function () {
     }
 
     var defaultAuthenticationDialog = new ejs.popups.Dialog({
-        header: window.Server.App.LocalizationContent.DefaultAuthenticationConfirmation,
+        header: window.TM.App.LocalizationContent.DefaultAuthenticationConfirmation,
         showCloseIcon: true,
         width: '472px',
         close: "authenticationDialogBoxClose",
@@ -45,15 +44,15 @@ $(document).ready(function () {
         animationSettings: { effect: 'Zoom' },
         buttons: [
             {
-                click: function () {
+                'click': function () {
                     authenticationDialogBoxClose();
                 },
                 buttonModel: {
-                    content: window.Server.App.LocalizationContent.NoButton
+                    content: window.TM.App.LocalizationContent.NoButton
                 }
             },
             {
-                click: function () {
+                'click': function () {
                     document.getElementById("default-authentication-confirmation-diolog").ej2_instances[0].hide();
                     if (this.id === 'oauth' || this.id === 'openid') {
                         updateSetting(this.id);
@@ -64,28 +63,21 @@ $(document).ready(function () {
                     else if (this.id === 'sso') {
                         updatesamlSetting();
                     }
-                    else if (this.id === 'sso-b2c') {
-                        updateAzureB2CSetting();
-                    }
-                    else if (this.id === 'windows-ad') {
-                        updateWindowsSettings();
-                    }
                 },
                 buttonModel: {
-                    content: window.Server.App.LocalizationContent.YesButton,
-                    isPrimary: true,
-                    cssClass: 'update-oauth-or-openid-settings'
+                    content: window.TM.App.LocalizationContent.YesButton,
+                    isPrimary: true
                 }
             }
         ],
     });
     defaultAuthenticationDialog.appendTo("#default-authentication-confirmation-diolog");
 
-    dropDownListInitialization("#login-provider-type", window.Server.App.LocalizationContent.DefaultAuthenticationSettings);
+    dropDownListInitialization("#login-provider-type", window.TM.App.LocalizationContent.DefaultAuthenticationSettings);
     dropDownListInitialization("#token-method-type", '');
     dropDownListInitialization("#user-info-method-type", '');
-    groupImportDropDownListInitialization("#group-import-provider-oauth", window.Server.App.LocalizationContent.Provider, "Oauth");
-    groupImportDropDownListInitialization("#group-import-provider-openid", window.Server.App.LocalizationContent.Provider, "OpenId");
+    groupImportDropDownListInitialization("#group-import-provider-oauth", window.TM.App.LocalizationContent.Provider, "Oauth");
+    groupImportDropDownListInitialization("#group-import-provider-openid", window.TM.App.LocalizationContent.Provider, "OpenId");
 
     if (providerNameCount != 0) {
         document.getElementById("login-provider-type").ej2_instances[0].value = selectedDefaultAuthValue;
@@ -125,7 +117,6 @@ $(document).ready(function () {
             $("#update-defaultauthlogin-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
         }
         else if (location.href.match(/oauth-settings/)) {
             $("#oauth-settings").tab("show");
@@ -134,29 +125,17 @@ $(document).ready(function () {
             $("#update-defaultauthlogin-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
         }
         else if (location.href.match(/jwt-settings/)) {
             $("#jwt-settings").tab("show");
             $("#update-saml-settings").hide();
             $("#update-windowsad-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             $("#update-defaultauthlogin-settings").hide();
             $("#update-openid-settings").hide();
             $("#update-oauth-settings").hide();
         }
         else if (location.href.match(/azure-ad-settings/)) {
             $("#azure-ad-settings").tab("show");
-            $("#update-azure-b2c-settings").hide();
-            $("#update-jwt-settings").hide();
-            $("#update-windowsad-settings").hide();
-            $("#update-defaultauthlogin-settings").hide();
-            $("#update-openid-settings").hide();
-            $("#update-oauth-settings").hide();
-        }
-        else if (location.href.match(/azure-ad-b2c-settings/)) {
-            $("#azure-ad-b2c-settings").tab("show");
-            $("#update-saml-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-windowsad-settings").hide();
             $("#update-defaultauthlogin-settings").hide();
@@ -167,7 +146,6 @@ $(document).ready(function () {
             $("#windows-ad-settings").tab("show");
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             $("#update-defaultauthlogin-settings").hide();
             $("#update-openid-settings").hide();
             $("#update-oauth-settings").hide();
@@ -179,7 +157,6 @@ $(document).ready(function () {
             $("#update-windowsad-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             var query = (window.location.search).toString();
             if (query != "?view=default-authentication") {
                 history.pushState(null, '', '?view=default-authentication');
@@ -195,7 +172,6 @@ $(document).ready(function () {
             $("#update-defaultauthlogin-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             var query = (window.location.search).toString();
             if (query != "?view=oauth-settings") {
                 history.pushState(null, '', '?view=oauth-settings');
@@ -208,7 +184,6 @@ $(document).ready(function () {
             $("#update-defaultauthlogin-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             var query = (window.location.search).toString();
             if (query != "?view=openid-settings") {
                 history.pushState(null, '', '?view=openid-settings');
@@ -226,7 +201,6 @@ $(document).ready(function () {
             $("#update-oauth-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             var query = (window.location.search).toString();
             if (query != "?view=default-authentication") {
                 history.pushState(null, '', '?view=default-authentication');
@@ -239,7 +213,6 @@ $(document).ready(function () {
             $("#update-openid-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             var query = (window.location.search).toString();
             if (query != "?tab=defaultauth-settings") {
                 history.pushState(null, '', '?tab=defaultauth-settings');
@@ -248,7 +221,6 @@ $(document).ready(function () {
         else if ($(this).attr("id") == "jwt-settings") {
             $("#update-jwt-settings").show();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             $("#update-defaultauthlogin-settings").hide();
             $("#update-windowsad-settings").hide();
             $("#update-openid-settings").hide();
@@ -260,7 +232,6 @@ $(document).ready(function () {
         }
         else if ($(this).attr("id") == "azure-ad-settings") {
             $("#update-saml-settings").show();
-            $("#update-azure-b2c-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-windowsad-settings").hide();
             $("#update-defaultauthlogin-settings").hide();
@@ -271,23 +242,9 @@ $(document).ready(function () {
                 history.pushState(null, '', '?view=azure-ad-settings');
             }
         }
-        else if ($(this).attr("id") == "azure-ad-b2c-settings") {
-            $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").show();
-            $("#update-jwt-settings").hide();
-            $("#update-windowsad-settings").hide();
-            $("#update-defaultauthlogin-settings").hide();
-            $("#update-openid-settings").hide();
-            $("#update-oauth-settings").hide();
-            var query = (window.location.search).toString();
-            if (query != "?view=azure-ad-b2c-settings") {
-                history.pushState(null, '', '?view=azure-ad-b2c-settings');
-            }
-        }
         else if ($(this).attr("id") == "windows-ad-settings") {
             $("#update-windowsad-settings").show();
             $("#update-saml-settings").hide();
-            $("#update-azure-b2c-settings").hide();
             $("#update-jwt-settings").hide();
             $("#update-defaultauthlogin-settings").hide();
             $("#update-openid-settings").hide();
@@ -314,9 +271,6 @@ $(document).ready(function () {
         else if (name === "azuread") {
             updateAuthSettingsButton = $("#update-saml-settings");
         }
-        else if (name === "azureadb2c") {
-            updateAuthSettingsButton = $("#update-azure-b2c-settings");
-        }
         else if (name === "defaultauthentication") {
             updateAuthSettingsButton = $("#update-defaultauthlogin-settings");
         }
@@ -341,11 +295,6 @@ $(document).ready(function () {
                 scope.ssoSettingsForm.$setUntouched();
                 scope.ssoSettingsForm.$setPristine();
             }
-            else if (name === "azureadb2c") {
-                scope.ssoSettingsb2cForm.$setUntouched();
-                scope.ssoSettingsb2cForm.$setPristine();
-                $("#azure-b2c-image-upload-box").siblings(".validation-message").html("");
-            }
             updateAuthSettingsButton.prop("disabled", false);
         } else {
             if (name === "oauth" && scope.oauthSettingsForm.$invalid) {
@@ -358,9 +307,6 @@ $(document).ready(function () {
                 updateAuthSettingsButton.prop("disabled", true);
             }
             else if (name === "azuread" && scope.ssoSettingsForm.$invalid) {
-                updateAuthSettingsButton.prop("disabled", true);
-            }
-            else if (name === "azureadb2c" && scope.ssoSettingsb2cForm.$invalid) {
                 updateAuthSettingsButton.prop("disabled", true);
             }
             else if (name === "defaultauthentication") {
@@ -389,19 +335,15 @@ $(document).ready(function () {
         OAuthOpenIdImageValidation(e);
     });
 
-    $(document).on("focusout", "#application-id-b2c, #tenant-name-b2c", function (e) {
-        OAuthOpenIdImageValidation(e);
-    });
-
     function OAuthOpenIdImageValidation(e) {
-        var authLogo = e.currentTarget.name === "oauthLogoUrl" || e.currentTarget.name === "oauthProviderName" || e.currentTarget.name === "oauthAuthorizationEP" ? scope.oauthLogoUrl : (e.currentTarget.name === "openidLogoUrl" || e.currentTarget.name === "openidProviderName" || e.currentTarget.name === "openidAuthority" ? scope.openidLogoUrl : (e.currentTarget.name === "azureB2CLogoUrl" || e.currentTarget.name === "application-id-b2c" || e.currentTarget.name === "tenant-name-b2c" ? scope.azureB2CLogoUrl : scope.jwtLogoUrl));
+        var authLogo = e.currentTarget.name === "oauthLogoUrl" || e.currentTarget.name === "oauthProviderName" || e.currentTarget.name === "oauthAuthorizationEP" ? scope.oauthLogoUrl : (e.currentTarget.name === "openidLogoUrl" || e.currentTarget.name === "openidProviderName" || e.currentTarget.name === "openidAuthority" ? scope.openidLogoUrl : scope.jwtLogoUrl);
         if (authLogo === null || authLogo === undefined || authLogo === '') {
-            e.currentTarget.name === "oauthLogoUrl" || e.currentTarget.name === "oauthProviderName" || e.currentTarget.name === "oauthAuthorizationEP" ? $("#oauth-image-upload-box").siblings(".validation-message").removeClass("ng-hide").html(window.Server.App.LocalizationContent.SelectAuthProviderLogo) : ((e.currentTarget.name === "openidLogoUrl" || e.currentTarget.name === "openidProviderName" || e.currentTarget.name === "openidAuthority") ? $("#openid-image-upload-box").siblings(".validation-message").removeClass("ng-hide").html(window.Server.App.LocalizationContent.SelectAuthProviderLogo)
-                : (e.currentTarget.name === "azureB2CLogoUrl" || e.currentTarget.name === "application-id-b2c" || e.currentTarget.name === "tenant-name-b2c") ? $("#azure-b2c-image-upload-box").siblings(".validation-message").removeClass("ng-hide").html(window.Server.App.LocalizationContent.SelectAuthProviderLogo) : $("#jwt-image-upload-box").siblings(".validation-message").removeClass("ng-hide").html(window.Server.App.LocalizationContent.SelectAuthProviderLogo));
+            e.currentTarget.name === "oauthLogoUrl" || e.currentTarget.name === "oauthProviderName" || e.currentTarget.name === "oauthAuthorizationEP" ? $("#oauth-image-upload-box").siblings(".validation-message").removeClass("ng-hide").html(window.TM.App.LocalizationContent.SelectAuthProviderLogo) : ((e.currentTarget.name === "openidLogoUrl" || e.currentTarget.name === "openidProviderName" || e.currentTarget.name === "openidAuthority") ? $("#openid-image-upload-box").siblings(".validation-message").removeClass("ng-hide").html(window.TM.App.LocalizationContent.SelectAuthProviderLogo)
+                : $("#jwt-image-upload-box").siblings(".validation-message").removeClass("ng-hide").html(window.TM.App.LocalizationContent.SelectAuthProviderLogo));
         }
 
         scope.$apply(function () {
-            e.currentTarget.name === "oauthLogoUrl" || e.currentTarget.name === "oauthProviderName" || e.currentTarget.name === "oauthAuthorizationEP" ? scope.oauthSettingsForm.isValidOAuthLogoUrl = false : (e.currentTarget.name === "openidLogoUrl" || e.currentTarget.name === "openidProviderName" || e.currentTarget.name === "openidAuthority" ? scope.openidSettingsForm.isValidOpenIdLogoUrl = false : (e.currentTarget.name === "azureB2CLogoUrl" || e.currentTarget.name === "application-id-b2c" || e.currentTarget.name === "tenant-name-b2c" ? scope.ssoSettingsb2cForm.isValidAzureB2CLogoUrl = false : scope.jwtSettingsForm.isValidjwtLogoUrl = false));
+            e.currentTarget.name === "oauthLogoUrl" || e.currentTarget.name === "oauthProviderName" || e.currentTarget.name === "oauthAuthorizationEP" ? scope.oauthSettingsForm.isValidOAuthLogoUrl = false : (e.currentTarget.name === "openidLogoUrl" || e.currentTarget.name === "openidProviderName" || e.currentTarget.name === "openidAuthority" ? scope.openidSettingsForm.isValidOpenIdLogoUrl = false : scope.jwtSettingsForm.isValidjwtLogoUrl = false);
         });
     }
 
@@ -419,12 +361,6 @@ $(document).ready(function () {
         }
         else if (this.id === 'sso') {
             updatesamlSetting();
-        }
-        else if (this.id === 'sso-b2c') {
-            updateAzureB2CSetting();
-        }
-        else if (this.id === 'windows-ad') {
-            updateWindowsSettings();
         }
     });
 
@@ -449,20 +385,7 @@ $(document).ready(function () {
             authPrefix = 'sso';
             provider = $("input[name='azureADAuthenticationProvider']").val().trim();
         }
-        else if (this.id === 'update-azure-b2c-settings') {
-            authPrefix = 'sso-b2c';
-            provider = $("input[name='azureADB2CAuthenticationProvider']").val().trim();
-        }
-        else if (this.id === 'update-windowsad-settings') {
-            authPrefix = 'windows-ad';
-            provider = $("input[name='windowsAuthenticationProvider']").val().trim();
-        }
-
-        var isShowDefaultAlert = false;
-        if (defaultAuthentication == provider) {
-            isShowDefaultAlert = (this.id === 'update-oauth-settings' || this.id === 'update-openid-settings') ? !($("#" + authPrefix + "IsEnabled").is(":checked")) : !($("#enable-" + authPrefix).is(":checked"));
-        }
-        if (isShowDefaultAlert) {
+        if ((defaultAuthentication == provider) && !($("#enable-" + authPrefix).is(":checked"))) {
             document.getElementById("default-authentication-confirmation-diolog").ej2_instances[0].show();
             $(".update-oauth-or-openid-settings").attr("id", authPrefix);
         }
@@ -475,9 +398,6 @@ $(document).ready(function () {
             }
             else if (this.id === 'update-saml-settings') {
                 updatesamlSetting();
-            }
-            else if (this.id === 'update-azure-b2c-settings') {
-                updateAzureB2CSetting();
             }
             else if (this.id === 'update-windowsad-settings') {
                 updateWindowsSettings();
@@ -494,10 +414,6 @@ $(document).ready(function () {
 
     scope.saveJwtSettings = function () {
         updateJwtSetting();
-    };
-
-    scope.saveSsoB2CSettings = function () {
-        updateAzureB2CSetting();
     };
 
     function updatesamlSetting() {
@@ -518,55 +434,17 @@ $(document).ready(function () {
             success: function (data) {
                 scope.categories = data;
                 if (data.result) {
-                    SuccessAlert(window.Server.App.LocalizationContent.SSOSettings, window.Server.App.LocalizationContent.SSOSettingsUpdated, 7000);
+                    SuccessAlert(window.TM.App.LocalizationContent.SSOSettings, window.TM.App.LocalizationContent.SSOSettingsUpdated, 7000);
                     window.location.href = window.location.href;
                 } else {
-                    WarningAlert(window.Server.App.LocalizationContent.SSOSettings, window.Server.App.LocalizationContent.SSOSettingsUpdateError, data.Message, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.SSOSettings, window.TM.App.LocalizationContent.SSOSettingsUpdateError, data.Message, 7000);
                 }
             },
             error: function (data) {
-                WarningAlert(window.Server.App.LocalizationContent.SSOSettings, window.Server.App.LocalizationContent.SSOSettingsUpdateError, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.SSOSettings, window.TM.App.LocalizationContent.SSOSettingsUpdateError, 7000);
             }
         });
     };
-
-    function updateAzureB2CSetting() {
-        var isEnabled = $("#enable-sso-b2c").is(":checked");
-        var isSloEnabled = $("#enable-slo-b2c").is(":checked");
-        var authSettingsData = {
-            IsEnabled: isEnabled,
-            AuthProvider: $("input[name='azureADB2CAuthenticationProvider']").val().trim(),
-            LogoUrl: scope.azureB2CLogoUrl,
-            IsLogoChanged: azureB2CLogoChanged,
-            AzureADB2CSettings: {
-                IsSloEnabled: isSloEnabled,
-                Logo: $("input[name='azureB2CLogo']").val().trim(),
-                ApplicationId: $("input[name='ApplicationIdB2C']").val().trim(),
-                TenantName: $("input[name='TenantNameB2C']").val().trim(),
-                SigninPolicy: $("input[name='PolicyB2C']").val().trim(),
-                AzureB2CProviderName: $("input[name='AzureB2CProviderName']").val().trim()
-                //PasswordResetPolicy: $("input[name='PasswordPolicyB2C']").val().trim()
-            }
-        };
-        $.ajax({
-            url: updateauthsettingsUrl,
-            type: "POST",
-            data: { AuthSettingsData: JSON.stringify(authSettingsData) },
-            success: function (data) {
-                scope.categories = data;
-                if (data.result) {
-                    SuccessAlert(window.Server.App.LocalizationContent.AzureB2CSettings, window.Server.App.LocalizationContent.AzureB2CSettingsUpdated, 7000);
-                    window.location.href = window.location.href;
-                } else {
-                    WarningAlert(window.Server.App.LocalizationContent.AzureB2CSettings, window.Server.App.LocalizationContent.AzureB2CSettingsUpdateError, data.Message, 7000);
-                }
-            },
-            error: function (data) {
-                WarningAlert(window.Server.App.LocalizationContent.AzureB2CSettings, window.Server.App.LocalizationContent.AzureB2CSettingsUpdateError, 7000);
-            }
-        });
-    };
-
 
     function updateWindowsSettings() {
         var authSettingsData = {
@@ -582,10 +460,10 @@ $(document).ready(function () {
                 hideWaitingPopup('server-app-container');
                 if (result.IsSuccess) {
                     window.location.href = window.location.href;
-                    SuccessAlert(window.Server.App.LocalizationContent.WindowsAdSettings, window.Server.App.LocalizationContent.WindowsAdSettingsUpdated, 7000);
+                    SuccessAlert(window.TM.App.LocalizationContent.WindowsAdSettings, window.TM.App.LocalizationContent.WindowsAdSettingsUpdated, 7000);
                 }
                 else {
-                    WarningAlert(window.Server.App.LocalizationContent.WindowsAdSettings, window.Server.App.LocalizationContent.WindowsAdSettingsUpdateError, result.Message, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.WindowsAdSettings, window.TM.App.LocalizationContent.WindowsAdSettingsUpdateError, result.Message, 7000);
                 }
             },
             error: function () {
@@ -617,11 +495,11 @@ $(document).ready(function () {
                 hideWaitingPopup('server-app-container');
                 if (result.IsSuccess) {
                     window.location.href = window.location.href;
-                    SuccessAlert(window.Server.App.LocalizationContent.AuthenticationSettings, window.Server.App.LocalizationContent.AuthSettingsUpdated, 7000);
+                    SuccessAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdated, 7000);
 
                 }
                 else {
-                    WarningAlert(window.Server.App.LocalizationContent.AuthenticationSettings, window.Server.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
                 }
             },
             error: function () {
@@ -642,16 +520,16 @@ $(document).ready(function () {
                     hideWaitingPopup('server-app-container');
                     defaultAuthentication = result.AuthProvider;
                     $(".modal-body").find("p:first").find("span").html(getDefaultAuthDisplayName(defaultAuthentication));
-                    SuccessAlert(window.Server.App.LocalizationContent.AuthenticationSettings, window.Server.App.LocalizationContent.AuthSettingsUpdated, 7000);
+                    SuccessAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdated, 7000);
                 }
                 else {
                     hideWaitingPopup('server-app-container');
-                    WarningAlert(window.Server.App.LocalizationContent.AuthenticationSettings, window.Server.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
                 }
             },
             error: function () {
                 hideWaitingPopup('server-app-container');
-                WarningAlert(window.Server.App.LocalizationContent.AuthenticationSettings, window.Server.App.LocalizationContent.AuthSettingsUpdatedError, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, 7000);
             }
 
         });
@@ -668,12 +546,12 @@ $(document).ready(function () {
             success: function (result) {
                 hideWaitingPopup('content-area');
                 if (result.IsSuccess) {
-                    SuccessAlert(window.Server.App.LocalizationContent.AuthenticationSettings, window.Server.App.LocalizationContent.AuthSettingsUpdated, 7000);
+                    SuccessAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdated, 7000);
                     authPrefix === 'oauth' ? oauthLogoChanged = false : openidLogoChanged = false;
                     window.location.href = window.location.href;
                 }
                 else {
-                    WarningAlert(window.Server.App.LocalizationContent.AuthenticationSettings, window.Server.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.AuthenticationSettings, window.TM.App.LocalizationContent.AuthSettingsUpdatedError, result.Message, 7000);
                 }
             },
             error: function () {
@@ -708,8 +586,7 @@ $(document).ready(function () {
                         UserInfoLastname: $("input[name='userInfoLastname']").val().trim(),
                         Logo: $("input[name='oauthLogo']").val().trim(),
                         LogoutEndPoint: $("input[name='oauthLogoutEndpoint']").val().trim(),
-                        GroupImportSettings: getGroupImportSettings("oauth"),
-                        CanCreateAccount: $("#enable-oauth-account-creation").is(":checked")
+                        GroupImportSettings: getGroupImportSettings("oauth")
                     }
                 };
             }
@@ -728,8 +605,7 @@ $(document).ready(function () {
                         Authority: $("input[name='openidAuthority']").val().trim(),
                         Logo: $("input[name='openidLogo']").val().trim(),
                         LogoutUrl: $("input[name='openidLogoutUrl']").val().trim(),
-                        GroupImportSettings: getGroupImportSettings("openid"),
-                        CanCreateAccount: $("#enable-openid-account-creation").is(":checked")
+                        GroupImportSettings: getGroupImportSettings("openid")
                     }
                 };
             }
@@ -753,11 +629,9 @@ $(document).ready(function () {
     var oauthUploadBox = $("#oauth-image-upload-box");
     var openidUploadBox = $("#openid-image-upload-box");
     var jwtUploadBox = $("#jwt-image-upload-box");
-    var azureB2CUploadBox = $("#azure-b2c-image-upload-box");
     oauthUploadBox.find(".image-upload")[0].addEventListener('change', getFile);
     openidUploadBox.find(".image-upload")[0].addEventListener('change', getFile);
     jwtUploadBox.find(".image-upload")[0].addEventListener('change', getFile);
-    azureB2CUploadBox.find(".image-upload")[0].addEventListener('change', getFile);
 
     function getFile(e) {
         var file = e.currentTarget.files[0];
@@ -774,9 +648,6 @@ $(document).ready(function () {
         }
         else if (name === "jwtLogoUrl") {
             img = jwtUploadBox.find('.js-image-preview');
-        }
-        else if (name === "azureB2CLogoUrl") {
-            img = azureB2CUploadBox.find('.js-image-preview');
         }
 
         var reader = new FileReader();
@@ -797,10 +668,6 @@ $(document).ready(function () {
                     scope.jwtLogoUrl = imageUrl;
                     jwtLogoChanged = true;
                 }
-                else if (name === "azureB2CLogoUrl") {
-                    scope.azureB2CLogoUrl = imageUrl;
-                    azureB2CLogoChanged = true;
-                }
 
                 name === "openidLogoUrl" ? $("#openid-image-upload-box").siblings(".validation-message").html("") : $("#oauth-image-upload-box").siblings(".validation-message").html("");
             });
@@ -814,13 +681,13 @@ $(document).ready(function () {
             var validImageTypes = ["image/jpg", "image/jpeg", "image/png", "image/svg+xml"];
             var sizeKb = file.size / 1024;
             if ($.inArray(file.type, validImageTypes) < 0) {
-                throw window.Server.App.LocalizationContent.AuthImageAllowedFormat;
+                throw window.TM.App.LocalizationContent.AuthImageAllowedFormat;
             }
             else if (sizeKb > 500) {
-                throw window.Server.App.LocalizationContent.AuthImageAllowedSize;
+                throw window.TM.App.LocalizationContent.AuthImageAllowedSize;
             }
             else if (!file) {
-                throw window.Server.App.LocalizationContent.InvalidFile;
+                throw window.TM.App.LocalizationContent.InvalidFile;
             } else {
                 previewImage(file, name);
                 valMsgTag.html("");
@@ -833,9 +700,6 @@ $(document).ready(function () {
                     }
                     else if (name === "jwtLogoUrl") {
                         scope.jwtSettingsForm.isValidjwtLogoUrl = true;
-                    }
-                    else if (name === "azureB2CLogoUrl") {
-                        scope.ssoSettingsb2cForm.isValidAzureB2CLogoUrl = true;
                     }
                 });
             }
@@ -851,9 +715,6 @@ $(document).ready(function () {
                 }
                 else if (name === "jwtLogoUrl") {
                     scope.jwtSettingsForm.isValidjwtLogoUrl = true;
-                }
-                else if (name === "azureB2CLogoUrl") {
-                    scope.ssoSettingsb2cForm.isValidAzureB2CLogoUrl = true;
                 }
             });
         }
@@ -931,9 +792,6 @@ function getDefaultAuthDisplayName(provider) {
     else if (provider.toLowerCase() === "azuread") {
         return "Azure ADs";
     }
-    else if (provider.toLowerCase() === "azureadb2c") {
-        return "Azure AD B2C";
-    }
 }
 
 function fnCopySigningKey(inputId, buttonId) {
@@ -949,17 +807,17 @@ function fnCopySigningKey(inputId, buttonId) {
     }
 
     setTimeout(function () {
-        $(buttonId).attr("data-original-title", window.Server.App.LocalizationContent.Copied);
+        $(buttonId).attr("data-original-title", window.TM.App.LocalizationContent.Copied);
         $(buttonId).tooltip('show');
     }, 200);
     setTimeout(function () {
-        $(buttonId).attr("data-original-title", window.Server.App.LocalizationContent.ClickToCopy);
+        $(buttonId).attr("data-original-title", window.TM.App.LocalizationContent.ClickToCopy);
         $(buttonId).tooltip();
     }, 3000);
 }
 
 function signingKeyConfirmationDlg() {
-    var footerTemplate = '<button id="sendButton" class="e-control e-btn e-primary secondary-button">' + window.Server.App.LocalizationContent.OKButton + ' </button>';
+    var footerTemplate = '<button id="sendButton" class="e-control e-btn e-primary secondary-button">' + window.TM.App.LocalizationContent.OKButton + ' </button>';
     var sendbutton = new ej.buttons.Button();
     dialog = new ej.popups.Dialog({
         header: 'Regenerate Signing Key',
@@ -987,14 +845,14 @@ function fnRegenerateSigningKey() {
         url: refreshSigningKeyUrl,
         success: function (data) {
             if (data != false) {
-                SuccessAlert(window.Server.App.LocalizationContent.RegenerateKey, window.Server.App.LocalizationContent.RegenerateKeySuccess, 7000);
+                SuccessAlert(window.TM.App.LocalizationContent.RegenerateKey, window.TM.App.LocalizationContent.RegenerateKeySuccess, 7000);
                 $("#jwt-signing-key").val(data);
             } else {
-                WarningAlert(window.Server.App.LocalizationContent.RegenerateKey, window.Server.App.LocalizationContent.RegenerateKeyError, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.RegenerateKey, window.TM.App.LocalizationContent.RegenerateKeyError, 7000);
             }
         },
         error: function () {
-            WarningAlert(window.Server.App.LocalizationContent.RegenerateKey, window.Server.App.LocalizationContent.RegenerateKeyError, 7000);
+            WarningAlert(window.TM.App.LocalizationContent.RegenerateKey, window.TM.App.LocalizationContent.RegenerateKeyError, 7000);
         }
     });
 }

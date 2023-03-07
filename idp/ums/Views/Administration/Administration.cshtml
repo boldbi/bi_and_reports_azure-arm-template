@@ -1,6 +1,6 @@
 ﻿@{
-    ViewBag.Title = T["Administration"].Value + " - "  + GlobalAppSettings.SystemSettings.OrganizationName;
-    ViewBag.MessageBox = true;
+    ViewBag.Title = "[[[Administration]]] - " + GlobalAppSettings.SystemSettings.OrganizationName;
+    ViewBag.MessageBox = false;
     var isSecureConnection = GlobalAppSettings.SystemSettings.IsSecureConnection;
     var protocolTypes = new List<SelectListItem>
 {  new SelectListItem
@@ -33,8 +33,6 @@
     </script>
 
     <script type="text/javascript">
-        var selectedEventText = "@ViewBag.SelectedEvent.Text";
-        var selectedEventValue = "@ViewBag.SelectedEvent.Value";
         var selectedTimeZoneText = "@ViewBag.SelectedTimeZone.Text";
         var selectedTimeZoneValue = "@ViewBag.SelectedTimeZone.Value";
         var selectedTimeFormatText = "@ViewBag.SelectedTimeFormat.Text";
@@ -44,20 +42,12 @@
         var selectedLanguageText = "@ViewBag.SelectedLanguage.Text";
         var selectedLanguageValue = "@ViewBag.SelectedLanguage.Value";
         var SystemSettingsProperties = @Html.Raw(@Json.Serialize(ViewBag.SystemSettings));
-        var defaultLanguages = @Html.Raw(@Json.Serialize(ViewBag.UserModelLanguages));
-        var applicationLanguage = "@ViewBag.ApplicationLanguage";
         var fileUploadUrl = "@Url.Action("Upload", "fileupload")";
-        var zipFileUploadUrl =  "@Url.Action("UploadZipFile", "fileupload")";
         var updateSystemSettingsUrl = "@Url.Action("UpdateSystemSettings", "Administration")";
         var azureadTestconnectionUrl = "@Url.Action("AzureADTestConnection", "Administration")";
         var updateAzureADSettingsUrl = "@Url.Action("UpdateAzureADSettings", "Administration")";
         var setLanguageUrl = "@Url.Action("SetLanguage", "Administration")";
         var sentTestMail = "@Url.Action("SentTestMail", "Administration")";
-        var getLocalizationUrl = "@Url.Action("GetLocalizationFiles", "Administration")";
-        var addLocalizationUrl = "@Url.Action("AddLanguageFile", "Administration")";
-        var removeLocalizationUrl = "@Url.Action("RemoveLanguageFiles", "Administration")";
-        var removeTempLocalizationUrl = "@Url.Action("RemoveTempLocalizationFile", "Administration")";
-        var validateLocalizationUrl = "@Url.Action("ValidateLocalizationFiles", "Administration")";
         var baseRootUrl = "@Url.Content("~/")";
         var isSelfHosted = convertToBoolean("@CloudAppConfig.IsSelfHosted");
         if (baseRootUrl.toLowerCase() === "/")

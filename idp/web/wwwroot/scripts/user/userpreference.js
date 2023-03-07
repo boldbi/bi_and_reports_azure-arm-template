@@ -15,6 +15,7 @@ $(document).on("click", "#language-cancel-button", function (e) {
 });
 
 function SaveUserPreference() {
+    
     $("#success-message").html("");
     var language = typeof (document.getElementById("language").ej2_instances[0].value) === "undefined" ? "en-us" : document.getElementById("language").ej2_instances[0].value;
     if ($("#lang_tag").val() !== document.getElementById("language").ej2_instances[0].value || document.getElementById("model-language").ej2_instances[0].value !== $("#model-language").val()) {
@@ -29,9 +30,7 @@ function SaveUserPreference() {
             function (result) {
                 if (result.Data.status) {
                     if (result.Data.isTenantUserLanguage) {
-                        $("#tenant-hidden-form-post").attr("action", result.Data.returnUrl);
-                        $("#token").attr("value", result.Data.token);
-                        $("#tenant-hidden-form-post").submit();
+                        window.location.href = result.Data.returnUrl + "&token=" + result.Data.token;
                     } else {
                         hideWaitingPopup('content-area');
                         SuccessAlert(window.Server.App.LocalizationContent.UpdateAccountPreference, result.Data.value, 7000);

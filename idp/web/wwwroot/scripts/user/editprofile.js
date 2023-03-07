@@ -11,12 +11,12 @@ $(document).ready(function () {
     $("#user-name").val(userId);
 
     var avatarUploadDialog = new ej.popups.Dialog({
-        header: "<div class='dlg-title'>" + window.Server.App.LocalizationContent.ChangeProfilepicture + "</div>",
+        header: "<div class='dlg-title'>" + window.Server.App.LocalizationContent.ChangeAvatar + "</div>",
         content: document.getElementById("avatar-upload-box-content"),
         showCloseIcon: true,
         buttons: [
-            { click: closeAvatarBox, buttonModel: { content: window.Server.App.LocalizationContent.CancelButton } },
-            { click: uploadImage, buttonModel: { content: window.Server.App.LocalizationContent.SaveButton, isPrimary: true } }
+            { click: closeAvatarBox, buttonModel: { content: window.Server.App.LocalizationContent.Cancel } },
+            { click: uploadImage, buttonModel: { content: window.Server.App.LocalizationContent.Save, isPrimary: true } }
         ],
         width: "472px",
         height: "350px",
@@ -33,7 +33,7 @@ $(document).ready(function () {
     $('[data-toggle="popover"]').popover();
     $.validator.addMethod("isValidEmail", function (value, element) {
         return IsEmail(value);
-    }, window.Server.App.LocalizationContent.EnterValidEmail);
+    }, window.Server.App.LocalizationContent.IsValidEmailAddress);
 
     $.validator.addMethod("isValidUsername", function (value, element) {
         return IsValidUsername(value);
@@ -45,11 +45,11 @@ $(document).ready(function () {
 
     $.validator.addMethod("isValidName", function (value, element) {
         return IsValidName("name", value)
-    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecialCharactors);
 
     $.validator.addMethod("isRequired", function (value, element) {
         return !isEmptyOrWhitespace(value);
-    }, window.Server.App.LocalizationContent.EnterName);
+    }, window.Server.App.LocalizationContent.ItemNameValidator);
 
     $.validator.addMethod("isValidPhoneNumber", function (value, element) {
         return IsValidContactNumber(value);
@@ -102,7 +102,7 @@ $(document).ready(function () {
         },
         messages: {
             "user-email": {
-                isRequired: window.Server.App.LocalizationContent.EmailValidator
+                isRequired: window.Server.App.LocalizationContent.EmailAddressValidator
             },
             "user-firstname": {
                 isRequired: window.Server.App.LocalizationContent.FirstNameValidator
@@ -273,7 +273,7 @@ $(document).on("keypress", ".edit-profile-field", function (e) {
 });
 
 $(document).on("click", "#avatar-delete-click", function () {
-    messageBox("su-delete", window.Server.App.LocalizationContent.DeleteAvatar, window.Server.App.LocalizationContent.DeleteProfilePictureConfirm, "error", function () {
+    messageBox("su-delete", window.Server.App.LocalizationContent.DeleteAvatar, window.Server.App.LocalizationContent.AvatarDelete, "error", function () {
         deleteUserAvatar();
         onCloseMessageBox();
     });
@@ -417,9 +417,7 @@ function SaveProfile() {
                 }
                 else if (result.Data.status) {
                     if (result.Data.isTenantUserEdit) {
-                        $("#tenant-hidden-form-post").attr("action", result.Data.returnUrl);
-                        $("#token").attr("value", result.Data.token);
-                        $("#tenant-hidden-form-post").submit();
+                        window.location.href = result.Data.returnUrl + "?token=" + result.Data.token;
                     } else {
                         hideWaitingPopup('content-area');
                         var updateddetails = result.Data.profileinfo;
@@ -509,7 +507,7 @@ function uploadImage() {
                         window.location.reload();
                     }
                     if (result.Data != null) {
-                        SuccessAlert(window.Server.App.LocalizationContent.ChangeProfilepicture, window.Server.App.LocalizationContent.ProfilePictureSaved, 7000);
+                        SuccessAlert(window.Server.App.LocalizationContent.ChangeAvatar, window.Server.App.LocalizationContent.AvatarUpdateSuccess, 7000);
                         parent.$("#user-profile-picture").attr("src", avatarUrl + "?id=" + userId + "&imageSize=110&v=" + $.now());
                         parent.$(".profile-picture,#profile-picture-menu").find("img").attr("src", avatarUrl + "?id=" + userId + "&imageSize=32&v=" + $.now());
                         var value = parent.$("#avatar-delete-click").length;
@@ -531,7 +529,7 @@ function uploadImage() {
 
 
                         }
-                        $("#image-path").val(window.Server.App.LocalizationContent.BrowsePath);
+                        $("#image-path").val(window.Server.App.LocalizationContent.BrowseProfileImagePath);
                         $("#image-preview-text").show();
                         $("#profile-picture").hide();
                         $('#upload-image').attr("disabled", "disabled");
@@ -542,16 +540,16 @@ function uploadImage() {
                         hideWaitingPopup('avatar-upload-box');
                     }
                     else {
-                        WarningAlert(window.Server.App.LocalizationContent.ChangeProfilepicture, window.Server.App.LocalizationContent.ProfilePictureSaveFailed, result.Message, 7000);
+                        WarningAlert(window.Server.App.LocalizationContent.ChangeAvatar, window.Server.App.LocalizationContent.AvatarUpdateError, result.Message, 7000);
                     }
                 },
                 error: function (result) {
-                    WarningAlert(window.Server.App.LocalizationContent.ChangeProfilepicture, window.Server.App.LocalizationContent.ProfilePictureSaveFailed, result.Message, 7000);
+                    WarningAlert(window.Server.App.LocalizationContent.ChangeAvatar, window.Server.App.LocalizationContent.AvatarUpdateError, result.Message, 7000);
                 }
             });
         }
         else {
-            WarningAlert(window.Server.App.LocalizationContent.ChangeProfilepicture, window.Server.App.LocalizationContent.ProfilePictureSaveFailed, result.Message, 7000);
+            WarningAlert(window.Server.App.LocalizationContent.ChangeAvatar, window.Server.App.LocalizationContent.AvatarUpdateError, result.Message, 7000);
         }
     }
 };
@@ -573,7 +571,7 @@ function deleteUserAvatar() {
 
             }
             else {
-                WarningAlert(window.Server.App.LocalizationContent.DeleteAvatar, window.Server.App.LocalizationContent.DeleteAvatarError, result.Message, 7000);
+                WarningAlert(window.Server.App.LocalizationContent.DeleteAvatarTitle, window.Server.App.LocalizationContent.DeleteAvatarError, result.Message, 7000);
             }
             hideWaitingPopup('content-area');
 
