@@ -1,7 +1,7 @@
 {
   "InternalAppUrl": {
     "Idp": "https://localhost:44349",
-    "Bi": "",
+    "Bi": "http://localhost:51894/bi",
     "BiDesigner": "http://localhost:5000/bi/designer",
     "Reports": "http://localhost:5000/reporting",
     "ReportsService": "http://localhost:5000/reporting/reportservice"
