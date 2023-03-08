@@ -1,10 +1,10 @@
 {
   "InternalAppUrl": {
-    "Idp": "http://localhost:51894/",
-    "Bi": "http://localhost:51894/bi",
-    "BiDesigner": "http://localhost:51894/bi/designer",
-    "Reports": "http://localhost:51894/reporting",
-    "ReportsService": "http://localhost:51894/reporting/reportservice"
+    "Idp": "https://localhost:44349",
+    "Bi": "http://localhost:5000/bi",
+    "BiDesigner": "http://localhost:5000/bi/designer",
+    "Reports": "http://localhost:5000/reporting",
+    "ReportsService": "http://localhost:5000/reporting/reportservice"
   },
   "BoldProducts": [
     {
