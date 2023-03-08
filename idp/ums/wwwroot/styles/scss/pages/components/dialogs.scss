@@ -25,26 +25,23 @@
                 font-size: 10px;
                 right: 11px;
                 position: absolute;
-                font-size: 10px !important;
+                font-size: 8px !important;
                 margin: 0 10px 15px 200px;
             }
         }
 
         #messageBox_title {
             margin: 0 !important;
-            padding-top: 15px;
         }
 
-        .dlg-title, .e-dlg-header, .modal-title {
-            padding: 10px;
+        .dlg-title, .e-dlg-header, .modal-title, .e-dlg-header * {
+            margin: 11px 312px 12px 12px;
+            line-height: 21px;
             width: 300px !important;
+            height: 21px;
             font-weight: 600;
             font-size: 14px;
             letter-spacing: 0.3px;
-            color: $dialog-content-text-normal-color !important;
-        }
-
-        .e-dlg-header *{
             color: $dialog-content-text-normal-color !important;
         }
 
@@ -54,8 +51,7 @@
 
         .modal-title {
             position: absolute;
-            top: 3px;
-            left: 20px
+            margin: 11px 288px 12px 35px;
         }
 
         .dlg-description {
@@ -71,11 +67,6 @@
     .e-dlg-content, .modal-content {
         color: $dialog-content-text-normal-color;
         background-color: $dialog-content-bg-normal-color;
-
-        .modal-footer {
-            background: $dialog-footer-bg-normal-color !important;
-            border-top: 1px solid $dialog-footer-border-normal-color !important;
-        }
     }
 
     .e-footer-content {
@@ -96,7 +87,6 @@
         .e-btn, .secondary-button {
             border: 1px solid $secondary-button-border-normal-color;
             margin: 8px 0 7px 0;
-            padding: 0;
             @include dialogButton();
         }
 
@@ -128,23 +118,5 @@
 .dialog.iframe {
     .bootstrap-select > .btn {
         font-size: $app-large-text-size;
-    }
-}
-
-// -css for master site dialog box.
-#master-site-change {
-    #master-site-change_dialog-content {
-        line-height: 2 !important;
-        font-size: 13px !important;
-    }
-
-    .tenant-name {
-        color: $link-text-color;
-        font-style: italic;
-    }
-
-    .conform-message {
-        display: block !important;
-        margin-top: 20px !important;
     }
 }

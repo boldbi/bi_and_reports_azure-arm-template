@@ -1,7 +1,7 @@
 ﻿@model TenantInfo
 
 @{
-    ViewBag.Title = $"{T["Site Information"].Value} - {GlobalAppSettings.SystemSettings.OrganizationName}";
+    ViewBag.Title = "[[[Site Information - ]]]" + GlobalAppSettings.SystemSettings.OrganizationName;
     var isGeneralTab = (string.IsNullOrWhiteSpace(Context.Request.Query["tab"]) || Context.Request.Query["tab"] == "general") ? "active" : string.Empty;
     var isAttributesTab = (Context.Request.Query["tab"] == "attributes") ? "active" : string.Empty;
     var isIsolationCodeTab = (Context.Request.Query["tab"] == "isolation-code") ? "active" : string.Empty;
@@ -28,18 +28,18 @@
     </script>
     <script type="text/x-jsrender" id="commandstemplate">
         <div>
-            <span><a href="javascript:void(0);" class="delete-permission" data-user-id="${UserId}"><i class="su su-close"></i> @T["Revoke Access"]</a></span>
+            <span><a href="javascript:void(0);" class="delete-permission" data-user-id="${UserId}"><i class="su su-close"></i>[[[ Revoke Access]]]</a></span>
         </div>
     </script>
     <script type="text/x-jsrender" id="groups-command-template">
         <div>
-            <span><a href="javascript:void(0);" class="remove-group-access" data-group-id="${GroupId}"><i class="su su-close"></i> @T["Revoke Access"]</a></span>
+            <span><a href="javascript:void(0);" class="remove-group-access" data-group-id="${GroupId}"><i class="su su-close"></i>[[[ Revoke Access]]]</a></span>
         </div>
     </script>
 
     <script type="text/x-jsrender" id="admincommandstemplate">
         <div class="revoke-access-div">
-            <span><a href="javascript:void(0);" class="delete-admin-permission" data-admin-id="${UserId}"><i class="su su-close"></i> @T["Revoke Access"]</a></span>
+            <span><a href="javascript:void(0);" class="delete-admin-permission" data-admin-id="${UserId}"><i class="su su-close"></i>[[[ Revoke Access]]]</a></span>
         </div>
     </script>
     <script type="text/x-jsrender" id="user-profile-template">
@@ -59,22 +59,22 @@
         <span class="grid-content" title="${Status}" data-toggle="tooltip">${UserStatus}</span>
     </script>
     <script type="text/x-jsrender" id="username-header">
-        <div class="item-name">@T["Name"]</div>
+        <div class="item-name">[[[Name]]]</div>
     </script>
     <script type="text/x-jsrender" id="user-username-header">
-        <div class="item-header">@T["Username"]</div>
+        <div class="item-header">[[[Username]]]</div>
     </script>
     <script type="text/x-jsrender" id="email-header">
-        <div class="item-header">@T["Email Address"]</div>
+        <div class="item-header">[[[Email Address]]]</div>
     </script>
     <script type="text/x-jsrender" id="status-header">
-        <div class="item-header">@T["Status"]</div>
+        <div class="item-header">[[[Status]]]</div>
     </script>
     <script type="text/x-jsrender" id="actionsheader">
-        <div class="item-header">@T["Actions"]</div>
+        <div class="item-header">[[[Actions]]]</div>
     </script>
     <script type="text/x-jsrender" id="actions-header-for-group">
-        <div class="item-header">@T["Actions"]</div>
+        <div class="item-header">[[[Actions]]]</div>
     </script>
 
     <script type="text/x-jsrender" id="user-name-template">
@@ -88,10 +88,10 @@
         <span class="grid-content" title="${Email}" data-toggle="tooltip">${Email}</span>
     </script>
     <script type="text/x-jsrender" id="user-name-header">
-        <div class="item-header">@T["Name"]</div>
+        <div class="item-header">[[[Name]]]</div>
     </script>
     <script type="text/x-jsrender" id="user-email-header">
-        <div class="item-header">@T["Email Address"]</div>
+        <div class="item-header">[[[Email Address]]]</div>
     </script>
 
     <script type="text/x-jsrender" id="checkbox-row-template">
@@ -128,13 +128,13 @@
     </script>
 
     <script type="text/x-jsrender" id="name-header">
-        <div class="item-name">@T["Name"]</div>
+        <div class="item-name">[[[Name]]]</div>
     </script>
     <script type="text/x-jsrender" id="description-header">
-        <div class="item-header">@T["Description"]</div>
+        <div class="item-header">[[[Description]]]</div>
     </script>
     <script type="text/x-jsrender" id="users-header">
-        <div class="item-header">@T["No. of Users"]</div>
+        <div class="item-header">[[[No. of Users]]]</div>
     </script>
 
     <script type="text/x-jsrender" id="group-profile-template">
@@ -172,27 +172,27 @@
                 <div class="col-xs-12 site-nav-bar">
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="@isGeneralTab" id="application">
-                            <a href="#application-tab" aria-controls="application-tab" role="tab" data-toggle="tab">@T["General"]</a>
+                            <a href="#application-tab" aria-controls="application-tab" role="tab" data-toggle="tab">[[[General]]]</a>
                         </li>
                         @if (Model.TenantStatus == TenantStatus.Active)
                         {
                             <li role="presentation" class="@isUsersTab" id="users">
-                                <a href="#users-tab" aria-controls="users-tab" role="tab" data-toggle="tab">@T["Users"]</a>
+                                <a href="#users-tab" aria-controls="users-tab" role="tab" data-toggle="tab">[[[Users]]]</a>
                             </li>
                             @if (Model.TenantTypeId == (int)TenantType.BoldBIOnPremise)
                             {
                                 <li role="presentation" class="@isIsolationCodeTab" id="data-security">
-                                    <a href="#data-security-tab" aria-controls="data-security-tab" role="tab" data-toggle="tab">@T["Isolation Code"]</a>
+                                    <a href="#data-security-tab" aria-controls="data-security-tab" role="tab" data-toggle="tab">[[[Isolation Code]]]</a>
                                 </li>
                             }
                             @if (Model.TenantTypeId == (int)TenantType.BoldBIOnPremise)
                             {
                                 <li role="presentation" class="@isAttributesTab" id="custom-attribute">
-                                    <a href="#custom-attribute-tab" aria-controls="custom-attribute-tab" role="tab" data-toggle="tab">@T["Attributes"]</a>
+                                    <a href="#custom-attribute-tab" aria-controls="custom-attribute-tab" role="tab" data-toggle="tab">[[[Attributes]]]</a>
                                 </li>
                             }
                         }
-                    </ul>
+                        </ul>
                 </div>
                 <div class="tab-content col-xs-12 no-padding">
                     @await Html.PartialAsync("_SiteDetail")
@@ -206,7 +206,7 @@
             {
                 <div class="admin-page-body">
                     <p class="no-tenant-detail">
-                        @T["The requested tenant details not found."]
+                        [[[The requested tenant details not found.]]]
                     </p>
                 </div>
             }

@@ -1,8 +1,10 @@
 @media (min-width: 1040px) and (max-width: 1200px) {
   .app-header #application-list {
     text-align: center !important; } }
+
 #view-user-profile .admin-page-header .admin-page-header-description {
   display: inline-block !important; }
+
 #view-user-profile .admin-page-header #unlock-user {
   border: 1px solid #0162FF;
   border-radius: 4px;
@@ -17,6 +19,7 @@
   letter-spacing: 0.3px;
   float: right;
   display: inline-block !important; }
+
 #view-user-profile .admin-page-header .dropdown {
   display: inline-block !important;
   float: right; }
@@ -29,6 +32,7 @@
     transform: rotate(90deg) !important; }
   #view-user-profile .admin-page-header .dropdown li {
     cursor: pointer !important; }
+
 #view-user-profile .admin-page-body .display-name {
   font-size: 18px;
   font-weight: bold;
@@ -36,8 +40,10 @@
   line-height: 18px;
   padding-left: 12px;
   margin-top: 23px; }
+
 #view-user-profile .admin-page-body .profile-img-name {
   border-bottom: 1px solid var(--grey-300); }
+
 #view-user-profile .admin-page-body .img-view-holder {
   border: 0.5px solid var(--grey-300);
   border-radius: 2px;
@@ -52,6 +58,7 @@
     font-weight: 400 !important;
     letter-spacing: 0.5px !important;
     padding: 23px 18px; }
+
 #view-user-profile .admin-page-body #profile-details {
   margin-top: 20px;
   margin-left: 10px;
@@ -112,8 +119,10 @@
       #view-user-profile .admin-page-body #profile-details form div.form-element-label .email-status {
         padding-left: 39px;
         color: var(--grey-500); }
+
 #view-user-profile #is-aduser, #view-user-profile #logged-user {
   display: none; }
+
 #view-user-profile #avatar-upload-box {
   padding: 0px !important; }
   #view-user-profile #avatar-upload-box .modal-dialog {
@@ -206,12 +215,14 @@
       #view-user-profile #avatar-upload-box .modal-dialog .modal-content .modal-footer #upload-image {
         margin-right: 10px;
         cursor: pointer; }
+
 #view-user-profile #messageBox .message-box-close {
   right: 10px;
   color: var(--dialog-header-close-icon-normal-color);
   opacity: 1; }
   #view-user-profile #messageBox .message-box-close:hover {
     color: var(--dialog-header-close-icon-hover-color); }
+
 #view-user-profile #messageBox .message-content {
   height: 50px;
   line-height: 50px;
@@ -222,8 +233,10 @@
   height: 28px;
   padding: 5px 8px;
   width: 450px; }
+
 #change-password #fake-password {
   display: none; }
+
 #change-password .confirm-password {
   margin-bottom: 32px; }
 
@@ -339,6 +352,7 @@
         padding-bottom: 91px !important; }
     body #view-user-profile #change-password #change-password-content .button-section {
       margin-top: 130px !important; } }
+
 @media screen and (max-width: 800px) {
   body #view-user-profile #view-profile-info #edit-user-profile-master .user-profile-section .img-view-holder {
     margin-left: 120px; }
@@ -368,13 +382,16 @@
         padding-bottom: 91px !important; }
   body #view-user-profile #change-password #change-password-content .button-section {
     width: 100% !important; } }
+
 @media screen and (max-width: 1024px) {
   body .alert-danger {
     top: 205px !important;
     width: 350px !important; } }
+
 @media screen and (min-width: 1025px) and (max-width: 1399px) {
   body .alert-danger {
     top: 225px !important; } }
+
 @media screen and (min-width: 1400px) {
   #view-profile-info #edit-user-profile-master .user-profile-section #edit-user-profile-form-div .label-panel {
     font-size: 14px !important;
@@ -403,7 +420,6 @@
     font-size: 14px !important;
     height: 32px;
     overflow: visible !important; }
-
   #change-password #change-password-content .change-password-form .password-label {
     font-size: 14px !important;
     margin-top: 5px; }
@@ -411,7 +427,6 @@
     height: 32px !important; }
   #change-password #change-password-content .change-password-form #new-password-validate, #change-password #change-password-content .change-password-form #confirm-password-validate {
     font-size: 12px !important; }
-
   #avatar-upload-box .modal-dialog .modal-content .modal-body .image-path #image-path {
     font-size: 14px !important; }
   #avatar-upload-box .modal-dialog .modal-content .modal-body .image-path .form-control {
@@ -423,66 +438,13 @@
     font-size: 12px !important; }
   #avatar-upload-box .modal-dialog .modal-content .modal-footer .margin-top {
     margin-top: -3px; } }
+
 @media screen and (min-width: 1400px) {
   #userprofile-delete-confirmation_wrapper #userprofile-delete-confirmation .modal-content .modal-footer .margin-top {
     margin-top: -2px !important; } }
+
 .change-password-div {
   padding: 20px 20px 20px 30px; }
 
-#singleuser-delete-confirmation .e-footer-content .e-btn, #make-admin-confirmation .e-footer-content .e-btn, #remove-admin-confirmation .e-footer-content .e-btn, #unlock-user-confirmation .e-footer-content .e-btn, #recovery-code-regeneration-confirmation .e-footer-content .e-btn, #authenticator-application-box .e-footer-content .e-btn, #disable-mfa-confirmation .e-footer-content .e-btn, #recovery-code-box .e-footer-content .e-btn {
+#singleuser-delete-confirmation .e-footer-content .e-btn, #make-admin-confirmation .e-footer-content .e-btn, #remove-admin-confirmation .e-footer-content .e-btn, #unlock-user-confirmation .e-footer-content .e-btn {
   margin-right: 16px; }
-
-.security-header {
-  padding: 32px 24px 20px 24px !important; }
-
-#recovery-code-box {
-  letter-spacing: 0.3px; }
-  #recovery-code-box .recovery-code-containers .bg-info {
-    border-radius: 4px;
-    background-color: var(--warning-bg-normal-color);
-    border: 1px solid var(--warning-border-normal-color);
-    margin: 4px 0px 16px 0px; }
-    #recovery-code-box .recovery-code-containers .bg-info p {
-      margin: 5px; }
-  #recovery-code-box .recovery-code-containers .recovery-code-content {
-    width: 390px;
-    height: 192px;
-    left: 24px;
-    top: 217px;
-    border: 1px solid var(--place-holder);
-    border-radius: 4px; }
-    #recovery-code-box .recovery-code-containers .recovery-code-content .su-copy {
-      height: 23px;
-      width: 23px;
-      float: right;
-      padding: 10px 0px; }
-    #recovery-code-box .recovery-code-containers .recovery-code-content .recovery-code {
-      width: 350px; }
-      #recovery-code-box .recovery-code-containers .recovery-code-content .recovery-code td {
-        padding: 15px 15px 6px 20px; }
-  #recovery-code-box .recovery-code-containers .info-message {
-    padding-right: 20px; }
-  #recovery-code-box .recovery-code-header {
-    font-weight: bold !important; }
-  #recovery-code-box .e-footer-content {
-    width: 424px !important; }
-    #recovery-code-box .e-footer-content button {
-      margin: 7px 15px 7px 0 !important; }
-
-.twofa-tab .app-textbox-label {
-  font-weight: bold !important; }
-.twofa-tab .twofa-container {
-  margin: 0 auto; }
-  .twofa-tab .twofa-container .info-message {
-    width: 100% !important;
-    padding-bottom: 16px; }
-  .twofa-tab .twofa-container .mfa-disable {
-    padding-top: 16px; }
-    .twofa-tab .twofa-container .mfa-disable .mfa-button {
-      padding-top: 16px; }
-      .twofa-tab .twofa-container .mfa-disable .mfa-button .mfa-disable-button {
-        text-decoration: underline;
-        padding-top: 9px;
-        color: var(--red);
-        text-decoration-color: var(--red);
-        text-decoration-style: dotted; }

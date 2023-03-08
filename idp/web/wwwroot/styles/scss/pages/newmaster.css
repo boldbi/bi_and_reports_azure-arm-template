@@ -49,7 +49,7 @@
                 margin: 0;
                 vertical-align: middle;*/
 /*color: $primary-btn-text-color !important;*/
-            /*}
+/*}
         }
 
         #upload-item-section {
@@ -58,7 +58,7 @@
                 border: none;
                 border-radius: 0;*/
 /*color: $primary-btn-text-color;*/
-                /*height: $height;
+/*height: $height;
                 width: 120px;
             }
         }
@@ -307,12 +307,12 @@
     }
 }*/
 /*@media (min-width:1040px) and (max-width: 1200px) {
-    .app-header {
-        #application-list {
-            text-align: center !important;
+        .app-header {
+            #application-list {
+                text-align: center !important;
+            }
         }
-    }
-}*/
+    }*/
 * {
   font-family: var(--font-family); }
 
@@ -338,6 +338,7 @@ body .form-control, body input[type="text"] {
     box-shadow: none !important;
     outline: none !important;
     border-color: transparent; }
+
 body .has-error .form-control {
   outline: none !important;
   border: 1.5px solid var(--red) !important;
@@ -347,48 +348,14 @@ body .has-error .form-control {
     box-shadow: none !important;
     outline: none !important;
     transition: all .3s linear; }
+
 body input[type="text"]:focus ~ .su-search {
   border: 1px solid var(--primary-branding-bg-color) !important;
   border-left: 0px !important; }
+
 body input[type="text"]:focus ~ .close-icon {
   border: 1px solid var(--primary-branding-bg-color) !important;
   border-left: 0px !important; }
-body #ad-tab-nav, body .nav-tabs:not(#startup-tab-nav) {
-  border-bottom: none;
-  background: var(--background); }
-  body #ad-tab-nav li, body .nav-tabs:not(#startup-tab-nav) li {
-    float: left;
-    margin-bottom: -3px; }
-    body #ad-tab-nav li a, body .nav-tabs:not(#startup-tab-nav) li a {
-      color: var(--tab-text-normal-color);
-      font-weight: 600;
-      font-size: 12px;
-      line-height: 13.75px;
-      letter-spacing: 0.5px;
-      margin: 0px; }
-    body #ad-tab-nav li a:hover, body #ad-tab-nav li a:focus, body .nav-tabs:not(#startup-tab-nav) li a:hover, body .nav-tabs:not(#startup-tab-nav) li a:focus {
-      background: none;
-      border-color: var(--tab-bg-normal-color);
-      color: var(--tab-text-hover-color); }
-  body #ad-tab-nav li.active a, body #ad-tab-nav li.active a:hover, body #ad-tab-nav li.active a:focus, body .nav-tabs:not(#startup-tab-nav) li.active a, body .nav-tabs:not(#startup-tab-nav) li.active a:hover, body .nav-tabs:not(#startup-tab-nav) li.active a:focus {
-    background: var(--tab-bg-normal-color);
-    color: var(--tab-text-active-color);
-    border: none; }
-  body #ad-tab-nav li.active::after, body .nav-tabs:not(#startup-tab-nav) li.active::after {
-    background: var(--sub-nav-menu-header-bg-color);
-    border: 1px solid var(--sub-nav-menu-header-border-color);
-    border-radius: 10px;
-    content: "";
-    display: block;
-    height: 5px;
-    z-index: 1;
-    position: inherit;
-    -webkit-transition-property: left, right;
-    transition-property: left, right;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out; }
 
 a {
   color: var(--global-link-text-normal-color); }
@@ -402,6 +369,7 @@ a:hover, a:focus {
 
 @-ms-viewport {
   width: auto !important; }
+
 .dropdown {
   padding: 5px; }
 
@@ -415,7 +383,7 @@ input::-ms-clear, input::-ms-reveal {
   cursor: default !important; }
 
 .glyphicon-ok::before {
-  content: "" !important;
+  content: "" !important;
   font-family: "Server" !important;
   float: right; }
 
@@ -567,7 +535,7 @@ input::-ms-clear, input::-ms-reveal {
             margin-bottom: 6px;
             position: relative;
             width: 200px !important;
-                        /*  &:hover {
+            /*  &:hover {
                             background-color: #EEEEEE;
                             border-radius: 4px;
                         }
@@ -597,8 +565,8 @@ input::-ms-clear, input::-ms-reveal {
             position: relative;
             width: 20px;
             /*&:hover {
-                background-color: $nav-menu-hover-color;
-            }*/ }
+                            background-color: $nav-menu-hover-color;
+                        }*/ }
             #server-app-container #menu-area .menu-bar #sub-nav ul li.profile-section a .profile-picture {
               border-radius: 50%;
               height: 100%;
@@ -952,6 +920,7 @@ input::-ms-clear, input::-ms-reveal {
   #popup-container .header-menu .head-icon, #delete-popup-container .header-menu .head-icon {
     font-size: 14px;
     padding: 4px 3px; }
+
 #popup-container .dialog-body, #delete-popup-container .dialog-body {
   background: white;
   font-size: 12px; }
@@ -984,6 +953,7 @@ input::-ms-clear, input::-ms-reveal {
     height: 28px; }
   #popup-container .dialog-body textarea, #delete-popup-container .dialog-body textarea {
     height: auto !important; }
+
 #popup-container .dialog-footer, #delete-popup-container .dialog-footer {
   background: var(--dialog-footer-bg-normal-color) none repeat scroll 0 0;
   border-top: 1px solid var(--dialog-footer-border-normal-color);
@@ -993,9 +963,11 @@ input::-ms-clear, input::-ms-reveal {
     margin-right: 10px; }
   #popup-container .dialog-footer #cancel-group, #delete-popup-container .dialog-footer #cancel-group {
     font-family: var(--font-family); }
+
 #popup-container .dialog-footer-fixed, #delete-popup-container .dialog-footer-fixed {
   bottom: 0;
   position: fixed; }
+
 #popup-container .dialogFooterMar, #delete-popup-container .dialogFooterMar {
   background: var(--dialog-footer-bg-normal-color) none repeat scroll 0 0;
   border-top: 1px solid var(--dialog-footer-border-normal-color);
@@ -1042,12 +1014,14 @@ input::-ms-clear, input::-ms-reveal {
     z-index: 1;
     width: 11px;
     height: 8px; }
+
 .material-checkbox:not(:checked) + input + label::before {
   width: 0;
   height: 0;
   border: 3px solid transparent;
   left: 6px;
   top: 10px; }
+
 .material-checkbox:not(:checked) + input + label::after {
   height: 16px;
   width: 16px;
@@ -1057,14 +1031,16 @@ input::-ms-clear, input::-ms-reveal {
   z-index: 1;
   margin-top: 7px;
   margin-bottom: 2px; }
+
 .material-checkbox:checked + input + label::before {
   bottom: 11.2px;
   color: var(--primary-button-text-normal-color);
-  content: "";
+  content: "";
   font-family: "Server";
   left: 1px;
   font-size: 14px;
   font-weight: bold; }
+
 .material-checkbox:checked + input + label::after {
   top: 0;
   width: 16px;
@@ -1074,14 +1050,18 @@ input::-ms-clear, input::-ms-reveal {
   z-index: 0;
   margin-top: 7px;
   margin-bottom: 2px; }
+
 .material-checkbox:disabled + input + label::after {
   background-color: var(--checkbox-bg-disable-color);
   border: 1px solid var(--checkbox-border-disable-color); }
+
 .material-checkbox:disabled + input + label::before {
   color: var(--checkbox-text-disable-color); }
+
 .material-checkbox:not(:checked):disabled + input + label::after {
   background-color: var(--checkbox-bg-disable-color);
   border: 1px solid var(--checkbox-border-disable-color); }
+
 .material-checkbox:not(:checked), .material-checkbox:checked {
   position: absolute;
   left: -9999px;
@@ -1120,26 +1100,27 @@ input::-ms-clear, input::-ms-reveal {
 
 .admin-page-body .e-grid .e-gridheader .e-headercell .e-headercelldiv .item-name {
   display: inline; }
+
 .admin-page-body .e-grid .e-gridheader .e-headercell .e-headercelldiv .item-header {
   display: inline; }
 
 .e-grid .e-gridheader .e-headercell .e-headercelldiv .item-name {
   display: inline; }
+
 .e-grid .e-gridheader .e-headercell .e-headercelldiv .item-header {
   display: inline; }
 
 #user-list-container .e-grid .e-gridheader .e-headercell .e-headercelldiv .item-name {
   display: inline; }
+
 #user-list-container .e-grid .e-gridheader .e-headercell .e-headercelldiv .item-header {
   display: inline; }
 
 @media screen and (max-width: 1040px) {
   .mobile-visible {
     display: block; }
-
   .mobile-hidden {
     display: none; }
-
   .mobile-menu-icon {
     cursor: pointer;
     display: table;
@@ -1149,7 +1130,6 @@ input::-ms-clear, input::-ms-reveal {
     .mobile-menu-icon span {
       display: table-cell;
       vertical-align: middle; }
-
   #server-app-container #upload-item-section {
     display: none; }
   #server-app-container #menu-area {
@@ -1252,18 +1232,18 @@ input::-ms-clear, input::-ms-reveal {
     margin-top: 0px;
     padding: 0px 10px 12px 15px;
     width: 100%; } }
+
 @media screen and (min-width: 1041px) and (max-width: 1399px) {
   #server-app-container #menu-area {
     display: block;
     height: 100% !important; } }
+
 @media screen and (min-width: 1400px) {
   .primary-button, .secondary-button, .link-button, .critical-action-button {
     height: 28px;
     line-height: 28px; }
-
   #search-area input[type="text"], #search-area .close-icon.su-inner-close, #search-area .su-search, #user-search-area input[type="text"], #user-search-area .close-icon.su-inner-close, #user-search-area .su-search, #group-search-area input[type="text"], #group-search-area .close-icon.su-inner-close, #group-search-area .su-search, #add-user-search-area input[type="text"], #add-user-search-area .close-icon.su-inner-close, #add-user-search-area .su-search, #add-group-search-area input[type="text"], #add-group-search-area .close-icon.su-inner-close, #add-group-search-area .su-search, #add-admin-search-area input[type="text"], #add-admin-search-area .close-icon.su-inner-close, #add-admin-search-area .su-search {
     height: 32px; }
-
   #server-app-container #header-area {
     height: 50px; }
     #server-app-container #header-area .header-bar .main-screen-logo #application-logo {
@@ -1366,7 +1346,7 @@ input::-ms-clear, input::-ms-reveal {
             margin-bottom: 6px;
             position: relative;
             width: 200px !important;
-                        /*  &:hover {
+            /*  &:hover {
                             background-color: #EEEEEE;
                             border-radius: 4px;
                         }
@@ -1396,8 +1376,8 @@ input::-ms-clear, input::-ms-reveal {
             position: relative;
             width: 20px;
             /*&:hover {
-                background-color: $nav-menu-hover-color;
-            }*/ }
+                            background-color: $nav-menu-hover-color;
+                        }*/ }
             #server-app-container #menu-area .menu-bar #sub-nav ul li.profile-section a .profile-picture {
               border-radius: 50%;
               height: 100%;
@@ -1514,13 +1494,13 @@ input::-ms-clear, input::-ms-reveal {
       width: 55px; }
   #server-app-container #content-area {
     padding: 0px 0px 0px 80px; }
-
   #search-area .placeholder, #user-search-area .placeholder, #group-search-area .placeholder, #search-items .placeholder, #add-user-search-area .placeholder, #add-group-search-area .placeholder, #add-admin-search-area .placeholder {
     padding-top: 2px; }
   #search-area .su-search, #search-area .close-icon.su-inner-close, #user-search-area .su-search, #user-search-area .close-icon.su-inner-close, #group-search-area .su-search, #group-search-area .close-icon.su-inner-close, #search-items .su-search, #search-items .close-icon.su-inner-close, #add-user-search-area .su-search, #add-user-search-area .close-icon.su-inner-close, #add-group-search-area .su-search, #add-group-search-area .close-icon.su-inner-close, #add-admin-search-area .su-search, #add-admin-search-area .close-icon.su-inner-close {
     padding-top: 8px; } }
+
 .glyphicon-ok::before {
-  content: "" !important;
+  content: "" !important;
   font-family: "Server" !important; }
 
 @media screen and (min-width: 1400px) {
@@ -1531,9 +1511,9 @@ input::-ms-clear, input::-ms-reveal {
   #messageBox .message-box-btn-holder {
     height: 50px;
     padding: 7.5px 10px; }
-
   .dropdown-styles .btn-primary {
     height: 50px !important; } }
+
 @media screen and (max-width: 1400px) {
   #server-app-container #header-area .header-bar .user-account .dropdown-menu {
     margin-top: 0px; } }

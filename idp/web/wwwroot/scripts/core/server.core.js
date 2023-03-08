@@ -497,7 +497,7 @@ function isNumberKey(evt) {
 
 function validateUserName(userName) {
     if (/\s/g.test(userName)) {
-        return { isValid: false, message: window.Server.App.LocalizationContent.UserNameHasWhiteSpace };
+        return { isValid: false, message: window.Server.App.LocalizationContent.HasWhiteSpace };
     }
     if (/[^a-zA-Z0-9]/.test(userName)) {
         return { isValid: false, message: window.Server.App.LocalizationContent.UserNameSpecialCharacterValicator };

@@ -77,24 +77,24 @@
         },
         messages: {
             username: {
-                isRequired: window.Server.App.LocalizationContent.UserNameValidator
+                isRequired: window.TM.App.LocalizationContent.UserNameValidator
             },
             firstname: {
-                isRequired: window.Server.App.LocalizationContent.FirstNameValidator
+                isRequired: window.TM.App.LocalizationContent.FirstNameValidator
             },
             lastname: {
-                isValidName: window.Server.App.LocalizationContent.AvoidSpecailCharacters
+                isValidName: window.TM.App.LocalizationContent.AvoidSpecailCharacters
             },
             email: {
-                isRequired: window.Server.App.LocalizationContent.EmailValidator
+                isRequired: window.TM.App.LocalizationContent.EmailValidator
             },
             password: {
-                required: window.Server.App.LocalizationContent.PasswordValidator,
-                isValidPassword: window.Server.App.LocalizationContent.InvalidPassword
+                required: window.TM.App.LocalizationContent.PasswordValidator,
+                isValidPassword: window.TM.App.LocalizationContent.InvalidPassword
             },
             confirm: {
-                required: window.Server.App.LocalizationContent.ConfirmPasswordValidator,
-                equalTo: window.Server.App.LocalizationContent.PasswordsMismatch
+                required: window.TM.App.LocalizationContent.ConfirmPasswordValidator,
+                equalTo: window.TM.App.LocalizationContent.PasswordsMismatch
             }
         }
     });
@@ -135,8 +135,8 @@
             $(".startup-waiting-popup").removeClass("storage-page-content");
             $("#system-settings-user-account-container").hide();
             $("#image-parent-container .startup-image").hide().attr("src", serverSetupImageUrl).fadeIn();
-            $(".startup-content span.first-content").hide().text(window.Server.App.LocalizationContent.YourSite).slideDown();
-            $(".startup-content span.second-content").hide().text(window.Server.App.LocalizationContent.YourSite2 + displayName + window.Server.App.LocalizationContent.SiteLetter + ".").slideDown();
+            $(".startup-content span.first-content").hide().text(window.TM.App.LocalizationContent.YourSite).slideDown();
+            $(".startup-content span.second-content").hide().text(window.TM.App.LocalizationContent.YourSite2 + displayName + window.TM.App.LocalizationContent.YourSite3).slideDown();
             $("#help-link").attr("href", databaseConfigurationUrl);
             $("#system-settings-db-selection-container").show();
             $("#db-content-holder,#db-config-submit").show();

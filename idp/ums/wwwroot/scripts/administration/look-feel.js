@@ -3,7 +3,7 @@
 $(document).ready(function () {
     addPlacehoder("#font-upload-dialog");
     var fontUploadDialog = new ejs.popups.Dialog({
-        header: window.Server.App.LocalizationContent.UploadFont,
+        header: window.TM.App.LocalizationContent.UploadFont,
         showCloseIcon: true,
         width: '472px',
         close: onUploadFontDialogClose,
@@ -13,14 +13,14 @@ $(document).ready(function () {
     });
     fontUploadDialog.appendTo("#font-upload-dialog");
 
-    dropDownListInitialization('#fontfamily', window.Server.App.LocalizationContent.LookAndFeel, true);
+    dropDownListInitialization('#fontfamily', window.TM.App.LocalizationContent.LookAndFeel, true);
     if (document.getElementById("fontfamily") != null) {
         document.getElementById("fontfamily").ej2_instances[0].value = selectedFontValue;
         document.getElementById("fontfamily").ej2_instances[0].text = selectedFontText;
     }
 
-    dropDownListInitialization('#application-theme', window.Server.App.LocalizationContent.ApplicationTheme, true);
-    dropDownListInitialization('#dashboard-theme', window.Server.App.LocalizationContent.DashboardTheme, true);
+    dropDownListInitialization('#application-theme', window.TM.App.LocalizationContent.ApplicationTheme, true);
+    dropDownListInitialization('#dashboard-theme', window.TM.App.LocalizationContent.DashboardTheme, true);
     if (document.getElementById("application-theme") != null && document.getElementById("dashboard-theme") != null) {
         document.getElementById("application-theme").ej2_instances[0].value = selectedApplicationThemeValue;
         document.getElementById("application-theme").ej2_instances[0].text = selectedApplicationThemeText;
@@ -32,7 +32,7 @@ $(document).ready(function () {
 
 
     var applicationThemeUploadDialog = new ejs.popups.Dialog({
-        header: window.Server.App.LocalizationContent.ApplicationTheme,
+        header: window.TM.App.LocalizationContent.ApplicationTheme,
         showCloseIcon: true,
         width: '472px',
         close: onUploadApplicationThemeDialogClose,
@@ -43,7 +43,7 @@ $(document).ready(function () {
     applicationThemeUploadDialog.appendTo("#application-theme-upload-dialog");
 
     var dashboardThemeUploadDialog = new ejs.popups.Dialog({
-        header: window.Server.App.LocalizationContent.DashboardTheme,
+        header: window.TM.App.LocalizationContent.DashboardTheme,
         showCloseIcon: true,
         width: '472px',
         close: onUploadDashboardThemeDialogClose,
@@ -57,11 +57,11 @@ $(document).ready(function () {
         if (additionalSpecialChar.test(value) || value === "") {
             return true;
         }
-    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("isRequired", function (value) {
         return !isEmptyOrWhitespace(value);
-    }, window.Server.App.LocalizationContent.EnterName);
+    }, window.TM.App.LocalizationContent.EnterName);
 
     $(".upload-form").validate({
         errorElement: 'span',
@@ -116,7 +116,7 @@ $(document).ready(function () {
             theme = {
                 Appearance: $("input:radio[name=appearance]:checked").val(),
                 ApplicationTheme: document.getElementById("application-theme").ej2_instances[0].value,
-                DashboardTheme: document.getElementById("dashboard-theme").ej2_instances[0].value
+                DashbaordTheme: document.getElementById("dashboard-theme").ej2_instances[0].value
             };
         }
 
@@ -131,10 +131,10 @@ $(document).ready(function () {
             data: { updateSettings: lookAndFeelSettings },
             success: function (result) {
                 if (result.status) {
-                    SuccessAlert(window.Server.App.LocalizationContent.LookAndFeelSettings, window.Server.App.LocalizationContent.LookAndFeelSettingsSuccess, 7000);
+                    SuccessAlert(window.TM.App.LocalizationContent.LookAndFeelSettings, window.TM.App.LocalizationContent.LookAndFeelSettingsSuccess, 7000);
                     window.location.href = window.location.href;
                 } else {
-                    WarningAlert(window.Server.App.LocalizationContent.LookAndFeelSettings, window.Server.App.LocalizationContent.LookAndFeelSettingsFailure, result.Message, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.LookAndFeelSettings, window.TM.App.LocalizationContent.LookAndFeelSettingsFailure, result.Message, 7000);
                 }
                 hideWaitingPopup('body');
             }
@@ -192,7 +192,7 @@ function onUploadFontDialogClose() {
     $("#upload-font").attr("disabled", true);
     $("#font-name").val('');
     $('input[type="file"]').val(null);
-    $("#font-file-name").val(window.Server.App.LocalizationContent.BrowseFont);
+    $("#font-file-name").val(window.TM.App.LocalizationContent.BrowseFont);
     $(".validation").closest("div").removeClass("has-error");
     $(".validation-message").css("display", "none");
     document.getElementById("font-upload-dialog").ej2_instances[0].hide();
@@ -217,7 +217,7 @@ function onUploadApplicationThemeDialogClose() {
     $("#application-theme-file-name").val('');
     $('#applicationtheme-file').closest('div').removeClass("has-error");
     $(".validation").closest("div").removeClass("has-error");
-    $(".validation-message").html("");
+    $(".validation-message").css("display", "none");
     document.getElementById("application-theme-upload-dialog").ej2_instances[0].hide();
 }
 
@@ -228,7 +228,7 @@ function onUploadDashboardThemeDialogClose() {
     $("#dashboard-theme-file-name").val('');
     $('#dashboardtheme-file').closest('div').removeClass("has-error");
     $(".validation").closest("div").removeClass("has-error");
-    $(".validation-messages").html("");
+    $(".validation-messages").css("display", "none");
     document.getElementById("dashboard-theme-upload-dialog").ej2_instances[0].hide();
 }
 
@@ -243,22 +243,24 @@ $(document).on("change", "#applicationtheme-file", function (e) {
     var allowedExtensions = /(\.css)$/i;
     if (!allowedExtensions.exec(filePath)) {
         $('#applicationtheme-file').closest('div').addClass("has-error");
-        $("#invalid-applicationthemefile-name").html(window.Server.App.LocalizationContent.CssFile);
+        $("#invalid-applicationthemefile-name").html(window.TM.App.LocalizationContent.CssFile).css("display", "block");
         $('#upload-applicationtheme,#applicationtheme-name').attr("disabled", "disabled");
+        $(".validation-message").css("display", "block");
     }
     else {
         var applicationTheme = document.getElementById("application-theme").ej2_instances[0];
         var applicationThemeList = applicationTheme.getItems();
         $('#applicationtheme-file').closest('div').removeClass("has-error");
-        $(".validation-message").html("");
+        $(".validation-message").css("display", "none");
         $('#upload-applicationtheme,#applicationtheme-name').removeAttr("disabled");
         $('#applicationtheme-name').closest('div').removeClass("has-error");
         $("#applicationtheme-name").val(themeName);
         for (var item = 0; item < applicationThemeList.length; item++) {
             if (themeName === applicationThemeList[item].dataset.value) {
                 $('#applicationtheme-name').closest('div').addClass("has-error");
-                $("#invalid-applicationtheme-name").html(window.Server.App.LocalizationContent.CssFileExist);
-                $('#upload-applicationtheme').attr("disabled", "disabled");
+                $("#invalid-applicationtheme-name").html(window.TM.App.LocalizationContent.CssFileExist).css("display", "block");
+                $('#upload-applicationtheme,#applicationtheme-name').attr("disabled", "disabled");
+                $(".validation-message").css("display", "block");
             }
         }
     }
@@ -275,24 +277,26 @@ $(document).on("change", "#dashboardtheme-file", function (e) {
     var allowedExtensions = /(\.css)$/i;
     if (!allowedExtensions.exec(filePath)) {
         $('#applicationtheme-name').closest('div').addClass("has-error");
-        $("#invalid-applicationtheme-name").html(window.Server.App.LocalizationContent.AvoidSpecailCharacters);
+        $("#invalid-applicationtheme-name").html(window.TM.App.LocalizationContent.AvoidSpecailCharacters).css("display", "block");
         $('.upload-theme').attr("disabled", "disabled");
-        $(".validation-message").html("");
+        $(".validation-message").css("display", "block");
     }
     else {
         var dashboardTheme = document.getElementById("dashboard-theme").ej2_instances[0];
         var dashboardThemeList = dashboardTheme.getItems();
         $('#dashboardtheme-file').closest('div').removeClass("has-error");
+        $(".validation-message").css("display", "none");
         $('#upload-dashboardtheme').removeAttr("disabled");
         $('#dashboardtheme-name').removeAttr("disabled");
         $('#dashboardtheme-name').closest('div').removeClass("has-error");
-        $(".validation-message").html("");
+        $(".validation-message").css("display", "none");
         $("#dashboardtheme-name").val(themeName);
         for (var item = 0; item < dashboardThemeList.length; item++) {
             if (themeName === dashboardThemeList[item].dataset.value) {
                 $('#dashboardtheme-name').closest('div').addClass("has-error");
-                $("#invalid-dashboardtheme-name").html(window.Server.App.LocalizationContent.CssFileExist);
-                $('#upload-dashboardtheme').attr("disabled", "disabled");
+                $("#invalid-dashboardtheme-name").html(window.TM.App.LocalizationContent.CssFileExist).css("display", "block");
+                $('#upload-dashboardtheme,#dashboardtheme-name').attr("disabled", "disabled");
+                $(".validation-message").css("display", "block");
             }
         }
     }
@@ -306,15 +310,16 @@ function keyvalidation(id) {
     var themeList = theme.getItems();
     if (name != "") {
         for (var item = 0; item < themeList.length; item++) {
-            if ( name.toLowerCase().trim() === themeList[item].dataset.value.toLowerCase() || name.toLowerCase().trim() == "light" || name.toLowerCase().trim() == "dark") {
+            if (name.toLowerCase() === themeList[item].dataset.value.toLowerCase() || name.toLowerCase() == "light" || name.toLowerCase() == "dark") {
                 $(id).closest('div').addClass("has-error");
-                $(invalid).html(window.Server.App.LocalizationContent.CssFileExist);
+                $(invalid).html(window.TM.App.LocalizationContent.CssFileExist).css("display", "block");
                 $('.upload-theme').attr("disabled", "disabled");
+                $(".validation-message").css("display", "block");
                 break;
             }
             else {
                 $(id).closest('div').removeClass("has-error");
-                $(".validation-message").html("");
+                $(".validation-message").css("display", "none");
                 $('.upload-theme').removeAttr("disabled");
             }
         }

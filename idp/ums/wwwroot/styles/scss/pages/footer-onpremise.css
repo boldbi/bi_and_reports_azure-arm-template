@@ -96,6 +96,7 @@ body.layout-accounts #base-footer-div {
     font-size: 12px; }
   body #base-footer-div footer #enablefooter {
     font-size: 12px; } }
+
 @media screen and (max-width: 1040px) {
   #base-footer-div {
     padding: 0px !important; }

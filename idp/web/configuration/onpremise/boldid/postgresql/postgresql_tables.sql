@@ -186,22 +186,17 @@ CREATE TABLE BOLDTC_User (
 	IsActive smallint NOT NULL,
 	IsDeleted smallint NOT NULL,
 	Status int NULL,
-	IsMfaEnabled smallint NOT NULL DEFAULT '0',
-	MfaType int NULL,
   CONSTRAINT PK_BOLDTC_USER PRIMARY KEY (Id)
 )
 ;
 CREATE TABLE BOLDTC_UserLogin (
 	Id uuid NOT NULL,
 	UserId uuid NOT NULL,
-	SessionId uuid NULL,
 	DirectoryTypeId int NOT NULL,
 	ClientToken varchar(4000) NOT NULL,
-	LoggedInDomain varchar(255) NOT NULL,
 	IpAddress varchar(50) NOT NULL,
-	Browser varchar(255) NULL,
+	LoggedInDomain varchar(255) NOT NULL,
 	LoggedInTime timestamp NOT NULL,
-	LastActive timestamp NULL,
 	IsActive smallint NOT NULL,
   CONSTRAINT PK_BOLDTC_USERLOGIN PRIMARY KEY (Id)
 )
@@ -747,7 +742,6 @@ CREATE TABLE BOLDTC_UserLog (
 	ReferrerUrl varchar(4000) NULL,
 	IsActive smallint NOT NULL,
 	AdditionalData varchar(4000) NULL,
-	Source int NULL,
   CONSTRAINT PK_BOLDTC_UserLog PRIMARY KEY (Id)
 )
 ;
@@ -777,58 +771,6 @@ CREATE TABLE BOLDTC_UserStatus (
 	IsActive smallint NOT NULL,
   CONSTRAINT PK_BOLDTC_USERSTATUS PRIMARY KEY (Id)
 )
-;
-
-CREATE TABLE BOLDTC_UserToken (
-    Id uuid NOT NULL,
-    UserId uuid NOT NULL,
-    Name varchar(255) NOT NULL,
-	Value varchar(255) NOT NULL,
-	CreatedDate timestamp NOT NULL,
-	ModifiedDate timestamp NOT NULL,
-	IsActive smallint NOT NULL,
-  CONSTRAINT PK_BOLDTC_UserToken PRIMARY KEY (Id)
-)
-;
-
-CREATE TABLE BOLDTC_MfaType (
-	Id SERIAL NOT NULL,
-	Type varchar(100) NOT NULL,
-        Value int NOT NULL UNIQUE,
-        CreatedDate timestamp NOT NULL,
-        ModifiedDate timestamp NOT NULL,
-	IsActive smallint NOT NULL,
-  CONSTRAINT PK_BOLDTC_MFATYPE PRIMARY KEY (Id)
-)
-;
-
-CREATE TABLE BOLDTC_Source (
-	Id SERIAL NOT NULL,
-	Type varchar(100) NOT NULL,
-        Value int NOT NULL UNIQUE,
-        CreatedDate timestamp NOT NULL,
-        ModifiedDate timestamp NOT NULL,
-	IsActive smallint NOT NULL,
-  CONSTRAINT PK_BOLDTC_SOURCE PRIMARY KEY (Id)
-)
-;
-
-CREATE TABLE BOLDTC_EmailActivityLog(
-	Id SERIAL NOT NULL,
-	Event varchar NOT NULL,
-	RecipientEmail varchar(255) NOT NULL,
-	SenderEmail varchar(255) NOT NULL,
-	MailSubject varchar(255) NOT NULL,
-	MailBody text NULL,
-	CreatedDate timestamp NOT NULL,
-	ModifiedDate timestamp NULL,
-	InitiatedBy uuid NULL,
-	UserId uuid NULL,
-	Status int NOT NULL,
-	StatusMessage text NULL,
-	IsActive smallint NOT NULL,
-	CONSTRAINT PK_BOLDTC_EMAILACTIVITYLOG PRIMARY KEY (Id) 
-	)
 ;
 
 INSERT into BOLDTC_TenantLogType  ( Name , IsActive ) VALUES (N'Registration', 1);
@@ -972,24 +914,7 @@ INSERT into BOLDTC_UserStatus  (Status, Value, CreatedDate, ModifiedDate, IsActi
 INSERT into BOLDTC_UserStatus  (Status, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Activated', 1, now() at time zone 'utc', now() at time zone 'utc', 1);
 INSERT into BOLDTC_UserStatus  (Status, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Locked', 2, now() at time zone 'utc', now() at time zone 'utc', 1);
 
-INSERT into BOLDTC_AuthType  (Name, ModifiedDate, IsActive) VALUES (N'AzureADB2C', now() at time zone 'utc', 1);
-INSERT into BOLDTC_AuthProvider  (Name, AuthTypeId, ModifiedDate, IsActive) VALUES (N'AzureADB2C', 7, now() at time zone 'utc', 1);
-INSERT into BOLDTC_DirectoryType (DirectoryName,IsActive) VALUES (N'AzureADB2C',1);
 
-INSERT into BOLDTC_MfaType  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Authenticator', 1, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_MfaType  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Email', 2, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_MfaType  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'SMS', 3, now() at time zone 'utc', now() at time zone 'utc', 1);
-
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Identity Provider Web', 1, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Identity Provider API', 2, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Tenant Management Web', 3, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Dashboard Server Web', 4, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Dashboard Server API', 5, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Dashboard Server Jobs', 6, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Report Server Web', 7, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Report Server API', 8, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Report Server Jobs', 9, now() at time zone 'utc', now() at time zone 'utc', 1);
-INSERT into BOLDTC_Source  (Type, Value, CreatedDate, ModifiedDate, IsActive) VALUES (N'Admin Utility', 10, now() at time zone 'utc', now() at time zone 'utc', 1);
 
 ALTER TABLE  BOLDTC_CouponLog  ADD CONSTRAINT  BOLDTC_CouponLog_fk0  FOREIGN KEY ( CouponLogTypeId ) REFERENCES  BOLDTC_CouponLogType ( Id )
 ;
@@ -1324,17 +1249,4 @@ ALTER TABLE  BOLDTC_AzureBlob  VALIDATE CONSTRAINT  BOLDTC_AzureBlob_fk0
 ALTER TABLE  BOLDTC_User  ADD CONSTRAINT  BOLDTC_User_fk1  FOREIGN KEY ( Status ) REFERENCES  BOLDTC_UserStatus ( Value )
 ;
 ALTER TABLE  BOLDTC_User  VALIDATE CONSTRAINT  BOLDTC_User_fk1 
-;
-
-ALTER TABLE  BOLDTC_User  ADD CONSTRAINT  BOLDTC_User_fk2  FOREIGN KEY ( MfaType ) REFERENCES  BOLDTC_MfaType ( Value )
-;
-ALTER TABLE  BOLDTC_User  VALIDATE CONSTRAINT  BOLDTC_User_fk2
-;
-
-ALTER TABLE  BOLDTC_UserLog  ADD CONSTRAINT  BOLDTC_UserLog_fk3  FOREIGN KEY ( Source ) REFERENCES  BOLDTC_Source ( Value )
-;
-ALTER TABLE  BOLDTC_UserLog  VALIDATE CONSTRAINT  BOLDTC_UserLog_fk3
-;
-
-ALTER TABLE BOLDTC_EmailActivityLog  ADD CONSTRAINT BOLDTC_EmailActivityLog_fk0 FOREIGN KEY (UserId) REFERENCES BOLDTC_User(Id)
 ;
