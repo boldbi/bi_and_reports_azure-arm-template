@@ -20,7 +20,7 @@
                     @if (GlobalAppSettings.SystemSettings.IsShowPoweredBySyncfusion)
                     {
                         <p class="no-margin pull-right pow @poweredbyClass" id="poweredbysyncfusion">
-                            @T["Powered by"]
+                            [[[Powered by]]]
                             <img src="@Url.Content($"{CloudAppConfig.TenantManagementUrl.TrimEnd('/')}/logos?type=poweredby")" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.DefaultErrorRectangleImage)';" alt="Syncfusion" width="110" height="25">
                         </p>
                     }

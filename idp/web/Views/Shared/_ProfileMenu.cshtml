@@ -21,22 +21,22 @@
         <ul id="items-menu">
             <li class="sf-nav-item @(requestUrl.IndexOf(@tenantHomePage, StringComparison.OrdinalIgnoreCase) > -1 ? "active" : string.Empty )">
                 <a href="@tenantHomePage">
-                    <span class="menu-label">@T["My Sites"]</span>
+                    <span class="menu-label">[[[My Sites]]]</span>
                 </a>
             </li>
             <li class="sf-nav-item @(requestUrl.IndexOf(@Url.Action("ProfilePage", "User"), StringComparison.OrdinalIgnoreCase) > -1 ? "active" : string.Empty )">
                 <a href="@Url.Action("ProfilePage", "User")">
-                    <span class="menu-label">@T["My Profile"]</span>
+                    <span class="menu-label">[[[My Profile]]]</span>
                 </a>
             </li>
             <li class="sf-nav-item @(requestUrl.IndexOf(@Url.Action("EditPassword","User"), StringComparison.OrdinalIgnoreCase) > -1 ? "active" : string.Empty )">
                 <a href="@Url.Action("EditPassword","User")">
-                    <span class="menu-label">@T["Change Password"]</span>
+                    <span class="menu-label">[[[Change Password]]]</span>
                 </a>
             </li>
             <li class="li-logout mobile-visible">
                 <a class="" href="@Url.Action("logout", "accounts")">
-                    <span class="menu-log-label">@T["Log out"]</span>
+                    <span class="menu-log-label">[[[Log Out]]]</span>
                 </a>
             </li>
         </ul>

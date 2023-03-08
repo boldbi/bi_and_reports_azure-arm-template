@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
     $("#Save_Activate").on('click', function () {
         if ($("#new_password").val() == '') {
-            $("#password_validate").html(window.Server.App.LocalizationContent.PasswordValidator);
+            $("#password_validate").html(window.TM.App.LocalizationContent.PasswordValidator);
             return;
         }
         if ($("#new_password").val() != $("#Confirm_password").val()) {
-            $("#re_password_validate").html(window.Server.App.LocalizationContent.PasswordsMismatch);
+            $("#re_password_validate").html(window.TM.App.LocalizationContent.PasswordsMismatch);
             return;
         }
         $.ajax({

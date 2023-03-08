@@ -105,6 +105,7 @@ html, body {
 @media screen and (max-width: 760px) {
   .error-full-content {
     padding: 10px 0 96px 0 !important; } }
+
 #base-footer-div {
   bottom: 0px;
   float: left;
@@ -125,6 +126,7 @@ html, body {
 @media screen and (max-width: 1040px) {
   #copyrightinfo {
     margin-bottom: -40px !important; } }
+
 @media screen and (max-width: 767px) {
   #copyrightinfo {
     text-align: center;
@@ -132,13 +134,13 @@ html, body {
     margin-top: -50px !important;
     margin-left: 10px !important;
     padding-right: 50px; }
-
   #poweredbysyncfusion {
     margin-top: -10px !important;
     margin-left: -1% !important;
     position: fixed;
     width: 100%;
     text-align: center; } }
+
 .base-container-bg {
   background-color: var(--background);
   font-family: var(--font-family);

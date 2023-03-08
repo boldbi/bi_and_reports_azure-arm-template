@@ -4,6 +4,7 @@ var isKeyUp = false;
 var ruleName;
 var rules;
 var errorContent = "";
+var databaseValidationMessage = window.TM.App.LocalizationContent.OneOrMoreErrors + " " + window.TM.App.LocalizationContent.Click + " " + "<a id='know-more-error'>" + window.TM.App.LocalizationContent.Here + "</a> " + window.TM.App.LocalizationContent.KnowMore + ".";
 var systemSettingsDetails, intermediateDbDetails;
 var isNewServerDB = true, isNewIntermediateDB = true;
 var storagetype = window.storageType;
@@ -29,26 +30,18 @@ $(document).ready(function () {
     });
     messageBoxDialog.appendTo("#messageBox");
 
-    String.prototype.format = function () {
-        a = this;
-        for (k in arguments) {
-            a = a.replace("{" + k + "}", arguments[k])
-        }
-        return a
-    }
-
     $("#default-tab").popover({
         html: true,
         trigger: 'hover',
         placement: "right",
-        content: isSiteCreation ? window.Server.App.LocalizationContent.SimpleTabSiteCreationMsg : window.Server.App.LocalizationContent.SimpleTabStartupMsg
+        content: isSiteCreation ? window.TM.App.LocalizationContent.SimpleTabSiteCreationMsg : window.TM.App.LocalizationContent.SimpleTabStartupMsg
     });
 
     $("#advanced-tab").popover({
         html: true,
         trigger: 'hover',
         placement: "right",
-        content: isSiteCreation ? window.Server.App.LocalizationContent.AdvanceTabSiteCreationMsg : window.Server.App.LocalizationContent.AdvanceTabStartupMsg
+        content: isSiteCreation ? window.TM.App.LocalizationContent.AdvanceTabSiteCreationMsg : window.TM.App.LocalizationContent.AdvanceTabStartupMsg
     });
 
     $("a[data-toggle='tab']").on('click', function (e) {
@@ -57,8 +50,8 @@ $(document).ready(function () {
             $("#default-tab").removeClass("active");
             $("#advanced-tab").addClass("active");
             if (!isSiteCreation) {
-                $("#label_txt-dbname").html(window.Server.App.LocalizationContent.IDDatabaseName);
-                $("#label_database-name").html(window.Server.App.LocalizationContent.IDDatabaseName);
+                $("#label_txt-dbname").html(window.TM.App.LocalizationContent.IDDatabaseName);
+                $("#label_database-name").html(window.TM.App.LocalizationContent.IDDatabaseName);
             }
             $("#simple_tab_db_name").hide();
             $("#advanced_tab_db_name").show();
@@ -70,7 +63,7 @@ $(document).ready(function () {
             }
 
             if (!isSiteCreation) {
-                $(".db-name-info").html(window.Server.App.LocalizationContent.DatabaseInfo);
+                $(".db-name-info").html(window.TM.App.LocalizationContent.DatabaseInfo);
                 $("#simple_tab_db_name").show();
                 prefillDbNames();
             }
@@ -82,12 +75,12 @@ $(document).ready(function () {
             $("#advanced-tab").removeClass("active");
             $("#simple_tab_db_name").show();
             if (!isSiteCreation) {
-                $("#label_txt-dbname").html(window.Server.App.LocalizationContent.DatabaseName);
-                $("#label_database-name").html(window.Server.App.LocalizationContent.DatabaseName);
+                $("#label_txt-dbname").html(window.TM.App.LocalizationContent.DatabaseName);
+                $("#label_database-name").html(window.TM.App.LocalizationContent.DatabaseName);
             }
-            $(".db-name-info").html(isBoldBI ? window.Server.App.LocalizationContent.DatabaseInfoBI.format("Embedded BI") : window.Server.App.LocalizationContent.DatabaseInfoReports.format("Enterprise Reporting"));
+            $(".db-name-info").html(isBoldBI ? window.TM.App.LocalizationContent.DatabaseInfoBI : window.TM.App.LocalizationContent.DatabaseInfoReports);
             if (!isSiteCreation) {
-                $(".db-name-info").html(isBoldBI ? window.Server.App.LocalizationContent.DatabaseInfoBI3 : window.Server.App.LocalizationContent.DatabaseInfoReports2.format("Enterprise Reporting", "report"));
+                $(".db-name-info").html(isBoldBI ? window.TM.App.LocalizationContent.DatabaseInfoBI3 : window.TM.App.LocalizationContentDatabaseInfoReports2);
                 prefillDbNames();
             }
             $("#advanced_tab_db_name").hide();
@@ -281,7 +274,6 @@ function existingDbConfiguration(element) {
 
 function checkingExistingDB(element) {
     $('#details-next').attr("disabled", true);
-    var databaseValidationMessage = window.Server.App.LocalizationContent.OneOrMoreErrors.format("<a id='know-more-error'>", "</a>");
 
     window.serverName = $("#txt-servername").val();
     window.portNumber = $("#txt-portnumber").val();
@@ -328,7 +320,7 @@ function checkingExistingDB(element) {
                             parent.hideWaitingPopup(element);
                             $('#details-next').removeAttr("disabled");
 
-                            var html = window.Server.App.LocalizationContent.TablesAlreadyExists;
+                            var html = window.TM.App.LocalizationContent.TablesAlreadyExists;
                             html += "<ol class='list-area'>";
                             for (var t = 0; t < items.length; t++) {
                                 html += "<li>" + items[t] + "</li>";
@@ -347,7 +339,7 @@ function checkingExistingDB(element) {
                             parent.hideWaitingPopup(element);
                             $('#details-next').removeAttr("disabled");
                             changeFooterPostion();
-                            $(".db-connect-outer-container").find(".title").html(window.Server.App.LocalizationContent.DatabaseCreation + "!");
+                            $(".db-connect-outer-container").find(".title").html(window.TM.App.LocalizationContent.DatabaseCreation + "!");
                             $("#database-name").focus();
                         } else {
                             $('#details-next').removeAttr("disabled");
@@ -376,7 +368,6 @@ function newDbConfiguration(element) {
 
 function checkingNewDBConnection(element, actionType) {
     var result = connectDatabase(element, actionType);
-    var databaseMessage = window.Server.App.LocalizationContent.OneOrMoreErrors.format("<a id='know-more-error'>", "</a>");
     
     if (result.Data != undefined && result.Data.key && actionType == "edit") {
         var isValidDBDetail = false;
@@ -414,7 +405,7 @@ function checkingNewDBConnection(element, actionType) {
             }
         if (actionType != "edit") {
             changeFooterPostion();
-            $(".db-connect-outer-container").find(".title").html(window.Server.App.LocalizationContent.DatabaseCreation + "!");
+            $(".db-connect-outer-container").find(".title").html(window.TM.App.LocalizationContent.DatabaseCreation + "!");
         }
     }
     else {
@@ -423,13 +414,12 @@ function checkingNewDBConnection(element, actionType) {
         if (result.Data != undefined) {
             errorContent = result.Data.value;
         }
-        $(".database-error").html(databaseMessage).show();
+        $(".database-error").html(databaseValidationMessage).show();
     }
 }
 
 function connectDatabase(element, actionType) {
     parent.showWaitingPopup(element);
-    var ValidationMessage = window.Server.App.LocalizationContent.OneOrMoreErrors.format("<a id='know-more-error'>", "</a>");
     var result = "";
     var isNewDatabase = true;
     window.serverName = $("#txt-servername").val();
@@ -474,7 +464,7 @@ function connectDatabase(element, actionType) {
                 if (serverResult.Data != undefined) {
                     errorContent = serverResult.Data.value;
                 }
-                $(".database-error").html(ValidationMessage).show();
+                $(".database-error").html(databaseValidationMessage).show();
             }
         }
     });
@@ -521,6 +511,7 @@ function getDatabaseFormValues() {
 
 
 function postSystemSettingsData(systemSettingsDetails, azuredetails, userEmail, tenantDetails, brandingType, isAddFromServer) {
+
     var userEmailData = (userEmail != undefined && userEmail != null) ? JSON.stringify(userEmail) : $("#tenant-email").val();
     var tenantDetailsData = (tenantDetails != undefined && tenantDetails != null) ? JSON.stringify(tenantDetails) : null;
     setSystemSettingsData = { systemSettingsData: JSON.stringify(systemSettingsDetails), azureData: JSON.stringify(azuredetails), userEmail: userEmailData, tenantDetails: tenantDetailsData, brandingType: brandingType };

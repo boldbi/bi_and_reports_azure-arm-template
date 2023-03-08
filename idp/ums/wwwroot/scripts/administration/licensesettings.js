@@ -58,7 +58,7 @@ $(document).ready(function () {
     });
 
     changeSubscriptionDialog = new ej.popups.Dialog({
-        header: window.Server.App.LocalizationContent.EditSubscriptionDialogHeader,
+        header: window.TM.App.LocalizationContent.EditSubscriptionDialogHeader,
         content: document.getElementById("change-subscription-dialog"),
         showCloseIcon: true,
         width: '546px',
@@ -76,11 +76,11 @@ $(document).ready(function () {
 
     if (isBoldBILicenseExpired) {
         $("#bold-bi-tab #details-information").css('padding-top', '20px');
-        $("#change-subscription-content_title").html(window.Server.App.LocalizationContent.RenewSubscriptionDialogHeader);
+        $("#change-subscription-content_title").html(window.TM.App.LocalizationContent.RenewSubscriptionDialogHeader);
     }
     if (isBoldReportsLicenseExpired) {
         $("#bold-reports-tab #details-information").css('padding-top', '20px');
-        $("#change-subscription-content_title").html(window.Server.App.LocalizationContent.RenewSubscriptionDialogHeader);
+        $("#change-subscription-content_title").html(window.TM.App.LocalizationContent.RenewSubscriptionDialogHeader);
     }
 });
 
@@ -134,18 +134,18 @@ function handleApplyLicense(addButtonObj, evt) {
                 success: function (result) {
                     if (result.Status) {
                         hideWaitingPopup('server-app-container');
-                        SuccessAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdated, 7000);
+                        SuccessAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdated, 7000);
                         window.location.reload();
                     }
                     else {
                         hideWaitingPopup('server-app-container');
-                        WarningAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
+                        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
                     }
                 }
             });
 
         } else if (evt.originalEvent.data.isSuccess === false) {
-            WarningAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdateFailed, 0);
+            WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, 0);
         }
     }
 }

@@ -1,4 +1,5 @@
 :root {
+    --boldbi-brand-normal-color: var(--boldbi-brand);
     --primary-branding-color: var(--blue);
     --primary-branding-border-color: var(--ntc-btn-border-color);
     --primary-text-normal-color: var(--primary-black);
@@ -31,16 +32,29 @@
     --hover-bg-normal-color: var(--grey-200);
     --active-bg-normal-color: var(--blue-lighter);
     --active-text-normal-color: var(--blue);
-    --nav-item-menu-icon-border-color: var(--create-item-icon-border-normal) !important;
-    --nav-item-menu-section-bg-color: var(--blue-lighten) !important;
-    --nav-menu-sec-text-normal-color: var(--secondary-text-normal-color) !important;
-    --nav-menu-main-color: var(--primary-branding-bg-color);
+    --nav-menu-main-color: var(--blue);
     --nav-menu-bg-normal-color: var(--white);
     --nav-menu-bg-hover-color: var(--grey-300);
-    --nav-menu-bg-active-color: var(--active-bg-normal-color);
-    --nav-menu-pri-text-normal-color: var(--primary-text-normal-color);
-    --nav-menu-pri-text-hover-color: var(--primary-text-normal-color);
-    --nav-menu-pri-text-active-color: var(--active-text-normal-color);
-    --nav-menu-hyper-link-normal-color: var(--hyper-link-normal-color);
-    --nav-menu-hyper-link-hover-color: var(--hyper-link-hover-color);
+    --nav-menu-bg-active-color: var(--blue-lighter);
+    --nav-item-menu-section-bg-color: var(--blue-lighten);
+    --nav-item-menu-bg-color: var(--white);
+    --nav-item-menu-bg-hover-color: var(--white);
+    --nav-item-menu-border-hover-color: var(--blue);
+    --nav-item-menu-separator-color: var(--blue);
+    --nav-item-menu-plus-icon-color: var(--white);
+    --nav-item-menu-icon-border-color: var(--create-item-icon-border-normal);
+    --nav-menu-pri-text-normal-color: var(--primary-black);
+    --nav-menu-pri-text-hover-color: var(--primary-black);
+    --nav-menu-pri-text-active-color: var(--blue);
+    --nav-menu-sec-text-normal-color: var(--grey-700);
+    --nav-menu-sec-text-hover-color: var(--grey-700);
+    --nav-menu-sec-text-active-color: var(--blue);
+    --nav-menu-content-text-normal-color: var(--grey-800);
+    --nav-menu-content-text-hover-color: var(--grey-800);
+    --nav-menu-content-text-active-color: var(--grey-800);
+    --nav-menu-hyper-link-normal-color: var(--blue);
+    --nav-menu-hyper-link-hover-color: var(--darken-primary-color-blue-10);
+    --nav-notification-icon-bg-hover-color: var(--icon-bg-hover-color);
+    --nav-notification-icon-text-normal-color: var(--icon-text-normal-color);
+    --nav-notification-icon-text-hover-color: var(--icon-text-hover-color);
 }

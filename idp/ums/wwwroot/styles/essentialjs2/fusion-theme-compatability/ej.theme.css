@@ -34026,7 +34026,3 @@ span.e-table-box.e-rbox-select {
 
 .e-control .e-js [class^='e-'], .e-control .e-js [class*=' e-'] {
   box-sizing: content-box; }
-
-.provide-access-button  .cancel-button{
-    margin-right: 16px;
-}

@@ -11,10 +11,10 @@
         }
         else {
             document.execCommand('copy');
-            copyErrorMsgObj.attr("data-original-title", window.Server.App.LocalizationContent.Copied);
-            copyErrorMsgObj.tooltip("hide").attr("data-original-title", window.Server.App.LocalizationContent.Copied).tooltip("fixTitle").tooltip("show");
+            copyErrorMsgObj.attr("data-original-title", window.TM.App.LocalizationContent.Copied);
+            copyErrorMsgObj.tooltip("hide").attr("data-original-title", window.TM.App.LocalizationContent.Copied).tooltip("fixTitle").tooltip("show");
             errorMsgInputObj.prop("disabled", true);
-            setTimeout(function () { copyErrorMsgObj.attr("data-original-title", window.Server.App.LocalizationContent.ClickToCopy); copyErrorMsgObj.tooltip(); }, 3000);
+            setTimeout(function () { copyErrorMsgObj.attr("data-original-title", window.TM.App.LocalizationContent.ClickToCopy); copyErrorMsgObj.tooltip(); }, 3000);
         }
     });
 

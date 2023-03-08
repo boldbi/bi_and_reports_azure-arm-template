@@ -62,11 +62,4 @@
         background: $danger-button-bg-hover-color;
         color: $danger-button-text-hover-color !important;
     }
-
-    &:disabled {
-        background: $secondary-button-bg-disable-color;
-        border: 1px solid $secondary-button-border-disable-color;
-        color: $secondary-button-text-disable-color !important;
-        cursor: default;
-    }
 }
