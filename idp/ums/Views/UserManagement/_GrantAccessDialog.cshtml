@@ -25,13 +25,13 @@
     </script>
 
     <script type="text/x-jsrender" id="applicationname-header">
-        <div class="item-name">[[[Site Name]]]</div>
+        <div class="item-name">@T["Site Name"]</div>
     </script>
     <script type="text/x-jsrender" id="application-url-header">
-        <div class="item-header">[[[Site URL]]]</div>
+        <div class="item-header">@T["Site URL"]</div>
     </script>
     <script type="text/x-jsrender" id="application-tenant-header">
-        <div class="item-header">[[[Tenant Type]]]</div>
+        <div class="item-header">@T["Tenant Type"]</div>
     </script>
     <script type="text/x-jsrender" id="admin-checkbox-header-template">
         @Html.CheckBox("admin-checkbox-header", new { @class = "material-checkbox" })
@@ -40,16 +40,16 @@
 </head>
 <div id="add-tenants-dialog-content" class="modal-body col-xs-12">
     <div id="add-user-search-area" class="pull-right">
-        <input type="text" class="pull-left" id="add-tenant-search" placeholder="[[[Search sites]]]" />
-        <span class="su su-inner-close close-icon pull-left" id="add-tenant-clear-search" title="[[[Clear search]]]"></span>
-        <span class="su su-search search-icon pull-left" title="[[[Search]]]"></span>
+        <input type="text" class="pull-left" id="add-tenant-search" placeholder="@T["Search sites"]" />
+        <span class="su su-inner-close close-icon pull-left" id="add-tenant-clear-search" title="@T["Clear search"]"></span>
+        <span class="su su-search search-icon pull-left" title="@T["Search"]"></span>
     </div>
     <div class="col-xs-12 no-padding">
         <div id="add_tenants_grid">
         </div>
     </div>
     <div class="col-xs-12 no-padding">
-        <div class="note-info"><span class="note-text">[[[Note]]]: </span><span>[[[The users who were selected in the previous screen will have access to the sites that were selected.]]]</span></div>
+        <div class="note-info"><span class="note-text">@T["Note"]: </span><span>@T["The users who were selected in the previous screen will have access to the sites that were selected."]</span></div>
     </div>
 </div>
 

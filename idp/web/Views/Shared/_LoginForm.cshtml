@@ -26,15 +26,19 @@
     <div class="login-fields">
         <div class="input-field-form email">
             <input id="hidden-email" type="hidden" value="@uname" />
-            <input type="text" required md-no-asterisk ng-model="uname" value="@uname" name="userName" id="login-email" placeholder="[[[Username / Email Address]]]" maxlength="100" />
-            <div class="mail-loader-div"></div>
+            <input type="text" required md-no-asterisk ng-model="uname" value="@uname" name="userName" id="login-email" class="login-email" placeholder="@T["Username / Email Address"]" maxlength="100" />
+            <div class="loader-blue loader-icon mail-loader-div email-loader" id="layout-body-loader-icon">
+                <svg class="circular">
+                    <circle class="path" cx="27" cy="27" r="8" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+                </svg>
+            </div>
             <span class="demo-username" style="font-weight: bold; display: @TempData["show_demo_account"]">Username : @demoUsername</span>
             <span class="validation-holder"></span>
             <span class="special-char-msg-login"></span>
         </div>
         <div class="input-field-form" id="password-field" style="display: @(TempData["errorPasswordStatus"] != null ? "block" : "none" )">
-            <input required md-no-asterisk ng-model="pwd" name="password" type="password" id="current-password" autocomplete="current-password" placeholder="[[[Password]]]" value="">
-            <span class="su su-show show-hide-password" id="show-newpassword" data-toggle="tooltip" data-original-title="[[[Click to view]]]"></span>
+            <input required md-no-asterisk ng-model="pwd" name="password" type="password" id="current-password" autocomplete="current-password" placeholder="@T["Password"]" value="">
+            <span class="su su-show show-hide-password" id="show-newpassword" data-toggle="tooltip" data-original-title="@T["Click to view"]"></span>
             <span class="demo-password" style="font-weight: bold; display: @TempData["show_demo_account"]">Password: @demoPassword</span>
             <span id="error-password" style="display: @(TempData["errorPasswordStatus"] != null ? "block" : "none" )">
                 @TempData["errorMessage"]
@@ -45,12 +49,12 @@
             <div id="remember-me">
                 @Html.CheckBox("remember", new { @class = "material-checkbox pull-left", @id = "remember" })
                 @Html.Hidden("remember")
-                @Html.Label("remember", "[[[Remember me]]]", new { @class = "disable-text-select", @id = "remember-label" })
+                @Html.Label("remember", T["Remember me"].Value, new { @class = "disable-text-select", @id = "remember-label" })
             </div>
         </div>
         <input type="hidden" name="clientId" value="@ViewBag.ClientId" />
         <button class="login-button proceed-button" ng-click="dsAuth()" type="submit" name="Submit" id="login-button" asp-route="PostLogin">
-            [[[Continue]]]
+            @T["Continue"]
         </button>
     </div>
 

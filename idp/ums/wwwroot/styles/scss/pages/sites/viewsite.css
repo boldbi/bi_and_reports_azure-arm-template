@@ -1,7 +1,6 @@
 @media (min-width: 1040px) and (max-width: 1200px) {
   .app-header #application-list {
     text-align: center !important; } }
-
 /* don't show the eye for password inputs */
 ::-ms-reveal {
   width: 0;
@@ -186,11 +185,9 @@ span.su-password-tick {
 
 .admin-page-content .admin-page-header {
   border: 0px !important; }
-
 .admin-page-content .admin-page-body .no-tenant-detail {
   padding: 28% 0% 20% 25%;
   font-size: 14px; }
-
 .admin-page-content #application-tab .img-view-holder {
   border: 0.5px solid var(--grid-content-border-normal-color);
   border-radius: 2px;
@@ -204,22 +201,17 @@ span.su-password-tick {
     height: 40px;
     margin: 20px 0 0 0px;
     width: 40px; }
-
 .admin-page-content #application-tab #edit-application-form-div {
   margin-left: 20px; }
-
 .admin-page-content #custom-attribute-tab #add-custom-attribute, .admin-page-content #custom-attribute-tab .application-isolation-code, .admin-page-content #data-security-tab #add-custom-attribute, .admin-page-content #data-security-tab .application-isolation-code {
   margin-bottom: 20px; }
-
 .admin-page-content #users-tab #user-list-container #new-user-button {
   position: relative;
   right: 20px; }
-
 .admin-page-content #users-tab #user-list-container #add-users-button {
   position: relative;
   right: 40px;
   margin-left: 10px; }
-
 .admin-page-content #users-tab #user-list-container #remove-users-button {
   margin-right: 50px; }
 
@@ -239,9 +231,10 @@ span.su-password-tick {
   #custom-attribute-dialog .attribute-name .e-float-input #custom-attribute-name {
     width: 100% !important;
     padding: 3px 12px 10px !important; }
-
 #custom-attribute-dialog .attribute-name .e-label-bottom {
   line-height: 39px !important; }
-
 #custom-attribute-dialog .attribute-value .e-float-input, #custom-attribute-dialog .attribute-description .e-float-input {
   height: auto !important; }
+
+#master-site-change {
+  line-height: 5px; }

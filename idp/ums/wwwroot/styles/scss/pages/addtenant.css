@@ -40,26 +40,21 @@ body .form-control:focus, body input[type="text"]:focus {
   box-shadow: none !important;
   outline: none !important;
   transition: all .3s linear; }
-
 body .form-control :disabled, body input[type="text"] :disabled {
   cursor: default !important; }
-
 body .form-control ~ .focusdiv, body input[type="text"] ~ .focusdiv {
   border: 0;
   box-shadow: none !important;
   outline: none !important;
   border-color: transparent; }
-
 body .has-error .form-control:focus {
   border-color: var(--red) !important;
   box-shadow: none !important;
   outline: none !important;
   transition: all .3s linear; }
-
 body input[type="text"]:focus ~ .su-search {
   border: 1px solid var(--primary-branding-bg-color) !important;
   border-left: 0px !important; }
-
 body input[type="text"]:focus ~ .close-icon {
   border: 1px solid var(--primary-branding-bg-color) !important;
   border-left: 0px !important; }
@@ -75,7 +70,6 @@ body input[type="text"]:focus ~ .close-icon {
     body .validation-txt-errors {
       font-size: 12px;
       color: var(--red); } }
-
 @media screen and (min-width: 1400px) {
   body {
     font-size: 12px; }
@@ -87,7 +81,6 @@ body input[type="text"]:focus ~ .close-icon {
     body .validation-txt-errors {
       font-size: 12px;
       color: var(--red); } }
-
 html body .add-tenant-dialog-wrapper #popup-container .modal-header .add-tenant-popup-title label, html body .add-tenant-dialog-wrapper #popup-container .modal-header .selector .selector-content, html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-header .text-header-content, html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-header .header-description, html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div .text-content, html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-header, html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-user-form #add_admins_grid .e-gridcontent .item-name, html body .add-tenant-dialog-wrapper #popup-container #dialog-body-footer #details-back, html body .add-tenant-dialog-wrapper #popup-container #dialog-body-footer #details-next {
   color: var(--primary-text-color);
   font-family: var(--font-family);
@@ -368,6 +361,10 @@ html {
                       top: 22px; }
                     html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-registration-form #site-identifier-check.material-checkbox label::after {
                       top: 25px; }
+                  html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-registration-form .make-master-checkbox {
+                    padding-top: 20px !important;
+                    padding-bottom: 20px !important;
+                    font-size: 14px; }
                 html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-database-form .system-startUp-settings-bg, html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-intermediate-database-form .system-startUp-settings-bg {
                   position: relative;
                   display: inline-block; }
@@ -455,7 +452,7 @@ html {
                       display: none; }
                     html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-user-form #add_admins_grid .e-gridcontent {
                       width: 434px !important;
-                      background: var(--background); }
+                      background: transparent; }
                       html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-user-form #add_admins_grid .e-gridcontent .e-content {
                         width: 424px !important; }
                       html body .add-tenant-dialog-wrapper #popup-container .modal-tenant-body #dialog-body .dialog-body-div #dialog-body-container .tenant-user-form #add_admins_grid .e-gridcontent table {
@@ -518,7 +515,8 @@ html {
           border-top: 1px solid var(--grey-400);
           padding: 16px 23px;
           text-align: center;
-          float: left; }
+          float: left;
+          z-index: 1; }
           html body .add-tenant-dialog-wrapper #popup-container #dialog-body-footer #details-back {
             height: 32px;
             width: 162px;
@@ -536,11 +534,6 @@ html {
             margin-left: 24px !important; }
           html body .add-tenant-dialog-wrapper #popup-container #dialog-body-footer #move-to-next {
             display: none !important; }
-    html body #custom-attribute-dialog .material-checkbox + input + label {
-      padding-top: 7px !important; }
-    html body #custom-attribute-dialog .material-checkbox:checked + input + label::before {
-      bottom: 7px !important;
-      left: 2px !important; }
     html body .data-security-container h5 {
       font-weight: bold;
       font-size: 14px; }
@@ -659,6 +652,9 @@ html {
     height: 15px;
     font-size: 17px; }
 
+.su-master-site-bi .su-master-site-reports {
+  font-size: 17px !important; }
+
 .close-icon.su-inner-close {
   display: none; }
 
@@ -678,7 +674,6 @@ html {
     font-size: 12px; }
   html body #header-title {
     font-size: 14px; } }
-
 @media screen and (min-width: 1400px) {
   html body .selector-icons {
     margin-left: 170px !important; }
@@ -709,6 +704,5 @@ html {
     left: -125px !important; }
   html body .secure-sql .popover {
     left: -114px !important; } }
-
 .bootstrap-select.btn-group > .disabled {
   cursor: default; }

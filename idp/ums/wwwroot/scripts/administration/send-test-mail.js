@@ -5,6 +5,14 @@
     });
     testMail.appendTo('#test-mail');
 
+    String.prototype.format = function () {
+        a = this;
+        for (k in arguments) {
+            a = a.replace("{" + k + "}", arguments[k])
+        }
+        return a
+    }
+
     $("#test-mail-form").validate({
         errorElement: 'span',
         onkeyup: function (element, event) {
@@ -38,8 +46,8 @@
         },
         messages: {
             "test_mail": {
-                required: window.TM.App.LocalizationContent.EmailValidator,
-                isValidEmail: window.TM.App.LocalizationContent.InvalidEmailAddress
+                required: window.Server.App.LocalizationContent.EmailValidator,
+                isValidEmail: window.Server.App.LocalizationContent.InvalidEmailAddress
             }
         }
     });
@@ -55,6 +63,7 @@ function testMailTrigger() {
         createDialogId.setAttribute("id", "test-mail-dialog");
         var element = document.getElementById("content-area");
         element.appendChild(createDialogId);
+        createWaitingPopup('test-mail-dialog');
 
         var authenticationType = parseInt($("#authentication-type input[type='radio']:checked").val());
 
@@ -70,7 +79,7 @@ function testMailTrigger() {
         };
 
         var testMailDialogobj = new ejs.popups.Dialog({
-            header: window.TM.App.LocalizationContent.SendTestMail,
+            header: window.Server.App.LocalizationContent.SendTestMail,
             showCloseIcon: true,
             content: document.getElementById("test-mail-box"),
             buttons: [
@@ -80,12 +89,13 @@ function testMailTrigger() {
                         $("#test-mail").val("");
                     },
                     buttonModel: {
-                        content: window.TM.App.LocalizationContent.CancelButton
+                        content: window.Server.App.LocalizationContent.CancelButton
                     }
                 },
                 {
                     'click': function (e) {
                         if ($("#test-mail-form").valid()) {
+                            showWaitingPopup('test-mail-dialog');
                             $.ajax({
                                 type: "POST",
                                 url: sentTestMail,
@@ -104,16 +114,17 @@ function testMailTrigger() {
                                     else {
                                         $("#test-mail").closest('span').addClass("e-error");
                                         $("#test-mail-validate").css("display", "block");
-                                        $("#test-mail-validate").html(window.TM.App.LocalizationContent.MailSendFailureMessage1 + '<a id="mail-error-detail">' + window.TM.App.LocalizationContent.MailSendFailureMessage2 + '</a>');
+                                        $("#test-mail-validate").html(window.Server.App.LocalizationContent.MailSendFailureMessage1.format("<a id='mail-error-detail'>", "</a>"));
                                         $("#test-main-error-message").val(result.Data);
                                     }
+                                    hideWaitingPopup('test-mail-dialog');
                                 }
                             });
                         }
                     },
                     buttonModel: {
                         isPrimary: true,
-                        content: window.TM.App.LocalizationContent.SendButton
+                        content: window.Server.App.LocalizationContent.SendButton
                     }
                 },
                 {
@@ -122,7 +133,7 @@ function testMailTrigger() {
                         $("#test-mail").val("");
                     },
                     buttonModel: {
-                        content: window.TM.App.LocalizationContent.DoneButton
+                        content: window.Server.App.LocalizationContent.DoneButton
                     }
                 }
             ],

@@ -168,8 +168,8 @@ $(document).ready(function () {
         },
         messages: {
             domainname: {
-                IsRequired: window.TM.App.LocalizationContent.Urlvalidator,
-                isValidUrl: window.TM.App.LocalizationContent.DomainValidator
+                IsRequired: window.Server.App.LocalizationContent.Urlvalidator,
+                isValidUrl: window.Server.App.LocalizationContent.DomainValidator
             }
         }
     });
@@ -196,8 +196,8 @@ $(document).ready(function () {
         },
         messages: {
             tenantidentifier: {
-                isRequired: window.TM.App.LocalizationContent.SiteIdentifierValidator,
-                isValidIdentifier: window.TM.App.LocalizationContent.AvoidSpecailCharacters
+                isRequired: window.Server.App.LocalizationContent.SiteIdentifierValidator,
+                isValidIdentifier: window.Server.App.LocalizationContent.AvoidSpecailCharacters
             }
         }
     });
@@ -224,8 +224,8 @@ $(document).ready(function () {
         },
         messages: {
             tenantname: {
-                required: window.TM.App.LocalizationContent.SiteNameValidator,
-                isValidName: window.TM.App.LocalizationContent.AvoidSpecailCharacters
+                required: window.Server.App.LocalizationContent.SiteNameValidator,
+                isValidName: window.Server.App.LocalizationContent.AvoidSpecailCharacters
             }
         }
     });
@@ -271,19 +271,19 @@ $(document).ready(function () {
         },
         messages: {
             tenantname: {
-                isRequired: window.TM.App.LocalizationContent.SiteNameValidator,
-                isValidName: window.TM.App.LocalizationContent.AvoidSpecailCharacters,
-                maxlength: window.TM.App.LocalizationContent.SiteValidation
+                isRequired: window.Server.App.LocalizationContent.SiteNameValidator,
+                isValidName: window.Server.App.LocalizationContent.AvoidSpecailCharacters,
+                maxlength: window.Server.App.LocalizationContent.SiteValidation
             },
             tenantidentifier: {
-                required: window.TM.App.LocalizationContent.SiteIdentifierValidator,
-                isValidIdentifier: window.TM.App.LocalizationContent.AvoidSpecailCharacters,
-                maxlength: window.TM.App.LocalizationContent.SiteIdentifierValidation
+                required: window.Server.App.LocalizationContent.SiteIdentifierValidator,
+                isValidIdentifier: window.Server.App.LocalizationContent.AvoidSpecailCharacters,
+                maxlength: window.Server.App.LocalizationContent.SiteIdentifierValidation
             },
             messages: {
                 domainname: {
-                    isDomainRequired: window.TM.App.LocalizationContent.Urlvalidator,
-                    isValidUrl: window.TM.App.LocalizationContent.DomainValidator
+                    isDomainRequired: window.Server.App.LocalizationContent.Urlvalidator,
+                    isValidUrl: window.Server.App.LocalizationContent.DomainValidator
                 }
             }
         }
@@ -299,8 +299,9 @@ function changeTenantType(args) {
             $(".get-data-security").css("display", "none");
             $("#selection-data-security").css("display", "none");
             $(".selector").removeClass("selector-alignment");
-            $(".select-storage").html(window.TM.App.LocalizationContent.SelectStorage);
-            $("#header-description").html(window.TM.App.LocalizationContent.BoldReportsMultiTenancy);
+            $(".select-storage").html(window.Server.App.LocalizationContent.SelectStorage);
+            $("#header-description").html(window.Server.App.LocalizationContent.BoldReportsMultiTenancy);
+            $(".make-master-checkbox").hide();
             if (useSiteIdentifierEnable) {
                 $(".site-default-text").html("").html(boldReportsUrl);
             }
@@ -314,7 +315,7 @@ function changeTenantType(args) {
 
             document.getElementById("branding-type").ej2_instances[0].value = "Enterprise Reporting";
             $(".isolation-part").addClass("hide");
-            $(".data-security-note").html(window.TM.App.LocalizationContent.BoldReportsDataSecurityNote);
+            $(".data-security-note").html(window.Server.App.LocalizationContent.BoldReportsDataSecurityNote);
         }
         else {
             item = "dashboards";
@@ -323,9 +324,10 @@ function changeTenantType(args) {
             $(".get-data-security").css("display", "inline");
             $("#selection-data-security").css("display", "inline");
             $(".selector").addClass("selector-alignment");
-            $(".select-intermediate-database").html(window.TM.App.LocalizationContent.SiteDataStore);
-            $(".select-storage").html(window.TM.App.LocalizationContent.SelectStorage);
-            $("#header-description").html(window.TM.App.LocalizationContent.BoldBiMultiTenancy);
+            $(".select-intermediate-database").html(window.Server.App.LocalizationContent.SiteDataStore);
+            $(".select-storage").html(window.Server.App.LocalizationContent.SelectStorage);
+            $("#header-description").html(window.Server.App.LocalizationContent.BoldBiMultiTenancy);
+            $(".make-master-checkbox").show();
             if (useSiteIdentifierEnable) {
                 $(".site-default-text").html("").html(boldBIUrl);
             }
@@ -339,7 +341,7 @@ function changeTenantType(args) {
             }
             document.getElementById("branding-type").ej2_instances[0].value = "Embedded BI";
             $(".isolation-part").removeClass("hide");
-            $(".data-security-note").html(window.TM.App.LocalizationContent.BoldBIDataSecurityNote);
+            $(".data-security-note").html(window.Server.App.LocalizationContent.BoldBIDataSecurityNote);
         }
     }
 }

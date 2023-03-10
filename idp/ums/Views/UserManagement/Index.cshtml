@@ -2,7 +2,7 @@
 @using System.Web
 @{
     var idPUrl = GlobalAppSettings.SystemSettings.BaseUrl.TrimEnd('/');
-    ViewBag.Title = "[[[Users]]] - " + GlobalAppSettings.SystemSettings.OrganizationName;
+    ViewBag.Title = T["Users"].Value + " - " + GlobalAppSettings.SystemSettings.OrganizationName;
 }
 
 @section styles{
@@ -65,6 +65,8 @@
         <span class="su su-openid grid-directory-icon"> </span>
         ${else if (DirectoryType.Id == @((int)DirectoryType.JWTSSO))}
         <span class="su su-single-sign-on grid-directory-icon"> </span>
+        ${else if (DirectoryType.Id == @((int)DirectoryType.AzureADB2C))}
+        <span class="su su-azure-b2c grid-directory-icon"> </span>
         ${/if}
     </script>
     <script type="text/x-jsrender" id="user-username-template">
@@ -75,9 +77,9 @@
     </script>
     <script type="text/x-jsrender" id="email-verification-template">
         ${if (EmailVerified)}
-        [[[Completed]]]
+        @T["Completed"]
         ${else}
-        [[[Pending]]]
+        @T["Pending"]
         ${/if}
     </script>
     <script type="text/x-jsrender" id="status-description-template">
@@ -93,22 +95,22 @@
         ${Role}
     </script>
     <script type="text/x-jsrender" id="itemname-header">
-        <div class="item-name">[[[Name]]]</div>
+        <div class="item-name">@T["Name"]</div>
     </script>
     <script type="text/x-jsrender" id="username-header">
-        <div class="item-header">[[[Username]]]</div>
+        <div class="item-header">@T["Username"]</div>
     </script>
     <script type="text/x-jsrender" id="email-header">
-        <div class="item-header">[[[Email Address]]]</div>
+        <div class="item-header">@T["Email Address"]</div>
     </script>
     <script type="text/x-jsrender" id="status-header">
-        <div class="item-header">[[[Status]]]</div>
+        <div class="item-header">@T["Status"]</div>
     </script>
     <script type="text/x-jsrender" id="email-verification-header">
-        <div class="item-header">[[[Email Verification]]]</div>
+        <div class="item-header">@T["Email Verification"]</div>
     </script>
     <script type="text/x-jsrender" id="role-header">
-        <div class="item-header">[[[Role]]]</div>
+        <div class="item-header">@T["Role"]</div>
     </script>
 
     <script type="text/x-jsrender" id="options">
@@ -121,7 +123,7 @@
                 <li class="unlock-user" data-content="${UserId}">
                     <a class="unlock-user-class">
                         <i class="su su-unlock-user"></i>
-                        <span>[[[Unlock User]]]</span>
+                        <span>@T["Unlock User"]</span>
                     </a>
                 </li>
                 <li role="separator" class="divider"></li>
@@ -130,12 +132,12 @@
                     ${if ((Email != ""))}
                     <a href="@Url.Action("ViewProfile", "UserManagement")?userid=${UserId}&email=${Email}" title="">
                         <i class="su su-eye"></i>
-                        <span>[[[View]]]</span>
+                        <span>@T["View"]</span>
                     </a>
                     ${else}
                     <a href="@Url.Action("ViewProfile", "UserManagement")?userid=${UserId}" title="">
                         <i class="su su-eye"></i>
-                        <span>[[[View]]]</span>
+                        <span>@T["View"]</span>
                     </a>
                     ${/if}
                 </li>
@@ -144,7 +146,7 @@
                 <li class="assign-role" data-content="${UserId}">
                     <a class="make-admin-class">
                         <i class="su su-user-settings"></i>
-                        <span>[[[Make Admin]]]</span>
+                        <span>@T["Make Admin"]</span>
                     </a>
                 </li>
                 ${/if}
@@ -152,14 +154,14 @@
                 <li class="assign-role" data-content="${UserId}">
                     <a class="remove-admin-class" title="">
                         <i class="su su-user-settings"></i>
-                        <span>[[[Remove Admin]]]</span>
+                        <span>@T["Remove Admin"]</span>
                     </a>
                 </li>
                 ${/if}
                 <li class="delete-user" data-content="${UserId}">
                     <a class="delete-class" title="">
                         <i class="su su-delete"></i>
-                        <span>[[[Delete]]]</span>
+                        <span>@T["Delete"]</span>
                     </a>
                 </li>
                 ${/if}
@@ -220,7 +222,7 @@
                         allowSorting: true,
                         field: "Username",
                         template: "#user-username-template",
-                        headerText: "[[[Username]]]",
+                        headerText: "@T["Username"]",
                         headerTemplate: "#username-header",
                         type: "string",
                         width: 155
@@ -228,7 +230,7 @@
                     {
                         field: 'Email',
                         allowFiltering: false,
-                        headerText: '[[[Email Address]]]',
+                        headerText: '@T["Email Address"]',
                         template: '#user-email-template',
                         headerTemplate: '#email-header',
                         type: "string",
@@ -236,7 +238,7 @@
                     },
                     {
                         field: "Role",
-                        headerText: "[[[Role]]]",
+                        headerText: "@T["Role"]",
                         headerTemplate: "#role-header",
                         template: "#role-template",
                         width: 80,
@@ -244,7 +246,7 @@
                     },
                     {
                         field: "IsActivated",
-                        headerText: "[[[Email Verification]]]",
+                        headerText: "@T["Email Verification"]",
                         headerTemplate: "#email-verification-header",
                         template: "#email-verification-template",
                         width: 120,
@@ -253,7 +255,7 @@
                     },
                     {
                         field: "StatusDescription",
-                        headerText: "[[[Status]]]",
+                        headerText: "@T["Status"]",
                         headerTemplate: "#status-header",
                         template: "#status-description-template",
                         width: 80,
@@ -284,43 +286,43 @@
                 <div class="admin-page-header-description col-xs-6 no-padding" id="application-title">
                     <h1 class="h2 page-title">
                         <input type="hidden" id="user-count-text" value="@ViewBag.UserCount">
-                        [[[USERS]]] (<span id="user-count" value="@ViewBag.UserCount">@ViewBag.UserCount</span>)
+                        @T["USERS"] (<span id="user-count" value="@ViewBag.UserCount">@ViewBag.UserCount</span>)
                     </h1>
 
                 </div>
                 <div class="col-xs-6 no-padding admin-header-btn">
                     @if (DeviceDetection.IsMobile)
                     {
-                        <button class="primary-button pull-right" id="new-user-dropdown" title="[[[Add new user]]]" data-toggle="tooltip" onclick="onUserAddDialogOpen()">
-                            [[[New User]]]
+                        <button class="primary-button pull-right" id="new-user-dropdown" title="@T["Add new user"]" data-toggle="tooltip" onclick="onUserAddDialogOpen()">
+                            @T["New User"]
                         </button>
                     }
                     else
                     {
-                        <button class="dropdown-toggle primary-button pull-right" data-toggle="dropdown" data-placement="left" id="new-user-dropdown" title="[[[Add new user]]]">
-                            <span>[[[New User]]] </span>
+                        <button class="dropdown-toggle primary-button pull-right" data-toggle="dropdown" data-placement="left" id="new-user-dropdown" title="@T["Add new user"]">
+                            <span>@T["New User"] </span>
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu add-user-dropdown multi-level pull-right" role="menu" id="dropdown-options">
-                            <li id="create-user" title="[[[Add new user]]]" onclick="onUserAddDialogOpen()">
-                                <a href="javascript:void(0)" title="[[[Add user]]]" data-toggle="tooltip" data-placement="top">
+                            <li id="create-user" title="@T["Add new user"]" onclick="onUserAddDialogOpen()">
+                                <a href="javascript:void(0)" title="@T["Add user"]" data-toggle="tooltip" data-placement="top">
                                     <i class="su su-user-add"> </i>
-                                    <span>[[[Add User]]]</span>
+                                    <span>@T["Add User"]</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="@Url.Action("UploadFileFormAction", "UserManagement")" title="[[[Import users from CSV]]]" data-toggle="tooltip" data-placement="bottom">
+                                <a href="@Url.Action("UploadFileFormAction", "UserManagement")" title="@T["Import users from CSV"]" data-toggle="tooltip" data-placement="bottom">
                                     <i class="su su-download"> </i>
-                                    <span>[[[Import from CSV]]]</span>
+                                    <span>@T["Import from CSV"]</span>
                                 </a>
                             </li>
                         </ul>
                     }
                     <button class="primary-button pull-right" id="assign-user-role-button" onclick="onMakeMultipleAdminDialogOpen()" disabled>
-                        [[[Make Admin]]]
+                        @T["Make Admin"]
                     </button>
                     <button class="secondary-button pull-right" id="grant-user-button" onclick="onAddTenantsDialogOpen()" disabled>
-                        [[[Grant Site Access]]]
+                        @T["Grant Site Access"]
                     </button>
 
                 </div>
@@ -328,9 +330,9 @@
 
             <div id="user-list-container" class="list col-xs-12 admin-page-body">
                 <div id="search-area" class="pull-right">
-                    <input type="text" class="pull-left" id="search-users" placeholder="[[[Search users]]]" />
-                    <span class="su su-inner-close close-icon pull-left" id="clear-search" title="[[[Clear search]]]"></span>
-                    <span class="su su-search search-user pull-left" title="[[[Search]]]"></span>
+                    <input type="text" class="pull-left" id="search-users" placeholder="@T["Search users"]" />
+                    <span class="su su-inner-close close-icon pull-left" id="clear-search" title="@T["Clear search"]"></span>
+                    <span class="su su-search search-user pull-left" title="@T["Search"]"></span>
                 </div>
                 <div class="col-xs-12 no-padding ">
                     <div id="user_grid">
@@ -340,27 +342,31 @@
 
                 @if (ViewBag.AzureADUserCount > 0)
                 {
-                    <div id="azure-ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-azure-ad"> </span> - [[[Azure AD User]]]</div>
+                    <div id="azure-ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-azure-ad"> </span> - @T["Azure AD User"]</div>
                 }
                 @if (ViewBag.DatabaseUserCount > 0)
                 {
-                    <div id="database-indication" class="ad-azure-indication col-lg-12"><span class="su su-datasource"> </span> - [[[Database User]]]</div>
+                    <div id="database-indication" class="ad-azure-indication col-lg-12"><span class="su su-datasource"> </span> - @T["Database User"]</div>
                 }
                 @if (ViewBag.AdUserCount > 0)
                 {
-                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-windows-ad"> </span> - [[[Windows AD User]]]</div>
+                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-windows-ad"> </span> - @T["Windows AD User"]</div>
                 }
                 @if (ViewBag.OAuthUserCount > 0)
                 {
-                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-oauth"><span class="su su-oauth path1"></span><span class="su su-oauth path2"></span><span class="su su-oauth path3"></span></span> - [[[OAuth User]]]</div>
+                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-oauth"><span class="su su-oauth path1"></span><span class="su su-oauth path2"></span><span class="su su-oauth path3"></span></span> - @T["OAuth User"]</div>
                 }
                 @if (ViewBag.OpenIdUserCount > 0)
                 {
-                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-openid"> </span> - [[[OpenID Connect User]]]</div>
+                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-openid"> </span> - @T["OpenID Connect User"]</div>
                 }
                 @if (ViewBag.JwtSsoUserCount > 0)
                 {
-                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-single-sign-on"> </span> - [[[JWT SSO User]]]</div>
+                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-single-sign-on"> </span> - @T["JWT SSO User"]</div>
+                }
+                @if (ViewBag.AzureADB2CCount > 0)
+                {
+                    <div id="ad-indication" class="ad-azure-indication col-lg-12"><span class="su su-azure-b2c"> </span> - @T["Azure AD B2C User"]</div>
                 }
             </div>
         </div>

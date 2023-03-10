@@ -58,7 +58,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width" />
-    <title>[[[Add Tenants]]]</title>
+    <title>@T["Add Tenants"]</title>
 
     @await Html.PartialAsync("../Shared/_FontReference")
     @await Html.PartialAsync("../Shared/_ThemeReference")
@@ -78,7 +78,7 @@
         var actionType = "@Context.Request.Query["actionType"].ToString()";
         var tenantId = "@Context.Request.Query["tenantId"].ToString()";
         var setSystemSettingsUrl = "@Url.Action("AddTenant", "ServerConfiguration")";
-        var tenantIdentifierValidationUrl = "@Url.Action("IdentifierValidation","TenantsManagement")";
+        var tenantIdentifierValidationUrl = "@Url.Action("IdentifierValidation", "TenantsManagement")";
         var connectDatabaseUrl = "@Url.Action("ConnectDatabase", "ServerConfiguration")";
         var generateDatabaseUrl = "@Url.Action("GenerateDatabase", "ServerConfiguration")";
         var getAllDatabaseUrl = "@Url.Action("GetAllDatabase", "ServerConfiguration")";
@@ -91,8 +91,9 @@
         var blobExist = "@Url.Action("IsBlobExists", "ServerConfiguration")";
         var updateTenantDetailsUrl = "@Url.Action("UpdateTenantInfo", "TenantsManagement")";
         var checkDatabaseExistForServerUrl = "@Url.Action("CheckDatabaseExistsForServer", "ServerConfiguration")";
-        var checkHealthStatusUrl = "@Url.Action("CheckServerHealthStatus","TenantsManagement")";
+        var checkHealthStatusUrl = "@Url.Action("CheckServerHealthStatus", "TenantsManagement")";
         var dataConnectorsCount = "@CloudAppConfig.DataConnectorsCount";
+        var getMasterSiteUrl = "@Url.Action("GetIsMasterSite", "TenantsManagement")";
         var umsSitesUrl = "@Url.Action("Sites", "TenantsManagement")";
         var checkValidDatabaseUrl = "@Url.Action("ValidateDatabaseChange", "TenantsManagement")";
         var isBoldBI = "@(GlobalAppSettings.BrandingDisplayName == AppBranding.Bold.DisplayName)".toLowerCase() == "true";
@@ -120,10 +121,10 @@
         <div class="col-lg-12 no-padding" id="popup-container" data-spy="scroll">
             <div class="modal-header no-margin col-sm-12 no-padding">
                 <div class="add-tenant-popup-title">
-                    <label>[[[Create new site]]]</label>
+                    <label>@T["Create new site"]</label>
                 </div>
                 <div class="title icons">
-                    <a href="javascript:void(0);" class="popup-close" title="[[[Close]]]">
+                    <a href="javascript:void(0);" class="popup-close" title="@T["Close"]">
                         <span id="add-tenant-close" class="su su-close pull-right"></span>
                     </a>
                 </div>
@@ -155,26 +156,26 @@
                             </div>
                         </div>
                         <div class="selector-content">
-                            <span class="site-creation selectedContent">[[[SITE CREATION]]]</span>
-                            <span class="select-database">[[[SELECT DATABASE]]]</span>
-                            <span class="select-storage">[[[SELECT STORAGE]]]</span>
+                            <span class="site-creation selectedContent">@T["SITE CREATION"]</span>
+                            <span class="select-database">@T["SELECT DATABASE"]</span>
+                            <span class="select-storage">@T["SELECT STORAGE"]</span>
                             @if (ViewBag.IsBoldBIMultiTenant)
                             {
-                            <span class="get-data-security">[[[DATA SECURITY]]]</span>
+                                <span class="get-data-security">@T["DATA SECURITY"]</span>
                             }
-                            <span class="administrator">[[[ADMINISTRATOR]]]</span>
-                        </div>
+                                <span class="administrator">@T["ADMINISTRATOR"]</span>
+                            </div>
                     </div>
                 </div>
-            </div>
+            </div>   
             <div class="modal-tenant-body col-xs-12 no-padding tenant-body">
                 <div id="dialog-header">
                     <div class="col-xs-12 no-padding">
-                        <label class="text-header-content header-label">[[[Site Name]]]</label>
+                        <label class="text-header-content header-label">@T["Site Name"]</label>
                         <div id="used-tenant-name" class="header-description"></div>
                     </div>
                     <div class="col-xs-12 no-padding">
-                        <label class="text-header-content header-label">[[[Site URL]]]</label>
+                        <label class="text-header-content header-label">@T["Site URL"]</label>
                         <div id="used-tenant-identifier" class="header-description"></div>
                     </div>
                 </div>
@@ -185,29 +186,29 @@
                                 <img src="@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/site_creation.svg")" />
                             </div>
                             <div id="header-title">
-                                [[[Site Creation]]]
+                                @T["Site Creation"]
                             </div>
                             @if (!ViewBag.IsBoldBIMultiTenant && ViewBag.IsBoldReportsMultiTenant)
                             {
                                 <div id="header-description">
-                                    [[[Using a multitenant solution, you can host multiple Enterprise Reporting sites on a single instance by isolating the database and resources for each site.]]]
+                                    @T["Using a multitenant solution, you can host multiple Enterprise Reporting sites on a single instance by isolating the database and resources for each site."]
                                 </div>
                             }
                             else
                             {
                                 <div id="header-description">
-                                    [[[Using a multitenant solution, you can host multiple Embedded BI sites on a single instance by isolating the database and resources for each site.]]]
+                                    @T["Using a multitenant solution, you can host multiple Embedded BI sites on a single instance by isolating the database and resources for each site."]
                                 </div>
                             }
 
                             <div id="search-area">
                                 <div class="search-bar">
-                                    <input type="text" class="pull-left" id="search-tenant-users" placeholder="[[[Search user]]]" />
-                                    <span class="su su-inner-close close-icon" id="clear-search" title="[[[Clear search]]]"></span>
-                                    <span class="su su-search search-icon" title="[[[Search]]]"></span>
+                                    <input type="text" class="pull-left" id="search-tenant-users" placeholder="@T["Search user"]" />
+                                    <span class="su su-inner-close close-icon" id="clear-search" title="@T["Clear search"]"></span>
+                                    <span class="su su-search search-icon" title="@T["Search"]"></span>
                                 </div>
                                 <div class="sort">
-                                    <span class="su su-sort text-right" id="order" data-trigger="hover" data-toggle="tooltip" data-original-title="[[[Sort by descending]]]" data-value="descending">
+                                    <span class="su su-sort text-right" id="order" data-trigger="hover" data-toggle="tooltip" data-original-title="@T["Sort by descending"]" data-value="descending">
                                     </span>
                                 </div>
                             </div>
@@ -238,7 +239,7 @@
                                     <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 no-padding site-name">
 
                                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 txt-holder center-align input-alignment no-padding">
-                                            <input type="text" id="tenant-name" name="tenantname" placeholder="[[[Site name]]]">
+                                            <input type="text" id="tenant-name" name="tenantname" placeholder="@T["Site Name"]">
                                             <span class="startup-validation validation-txt-errors" id="tenant-name-validation-error"></span>
                                         </div>
                                     </div>
@@ -253,26 +254,26 @@
                                                 })
                                             </div>
                                             <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 txt-holder center-align input-alignment no-padding domain-text">
-                                                <input type="text" id="input-domain" name="domainname" class="" placeholder="[[[Domain]]]" value="@siteDomain" />
+                                                <input type="text" id="input-domain" name="domainname" class="" placeholder="@T["Domain"]" value="@siteDomain" />
                                             </div>
                                             <span class="startup-validation validation-txt-errors" id="domain-validation-error"></span>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 no-padding site-url-identifier hide">
 
                                         <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 txt-holder site-identifier-div center-align input-alignment no-padding">
-                                            <input type="text" id="tenant-identifier" name="tenantidentifier" class="form-text" placeholder="[[[Site identifier]]]" />
+                                            <input type="text" id="tenant-identifier" name="tenantidentifier" class="form-text" placeholder="@T["Site identifier"]" />
                                             <div id="site-identifier-check" class="selfhosted center-align site-identifier-check hide">
                                                 @Html.CheckBox("identifier", new { @class = "material-checkbox" })
                                                 @Html.Hidden("identifier")
-                                                <label for="identifier" class="">[[[Do not use site identifier]]]</label>
+                                                <label for="identifier" class="">@T["Do not use site identifier"]</label>
                                             </div>
                                             <span class="startup-validation validation-txt-errors" id="tenant-identifier-validation-error" style="display: inherit;"></span>
                                             <span class="identifier-info info-content txt-box-info">
-                                                [[[The site identifier should be unique, and it is part of your site URL.]]]
+                                                @T["The site identifier should be unique, and it is part of your site URL."]
                                                 <div class="url-part">
-                                                    <span>[[[i.e ]]]</span>
+                                                    <span>@T["i.e "]</span>
                                                     <span class="site-url no-padding" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" data-container="body" data-content="">
                                                         <span class="site-domain">@GlobalAppSettings.SystemSettings.BaseUrl</span>
                                                         <span class="site-default-text text-content"></span>
@@ -300,8 +301,15 @@
 
                                             <option value="@GlobalAppSettings.SystemSettings.OrganizationName" class="bold-id">@GlobalAppSettings.SystemSettings.OrganizationName</option>
                                         </select>
-                                        <span class="col-lg-12 col-sm-12 col-xs-12 col-md-12 info-content">[[[Based on branding chosen, localization, date format and images will be copied to tenant. Otherwise, default images and values will be used for the tenant branding.]]]</span>
+                                        <span class="col-lg-12 col-sm-12 col-xs-12 col-md-12 info-content">@T["Based on branding chosen, localization, date format and images will be copied to tenant. Otherwise, default images and values will be used for the tenant branding."]</span>
                                     </div>
+                                    <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 no-padding make-master-checkbox">
+                                        @Html.CheckBox("change-master", false, new { @class = "material-checkbox  make-master-checkbox" })
+                                        @Html.Hidden("change-master")
+                                        <label for="change-master" class="">@T["Master Site"]</label>
+                                        <div class="info-content check-box-info"> @T["The master site can publish the dashboard and data source to other sites on the same server without the need for site credentials. It can also add sets of dashboards automatically to newly created tenants."]</div>
+                                    </div>
+                                    <div id="master-site-change"></div>
                                     <div class="col-lg-12 col-sm-12 col-xs-12 col-md-12 no-padding empty-validation-error">
                                         <span class="startup-validation validation-txt-errors" id="tenant-identifier-empty-validation-error" style="display: inherit;"></span>
                                     </div>
@@ -330,9 +338,9 @@
                 </div>
             </div>
             <div class="modal-footer col-xs-12 col-lg-12 col-xs-12 col-sm-12" id="dialog-body-footer">
-                <input id="details-back" type="button" value="[[[Back]]]" tabindex="6" class="secondary-button button-left back-button">
-                <input id="details-next" type="button" value="[[[Next]]]" tabindex="4" class="primary-button database">
-                <input type="button" id="move-to-next" value="[[[Proceed]]]" class="proceed-button content-display show-sqlce-content hide" />
+                <input id="details-back" type="button" value="@T["Back"]" tabindex="6" class="secondary-button button-left back-button">
+                <input id="details-next" type="button" value="@T["Next"]" tabindex="4" class="primary-button database">
+                <input type="button" id="move-to-next" value="@T["Proceed"]" class="proceed-button content-display show-sqlce-content hide" />
 
             </div>
         </div>

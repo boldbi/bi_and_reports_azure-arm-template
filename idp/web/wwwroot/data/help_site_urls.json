@@ -312,5 +312,50 @@
         "redirect_id": "4055"
       }
     }
+  },
+  {
+    "url_name": "Google_Play_Store",
+    "boldbi": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": "10005"
+      }
+    },
+    "boldreports": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": "10005"
+      }
+    }
+  },
+  {
+    "url_name": "Apple_App_Store",
+    "boldbi": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": "10006"
+      }
+    },
+    "boldreports": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": "10006"
+      }
+    }
+  },
+  {
+    "url_name": "Azure_B2C_Self_Reset_password",
+    "boldbi": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": "10007"
+      }
+    },
+    "boldreports": {
+      "onpremise": {
+        "uri": "",
+        "redirect_id": "10007"
+      }
+    }
   }
 ]

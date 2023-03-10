@@ -13,10 +13,10 @@ $(document).ready(function () {
     var currentDate = $.now();
     var prevLang = $("#language").val();
 
-    dropDownListInitialization('#time-zone', window.TM.App.LocalizationContent.TimeZone, true);
-    dropDownListInitialization('#date-format', window.TM.App.LocalizationContent.DateFormat, true);
-    dropDownListInitialization('#time_format', window.TM.App.LocalizationContent.TimeFormat);
-    dropDownListInitialization('#language', window.TM.App.LocalizationContent.Language);
+    dropDownListInitialization('#time-zone', window.Server.App.LocalizationContent.TimeZone, true);
+    dropDownListInitialization('#date-format', window.Server.App.LocalizationContent.DateFormat, true);
+    dropDownListInitialization('#time_format', window.Server.App.LocalizationContent.TimeFormat);
+    dropDownListInitialization('#language', window.Server.App.LocalizationContent.Language);
     dropDownListInitialization('#enable-ssl', '');
     document.getElementById("enable-ssl").ej2_instances[0].value = isSecureConnection ? "https" : "http";
     document.getElementById("enable-ssl").ej2_instances[0].text = isSecureConnection ? "https" : "http";
@@ -30,9 +30,9 @@ $(document).ready(function () {
     document.getElementById("language").ej2_instances[0].text = selectedLanguageText;
 
     if ($("#time_format").is(":checked")) {
-        $(".time").html(window.TM.App.LocalizationContent.TimeFormatTrue);
+        $(".time").html(window.Server.App.LocalizationContent.TimeFormatTrue);
     } else {
-        $(".time").html(window.TM.App.LocalizationContent.TimeFormatFalse);
+        $(".time").html(window.Server.App.LocalizationContent.TimeFormatFalse);
     }
     $("#mail-password").show();
 
@@ -45,7 +45,7 @@ $(document).ready(function () {
         multiple: false,
         maxFileSize: 30000000,
         allowedExtensions: ".PNG,.png,.jpg,.JPG,.jpeg,.JPEG,.svg,.SVG",
-        buttons: { browse: window.TM.App.LocalizationContent.LogoButton },
+        buttons: { browse: window.Server.App.LocalizationContent.LogoButton },
         selected: function (e) {
             showWaitingPopup('content-area');
             currentDate = $.now();
@@ -55,7 +55,7 @@ $(document).ready(function () {
                 hideWaitingPopup('content-area');
             }
             else if (extension != ".png" && extension != ".jpg" && extension != ".jpeg" && extension != ".svg") {
-                $(".login-screen-logo").find(".validation-error-image").text(window.TM.App.LocalizationContent.InValidFileFormat);
+                $(".login-screen-logo").find(".validation-error-image").text(window.Server.App.LocalizationContent.InValidFileFormat);
                 $(".login-screen-logo").addClass("upload-error-border");
                 hideWaitingPopup('content-area');
             }
@@ -87,7 +87,7 @@ $(document).ready(function () {
         multiple: false,
         maxFileSize: 30000000,
         allowedExtensions: ".PNG,.png,.jpg,.JPG,.jpeg,.JPEG,.svg,.SVG",
-        buttons: { browse: window.TM.App.LocalizationContent.LogoButton },
+        buttons: { browse: window.Server.App.LocalizationContent.LogoButton },
         selected: function (e) {
             showWaitingPopup('content-area');
             currentDate = $.now();
@@ -97,7 +97,7 @@ $(document).ready(function () {
                 hideWaitingPopup('content-area');
             }
             else if (extension != ".png" && extension != ".jpg" && extension != ".jpeg" && extension != ".svg") {
-                $(".header-logo").find(".validation-error-image").text(window.TM.App.LocalizationContent.InValidFileFormat);
+                $(".header-logo").find(".validation-error-image").text(window.Server.App.LocalizationContent.InValidFileFormat);
                 $(".header-logo").addClass("upload-error-border");
                 hideWaitingPopup('content-area');
             }
@@ -130,7 +130,7 @@ $(document).ready(function () {
         multiple: false,
         maxFileSize: 30000000,
         allowedExtensions: ".PNG,.png,.jpg,.JPG,.jpeg,.JPEG,.svg,.SVG,.ico,.ICO",
-        buttons: { browse: window.TM.App.LocalizationContent.FavIconButton },
+        buttons: { browse: window.Server.App.LocalizationContent.FavIconButton },
         selected: function (e) {
             showWaitingPopup('content-area');
             currentDate = $.now();
@@ -140,7 +140,7 @@ $(document).ready(function () {
                 hideWaitingPopup('content-area');
             }
             else if (extension != ".png" && extension != ".jpg" && extension != ".jpeg" && extension != ".svg" && extension != ".ico") {
-                $(".favicon").find(".validation-error-image").text(window.TM.App.LocalizationContent.InValidFileFormat);
+                $(".favicon").find(".validation-error-image").text(window.Server.App.LocalizationContent.InValidFileFormat);
                 $(".favicon").addClass("upload-error-border");
                 hideWaitingPopup('content-area');
             }
@@ -173,7 +173,7 @@ $(document).ready(function () {
         multiple: false,
         maxFileSize: 30000000,
         allowedExtensions: ".PNG,.png,.jpg,.JPG,.jpeg,.JPEG,.svg,.SVG",
-        buttons: { browse: window.TM.App.LocalizationContent.LogoButton },
+        buttons: { browse: window.Server.App.LocalizationContent.LogoButton },
         selected: function (e) {
             showWaitingPopup('content-area');
             currentDate = $.now();
@@ -183,7 +183,7 @@ $(document).ready(function () {
                 hideWaitingPopup('content-area');
             }
             else if (extension != ".png" && extension != ".jpg" && extension != ".jpeg" && extension != ".svg") {
-                $(".email-logo").find(".validation-error-image").text(window.TM.App.LocalizationContent.InValidFileFormat);
+                $(".email-logo").find(".validation-error-image").text(window.Server.App.LocalizationContent.InValidFileFormat);
                 $(".email-logo").addClass("upload-error-border");
                 hideWaitingPopup('content-area');
             }
@@ -215,7 +215,7 @@ $(document).ready(function () {
         multiple: false,
         maxFileSize: 30000000,
         allowedExtensions: ".PNG,.png,.jpg,.JPG,.jpeg,.JPEG,.svg,.SVG",
-        buttons: { browse: window.TM.App.LocalizationContent.LogoButton },
+        buttons: { browse: window.Server.App.LocalizationContent.LogoButton },
         selected: function (e) {
             showWaitingPopup('content-area');
             currentDate = $.now();
@@ -225,7 +225,7 @@ $(document).ready(function () {
                 hideWaitingPopup('content-area');
             }
             else if (extension != ".png" && extension != ".jpg" && extension != ".jpeg" && extension != ".svg") {
-                $(".footer-logo").find(".validation-error-image").text(window.TM.App.LocalizationContent.InValidFileFormat);
+                $(".footer-logo").find(".validation-error-image").text(window.Server.App.LocalizationContent.InValidFileFormat);
                 $(".footer-logo").addClass("upload-error-border");
                 hideWaitingPopup('content-area');
             }
@@ -256,19 +256,19 @@ $(document).ready(function () {
             return false;
         else
             return true;
-    }, window.TM.App.LocalizationContent.IsValidUrl);
+    }, window.Server.App.LocalizationContent.IsValidUrl);
 
     $.validator.addMethod("isRequired", function (value, element) {
         return !isEmptyOrWhitespace(value);
-    }, window.TM.App.LocalizationContent.EnterName);
+    }, window.Server.App.LocalizationContent.EnterName);
 
     $.validator.addMethod("isValidName", function (value, element) {
         return IsValidName("name", value);
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("isValidEmail", function (value, element) {
         return IsEmail(value);
-    }, window.TM.App.LocalizationContent.InvalidEmailAddress);
+    }, window.Server.App.LocalizationContent.InvalidEmailAddress);
 
     $("#look-and-feel-form").validate({
         errorElement: "span",
@@ -315,13 +315,13 @@ $(document).ready(function () {
         },
         messages: {
             "site_name": {
-                isRequired: window.TM.App.LocalizationContent.OrganizationName
+                isRequired: window.Server.App.LocalizationContent.OrganizationName
             },
             "site_url": {
-                isRequired: window.TM.App.LocalizationContent.Urlvalidator
+                isRequired: window.Server.App.LocalizationContent.Urlvalidator
             },
             "copy_right_info": {
-                isRequired: window.TM.App.LocalizationContent.CopyRightValidator
+                isRequired: window.Server.App.LocalizationContent.CopyRightValidator
             }
         }
     });
@@ -389,22 +389,22 @@ $(document).ready(function () {
         },
         messages: {
             "smtp_address": {
-                isRequired: window.TM.App.LocalizationContent.MailSMTPServerValidator
+                isRequired: window.Server.App.LocalizationContent.MailSMTPServerValidator
             },
             "port_number": {
-                isRequired: window.TM.App.LocalizationContent.MailSMTPPortValidator
+                isRequired: window.Server.App.LocalizationContent.MailSMTPPortValidator
             },
             "mail_display_name": {
-                isRequired: window.TM.App.LocalizationContent.SenderNameValidator
+                isRequired: window.Server.App.LocalizationContent.SenderNameValidator
             },
             "mail_user_name": {
-                isRequired: window.TM.App.LocalizationContent.SenderEmailValidator
+                isRequired: window.Server.App.LocalizationContent.SenderEmailValidator
             },
             "mail_password": {
-                required: window.TM.App.LocalizationContent.PasswordValidator
+                required: window.Server.App.LocalizationContent.PasswordValidator
             },
             "sender_user_name": {
-                required: window.TM.App.LocalizationContent.UserNameValidator
+                required: window.Server.App.LocalizationContent.UserNameValidator
             }
         }
     });
@@ -508,7 +508,7 @@ $(document).ready(function () {
     }
 
     $(document).on("click", "#UpdateSystemSettings,#UpdateSystemSettings-bottom,#UpdateDatabaseSettings-bottom,#update-mail-settings", function () {
-        var messageHeader = $(this).hasClass("update-system-settings") ? window.TM.App.LocalizationContent.SiteSettings : window.TM.App.LocalizationContent.EmailSettings;
+        var messageHeader = $(this).hasClass("update-system-settings") ? window.Server.App.LocalizationContent.SiteSettings : window.Server.App.LocalizationContent.EmailSettings;
         var enableSecureMail = $("#secure-mail-authentication").is(":checked");
         RemoveUploadBoxError();
         if (!$("#look-and-feel-form").valid() || !$("#email-setting-form").valid()) {
@@ -586,7 +586,8 @@ $(document).ready(function () {
             success: function (result) {
                 if (isReloadPage) {
                     if (isUrlChange) {
-                        window.location.href = getSslValue() + "://" + siteURL + location.pathname;
+                        var currentURL = window.location.pathname;
+                        window.location.href = getSslValue() + "://" + siteURL + currentURL.substring(currentURL.indexOf("/ums/administration"));
                     }
                     else {
                         window.location.href = getSslValue() + "://" + location.host + location.pathname;
@@ -632,11 +633,11 @@ $(document).ready(function () {
                     } else {
                         $("#footer-separator").removeClass("show").addClass("hide");
                     }
-                    SuccessAlert(messageHeader, window.TM.App.LocalizationContent.SiteSettingsUpdated, 7000);
+                    SuccessAlert(messageHeader, window.Server.App.LocalizationContent.SiteSettingsUpdated, 7000);
                     SetCookie();
                     
                 } else {
-                    WarningAlert(messageHeader, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, result.Message, 7000);
+                    WarningAlert(messageHeader, window.Server.App.LocalizationContent.SiteSettingsUpdateFalied, result.Message, 7000);
                     $(".error-message, .success-message").css("display", "none");
                 }
                 hideWaitingPopup('server-app-container');
@@ -699,9 +700,9 @@ $(document).on("click", "#help_text", function () {
 
 $(document).on("click", "#time_format", function () {
     if ($("#time_format").is(":checked")) {
-        $(".time").html(window.TM.App.LocalizationContent.TimeFormatTrue);
+        $(".time").html(window.Server.App.LocalizationContent.TimeFormatTrue);
     } else {
-        $(".time").html(window.TM.App.LocalizationContent.TimeFormatFalse);
+        $(".time").html(window.Server.App.LocalizationContent.TimeFormatFalse);
     }
 });
 
@@ -722,10 +723,10 @@ $(document).on("click", "#update-active-dir-settings", function () {
         beforeSend: showWaitingPopup('server-app-container'),
         success: function (result) {
             if (result.status) {
-                SuccessAlert(window.TM.App.LocalizationContent.ADSettings, window.TM.App.LocalizationContent.SiteSettingsUpdated, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.ADSettings, window.Server.App.LocalizationContent.SiteSettingsUpdated, 7000);
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.ADSettings, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, 7000);
+                WarningAlert(window.Server.App.LocalizationContent.ADSettings, window.Server.App.LocalizationContent.SiteSettingsUpdateFalied, 7000);
             }
             $(".error-message, .success-message").css("display", "none");
         },
@@ -792,10 +793,10 @@ $(document).on("click", "#UpdateAzureADSettings-bottom", function () {
         beforeSend: showWaitingPopup('server-app-container'),
         success: function (result) {
             if (result.status) {
-                SuccessAlert(window.TM.App.LocalizationContent.AzureADSettings, window.TM.App.LocalizationContent.SiteSettingsUpdated, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.AzureADSettings, window.Server.App.LocalizationContent.SiteSettingsUpdated, 7000);
             }
             else {
-                WarningAlert(window.TM.App.LocalizationContent.AzureADSettings, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, 7000);
+                WarningAlert(window.Server.App.LocalizationContent.AzureADSettings, window.Server.App.LocalizationContent.SiteSettingsUpdateFalied, 7000);
             }
             $(".azure-ad-button-area .error-message, .azure-ad-button-area .success-message").css("display", "none");
             hideWaitingPopup('server-app-container');
@@ -838,16 +839,16 @@ function AzureADFormValidate() {
 }
 
 function RemoveUploadBoxError() {
-    $("#upload-login-image-textbox").removeClass("ValidationErrorImage").val(window.TM.App.LocalizationContent.BrowsePath);
+    $("#upload-login-image-textbox").removeClass("ValidationErrorImage").val(window.Server.App.LocalizationContent.BrowsePath);
     $("#upload-login-image-textbox").closest("div").removeClass("has-error");
     $("#upload-login-image-textbox").parent().find(".e-box").removeClass("upload-error-border");
-    $("#upload-main-screen-image-textbox").removeClass("ValidationErrorImage").val(window.TM.App.LocalizationContent.BrowsePath);
+    $("#upload-main-screen-image-textbox").removeClass("ValidationErrorImage").val(window.Server.App.LocalizationContent.BrowsePath);
     $("#upload-main-screen-image-textbox").closest("div").removeClass("has-error");
     $("#upload-main-screen-image-textbox").parent().find(".e-box").removeClass("upload-error-border");
-    $("#upload-favicon-image-textbox").removeClass("ValidationErrorImage").val(window.TM.App.LocalizationContent.BrowsePath);
+    $("#upload-favicon-image-textbox").removeClass("ValidationErrorImage").val(window.Server.App.LocalizationContent.BrowsePath);
     $("#upload-favicon-image-textbox").closest("div").removeClass("has-error");
     $("#upload-favicon-image-textbox").parent().find(".e-box").removeClass("upload-error-border");
-    $("#upload-poweredogo-image-textbox").removeClass("ValidationErrorImage").val(window.TM.App.LocalizationContent.BrowsePath);
+    $("#upload-poweredogo-image-textbox").removeClass("ValidationErrorImage").val(window.Server.App.LocalizationContent.BrowsePath);
     $("#upload-poweredogo-image-textbox").closest("div").removeClass("has-error");
     $("#upload-poweredogo-image-textbox").parent().find(".e-box").removeClass("upload-error-border");
 }

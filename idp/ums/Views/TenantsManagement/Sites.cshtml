@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "[[[Sites]]] - " + GlobalAppSettings.SystemSettings.OrganizationName;
+    ViewBag.Title = T["Sites"].Value + " - "+ GlobalAppSettings.SystemSettings.OrganizationName;
     var adminType = (AdminType)Enum.Parse(typeof(AdminType), GlobalAppSettings.HttpContextAccessor.HttpContext.Session.GetString("AdminType"));
 }
 
@@ -15,12 +15,21 @@
 			var baseRootUrl = "@Url.Content("~/")";
 			var activateTenantUrl = "@Url.Action("ActivateTenant", "TenantsManagement")";
 			var suspendTenantUrl = "@Url.Action("SuspendTenant", "TenantsManagement")";
-			var deleteTenantUrl = "@Url.Action("DeleteTenant", "TenantsManagement")";
-			var tenantName = "";
+            var deleteTenantUrl = "@Url.Action("DeleteTenant", "TenantsManagement")";
+            var updateMasterTenantUrl = "@Url.Action("UpdateMasterTenant", "TenantsManagement")";
+            var masterSite = "@Url.Action("GetIsMasterSite", "TenantsManagement")";
+            var tenantName = "";
     </script>
-
     <script type="text/x-jsrender" id="application-name-template">
-        <a class="item-name grid-content" title="${TenantName}" data-toggle="tooltip" href="@Url.Action("ViewSite", "TenantsManagement")/${Id}">${TenantName}</a>
+        <a class="item-name grid-content" title="${TenantName}" data-toggle="tooltip" href="@Url.Action("ViewSite", "TenantsManagement")/${Id}">
+            ${TenantName}
+        </a>
+        ${if (IsMaster && TenantType == "@((int)TenantType.BoldBIOnPremise)")}
+        <span class="su su-master-site-bi master-icon"></span>
+        ${/if}
+        ${if (IsMaster && TenantType == "@((int)TenantType.BoldReportsOnPremise)")}
+        <span class="su su-master-site-reports master-icon"></span>
+        ${/if}
     </script>
     <script type="text/x-jsrender" id="application-url-template">
         <a class="grid-content" title="${SiteUrl}" data-toggle="tooltip" href="${SiteUrl}" target="_blank">${SiteUrl}</a>
@@ -45,16 +54,16 @@
     </script>
 
     <script type="text/x-jsrender" id="applicationname-header">
-        <div class="item-name">[[[Site Name]]]</div>
+        <div class="item-name">@T["Site Name"]</div>
     </script>
     <script type="text/x-jsrender" id="application-url-header">
-        <div class="item-header">[[[Site URL]]]</div>
+        <div class="item-header">@T["Site URL"]</div>
     </script>
     <script type="text/x-jsrender" id="application-status-header">
-        <div class="item-header">[[[Status]]]</div>
+        <div class="item-header">@T["Status"]</div>
     </script>
     <script type="text/x-jsrender" id="application-tenant-header">
-        <div class="item-header">[[[Tenant Type]]]</div>
+        <div class="item-header">@T["Tenant Type"]</div>
     </script>
 
     <script type="text/x-jsrender" id="options">
@@ -64,39 +73,47 @@
                 <span class="su su-options"> </span>
             </span>
             <ul class="dropdown-menu" role="menu">
-               ${if (TenantStatus == "@((int)TenantStatus.Suspended)")}
+                ${if (TenantStatus == "@((int)TenantStatus.Suspended)")}
                 <li>
-                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-action="activate">
+                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-tenant-type="${TenantType}" data-action="activate">
                         <i class="su su-tick"></i>
-                        <span>[[[Activate]]]</span>
+                        <span>@T["Activate"]</span>
                     </a>
                 </li>
                 ${/if}
-                ${if (TenantStatus == "@((int)TenantStatus.Active)")}
+                ${if (!IsMaster && TenantStatus == "@((int)TenantStatus.Active)")}
                 <li>
-                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-action="suspend">
+                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-tenant-type="${TenantType}" data-action="suspend">
                         <i class="su su-suspend"></i>
-                        <span>[[[Suspend]]]</span>
+                        <span>@T["Suspend"]</span>
                     </a>
                 </li>
                 ${/if}
                 ${if (TenantStatus == "@((int)TenantStatus.Active)" || TenantStatus == "@((int)TenantStatus.Suspended)")}
                 <li>
-                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-action="edit">
+                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-tenant-type="${TenantType}" data-action="edit">
                         <i class="su su-edit"></i>
-                        <span>[[[Edit]]]</span>
+                        <span>@T["Edit"]</span>
                     </a>
                 </li>
                 ${/if}
-                ${if (TenantStatus == "@((int)TenantStatus.Active)" || TenantStatus == "@((int)TenantStatus.Suspended)" || TenantStatus == "@((int)TenantStatus.DeploymentPending)")}
+                ${if (!IsMaster && TenantStatus == "@((int)TenantStatus.Active)" || TenantStatus == "@((int)TenantStatus.Suspended)" || TenantStatus == "@((int)TenantStatus.DeploymentPending)") }
                 <li>
-                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-action="delete">
+                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-tenant-type="${TenantType}" data-action="delete">
                         <i class="su su-delete"></i>
-                        <span>[[[Delete]]]</span>
+                        <span>@T["Delete"]</span>
                     </a>
                 </li>
                 ${/if}
-			</ul>
+                ${if (!IsMaster && TenantType == "@((int)TenantType.BoldBIOnPremise)" && TenantStatus == "@((int)TenantStatus.Active)") }
+                <li>
+                    <a href="javascript:void(0);" class="tenant-action" data-tenant-name="${TenantName}" data-tenant-id="${Id}" data-dns="${DNS}" data-tenant-type="${TenantType}" data-action="make-master">
+                        <i class="su su-master-site-bi mastersite"></i>
+                        <span class="makemaster">@T["Master Site"]</span>
+                    </a>
+                </li>
+                ${/if}
+            </ul>
         </div>
         ${/if}
     </script>
@@ -152,8 +169,15 @@
                             headerTemplate: '#applicationname-header',
 							width: 155,
 							field: 'TenantName',
-							type: "string",
-						},
+                            type: "string",
+                        },
+                        {
+                            visible: false,
+                            field: "IsMaster",
+                            type: "boolean",
+                            template: '#master-sites',
+                            width:80,
+                        },
 						{
 							template: '#application-url-template',
                             headerTemplate: '#application-url-header',
@@ -162,7 +186,7 @@
 							type: "string",
 						},
 						{
-							headerText: '[[[Created Date]]]',
+							headerText: '@T["Created Date"]',
 							field: 'CreatedDateString',
 							allowFiltering: false,
 							width: 130,
@@ -173,7 +197,7 @@
                             headerTemplate: '#application-tenant-header',
 							width: 110,
 							field: 'TenantType',
-							 type: "string",
+							type: "string",
 							allowSorting: false,
 							allowFiltering: false,
 						},
@@ -209,7 +233,7 @@
             <div class="col-xs-12 admin-page-header">
                 <div class="admin-page-header-description col-xs-6 no-padding" id="application-title">
                     <h1 class="page-title">
-                        [[[Sites ]]](<span id="application-count"></span>)
+                        @T["Sites"] (<span id="application-count"></span>)
                     </h1>
 
                 </div>
@@ -217,7 +241,7 @@
                 @if (ViewBag.IsMultiTenant)
                 {
                     <div class="col-xs-6 no-padding admin-header-btn">
-                        <button type="button" class="primary-button pull-right" id="add-tenant">[[[Create Site]]]</button>
+                        <button type="button" class="primary-button pull-right" id="add-tenant">@T["Create Site"]</button>
                     </div>
                 }
             </div>
@@ -225,10 +249,11 @@
             <div id="application-list-container" class="list col-xs-12 admin-page-body">
 
                 <div id="search-area" class="pull-right">
-                    <input type="text" class="pull-left" id="search-tenants" placeholder="[[[Search sites]]]" />
-                    <span class="su su-inner-close close-icon pull-left" id="clear-search" title="[[[Clear search]]]"></span>
-                    <span class="su su-search search-application pull-left" title="[[[Search]]]"></span>
+                    <input type="text" class="pull-left" id="search-tenants" placeholder="@T["Search sites"]" />
+                    <span class="su su-inner-close close-icon pull-left" id="clear-search" title="@T["Clear search"]"></span>
+                    <span class="su su-search search-application pull-left" title="@T["Search"]"></span>
                 </div>
+                <div id="master-site-change"></div>
                 <div class="col-xs-12 no-padding">
                     <div id="tenants_grid">
                     </div>

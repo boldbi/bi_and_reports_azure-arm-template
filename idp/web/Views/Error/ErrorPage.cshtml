@@ -36,22 +36,20 @@
                     if (ViewBag.InActiveUser)
                     {
                         <div class="error-text">
-                            [[[You are logged in as ]]]<strong>@email</strong>[[[, but your account is not yet activated in the site ]]]<strong>@(new Uri(GlobalAppSettings.SystemSettings.InternalAppUrls.Idp).DnsSafeHost)</strong>[[[.]]]<br>
-                            [[[Please contact your system administrator to activate your account.]]]
+                            @Html.Raw(string.Format(T["You are logged in as {0}, but your account is not yet activated in the site {1}.{2} Please contact your system administrator to activate your account."].Value, $"<strong>{email}</strong>", $"<strong>{new Uri(GlobalAppSettings.SystemSettings.InternalAppUrls.Idp).DnsSafeHost}</strong>", "<br>"))
                         </div>
                     }
                     else
                     {
                         <div class="error-text">
-                            [[[You are logged in as ]]]<strong>@email</strong>[[[, but you do not have access to the site ]]]<strong>@(new Uri(GlobalAppSettings.SystemSettings.InternalAppUrls.Idp).DnsSafeHost)</strong>[[[.]]]<br>
-                            [[[If you should have access to this site, contact your system administrator.]]]
+                            @Html.Raw(string.Format(T["You are logged in as {0}, but you do not have access to the site {1}.{2} If you should have access to this site, contact your system administrator."].Value, $"<strong>{email}</strong>", $"<strong>{new Uri(GlobalAppSettings.SystemSettings.InternalAppUrls.Idp).DnsSafeHost}</strong>", "<br>"))
                         </div>
                     }
                 }
                 else if (ViewBag.ErrorType == "license_expired")
                 {
                     <div class="error-text">
-                        [[[Please contact your administrator to restore access.]]]
+                        @T["Please contact your administrator to restore access."]
                     </div>
                 }
                 else
@@ -66,13 +64,13 @@
                     {
                         <span class="error-page-cursor">
                             <a class="error-to-back-text-color" href="@Url.Action("Logout", "Accounts")">
-                                [[[Try a different account]]]
+                                @T["Try a different account"]
                             </a>
                         </span>
                     }
                     else if (ViewBag.ErrorType == "http_error_404")
                     {
-                        <span class="error-page-cursor"><a class="error-to-back-text-color" href="@Url.Action("Index", "Home")">[[[Take me back to home page]]]</a></span>
+                        <span class="error-page-cursor"><a class="error-to-back-text-color" href="@Url.Action("Index", "Home")">@T["Take me back to home page"]</a></span>
                     }
                 </div>
             </div>

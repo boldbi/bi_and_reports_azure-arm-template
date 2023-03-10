@@ -1,6 +1,5 @@
 .account-parent .account-child .account-bg .account-header {
   margin-bottom: 9px; }
-
 .account-parent .account-child .account-bg .login-wrapper .login-body {
   font-stretch: normal;
   font-style: normal;
@@ -16,7 +15,7 @@
     margin-left: 0px !important;
     text-align: center; }
     .account-parent .account-child .account-bg .login-wrapper .login-body .forget-password-align a {
-      color: #ff4800; }
+      color: var(--primary-button-bg-normal-color); }
   .account-parent .account-child .account-bg .login-wrapper .login-body .page-wrapper {
     margin: auto; }
   .account-parent .account-child .account-bg .login-wrapper .login-body .syncfusion-brand-option {
@@ -28,7 +27,7 @@
     background-color: var(--primary-branding-bg-color);
     float: left;
     border: 0px; }
-  .account-parent .account-child .account-bg .login-wrapper .login-body #login-email {
+  .account-parent .account-child .account-bg .login-wrapper .login-body .login-email {
     letter-spacing: 0.3px; }
   .account-parent .account-child .account-bg .login-wrapper .login-body .connect-line-left {
     width: 32%;
@@ -54,6 +53,10 @@
     letter-spacing: 0.39px;
     font-size: 13px !important; }
 
+.mfaVerification-wrapper .backtologin-align {
+  margin-left: 0px !important;
+  text-align: center; }
+
 .layout-footer {
   background: transparent; }
 
@@ -66,19 +69,20 @@
     .account-bg .login-wrapper {
       width: 338px;
       margin: auto;
+      padding: 15px 0 !important; }
+    .account-bg .mfaVerification-wrapper {
+      width: 338px;
+      margin: auto;
       padding: 15px 0 !important; } }
-
 @media (min-width: 760px) and (max-width: 900px) {
   .account-bg {
     height: auto;
     width: auto;
     padding: 40px !important; } }
-
 @media screen and (max-width: 350px) {
   .login-wrapper {
     width: auto;
     padding: 24px 20px; } }
-
 @media screen and (max-width: 760px) {
   .layout-footer {
     padding: 0 !important; }

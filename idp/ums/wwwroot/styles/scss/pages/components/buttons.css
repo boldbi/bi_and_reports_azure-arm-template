@@ -1,7 +1,6 @@
 @media (min-width: 1040px) and (max-width: 1200px) {
   .app-header #application-list {
     text-align: center !important; } }
-
 .primary-button, .e-control.e-btn.e-flat.e-primary {
   background: var(--primary-button-bg-normal-color);
   border: 0;
