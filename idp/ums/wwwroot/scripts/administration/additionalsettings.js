@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    dropDownListInitialization('#edit-files', window.Server.App.LocalizationContent.SearchFiles);
+    dropDownListInitialization('#edit-files', window.TM.App.LocalizationContent.SearchFiles);
     if (methodType === "GET") {
         onDropDownListChange();
     }
@@ -32,7 +32,7 @@
                 }
                 else {
                     document.getElementById("edit-files").ej2_instances[0].text = $(".file-name").val();
-                    WarningAlert(window.Server.App.LocalizationContent.Configuration, result.Status, result.Message, 7000);
+                    WarningAlert(window.TM.App.LocalizationContent.Configuration, result.Status, result.Message, 7000);
                 }
                 hideWaitingPopup('server-app-container');
             }

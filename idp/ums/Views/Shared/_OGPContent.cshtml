@@ -5,11 +5,27 @@
     string description;
 }
 
-
-@if (product == TenantType.BoldBIOnPremise)
+@if (product == TenantType.BoldBI)
 {
-    title = string.Format(T["Try {0}"].Value, "Bold BI Enterprise");
-    description = T["Easily deploy data visualization tool to on-premises or private cloud. Data in your datacenter. Custom branding. Office 365 integration. Try now."].Value;
+    title = "Try Dashboards in the cloud";
+    description = "The " + CloudAppConfig.BoldBIDisplayName + " is an end-to-end solution for creating, managing, and sharing interactive business dashboards. With our hosted solution for dashboards, you don't need to worry about maintaining a server at your end.";
+
+    <meta property="og:title" content="@title" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:image" content="@CloudAppConfig.SyncfusionLoginLogoUrl" />
+    <meta property="og:url" content="@requestUrl.AbsoluteUri" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="@CloudAppConfig.TenantAppURL" />
+    <meta property="twitter:title" content="@title" />
+    <meta property="twitter:url" content="@requestUrl.AbsoluteUri" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:description" content="@description" />
+    <meta property="twitter:image" content="@CloudAppConfig.SyncfusionLoginLogoUrl" />
+}
+else if (product == TenantType.BoldBIOnPremise)
+{
+    title = "Try Bold BI Enterprise";
+    description = "Easily deploy data visualization tool to on-premises or private cloud. Data in your datacenter. Custom branding. Office 365 integration. Try now.";
 
     <meta property="og:title" content="@title" />
     <meta property="og:description" content="@description" />
@@ -25,9 +41,44 @@
 }
 else if (product == TenantType.BoldReportsOnPremise)
 {
-    title = string.Format(T["Try {0} On-Premise"].Value, "Bold Report");
-    description = string.Format(T["Create, edit, store, share, and collaborate interactive {0} with {1} management system. Free sign up for {2} -day trial. Try it now."].Value, "reports", "enterprise report", CloudAppConfig.TrailPeriod);
+    title = "Try Bold Report On-Premise";
+    description = "Create, edit, store, share, and collaborate interactive reports with enterprise report management system. Free sign up for " + @CloudAppConfig.TrailPeriod + "-day trial. Try it now.";
     var tenantLogo = CloudAppConfig.TenantLogoUrl(string.Empty, string.Empty, TenantType.BoldReportsOnPremise);
+
+    <meta property="og:title" content="@title" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:image" content="@tenantLogo" />
+    <meta property="og:url" content="@requestUrl.AbsoluteUri" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="@CloudAppConfig.TenantAppURL" />
+    <meta property="twitter:title" content="@title" />
+    <meta property="twitter:url" content="@requestUrl.AbsoluteUri" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:description" content="@description" />
+    <meta property="twitter:image" content="@tenantLogo" />
+}
+else if (product == TenantType.BoldReports)
+{
+    title = "Try Reports in the cloud";
+    description = "The " + AppBranding.BoldReports.DisplayName + " is an end-to-end solution for creating, managing, and sharing interactive business reports. With our hosted solution for reports, you don't need to worry about maintaining a server at your end.";
+
+    <meta property="og:title" content="@title" />
+    <meta property="og:description" content="@description" />
+    <meta property="og:image" content="@CloudAppConfig.SyncfusionLoginLogoUrl" />
+    <meta property="og:url" content="@requestUrl.AbsoluteUri" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="@CloudAppConfig.TenantAppURL" />
+    <meta property="twitter:title" content="@title" />
+    <meta property="twitter:url" content="@requestUrl.AbsoluteUri" />
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:description" content="@description" />
+    <meta property="twitter:image" content="@CloudAppConfig.SyncfusionLoginLogoUrl" />
+}
+else if (product == TenantType.BoldSign)
+{
+    title = "Try Bold Sign";
+    description = "";
+    var tenantLogo = CloudAppConfig.TenantLogoUrl(string.Empty, string.Empty, TenantType.BoldSign);
 
     <meta property="og:title" content="@title" />
     <meta property="og:description" content="@description" />

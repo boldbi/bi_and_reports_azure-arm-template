@@ -1,6 +1,7 @@
 @media (min-width: 1040px) and (max-width: 1200px) {
   .app-header #application-list {
     text-align: center !important; } }
+
 #license-settings-container .new-start-container .new-start-container-bg span.first-content {
   font-size: 24px;
   font-weight: bold;
@@ -257,6 +258,7 @@
       min-width: 53px; }
     #license-settings-container #license-settings-form .active-subscription-table-section .display-none {
       display: none !important; }
+
 #license-settings-container .new-start-container {
   text-align: center;
   padding: 10px; }
@@ -393,6 +395,7 @@
   line-height: 30px !important;
   margin-left: 45px !important;
   margin-top: 0px !important; }
+
 #license-settings-container .secondary-button {
   height: 24px;
   line-height: 2px;
@@ -400,13 +403,16 @@
   top: 30px;
   font-weight: 400;
   padding: 0px 8px; }
+
 #license-settings-container .edit-link {
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
   position: relative; }
+
 #license-settings-container #subscription-information {
   margin-left: 45px !important; }
+
 #license-settings-container .renew-container {
   margin-left: 45px;
   background: var(--warning-bg-normal-color);
@@ -414,6 +420,7 @@
   width: 610px;
   height: auto;
   padding: 10px; }
+
 #license-settings-container .renew-content {
   font-style: normal;
   font-weight: 400;
@@ -421,15 +428,18 @@
   line-height: 24px;
   color: var(--warning-text-color);
   margin-left: 40px; }
+
 #license-settings-container #change-subscription {
   top: 39px;
   margin-left: 74px; }
+
 #license-settings-container .su-warning-alt {
   font-size: 18px;
   top: 13px;
   position: absolute;
   margin-left: 8px;
   color: var(--warning-text-color); }
+
 #license-settings-container #details-information {
   position: relative;
   margin-top: auto; }

@@ -58,7 +58,6 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover();
     $("body, .login-main, #server-app-container").removeAttr("style");
-    $("#layout-body-loader-icon").css("display", "none");
 
     $("form").attr("autocomplete", "off");
     $("input[type=text], input[type=password]").attr("autocomplete", "off");
@@ -77,14 +76,6 @@ $(document).ready(function () {
     notBackdrop.click(function () {
         notBackdrop.hide();
     });
-
-    String.prototype.format = function () {
-        a = this;
-        for (k in arguments) {
-            a = a.replace("{" + k + "}", arguments[k])
-        }
-        return a
-    }
 
     searchId = $("#search-area").children("input").attr("id");
     if (searchId == "ad-user-import" || searchId == "AD-group-import" || searchId == "search-ad-users" || searchId == "search-ad-groups" || $("#ad-tab-nav li#activity").length !== 0) {
@@ -171,13 +162,12 @@ $(document).ready(function () {
         }
     });
 
-    //currently not used
-    //if (typeof (isLicenseExpiredUrl) !== "undefined") {
-    //    $.ajax({
-    //        type: "POST",
-    //        url: isLicenseExpiredUrl,
-    //    });
-    //}
+    if (typeof (isLicenseExpiredUrl) !== "undefined") {
+        $.ajax({
+            type: "POST",
+            url: isLicenseExpiredUrl,
+        });
+    }
 });
 
 $(document).on("click", ".dropdown-backdrop", function () {
@@ -238,7 +228,7 @@ $(document).on("focus", ".placeholder", function () {
     $(this).prev("input").focus();
 });
 
-$(document).on("keyup", "#search-users, #search-tenants, #search-app-users, #add-user-search,#search-tenant-users,#add-tenant-search,#search-event,#search-languages", function (e) {
+$(document).on("keyup", "#search-users, #search-tenants, #search-app-users, #add-user-search,#search-tenant-users,#add-tenant-search", function (e) {
     var element = "#" + this.id;
     if ($(element).val() != "") {
         if (element == "#search-home-page" || element == "#search-tenant-users") {
@@ -331,7 +321,7 @@ $(document).on("click", "#clear-search,.clear-search,#add-user-clear-search,#add
     }
 });
 
-$(document).on("keydown", "#search-users, #search-tenants, #search-app-users, #add-user-search,#search-tenant-users,#add-tenant-search,#search-event,#search-languages", function (e) {
+$(document).on("keydown", "#search-users, #search-tenants, #search-app-users, #add-user-search,#search-tenant-users,#add-tenant-search", function (e) {
     $.xhrPool.abortAll();
     var currentKeyCode = parseInt(e.which);
     var element = "#" + this.id;
@@ -383,14 +373,6 @@ function PerformSearch(currentId) {
     }
     else if (currentId == "#search-tenant-users") {
         gridObj = document.getElementById('add_admins_grid').ej2_instances[0];
-        gridObj.refresh();
-    }
-    else if (currentId == "#search-event") {
-        gridObj = document.getElementById('emailActivityLogGrid').ej2_instances[0];
-        gridObj.refresh();
-    }
-    else if (currentId == "#search-languages") {
-        gridObj = document.getElementById('Localization_grid').ej2_instances[0];
         gridObj.refresh();
     }
 }
@@ -662,12 +644,12 @@ function isNumberKey(evt) {
 
 function validateUserName(userName) {
     if (/\s/g.test(userName)) {
-        return { isValid: false, message: window.Server.App.LocalizationContent.UserNameHasWhiteSpace };
+        return { isValid: false, message: window.TM.App.LocalizationContent.UserNameHasWhiteSpace };
     }
     if (/[^a-zA-Z0-9]/.test(userName)) {
-        return { isValid: false, message: window.Server.App.LocalizationContent.UserNameSpecialCharacterValicator };
+        return { isValid: false, message: window.TM.App.LocalizationContent.UserNameSpecialCharacterValicator };
     }
-    return { isValid: true, message: "valid" };
+    return { isValid: true, message: window.TM.App.LocalizationContent.Valid };
 }
 
 function isValidUrl(url) {
@@ -759,17 +741,17 @@ function messageBox(messageIcon, messageHeader, messageText, type, successCallba
         var closeIcon;
         var errorButton;
         if (successCallback != undefined) {
-            successButton = $("<input type='button' class='critical-action-button pull-right' value='" + window.Server.App.LocalizationContent.YesButton + "'></input>");
+            successButton = $("<input type='button' class='critical-action-button pull-right' value='" + window.TM.App.LocalizationContent.YesButton + "'></input>");
             successButton.bind("click", $.proxy(getFnObj(successCallback), window));
         }
         if (errorCallback != undefined) {
-            errorButton = $("<input type='button' class='secondary-button pull-right' value='" + window.Server.App.LocalizationContent.NoButton + "'></input>");
+            errorButton = $("<input type='button' class='secondary-button pull-right' value='" + window.TM.App.LocalizationContent.NoButton + "'></input>");
             errorButton.bind("click", $.proxy(getFnObj(errorCallback), window));
             closeIcon = $('<span class="su su-close"></span>');
             closeIcon.bind("click", $.proxy(getFnObj(errorCallback), window));
         }
         else {
-            errorButton = $("<input type='button' class='secondary-button pull-right' value='" + window.Server.App.LocalizationContent.NoButton + "'></input>");
+            errorButton = $("<input type='button' class='secondary-button pull-right' value='" + window.TM.App.LocalizationContent.NoButton + "'></input>");
             closeIcon = $('<span class="su su-close"></span>');
             errorButton.click(function () {
                 onCloseMessageBox();
@@ -786,13 +768,13 @@ function messageBox(messageIcon, messageHeader, messageText, type, successCallba
         var successButton;
         var closeIcon;
         if (successCallback != undefined) {
-            successButton = $("<input type='button' class='secondary-button' value='" + window.Server.App.LocalizationContent.OKButton + "'></input>");
+            successButton = $("<input type='button' class='secondary-button' value='" + window.TM.App.LocalizationContent.OKButton + "'></input>");
             successButton.bind("click", $.proxy(getFnObj(successCallback), window));
             closeIcon = $('<span class="su su-close"></span>');
             closeIcon.bind("click", $.proxy(getFnObj(successCallback), window));
         }
         else {
-            successButton = $("<input type='button' class='secondary-button' value='" + window.Server.App.LocalizationContent.OKButton + "'></input>");
+            successButton = $("<input type='button' class='secondary-button' value='" + window.TM.App.LocalizationContent.OKButton + "'></input>");
             closeIcon = $('<span class="su su-close"></span>');
             successButton.click(function () {
                 onCloseMessageBox();
@@ -802,7 +784,7 @@ function messageBox(messageIcon, messageHeader, messageText, type, successCallba
             });
         }
         $(".message-box-close").html(closeIcon);
-        $("#messageBox .e-footer-content").append(successButton);
+        $(".e-footer-content").append(successButton);
         $("#messageBox").on("keydown", function (event) {
             switch (event.keyCode) {
                 case 13:
@@ -834,7 +816,7 @@ function messageBox(messageIcon, messageHeader, messageText, type, successCallba
 //        function (result) {
 //            ShowWaitingProgress("#user-profile-master", "hide");
 //            if (result.status) {
-//                messageBox("su-delete", window.Server.App.LocalizationContent.DeleteAvatar, window.Server.App.LocalizationContent.DeleteAvatarSuccess, "success", function () {
+//                messageBox("su-delete", window.TM.App.LocalizationContent.DeleteAvatar, window.TM.App.LocalizationContent.DeleteAvatarSuccess, "success", function () {
 //                    var isLoggedUser = $("#logged-user").html().toLowerCase();
 //                    $("#user-profile-picture").attr("src", getdefaultavatarUrl);
 //                    $("#user-profile-picture").siblings("#avatar-delete-click").remove();
@@ -845,7 +827,7 @@ function messageBox(messageIcon, messageHeader, messageText, type, successCallba
 //                });
 //            }
 //            else {
-//                messageBox("su-delete", window.Server.App.LocalizationContent.DeleteAvatarTitle, window.Server.App.LocalizationContent.DeleteAvatarError, "success", function () {
+//                messageBox("su-delete", window.TM.App.LocalizationContent.DeleteAvatarTitle, window.TM.App.LocalizationContent.DeleteAvatarError, "success", function () {
 //                    onCloseMessageBox();
 //                });
 //            }
@@ -864,26 +846,25 @@ function IsValidName(validationType, inputString) {
     return !regex.test(inputString);
 }
 
-//function GridLocalization() {
-//    ej.Grid.Locale["en-US"] = {
-//        EmptyRecord: window.Server.App.LocalizationContent.NoRecords,
-//        StringMenuOptions: [{ text: window.Server.App.LocalizationContent.SearchKeyStart, value: "StartsWith" }, { text: window.Server.App.LocalizationContent.SearchKeyEnd, value: "EndsWith" }, { text: window.Server.App.LocalizationContent.SearchKeyContanins, value: "Contains" }, { text: window.Server.App.LocalizationContent.SearchKeyEqual, value: "Equal" }, { text: window.Server.App.LocalizationContent.SearchKeyNotEqual, value: "NotEqual" }],
-//        FilterMenuCaption: window.Server.App.LocalizationContent.SearchValue,
-//        Filter: window.Server.App.LocalizationContent.Search,
-//        Clear: window.Server.App.LocalizationContent.ClearSearch
-//    };
-//    ej.Pager.Locale["en-US"] = {
-//        pagerInfo: window.Server.App.LocalizationContent.PageCount,
-//        firstPageTooltip: window.Server.App.LocalizationContent.FirstPage,
-//        lastPageTooltip: window.Server.App.LocalizationContent.LastPage,
-//        nextPageTooltip: window.Server.App.LocalizationContent.NextPage,
-//        previousPageTooltip: window.Server.App.LocalizationContent.PreviousPage
-//    };
-//}
+function GridLocalization() {
+    ej.Grid.Locale["en-US"] = {
+        EmptyRecord: window.TM.App.LocalizationContent.NoRecords,
+        StringMenuOptions: [{ text: window.TM.App.LocalizationContent.SearchKeyStart, value: "StartsWith" }, { text: window.TM.App.LocalizationContent.SearchKeyEnd, value: "EndsWith" }, { text: window.TM.App.LocalizationContent.SearchKeyContanins, value: "Contains" }, { text: window.TM.App.LocalizationContent.SearchKeyEqual, value: "Equal" }, { text: window.TM.App.LocalizationContent.SearchKeyNotEqual, value: "NotEqual" }],
+        FilterMenuCaption: window.TM.App.LocalizationContent.SearchValue,
+        Filter: window.TM.App.LocalizationContent.Search,
+        Clear: window.TM.App.LocalizationContent.ClearSearch
+    };
+    ej.Pager.Locale["en-US"] = {
+        pagerInfo: window.TM.App.LocalizationContent.PageCount,
+        firstPageTooltip: window.TM.App.LocalizationContent.FirstPage,
+        lastPageTooltip: window.TM.App.LocalizationContent.LastPage,
+        nextPageTooltip: window.TM.App.LocalizationContent.NextPage,
+        previousPageTooltip: window.TM.App.LocalizationContent.PreviousPage
+    };
+}
 
 function SuccessAlert(header, content, duration) {
     clearTimeout(toastTimeout);
-    window.top.$('#warning-alert').css("display", "none");
     window.top.$('#success-alert').css("display", "none");
     window.top.$("#message-header").html(header);
     window.top.$("#message-content").html(content);
@@ -900,7 +881,6 @@ function SuccessAlert(header, content, duration) {
 
 function WarningAlert(header, content, error, duration) {
     clearTimeout(toastTimeout);
-    parent.$('#success-alert').css("display", "none");
     parent.$('#warning-alert').css("display", "none");
     parent.$("#warning-alert #message-header").html(header);
     parent.$(" #warning-alert #message-content").html(content);
@@ -1087,11 +1067,11 @@ function copyToClipboard(inputId, buttonId) {
         }
     }
     setTimeout(function () {
-        $(buttonId).attr("data-original-title", window.Server.App.LocalizationContent.Copied);
+        $(buttonId).attr("data-original-title", window.TM.App.LocalizationContent.Copied);
         $(buttonId).tooltip('show');
     }, 200);
     setTimeout(function () {
-        $(buttonId).attr("data-original-title", window.Server.App.LocalizationContent.ClickToCopy);
+        $(buttonId).attr("data-original-title", window.TM.App.LocalizationContent.ClickToCopy);
         $(buttonId).tooltip();
     }, 3000);
 }
@@ -1100,11 +1080,6 @@ function copyToClipboard(inputId, buttonId) {
 function bindEj2Data(id, value) {
     document.getElementById(id).ej2_instances[0].value = value;
     document.getElementById(id).ej2_instances[0].dataBind();
-}
-
-function isValidOrigin(origin) {
-    var regexExpression = new RegExp(/^https?:\/\/(?:w{1,3}\.)?[^\s.]+(?:\.[a-z]+)*(?::\d+)?(?![^<]*(?:<\/\w+>|\/?>))/);
-    return regexExpression.test(origin);
 }
 
 function isJsonString(str) {
@@ -1131,7 +1106,7 @@ function ValidateIsolationCode(code, id) {
                 $("#update-isolation-code").attr("disabled", false);
                 $("#details-next").removeAttr("disabled");
             } else {
-                $("#isolation-code-validation").html(window.Server.App.LocalizationContent.IsolationCodeValidator);
+                $("#isolation-code-validation").html(window.TM.App.LocalizationContent.IsolationCodeValidator);
                 $(id).closest('div').addClass("e-error");
                 $("#update-isolation-code").attr("disabled", true);
                 $("#details-next").attr("disabled", true);
@@ -1148,7 +1123,7 @@ function ValidateIsolationCode(code, id) {
         $("#warning-alert").css('height', '200px')
         $("#view").addClass("view-less");
         $("#view").removeClass("view-more");
-        $("#view").html(window.Server.App.LocalizationContent.ViewLess);
+        $("#view").html(window.TM.App.LocalizationContent.ViewLess);
         clearTimeout(toastTimeout);
     });
     $(document).on("click", ".view-less", function () {
@@ -1156,14 +1131,14 @@ function ValidateIsolationCode(code, id) {
         $("#warning-alert").css('height', '84px')
         $("#view").addClass("view-more");
         $("#view").removeClass("view-less");
-        $("#view").html(window.Server.App.LocalizationContent.ViewMore);
+        $("#view").html(window.TM.App.LocalizationContent.ViewMore);
     });
 
     $('[data-toggle="tooltip"]').tooltip();
     $(document).on("click", "#copy-error-area", function (e) {
         $("#text-error-area").select();
         document.execCommand('copy');
-        $("#copy-error-area").attr("data-original-title", window.Server.App.LocalizationContent.Copied);
-        $("#copy-error-area").tooltip("hide").attr("data-original-title", window.Server.App.LocalizationContent.Copied).tooltip("fixTitle").tooltip("show");
-        setTimeout(function () { $("#copy-error-area").attr("data-original-title", window.Server.App.LocalizationContent.LinkCopy); $("#copy-error-area").tooltip(); }, 3000);
+        $("#copy-error-area").attr("data-original-title", window.TM.App.LocalizationContent.Copied);
+        $("#copy-error-area").tooltip("hide").attr("data-original-title", window.TM.App.LocalizationContent.Copied).tooltip("fixTitle").tooltip("show");
+        setTimeout(function () { $("#copy-error-area").attr("data-original-title", window.TM.App.LocalizationContent.LinkCopy); $("#copy-error-area").tooltip(); }, 3000);
     });

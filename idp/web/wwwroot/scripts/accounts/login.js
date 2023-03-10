@@ -31,10 +31,6 @@ $(document).ready(function () {
         $("#validate-auth-user").css("display", "block").find(".auth-error-text").html(authMessage);
     }
 
-    if (isAzureResetPassword.toLowerCase() === "true") {
-        $("#azure-b2c-password-reset").css("display", "block");
-    }
-
 
     $("#login-form").validate({
         errorElement: "span",
@@ -70,7 +66,7 @@ $(document).ready(function () {
                 required: window.Server.App.LocalizationContent.EmailValidator
             },
             "password": {
-                required: window.Server.App.LocalizationContent.PasswordValidator
+                required: window.Server.App.LocalizationContent.EnterPassword
             }
         }
     });
@@ -87,21 +83,14 @@ $(document).ready(function () {
 
 $(document).on("click", "#login-button-windows", function () {
     showWaitingPopup('body');
-    if (window.location.href.search("authorization") === -1)
-    {
-        var returnUrl = getParameterByName("ReturnUrl");
-    }
-    else {
-        returnUrl = WindowADCallBackUrl;
-    }
     $("#access-denied").html("<span class='su su-login-error'></span> " + window.Server.App.LocalizationContent.AccessDenied);
-    $("#access-denied, #validate-azure-user, #validate-ad-user, #validate-auth-user, #azure-b2c-password-reset").css("display", "none");
+    $("#access-denied, #validate-azure-user, #validate-ad-user, #validate-auth-user").css("display", "none");
     var redirectUrl = rootUrl + (window.location.href.search("authorization") === -1
-        ? "windowsauthentication/account/login"
-        : "windowsauthentication/account/oauthlogin?client_id=" + $("#external-authentication-client-id").val());
+        ? "/windowsauthentication/account/login"
+        : "/windowsauthentication/account/oauthlogin?client_id=" + $("#external-authentication-client-id").val());
     $.ajax({
         type: "GET",
-        url: redirectUrl + "?returnUrl=" + returnUrl,
+        url: redirectUrl,
         data: {},
         cache: false,
         contentType: "application/json; charset=utf-8",
@@ -125,12 +114,7 @@ $(document).on("click", "#login-button-windows", function () {
             },
             200: function (result) {
                 hideWaitingPopup('body');
-                if (result.status && result.data)
-                {
-                    window.location.href = mfaVerificationPageUrl;
-                }
-
-                if (result.status && result.data == "" ) {
+                if (result.status) {
                     if (window.location.href.search("authorization") === -1) {
                         window.location.href = getParameterByName("ReturnUrl");
                     } else {
@@ -170,7 +154,7 @@ $(document).on("click", "#login-button-windows", function () {
 });
 
 $(document).on("click", ".auth-login-button", function () {
-    $("#access-denied, #validate-azure-user, #validate-ad-user, #validate-auth-user, #azure-b2c-password-reset").css("display", "none");
+    $("#access-denied, #validate-azure-user, #validate-ad-user, #validate-auth-user").css("display", "none");
 });
 
 $(document).on("click change", "#login-email", function () {
@@ -222,7 +206,7 @@ function FormValidate() {
     $("#access-denied").css("display", "none");
     if ($("#password-field").css("display") === "none") {
         if ($("#login-form").valid()) {
-            $(".mail-loader-div").removeClass("email-loader");
+            $(".mail-loader-div").addClass("email-loader");
             $("#login-button").attr("disabled", "disabled");
             var userName = $("#login-email").val();
             $.ajax({
@@ -233,7 +217,7 @@ function FormValidate() {
                     if (result.Value != null && result.Value != undefined) {
                         window.location.href = result.Value;
                     } else {
-                        $(".mail-loader-div").addClass("email-loader");
+                        $(".mail-loader-div").removeClass("email-loader");
                         $("#login-button").removeAttr("disabled");
                         if (result.Status != null) {
                             if (result.DirectoryTypeName === "oauth2"

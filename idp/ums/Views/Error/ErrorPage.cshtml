@@ -27,7 +27,7 @@
                 @if (ViewBag.ErrorType == "license_expired")
                 {
                     <div class="error-text">
-                        @T["Please contact your administrator to restore access."]
+                        [[[Please contact your administrator to restore access.]]]
                     </div>
                 }
                 else
@@ -42,13 +42,13 @@
                     {
                         <span class="error-page-cursor">
                             <a class="error-to-back-text-color" href="@Url.Action("Logout", "Accounts")">
-                                @T["Try a different account"]
+                                [[[Try a different account]]]
                             </a>
                         </span>
                     }
                     else if (ViewBag.ErrorType == "http_error_404")
                     {
-                        <span class="error-page-cursor"><a class="error-to-back-text-color" href="@Url.Action("Homepage", "Home")">@T["Take me back to home page"]</a></span>
+                        <span class="error-page-cursor"><a class="error-to-back-text-color" href="@Url.Action("Homepage", "Home")">[[[Take me back to home page]]]</a></span>
                     }
                 </div>
             </div>

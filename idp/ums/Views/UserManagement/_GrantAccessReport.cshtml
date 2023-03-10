@@ -1,9 +1,9 @@
 ﻿<div id="add-tenants-report-dialog-content" class="col-xs-12 no-padding">
     <div class="col-xs-12 status-text no-padding">
-        <span class="status-display-msg">@T["Granting user access to sites"] </span>
+        <span class="status-display-msg">[[[Granting user access to sites]]] </span>
         <span class="status-description"></span>
         <div id="csv-download">
-            @Html.Raw(string.Format(T["Please download the detailed report {0}here{1}"].Value, "<a class='report-download'>", "</a>"))
+            [[[Please download the detailed report]]] <a class="report-download">[[[here]]]</a>.
         </div>
     </div>
     <div class="col-xs-12 status-table no-padding">
@@ -11,20 +11,20 @@
             <tbody>
                 <tr class="title-row">
                     <td>
-                        @T["Total"]
+                        [[[Total]]]
                     </td>
                     <td>
-                        @T["Success"]
+                        [[[Success]]]
                     </td>
                     <td>
-                        @T["Skipped"]
-                        <span tabindex="0" class="info-icon su su-info" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="@T["Users who already have access to the selected site(s) were skipped."]"></span>
+                        [[[Skipped]]]
+                        <span tabindex="0" class="info-icon su su-info" role="button" data-toggle="popover" data-placement="top" data-trigger="focus" data-content="[[[Users who already have access to the selected site(s) were skipped.]]]"></span>
                     </td>
                     <td>
-                        @T["Failed"]
+                        [[[Failed]]]
                     </td>
                     <td>
-                        @T["Status"]
+                        [[[Status]]]
                     </td>
                 </tr>
                 <tr class="content-row">

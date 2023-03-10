@@ -7,7 +7,7 @@
 Param(	
 	[string]$ClientLibraries,
 	[string]$clientlibraryextractpath = "Libraries",
-	[string]$pluginpath = "../../bi/dataservice/Plugins/connections"
+	[string]$pluginpath = "../bi/dataservice/Plugins/connections"
 	
 )
 
@@ -25,6 +25,7 @@ Copy-Item -Path $clientlibraryextractpath/MongoDB.Bson.dll -Destination $destina
 Copy-Item -Path $clientlibraryextractpath/MongoDB.Driver.Core.dll -Destination $destination
 Copy-Item -Path $clientlibraryextractpath/MongoDB.Driver.dll -Destination $destination
 Copy-Item -Path $clientlibraryextractpath/MongoDB.Driver.Legacy.dll -Destination $destination
+Copy-Item -Path $clientlibraryextractpath/MongoDB.Libmongocrypt.dll -Destination $destination
 echo "mongodb libraries are installed"
 }
 "mysql"{
@@ -46,6 +47,11 @@ echo "snowflake libraries are installed"
 $destination="$pluginpath/oracle"
 Copy-Item -Path $clientlibraryextractpath/Oracle.ManagedDataAccess.dll -Destination $destination
 echo "oracle libraries are installed"
+}
+"npgsql"{
+$destination="$pluginpath/postgresql"
+Copy-Item -Path $clientlibraryextractpath/Npgsql.dll -Destination $destination
+echo "postgresql libraries are installed"
 }
 "google"{
 $destination="$pluginpath/google"

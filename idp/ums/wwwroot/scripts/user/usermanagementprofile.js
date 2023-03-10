@@ -22,43 +22,6 @@ $(document).ready(function () {
     //    showHeader: false,
     //    showRoundedCorner: true
     //});
-
-    if ($(".security-setting-container").is(":visible")) {
-        if (location.href.match(/2fa/)) {
-            $("#2fa").tab("show");
-        }
-        else {
-            $("#change-password").tab("show");
-            var query = (window.location.search).toString();
-            if (!query.includes("&view=change-password")) {
-                history.pushState(null, '', query + '&view=change-password');
-            }
-        }
-    }
-
-    $("a[data-toggle='tab']").on('click', function (e) {
-        if ($(this).attr("id") == "change-password") {
-            var query = (window.location.search).toString();
-            if (query.includes("&view=2fa")) {
-                query = query.replace("&view=2fa", "&view=change-password");
-                history.pushState(null, '', query);
-            }
-            else if (!query.includes("&view=change-password")) {
-                history.pushState(null, '', query + '&view=change-password');
-            }
-        }
-        else if ($(this).attr("id") == "2fa") {
-            var query = (window.location.search).toString();
-            if (query.includes("&view=change-password")) {
-                query = query.replace("&view=change-password", "&view=2fa");
-                history.pushState(null, '', query);
-            }
-            else if (!query.includes("&view=2fa")) {
-                history.pushState(null, '', query + '&view=2fa');
-            }
-        }
-        $(".success-message, .error-message").hide();
-    });
     
     $.validator.addMethod("isValidEmail", function (value, element) {
         if (value.trim() == "") {
@@ -66,27 +29,27 @@ $(document).ready(function () {
         } else {
             return IsEmail(value);
         }
-    }, window.Server.App.LocalizationContent.InvalidEmailAddress);
+    }, window.TM.App.LocalizationContent.InvalidEmailAddress);
 
     $.validator.addMethod("isRequired", function (value, element) {
         return !isEmptyOrWhitespace(value);
-    }, window.Server.App.LocalizationContent.EnterName);
+    }, window.TM.App.LocalizationContent.EnterName);
 
     $.validator.addMethod("isValidName", function (value, element) {
         return IsValidName("name", value);
-    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("isValidUsername", function (value, element) {
         return IsValidUsername(value);
-    }, window.Server.App.LocalizationContent.InvalidUsername);
+    }, window.TM.App.LocalizationContent.InvalidUsername);
 
     $.validator.addMethod("isValidUsernameLength", function (value, element) {
         return IsValidUsernameLength(value);
-    }, window.Server.App.LocalizationContent.UsernameExceeds);
+    }, window.TM.App.LocalizationContent.UsernameExceeds);
 
     $.validator.addMethod("isValidPhoneNumber", function (value, element) {
         return IsValidContactNumber(value);
-    }, window.Server.App.LocalizationContent.PhoneNumberValidator);
+    }, window.TM.App.LocalizationContent.PhoneNumberValidator);
 
     addPlacehoder("#user-phonenumber");
 
@@ -146,7 +109,7 @@ $(document).ready(function () {
         },
         messages: {
             "user-firstname": {
-                isRequired: window.Server.App.LocalizationContent.FirstNameValidator
+                isRequired: window.TM.App.LocalizationContent.FirstNameValidator
             }
         }
 
@@ -159,7 +122,7 @@ $(document).ready(function () {
         }
         else if ($("#confirm-password").val() != '') {
             $("#confirm-password").closest('div').addClass("has-error");
-            $("#confirm-password").closest('div').next("div").find("span").html(window.Server.App.LocalizationContent.PasswordMismatch).css("display", "block");
+            $("#confirm-password").closest('div').next("div").find("span").html(window.TM.App.LocalizationContent.PasswordMismatch).css("display", "block");
         }
         passwordPolicyPopover("#new-password", $("#new-password").val());
     });
@@ -202,11 +165,11 @@ $(document).ready(function () {
         },
         messages: {
             "new-password": {
-                required: window.Server.App.LocalizationContent.NewPasswordValidator,
+                required: window.TM.App.LocalizationContent.NewPasswordValidator,
             },
             "confirm-password": {
-                required: window.Server.App.LocalizationContent.ConfirmPasswordValidator,
-                equalTo: window.Server.App.LocalizationContent.PasswordMismatch
+                required: window.TM.App.LocalizationContent.ConfirmPasswordValidator,
+                equalTo: window.TM.App.LocalizationContent.PasswordMismatch
             }
         }
     });
@@ -236,7 +199,7 @@ $(document).ready(function () {
                     if (data.Data.result == "success" && data.Data.type == 1) {
                         $("#" + id).hide();
                         $("<input>", { class: "primary-button password-save-button", type: "button", id: "resend-button-click", value: "Resend Activation Code", title: "" }).insertAfter('#' + id);
-                        CheckMailSettingsAndNotify(window.Server.App.LocalizationContent.ActivationCodeGenerated + " <a href='" + emailSettingsUrl + "'>" + window.Server.App.LocalizationContent.ConfigureEmailSettings + "</a>", $("#alert-message"), window.Server.App.LocalizationContent.ActivationCodeSent);
+                        CheckMailSettingsAndNotify(window.TM.App.LocalizationContent.ActivationCodeGenerated + " <a href='" + emailSettingsUrl + "'>" + window.TM.App.LocalizationContent.ConfigureEmailSettings + "</a>", $("#alert-message"), window.TM.App.LocalizationContent.ActivationCodeSent);
                     }
                     else if (data.Data.result == "success") {
                         $("#inactive-user").hide();
@@ -244,7 +207,7 @@ $(document).ready(function () {
                         $("#user-status").val("true");
                         $("#status-user").val("Active");
                         $("#" + id).attr("disabled", true);
-                        ValidateMailSettingsAndShowToast("", $("#alert-message"), window.Server.App.LocalizationContent.UserAccountHasActivated);
+                        ValidateMailSettingsAndShowToast("", $("#alert-message"), window.TM.App.LocalizationContent.UserAccountHasActivated);
                     }
                 }
             }
@@ -261,7 +224,7 @@ $(document).ready(function () {
                 $("#resend-button-click").attr("disabled", false);
                 if ($.type(data) == "object") {
                     if (data.Data.result == "success") {
-                        CheckMailSettingsAndNotify(window.Server.App.LocalizationContent.ActivationCodeGenerated + " <a href='" + emailSettingsUrl + "'>" + window.Server.App.LocalizationContent.ConfigureEmailSettings + "</a>", $("#alert-message"), window.Server.App.LocalizationContent.ActivationCodeResent);
+                        CheckMailSettingsAndNotify(window.TM.App.LocalizationContent.ActivationCodeGenerated + " <a href='" + emailSettingsUrl + "'>" + window.TM.App.LocalizationContent.ConfigureEmailSettings + "</a>", $("#alert-message"), window.TM.App.LocalizationContent.ActivationCodeResent);
                         $("#edit").addClass("adjustment");
                     }
                 }
@@ -300,7 +263,7 @@ $(document).ready(function () {
     //            dataType: "json",
     //            success: function (result) {
     //                var isLoggedUser = $("#logged-user").html().toLowerCase();
-    //                parent.messageBox("su-image", window.Server.App.LocalizationContent.ChangeProfilepicture, window.Server.App.LocalizationContent.ProfilePictureSaved, "success", function () {
+    //                parent.messageBox("su-image", window.TM.App.LocalizationContent.ChangeProfilepicture, window.TM.App.LocalizationContent.ProfilePictureSaved, "success", function () {
     //                    parent.onCloseMessageBox();
     //                });
     //                $("#image-path").val("browse image path");
@@ -313,7 +276,7 @@ $(document).ready(function () {
     //                ShowWaitingProgress("#avatar-upload-box", "hide");
     //            },
     //            error: function (result) {
-    //                parent.messageBox("su-open", window.Server.App.LocalizationContent.ChangeProfilepicture, window.Server.App.LocalizationContent.ProfilePictureSaveFailed, "error", function () {
+    //                parent.messageBox("su-open", window.TM.App.LocalizationContent.ChangeProfilepicture, window.TM.App.LocalizationContent.ProfilePictureSaveFailed, "error", function () {
     //                    parent.onCloseMessageBox();
     //                });
     //            }
@@ -322,13 +285,13 @@ $(document).ready(function () {
     //});
 
     $(document).on("click", "#avatar-delete-click", function () {
-        messageBox("su-delete", window.Server.App.LocalizationContent.DeleteProfilePicture, window.Server.App.LocalizationContent.DeleteProfilePictureConfirm + "?", "error", function () {
+        messageBox("su-delete", window.TM.App.LocalizationContent.DeleteProfilePicture, window.TM.App.LocalizationContent.DeleteProfilePictureConfirm, "error", function () {
             deleteUserAvatar();
         });
     });
 
     $("#avatar-button-click").click(function () {
-        $("#image-path").val(window.Server.App.LocalizationContent.BrowseImagePath).removeClass("ValidationErrorImage");
+        $("#image-path").val(window.TM.App.LocalizationContent.BrowseImagePath).removeClass("ValidationErrorImage");
         $("#image-path").closest("div").removeClass("has-error");
         $("#avatar-upload-box").ejDialog("open");
         $("#cancel-avatar-popup").click(function () {
@@ -340,7 +303,7 @@ $(document).ready(function () {
             $("#avatar-upload-box").ejDialog("close");
         });
 
-        $('.e-uploadinput').attr({ title: window.Server.App.LocalizationContent.NoFileSelected, accept: ".png, .jpg ,.jpeg" });
+        $('.e-uploadinput').attr({ title: window.TM.App.LocalizationContent.NoFileSelected, accept: ".png, .jpg ,.jpeg" });
 
         if (browser.name.toLowerCase() == "msie" || browser.name.toLowerCase() == "webkit") {
             $(".e-selectpart").addClass("upload-box");
@@ -371,9 +334,9 @@ $(document).ready(function () {
     //    },
     //    error: function (e) {
     //        if (extension != ".png" && extension != ".jpg" && extension != ".jpeg") {
-    //            $("#image-path").val(window.Server.App.LocalizationContent.InValidFileFormat).addClass("ValidationErrorImage");
+    //            $("#image-path").val(window.TM.App.LocalizationContent.InValidFileFormat).addClass("ValidationErrorImage");
     //            $("#image-path").closest("div").addClass("has-error");
-    //            $(".e-uploadinput").val("").attr("title", window.Server.App.LocalizationContent.NoFileSelected);
+    //            $(".e-uploadinput").val("").attr("title", window.TM.App.LocalizationContent.NoFileSelected);
     //        }
     //    },
     //    complete: function fileselect(e) {
@@ -502,15 +465,14 @@ $(document).ready(function () {
     createWaitingPopup('make-admin-confirmation');
     createWaitingPopup('remove-admin-confirmation');
     createWaitingPopup('singleuser-delete-confirmation');
-    createWaitingPopup('content-area');
 
     var makeAdminDialog = new ej.popups.Dialog({
-        header: window.Server.App.LocalizationContent.AssignRole,
+        header: window.TM.App.LocalizationContent.AssignRole,
         content: document.getElementById("make-admin-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: MakeSingleUserAdmin, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onMakeAdminDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
+            { click: MakeSingleUserAdmin, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onMakeAdminDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -521,12 +483,12 @@ $(document).ready(function () {
     makeAdminDialog.appendTo("#make-admin-confirmation");
 
     var removeAdminDialog = new ej.popups.Dialog({
-        header: window.Server.App.LocalizationContent.RemoveRole,
+        header: window.TM.App.LocalizationContent.RemoveRole,
         content: document.getElementById("remove-admin-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: removeAdmin, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onRemoveAdminDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
+            { click: removeAdmin, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onRemoveAdminDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -537,12 +499,12 @@ $(document).ready(function () {
     removeAdminDialog.appendTo("#remove-admin-confirmation");
 
     var singleUserDeleteDialog = new ej.popups.Dialog({
-        header: window.Server.App.LocalizationContent.DeleteUser,
+        header: window.TM.App.LocalizationContent.DeleteUser,
         content: document.getElementById("singleuser-delete-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: deleteSingleUser, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onSingleDeleteDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
+            { click: deleteSingleUser, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onSingleDeleteDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -551,56 +513,6 @@ $(document).ready(function () {
         visible: false
     });
     singleUserDeleteDialog.appendTo("#singleuser-delete-confirmation");
-
-    var recoveryCodeDialog = new ej.popups.Dialog({
-        header: window.Server.App.LocalizationContent.RegenerateRecoveryCode,
-        content: document.getElementById("recovery-code-regeneration-confirmation-dialog-content"),
-        showCloseIcon: true,
-        buttons: [
-            { click: regenerateRecoveryCode, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onRecoveryCodeDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
-        ],
-        width: "472px",
-        height: "auto",
-        isModal: true,
-        animationSettings: { effect: 'Zoom' },
-        visible: false
-    });
-    recoveryCodeDialog.appendTo("#recovery-code-regeneration-confirmation");
-
-    var disableMfaDialog = new ej.popups.Dialog({
-        header: window.Server.App.LocalizationContent.DisableMfa,
-        content: document.getElementById("disable-mfa-confirmation-dialog-content"),
-        showCloseIcon: true,
-        buttons: [
-            { click: disableMfa, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onDisableMfaDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
-        ],
-        width: "472px",
-        height: "auto",
-        isModal: true,
-        visible: false,
-        animationSettings: { effect: 'Zoom' },
-        close: onDisableMfaDialogClose
-    });
-    disableMfaDialog.appendTo("#disable-mfa-confirmation");
-
-
-    var showRecoveryCodeDialog = new ej.popups.Dialog({
-        header: window.Server.App.LocalizationContent.RecoveryCode,
-        content: document.getElementById("recovery-code-box-content"),
-        showCloseIcon: true,
-        buttons: [
-            { click: onShowRecoveryCodeDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.CloseButton } }
-        ],
-        width: "424px",
-        height: "auto",
-        isModal: true,
-        visible: false,
-        animationSettings: { effect: 'Zoom' },
-        close: onShowRecoveryCodeDialogClose
-    });
-    showRecoveryCodeDialog.appendTo("#recovery-code-box");
 });
 
 function successMessage() {
@@ -617,7 +529,7 @@ function onUserChangePasswordClick() {
     isValid = $('.change-password-form').valid();
 
     if (isValid && $("#new-password").val() != $("#confirm-password").val()) {
-        $("#confirm-password-validate").html(window.Server.App.LocalizationContent.PasswordsMismatch);
+        $("#confirm-password-validate").html(window.TM.App.LocalizationContent.PasswordsMismatch);
         $("#confirm-password-validate").closest("div").prev("div").addClass("has-error");
         isValid = false;
     }
@@ -634,10 +546,10 @@ function onUserChangePasswordClick() {
             $("#password_policy_rules").remove();
             $("#confirm-password-section").removeAttr("style");
             if (!result.Data.status) {
-                WarningAlert(window.Server.App.LocalizationContent.UpdatePassword, window.Server.App.LocalizationContent.PasswordFailure, result.Data.Message, 7000);
+                WarningAlert(window.TM.App.LocalizationContent.UpdatePassword, window.TM.App.LocalizationContent.PasswordFailure, result.Data.Message, 7000);
             }
             else {
-                SuccessAlert(window.Server.App.LocalizationContent.UpdatePassword, window.Server.App.LocalizationContent.PasswordSuccess, 7000);
+                SuccessAlert(window.TM.App.LocalizationContent.UpdatePassword, window.TM.App.LocalizationContent.PasswordSuccess, 7000);
             }
         }
     );
@@ -875,103 +787,3 @@ function deleteSingleUser() {
 function onSingleDeleteDialogClose() {
     document.getElementById("singleuser-delete-confirmation").ej2_instances[0].hide();
 }
-
-$(document).on("click", "#mfa-disable-button", function () {
-    onDisableMfaDialogOpen();
-});
-
-$(document).on("click", "#generate-recovery-code", function () {
-    onRecoveryCodeDialogOpen();
-});
-
-function onDisableMfaDialogOpen() {
-    $("#disable-mfa-confirmation").find("button.e-primary").addClass("critical-action-button");
-    document.getElementById("disable-mfa-confirmation").ej2_instances[0].show();
-}
-
-function onDisableMfaDialogClose() {
-    document.getElementById("disable-mfa-confirmation").ej2_instances[0].hide();
-    window.location.reload();
-}
-
-function onRecoveryCodeDialogOpen() {
-    document.getElementById("recovery-code-regeneration-confirmation").ej2_instances[0].show();
-}
-
-function onRecoveryCodeDialogClose() {
-    document.getElementById("recovery-code-regeneration-confirmation").ej2_instances[0].hide();
-}
-
-
-
-function disableMfa() {
-    showWaitingPopup('content-area');
-    var userId = document.getElementById("user-id").value;
-    $.ajax({
-        type: "POST",
-        url: disableMfaUrl,
-        data: { "userId": userId },
-        async: false,
-        success: function (result) {
-            hideWaitingPopup('content-area');
-            window.location.reload();
-        }
-    });
-}
-
-function onShowRecoveryCodeDialogOpen() {
-    document.getElementById("recovery-code-box").ej2_instances[0].show();
-}
-
-function onShowRecoveryCodeDialogClose() {
-    document.getElementById("recovery-code-box").ej2_instances[0].hide();
-    window.location.reload();
-}
-
-function regenerateRecoveryCode() {
-    showWaitingPopup('content-area');
-    var userId = document.getElementById("user-id").value;
-    $.ajax({
-        type: "POST",
-        url: regenerateRecoveryCodeUrl,
-        data: { "userId": userId },
-        success: function (result) {
-            if (result.Data.status && result.Data.recovery != "") {
-                onShowRecoveryCodeDialogOpen();
-                $(".mfa-success-message").css("display", "none");
-                let list = document.getElementById("table-recovery");
-                var recoveryCode = result.Data.recovery;
-                var recovery = recoveryCode.split(';');
-                document.getElementById("copy-recovery").value = recovery;
-                for (let i = 0; i < recovery.length; i += 2) {
-                    let tr = list.insertRow();
-                    for (let j = 0; j < 2; j++) {
-                        var recoverList = recovery[i + j];
-                        let td = tr.insertCell();
-                        td.appendChild(document.createTextNode(`${recoverList}`));
-                    }
-                }
-
-                hideWaitingPopup('content-area');
-            }
-            else {
-                hideWaitingPopup('content-area');
-            }
-        }
-    });
-}
-
-function copyToClip() {
-    value = document.getElementById("copy-recovery").value;
-    navigator.clipboard.writeText(value)
-    setTimeout(function () {
-        $("#recovery-code-copy").attr("data-original-title", window.Server.App.LocalizationContent.Copied);
-        $("#recovery-code-copy").tooltip('show');
-    }, 200);
-    setTimeout(function () {
-        $("#recovery-code-copy").attr("data-original-title", window.Server.App.LocalizationContent.ClickToCopy);
-        $("#recovery-code-copy").tooltip();
-    }, 3000);
-}
-
-
