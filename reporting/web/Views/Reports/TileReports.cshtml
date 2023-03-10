@@ -420,6 +420,13 @@
                                                             <span>[[[Info]]]</span>
                                                         </span>
                                                     </li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li>
+                                                        <span title="" class="ProcessOption option-click" ng-click="ProcessOption()">
+                                                            <i class="su su-cache_3"></i>
+                                                            <span>[[[Processing Options]]]</span>
+                                                        </span>
+                                                    </li>
                                                     <li ng-if="(dashboardItem.CanMove || dashboardItem.CanCopy || dashboardItem.CanClone) && !isTablet && !dashboardItem.IsLocked" role="separator" class="divider"></li>
                                                     <li ng-if="dashboardItem.CanMove && !isTablet && !dashboardItem.IsLocked">
                                                         <span title="" class="moveItem option-click" data-action="Move" ng-click="moveDashboard()">

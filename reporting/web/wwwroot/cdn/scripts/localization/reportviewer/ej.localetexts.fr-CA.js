@@ -98,24 +98,7 @@ ej.ReportViewer.Locale["fr-CA"] = {
         exportsetup: {
             headerText: 'Exporter la configuration',
             contentText: 'Choisissez l’option d’installation d’exportation pour définir la qualité de l’image, enregistrer le type de mot et excel document.'
-        },
-        performance: {
-            headerText: 'Indicateurs de performance',
-            contentText: 'Les mesures de performances des rapports sont affichées.',
         }
-    },
-    PerformanceMetricsDialog: {
-        title: 'Rapporter les mesures de performance',
-        reportProcessing: 'Délai de traitement du rapport',
-        datasetProcessing: "Temps de traitement de l'ensemble de données",
-        parse: "Temps d'analyse",
-        evaluate: 'Évaluer le temps',
-        render: 'Temps de rendu',
-        layout: 'Temps de mise en page',
-        datasetDetails: {
-            rows: 'Nombre de lignes',
-            dataRetrival: 'Temps de récupération des données'
-        },
     },
     pagesetupDialog: {
         close: "Fermer",
@@ -315,6 +298,5 @@ ej.ReportViewer.Locale["fr-CA"] = {
     },
     selectAll: "Tout s閘ectionner",
     viewButton: "Voir le rapport",
-    parameterProcessingMessage: 'Chargement des paramètres dépendants ...',
-    parameterBlockTitle: 'Paramètres du rapport'
+    parameterProcessingMessage: 'Chargement des paramètres dépendants ...'
 };

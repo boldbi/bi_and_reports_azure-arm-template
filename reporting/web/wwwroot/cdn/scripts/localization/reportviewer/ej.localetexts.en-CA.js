@@ -98,24 +98,7 @@ ej.ReportViewer.Locale["en-CA"] = {
         exportsetup: {
             headerText: 'Export Setup',
             contentText: 'Choose export setup option to set the image quality, save type of word, and excel document.'
-        },
-        performance: {
-            headerText: 'Performance Metrics',
-            contentText: 'Report performance metrics are shown.',
         }
-    },
-    PerformanceMetricsDialog: {
-        title: 'Report Performance Metrics',
-        reportProcessing: 'Report Processing Time',
-        datasetProcessing: 'DataSet Processing Time',
-        parse: 'Parsing Time',
-        evaluate: 'Evaluate Time',
-        render: 'Rendering Time',
-        layout: 'Layout Time',
-        datasetDetails: {
-            rows: 'Rows Count',
-            dataRetrival: 'Data Retrieval Time'
-        },
     },
     pagesetupDialog: {
         close: 'Close',
@@ -317,6 +300,5 @@ ej.ReportViewer.Locale["en-CA"] = {
     },
     selectAll: 'Select All',
     viewButton: 'View Report',
-    parameterProcessingMessage: 'Loading dependent parameters...',
-    parameterBlockTitle: 'Report Parameters'
+    parameterProcessingMessage: 'Loading dependent parameters...'
 };

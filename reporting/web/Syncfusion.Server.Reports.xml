@@ -526,14 +526,6 @@
             </summary>
             <param name="reportMappingInfos">ReportMappingInfos which is saved as an report reference in the report</param>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Models.ItemModel.GetMatchingResourcesList(System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ItemDetail},System.Collections.Generic.List{System.String})">
-            <summary>
-            This method will return the matching shared datasources and datasets while uploading the reports.
-            </summary>
-            <param name="availableResourcesForUser"></param>
-            <param name="uploadedResourcesList"></param>
-            <returns></returns>
-        </member>
         <member name="M:Syncfusion.Server.Reports.Models.ItemModel.AddRdlReport(Syncfusion.Server.Base.DataClasses.ItemDetail,System.String,System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.DataSourceMappingInfo},System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.DataSetMappingInfo},System.Int32)">
             <summary>
             This method will add RDL report with shared data sources and map the appropriate data sources with selected data sources
