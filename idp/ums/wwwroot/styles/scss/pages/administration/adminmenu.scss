@@ -4,16 +4,8 @@
 #admin-menu-nav-bar {
     @include navmenu();
 
-    #license-notification-indicator {
-        background: var(--red);
-        border: solid 1px var(--white);
-        border-radius: 10px;
-        display: block;
-        left: 24px;
-        line-height: 5px;
-        padding: 3px;
-        position: absolute;
-        top: 9px;
+    #license-icon {
+        padding-right: 6px;
     }
 }
 

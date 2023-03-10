@@ -23,7 +23,7 @@ $(function () {
                 getLinkInputObj.removeAttr("disabled");
                 getLinkCopyLinkobj.removeAttr("disabled");
                 getLinkCopyLinkobj.css("cursor", "pointer");
-                getLinkCopyLinkobj.tooltip("enable").attr("data-original-title", window.Server.App.LocalizationContent.LinkCopy$).tooltip("fixTitle").tooltip("enable");
+                getLinkCopyLinkobj.tooltip("enable").attr("data-original-title", window.TM.App.LocalizationContent.LinkCopy$).tooltip("fixTitle").tooltip("enable");
             }
             var isEmbed = "true";
             $(".download-template").show();
@@ -34,7 +34,7 @@ $(function () {
             $("#get-embed-code").attr("disabled", "disabled");
             getLinkInputObj.attr("disabled", "disabled");
             getLinkCopyLinkobj.attr("disabled", "disabled");
-            getLinkCopyLinkobj.tooltip("disable").attr("data-original-title", window.Server.App.LocalizationContent.LinkCopy$).tooltip("fixTitle").tooltip("disable");
+            getLinkCopyLinkobj.tooltip("disable").attr("data-original-title", window.TM.App.LocalizationContent.LinkCopy$).tooltip("fixTitle").tooltip("disable");
             getLinkCopyLinkobj.css("cursor", "default");
             $(".download-template").hide();
             $("#trigger-file").attr("disabled", "disabled");
@@ -43,7 +43,7 @@ $(function () {
             var isEmbed = "false";
         }
         $("#restrict-embed-enabled").attr("disabled", "disabled");
-        $(".embed-loader").removeClass("embed-loading");
+        $(".embed-loader").addClass("embed-loading");
         $.ajax({
             type: "POST",
             url: updateSystemSettingsValueUrl,
@@ -51,7 +51,7 @@ $(function () {
             success: function (data) {
                 if (data.status) {
                     $("#restrict-embed-enabled").removeAttr("disabled");
-                    $(".embed-loader").addClass("embed-loading");
+                    $(".embed-loader").removeClass("embed-loading");
                     return;
                 } else {
                     $("#restrict-embed-enabled").removeAttr("disabled");
@@ -61,7 +61,7 @@ $(function () {
                     else {
                         $("#restrict-embed-enabled").attr("checked", true);
                     }
-                    $(".embed-loader").addClass("embed-loading");
+                    $(".embed-loader").removeClass("embed-loading");
                 }
             }
         });
@@ -69,7 +69,7 @@ $(function () {
 
     getLinkCopyLinkobj.on("click", function (e) {
         if (!getLinkInputObj.is(":disabled")) {
-            getLinkCopyLinkobj.tooltip("hide").attr("data-original-title", window.Server.App.LocalizationContent.LinkCopy$).tooltip("fixTitle").tooltip("show");
+            getLinkCopyLinkobj.tooltip("hide").attr("data-original-title", window.TM.App.LocalizationContent.LinkCopy$).tooltip("fixTitle").tooltip("show");
             getLinkInputObj.select();
             if (/Safari/.test(navigator.userAgent) && /Apple Computer/.test(navigator.vendor)) {
                 getLinkCopyLinkobj.removeClass("su su-copy");
@@ -77,9 +77,9 @@ $(function () {
             }
             else {
                 document.execCommand('copy');
-                getLinkCopyLinkobj.attr("data-original-title", window.Server.App.LocalizationContent.Copied);
-                getLinkCopyLinkobj.tooltip("hide").attr("data-original-title", window.Server.App.LocalizationContent.Copied).tooltip("fixTitle").tooltip("show");
-                setTimeout(function () { getLinkCopyLinkobj.attr("data-original-title", window.Server.App.LocalizationContent.LinkCopy); getLinkCopyLinkobj.tooltip(); }, 3000);
+                getLinkCopyLinkobj.attr("data-original-title", window.TM.App.LocalizationContent.Copied);
+                getLinkCopyLinkobj.tooltip("hide").attr("data-original-title", window.TM.App.LocalizationContent.Copied).tooltip("fixTitle").tooltip("show");
+                setTimeout(function () { getLinkCopyLinkobj.attr("data-original-title", window.TM.App.LocalizationContent.LinkCopy); getLinkCopyLinkobj.tooltip(); }, 3000);
             }
         }
     });
@@ -94,12 +94,12 @@ $(function () {
 });
 
 function getEmbedSecret() {
-    if ($("#get-embed-code").html().trim() == window.Server.App.LocalizationContent.ResetHeader) {
+    if ($("#get-embed-code").html().trim() == window.TM.App.LocalizationContent.ResetHeader) {
         $(".message-content").addClass("messagebox-align");
         if (!isChrome) {
             $(".message-content").css("vertical-align", "initial");
         }
-        messageBox("su su-embed", window.Server.App.LocalizationContent.ResetHeader, window.Server.App.LocalizationContent.ResetConfirmationMessage, "error", resetEmbedSecret);
+        messageBox("su su-embed", window.TM.App.LocalizationContent.ResetHeader, window.TM.App.LocalizationContent.ResetConfirmationMessage, "error", resetEmbedSecret);
     }
     else {
         $.ajax({
@@ -108,7 +108,7 @@ function getEmbedSecret() {
             success: function (data) {
                 if (data.status) {
                     secretCodeChange(data);
-                    $("#get-embed-code").html(window.Server.App.LocalizationContent.ResetHeader);
+                    $("#get-embed-code").html(window.TM.App.LocalizationContent.ResetHeader);
                 }
             }
         });
@@ -124,10 +124,10 @@ function resetEmbedSecret() {
         success: function (data) {
             if (data.status) {
                 secretCodeChange(data);
-                SuccessAlert(window.Server.App.LocalizationContent.EmbedSettings, window.Server.App.LocalizationContent.ResetSecretSuccessAlert, 7000);
+                SuccessAlert(window.TM.App.LocalizationContent.EmbedSettings, window.TM.App.LocalizationContent.ResetSecretSuccessAlert, 7000);
             }
             else {
-                WarningAlert(window.Server.App.LocalizationContent.EmbedSettings, window.Server.App.LocalizationContent.ResetSecretfailureAlert, data.Message, 7000)
+                WarningAlert(window.TM.App.LocalizationContent.EmbedSettings, window.TM.App.LocalizationContent.ResetSecretfailureAlert, data.Message, 7000)
             }
             hideWaitingPopup('body');
         }
@@ -135,7 +135,7 @@ function resetEmbedSecret() {
 }
 
 function secretCodeChange(data) {
-    $("#secret-code-copy").tooltip("hide").attr("data-original-title", window.Server.App.LocalizationContent.LinkCopy$).tooltip("fixTitle");
+    $("#secret-code-copy").tooltip("hide").attr("data-original-title", window.TM.App.LocalizationContent.LinkCopy$).tooltip("fixTitle");
     $("#secret-code").removeAttr("disabled");
     $("#secret-code-copy").removeAttr("disabled");
     $("#secret-code").val(data.resetEmbedSecret);
@@ -153,7 +153,7 @@ $(document).on("change", "#csfile", function (e) {
     var value = $(this).val();
     if ($(this).val().substring($(this).val().lastIndexOf('.') + 1) != "json") {
         $("#cs-upload").attr("disabled", true);
-        $("#filename").val(window.Server.App.LocalizationContent.JsonFileValidator);
+        $("#filename").val(window.TM.App.LocalizationContent.JsonFileValidator);
         $("#filename,#trigger-file").addClass("validation-message");
         $(".upload-box").addClass("e-error");
     } else {

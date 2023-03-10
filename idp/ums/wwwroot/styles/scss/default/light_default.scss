@@ -74,12 +74,11 @@ $input-box-border: #cccccc;
     --grey-white: #{$grey-white};
     --input-box-border: #{$input-box-border};
     --place-holder: #{$place-holder};
-    --section-backgroud: #{$surface};
+    --section-backgroud:#{$surface};
     // Warning colors
     --warning-900: #{$warning-900};
     --warning-800: #{$warning-800};
     --warning-700: #{$warning-700};
-    --red-900: #{$red-900};
     ////primary branding color
     --primary-branding-bg-color: var(--primary-branding-color);
     --primary-branding-border-common-color: var(--primary-branding-border-color);
@@ -120,14 +119,6 @@ $input-box-border: #cccccc;
     --warning-bg-normal-color: var(--warning-900);
     --warning-border-normal-color: var(--warning-800);
     --warning-text-color: var(--warning-700);
-    --error-text-color: var(--warning-700);
-    --error-bg-color: var(--red-900);
-    //Date Range Picker
-    --date-range-icon-color: var(--grey-700);
-    --date-range-popup-text-color: var(--primary-text-color);
-    --date-range-popup-date-hover-bg-color: var(--grey-200);
-    --date-range-popup-list-bg-color: var(--grey-200);
-    --date-range-bg-normal-color: var(--background);
     //Toast
     --warning-icon-color: #{lighten(adjust-hue($warning, -14), 12.75)};
     --warning-toast-border: #{lighten(desaturate(adjust-hue($alert, 4), 1.07), 3.92)};
@@ -160,7 +151,7 @@ $input-box-border: #cccccc;
     --link-button-border-hover-color: var(--link-btn-border-hover-color);
     --link-button-text-normal-color: var(--link-btn-text-normal-color);
     --link-button-text-hover-color: var(--link-btn-text-hover-color);
-    //navigation
+    //navinagtion
     --nav-menu-bg-color: var(--nav-menu-bg-normal-color);
     --nav-menu-hover-color: var(--nav-menu-bg-hover-color);
     --nav-menu-active-color: var(--nav-menu-bg-active-color);

@@ -5,12 +5,13 @@
   outline: none !important; }
 
 body #content-area {
-  margin-top: 0 !important; }
+  margin-top: 0px !important; }
+
 body #base-footer-div {
   float: left;
   font-size: 12px;
   font-weight: 600;
-  padding: 0 27px 0 24px;
+  padding: 0px 27px 0px 24px;
   width: 100%; }
   body #base-footer-div footer .layout-footer {
     padding: 0px; }
@@ -59,6 +60,7 @@ body.layout-accounts #base-footer-div {
     font-size: 12px; }
   body #base-footer-div footer #enablefooter {
     font-size: 12px; } }
+
 @media screen and (max-width: 1040px) {
   #base-footer-div {
     padding: 0px !important; }

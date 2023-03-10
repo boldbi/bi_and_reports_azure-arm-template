@@ -32,7 +32,6 @@
   --grey-000: #181E2B;
   --grey-black: #000000;
   --grey-white: #ffffff;
-  --grey-300-40: #4c545f66;
   /*Primary variants*/
   --primary-900: #1E3A8A;
   --primary-800: #1E40AF;
@@ -75,13 +74,6 @@
   --warning-bg-normal-color: var(--warning-700-25);
   --warning-border-normal-color: var(--warning-700-28);
   --warning-text-color: var(--warning-text);
-  --error-text-color: #F25050;
-  --error-bg-color: #f250500f;
-  --date-range-icon-color: var(--grey-white);
-  --date-range-popup-text-color: var(--primary-text-color);
-  --date-range-popup-date-hover-bg-color: var(--grey-200);
-  --date-range-popup-list-bg-color: var(--grey-200);
-  --date-range-bg-normal-color: var(--background);
   --warning-icon-color: #ffad42;
   --warning-toast-border: #f26d64;
   --success-toast-border: #2ca86a;

@@ -1167,29 +1167,6 @@
                 }
             }
         }
-
-        .auth-page-nav-bar {
-            background: $background;
-
-            .nav {
-                padding-left: 24px;
-
-                > li {
-                    > a {
-                        position: relative;
-                        display: block;
-                        padding: 0px 12px 10px 12px;
-                        line-height: 14px;
-                    }
-                }
-
-                .active {
-                    a {
-                        padding-bottom: 8px;
-                    }
-                }
-            }
-        }
     }
 
     #base-footer-div {

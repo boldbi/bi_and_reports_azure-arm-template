@@ -52,8 +52,7 @@ $logo-disabled-color:$grey-400;
 $warning-bg-normal-color: var(--warning-bg-normal-color);
 $warning-border-normal-color: var(--warning-border-normal-color);
 $warning-text-color:var(--warning-text-color);
-$error-bg-color: var(--error-bg-color);
-$error-text-color: var(--error-text-color);
+
 //Common header description text
 $header-description-text-normal-color: var(--header-description-text-normal-color);
 
@@ -300,16 +299,3 @@ $excel-filter-separator-normal-color: var(--excel-filter-separator-normal-color)
 $excel-filter-checkbox-bg-normal-color: var(--excel-filter-checkbox-bg-normal-color);
 $excel-filter-checkbox-text-normal-color: var(--excel-filter-checkbox-text-normal-color);
 $excel-filter-checkbox-border-normal-color: var(--excel-filter-checkbox-border-normal-color);
-
-//ej2 date range picker
-$date-range-bg-normal-color: var( --date-range-bg-normal-color);
-$date-range-border-color: var(--grey-400);
-$date-range-icon-color: var(--date-range-icon-color);
-$date-range-popup-active-date-bg-color: $blue;
-$date-range-popup-active-date-border-color: $blue;
-$date-range-popup-active-date-color: var(--grey-white);
-$date-range-popup-date-hover-bg-color: var(--date-range-popup-date-hover-bg-color);
-$date-range-popup-text-color: var(--date-range-popup-text-color);
-$date-range-popup-list-bg-color: var(--date-range-popup-list-bg-color);
-$date-range-popup-active-list-color: $blue;
-$separator: linear-gradient(180deg, rgba(255, 255, 255, 0.0001) 1.75%, #CCCCCC 41.45%, #CCCCCC 58.43%, rgba(255, 255, 255, 0.0001) 98.33%);

@@ -36,6 +36,11 @@
         padding: 18px;
         background: $surface;
 
+        .app-textbox-label{
+            padding: 0 !important;
+            color: $primary-text-color;
+        }
+
         @include ej2NonFloat();
     }
 
@@ -91,6 +96,18 @@
 
     .custom-attribute-div:last-child {
         margin-bottom: 0;
+    }
+
+    .material-checkbox + input + label {
+        color: $primary-text-color;
+        font-weight: normal;
+        height: 28px;
+        padding: 7px 0 0 22px !important;
+    }
+
+    .material-checkbox:checked + input + label::before {
+        bottom: 12px !important;
+        left: 1px !important;
     }
 
     .e-footer-content {

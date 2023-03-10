@@ -2,6 +2,7 @@
 @media (min-width: 1040px) and (max-width: 1200px) {
   .app-header #application-list {
     text-align: center !important; } }
+
 .dropdown .dropdown-menu a {
   cursor: pointer; }
 
@@ -9,14 +10,17 @@
   margin-left: 15px; }
   #base-container .admin-header-btn #new-user-dropdown .caret {
     margin-bottom: 2px; }
+
 #base-container .admin-header-btn #assign-user-role-button {
   margin-left: 16px; }
+
 #base-container #user-list-container #role-filter-option {
   margin: 3px -10px;
   font-size: 14px;
   height: 16px;
   width: 16px;
   position: absolute; }
+
 #base-container #user-list-container .role-filter {
   border: 1px solid #f2f2f2;
   position: absolute;
@@ -56,10 +60,13 @@
       color: var(--grey-white); }
     #base-container #user-list-container .role-filter .filter-buttons #cancel {
       margin-left: 12px; }
+
 #base-container #user-list-container #user_grid table th:last-child {
   cursor: default; }
+
 #base-container #user-list-container .margin {
   margin-left: 3px; }
+
 #base-container .ad-azure-indication {
   padding: 10px 0 0 5px; }
   #base-container .ad-azure-indication .su {
@@ -67,8 +74,10 @@
 
 .dropdown .assign-role {
   cursor: pointer !important; }
+
 .dropdown .delete-user {
   cursor: pointer !important; }
+
 .dropdown .unlock-user {
   cursor: pointer !important; }
 
@@ -90,7 +99,9 @@
       padding: 15px 20px 15px 20px; }
   #user-add-dialog .e-dlg-content .modal-footer {
     height: 43px !important;
-    padding: 0px !important; }
+    padding: 0px !important;
+    background: var(--dialog-footer-bg-normal-color) !important;
+    border-top: 1px solid var(--dialog-footer-border-normal-color) !important; }
     #user-add-dialog .e-dlg-content .modal-footer .secondary-button {
       margin: 8px 16px 7px 12px; }
 
@@ -313,6 +324,7 @@
 #add-tenants-report-dialog #csv-download {
   margin-top: 20px;
   margin-bottom: 20px; }
+
 #add-tenants-report-dialog .status-table .report-table {
   width: 100%; }
   #add-tenants-report-dialog .status-table .report-table tr {
@@ -329,9 +341,11 @@
         font-size: 13px; }
   #add-tenants-report-dialog .status-table .report-table .content-row {
     height: 50px; }
+
 #add-tenants-report-dialog #csv-download a {
   cursor: pointer;
   color: var(--primary-branding-bg-color); }
+
 #add-tenants-report-dialog .e-footer-content {
   text-align: center; }
   #add-tenants-report-dialog .e-footer-content .e-btn {
@@ -443,9 +457,11 @@
       padding: 10px; }
       .e-dialog .modal-dialog .modal-content .modal-footer .primary-button, .e-dialog .modal-dialog .modal-content .modal-footer .critical-action-button {
         margin-right: 10px; }
+
 .e-dialog .e-scrollbar {
   display: none !important;
   /*To override style from script*/ }
+
 .e-dialog .validation-message {
   float: left;
   margin: 0 10px; }
@@ -453,15 +469,18 @@
     float: left;
     font-size: 11px;
     padding: 10px; }
+
 .e-dialog .modal-body .form-control {
   font-size: 12px;
   height: 28px;
   line-height: normal; }
+
 .e-dialog .modal-body .app-textbox-label {
   margin-top: 8px;
   font-weight: 400;
   padding-right: 50px;
   padding-left: 0px; }
+
 .e-dialog .modal-body .form-padding {
   padding: 10px 0 10px 0; }
   .e-dialog .modal-body .form-padding.password .show-hide-password {
@@ -477,13 +496,16 @@
       word-break: normal !important; }
     .e-dialog .modal-body .form-padding.password .tooltip .tooltip-arrow {
       top: auto !important; }
+
 .e-dialog .modal-body .password {
   margin-bottom: 10px; }
+
 .e-dialog .modal-body .useradd-validation-messages {
   color: var(--red);
   display: block;
   font-size: 10px;
   margin-bottom: -16px; }
+
 .e-dialog .modal-body .placeholder {
   height: 30px;
   padding-left: 12px;
@@ -521,7 +543,6 @@
     filter: none !important; }
   .e-dialog .modal-dialog .modal-content .modal-header .model-title {
     font-size: 16px; }
-
   .e-dialog .validation-message span {
     font-size: 12px; }
   .e-dialog .modal-body .form-control {
@@ -533,10 +554,8 @@
     font-size: 12px; }
   .e-dialog .modal-body .placeholder {
     line-height: 32px; }
-
   #singleuser-delete-confirmation .modal-dialog .modal-body .delete-msg, #user-delete-confirmation .modal-dialog .modal-body .delete-msg {
     font-size: 14px; }
-
   #popup-container #confirm-modal .modal-dialog #movable-dialog .modal-header .modal-title, #popup-container #confirm-modal .modal-dialog #movable-dialog .modal-header a.close {
     font-size: 16px;
     filter: none !important; }
@@ -551,6 +570,7 @@
       font-size: 12px; }
     #popup-container #confirm-modal .modal-dialog #movable-dialog .modal-body .notification {
       font-size: 12px; } }
+
 #messageBox_wrapper .e-dialog-scroller {
   height: 150px; }
   #messageBox_wrapper .e-dialog-scroller #messageBox {
@@ -568,6 +588,7 @@
   #base-container .admin-page-header #user-title .dropdown .sync-user-dropdown {
     left: -126px;
     width: 235px !important; } }
+
 #new-password + .popover {
   background: var(--grey-black);
   opacity: 0.8;

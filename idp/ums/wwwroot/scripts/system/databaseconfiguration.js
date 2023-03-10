@@ -1,4 +1,5 @@
-﻿$(document).ready(function () {
+﻿var databaseValidationMessage = window.TM.App.LocalizationContent.OneOrMoreErrors + " " + window.TM.App.LocalizationContent.Click + " " + "<a id='know-more-error'>" + window.TM.App.LocalizationContent.Here + "</a> " + window.TM.App.LocalizationContent.KnowMore + ".";
+$(document).ready(function () {
     removeError();
     $("#db-content-holder").validate({
         errorElement: "span",
@@ -77,34 +78,34 @@
         },
         messages: {
             servername: {
-                isRequired: window.Server.App.LocalizationContent.ServerNamevalidator
+                isRequired: window.TM.App.LocalizationContent.ServerNamevalidator
             },
             portnumber: {
-                isRequired: window.Server.App.LocalizationContent.PortValidator
+                isRequired: window.TM.App.LocalizationContent.PortValidator
             },
             username: {
-                required: window.Server.App.LocalizationContent.UserNameValidator
+                required: window.TM.App.LocalizationContent.UserNameValidator
             },
             password: {
-                required: window.Server.App.LocalizationContent.PasswordValidator
+                required: window.TM.App.LocalizationContent.PasswordValidator
             },
             dbname: {
-                required: window.Server.App.LocalizationContent.TheDatabaseValidator
+                required: window.TM.App.LocalizationContent.TheDatabaseValidator
             },
             databaseName: {
-                required: window.Server.App.LocalizationContent.ExistingDatabaseValidator
+                required: window.TM.App.LocalizationContent.ExistingDatabaseValidator
             },
             serverdbname: {
-                required: window.Server.App.LocalizationContent.TheTenantServerDatabaseValidator
+                required: window.TM.App.LocalizationContent.TheTenantServerDatabaseValidator
             },
             serverexistingdbname: {
-                required: window.Server.App.LocalizationContent.ExistingDatabaseValidator
+                required: window.TM.App.LocalizationContent.ExistingDatabaseValidator
             },
             designerdbname: {
-                required: window.Server.App.LocalizationContent.TheDesignerDatabaseValidator
+                required: window.TM.App.LocalizationContent.TheDesignerDatabaseValidator
             },
             designerexistingdbname: {
-                required: window.Server.App.LocalizationContent.ExistingDatabaseValidator
+                required: window.TM.App.LocalizationContent.ExistingDatabaseValidator
             }
         }
     });
@@ -132,7 +133,7 @@
         },
         messages: {
             password: {
-                isRequired: window.Server.App.LocalizationContent.PasswordValidator
+                isRequired: window.TM.App.LocalizationContent.PasswordValidator
             }
         }
     });
@@ -160,7 +161,7 @@
         },
         messages: {
             servername: {
-                isRequired: window.Server.App.LocalizationContent.ServerNamevalidator
+                isRequired: window.TM.App.LocalizationContent.ServerNamevalidator
             }
         }
     });
@@ -188,7 +189,7 @@
         },
         messages: {
             servername: {
-                isRequired: window.Server.App.LocalizationContent.PortValidator
+                isRequired: window.TM.App.LocalizationContent.PortValidator
             }
         }
     });
@@ -216,7 +217,7 @@
         },
         messages: {
             username: {
-                isRequired: window.Server.App.LocalizationContent.UserNameValidator
+                isRequired: window.TM.App.LocalizationContent.UserNameValidator
             }
         }
     });
@@ -251,14 +252,13 @@
 
 
 $(document).on("click", "#know-more-error", function () {
-    messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+    messageBox("su-login-error", window.TM.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
         onCloseMessageBox();
     });
 });
 
 
 $(document).on("click", "#db-config-submit, #sql-existing-db-submit", function () {
-    var databaseValidationMessage = window.Server.App.LocalizationContent.OneOrMoreErrors.format("<a id='know-more-error'>", "</a>");
     var isNewDatabaseTab = $(this).attr("id") == "db-config-submit";
     removeError();
     var canProceed = $("#db-content-holder").valid();
@@ -322,7 +322,7 @@ $(document).on("click", "#db-config-submit, #sql-existing-db-submit", function (
                                 var items = result.Data.value;
                                 if (result.Data.key && items.length > 0) {
                                     hideWaitingPopup('startup-waiting-element');
-                                    var html = window.Server.App.LocalizationContent.TablesAlreadyExists;
+                                    var html = window.TM.App.LocalizationContent.TablesAlreadyExists;
                                     html += "<ol class='list-area'>";
                                     for (var t = 0; t < items.length; t++) {
                                         html += "<li>" + items[t] + "</li>";
@@ -352,7 +352,7 @@ $(document).on("click", "#db-config-submit, #sql-existing-db-submit", function (
                                             }
                                         }
                                     );
-                                    $(".db-connect-outer-container").find(".title").html(window.Server.App.LocalizationContent.DatabaseCreation + "!");
+                                    $(".db-connect-outer-container").find(".title").html(window.TM.App.LocalizationContent.DatabaseCreation + "!");
                                     $("#database-name").focus();
                                 } else {
                                     hideWaitingPopup('startup-waiting-element');
@@ -364,7 +364,7 @@ $(document).on("click", "#db-config-submit, #sql-existing-db-submit", function (
                             });
                     }
                    
-                    $(".db-connect-outer-container").find(".title").html(window.Server.App.LocalizationContent.DatabaseCreation + "!");
+                    $(".db-connect-outer-container").find(".title").html(window.TM.App.LocalizationContent.DatabaseCreation + "!");
                     $("#txt-dbname").focus();
                 }
                 else {
@@ -469,8 +469,8 @@ function azureStep() {
 function advancedThirdStep() {
     $("#image-parent-container").show();
     $("#image-parent-container .startup-image").hide().attr("src", storageUrl).fadeIn();
-    $(".startup-content span.first-content").hide().text(window.Server.App.LocalizationContent.YourStorage).slideDown();
-    $(".startup-content span.second-content").hide().text(isBoldBI ? window.Server.App.LocalizationContent.StorageBIMsg : window.Server.App.LocalizationContent.StorageReportsMsg).slideDown();
+    $(".startup-content span.first-content").hide().text(window.TM.App.LocalizationContent.YourStorage).slideDown();
+    $(".startup-content span.second-content").hide().text(isBoldBI ? window.TM.App.LocalizationContent.StorageBIMsg : window.TM.App.LocalizationContent.StorageReportsMsg).slideDown();
     $(".startup-content a#help-link").attr("href", idStorageConfiguration);
     $(".startup-waiting-popup").addClass("storage-page-content");
     $("#system-settings-filestorage-container").slideDown("slow");
@@ -563,7 +563,7 @@ function onDatbaseChange(args) {
             $("#oracle-dsn>option:eq(0)").prop("selected", true);
             $("#oracle-dsn").selectpicker("refresh");
             $(".database-dropdown-oracle ul").html("");
-            $("#database-name-oracle").html("<option value='' class='display-none'>" + window.Server.App.LocalizationContent.SelectDatabase + "</option>");
+            $("#database-name-oracle").html("<option value='' class='display-none'>" + window.TM.App.LocalizationContent.SelectDatabase + "</option>");
             $("#database-name-oracle").selectpicker("refresh");
             $("#new-db-oracle").prop("checked", true).trigger("change");
             $(".content-display").hide();
@@ -622,11 +622,11 @@ function onDatbaseChange(args) {
     if (typeof actionType != 'undefined' && actionType.toLowerCase() != "edit") {
         switch (checkedVal) {
             case "mysql":
-                $('#txt-portnumber-info').html(window.Server.App.LocalizationContent.MySqlPortInfo);
+                $('#txt-portnumber-info').html(window.TM.App.LocalizationContent.MySqlPortInfo);
                 document.getElementById("txt-portnumber").ej2_instances[0].value = "3306";
                 break;
             case "postgresql":
-                $('#txt-portnumber-info').html(window.Server.App.LocalizationContent.postgresPortInfo);
+                $('#txt-portnumber-info').html(window.TM.App.LocalizationContent.postgresPortInfo);
                 document.getElementById("txt-portnumber").ej2_instances[0].value = "5432";
                 document.getElementById("maintenance-db").ej2_instances[0].value = "postgres";
                 break;

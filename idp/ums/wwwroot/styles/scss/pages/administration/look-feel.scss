@@ -74,11 +74,6 @@
         padding-right: 45px;
     }
 
-    .dialog-info {
-        line-height: 1.5;
-        letter-spacing: .3px;
-    }
-
     .field-padding {
         padding: 10px 0;
     }
@@ -115,12 +110,11 @@
         line-height: 1;
         padding: 1px 1px 7px 1px;
         width: 45px;
-        border-radius: 0 4px 4px 0 !important;
+        border-radius: 0 4px 4px 0;
         cursor: pointer;
         color: $input-box-text-normal-color;
         background-color: $input-box-bg-normal-color;
         border: 1px solid $input-box-border-normal-color;
-        border-left: 0 !important;
 
         &.validation-message {
             border-color: $validation-text-color !important;

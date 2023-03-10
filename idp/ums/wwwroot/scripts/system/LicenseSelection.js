@@ -4,14 +4,6 @@ var getLicenseUrl;
 var licenseToken;
 var offlineLicenseToken;
 $(document).ready(function () {
-    String.prototype.format = function () {
-        a = this;
-        for (k in arguments) {
-            a = a.replace("{" + k + "}", arguments[k])
-        }
-        return a
-    }
-
     $(document).on("click", "#online-license", function (e) {
         showWaitingPopup('startup-page-container-waiting-element');
         if (windowRef !== undefined) {
@@ -135,7 +127,7 @@ function sendData(data, url) {
         validJSON = true;
     }
     catch(err) {
-        $(".validation-error-message").html(window.Server.App.LocalizationContent.LicenseFileCorrupt.format("<a target='_blank' href='" + getLicenseUrl + "'>", "</a>"));
+        $(".validation-error-message").html(window.TM.App.LocalizationContent.LicenseFileCorrupt + "<a target='_blank' href='" + getLicenseUrl + "'>" + window.TM.App.LocalizationContent.Here + "</a>");
         $(".validation-error-message").removeClass("display-none");
     }
 
@@ -217,7 +209,7 @@ function sendData(data, url) {
             });
         }
         else {
-            $(".validation-error-message").html(window.Server.App.LocalizationContent.LicenseFileCorrupt.format("<a target='_blank' href='" + getLicenseUrl + "'>", "</a>"));
+            $(".validation-error-message").html(window.TM.App.LocalizationContent.LicenseFileCorrupt + "<a target='_blank' href='" + getLicenseUrl + "'>" + window.TM.App.LocalizationContent.Here + "</a>");
             $(".validation-error-message").removeClass("display-none");
         }
     }
@@ -264,7 +256,7 @@ function confirmLicenseUpdate() {
     }
     else {
         hideWaitingPopup('startup-page-container-waiting-element');
-        WarningAlert(window.Server.App.LocalizationContent.ManageLicense, window.Server.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
+        WarningAlert(window.TM.App.LocalizationContent.ManageLicense, window.TM.App.LocalizationContent.LicenseUpdateFailed, result.Message, 0);
     }
 }
 

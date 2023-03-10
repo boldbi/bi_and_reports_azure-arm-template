@@ -44,12 +44,8 @@
   <UseSiteIdentifier>true</UseSiteIdentifier>
   <FontFamily>Robotoregular</FontFamily>
   <Theme>
-    <Appearance>light</Appearance>
-    <ApplicationTheme>light</ApplicationTheme>
-    <DashboardTheme>light</DashboardTheme>
-  </Theme>
-  <EnableSameTabLinkTarget>false</EnableSameTabLinkTarget>
-  <HideMobileAppRedirectURI>false</HideMobileAppRedirectURI>
-  <ResourceModifiedDate></ResourceModifiedDate>
-	<IsCustomBranding>false</IsCustomBranding>
+    <Appearance>light</Appearance> 
+    <ApplicationTheme>light</ApplicationTheme> 
+    <DashboardTheme>light</DashboardTheme> 
+  </Theme> 
 </SystemSettings>
