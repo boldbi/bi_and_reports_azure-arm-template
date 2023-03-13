@@ -7,16 +7,11 @@
     #embed-settings-container #embed-settings-body .embed-authentication .embed-loader {
       position: absolute;
       top: -1px;
-      margin-left: 5px; }
-      #embed-settings-container #embed-settings-body .embed-authentication .embed-loader .loader-align {
-        width: 20px;
-        height: 20px;
-        display: block;
-        margin-left: 5px; }
-    #embed-settings-container #embed-settings-body .embed-authentication .embed-loading > span {
-      background-image: url(images/waitingpopup_small.gif);
-      background-position: 97% center;
-      background-repeat: no-repeat; }
+      margin-left: 5px;
+      width: 20px;
+      height: 20px; }
+    #embed-settings-container #embed-settings-body .embed-authentication .embed-loading {
+      display: none; }
   #embed-settings-container #embed-settings-body #get-secret-code .info-message {
     width: 584px; }
   #embed-settings-container #embed-settings-body .secret-code-container #get-embed-code {
@@ -85,13 +80,11 @@
 
 #messageBox_wrapper .message-box-btn-holder {
   background: var(--background); }
-
 #messageBox_wrapper .critical-action-button, #messageBox_wrapper .primary-button, #messageBox_wrapper .secondary-button {
   height: 28px;
   margin-left: 15px;
   line-height: 28px;
   width: 80px; }
-
 #messageBox_wrapper .message-box-close {
   font-size: 9px;
   color: var(--grey-700);

@@ -1,7 +1,6 @@
 @media (min-width: 1040px) and (max-width: 1200px) {
   .app-header #application-list {
     text-align: center !important; } }
-
 #admin-menu-nav-bar {
   background: var(--sub-nav-menu-bg-color);
   border-right: 1px solid var(--sub-nav-menu-border-color);
@@ -221,16 +220,16 @@
           padding: 32px 0 0 0; }
           #server-app-container .admin-page-content-container .admin-page-content .admin-page-footer .admin-page-actions .secondary-button, #server-app-container .admin-page-content-container .admin-page-content .admin-page-footer .admin-page-actions .primary-button {
             margin-left: 15px; }
-      #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar {
+      #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar, #server-app-container .admin-page-content-container .admin-page-content .email-page-nav-bar {
         background: var(--background); }
-        #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar .nav, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar .nav {
+        #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar .nav, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar .nav, #server-app-container .admin-page-content-container .admin-page-content .email-page-nav-bar .nav {
           padding-left: 24px; }
-          #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav > li > a, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar .nav > li > a, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar .nav > li > a {
+          #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav > li > a, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar .nav > li > a, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar .nav > li > a, #server-app-container .admin-page-content-container .admin-page-content .email-page-nav-bar .nav > li > a {
             position: relative;
             display: block;
             padding: 0px 12px 10px 12px;
             line-height: 14px; }
-          #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav .active a, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar .nav .active a, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar .nav .active a {
+          #server-app-container .admin-page-content-container .admin-page-content .auth-page-nav-bar .nav .active a, #server-app-container .admin-page-content-container .admin-page-content .lic-page-nav-bar .nav .active a, #server-app-container .admin-page-content-container .admin-page-content .site-nav-bar .nav .active a, #server-app-container .admin-page-content-container .admin-page-content .email-page-nav-bar .nav .active a {
             padding-bottom: 8px; }
     #server-app-container .admin-page-content-container #base-footer-div {
       margin: 0;

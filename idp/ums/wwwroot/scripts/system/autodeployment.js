@@ -32,6 +32,7 @@ function validateDeployment() {
                 window.location = startUpUrl + "?skipAutoDeploy=true";
             }
             else if (!result.validationResult.Status) {
+                $(".auto-deploy-container").show();
                 $("#loader").css("display", "none");
                 $(".link-section").show();
                 $(".response-message-header").show();
@@ -39,6 +40,7 @@ function validateDeployment() {
                 $("#deploy-error-box").html(result.validationResult.Message);
             }
             else if (result.validationResult.Status) {
+                $(".auto-deploy-container").hide();
                 proceedAutoDeployment(result);
             }
         },

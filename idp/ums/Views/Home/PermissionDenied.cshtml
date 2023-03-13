@@ -6,7 +6,7 @@
 <html>
 <head>
 
-    <title>@GlobalAppSettings.SystemSettings.OrganizationName - [[[Permission Denied]]]</title>
+    <title>@GlobalAppSettings.SystemSettings.OrganizationName - @T["Permission Denied"]</title>
     @await Html.PartialAsync("../Shared/_Favicon")
     @await Html.PartialAsync("../Shared/_FontReference")
     @await Html.PartialAsync("../Shared/_ThemeReference")
@@ -17,7 +17,7 @@
     <body>
         <div>
             <div class="col-md-12">
-                <div class="col-xs-12 text-center" style="color: #ff0000; margin-top: 60px; font-size: 30px">You do not have permission to view this page.</div>
+                <div class="col-xs-12 text-center" style="color: #ff0000; margin-top: 60px; font-size: 30px">@T["You do not have permission to view this page."]</div>
             </div>
         </div>
     </body>
@@ -34,11 +34,11 @@ else
                     <div class="error-image-center-2">
                         <img src="@imageHelper.AccessDeniedImage()" class="error-image-2">
                     </div>
-                    <div class="error-type">[[[Access Denied]]]</div>
+                    <div class="error-type">@T["Access Denied"]</div>
                     <div class="error-text">
-                        [[[You do not have permission to view this page.]]]
+                        @T["You do not have permission to view this page."]
                         <br>
-                        [[[Please contact your administrator.]]]
+                        @T["Please contact your administrator."]
                     </div>
                 </div>
             </div>

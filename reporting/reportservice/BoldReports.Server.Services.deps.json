@@ -35,20 +35,20 @@
   },
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "BoldReports.Server.Services/4.2.85": {
+      "BoldReports.Server.Services/4.2.78": {
         "dependencies": {
           "Azure.Storage.Blobs": "12.4.4",
-          "Bold.Licensing": "4.2.85",
-          "BoldReports.Base.Logger": "4.2.85",
-          "BoldReports.CRI.Barcode": "4.2.85",
-          "BoldReports.CRI.PredictiveAnalytics": "4.2.85",
-          "BoldReports.Data.Csv": "4.2.85",
-          "BoldReports.Data.ElasticSearch": "4.2.85",
-          "BoldReports.Data.Excel": "4.2.85",
-          "BoldReports.Data.SSAS": "4.2.85",
-          "BoldReports.Data.Snowflake": "4.2.85",
-          "BoldReports.Data.WebData": "4.2.85",
-          "BoldReports.Net.Core": "4.2.85",
+          "Bold.Licensing": "4.2.78",
+          "BoldReports.Base.Logger": "4.2.78",
+          "BoldReports.CRI.Barcode": "4.2.78",
+          "BoldReports.CRI.PredictiveAnalytics": "4.2.78",
+          "BoldReports.Data.Csv": "4.2.78",
+          "BoldReports.Data.ElasticSearch": "4.2.78",
+          "BoldReports.Data.Excel": "4.2.78",
+          "BoldReports.Data.SSAS": "4.2.78",
+          "BoldReports.Data.Snowflake": "4.2.78",
+          "BoldReports.Data.WebData": "4.2.78",
+          "BoldReports.Net.Core": "4.2.78",
           "Exceptionless": "4.5.0",
           "Exceptionless.Log4net": "4.5.0",
           "Microsoft.AnalysisServices.AdomdClient.NetCore.retail.amd64": "19.22.0.1",
@@ -432,117 +432,117 @@
           "lib/netstandard2.0/BarcodeStandard.dll": {}
         }
       },
-      "Bold.Data.Analytics.Base/4.2.85": {
+      "Bold.Data.Analytics.Base/4.2.78": {
         "runtime": {
           "lib/net5.0/Bold.Data.Analytics.Base.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/Bold.Data.Analytics.Base.dll": {}
         }
       },
-      "Bold.Licensing/4.2.85": {
+      "Bold.Licensing/4.2.78": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
           "lib/netcoreapp3.0/Bold.Licensing.dll": {
-            "assemblyVersion": "4.2.85.0",
-            "fileVersion": "4.2.85.0"
+            "assemblyVersion": "4.2.78.0",
+            "fileVersion": "4.2.78.0"
           }
         },
         "compile": {
           "lib/netcoreapp3.0/Bold.Licensing.dll": {}
         }
       },
-      "BoldReports.Base.Logger/4.2.85": {
+      "BoldReports.Base.Logger/4.2.78": {
         "dependencies": {
           "log4net": "2.0.12"
         },
         "runtime": {
           "lib/net5.0/BoldReports.Base.Logger.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.Base.Logger.dll": {}
         }
       },
-      "BoldReports.CRI.Barcode/4.2.85": {
+      "BoldReports.CRI.Barcode/4.2.78": {
         "dependencies": {
           "BarcodeLib": "2.2.6",
           "Syncfusion.Pdf.Imaging.Net.Core": "20.2.0.36"
         },
         "runtime": {
           "lib/net5.0/BoldReports.CRI.Barcode.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.CRI.Barcode.dll": {}
         }
       },
-      "BoldReports.CRI.PredictiveAnalytics/4.2.85": {
+      "BoldReports.CRI.PredictiveAnalytics/4.2.78": {
         "dependencies": {
-          "Bold.Data.Analytics.Base": "4.2.85"
+          "Bold.Data.Analytics.Base": "4.2.78"
         },
         "runtime": {
           "lib/net5.0/BoldReports.CRI.PredictiveAnalytics.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.CRI.PredictiveAnalytics.dll": {}
         }
       },
-      "BoldReports.Data.Csv/4.2.85": {
+      "BoldReports.Data.Csv/4.2.78": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
           "lib/net5.0/BoldReports.Data.Csv.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.Data.Csv.dll": {}
         }
       },
-      "BoldReports.Data.ElasticSearch/4.2.85": {
+      "BoldReports.Data.ElasticSearch/4.2.78": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
           "lib/net5.0/BoldReports.Data.ElasticSearch.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.Data.ElasticSearch.dll": {}
         }
       },
-      "BoldReports.Data.Excel/4.2.85": {
+      "BoldReports.Data.Excel/4.2.78": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
           "lib/net5.0/BoldReports.Data.Excel.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.Data.Excel.dll": {}
         }
       },
-      "BoldReports.Data.Snowflake/4.2.85": {
+      "BoldReports.Data.Snowflake/4.2.78": {
         "dependencies": {
           "AngleSharp": "0.12.1",
           "Newtonsoft.Json": "11.0.2",
@@ -552,45 +552,45 @@
         },
         "runtime": {
           "lib/net5.0/BoldReports.Data.Snowflake.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.Data.Snowflake.dll": {}
         }
       },
-      "BoldReports.Data.SSAS/4.2.85": {
+      "BoldReports.Data.SSAS/4.2.78": {
         "dependencies": {
           "Microsoft.AnalysisServices.AdomdClient.NetCore.retail.amd64": "19.22.0.1"
         },
         "runtime": {
           "lib/net5.0/BoldReports.Data.SSAS.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.Data.SSAS.dll": {}
         }
       },
-      "BoldReports.Data.WebData/4.2.85": {
+      "BoldReports.Data.WebData/4.2.78": {
         "dependencies": {
           "Newtonsoft.Json": "11.0.2"
         },
         "runtime": {
           "lib/net5.0/BoldReports.Data.WebData.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
           "lib/net5.0/BoldReports.Data.WebData.dll": {}
         }
       },
-      "BoldReports.Net.Core/4.2.85": {
+      "BoldReports.Net.Core/4.2.78": {
         "dependencies": {
-          "Bold.Licensing": "4.2.85",
+          "Bold.Licensing": "4.2.78",
           "Microsoft.CodeAnalysis.VisualBasic": "3.8.0",
           "Microsoft.Windows.Compatibility": "3.1.0",
           "Newtonsoft.Json": "11.0.2",
@@ -610,8 +610,8 @@
         },
         "runtime": {
           "lib/net5.0/BoldReports.Web.dll": {
-            "assemblyVersion": "4.2500.85.0",
-            "fileVersion": "4.2500.85.0"
+            "assemblyVersion": "4.2500.78.0",
+            "fileVersion": "4.2500.78.0"
           }
         },
         "compile": {
@@ -4772,7 +4772,7 @@
     }
   },
   "libraries": {
-    "BoldReports.Server.Services/4.2.85": {
+    "BoldReports.Server.Services/4.2.78": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -4812,89 +4812,89 @@
       "path": "barcodelib/2.2.6",
       "hashPath": "barcodelib.2.2.6.nupkg.sha512"
     },
-    "Bold.Data.Analytics.Base/4.2.85": {
+    "Bold.Data.Analytics.Base/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-m4qBKnjjNeN68KWcDNj2v/kcJ3rMx7AIE298o9gbDWiutHloj/pMOseFkb3H2ZYiY86pwQnVP8pkPYcufaQPLQ==",
-      "path": "bold.data.analytics.base/4.2.85",
-      "hashPath": "bold.data.analytics.base.4.2.85.nupkg.sha512"
+      "sha512": "sha512-Ug9TiIwnCLoLod5KZ3Uods3VzMTjMfEico0GUMxK3FPne0rQwQ8OByZNiJTsZScGSEvdlQvHoIUMLiq0qK7koA==",
+      "path": "bold.data.analytics.base/4.2.78",
+      "hashPath": "bold.data.analytics.base.4.2.78.nupkg.sha512"
     },
-    "Bold.Licensing/4.2.85": {
+    "Bold.Licensing/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-pT+DhfwhJpku3TBahVw+BqZeGCOlGF0jPQHLoJzksl6ShcJC/mtXXDAMwz627UcfATEepxybpTChYjFY/FX1YQ==",
-      "path": "bold.licensing/4.2.85",
-      "hashPath": "bold.licensing.4.2.85.nupkg.sha512"
+      "sha512": "sha512-UZnATySq7XImou+h84ctWXIeOJm3B/kN0kaeQkyGpQYAk6WA3vuf3Tx613StpPmz9OSrDAqVBZ6ihp3hy0RtxQ==",
+      "path": "bold.licensing/4.2.78",
+      "hashPath": "bold.licensing.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Base.Logger/4.2.85": {
+    "BoldReports.Base.Logger/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Cty7ZM5CTbdH9EkP30nlzww7IGEEdyL4IrFYXWR0h4BS+4Iw3hYoRcgEmv0/sjyOHq/zvL63jkBO+oY3VpbP3w==",
-      "path": "boldreports.base.logger/4.2.85",
-      "hashPath": "boldreports.base.logger.4.2.85.nupkg.sha512"
+      "sha512": "sha512-0QRL65hmo1gVJlfUMOs7AOjP09n9lPRww+gq6i0LOqgbhz3kQ7S6/aae+8xeyB3Sy2k5Y6Mo4ZoZDhVlYCDSBw==",
+      "path": "boldreports.base.logger/4.2.78",
+      "hashPath": "boldreports.base.logger.4.2.78.nupkg.sha512"
     },
-    "BoldReports.CRI.Barcode/4.2.85": {
+    "BoldReports.CRI.Barcode/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wcixXoqjX64suUVl0B8cGQp4Veuejsb2fj/OTQH5YHpyVeKBfjImWLEjlAKEx7ISU7DMAE+furpNa5oi/09+Ag==",
-      "path": "boldreports.cri.barcode/4.2.85",
-      "hashPath": "boldreports.cri.barcode.4.2.85.nupkg.sha512"
+      "sha512": "sha512-SgYZL4J+55rJAm/J5hNK4UQxPeP4qdvhMzoHXtbNXDb6FiHs5KWTYbanCsMKylBql2tpUDpglv9efm6hfLD2Yg==",
+      "path": "boldreports.cri.barcode/4.2.78",
+      "hashPath": "boldreports.cri.barcode.4.2.78.nupkg.sha512"
     },
-    "BoldReports.CRI.PredictiveAnalytics/4.2.85": {
+    "BoldReports.CRI.PredictiveAnalytics/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-5CRV16Ftvec96cV/RmDoCXHyj2Twunf9eGrPHjzNe5tN9K/tZ9vnsl4aX5x8lXVoOGzHbnySqsLvFUr8Lz/fuQ==",
-      "path": "boldreports.cri.predictiveanalytics/4.2.85",
-      "hashPath": "boldreports.cri.predictiveanalytics.4.2.85.nupkg.sha512"
+      "sha512": "sha512-CLj8A6PPEJHcZywBPgENKExkIaQwjaS62l6AJelgau1sfgPviV776C2sDazyQOQHZAy9ejU093Okh9l+rQsWYA==",
+      "path": "boldreports.cri.predictiveanalytics/4.2.78",
+      "hashPath": "boldreports.cri.predictiveanalytics.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Data.Csv/4.2.85": {
+    "BoldReports.Data.Csv/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9aJ85Rc8PUOgxLNLiVrtFtDQ1XcRTk/jtYTzAJ9OlvOv64vOQKBqT7dm/fbwgdKCBDYrG7hc/MrCl7hjcEoFIg==",
-      "path": "boldreports.data.csv/4.2.85",
-      "hashPath": "boldreports.data.csv.4.2.85.nupkg.sha512"
+      "sha512": "sha512-MU7FGDgfPKu37hJqxMUOVfRahCXMXRBci6aBtp0f/2YI07TrcZS5KlWo0mhAaGCJCW2iGXanrgzZjbUGM7QxMA==",
+      "path": "boldreports.data.csv/4.2.78",
+      "hashPath": "boldreports.data.csv.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Data.ElasticSearch/4.2.85": {
+    "BoldReports.Data.ElasticSearch/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-NVNySsKYbmXvGjZ8LtQIg0p9uX5r0M7T4mCTByXzcwNb3TGScrKxmDepeg2iKVxQM1AYvGLhhclhC83+0r6vWQ==",
-      "path": "boldreports.data.elasticsearch/4.2.85",
-      "hashPath": "boldreports.data.elasticsearch.4.2.85.nupkg.sha512"
+      "sha512": "sha512-PEu7+xNm3UG2HT4wc8PptsvtN7spMPBXrVpZopPjUf7dcaRGMZacUbGB7kULZI2rkJ7mguNOcRJ7g9OK5tzZPg==",
+      "path": "boldreports.data.elasticsearch/4.2.78",
+      "hashPath": "boldreports.data.elasticsearch.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Data.Excel/4.2.85": {
+    "BoldReports.Data.Excel/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MKz0Mne++rHuK3Ll8qEJziipMH2SBC37Hsf5luhox6nlV3Vgl+Dq7rM9royFUQjb7OS+P+htlE2PVSo9ciXZdQ==",
-      "path": "boldreports.data.excel/4.2.85",
-      "hashPath": "boldreports.data.excel.4.2.85.nupkg.sha512"
+      "sha512": "sha512-QRvTrWxtdp5n7hLxdJnRmokHxKY+YNRYMpt9yJBnn9jfWkdAnmOqeXZDK8anXoCgn9CcwiNLd7VzCH5E9zfbTw==",
+      "path": "boldreports.data.excel/4.2.78",
+      "hashPath": "boldreports.data.excel.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Data.Snowflake/4.2.85": {
+    "BoldReports.Data.Snowflake/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-cnJashseDEL8jaS6IAJZdEKrKqVn1fr8mgVoKjrbO2MHdmUNHCUToMXZCfEOIb+06sgVo6QanGyB4W12q6E5cQ==",
-      "path": "boldreports.data.snowflake/4.2.85",
-      "hashPath": "boldreports.data.snowflake.4.2.85.nupkg.sha512"
+      "sha512": "sha512-xJXqnCZtzWuNP0rGXxxMsYBeWi9KhK73MT/EyStKVR74zlTZ6fxQNjC5fEzpy7kWMRl0Ig316tRnM/wHlYHOsQ==",
+      "path": "boldreports.data.snowflake/4.2.78",
+      "hashPath": "boldreports.data.snowflake.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Data.SSAS/4.2.85": {
+    "BoldReports.Data.SSAS/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-mU11wsLect1fyHRZ9Fbm6jKTdDseYF5thUnBlj8C5jeYBCl/sdMF2XBEqLjcqFbBCTL5P4KPdvEMzzSpD3qalw==",
-      "path": "boldreports.data.ssas/4.2.85",
-      "hashPath": "boldreports.data.ssas.4.2.85.nupkg.sha512"
+      "sha512": "sha512-U+2iYxWN/GYvaZQExr565Cqm88nk55RidSDalMJZdWOUP1OXP+sCSRlamTitq4Diy5DXJDA7+0hp5v2wU6mIyA==",
+      "path": "boldreports.data.ssas/4.2.78",
+      "hashPath": "boldreports.data.ssas.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Data.WebData/4.2.85": {
+    "BoldReports.Data.WebData/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-p1Bu8eB2bOv73dYVrHl2zD97A3PH4YOFwfBXoXEVhuoT8LRs9tgvmAaO4dhKWvRXkW6r7+Pp44+uBQd3FIsWcg==",
-      "path": "boldreports.data.webdata/4.2.85",
-      "hashPath": "boldreports.data.webdata.4.2.85.nupkg.sha512"
+      "sha512": "sha512-v/uATJ6jSxBXKTjQ1WXUNwYnfrsoYfNruXKeG9f8r6drcj237jTYVdW2wb9gPubMD9buBXs0D0kAD8zdrpSwFg==",
+      "path": "boldreports.data.webdata/4.2.78",
+      "hashPath": "boldreports.data.webdata.4.2.78.nupkg.sha512"
     },
-    "BoldReports.Net.Core/4.2.85": {
+    "BoldReports.Net.Core/4.2.78": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-ekSrHCmqDHakQIOIaJbxdw65EHGJkVQvBEXChR84az1tX0fI6nYz6C82ui1IyG6v1UewnHxQtPF+01CIdBc2og==",
-      "path": "boldreports.net.core/4.2.85",
-      "hashPath": "boldreports.net.core.4.2.85.nupkg.sha512"
+      "sha512": "sha512-mQ1Ck7tXBUJNIhdzlObIoEJtHcvLNBzKazzZGJEYNoJjrAzatnNoVOnjsyYL8Sn7nfe6KWbSlR+pUK1bDlx2nQ==",
+      "path": "boldreports.net.core/4.2.78",
+      "hashPath": "boldreports.net.core.4.2.78.nupkg.sha512"
     },
     "Exceptionless/4.5.0": {
       "type": "package",

@@ -16,21 +16,12 @@
                 position: absolute;
                 top: -1px;
                 margin-left: 5px;
-
-                .loader-align {
-                    width: 20px;
-                    height: 20px;
-                    display: block;
-                    margin-left: 5px;
-                }
+                width: 20px;
+                height: 20px;
             }
 
             .embed-loading {
-                > span {
-                    background-image: url(images/waitingpopup_small.gif);
-                    background-position: 97% center;
-                    background-repeat: no-repeat;
-                }
+                display: none;
             }
         }
 

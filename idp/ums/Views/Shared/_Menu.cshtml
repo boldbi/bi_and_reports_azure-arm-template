@@ -44,7 +44,7 @@
         <ul id="items-menu">
             <li class="mobile-hidden">
                 <a href="@idPUrl" class="home-link " style="background-color:transparent;" title=@GlobalAppSettings.SystemSettings.OrganizationName>
-                    <img alt="[[[Application Logo]]]" id="application-logo" src="@Url.Content("~/logos?type=header")" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.DefaultErrorSquareImage)';" />
+                    <img alt="@T["Application Logo"]" id="application-logo" src="@Url.Content("~/logos?type=header")" onerror="this.onerror=null;this.src='@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/" + IconFileNames.DefaultErrorSquareImage)';" />
                 </a>
             </li>
             <li class="sf-nav-separator logo-separator mobile-hidden"></li>
@@ -56,7 +56,7 @@
                         <span class="menu-icon-container">
                             <i class="su su-applications"></i>
                         </span>
-                        <span class="menu-label">[[[Sites]]]</span>
+                        <span class="menu-label">@T["Sites"]</span>
                     </a>
                 </li>
                 <li>
@@ -64,7 +64,7 @@
                         <span class="menu-icon-container">
                             <i class="su su-user"></i>
                         </span>
-                        <span class="menu-label">[[[Users]]]</span>
+                        <span class="menu-label">@T["Users"]</span>
                     </a>
                 </li>
                 <li class="sf-nav-separator logo-separator mobile-hidden"></li>
@@ -73,7 +73,7 @@
                         <span class="menu-icon-container">
                             <i class="su su-nav-settings"></i>
                         </span>
-                        <span class="menu-label">[[[Settings]]]</span>
+                        <span class="menu-label">@T["Settings"]</span>
                     </a>
                 </li>
             }
@@ -84,7 +84,7 @@
                     <span class="menu-icon-container">
                         <i class="su su-logout"></i>
                     </span>
-                    <span class="menu-label">[[[Log Out]]]</span>
+                    <span class="menu-label">@T["Log out"]</span>
                 </a>
             </li>
         </ul>
@@ -103,12 +103,19 @@
                         </a>
                         <ul class="dropdown-menu sub-menu" role="menu">
                             <li class="sub-menu-item-title">
-                                <div>[[[Help]]]</div>
+                                <div>@T["Help"]</div>
                             </li>
                             <li class="sub-menu-item">
-                                <a href="@Url.Action("GetDiagnosticLogs", "Administration")">
-                                    [[[Get diagnostic logs]]]
-                                    <span tabindex="0" class="info-icon su su-info" role="button" data-toggle="popover" data-placement="top" data-trigger="hover" data-content="[[[Please note that these logs do not contain any of your organizational data. They only contain diagnostic logs required for Embedded BI and Enterprise Reporting. Please download and attach the logs in your support incident when reporting any issues with the product.]]]"></span>
+                                <a id="download-log">
+                                    @T["Get diagnostic logs"]
+                                </a>
+                            </li>
+                            <li class="sub-menu-item-title">
+                                <div>@T["About"]</div>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="@Url.Action("DisplayBoldServiceVersion", "Administration")">
+                                    @T["Product version"]
                                 </a>
                             </li>
                         </ul>
@@ -122,7 +129,7 @@
                     </a>
                     <ul class="dropdown-menu sub-menu" role="menu">
                         <li class="sub-menu-item sub-menu-profile">
-                            <div class="sub-menu-profile-text-padding">[[[Profile]]]</div>
+                            <div class="sub-menu-profile-text-padding">@T["Profile"]</div>
                             <a rel="alternate" hreflang="en" href="@idPUrl/user/profile">
                                 <div class="sub-menu-profile-hover">
                                     <div class="profile-pic-tag" data-id="@userId" data-type="user" data-display-name="@displayName" data-image-size="40" data-toggle="tooltip" title="@displayName" data-placement="top" data-url="@imageUrl" style="border-radius:50%"></div>
@@ -143,12 +150,12 @@
                         <li class="sf-sub-menu-separator"></li>
                         <li class="sub-menu-item">
                             <a href="@Url.Action("logout", "accounts")?returnUrl=@currentUrlLocalPath">
-                                [[[Logout]]]
+                                @T["Log out"]
                             </a>
                         </li>
                     </ul>
                 </li>
             </ul>
         </nav>
-     }
-    </aside>
+    }
+</aside>

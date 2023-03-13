@@ -17,7 +17,7 @@ $(document).ready(function () {
         }
         else if ($("#confirm-password").val() != '') {
             $("#confirm-password").closest('div').addClass("has-error");
-            $("#confirm-password").closest('div').next("div").find("span").html(window.TM.App.LocalizationContent.PasswordMismatch).css("display", "block");
+            $("#confirm-password").closest('div').next("div").find("span").html(window.Server.App.LocalizationContent.PasswordMismatch).css("display", "block");
         }
         passwordPolicyPopover("#new-password", $("#new-password").val());
     });
@@ -82,14 +82,14 @@ $(document).ready(function () {
         },
         messages: {
             "old-password": {
-                required: window.TM.App.LocalizationContent.OldPasswordValidator
+                required: window.Server.App.LocalizationContent.OldPasswordValidator
             },
             "new-password": {
-                required: window.TM.App.LocalizationContent.NewPasswordValidator,
+                required: window.Server.App.LocalizationContent.NewPasswordValidator,
             },
             "confirm-password": {
-                required: window.TM.App.LocalizationContent.ConfirmPasswordValidator,
-                equalTo: window.TM.App.LocalizationContent.PasswordMismatch
+                required: window.Server.App.LocalizationContent.ConfirmPasswordValidator,
+                equalTo: window.Server.App.LocalizationContent.PasswordMismatch
             }
         }
     });
@@ -129,7 +129,7 @@ function onChangePasswordClick() {
                 $("#old-password-validate").closest("div").prev("div").addClass("has-error");
             }
             else {
-                SuccessAlert(window.TM.App.LocalizationContent.UpdatePassword, window.TM.App.LocalizationContent.PasswordSuccess, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.UpdatePassword, window.Server.App.LocalizationContent.PasswordSuccess, 7000);
             }
         }
     );

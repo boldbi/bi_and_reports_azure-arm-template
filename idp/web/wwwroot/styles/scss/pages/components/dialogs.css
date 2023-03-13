@@ -48,7 +48,7 @@
                 margin: 0;
                 vertical-align: middle;*/
 /*color: $primary-btn-text-color !important;*/
-/*}
+            /*}
         }
 
         #upload-item-section {
@@ -57,7 +57,7 @@
                 border: none;
                 border-radius: 0;*/
 /*color: $primary-btn-text-color;*/
-/*height: $height;
+                /*height: $height;
                 width: 120px;
             }
         }
@@ -306,12 +306,12 @@
     }
 }*/
 /*@media (min-width:1040px) and (max-width: 1200px) {
-        .app-header {
-            #application-list {
-                text-align: center !important;
-            }
+    .app-header {
+        #application-list {
+            text-align: center !important;
         }
-    }*/
+    }
+}*/
 .e-dlg-container .e-dlg-header-content {
   padding: 10px 15px;
   border-bottom: 1px solid var(--dialog-header-border-normal-color);
@@ -337,14 +337,11 @@
     .e-dlg-container .e-dlg-header-content .e-dlg-header .dlg-description {
       font-size: 13px;
       margin-top: -8px; }
-
 .e-dlg-container .e-dlg-header-content + .e-dlg-content {
   padding-top: 18px !important; }
-
 .e-dlg-container .e-dlg-content, .e-dlg-container .modal-content {
   color: var(--dialog-content-text-normal-color);
   background-color: var(--dialog-content-bg-normal-color); }
-
 .e-dlg-container .e-footer-content {
   border-top: 1px solid var(--dialog-footer-border-normal-color);
   background: var(--dialog-footer-bg-normal-color);
@@ -352,7 +349,6 @@
   height: 48px; }
   .e-dlg-container .e-footer-content .e-btn.e-lib.e-primary.e-flat {
     margin-right: 15px; }
-
 .e-dlg-container .e-btn {
   font-family: var(--font-family);
   text-transform: none; }

@@ -451,6 +451,12 @@ html {
                                             }
                                         }
                                     }
+
+                                    .make-master-checkbox {
+                                        padding-top: 20px !important;
+                                        padding-bottom: 20px !important;
+                                        font-size: 14px;
+                                    }
                                 }
 
                                 .tenant-database-form, .tenant-intermediate-database-form {
@@ -611,7 +617,7 @@ html {
 
                                         .e-gridcontent {
                                             width: 434px !important;
-                                            background: $background;
+                                            background: transparent;
 
                                             .e-content {
                                                 width: 424px !important;
@@ -736,6 +742,7 @@ html {
                     padding: 16px 23px;
                     text-align: center;
                     float: left;
+                    z-index: 1;
 
                     #details-back {
                         @extend %text-style-decoration;
@@ -764,17 +771,6 @@ html {
                         display: none !important;
                     }
                 }
-            }
-        }
-
-        #custom-attribute-dialog {
-            .material-checkbox + input + label {
-                padding-top: 7px !important;
-            }
-
-            .material-checkbox:checked + input + label::before {
-                bottom: 7px !important;
-                left: 2px !important;
             }
         }
 
@@ -964,6 +960,10 @@ html {
         height: 15px;
         font-size: 17px;
     }
+}
+
+.su-master-site-bi .su-master-site-reports {
+    font-size: 17px !important;
 }
 
 .close-icon.su-inner-close {

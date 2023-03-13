@@ -84,7 +84,7 @@
     padding: 32px 24px 20px 24px !important;
 }
 
-#oauth-settings-tab, #openid-settings-tab, #azure-ad-settings-tab, #jwt-settings-tab {
+#oauth-settings-tab, #openid-settings-tab, #azure-ad-settings-tab, #jwt-settings-tab, #azure-ad-b2c-settings-tab {
     .admin-page-body {
         .auth-settings-form {
             .auth-sub-title {
@@ -131,6 +131,9 @@
                 }
             }
 
+            .switch-margin {
+                margin-top: 20px;
+            }
 
             #oauth-callback-link-copy.focusdiv, #openid-callback-link-copy.focusdiv, #oauth-mobile-callback-link-copy.focusdiv, #openid-mobile-callback-link-copy.focusdiv {
                 border-top: 1px solid $primary-color;

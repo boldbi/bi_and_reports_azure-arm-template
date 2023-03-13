@@ -10,6 +10,14 @@ $(document).ready(function () {
         floatLabelType: 'Never',
     });
 
+    String.prototype.format = function () {
+        a = this;
+        for (k in arguments) {
+            a = a.replace("{" + k + "}", arguments[k])
+        }
+        return a
+    }
+
     inputbox.appendTo("#custom-attribute-name");
 
     multiLineInputBoxInitialization("#custom-attribute-value");
@@ -35,9 +43,11 @@ $(document).ready(function () {
         },
         highlight: function (element) {
             $(element).closest("div").addClass("e-error");
+            $(element).closest(".e-outline").addClass("e-error");
         },
         unhighlight: function (element) {
             $(element).closest("div").removeClass("e-error");
+            $(element).closest(".e-outline").removeClass("e-error");
             $(element).closest(".e-outline").siblings(".custom-attr-validation-errors").html("");
         },
         errorPlacement: function (error, element) {
@@ -45,25 +55,25 @@ $(document).ready(function () {
         },
         messages: {
             "custom-attribute-name": {
-                isRequired: window.TM.App.LocalizationContent.AttributeNameValidator
+                isRequired: window.Server.App.LocalizationContent.AttributeNameValidator
             },
             "custom-attribute-value": {
-                isRequired: window.TM.App.LocalizationContent.AttributeValueValidator
+                isRequired: window.Server.App.LocalizationContent.AttributeValueValidator
             }
         }
     });
 
     $.validator.addMethod("isRequired", function (value, element) {
         return !isEmptyOrWhitespace(value);
-    }, window.TM.App.LocalizationContent.EnterName);
+    }, window.Server.App.LocalizationContent.EnterName);
 
     $.validator.addMethod("isValidName", function (value, element) {
         return IsValidName("name", value);
-    }, window.TM.App.LocalizationContent.AvoidSpecailCharacters);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("isAttributeExist", function (value, element) {
         return isAttributeExist(value);
-    }, window.TM.App.LocalizationContent.IsAttributeNameExist);
+    }, window.Server.App.LocalizationContent.IsAttributeNameExist);
 });
 
 function isAttributeExist() {
@@ -84,11 +94,11 @@ function openCustomAttributeDialog(attributeId, name) {
         element.appendChild(createDialogId);
         $("#custom-attribute-dialog").css("height", $("#popup-container").height());
         var dialog = new ejs.popups.Dialog({
-            header: '<div class="dlg-title">' + window.TM.App.LocalizationContent.AddCustomAttribute + '</div>',
+            header: '<div class="dlg-title">' + window.Server.App.LocalizationContent.AddCustomAttribute + '</div>',
             content: document.getElementById("custom-attribute-content"),
             buttons: [
-                { click: onCloseCustomAttribute, buttonModel: { content: window.TM.App.LocalizationContent.CancelButton } },
-                { click: saveAttribute, buttonModel: { isPrimary: true, content: window.TM.App.LocalizationContent.SaveButton } },
+                { click: onCloseCustomAttribute, buttonModel: { content: window.Server.App.LocalizationContent.CancelButton } },
+                { click: saveAttribute, buttonModel: { isPrimary: true, content: window.Server.App.LocalizationContent.SaveButton } },
             ],
             animationSettings: { effect: 'Zoom' },
             beforeOpen: showCustomAttribute,
@@ -105,8 +115,8 @@ function openCustomAttributeDialog(attributeId, name) {
     else {
         var dialog = document.getElementById("custom-attribute-dialog").ej2_instances;
         dialog[0].buttons = [
-            { click: onCloseCustomAttribute, buttonModel: { content: window.TM.App.LocalizationContent.CancelButton } },
-            { click: saveAttribute, buttonModel: { isPrimary: true, content: window.TM.App.LocalizationContent.SaveButton } },
+            { click: onCloseCustomAttribute, buttonModel: { content: window.Server.App.LocalizationContent.CancelButton } },
+            { click: saveAttribute, buttonModel: { isPrimary: true, content: window.Server.App.LocalizationContent.SaveButton } },
         ],
         dialog[0].show();
     }
@@ -163,7 +173,7 @@ function showSavedAttributes() {
 
 function showCustomAttribute() {
     var dialog = document.getElementById("custom-attribute-dialog").ej2_instances;
-    dialog[0].header = isAttributeEdit ? window.TM.App.LocalizationContent.EditCustomAttribute : window.TM.App.LocalizationContent.AddCustomAttribute;
+    dialog[0].header = isAttributeEdit ? window.Server.App.LocalizationContent.EditCustomAttribute : window.Server.App.LocalizationContent.AddCustomAttribute;
     updateValidationMessages();
     $("#custom-attribute-content").show();
     $("#custom-attribute-name").focus();
@@ -195,7 +205,7 @@ function saveCustomAttribute() {
         success: function (result) {
             if (result.Status) {
                 getSiteAttributes();
-                SuccessAlert(window.TM.App.LocalizationContent.AddCustomAttribute, window.TM.App.LocalizationContent.CustomAttributeSuccess, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.AddCustomAttribute, window.Server.App.LocalizationContent.CustomAttributeSuccess, 7000);
                 hideWaitingPopup('custom-attribute-dialog');
                 dialog[0].hide();
             } else {
@@ -204,7 +214,7 @@ function saveCustomAttribute() {
                     $("#custom-attribute-name").addClass("e-error");
                     $("#custom-attribute-form").valid();
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.AddCustomAttribute, window.TM.App.LocalizationContent.CustomAttributeFailure, result.ErrorMessage, 7000);
+                    WarningAlert(window.Server.App.LocalizationContent.AddCustomAttribute, window.Server.App.LocalizationContent.CustomAttributeFailure, result.ErrorMessage, 7000);
                     dialog[0].hide();
                 }
             }
@@ -272,7 +282,7 @@ function updateCustomAttribute(attributeId) {
         success: function (result) {
             if (result.Status) {
                 getSiteAttributes();
-                SuccessAlert(window.TM.App.LocalizationContent.EditCustomAttribute, window.TM.App.LocalizationContent.UpdateCustomAttributeSuccess, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.EditCustomAttribute, window.Server.App.LocalizationContent.UpdateCustomAttributeSuccess, 7000);
                 hideWaitingPopup('custom-attribute-dialog');
                 dialog[0].hide();
             } else {
@@ -281,7 +291,7 @@ function updateCustomAttribute(attributeId) {
                     $("#custom-attribute-name").addClass("e-error");
                     $("#custom-attribute-form").valid();
                 } else {
-                    WarningAlert(window.TM.App.LocalizationContent.EditCustomAttribute, window.TM.App.LocalizationContent.UpdateCustomAttributeFailure, result.ErrorMessage, 7000);
+                    WarningAlert(window.Server.App.LocalizationContent.EditCustomAttribute, window.Server.App.LocalizationContent.UpdateCustomAttributeFailure, result.ErrorMessage, 7000);
                     dialog[0].hide();
                 }
             }
@@ -305,10 +315,10 @@ function removeCustomAttribute(item) {
             if (result.Status) {
                 getSiteAttributes();
                 hideWaitingPopup('messageBox');
-                SuccessAlert(window.TM.App.LocalizationContent.DeleteCustomAttribute, window.TM.App.LocalizationContent.DeleteCustomAttributeSuccess, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.DeleteCustomAttribute, window.Server.App.LocalizationContent.DeleteCustomAttributeSuccess, 7000);
             } else {
                 hideWaitingPopup('messageBox');
-                WarningAlert(window.TM.App.LocalizationContent.DeleteCustomAttribute, window.TM.App.LocalizationContent.DeleteCustomAttributeFailure, result.Message, 7000);
+                WarningAlert(window.Server.App.LocalizationContent.DeleteCustomAttribute, window.Server.App.LocalizationContent.DeleteCustomAttributeFailure, result.Message, 7000);
             }
             hideWaitingPopup('messageBox');
             onCloseMessageBox();
@@ -353,7 +363,7 @@ function deleteConfirmation(item) {
     setTimeout(function () {
         var attributeGridObj = document.getElementById('SiteAttributesGrid').ej2_instances[0];
         var attribute = attributeGridObj.getCurrentViewRecords()[attributeGridObj.getSelectedRowIndexes()];
-        messageBox("su-delete", window.TM.App.LocalizationContent.DeleteCustomAttribute, window.TM.App.LocalizationContent.DeleteAttributeConfirm + '<span class ="highlight-name">' + attribute.Name + " ?" + '</span>', "error", function () {
+        messageBox("su-delete", window.Server.App.LocalizationContent.DeleteCustomAttribute, window.Server.App.LocalizationContent.DeleteAttributeConfirm.format(" - <span class ='highlight-name'>", attribute.Name, "</span>"), "error", function () {
             removeCustomAttribute(item)
         }, function () {
                 clearAttributeSelection() 

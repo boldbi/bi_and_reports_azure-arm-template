@@ -25,13 +25,13 @@ $(document).ready(function () {
 
     $.validator.addMethod("isValidName", function (value, element) {
         return IsValidName("name", value)
-    }, window.Server.App.LocalizationContent.AvoidSpecialCharactors);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("additionalSpecialCharValidation", function (value, element) {
         if (/^[a-zA-Z_0-9`~!\$\^()=\-\.\{\} ]+$/.test(value) || value === "") {
             return true;
         }
-    }, window.Server.App.LocalizationContent.AvoidSpecialCharactors);
+    }, window.Server.App.LocalizationContent.AvoidSpecailCharacters);
 
     $.validator.addMethod("isValidPassword", function (value, element) {
         return IsValidPassword(value);
@@ -100,7 +100,7 @@ $(document).ready(function () {
                 isValidPassword: window.Server.App.LocalizationContent.InvalidPasswordValidator
             },
             "re-password": {
-                required: window.Server.App.LocalizationContent.ConfirmNewPassword,
+                required: window.Server.App.LocalizationContent.ConfirmPasswordValidator,
                 equalTo: window.Server.App.LocalizationContent.PasswordMismatch
             }
         },
