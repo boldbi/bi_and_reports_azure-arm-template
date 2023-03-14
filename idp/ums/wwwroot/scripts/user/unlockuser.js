@@ -1,11 +1,11 @@
 ﻿$(document).ready(function () {
     var userUnlockDialog = new ej.popups.Dialog({
-        header: window.TM.App.LocalizationContent.UnlockUser,
+        header: window.Server.App.LocalizationContent.UnlockUser,
         content: document.getElementById("unlock-user-confirmation-dialog-content"),
         showCloseIcon: true,
         buttons: [
-            { click: unLockUser, buttonModel: { content: window.TM.App.LocalizationContent.YesButton, isPrimary: true } },
-            { click: onUserUnlockDialogClose, buttonModel: { content: window.TM.App.LocalizationContent.NoButton } }
+            { click: unLockUser, buttonModel: { content: window.Server.App.LocalizationContent.YesButton, isPrimary: true } },
+            { click: onUserUnlockDialogClose, buttonModel: { content: window.Server.App.LocalizationContent.NoButton } }
         ],
         width: "472px",
         height: "auto",
@@ -36,7 +36,7 @@ function unLockUser() {
             window.location.reload();
         }
         else {
-            SuccessAlert(window.TM.App.LocalizationContent.UnlockUser, window.TM.App.LocalizationContent.UserUnlocked, 7000)
+            SuccessAlert(window.Server.App.LocalizationContent.UnlockUser, window.Server.App.LocalizationContent.UserUnlocked, 7000)
             userGrid.refresh();
             onUserUnlockDialogClose();
             hideWaitingPopup("unlock-user-confirmation");
@@ -49,7 +49,7 @@ function unLockUser() {
             window.location.reload();
         }
         else {
-            WarningAlert(window.TM.App.LocalizationContent.UnlockUser, window.TM.App.LocalizationContent.UserUnlockedError, 7000)
+            WarningAlert(window.Server.App.LocalizationContent.UnlockUser, window.Server.App.LocalizationContent.UserUnlockedError, 7000)
             userGrid.refresh();
             onUserUnlockDialogClose();
             hideWaitingPopup("unlock-user-confirmation");

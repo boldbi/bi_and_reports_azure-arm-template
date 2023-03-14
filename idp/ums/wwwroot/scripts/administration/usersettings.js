@@ -29,7 +29,7 @@ $(document).on("change", "input[name='activation']", function () {
                     emailValidationMsg.addClass("hide");
                 }
                 else if (result.result === "failure" && result.isAdmin === true) {
-                    emailValidationMsg.html(window.TM.App.LocalizationContent.ActivationMode).removeClass("hide");
+                    emailValidationMsg.html(window.Server.App.LocalizationContent.ActivationMode).removeClass("hide");
                 }
             }
         });
@@ -53,9 +53,9 @@ $(document).on("click", "#update-user-settings", function () {
         data: { userSettingsData: userSettings },
         success: function (result) {
             if (result.status) {
-                SuccessAlert(window.TM.App.LocalizationContent.UserSettings, window.TM.App.LocalizationContent.SiteSettingsUpdated, 7000);
+                SuccessAlert(window.Server.App.LocalizationContent.UserSettings, window.Server.App.LocalizationContent.SiteSettingsUpdated, 7000);
             } else {
-                WarningAlert(window.TM.App.LocalizationContent.UserSettings, window.TM.App.LocalizationContent.SiteSettingsUpdateFalied, result.Message, 7000);
+                WarningAlert(window.Server.App.LocalizationContent.UserSettings, window.Server.App.LocalizationContent.SiteSettingsUpdateFalied, result.Message, 7000);
             }
             hideWaitingPopup('body');
         }

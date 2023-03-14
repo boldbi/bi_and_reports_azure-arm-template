@@ -14,7 +14,7 @@
 <div class="header-bar col-lg-12 col-md-12 col-sm-12">
     <div class="main-screen-logo mobile-hidden">
         <a href="/" class="home-link" data-container="body">
-            <img alt="[[[Application Logo]]]" id="application-logo" src="@GlobalAppSettings.CdnDomain/static/company/@(GlobalAppSettings.Branding == AppBranding.Bold.Identifier ? "boldid" : GlobalAppSettings.Branding)/logo/v1/@IconFileNames.MainLogo" />
+            <img alt="@T["Application Logo"]" id="application-logo" src="@GlobalAppSettings.CdnDomain/static/company/@(GlobalAppSettings.Branding == AppBranding.Bold.Identifier ? "boldid" : GlobalAppSettings.Branding)/logo/v1/@IconFileNames.MainLogo" />
         </a>
     </div>
     @if (!isToRemoveUserProfile)
@@ -25,7 +25,7 @@
                 <div id="account-profile" class="dropdown no-padding">
                     <span class="dropdown-toggle" data-toggle="dropdown">
                         <span class="profile-picture">
-                            <img alt="[[[Profile Picture]]]" src="@Url.Content("~/User/Avatar?id=" + currentUserId + "&ImageSize=64")" />
+                            <img alt="@T["Profile Picture"]" src="@Url.Content("~/User/Avatar?id=" + currentUserId + "&ImageSize=64")" />
                         </span>
                     </span>
                     <div class="dropdown-menu" id="profile-info-section" role="menu">
@@ -34,7 +34,7 @@
                                 <tbody>
                                     <tr>
                                         <td class="profile-picture-area">
-                                            <img alt="[[[Profile Picture]]]" src="@Url.Content("~/User/Avatar?id=" + currentUserId + "&ImageSize=64")" />
+                                            <img alt="@T["Profile Picture"]" src="@Url.Content("~/User/Avatar?id=" + currentUserId + "&ImageSize=64")" />
                                         </td>
                                         <td class="profile-info-area">
                                             <ul class="no-margin no-padding">
@@ -48,10 +48,10 @@
                         </div>
                         <div class="profile-buttons">
                             <a href="@Url.Action("Profilepage", "User")" class="profile-menu-action col-lg-6" data-toggle="tooltip" data-placement="top" data-container="body" title="View my profile">
-                                [[[PROFILE]]]
+                                @T["Profile"]
                             </a>
                             <a href="@Url.Action("logout", "accounts")" class="profile-menu-action col-lg-6" data-toggle="tooltip" data-placement="top" data-container="body" title="Log Out">
-                                [[[LOG OUT]]]
+                                @T["Log out"]
                             </a>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
         else
         {
             <div class="login-account">
-                <a href="@Url.Action("Login", "Accounts")">[[[LOG IN]]]</a>
+                <a href="@Url.Action("Login", "Accounts")">@T["Log in"]</a>
             </div>
         }
     }

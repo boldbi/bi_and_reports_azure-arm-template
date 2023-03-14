@@ -33,11 +33,9 @@
 @keyframes rotate {
   100% {
     transform: rotate(360deg); } }
-
 @-webkit-keyframes rotate {
   100% {
     transform: rotate(360deg); } }
-
 @keyframes dash {
   0% {
     stroke-dasharray: 1,200;
@@ -48,7 +46,6 @@
   100% {
     stroke-dasharray: 89,200;
     stroke-dashoffset: -124; } }
-
 @-webkit-keyframes dash {
   0% {
     stroke-dasharray: 1,200;

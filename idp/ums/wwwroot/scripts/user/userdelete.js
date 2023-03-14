@@ -4,7 +4,7 @@
         showOnInit: false,
         allowDraggable: false,
         enableResize: false,
-        title: window.TM.App.LocalizationContent.DeleteUser,
+        title: window.Server.App.LocalizationContent.DeleteUser,
         enableModal: true,
         close: "onDeleteDialogClose",
         closeOnEscape: true,

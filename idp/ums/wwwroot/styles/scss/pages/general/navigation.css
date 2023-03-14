@@ -12,8 +12,8 @@
       padding: 0 5px;
       text-align: center;
       /*.sf-nav-administration-collapse-item {
-                    display: none !important;
-                }*/ }
+          display: none !important;
+      }*/ }
       #menu-area #app-navigation #main-nav ul .sf-nav-item {
         -moz-border-radius: 4px;
         -webkit-border-radius: 4px;
@@ -205,7 +205,7 @@
                     margin-top: 2px;
                     overflow: hidden;
                     text-overflow: ellipsis; }
-          #menu-area #app-navigation #sub-nav ul li.sub-menu-action:hover, #menu-area #app-navigation #sub-nav ul li.profile-section:hover {
+          #menu-area #app-navigation #sub-nav ul li.sub-menu-action:hover:not(.profile-section dropup), #menu-area #app-navigation #sub-nav ul li.profile-section:hover:not(.profile-section dropup) {
             background-color: var(--nav-menu-bg-color); }
           #menu-area #app-navigation #sub-nav ul li .sf-sub-menu-separator {
             background: var(--nav-menu-separtor-icon-color);
@@ -217,10 +217,13 @@
 @media screen and (max-width: 1040px) {
   .cookie-notification {
     margin-left: 0px !important; }
+
   .mobile-visible {
     display: block; }
+
   .mobile-hidden {
     display: none !important; }
+
   .mobile-menu-icon {
     cursor: pointer;
     display: table;
@@ -232,6 +235,7 @@
     .mobile-menu-icon span {
       display: table-cell;
       vertical-align: middle; }
+
   #mobile-profile-picture {
     height: 125px;
     overflow: hidden; }
@@ -247,6 +251,7 @@
     #mobile-profile-picture img {
       margin-top: -30px;
       width: 175px; }
+
   #server-app-container #menu-area {
     background-color: var(--nav-menu-bg-color);
     padding-top: 40px !important;
@@ -318,10 +323,9 @@
             #server-app-container #menu-area aside #main-nav #items-menu li.sf-nav-separator {
               height: 1px;
               margin: 10px 0; } }
-
 @media screen and (min-width: 1041px) and (max-width: 1399px) {
   #menu-area #app-navigation #main-nav ul {
-    /*.sf-nav-administration-item {
+                    /*.sf-nav-administration-item {
                         display: none !important;
                     }
 
@@ -394,7 +398,6 @@
     display: none !important; }
     #menu-area #app-navigation #main-nav .sf-nav-separator.logo-separator {
       display: block !important; } }
-
 .dropdown-menu li .sub-menu-profile-text-padding:hover {
   background: none;
   cursor: default; }

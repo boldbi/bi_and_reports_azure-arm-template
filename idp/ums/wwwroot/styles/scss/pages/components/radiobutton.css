@@ -3,19 +3,16 @@
     opacity: 0; }
   5% {
     opacity: 1; } }
-
 @-webkit-keyframes ripple {
   5%, 100% {
     opacity: 0; }
   5% {
     opacity: 1; } }
-
 @keyframes ripple {
   5%, 100% {
     opacity: 0; }
   5% {
     opacity: 1; } }
-
 input[type="radio"][class="css-radio"] {
   display: none; }
 

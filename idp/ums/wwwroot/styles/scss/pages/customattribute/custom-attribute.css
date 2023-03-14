@@ -1,7 +1,6 @@
 @media (min-width: 1040px) and (max-width: 1200px) {
   .app-header #application-list {
     text-align: center !important; } }
-
 #custom-attribute-dialog {
   background: var(--surface); }
   #custom-attribute-dialog .attribute-name .e-float-input {
@@ -19,9 +18,6 @@
   #custom-attribute-dialog .e-dlg-content {
     padding: 18px;
     background: var(--surface); }
-    #custom-attribute-dialog .e-dlg-content .app-textbox-label {
-      padding: 0 !important;
-      color: var(--primary-text-color); }
     #custom-attribute-dialog .e-dlg-content .e-custom.e-non-float input {
       min-height: 30px !important; }
     #custom-attribute-dialog .e-dlg-content .e-custom.e-non-float.e-valid-input {
@@ -74,14 +70,6 @@
     letter-spacing: 0.3px; }
   #custom-attribute-dialog .custom-attribute-div:last-child {
     margin-bottom: 0; }
-  #custom-attribute-dialog .material-checkbox + input + label {
-    color: var(--primary-text-color);
-    font-weight: normal;
-    height: 28px;
-    padding: 7px 0 0 22px !important; }
-  #custom-attribute-dialog .material-checkbox:checked + input + label::before {
-    bottom: 12px !important;
-    left: 1px !important; }
   #custom-attribute-dialog .e-footer-content {
     background: var(--background); }
   #custom-attribute-dialog .has-error {
@@ -109,7 +97,6 @@
         padding: 5px 10px !important; }
         #SiteAttributesGrid .e-gridcontent .e-rowcell .dropdown .dropdown-menu li a .menu-text, #AddSiteAttributesGrid .e-gridcontent .e-rowcell .dropdown .dropdown-menu li a .menu-text {
           font-size: 12px; }
-
 #SiteAttributesGrid .user-hover-options #edit-site-attribute:hover, #SiteAttributesGrid .user-hover-options #remove-site-attribute:hover, #AddSiteAttributesGrid .user-hover-options #edit-site-attribute:hover, #AddSiteAttributesGrid .user-hover-options #remove-site-attribute:hover {
   cursor: pointer; }
 

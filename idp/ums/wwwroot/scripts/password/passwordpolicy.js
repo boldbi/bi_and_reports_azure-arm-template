@@ -41,7 +41,7 @@ function passwordBoxHightlight(element) {
             if ($(passwordPolicyElement[i]).attr('class') == passwordPolicyClass)
                 $(element).closest('div').removeClass("e-error");
             else
-                rules = "[[[unsatisfied-rule]]]";
+                rules = "unsatisfied-rule";
         }
         if (rules != "" && rules != undefined) {
             $(element).closest('div').addClass("e-error");
@@ -60,7 +60,7 @@ function passwordBoxUnhightlight(element) {
     if ($(element).attr('id') == "new-password") {
         for (var i = 0; i < passwordPolicyElement.length; i++) {
             if ($(passwordPolicyElement[i]).attr('class') != passwordPolicyClass)
-                rules = "[[[unsatisfied-rule]]]";
+                rules = "unsatisfied-rule";
             if ($(passwordPolicyElement[i]).attr('class') == passwordPolicyClass)
                 $(element).closest('div').removeClass("e-error");
         }

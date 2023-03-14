@@ -12,67 +12,67 @@
                         <label for="enable-sso" class="label-primary"></label>
                     </div>
                     <div class="app-textbox-label inline-align">
-                        [[[Enable Azure AD]]]
+                        @T["Enable Azure AD"]
                     </div>
                 </div>
                 <div class="col-md-12 no-padding input-field-margin">
                     <div class="col-xs-12 no-padding">
-                        <label class="app-textbox-label">[[[Application Id]]]</label>
+                        <label class="app-textbox-label">@T["Application Id"]</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control no-margin" ng-model="ApplicationId" ng-init="ApplicationId='@ViewBag.AzureAdSettings.SAMLSettings.ApplicationId'" name="ApplicationId" placeholder="[[[Application Id]]]" id="application-id" data-ng-disabled="!IsEnabled" required />
-                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.ApplicationId.$error.required && ssoSettingsForm.ApplicationId.$dirty ">[[[Please enter Application Id]]]</span>
+                        <input type="text" class="form-control no-margin" ng-model="ApplicationId" ng-init="ApplicationId='@ViewBag.AzureAdSettings.SAMLSettings.ApplicationId'" name="ApplicationId" placeholder="@T["Application Id"]" id="application-id" data-ng-disabled="!IsEnabled" required />
+                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.ApplicationId.$error.required && ssoSettingsForm.ApplicationId.$dirty ">@T["Please enter Application Id"]</span>
                     </div>
                     @if (appBranding == AppBranding.Bold.Identifier)
                     {
                         <div class="info-message no-padding">
-                            [[[A unique identifier used to register the Embedded BI web app in ADFS.]]]
+                            @T["A unique identifier used to register the Embedded BI web app in ADFS."]
                         </div>
                     }
                     else
                     {
                         <div class="info-message no-padding">
-                            [[[A unique identifier used to register the Enterprise Reporting web app in ADFS.]]]
+                            @T["A unique identifier used to register the Enterprise Reporting web app in ADFS."]
                         </div>
                     }
                 </div>
                 <div class="col-md-12 no-padding input-field-margin">
                     <div class="col-xs-12 no-padding">
-                        <label class="app-textbox-label">[[[Application Id URI]]]</label>
+                        <label class="app-textbox-label">@T["Application Id URI"]</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control no-margin" ng-model="ApplicationIdURI" ng-init="ApplicationIdURI='@ViewBag.AzureAdSettings.SAMLSettings.ApplicationIdURI'" name="ApplicationIdURI" placeholder="[[[Application Id URI]]]" id="application-id-uri" data-ng-disabled="!IsEnabled" required />
-                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.ApplicationIdURI.$dirty && ssoSettingsForm.ApplicationIdURI.$invalid">[[[Please enter Application Id URI]]]</span>
+                        <input type="text" class="form-control no-margin" ng-model="ApplicationIdURI" ng-init="ApplicationIdURI='@ViewBag.AzureAdSettings.SAMLSettings.ApplicationIdURI'" name="ApplicationIdURI" placeholder="@T["Application Id URI"]" id="application-id-uri" data-ng-disabled="!IsEnabled" required />
+                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.ApplicationIdURI.$dirty && ssoSettingsForm.ApplicationIdURI.$invalid">@T["Please enter application id URI."]</span>
                     </div>
-                    <div class="info-message no-padding">[[[The globally unique URI used to identify this web API. It is the prefix for scopes and the value of the audience claim in access tokens. It is also referred to as an identifier URI.]]]</div>
+                    <div class="info-message no-padding">@T["The globally unique URI used to identify this web API. It is the prefix for scopes and the value of the audience claim in access tokens. It is also referred to as an identifier URI."]</div>
 
                 </div>
                 <div class="col-md-12 no-padding input-field-margin">
                     <div class="col-xs-12 no-padding">
-                        <label class="app-textbox-label">[[[Tenant Name]]]</label>
+                        <label class="app-textbox-label">@T["Tenant Name"]</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control no-margin" ng-model="TenantName" ng-init="TenantName='@ViewBag.AzureAdSettings.SAMLSettings.TenantName'" name="TenantName" placeholder="[[[Tenant Name]]]" id="tenant-name" data-ng-disabled="!IsEnabled" ng-pattern="tenantRegex" required />
-                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.tenantName.$error.required && ssoSettingsForm.tenantName.$dirty">[[[Please enter Tenant Name]]]</span>
-                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.tenantName.$error.pattern ">[[[Please enter valid URL]]]</span>
+                        <input type="text" class="form-control no-margin" ng-model="TenantName" ng-init="TenantName='@ViewBag.AzureAdSettings.SAMLSettings.TenantName'" name="TenantName" placeholder="@T["Tenant Name"]" id="tenant-name" data-ng-disabled="!IsEnabled" ng-pattern="tenantRegex" required />
+                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.tenantName.$error.required && ssoSettingsForm.tenantName.$dirty">@T["Please enter tenant name."]</span>
+                        <span class="validation-message top-padding" ng-show="ssoSettingsForm.tenantName.$error.pattern ">@T["Please enter a valid URL."]</span>
                     </div>
-                    <div class="info-message no-padding">[[[A dedicated instance of the Azure AD service.]]]</div>
+                    <div class="info-message no-padding">@T["A dedicated instance of the Azure AD service."]</div>
 
                 </div>
                 <div class="col-md-12 no-padding input-field-margin">
                     <div class="col-xs-12 no-padding">
-                        <label class="app-textbox-label">[[[Mobile App Client Id]]]</label>
+                        <label class="app-textbox-label">@T["Mobile App Client Id"]</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control no-margin" ng-model="MobileApplicationId" ng-init="MobileApplicationId='@ViewBag.AzureAdSettings.SAMLSettings.MobileApplicationId'" name="MobileApplicationId" placeholder="[[[Mobile App Client Id]]]" id="mobile-app-id" data-ng-disabled="!IsEnabled" />
+                        <input type="text" class="form-control no-margin" ng-model="MobileApplicationId" ng-init="MobileApplicationId='@ViewBag.AzureAdSettings.SAMLSettings.MobileApplicationId'" name="MobileApplicationId" placeholder="@T["Mobile App Client Id"]" id="mobile-app-id" data-ng-disabled="!IsEnabled" />
                     </div>
                     @if (appBranding == AppBranding.Bold.Identifier)
                     {
-                        <div class="info-message no-padding">[[[A unique identifier used to register the Embedded BI mobile app in ADFS.]]]</div>
+                        <div class="info-message no-padding">@T["A unique identifier used to register the Embedded BI mobile app in ADFS."]</div>
                     }
                     else
                     {
-                        <div class="info-message no-padding">[[[A unique identifier used to register the Enterprise Reporting mobile app in ADFS.]]]</div>
+                        <div class="info-message no-padding">@T["A unique identifier used to register the Enterprise Reporting mobile app in ADFS."]</div>
                     }
                 </div>
                 <div class="col-xs-12 no-padding input-field-margin">
@@ -81,10 +81,10 @@
                         <label for="enable-slo" class="label-primary"></label>
                     </div>
                     <div class="app-textbox-label inline-align">
-                        [[[Enable Single Logout]]]
+                        @T["Enable Single Logout"]
                     </div>
                     <div class="info-message no-padding">
-                        [[[Users can log out of both the application and Azure AD using single logout (SLO).]]]
+                        @T["The single logout (SLO) option allows users to log out of both the application and Azure AD."]
                     </div>
                 </div>
             </div>

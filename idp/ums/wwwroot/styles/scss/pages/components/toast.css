@@ -13,7 +13,6 @@
 .toast-container .toast-image-container {
   display: inline-block;
   padding: 14px 5px 0 10px; }
-
 .toast-container .toast-message {
   display: inline-block;
   vertical-align: middle;
@@ -25,7 +24,6 @@
   color: var(--toast-text-normal-color); }
   .toast-container .toast-message .toast-know-more {
     cursor: pointer; }
-
 .toast-container .toast-close {
   float: right;
   padding: 21px 16px 21px;

@@ -248,6 +248,11 @@
         text-align: center;
         font-size: 16px;
     }
+
+    .manage-link-btn {
+        position: absolute;
+        left: 400px;
+    }
 }
 
 #active-directory-container {
@@ -284,49 +289,50 @@
     }
 }
 
-@media screen and (min-width: 1041px) and (max-width: 1399px) {
-    #ssl-help-message, #language-help-message {
-        font-size: $app-text-size;
-    }
+ @media screen and (min-width: 1041px) and (max-width: 1399px) {
+        #ssl-help-message, #language-help-message {
+            font-size: $app-text-size;
+        }
 
-    #ssl-selectpicker {
-        .bootstrap-select {
-            .btn {
-                font-size: $app-text-size !important;
-                height: $textbox-height !important;
+        #ssl-selectpicker {
+            .bootstrap-select {
+                .btn {
+                    font-size: $app-text-size !important;
+                    height: $textbox-height !important;
+                }
             }
         }
-    }
-}
+ }
 
-@media screen and (min-width: 1400px) {
-    .link-button, .critical-action-button {
-        height: $btn-height-large;
-        line-height: $btn-height-large;
-    }
+ @media screen and (min-width: 1400px) {
+        .link-button, .critical-action-button {
+            height: $btn-height-large;
+            line-height: $btn-height-large;
+        }
 
-    #offline-license-update-dialog {
-        #popup-container {
-            .upload-content {
-                #upload-section {
-                    .upload-btn-wrapper {
-                        #file-name {
-                            height: $btn-height-large;
-                            line-height: $btn-height-large;
-                        }
+        #offline-license-update-dialog {
+            #popup-container {
+                .upload-content {
+                    #upload-section {
+                        .upload-btn-wrapper {
+                            #file-name {
+                                height: $btn-height-large;
+                                line-height: $btn-height-large;
+                            }
 
-                        img {
-                            height: $btn-height-large;
-                            line-height: $btn-height-large;
+                            img {
+                                height: $btn-height-large;
+                                line-height: $btn-height-large;
+                            }
                         }
                     }
                 }
             }
         }
-    }
-}
-#warning-alert{
-    #view{
-        left:220px;
-    }
-}
+ }
+
+ #warning-alert {
+        #view {
+            left: 220px;
+        }
+ }
