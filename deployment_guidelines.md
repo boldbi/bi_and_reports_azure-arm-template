@@ -21,7 +21,7 @@ Please follow the below step to create combined Bold BI and Bold Reports Azure w
 
     ![Choose custom deployment](images/choose-own-template-editor.jpg)
     
-6.	[Click here](https://raw.githubusercontent.com/boldbi/bi_and_reports_azure-arm-template/main/armtemplates/boldbi_v5.3.83_boldreports_v4.2.52/BoldServicesAppServiceTemplate.json) to download the ARM template file.
+6.	[Click here](https://raw.githubusercontent.com/boldbi/bi_and_reports_azure-arm-template/main/armtemplates/boldbi_v6.1.8_boldreports_v4.2.85/BoldServicesAppServiceTemplate.json) to download the ARM template file.
 7.	Copy all the contents in the template file and replace them in the “Edit template” window. Then click on the save button.
 
     ![Editor template window](images/edit-template-window.jpg)
