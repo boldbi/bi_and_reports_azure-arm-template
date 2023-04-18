@@ -2729,8 +2729,7 @@ ej.ReportDesigner.Locale['en-CA'] = {
         },
         waterMark: {
             selectOption: 'Select option',
-            selectValue: 'Select a value',
-            noDataFound: 'No Data Found'
+            selectValue: 'Select a value'
         },
         errorMessage: {
             startMessage: 'Report Viewer encountered some issues loading this report. Please',

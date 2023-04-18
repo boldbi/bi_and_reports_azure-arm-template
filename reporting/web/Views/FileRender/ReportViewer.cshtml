@@ -3,6 +3,7 @@
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var reportServerApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
+    var viewerUrl = globalAppSettings.SystemSettings.ViewerUrl;
     var language = CultureInfo.CurrentCulture.Name;
     var isUserAuthenticatedInCurrentTenant = ViewBag.IsUserAuthenticatedInCurrentTenant;
     var parentId = ViewBag.ParentId;
@@ -632,10 +633,10 @@
                 $("#sync_report_viewer")
                 .boldReportViewer(
                     {
-                        reportServiceUrl: "@reportServerApiUrl" + "/reports",
+                        reportServiceUrl: "@viewerUrl",
                         processingMode: ej.ReportViewer.ProcessingMode.Remote,
                         reportPath: "@ViewBag.ItemId",
-                        reportServerUrl: "@reportServerApiUrl" + "/reports",
+                        reportServerUrl: "@viewerUrl",
                         ajaxBeforeLoad: "OnAjaxRequest",
                         reportExport: "OnExportClick",
                         exportSettings: { wordFormat: ej.ReportViewer.WordFormats.Word2013, pptFormat: ej.ReportViewer.PPTFormats.PowerPoint2013, excelFormat: ej.ReportViewer.ExcelFormats.Excel2013 },
@@ -696,10 +697,10 @@
                 }
                 $("#sync_report_viewer")
                     .boldReportViewer({
-                        reportServiceUrl: "@reportServerApiUrl" + "/reports",
+                        reportServiceUrl: "@viewerUrl",
                         processingMode: ej.ReportViewer.ProcessingMode.Remote,
                         reportPath: "@ViewBag.ItemId",
-                        reportServerUrl: "@reportServerApiUrl" + "/reports",
+                        reportServerUrl: "@viewerUrl",
                         ajaxBeforeLoad: "OnAjaxRequest",
                         reportExport: "OnExportClick",
                         exportSettings: { wordFormat: ej.ReportViewer.WordFormats.Word2013, pptFormat: ej.ReportViewer.PPTFormats.PowerPoint2013, excelFormat: ej.ReportViewer.ExcelFormats.Excel2013 },

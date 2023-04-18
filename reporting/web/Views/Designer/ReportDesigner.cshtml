@@ -56,7 +56,6 @@
     {
         <title>Untitled - [[[Design Report]]] - @globalAppSettings.SystemSettings.OrganizationName</title>
     }
-
     @if (ServerAppConfig.IsSelfHosted)
     {
         <environment include="Development,CloudDevelopment">
@@ -458,6 +457,12 @@
         var isHideHelpLinks = "@ServerAppConfig.IsHideHelpLink";
         var isHideHelpLink = isHideHelpLinks.toLowerCase() == "true" ? true : false;
         var customFontsName = [];
+        var _CryptoAES = window['CryptoJS'];
+        var _keyCode = (Math.random() + ' ').substring(2, 10) + (Math.random() + ' ').substring(2, 10);
+        var _ivCode = (Math.random() + ' ').substring(2, 10) + (Math.random() + ' ').substring(2, 10);
+        var _key = _CryptoAES.enc.Utf8.parse(_keyCode);
+        var _iv = _CryptoAES.enc.Utf8.parse(_ivCode);
+        
         if(isEdit === "true"){
             isEditReport = true;
         }
@@ -526,6 +531,8 @@
                 serviceUrl: "@reportServiceUrl",
                 filterDataConnectors: filterDataTiles,
                 ajaxBeforeLoad: ajaxBeforeSend,
+                encryptData: encryptData,
+                decryptData: decryptData,
                 reportServerUrl: "@reportServerApiUrl",
                 create: $.proxy(controlInitialized, this),
                 reportSaved: $.proxy(reportSaved, this),
@@ -635,6 +642,42 @@
             }
         }
 
+        function _encryptData(plainText) {
+            return _CryptoAES.AES.encrypt(
+                _CryptoAES.enc.Utf8.parse(plainText),
+                _key,
+                {
+                    keySize: 128 / 8,
+                    iv: _iv,
+                    mode: _CryptoAES.mode.CBC,
+                    padding: _CryptoAES.pad.Pkcs7
+                }).toString();
+        }
+
+        function _decryptData(cipherText) {
+            return _CryptoAES.AES.decrypt(
+                cipherText,
+                _key,
+                {
+                    keySize: 128 / 8,
+                    iv: _iv,
+                    mode: _CryptoAES.mode.CBC,
+                    padding: _CryptoAES.pad.Pkcs7
+                }).toString(_CryptoAES.enc.Utf8);
+        }
+        
+        function encryptData(eventArgs) {
+            if (eventArgs && eventArgs.data) {
+                eventArgs.data = _encryptData(eventArgs.data);
+            }
+        }
+
+        function decryptData(eventArgs) {
+            if (eventArgs && eventArgs.data) {
+                eventArgs.data = _decryptData(eventArgs.data);
+            }
+        }
+
         function ajaxBeforeSend(args) {
             if (args.headers) {
                 args.headers.push({ Key: 'ReportId', Value: reportId });
@@ -659,6 +702,14 @@
             if (args.actionType === 'AutoDraftReport') {
                 $('#' + controlId + '_design_header_draft_icon').removeClass('e-designer-draft-status-success').addClass('e-designer-draft-status-progress');
                 $('#' + controlId + '_design_header_draft_status').text("[[[Saving draft...]]]");
+            }
+            _injectKeys(args);
+        }
+
+        function _injectKeys(args) {
+            if (args && args.headers) {
+                args.headers.push({ 'Key': 'keyCode', 'Value': _keyCode });
+                args.headers.push({ 'Key': 'ivCode', 'Value': _ivCode });
             }
         }
 

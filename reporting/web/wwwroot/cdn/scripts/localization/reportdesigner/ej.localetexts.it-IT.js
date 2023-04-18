@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['it-IT'] = {
             bookmark: 'Segnalibro',
             alertMessage: 'Formato degli attributi personalizzati non valido. Esempio di formato corretto: \'AttrName1= Value1, AttrName2 = Value2\'.'
         },
+        dataLimit: {
+            categoryName: 'Anteprima limite dati',
+            maxDataCount: 'Numero massimo di dati'
+        },
         seriesSettings: {
             headerName: 'Proprietà della serie',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['it-IT'] = {
         },
         waterMark: {
             selectOption: 'Selezionare l\'opzione',
-            selectValue: 'Seleziona un valore',
-            noDataFound: 'Nessun dato trovato'
+            selectValue: 'Seleziona un valore'
         },
         errorMessage: {
             startMessage: 'Report Viewer ha riscontrato alcuni problemi durante il caricamento di questo rapporto. per favore',
@@ -3823,6 +3826,11 @@ ej.ReportDesigner.Locale['it-IT'] = {
             documentMap: 'Mappa documento',
             bookmark: 'Segnalibro'
         },
+        dataLimit: {
+            categoryName: 'Anteprima limite dati',
+            maxColCount: 'Conte Max Col',
+            maxRowCount: 'Numero massimo di righe'
+        },
         headers: {
             categoryName: 'intestazioni',
             fixedRow: 'Riga fissa',
@@ -4828,6 +4836,10 @@ ej.ReportDesigner.Locale['it-IT'] = {
             documentMap: 'Mappa documento',
             customAttributes: 'Attributi personalizzati',
             bookmark: 'Segnalibro'
+        },
+        dataLimit: {
+            categoryName: 'Anteprima limite dati',
+            maxDataCount: 'Numero massimo di dati'
         },
         spatial: {
             categoryName: 'Spaziale',

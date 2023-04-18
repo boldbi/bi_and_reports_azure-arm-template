@@ -2548,7 +2548,8 @@
       "wwwroot/Scripts/jQuery/jquery-1.10.2.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/scripts/AngularJS/angular.min.js",
-      "wwwroot/Scripts/Core/Server.Core.js"
+      "wwwroot/Scripts/Core/Server.Core.js",
+      "wwwroot/Scripts/CryptoHelper/crypto-js.js"
     ]
   },
   {
@@ -2589,7 +2590,8 @@
       "wwwroot/Scripts/jQuery/jquery-1.10.2.min.js",
       "wwwroot/Scripts/Bootstrap/bootstrap.min.js",
       "wwwroot/scripts/AngularJS/angular.min.js",
-      "wwwroot/Scripts/Core/Server.Core.js"
+      "wwwroot/Scripts/Core/Server.Core.js",
+      "wwwroot/Scripts/CryptoHelper/crypto-js.js"
     ]
   },
   {
@@ -3095,7 +3097,8 @@
       "wwwroot/Scripts/essentialjs/ej.dialog.min.js",
       "wwwroot/Scripts/essentialjs/ej.button.min.js",
       "wwwroot/Scripts/essentialjs/ej.waitingpopup.min.js",
-      "wwwroot/Scripts/essentialjs/ej.checkbox.min.js"
+      "wwwroot/Scripts/essentialjs/ej.checkbox.min.js",
+      "wwwroot/Scripts/CryptoHelper/crypto-js.js"
     ]
   },
   {

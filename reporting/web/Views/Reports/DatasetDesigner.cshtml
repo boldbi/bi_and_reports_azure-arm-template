@@ -226,6 +226,11 @@
         var description = "@Html.Raw(ViewBag.description)";
         var isEdit = "@ViewBag.isEdit";
 		var datasource = "@Html.Raw(ViewBag.datasourceName)";
+        var _CryptoAES = window['CryptoJS'];
+        var _keyCode = (Math.random() + ' ').substring(2, 10) + (Math.random() + ' ').substring(2, 10);
+        var _ivCode = (Math.random() + ' ').substring(2, 10) + (Math.random() + ' ').substring(2, 10);
+        var _key = _CryptoAES.enc.Utf8.parse(_keyCode);
+        var _iv = _CryptoAES.enc.Utf8.parse(_ivCode);         
         isEdit = isEdit.toLowerCase();
 
 		if(isEdit === "true"){
@@ -263,7 +268,10 @@
         toolbarRendering: $.proxy(renderQueryToolbar, this),
         reportServerUrl: "@reportServerApiUrl",
         serviceAuthorizationToken: designerToken,
-        locale: '@language'
+        locale: '@language',
+        ajaxBeforeLoad: ajaxBeforeSend,
+        encryptData: encryptData,
+        decryptData: decryptData
        };
         var designer = new boldReportQueryDesigner($('#' + ctrlId), designerModel);
         }
@@ -308,7 +316,7 @@ function saveQueryDataSet(event) {
     queryDesigner.getDataSet(function (args) {
         doAjaxPost(serviceUrl + '/PostDesignerAction/', JSON.stringify({
             'designerAction': isEditReport ? 'SaveSharedDataSet' : 'CreateSharedDataSet',
-            'sharedData': args.newSharedDataSet,
+            'sharedData': ej.ReportUtil.encryptSharedDatasetModel(args.newSharedDataSet,queryDesigner),
             'name': datasetName,
             'sharedDataMapping': args.sharedDataMapping,
             'customData': {
@@ -333,6 +341,13 @@ function saveQueryDataSet(event) {
                 }]
         });
     });
+}
+
+function _injectKeys(args) {
+    if (args && args.headers) {
+        args.headers.push({ 'Key': 'keyCode', 'Value': _keyCode });
+        args.headers.push({ 'Key': 'ivCode', 'Value': _ivCode });
+    }
 }
 
 function alertMessage(status) {
@@ -445,7 +460,7 @@ function editSharedDataSet(dataSetName, dataSources) {
     }), {
             fnction: function (args) {
             queryDesigner.datasetName = datasetName;
-            queryDesigner.editDataSet(args, dataSources);
+            queryDesigner.editDataSet(ej.ReportUtil.decryptDatasetModel(args, queryDesigner), dataSources);
         },
         indicator: [function () {
                 $('#' + ctrlId + '_div_designerArea').data('ejWaitingPopup').show();
@@ -454,6 +469,53 @@ function editSharedDataSet(dataSetName, dataSources) {
                 $('#' + ctrlId + '_div_designerArea').data('ejWaitingPopup').hide();
             }]
     });
+}
+
+function ajaxBeforeSend(args) {
+    _injectKeys(args);
+}
+
+function _encryptData(plainText) {
+    return _CryptoAES.AES.encrypt(
+        _CryptoAES.enc.Utf8.parse(plainText),
+        _key,
+        {
+            keySize: 128 / 8,
+            iv: _iv,
+            mode: _CryptoAES.mode.CBC,
+            padding: _CryptoAES.pad.Pkcs7
+        }).toString();
+}
+
+function _decryptData(cipherText) {
+    return _CryptoAES.AES.decrypt(
+        cipherText,
+        _key,
+        {
+            keySize: 128 / 8,
+            iv: _iv,
+            mode: _CryptoAES.mode.CBC,
+            padding: _CryptoAES.pad.Pkcs7
+        }).toString(_CryptoAES.enc.Utf8);
+}
+
+function encryptData(eventArgs) {
+    if (eventArgs && eventArgs.data) {
+        eventArgs.data = _encryptData(eventArgs.data);
+    }
+}
+
+function decryptData(eventArgs) {
+    if (eventArgs && eventArgs.data) {
+        eventArgs.data = _decryptData(eventArgs.data);
+    }
+}
+
+function _setRequestHeader(req){
+    if (req) {
+        req.setRequestHeader('keyCode', _keyCode);
+        req.setRequestHeader('ivCode', _ivCode);
+    }
 }
 
 function doAjaxPost(url, jsonObj, callBack) {
@@ -471,6 +533,7 @@ function doAjaxPost(url, jsonObj, callBack) {
             if (callBack && callBack.indicator && callBack.indicator.length > 0) {
                 ej.ReportUtil.invokeCallBack(callBack.indicator[0], {});
             }
+             _setRequestHeader(req);
         },
         success: function (data) {
             if (data && typeof (data.Data) !== 'undefined') {
