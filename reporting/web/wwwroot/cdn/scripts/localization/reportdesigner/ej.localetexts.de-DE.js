@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['de-DE'] = {
             bookmark: 'Lesezeichen',
             alertMessage: 'Ungültiges Format für benutzerdefinierte Attribute. Richtiges Formatbeispiel: \'AttrName1 = Wert1, AttrName2 = Wert2 \'.'
         },
+        dataLimit: {
+            categoryName: 'Vorschaudatenlimit',
+            maxDataCount: 'Max. Datenanzahl'
+        },
         seriesSettings: {
             headerName: 'Serieneigenschaften',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['de-DE'] = {
         },
         waterMark: {
             selectOption: 'Wähle eine Option',
-            selectValue: 'Wähle einen Wert',
-            noDataFound: 'Keine Daten gefunden'
+            selectValue: 'Wähle einen Wert'
         },
         errorMessage: {
             startMessage: 'Beim Laden dieses Berichts sind in der Berichtsanzeige einige Probleme aufgetreten. Bitte',
@@ -3822,6 +3825,11 @@ ej.ReportDesigner.Locale['de-DE'] = {
             documentMap: 'Dokumentenkarte',
             bookmark: 'Lesezeichen'
         },
+        dataLimit: {
+            categoryName: 'Vorschaudatenlimit',
+            maxColCount: 'Max. Spaltenanzahl',
+            maxRowCount: 'Maximale Zeilenanzahl'
+        },
         headers: {
             categoryName: 'Überschriften',
             fixedRow: 'Fester Row',
@@ -4827,6 +4835,10 @@ ej.ReportDesigner.Locale['de-DE'] = {
             documentMap: 'Dokumentenkarte',
             customAttributes: 'Benutzerdefinierte Attribute',
             bookmark: 'Lesezeichen'
+        },
+        dataLimit: {
+            categoryName: 'Vorschaudatenlimit',
+            maxDataCount: 'Max. Datenanzahl'
         },
         spatial: {
             categoryName: 'Räumlich',

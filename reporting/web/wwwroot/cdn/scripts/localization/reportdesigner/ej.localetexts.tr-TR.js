@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             bookmark: 'Yer imi',
             alertMessage: 'Geçersiz özel özellikler biçimi. Doğru format örneği: \'AttrName1 = Value1, AttrName2 = Value2 \'.'
         },
+        dataLimit: {
+            categoryName: 'Önizleme Veri Sınırı',
+            maxDataCount: 'Maksimum Veri Sayısı'
+        },
         seriesSettings: {
             headerName: 'Seri Özellikleri',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['tr-TR'] = {
         },
         waterMark: {
             selectOption: 'Seçeneği seçin',
-            selectValue: 'Bir değer seçin',
-            noDataFound: 'Veri bulunamadı'
+            selectValue: 'Bir değer seçin'
         },
         errorMessage: {
             startMessage: 'Rapor Görüntüleyici bu raporu yüklerken bazı sorunlarla karşılaştı. Lütfen',
@@ -3823,6 +3826,11 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             documentMap: 'Belge Haritası',
             bookmark: 'Yer imi'
         },
+        dataLimit: {
+            categoryName: 'Önizleme Veri Sınırı',
+            maxColCount: 'Maksimum Sütun Sayısı',
+            maxRowCount: 'Maksimum Satır Sayısı'
+        },
         headers: {
             categoryName: 'Başlıklar',
             fixedRow: 'Sabit Satır',
@@ -4828,6 +4836,10 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             documentMap: 'Belge Haritası',
             customAttributes: 'Özel Nitelikler',
             bookmark: 'Yer imi'
+        },
+        dataLimit: {
+            categoryName: 'Önizleme Veri Sınırı',
+            maxDataCount: 'Maksimum Veri Sayısı'
         },
         spatial: {
             categoryName: 'Mekansal',

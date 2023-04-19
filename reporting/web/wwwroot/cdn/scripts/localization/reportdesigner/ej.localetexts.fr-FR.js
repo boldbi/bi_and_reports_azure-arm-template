@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             bookmark: 'Signet',
             alertMessage: 'Format d\'attributs personnalisés non valide.Exemple de format correct: \'AttrName1 = Valeur1, AttrName2 = Valeur2 \'.'
         },
+        dataLimit: {
+            categoryName: 'Limite de données d\'aperçu',
+            maxDataCount: 'Nombre maximum de données'
+        },
         seriesSettings: {
             headerName: 'Propriétés de la série',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['fr-FR'] = {
         },
         waterMark: {
             selectOption: 'Sélectionnez l\'option',
-            selectValue: 'Sélectionnez une valeur',
-            noDataFound: 'Aucune donnée disponible'
+            selectValue: 'Sélectionnez une valeur'
         },
         errorMessage: {
             startMessage: 'La visionneuse de rapports a rencontré des problèmes lors du chargement de ce rapport. S\'il vous plaît',
@@ -3823,6 +3826,11 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             documentMap: 'Carte des documents',
             bookmark: 'Signet'
         },
+        dataLimit: {
+            categoryName: 'Limite de données d\'aperçu',
+            maxColCount: 'Nombre maximal de cols',
+            maxRowCount: 'Nombre maximal de lignes'
+        },
         headers: {
             categoryName: 'En-têtes',
             fixedRow: 'Ligne fixe',
@@ -4830,6 +4838,10 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             documentMap: 'Carte des documents',
             customAttributes: 'Attributs personnalisés',
             bookmark: 'Signet'
+        },
+        dataLimit: {
+            categoryName: 'Limite de données d\'aperçu',
+            maxDataCount: 'Nombre maximum de données'
         },
         spatial: {
             categoryName: 'Spatiale',

@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             bookmark: '书签',
             alertMessage: '自定义属性格式无效。正确的格式示例：\'AttrName1 = Value1，AttrName2 = Value2 \'.'
         },
+        dataLimit: {
+            categoryName: '预览数据限制',
+            maxDataCount: '最大数据数'
+        },
         seriesSettings: {
             headerName: '系列属性',
             basicSettings: {
@@ -2726,8 +2730,7 @@ ej.ReportDesigner.Locale['zh-CN'] = {
         },
         waterMark: {
             selectOption: '选择选项',
-            selectValue: '选择一个值',
-            noDataFound: '没有找到数据'
+            selectValue: '选择一个值'
         },
         errorMessage: {
             startMessage: '报告查看器遇到一些加载此报告的问题。请',
@@ -3817,6 +3820,11 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             documentMap: '文件图',
             bookmark: '书签'
         },
+        dataLimit: {
+            categoryName: '预览数据限制',
+            maxColCount: '最大列数',
+            maxRowCount: '最大行数'
+        },
         headers: {
             categoryName: '标头',
             fixedRow: '固定排',
@@ -4823,6 +4831,10 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             documentMap: '文件图',
             customAttributes: '自定义属性',
             bookmark: '书签'
+        },
+        dataLimit: {
+            categoryName: '预览数据限制',
+            maxDataCount: '最大数据数'
         },
         spatial: {
             categoryName: '空间空间',

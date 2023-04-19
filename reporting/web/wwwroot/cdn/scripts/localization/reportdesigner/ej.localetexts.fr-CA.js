@@ -2729,8 +2729,7 @@ ej.ReportDesigner.Locale['fr-CA'] = {
         },
         waterMark: {
             selectOption: 'Sélectionnez l\'option',
-            selectValue: 'Sélectionnez une valeur',
-            noDataFound: 'Aucune donnée trouvée'
+            selectValue: 'Sélectionnez une valeur'
         },
         errorMessage: {
             startMessage: 'La visionneuse de rapports a rencontré des problèmes lors du chargement de ce rapport. S\'il vous plaît',

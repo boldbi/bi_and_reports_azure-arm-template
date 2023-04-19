@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['en-AU'] = {
             alertMessage: 'Invalid custom attributes format. Correct format example: \'AttrName1= Value1, AttrName2 = Value2\'.',
             bookmark: 'Bookmark'
         },
+        dataLimit: {
+            categoryName: 'Preview Data Limit',
+            maxDataCount: 'Max Data Count'
+        },
         seriesSettings: {
             headerName: 'Series Properties',
             basicSettings: {
@@ -2709,8 +2713,7 @@ ej.ReportDesigner.Locale['en-AU'] = {
         },
         waterMark: {
             selectOption: 'Select option',
-            selectValue: 'Select a value',
-            noDataFound: 'No Data Found'
+            selectValue: 'Select a value'
         },
         errorMessage: {
             startMessage: 'Report Viewer encountered some issues loading this report. Please',
@@ -3803,6 +3806,11 @@ ej.ReportDesigner.Locale['en-AU'] = {
             documentMap: 'Document Map',
             bookmark: 'Bookmark'
         },
+        dataLimit: {
+            categoryName: 'Preview Data Limit',
+            maxColCount: 'Max Col Count',
+            maxRowCount: 'Max Row Count'
+        },
         headers: {
             categoryName: 'Headers',
             fixedRow: 'Fixed Row',
@@ -4808,6 +4816,10 @@ ej.ReportDesigner.Locale['en-AU'] = {
             documentMap: 'Document Map',
             customAttributes: 'Custom Attributes',
             bookmark: 'Bookmark'
+        },
+        dataLimit: {
+            categoryName: 'Preview Data Limit',
+            maxDataCount: 'Max Data Count'
         },
         spatial: {
             categoryName: 'Spatial',

@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['es-ES'] = {
             alertMessage: 'Formato de atributos personalizados no válido. Ejemplo de formato correcto: \'AttrName1= Value1, AttrName2 = Value2\'.',
             bookmark: 'Marcador'
         },
+        dataLimit: {
+            categoryName: 'Límite de datos de vista previa',
+            maxDataCount: 'Recuento máximo de datos'
+        },
         seriesSettings: {
             headerName: 'Propiedades de series',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['es-ES'] = {
         },
         waterMark: {
             selectOption: 'Seleccionar opción',
-            selectValue: 'Seleccionar un valor',
-            noDataFound: 'Datos no encontrados'
+            selectValue: 'Seleccionar un valor'
         },
         errorMessage: {
             startMessage: 'El visualizador de informes ha tenido problemas al cargar este informe. Por favor ',
@@ -3823,6 +3826,11 @@ ej.ReportDesigner.Locale['es-ES'] = {
             documentMap: 'Mapa de documento',
             bookmark: 'Marcador'
         },
+        dataLimit: {
+            categoryName: 'Límite de datos de vista previa',
+            maxColCount: 'Recuento máximo de columnas',
+            maxRowCount: 'Recuento máximo de filas'
+        },
         headers: {
             categoryName: 'Encabezados',
             fixedRow: 'Fila fija',
@@ -4828,6 +4836,10 @@ ej.ReportDesigner.Locale['es-ES'] = {
             documentMap: 'Mapa de documento',
             customAttributes: 'Atributos personalizados',
             bookmark: 'Marcador'
+        },
+        dataLimit: {
+            categoryName: 'Límite de datos de vista previa',
+            maxDataCount: 'Recuento máximo de datos'
         },
         spatial: {
             categoryName: 'Espacial',

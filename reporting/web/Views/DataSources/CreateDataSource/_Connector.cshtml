@@ -21,7 +21,7 @@
                             string isAzureApplication = ServerAppConfig.IsAzureApplication.ToString().ToLower();
                         }
                         <div class="data-designer-container">
-                            <div id="dataDesigner" ng-style="{'display': datasetCreation ? 'none' : 'block'}" boldReportDesigner e-serviceUrl="@serviceURL" e-reportServerUrl="@reportServerApiUrl" e-isAzureApp=@isAzureApplication e-reportDataExtensions="reportDataExtensions" e-create="onDesignerCreate" e-serviceAuthorizationToken="@designerToken">
+                            <div id="dataDesigner" ng-style="{'display': datasetCreation ? 'none' : 'block'}" boldReportDesigner e-serviceUrl="@serviceURL" e-reportServerUrl="@reportServerApiUrl" e-isAzureApp=@isAzureApplication e-reportDataExtensions="reportDataExtensions" e-create="onDesignerCreate" e-ajaxBeforeLoad="onAjaxBeforeLoad" e-encryptData="encryptData" e-decryptData="decryptData" e-serviceAuthorizationToken="@designerToken">
                                 <div class="dataContainer e-reportdesigner-designer-configuration"></div>
                             </div>
                             <div class="dc-dataset-form-container" ng-style="{'display': !datasetCreation ? 'none' : 'block'}">
