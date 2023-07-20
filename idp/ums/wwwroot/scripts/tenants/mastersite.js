@@ -119,7 +119,7 @@ function onMasterDialogClose() {
 
 $(document).on("change", "#tenant-type_hidden", function () {
     enableMasterCheckOption();
-})
+});
 
 function enableMasterCheckOption() {
     if ($("#tenant-type_hidden").val() == "BoldReportsOnPremise") {
