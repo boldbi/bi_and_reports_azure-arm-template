@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['de-DE'] = {
             bookmark: 'Lesezeichen',
             alertMessage: 'Ungültiges Format für benutzerdefinierte Attribute. Richtiges Formatbeispiel: \'AttrName1 = Wert1, AttrName2 = Wert2 \'.'
         },
+        dataLimit: {
+            categoryName: 'Vorschaudatenlimit',
+            maxDataCount: 'Max. Datenanzahl'
+        },
         seriesSettings: {
             headerName: 'Serieneigenschaften',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['de-DE'] = {
         },
         waterMark: {
             selectOption: 'Wähle eine Option',
-            selectValue: 'Wähle einen Wert',
-            noDataFound: 'Keine Daten gefunden'
+            selectValue: 'Wähle einen Wert'
         },
         errorMessage: {
             startMessage: 'Beim Laden dieses Berichts sind in der Berichtsanzeige einige Probleme aufgetreten. Bitte',
@@ -2743,10 +2746,10 @@ ej.ReportDesigner.Locale['de-DE'] = {
             cancelReportProcessMsg: 'Die Berichtsverarbeitung wurde abgebrochen.',
         },
         progressMessage: {
-            exportLoadingMessage: 'Exportdokument wird vorbereitet ... Bitte warten Sie ...',
-            printLoadingMessage: 'Druckdaten vorbereiten ... Bitte warten Sie ...',
-            printPreparationMessage: 'Druckdaten werden vorbereitet ... {0}% abgeschlossen ... Bitte warten ...',
-            exportPreparationMessage: 'Export wird vorbereitet ... {0}% abgeschlossen ... Bitte warten ...',
+            exportLoadingMessage: 'Bericht wird exportiert...',
+            printLoadingMessage: 'Bericht drucken...',
+            printPreparationMessage: 'Druckdaten werden vorbereitet... {0} % abgeschlossen... Bitte warten...',
+            exportPreparationMessage: 'Der Export des Dokuments wird vorbereitet... {0} % abgeschlossen... Bitte warten...',
             cancelText: 'stornieren',
         },
         alertMessage: {
@@ -2767,7 +2770,10 @@ ej.ReportDesigner.Locale['de-DE'] = {
             RVERR0009: 'Die Ränder sind überlappt oder sie liegen außerhalb des Papiers. Geben Sie eine andere Randgröße ein.',
             RVERR0010: 'Bitte geben Sie einen Wert für den Parameter ein',
             RVERR0011: 'Der Parameter darf nicht leer sein',
-            RVERR0012: 'Der für den Berichtsparameter {parameterprompt} angegebene Wert ist für seinen Typ nicht gültig.'
+            RVERR0012: 'Der für den Berichtsparameter {parameterprompt} angegebene Wert ist für seinen Typ nicht gültig.',
+            RVERR0013: 'Der für Parameternamen erforderliche Wert',
+            RVERR0014: 'Parameter dürfen nicht leer sein',
+            RVERR0015: 'Der für Parameternamen erforderliche Wert',
         },
         reportItemLabel: {
             Tablix: 'Tablix-Berichtselement',
@@ -3822,6 +3828,11 @@ ej.ReportDesigner.Locale['de-DE'] = {
             documentMap: 'Dokumentenkarte',
             bookmark: 'Lesezeichen'
         },
+        dataLimit: {
+            categoryName: 'Vorschaudatenlimit',
+            maxColCount: 'Max. Spaltenanzahl',
+            maxRowCount: 'Maximale Zeilenanzahl'
+        },
         headers: {
             categoryName: 'Überschriften',
             fixedRow: 'Fester Row',
@@ -4827,6 +4838,10 @@ ej.ReportDesigner.Locale['de-DE'] = {
             documentMap: 'Dokumentenkarte',
             customAttributes: 'Benutzerdefinierte Attribute',
             bookmark: 'Lesezeichen'
+        },
+        dataLimit: {
+            categoryName: 'Vorschaudatenlimit',
+            maxDataCount: 'Max. Datenanzahl'
         },
         spatial: {
             categoryName: 'Räumlich',

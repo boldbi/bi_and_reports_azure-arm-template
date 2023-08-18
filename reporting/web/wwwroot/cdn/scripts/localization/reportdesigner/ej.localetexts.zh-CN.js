@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             bookmark: '书签',
             alertMessage: '自定义属性格式无效。正确的格式示例：\'AttrName1 = Value1，AttrName2 = Value2 \'.'
         },
+        dataLimit: {
+            categoryName: '预览数据限制',
+            maxDataCount: '最大数据数'
+        },
         seriesSettings: {
             headerName: '系列属性',
             basicSettings: {
@@ -2726,8 +2730,7 @@ ej.ReportDesigner.Locale['zh-CN'] = {
         },
         waterMark: {
             selectOption: '选择选项',
-            selectValue: '选择一个值',
-            noDataFound: '没有找到数据'
+            selectValue: '选择一个值'
         },
         errorMessage: {
             startMessage: '报告查看器遇到一些加载此报告的问题。请',
@@ -2740,10 +2743,10 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             cancelReportProcessMsg: '报表处理被取消。',
         },
         progressMessage: {
-            exportLoadingMessage: '准备出口文件......请稍候......',
-            printLoadingMessage: '准备打印数据......请稍候......',
-            printPreparationMessage: '准备打印数据... {0}已完成...请稍候...',
-            exportPreparationMessage: '准备导出文档... {0}％已完成...请稍候...',
+            exportLoadingMessage: '报告导出...',
+            printLoadingMessage: '报告打印...',
+            printPreparationMessage: '正在准备打印数据...已完成 {0}%...请稍候...',
+            exportPreparationMessage: '正在准备导出文档...已完成 {0}%...请稍候...',
             cancelText: '取消',
         },
         alertMessage: {
@@ -2764,7 +2767,10 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             RVERR0009: '他的利润率是重叠的或者他们不在报纸上。输入不同的保证金大小.',
             RVERR0010: '请为参数输入一个值',
             RVERR0011: '该参数不能为空',
-            RVERR0012: '为报告参数{參數提示}提供的值对其类型无效.'
+            RVERR0012: '为报告参数{參數提示}提供的值对其类型无效.',
+            RVERR0013: '請輸入參數值',
+            RVERR0014: '參數不能為空',
+            RVERR0015: '參數名稱所需的值',
         },
         reportItemLabel: {
             Tablix: 'Tablix报告项目',
@@ -3817,6 +3823,11 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             documentMap: '文件图',
             bookmark: '书签'
         },
+        dataLimit: {
+            categoryName: '预览数据限制',
+            maxColCount: '最大列数',
+            maxRowCount: '最大行数'
+        },
         headers: {
             categoryName: '标头',
             fixedRow: '固定排',
@@ -4823,6 +4834,10 @@ ej.ReportDesigner.Locale['zh-CN'] = {
             documentMap: '文件图',
             customAttributes: '自定义属性',
             bookmark: '书签'
+        },
+        dataLimit: {
+            categoryName: '预览数据限制',
+            maxDataCount: '最大数据数'
         },
         spatial: {
             categoryName: '空间空间',

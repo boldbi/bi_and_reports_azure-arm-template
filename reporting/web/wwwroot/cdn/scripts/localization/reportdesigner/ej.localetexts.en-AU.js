@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['en-AU'] = {
             alertMessage: 'Invalid custom attributes format. Correct format example: \'AttrName1= Value1, AttrName2 = Value2\'.',
             bookmark: 'Bookmark'
         },
+        dataLimit: {
+            categoryName: 'Preview Data Limit',
+            maxDataCount: 'Max Data Count'
+        },
         seriesSettings: {
             headerName: 'Series Properties',
             basicSettings: {
@@ -2709,8 +2713,7 @@ ej.ReportDesigner.Locale['en-AU'] = {
         },
         waterMark: {
             selectOption: 'Select option',
-            selectValue: 'Select a value',
-            noDataFound: 'No Data Found'
+            selectValue: 'Select a value'
         },
         errorMessage: {
             startMessage: 'Report Viewer encountered some issues loading this report. Please',
@@ -2723,10 +2726,10 @@ ej.ReportDesigner.Locale['en-AU'] = {
             cancelReportProcessMsg: 'Report processing was canceled.'
         },
         progressMessage: {
-            exportLoadingMessage: 'Preparing exporting document... Please wait...',
-            printLoadingMessage: 'Preparing print data… Please wait...',
-            printPreparationMessage: 'Preparing print data... {0}% completed... Please wait...',
-            exportPreparationMessage: 'Preparing exporting document... {0}% completed... Please wait...',
+            exportLoadingMessage: 'Report Exporting... ',
+            printLoadingMessage: 'Report Printing... ',
+            printPreparationMessage: 'Preparing to print data... {0}% completed... Please wait...',
+            exportPreparationMessage: 'Preparing to export document... {0}% completed... Please wait...',
             cancelText: 'Cancel',
         },
         alertMessage: {
@@ -2747,7 +2750,10 @@ ej.ReportDesigner.Locale['en-AU'] = {
             RVERR0009: 'The margins are superimposed or are outside the paper. Enter a different margin size.',
             RVERR0010: 'Enter a value for the parameter',
             RVERR0011: 'The parameter cannot be blank',
-            RVERR0012: 'The value provided for the report parameter {parameterprompt} is not valid for its type.'
+            RVERR0012: 'The value provided for the report parameter {parameterprompt} is not valid for its type.',
+            RVERR0013: 'Please enter values for the parameters',
+            RVERR0014: 'Parameters cannot be blank',
+            RVERR0015: 'The value required for parameters names of',
         },
         reportItemLabel: {
             Tablix: 'Tablix report item',
@@ -3803,6 +3809,11 @@ ej.ReportDesigner.Locale['en-AU'] = {
             documentMap: 'Document Map',
             bookmark: 'Bookmark'
         },
+        dataLimit: {
+            categoryName: 'Preview Data Limit',
+            maxColCount: 'Max Col Count',
+            maxRowCount: 'Max Row Count'
+        },
         headers: {
             categoryName: 'Headers',
             fixedRow: 'Fixed Row',
@@ -4808,6 +4819,10 @@ ej.ReportDesigner.Locale['en-AU'] = {
             documentMap: 'Document Map',
             customAttributes: 'Custom Attributes',
             bookmark: 'Bookmark'
+        },
+        dataLimit: {
+            categoryName: 'Preview Data Limit',
+            maxDataCount: 'Max Data Count'
         },
         spatial: {
             categoryName: 'Spatial',
