@@ -46,6 +46,11 @@
                 <div id="publish-plugin-validation" class="validation-message text"></div>
                 <label>[[[Report name]]]</label>
                 <input id="publish-report-name" class="form-control" maxlength="253" ng-model="PublishedItems.Name" disabled>
+                <div id="use-source-name-checkbox">
+                    <input type="checkbox" id="use-source-name" class="material-checkbox" />
+                    <input name="use-source-name" type="hidden" value="false">
+                    <label for="use-source-name" data-toggle="tooltip" data-placement="bottom" title="[[[On enabling this, if a report or data source or dataset with the same name exists in the destination site, the publishing will fail.]]]">[[[Use source report, data source and dataset name.]]]</label>
+                </div>
                 <label>[[[Report description]]]</label>
                 <textarea id="publish-report-descrition" autocomplete="off" class="form-control" placeholder="[[[Write description of report.]]]" ng-model="PublishedItems.Description" maxlength="1024" rows="3"> </textarea>
                 <div id="publish-report-checkbox" ng-if="publishType == '@PublishType.Internal.ToString()'">
@@ -92,6 +97,11 @@
                 <div id="advanced-plugin-validation" class="validation-message text"></div>
                 <label>[[[Report name]]]</label>
                 <input ng-model="p.PublishItem.Name" id="advanced-report-name" class="form-control" maxlength="253" disabled>
+                <div id="advanced-source-name-checkbox">
+                    <input type="checkbox" id="advanced-source-name" class="material-checkbox" ng-model="p.UseSourceItemName" />
+                    <input name="advanced-source-name" type="hidden" value="false" ng-model="p.UseSourceItemName">
+                    <label for="advanced-source-name" data-toggle="tooltip" data-placement="bottom" title="[[[On enabling this, if a report or data source or dataset with the same name exists in the destination site, the publishing will fail.]]]">[[[Use source report, data source and dataset name.]]]</label>
+                </div>
                 <label>[[[Report description]]]</label>
                 <textarea ng-model="p.PublishItem.Description" id="advanced-report-descrition" autocomplete="off" class="form-control" placeholder="[[[Write description of report.]]]" maxlength="1024"></textarea>
                 <div ng-if="publishType == '@PublishType.Internal.ToString()'">

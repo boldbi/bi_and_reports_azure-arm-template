@@ -156,7 +156,7 @@ $(document).ready(function () {
             showWaitingPopup('user-add-dialog');
 
             var lastName = $('#lastname').val().trim();
-            var values = "&userName=" + userName + "&emailid=" + emailid.toLowerCase() + "&firstname=" + firstName + "&lastname=" + lastName + "&password=" + password;
+            var values = { UserName: userName, Email: emailid.toLowerCase(), FirstName: firstName, LastName: lastName, Password: password }
 
             $.ajax({
                 type: "POST", url: isPresentUserNameAndEmailId, data: { userName: userName, emailId: emailid.toLowerCase() },
@@ -329,7 +329,7 @@ function fnOnUserGridLoad(args) {
 }
 
 function fnbeforeDataBound(args) {
-    if (args.count == 0) {
+    if (args.count == 0 && !(args.actual.status)) {
         WarningAlert(window.Server.App.LocalizationContent.Users, window.Server.App.LocalizationContent.FailedToGetUsers, args.result, 7000);
     }
 }
@@ -365,7 +365,7 @@ function fnUserRowSelected(args) {
             }
             else {
                 $(".user-delete-button").css("display", "block");
-                $("#grant-user-").css("disabled", true);
+                $("#grant-user-button").css("disabled", true);
             }
         });
     }
@@ -712,7 +712,8 @@ $(document).on("change", ".checkbox-row", function () {
 });
 
 function enableAccessButton() {
-    $(".provide-access-button").attr("disabled", selectedTenants.length === 0);}
+    $(".provide-access-button").attr("disabled", selectedTenants.length === 0);
+}
 
 function onAddTenantsDialogClose() {
     var gridObj = document.getElementById('add_tenants_grid').ej2_instances[0];
@@ -811,7 +812,7 @@ function onSingleDeleteDialogClose() {
 
 function checkUserImported(t) {
     var ejGrid = $("#user_import_grid").data("ejGrid");
-    if (typeof ejGrid != 'undefined'  && ejGrid.getRows().length > 0) {
+    if (typeof ejGrid != 'undefined' && ejGrid.getRows().length > 0) {
         $("#messageBox_wrapper, .e-dialog-scroller, #messageBox").removeClass("failed-msg-box-height").addClass("msg-box-height"); //Message box height adjustment 
         $(".message-content").removeClass("text-center");
         messageBox("su-single-user", window.Server.App.LocalizationContent.ImportFromCSV, window.Server.App.LocalizationContent.UserImportIncomplete, "error", function () {
@@ -1065,6 +1066,7 @@ function MakeMultipleUserAdmin() {
             if (result.Status) {
                 SuccessAlert(window.Server.App.LocalizationContent.AssignRole, window.Server.App.LocalizationContent.MakeAdmin, 7000)
                 userGrid.refresh();
+                userGrid.clearSelection();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup("multiple-admin-confirmation");
                 onMultipleAdminDialogClose();
@@ -1072,6 +1074,7 @@ function MakeMultipleUserAdmin() {
             else {
                 WarningAlert(window.Server.App.LocalizationContent.AssignRole, window.Server.App.LocalizationContent.MakeAdminError, result.Message, 7000)
                 userGrid.refresh();
+                userGrid.clearSelection();
                 $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
                 hideWaitingPopup("multiple-admin-confirmation");
                 onMultipleAdminDialogClose();

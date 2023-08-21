@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['es-ES'] = {
             alertMessage: 'Formato de atributos personalizados no válido. Ejemplo de formato correcto: \'AttrName1= Value1, AttrName2 = Value2\'.',
             bookmark: 'Marcador'
         },
+        dataLimit: {
+            categoryName: 'Límite de datos de vista previa',
+            maxDataCount: 'Recuento máximo de datos'
+        },
         seriesSettings: {
             headerName: 'Propiedades de series',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['es-ES'] = {
         },
         waterMark: {
             selectOption: 'Seleccionar opción',
-            selectValue: 'Seleccionar un valor',
-            noDataFound: 'Datos no encontrados'
+            selectValue: 'Seleccionar un valor'
         },
         errorMessage: {
             startMessage: 'El visualizador de informes ha tenido problemas al cargar este informe. Por favor ',
@@ -2743,10 +2746,10 @@ ej.ReportDesigner.Locale['es-ES'] = {
             cancelReportProcessMsg: 'El procesamiento de informe fue cancelado'
         },
         progressMessage: {
-            exportLoadingMessage: 'Preparando la exportación del documento... Por favor, espera...',
-            printLoadingMessage: 'Preparando datos de impresión... Por favor espera...',
-            printPreparationMessage: 'Preparando datos de impresión... {0}% completado... Por favor espera...',
-            exportPreparationMessage: 'Preparando la exportación del documento... {0}% completado... Por favor espera...',
+            exportLoadingMessage: 'Exportando informe...',
+            printLoadingMessage: 'Informe de impresión...',
+            printPreparationMessage: 'Preparándose para imprimir datos... {0}% completado... Espere...',
+            exportPreparationMessage: 'Preparándose para exportar el documento... {0}% completado... Por favor, espere...',
             cancelText: 'Cancelar',
         },
         alertMessage: {
@@ -2767,7 +2770,10 @@ ej.ReportDesigner.Locale['es-ES'] = {
             RVERR0009: 'Los márgenes están superpuestos o fuera del papel. Introduce un tamaño de margen diferente.',
             RVERR0010: 'Indicar un valor para el parámetro',
             RVERR0011: 'El parámetro no puede estar vacío',
-            RVERR0012: 'El valor proporcionado para el parámetro de informe {parameterprompt} no es válido para su tipo.'
+            RVERR0012: 'El valor proporcionado para el parámetro de informe {parameterprompt} no es válido para su tipo.',
+            RVERR0013: 'Introduzca valores para los parámetros.',
+            RVERR0014: 'Los parámetros no pueden estar en blanco',
+            RVERR0015: 'El valor requerido para los nombres de parámetros de',
         },
         reportItemLabel: {
             Tablix: 'Elemento de informe tablix',
@@ -3823,6 +3829,11 @@ ej.ReportDesigner.Locale['es-ES'] = {
             documentMap: 'Mapa de documento',
             bookmark: 'Marcador'
         },
+        dataLimit: {
+            categoryName: 'Límite de datos de vista previa',
+            maxColCount: 'Recuento máximo de columnas',
+            maxRowCount: 'Recuento máximo de filas'
+        },
         headers: {
             categoryName: 'Encabezados',
             fixedRow: 'Fila fija',
@@ -4828,6 +4839,10 @@ ej.ReportDesigner.Locale['es-ES'] = {
             documentMap: 'Mapa de documento',
             customAttributes: 'Atributos personalizados',
             bookmark: 'Marcador'
+        },
+        dataLimit: {
+            categoryName: 'Límite de datos de vista previa',
+            maxDataCount: 'Recuento máximo de datos'
         },
         spatial: {
             categoryName: 'Espacial',

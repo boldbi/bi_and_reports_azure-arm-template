@@ -889,6 +889,10 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             bookmark: 'Yer imi',
             alertMessage: 'Geçersiz özel özellikler biçimi. Doğru format örneği: \'AttrName1 = Value1, AttrName2 = Value2 \'.'
         },
+        dataLimit: {
+            categoryName: 'Önizleme Veri Sınırı',
+            maxDataCount: 'Maksimum Veri Sayısı'
+        },
         seriesSettings: {
             headerName: 'Seri Özellikleri',
             basicSettings: {
@@ -2729,8 +2733,7 @@ ej.ReportDesigner.Locale['tr-TR'] = {
         },
         waterMark: {
             selectOption: 'Seçeneği seçin',
-            selectValue: 'Bir değer seçin',
-            noDataFound: 'Veri bulunamadı'
+            selectValue: 'Bir değer seçin'
         },
         errorMessage: {
             startMessage: 'Rapor Görüntüleyici bu raporu yüklerken bazı sorunlarla karşılaştı. Lütfen',
@@ -2743,10 +2746,10 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             cancelReportProcessMsg: 'Rapor işleme iptal edildi.'
         },
         progressMessage: {
-            exportLoadingMessage: 'Dışa aktarma belgesi hazırlanıyor ... Lütfen bekleyin ...',
-            printLoadingMessage: 'Baskı verileri hazırlanıyor… Lütfen bekleyin ...',
-            printPreparationMessage: 'Baskı verileri hazırlanıyor ...% {0} tamamlandı ... Lütfen bekleyin ...',
-            exportPreparationMessage: 'Doküman dışa aktarılıyor ...% {0} tamamlandı ... Lütfen bekleyin ...',
+            exportLoadingMessage: 'Rapor Dışa Aktarılıyor...',
+            printLoadingMessage: 'Rapor Yazdırma...',
+            printPreparationMessage: 'Veriler yazdırılmaya hazırlanıyor... %{0} tamamlandı... Lütfen bekleyin...',
+            exportPreparationMessage: 'Doküman dışa aktarılmaya hazırlanıyor... %{0} tamamlandı... Lütfen bekleyin...',
             cancelText: 'İptal etmek',
         },
         alertMessage: {
@@ -2767,7 +2770,10 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             RVERR0009: 'Kenar boşlukları üst üste binmiş veya kağıdın dışında. Farklı bir kenar boşluğu boyutu girin.',
             RVERR0010: 'Parametre için bir değer girin',
             RVERR0011: 'Parametre boş olamaz',
-            RVERR0012: '{Parameterprompt} rapor parametresi için sağlanan değer, türü için geçerli değil.'
+            RVERR0012: '{Parameterprompt} rapor parametresi için sağlanan değer, türü için geçerli değil.',
+            RVERR0013: 'Lütfen parametreler için değer girin',
+            RVERR0014: 'Parametreler boş olamaz',
+            RVERR0015: 'parametre adları için gereken değer',
         },
         reportItemLabel: {
             Tablix: 'Tablix raporu öğesi',
@@ -3823,6 +3829,11 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             documentMap: 'Belge Haritası',
             bookmark: 'Yer imi'
         },
+        dataLimit: {
+            categoryName: 'Önizleme Veri Sınırı',
+            maxColCount: 'Maksimum Sütun Sayısı',
+            maxRowCount: 'Maksimum Satır Sayısı'
+        },
         headers: {
             categoryName: 'Başlıklar',
             fixedRow: 'Sabit Satır',
@@ -4828,6 +4839,10 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             documentMap: 'Belge Haritası',
             customAttributes: 'Özel Nitelikler',
             bookmark: 'Yer imi'
+        },
+        dataLimit: {
+            categoryName: 'Önizleme Veri Sınırı',
+            maxDataCount: 'Maksimum Veri Sayısı'
         },
         spatial: {
             categoryName: 'Mekansal',
