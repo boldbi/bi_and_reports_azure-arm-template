@@ -109,7 +109,7 @@ $(document).ready(function () {
         var fontFamily = null;
         var theme = null;
         if (document.getElementById("fontfamily") != null) {
-            fontFamily =document.getElementById("fontfamily").ej2_instances[0].value;
+            fontFamily = document.getElementById("fontfamily").ej2_instances[0].value;
         }
 
         if (document.getElementById("application-theme") != null) {
@@ -132,7 +132,7 @@ $(document).ready(function () {
             success: function (result) {
                 if (result.status) {
                     SuccessAlert(window.Server.App.LocalizationContent.LookAndFeelSettings, window.Server.App.LocalizationContent.LookAndFeelSettingsSuccess, 7000);
-                    window.location.href = window.location.href;
+                    setTimeout(function () { window.location.href = window.location.href }, 3000);
                 } else {
                     WarningAlert(window.Server.App.LocalizationContent.LookAndFeelSettings, window.Server.App.LocalizationContent.LookAndFeelSettingsFailure, result.Message, 7000);
                 }
@@ -142,7 +142,7 @@ $(document).ready(function () {
     });
 
     $(document).on("click", "#upload-font", function () {
-        showWaitingPopup('body');     
+        showWaitingPopup('body');
     });
 });
 
@@ -187,7 +187,7 @@ function onChangeTheme(defaultTheme) {
     }
     var themeElements = document.getElementsByClassName("theme-ref");
     themeElements[0].href = baseRootUrl + "bundles/css/" + appearanceTheme;
-    
+
     var applicationElements = document.getElementsByClassName("application-theme-ref");
     applicationElements[0].href = applicationThemeReferenceUrl + "?theme=" + defaultTheme;
 }
@@ -315,7 +315,7 @@ function keyvalidation(id) {
     var themeList = theme.getItems();
     if (name != "") {
         for (var item = 0; item < themeList.length; item++) {
-            if ( name.toLowerCase().trim() === themeList[item].dataset.value.toLowerCase() || name.toLowerCase().trim() == "light" || name.toLowerCase().trim() == "dark") {
+            if (name.toLowerCase().trim() === themeList[item].dataset.value.toLowerCase() || name.toLowerCase().trim() == "light" || name.toLowerCase().trim() == "dark") {
                 $(id).closest('div').addClass("has-error");
                 $(invalid).html(window.Server.App.LocalizationContent.CssFileExist);
                 $('.upload-theme').attr("disabled", "disabled");
@@ -343,7 +343,7 @@ function uploadformValidation() {
 }
 
 $(document).on("keydown keyup", "#font-name", function () {
-    if ($("#font-name").val() == '') {
+    if ($("#font-name").val().trim() == '') {
         $("#upload-font").attr("disabled", true);
     }
     else {
@@ -352,7 +352,7 @@ $(document).on("keydown keyup", "#font-name", function () {
 });
 
 $(document).on("keydown keyup", "#applicationtheme-name", function () {
-    if ($("#applicationtheme-name").val() == '') {
+    if ($("#applicationtheme-name").val().trim() == '') {
         $("#upload-applicationtheme").attr("disabled", true);
     }
     else {
@@ -361,7 +361,7 @@ $(document).on("keydown keyup", "#applicationtheme-name", function () {
 });
 
 $(document).on("keydown keyup", "#dashboardtheme-name", function () {
-    if ($("#dashboardtheme-name").val() == '') {
+    if ($("#dashboardtheme-name").val().trim() == '') {
         $("#upload-dashboardtheme").attr("disabled", true);
     }
     else {
