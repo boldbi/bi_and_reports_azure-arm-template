@@ -271,16 +271,6 @@
             Item name
             </summary>
         </member>
-        <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.ReportPartId">
-            <summary>
-            ReportPart ID
-            </summary>
-        </member>
-        <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.ReportPartType">
-            <summary>
-            ReportPart PartType
-            </summary>
-        </member>
         <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.Description">
             <summary>
             Item description
@@ -302,11 +292,6 @@
             </summary>
         </member>
         <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.ModifiedByFullName">
-            <summary>
-            Specifies the full name of the user who modified the item
-            </summary>
-        </member>
-        <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.ModifiedByDisplayName">
             <summary>
             Specifies the full name of the user who modified the item
             </summary>
@@ -428,12 +413,7 @@
         </member>
         <member name="P:BoldReports.Server.Report.Model.ApiReportAdd.Description">
             <summary>
-            Decription of the Report
-            </summary>
-        </member>
-        <member name="P:BoldReports.Server.Report.Model.ApiReportAdd.ReportPartType">
-            <summary>
-            Type of the Report Part
+            Decription of the DataSource
             </summary>
         </member>
         <member name="P:BoldReports.Server.Report.Model.ApiReportAdd.ItemType">
@@ -466,11 +446,6 @@
             Mapping information of DataSource
             </summary>
         </member>
-        <member name="P:BoldReports.Server.Report.Model.ApiReportAdd.ReportPartMappingInfo">
-            <summary>
-            Mapping information of Report Part
-            </summary>
-        </member>
         <member name="P:BoldReports.Server.Report.Model.ApiReportAdd.ItemContent">
             <summary>
             Provide the item as in stream of bytes
@@ -494,11 +469,6 @@
         <member name="P:BoldReports.Server.Report.Model.ApiReportUpdate.Description">
             <summary>
             Decription of the Report
-            </summary>
-        </member>
-        <member name="P:BoldReports.Server.Report.Model.ApiReportUpdate.ReportPartType">
-            <summary>
-            Type of the Report Part
             </summary>
         </member>
         <member name="P:BoldReports.Server.Report.Model.ApiReportUpdate.VersionComment">
@@ -534,11 +504,6 @@
         <member name="P:BoldReports.Server.Report.Model.ApiReportUpdate.DataSourceMappingInfo">
             <summary>
             Mapping information of DataSource
-            </summary>
-        </member>
-        <member name="P:BoldReports.Server.Report.Model.ApiReportUpdate.ReportPartMappingInfo">
-            <summary>
-            Mapping information of Report Parts
             </summary>
         </member>
         <member name="P:BoldReports.Server.Report.Model.ApiReportUpdate.ItemContent">

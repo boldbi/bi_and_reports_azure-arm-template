@@ -19,9 +19,9 @@ ej.ReportViewer.Locale["tr-TR"] = {
             contentText: "Verilen dosya biçimini seçin.",
             Pdf: "PDF",
             Excel: "Excel",
-            Word: "Word",
+            Word: "sözcük",
             Html: "HTML",
-            PPT: "PowerPoint",
+            PPT: "Priz",
             CSV: "CSV",
             XML: "XML"
         },

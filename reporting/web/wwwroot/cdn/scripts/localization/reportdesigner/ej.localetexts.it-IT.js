@@ -788,7 +788,6 @@ ej.ReportDesigner.Locale['it-IT'] = {
             position: 'Posizione del titolo'
         },
         axis: {
-            axisType: 'Tipo di asse',
             booleanPropertyLabel: 'Abilita asse',
             title: 'Titolo dell\'asse',
             alignment: 'Allineamento',
@@ -916,15 +915,6 @@ ej.ReportDesigner.Locale['it-IT'] = {
                         barLabelStyle: 'Stile etichetta barra',
                         smartLabelStyle: 'Stile etichetta'
                     }
-                }
-            },
-            axisSettings: {
-                categoryName: 'Impostazioni dell\'asse',
-                categoryAxis: 'Categoria',
-                valueAxis: 'Valore',
-                axisTypes: {
-                    primary: 'Primario',
-                    secondary: 'Secondario'
                 }
             },
             link: 'Link',
@@ -1888,9 +1878,7 @@ ej.ReportDesigner.Locale['it-IT'] = {
                 serverName: 'Nome del server',
                 savePassword: 'Salva la password',
                 database: 'Banca dati',
-                advanceSwitch: 'Opzioni avanzate',
-                encrypt: 'crittografare',
-                trustserver: 'Certificato del Server Affidabile'
+                advanceSwitch: 'Opzioni avanzate'
             },
             advanceOption: {
                 connectionString: 'Stringa di connessione',
@@ -2447,10 +2435,10 @@ ej.ReportDesigner.Locale['it-IT'] = {
                 headerText: 'Esportare',
                 contentText: 'Seleziona il formato del file esportato.',
                 Pdf: 'PDF',
-                Excel: 'Excel',
-                Word: 'Word',
+                Excel: 'Eccellere',
+                Word: 'parola',
                 Html: 'HTML',
-                PPT: 'PowerPoint',
+                PPT: 'Presa della corrente',
                 CSV: 'CSV',
                 XML: 'XML'
             },

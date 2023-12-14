@@ -18,10 +18,10 @@ ej.ReportViewer.Locale["it-IT"] = {
 			headerText: "Esportare",
 			contentText: "Selezionare il formato di file esportato.",
 			Pdf: "PDF",
-			Excel: "Excel",
-			Word: "Word",
+			Excel: "Eccellere",
+			Word: "parola",
 			Html: "HTML",
-			PPT: "PowerPoint",
+			PPT: "Presa della corrente",
 			CSV: "CSV",
 			XML: "XML"
 		},

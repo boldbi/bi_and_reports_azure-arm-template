@@ -40,15 +40,15 @@
         <div class="col-sm-12 col-xs-12 no-padding">
             @if (parameter.Prompt == null)
             {
-                <div class="col-sm-2 col-xs-2 no-padding align-center"><label class="parameter-label">@parameter.Name</label></div>
+                    <div class="col-sm-2 col-xs-2 no-padding align-center"><label class="parameter-label">@parameter.Name</label></div>
             }
             else
             {
-                <div class="col-sm-2 col-xs-2 no-padding align-center"><label class="parameter-label">@parameter.Prompt</label></div>
+                    <div class="col-sm-2 col-xs-2 no-padding align-center"><label class="parameter-label">@parameter.Prompt</label></div>
             }
             @if (parameter.ReportParameterData != null && parameter.ReportParameterData.Count > 0 || parameter.ElementType == ElementType.ComboBox || parameter.ElementType == ElementType.MultiValue)
             {
-                <div class="col-sm-4 col-xs-4 parameter-input">
+                    <div class="col-sm-4 col-xs-4 parameter-input">
                     <select id="@parameter.Name" class="@hasdependent selectpicker form-control adjust parameter-name" data-size="5" title="[[[Select value]]]" @(parameter.MultiValue ? "multiple" : "") dataType="@parameter.DataType" @(isParameterHidden ? "disabled" : "") data-actions-box="true">
                         @if (parameter.ReportParameterData != null && parameter.ReportParameterData.Count > 0)
                         {
@@ -62,7 +62,7 @@
             }
             else if (parameter.DataType == ParamType.Boolean || parameter.ElementType == ElementType.RadioButton)
             {
-                <div class="col-sm-4 col-xs-4 boolean parameter-input parameter-boolean">
+                 <div class="col-sm-4 col-xs-4 boolean parameter-input parameter-boolean">
                     <div class="col-sm-5 col-xs-5">
                         <input id="true-@parameter.Name" class="@hasdependentboolValue" type="radio" name="@parameter.Name" value="true" @(isParameterHidden ? "disabled" : "")>
                         <label for="true" class="pointer normal-font notransition">[[[True]]]</label>
@@ -75,7 +75,7 @@
             }
             else if (parameter.DataType == ParamType.DateTime && parameter.ElementType == ElementType.DateTime)
             {
-                <div class="col-sm-4 col-xs-4 parameter-input parameter-datetime">
+                <div class="col-sm-4 col-xs-4 parameter-input parameter-datetime" style="padding-left: 6px;">
                     <input type="text" class="@hasdependentValue form-control" name="@parameter.Name" id="@parameter.Name">
                 </div>
             }

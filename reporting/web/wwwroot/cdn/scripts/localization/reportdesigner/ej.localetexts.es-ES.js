@@ -788,7 +788,6 @@ ej.ReportDesigner.Locale['es-ES'] = {
             position: 'Posición del título'
         },
         axis: {
-            axisType: 'Tipo de eje',
             booleanPropertyLabel: 'Habilitar eje',
             title: 'Título del eje',
             alignment: 'Alineamiento',
@@ -916,15 +915,6 @@ ej.ReportDesigner.Locale['es-ES'] = {
                         barLabelStyle: 'Estilo de etiqueta de barra',
                         smartLabelStyle: 'Estilo de etiqueta de etiqueta inteligente'
                     }
-                }
-            },
-            axisSettings: {
-                categoryName: 'Configuración del eje',
-                categoryAxis: 'Categoría',
-                valueAxis: 'Valorr',
-                axisTypes: {
-                    primary: 'Primaria',
-                    secondary: 'Secundaria'
                 }
             },
             link: 'Vínculo',
@@ -1888,9 +1878,7 @@ ej.ReportDesigner.Locale['es-ES'] = {
                 serverName: 'Nombre de servidor',
                 savePassword: 'Guardar contraseña',
                 database: 'Base de datos',
-                advanceSwitch: 'Opciones avanzadas',
-                encrypt: 'encriptar',
-                trustserver: 'Certificado de Servidor de Confianza'
+                advanceSwitch: 'Opciones avanzadas'
             },
             advanceOption: {
                 connectionString: 'Cadena de conexión',
