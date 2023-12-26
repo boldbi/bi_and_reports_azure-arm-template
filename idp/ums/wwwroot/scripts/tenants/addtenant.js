@@ -25,6 +25,7 @@ $(document).ready(function () {
 
     $('[data-toggle="popover"]').popover();
 
+
     if (!isCommonLogin && isBoldBIMultiTenant.toLowerCase() == "true") {
         document.getElementById("tenant-type").ej2_instances[0].enabled = false;
     }
@@ -33,7 +34,7 @@ $(document).ready(function () {
     }
 
     var tenantTypeDropDown = getDropDownValue("tenant-type");
-    if (tenantTypeDropDown != "BoldBiOnPremise") {
+    if (tenantTypeDropDown.toLowerCase() != "boldbionpremise") {
         $(".reports-branding").css("display", "inline");
         $(".bi-branding").css("display", "none");
         $(".selector").addClass("selector-alignment");
@@ -113,11 +114,7 @@ $(document).ready(function () {
             modalheight = $("#dialog-body-container").height() + $("#dialog-body-header").height() + 102;
         }
 
-        if (height > modalheight) {
-            $(".dialog-body-div").css("height", height);
-        } else {
-            $(".dialog-body-div").css("height", modalheight);
-        }
+        $(".dialog-body-div").css("height", "auto");
         gridHeight = height;
     });
 
