@@ -7,7 +7,7 @@
 Param(	
 	[string]$ClientLibraries,
 	[string]$clientlibraryextractpath = "Libraries",
-	[string]$pluginpath = "../../bi/dataservice/Plugins/connections"
+	[string]$pluginpath = "../bi/dataservice/Plugins/connections"
 	
 )
 
