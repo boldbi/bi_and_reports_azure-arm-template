@@ -137,9 +137,9 @@
 								"physicalPath": "site\\wwwroot\\reporting\\jobs"
 							},
 							{
-                                "virtualPath": "/reporting/viewer",
-                                "physicalPath": "site\\wwwroot\\reporting\\viewer"
-                            },
+                                				"virtualPath": "/reporting/viewer",
+                                				"physicalPath": "site\\wwwroot\\reporting\\viewer"
+                            				},
 							{
 								"virtualPath": "/reporting/reportservice",
 								"physicalPath": "site\\wwwroot\\reporting\\reportservice"
