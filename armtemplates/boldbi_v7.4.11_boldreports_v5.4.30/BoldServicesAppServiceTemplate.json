@@ -156,7 +156,7 @@
 						"[resourceId('Microsoft.Web/Sites', parameters('WebAppName'))]"
 					],
 					"properties": {
-						"RepoUrl": "https://github.com/KesavanMasilamani/bi_and_reports_azure-arm-template.git",
+						"RepoUrl": "https://github.com/boldbi/bi_and_reports_azure-arm-template.git",
 						"branch": "boldbi_v7.4.11_boldreports_v5.4.30",
 						"IsManualIntegration": true
 					}
