@@ -1031,6 +1031,7 @@
     "inputFiles": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Items/ItemActions.js",
+      "wwwroot/Scripts/Items/external.sites.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ]
   },
