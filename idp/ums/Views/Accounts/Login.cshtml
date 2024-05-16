@@ -5,8 +5,8 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="~/bundles/css/account-page.css" asp-append-version="true" />
-    <script type="text/javascript">
+    <link rel="stylesheet" href="~/bundles/css/account-page.css" integrity="@IntegrityTagHelper.GetIntegrity("bundles/css/account-page.css")" crossorigin="anonymous" asp-append-version="true" />
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
         window.onload = function () {
             document.getElementById('login-form').submit();
         }

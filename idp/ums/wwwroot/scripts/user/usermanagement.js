@@ -11,6 +11,8 @@ var userAccessName = "";
 var role = "";
 
 $(document).ready(function () {
+    $("#grant-user-button").on("click", onAddTenantsDialogOpen);
+    $("#assign-user-role-button").on("click", onMakeMultipleAdminDialogOpen);
     var isFirstRequest = false;
     addPlacehoder("#search-area");
     createWaitingPopup('user_grid');
@@ -337,20 +339,20 @@ function fnbeforeDataBound(args) {
 function fnOnUserRowSelected(args) {
     var usergrid = document.getElementById('user_grid').ej2_instances[0];
     var selectedUsers = usergrid.getSelectedRecords();
-    var hasSelectedUsers = selectedUsers.length > 0;
-    var isAdminSelected = selectedUsers.some(x => x.Role == "Admin");
-    var isInactiveSelected = selectedUsers.some(x => x.UserStatus == "InActive");
-    $("#assign-user-role-button, #grant-user-button").attr("disabled", true);
-    if (hasSelectedUsers) {
-        if (isAdminSelected) {
-            $("#grant-user-button").attr("disabled", false);
-        } else {
-            $("#grant-user-button, #assign-user-role-button").attr("disabled", false);
+    if (usergrid.getSelectedRecords().length == 1 || usergrid.getSelectedRecords().length > 1) {
+        if (selectedUsers.some(x => x.Role == "Admin")) {
+            $("#assign-user-role-button").attr("disabled", true);
         }
+        else {
+            $("#assign-user-role-button").attr("disabled", false);
+        }
+    }
 
-        if (isInactiveSelected) {
-            $("#assign-user-role-button, #grant-user-button").attr("disabled", true);
-        }
+    if (usergrid.getSelectedRecords().length == 1 || usergrid.getSelectedRecords().length > 1) {
+        $("#grant-user-button").attr("disabled", false);
+    }
+    else {
+        $("#grant-user-button, #assign-user-role-button").attr("disabled", true);
     }
 }
 
@@ -1146,3 +1148,9 @@ function resetFilter() {
     userGrid.refresh();
     hideWaitingPopup("user_grid");
 }
+
+$(document).on("click", "#user-delete-dialog-close,#delete-dialog-close", function () {
+    onDeleteDialogClose()();
+});
+
+$(document).on("click", "#import-button", SaveUserListFromCSV);

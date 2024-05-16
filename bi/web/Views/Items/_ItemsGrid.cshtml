@@ -277,7 +277,6 @@
             {{/if}}
             {{/if}}
 
-            {{if CanWrite}}
             {{if ~checkMobile()}}
             {{if ItemType == "@((int)ItemType.Datasource)" && DatasourceType =="@((int)ConnectionMode.Extract)" && !IsDraft}}
             <li class="@(schemes != null && !schemes.RefreshData ? "hide" : string.Empty)">
@@ -286,7 +285,6 @@
                     <span>@T["Refresh Data"]</span>
                 </a>
             </li>
-            {{/if}}
             {{/if}}
             {{/if}}
 
@@ -303,7 +301,6 @@
             {{/if}}
             {{/if}}
 
-            {{if CanWrite}}
             {{if ~checkMobile()}}
             {{if !IsDraft}}
             {{if ItemType == "@((int)ItemType.Datasource)" && DatasourceType =="@((int)ConnectionMode.Extract)"}}
@@ -314,7 +311,6 @@
                 </a>
             </li>
             <li role="separator" class="divider"></li>
-            {{/if}}
             {{/if}}
             {{/if}}
             {{/if}}
@@ -434,7 +430,7 @@
             <li role="separator" class="divider @(schemes != null && !schemes.Delete ? "hide" : string.Empty)"></li>
             <li class="@(schemes != null && !schemes.Delete ? "hide" : string.Empty)">
                 {{if ItemType=="@((int)ItemType.Datasource)"}}
-                <a href="javascript:void(0);" title="" class="item-delete" data-itemtype="{{:ItemType}}" data-item-id="{{:Id}}" data-name="{{:Name}}" data-datasource-type="{{:DatasourceType}}">
+                <a href="javascript:void(0);" title="" class="item-delete" data-itemtype="{{:ItemType}}" data-item-id="{{:Id}}" data-name="{{:Name}}" data-datasource-type="{{:DatasourceType}}" linked-dashboard-count="{{:LinkedDashboardsCount}}">
                     <i class="su su-delete"></i>
                     <span>@T["Delete"]</span>
                 </a>

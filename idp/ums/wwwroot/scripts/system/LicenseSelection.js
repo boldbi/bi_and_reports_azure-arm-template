@@ -315,3 +315,21 @@ function preFillUser(obj) {
     document.getElementById("txt-firstname").ej2_instances[0].value = userInfo.first_name;
     document.getElementById("txt-lastname").ej2_instances[0].value = userInfo.last_name;
 }
+
+$(document).on("click", "#confirm-license", function () {
+    validateStartup(function (result) {
+        if (result) {
+            messageBox("su-login-error", window.Server.App.LocalizationContent.ConfigurationError, window.Server.App.LocalizationContent.ConfigurationErrorMessage, "success", function () {
+                onCloseMessageBox();
+            });
+        }
+        else {
+            confirmLicenseUpdate();
+        }
+    });
+});
+
+$(document).on("click", "#return-startup-home", function () {
+    returnStartupHome();
+});
+

@@ -1012,6 +1012,7 @@ CREATE TABLE {database_name}.BOLDBI_BackgroundJobs(
 	CanIncludeSensitiveInfo tinyint NULL,
 	IsSampleData tinyint NULL,
     IsActive tinyint NOT NULL,
+	ParentJobId int NULL,
     PRIMARY KEY (Id))
 ;
 
@@ -1065,7 +1066,24 @@ CREATE TABLE {database_name}.BOLDBI_ai_qnawidgethistory (
    haserror BOOLEAN,
    chartType TEXT,
    uservote TEXT,
-   isreported BOOLEAN)
+   isreported BOOLEAN,
+   search_date TIMESTAMP,
+   widgetid VARCHAR(255))
+;
+
+CREATE TABLE {database_name}.BOLDBI_Notification (
+    Id int NOT NULL AUTO_INCREMENT,
+    CurrentUserId int NOT NULL,
+    ClubId varchar(100) NOT NULL,
+    CommentId int NULL,
+    ItemId Char(38) NULL,
+    NotificationSource varchar(100) NULL,
+    NotifictionDetails varchar(4000) NULL,
+    NotificationTo int NULL,    
+    ModifiedDate datetime NOT NULL,
+    IsRead tinyint NOT NULL,
+    IsActive tinyint NOT NULL,
+	PRIMARY KEY (Id))
 ;
 
 -- -- PASTE INSERT Queries below this section --------
@@ -1185,6 +1203,8 @@ INSERT into {database_name}.BOLDBI_ExportType (Name,IsActive) VALUES ('Refresh',
 INSERT into {database_name}.BOLDBI_ExportType (Name,IsActive) VALUES ('PPT', 1)
 ;
 INSERT into {database_name}.BOLDBI_ExportType (Name,IsActive) VALUES ('CSV', 1)
+;
+INSERT into {database_name}.BOLDBI_ExportType (Name,IsActive) VALUES ('DashboardCache', 1)
 ;
 
 INSERT into {database_name}.BOLDBI_RecurrenceType (Name,IsActive) VALUES ('Daily', 1)
@@ -1584,6 +1604,10 @@ INSERT into {database_name}.BOLDBI_LogField (ModuleId,Field,Description,Modified
 INSERT into {database_name}.BOLDBI_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,'IsEnablePoweredBySyncfusion','SiteSettings.ShowPoweredBySyncfusion',NOW(),1)
 ;
 INSERT into {database_name}.BOLDBI_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,'CopyrightInformation','SiteSettings.CopyrightInformation',NOW(),1)
+;
+INSERT into {database_name}.BOLDBI_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,'ResourceType','SiteSettings.ResourceType',NOW(),1)
+;
+INSERT into {database_name}.BOLDBI_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,'ResourceOrder','SiteSettings.ResourceOrder',NOW(),1)
 ;
 
 INSERT into {database_name}.BOLDBI_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (2,'EnableNotificationForDashboardOwner','UserNotificationSettings.UserSystemNotificationSettings.EnableNotificationForDashboardOwner',NOW(),1)

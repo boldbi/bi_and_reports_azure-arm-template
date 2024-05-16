@@ -400,6 +400,7 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
+        white-space: nowrap;
 
         &::after {
             border-radius: 2px;
@@ -919,6 +920,10 @@
             letter-spacing: 0.26px;
             font-size: 12px;
             width: 450px;
+        }
+
+        .site-help-message {
+            margin-bottom: 10px;
         }
 
         .admin-page-icon {

@@ -926,7 +926,8 @@ CREATE TABLE SyncDS_BackgroundJobs (
 	ResourceInfo text NULL,
 	CanIncludeSensitiveInfo smallint NULL,
 	IsSampleData smallint NULL,
-	IsActive smallint NOT NULL)
+	IsActive smallint NOT NULL,
+	ParentJobId int NULL)
 ;
 
 CREATE TABLE SyncDS_UploadDataSourceMapping (
@@ -977,7 +978,23 @@ CREATE TABLE SyncDS_ai_qnawidgethistory (
    haserror BOOLEAN,
    chartType TEXT,
    uservote TEXT,
-   isreported BOOLEAN)
+   isreported BOOLEAN,
+   search_date timestamp without time zone,
+   widgetid TEXT)
+;
+
+CREATE TABLE SyncDS_Notification (
+    Id SERIAL primary key NOT NULL,
+    CurrentUserId int NOT NULL,
+    ClubId varchar(100) NOT NULL,
+    CommentId int NULL,
+    ItemId uuid NULL,
+    NotificationSource varchar(100) NULL,
+    NotifictionDetails varchar(4000) NULL,
+    NotificationTo int NULL,    
+    ModifiedDate timestamp NOT NULL,
+    IsRead smallint NOT NULL,
+    IsActive smallint NOT NULL)
 ;
 
 ---- PASTE INSERT Queries below this section --------
@@ -1095,6 +1112,8 @@ INSERT into SyncDS_ExportType (Name,IsActive) VALUES (N'Refresh', 1)
 INSERT into SyncDS_ExportType (Name,IsActive) VALUES (N'PPT', 1)
 ;
 INSERT into SyncDS_ExportType (Name,IsActive) VALUES (N'CSV', 1)
+;
+INSERT INTO SyncDS_ExportType (Name,  IsActive) VALUES (N'DashboardCache',1)
 ;
 
 INSERT into SyncDS_RecurrenceType (Name,IsActive) VALUES (N'Daily', 1)
@@ -1493,6 +1512,10 @@ INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) V
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'IsEnablePoweredBySyncfusion',N'SiteSettings.ShowPoweredBySyncfusion',now() at time zone 'utc',1)
 ;
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'CopyrightInformation',N'SiteSettings.CopyrightInformation',now() at time zone 'utc',1)
+;
+INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'ResourceType',N'SiteSettings.ResourceType',now() at time zone 'utc',1)
+;
+INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'ResourceOrder',N'SiteSettings.ResourceOrder',now() at time zone 'utc',1)
 ;
 
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (2,N'EnableNotificationForDashboardOwner',N'UserNotificationSettings.UserSystemNotificationSettings.EnableNotificationForDashboardOwner',now() at time zone 'utc',1)
