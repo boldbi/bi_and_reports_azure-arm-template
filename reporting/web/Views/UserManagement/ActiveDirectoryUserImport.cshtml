@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     ViewBag.Title = (ViewBag.AdImport ? "[[[Active Directory users import]]] - " : "[[[Azure AD users import]]] - ") + globalAppSettings.SystemSettings.OrganizationName;
@@ -9,25 +11,25 @@
 @section scripts
 {
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-active-directory.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-active-directory.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-active-directory.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-active-directory.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-active-directory.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-active-directory.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-active-directory.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-active-directory.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-active-directory.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-active-directory.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-active-directory.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-active-directory.min.js")" crossorigin="anonymous"></script>
     </environment>
 
 
     @if (ViewBag.AdImport)
     {
-        <script>
+        <script nonce="@Context.Items["ScriptNonce"]">
             var saveSelectedActiveDirectoryUserUrl = "@Url.Action("SaveSelectedActiveDirectoryUser", "UserManagement")";
             var SearchActiveDirectoryUsersUrl = "@Url.Action("SearchActiveDirectoryUsers", "UserManagement")";
         </script>
     }
     else
     {
-        <script>
+        <script nonce="@Context.Items["ScriptNonce"]">
             var saveSelectedActiveDirectoryUserUrl = "@Url.Action("SaveSelectedAzureADUser", "UserManagement")";
             var SearchActiveDirectoryUsersUrl = "@Url.Action("SearchAzureADUsers", "UserManagement")";
         </script>
@@ -37,55 +39,55 @@
 @section MainSection{
     @await Html.PartialAsync("_UserMenu")
 
-    <script type="text/x-jsrender" id="checkbox-row-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-row-template">
         <input type="checkbox" class="checkbox-row material-checkbox" data-checked-id="{{:UserId}}" id="row-check{{:UserId}}" />
         <input name="row-check{{:UserId}}" type="hidden" value="false">
         <label for="row-check{{:UserId}}"> </label>
     </script>
 
-    <script type="text/x-jsrender" id="full-name-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="full-name-template">
         <span title="{{:~renderDoubleQuotes(FullName)}}" class="grid-content" data-toggle="tooltip">
             {{:FullName}}
         </span>
     </script>
 
-    <script type="text/x-jsrender" id="username-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="username-template">
         <span title="{{:Username}}" class="grid-content" data-toggle="tooltip">
             {{:Username}}
         </span>
     </script>
 
-    <script type="text/x-jsrender" id="email-id-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-id-template">
         <span title="{{:EmailId}}" class="grid-content" data-toggle="tooltip">
             {{:EmailId}}
         </span>
     </script>
 
-    <script type="text/x-jsrender" id="checkbox-header-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-header-template">
         @Html.CheckBox("checkbox-header", new { @class = "material-checkbox" })
         @Html.Label("checkbox-header", " ", new { @class = "checkbox-header-label" })
     </script>
 
-    <script type="text/x-jsrender" id="full-name-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="full-name-header">
         <span class="item-header">[[[Name]]]</span>
     </script>
-    <script type="text/x-jsrender" id="user-name-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-name-header">
         <span class="item-header">[[[Username]]]</span>
     </script>
-    <script type="text/x-jsrender" id="last-name-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="last-name-header">
         <div class="item-header">[[[Last Name]]]</div>
     </script>
-    <script type="text/x-jsrender" id="first-name-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="first-name-header">
         <div class="item-name">[[[First Name]]]</div>
     </script>
-    <script type="text/x-jsrender" id="email-id-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-id-header">
         <span class="item-header">[[[Email Address]]]</span>
     </script>
-    <script type="text/x-jsrender" id="contact-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="contact-header">
         <div class="item-header">[[[Mobile No]]]</div>
     </script>
 
-    <script type="text/javascript">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
 
         $(function () {
                 $("#ad-user-import").val("");

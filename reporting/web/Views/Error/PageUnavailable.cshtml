@@ -1,4 +1,6 @@
 ﻿@using Syncfusion.Server.Base.Environment;
+@using Syncfusion.Server.Base.Helpers
+
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
@@ -20,21 +22,21 @@
     <meta name="viewport" content="width=device-width" />
     <title>[[[Page Unavailable]]] - @GlobalAppSettings.BrandingDisplayName</title>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/error-page.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/error-page.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/error-page.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/error-page.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/error-page.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/error-page.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/error-page.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/error-page.min.js")" crossorigin="anonymous"></script>
     </environment>
     <link rel="icon" href="@cdnLink/application/@ServerAppConfig.AppSettings.AppBranding.Identifier/@IconFileNames.Favicon" />
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         $(document).ready(function () {
             $(".base-container-bg").css("display", "");
         });

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var customDomain = ViewBag.CustomDomain != null ? ViewBag.CustomDomain : false;
     var whiteLabel = ViewBag.WhiteLabel != null ? ViewBag.WhiteLabel : false;
     var thirdPartyLogin = ViewBag.ThirdPartyLogins != null ? ViewBag.ThirdPartyLogins : false;
@@ -12,22 +14,22 @@
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/unlock-features.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/unlock-features.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/unlock-features.css")" crossorigin="anonymous" />
     </environment>"
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/unlock-features.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/unlock-features.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/unlock-features.min.css")" crossorigin="anonymous" />
     </environment>"
 }
 
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/unlock-features.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/unlock-features.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/unlock-features.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/js/unlock-features/unlock-features.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/unlock-features/unlock-features.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/unlock-features/unlock-features.min.js")" crossorigin="anonymous"></script>
     </environment>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
     var contactSalesTeamUrl = "@Url.Action("SendUnlockFeatureRequest", "UnlockFeatures")";
     var haveCustomDomainAccess = "@customDomain";
     var haveWhiteLabelAccess = "@whiteLabel";

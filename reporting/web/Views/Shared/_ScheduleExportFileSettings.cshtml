@@ -1,9 +1,10 @@
-﻿﻿@{
+﻿@model string
+﻿@{
     var isAzureApplication = ServerAppConfig.IsAzureApplication;
     var globalAppSettings = _globalAppSettings;
     var defaultPath = ViewBag.Path;
 }
-<script type="text/javascript">
+<script nonce="@Model" type="text/javascript">
     var exportPathExist = "@Url.Action("CheckExportPathExist", "Administration")";
     var UpdateScheduleExportFileSetting = "@Url.Action("UpdateScheduleExportFileSetting", "Administration")";
     initializeFileSetting(1);
@@ -31,7 +32,7 @@
          @*<div id="schedule-settings-body" class="admin-page-body schedule-password-body">*@
         <div class="col-lg-12 col-md-12 col-sm-12 check-box-label form-group">
             <input type="checkbox" id="enable-compression" />
-            <label class="app-checkbox-label normal-font notransition" for="enable-compression">Enable File Compression</label>
+            <label class="app-checkbox-label normal-font notransition" for="enable-compression">[[[Enable File Compression]]]</label>
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 no-padding form-group">
 @Html.Label("enable-password-protection-label", "[[[Enable Password Protection]]]", new { @class = "col-lg-4 col-md-4 col-sm-4 app-textbox-label no-margin notransition" })
@@ -103,14 +104,12 @@
     </div>
 }
 
-@if (ServerAppConfig.IsSelfHosted)
-   {
    <div class="branding-sub-section admin-page-body">
     <h3 class="title col-xs-12 sub-section-heading blur-whitelable-content">[[[FTP Settings]]]</h3>
     <div id="location-export-options" class="col-sm-8 col-xs-8 no-margin">
         <div id="enable-checkbox">
             <input type="checkbox" id="location-export" />
-            <label class="app-checkbox-label normal-font notransition" for="location-export">FTP Location Export</label>
+            <label class="app-checkbox-label normal-font notransition" for="location-export">[[[FTP Location Export]]]</label>
         </div>
         <form class="col-sm-12 col-xs-12 no-padding" id="ftp-form">
             <div class="col-sm-12 col-xs-12 no-padding ftp-form-container">
@@ -135,5 +134,4 @@
         </form>
     </div>
    </div>
-}
 </form>

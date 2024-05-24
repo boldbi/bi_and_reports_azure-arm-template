@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
 
     ViewBag.Title = "[[[Schedule Synchronization Page]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -9,22 +11,22 @@
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedule-synchronization.css")" crossorigin="anonymous" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedule-synchronization.min.css")" crossorigin="anonymous" />
     </environment>
 }
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedule-synchronization.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedule-synchronization.min.js")" crossorigin="anonymous"></script>
     </environment>
 
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var getScheduleInfoUrl = "@Url.Action("GetAzureScheduleInfo", "Administration")";
         var getRecurrenceTypeUrl = "@Url.Action("GetRecurrenceType", "Administration")";
         var updateAdScheduleUrl = "@Url.Action("UpdateAzureADSchedule", "Administration")";
@@ -282,9 +284,9 @@
         @await Html.PartialAsync("~/Views/UnlockFeatures/UnlockFeatures.cshtml")
     }
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

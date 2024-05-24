@@ -420,7 +420,7 @@
         </div>*@
 </div>
 
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var applyKcCouponUrl = "@Url.Action("ApplyKcOffer", "Payment")";
     var createSubscriptionCardUrl = "@Url.Action("AddPaymentDetail", "Payment")";
     var updateSubscriptionUrl = "@Url.Action("UpdateAddonInStripe", "Payment")";

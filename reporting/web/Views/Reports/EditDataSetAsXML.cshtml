@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 @using Newtonsoft.Json
 @using System.IO
+@using Syncfusion.Server.Base.Helpers
+@using System.Web;
+
 @{
     var globalAppSettings = _globalAppSettings;
     Layout = null;
@@ -8,8 +11,8 @@
     var token = ViewBag.AccessToken;
     var itemLocation = ViewBag.itemLocation;
     var itemId = itemDetails.Id;
-    var itemName = itemDetails.Name;
-    var description = itemDetails.Description;
+    var itemName = HttpUtility.HtmlDecode(itemDetails.Name);
+    var description = HttpUtility.HtmlDecode(itemDetails.Description);
     var permissionDetails = ViewBag.permissionDetails;
     var CanWrite = permissionDetails != null ? permissionDetails[0].CanWrite : false;
     var reportServerApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
@@ -22,18 +25,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@itemName - Edit Dataset As XML - @globalAppSettings.SystemSettings.OrganizationName</title>
     <link rel="icon" href="@Url.Content(globalAppSettings.SystemSettings.FavIcon)" onerror="if (this.href != '~/content/images/application/favicon.png') this.href = '~/content/images/application/favicon.png';" />
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-xml-editor.min.css" />
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-xml-editor.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-xml-editor.min.css")" crossorigin="anonymous" />
     <link href="@reportServerResourceUrl/cdn/css/essentialjs/ej2-base.css" rel="stylesheet" />
     <link href="@reportServerResourceUrl/cdn/css/essentialjs/ej2-buttons.css" rel="stylesheet" />
     <link href="@reportServerResourceUrl/cdn/css/essentialjs/ej2-popups.css" rel="stylesheet" />
     <link href="@reportServerResourceUrl/cdn/css/essentialjs/ej2-navigations.css" rel="stylesheet" />
     <link href="@reportServerResourceUrl/cdn/css/essentialjs/ej2-notifications.css" rel="stylesheet" />
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-xml-editor.min.js"></script>
-    <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-base.min.js"></script>
-    <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-buttons.min.js"></script>
-    <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-popups.min.js"></script>
-    <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-navigations.min.js"></script>
-    <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-notifications.min.js"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-xml-editor.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-xml-editor.min.js")" crossorigin="anonymous"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-base.min.js"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-buttons.min.js"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-popups.min.js"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-navigations.min.js"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2-notifications.min.js"></script>
 </head>
 <body>
     <div id="toolbar"></div>
@@ -42,7 +45,7 @@
     </div>
     <div id="toast-message-container"></div>
 
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         ejs.popups.createSpinner({
             target: document.getElementById('editor-container'),
             cssClass: 'e-spin-overlay'
@@ -171,9 +174,9 @@
 
             var payload = {
                 ItemId: "@itemId",
-                DataSetName: "@itemName",
-                Name: "@itemName",
-                Description: "@description",
+                DataSetName: decodeHtmlAsString("@itemName"),
+                Name: decodeHtmlAsString("@itemName"),
+                Description: decodeHtmlAsString("@description"),
                 VersionComment: "[[[Dataset edited as XML]]]",
                 DataSourceMappingInfo: dataSourceMappingInfoArray,
                 ItemContent: btoa(editedXmlContent),

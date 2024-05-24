@@ -1,7 +1,7 @@
 ﻿
 <!DOCTYPE html>
 <head>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var scheduleHistoryUrl = "@Url.Action("ScheduleHistory", "items")";
     </script>
 
@@ -59,26 +59,26 @@
         </div>
     </div>
 </body>
-<script type="text/x-jsrender" id="execution_type">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="execution_type">
     <div class="grid-content" title="{{:ExecutionType}}" data-toggle="tooltip">{{:ExecutionType}}</div>
 </script>
-<script type="text/x-jsrender" id="schedule_status">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="schedule_status">
     {{if Status == "Failed"}}
     <span><a class="grid-content" href="javascript:void(0);" onclick="onFailureStatusClick()">{{:Status}}</a></span>
     {{else}}
 <div class="grid-content" title="{{:Status}}" data-toggle="tooltip">{{:Status}}</div>
     {{/if}}
 </script>
-<script type="text/x-jsrender" id="schedule_message">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="schedule_message">
     <div class="grid-content" title="{{:Message}}" data-toggle="tooltip">{{:Message}}</div>
 </script>
-<script type="text/x-jsrender" id="executed_date">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="executed_date">
     <div class="grid-content" title="{{:ExecutedDateString}}" data-toggle="tooltip">{{:ExecutedDateString}}</div>
 </script>
-<script type="text/x-jsrender" id="log_details">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="log_details">
     <div class="grid-content" title="{{:Details}}" data-toggle="tooltip">{{:Details}}</div>
 </script>
-<script type="text/javascript">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
     $(document).ready(function () {
         $("#historygrid").ejGrid({
             gridLines: ej.Grid.GridLines.None,

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
 
     ViewBag.Title = "[[[My Permissions]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -8,12 +10,12 @@
 
 @section MainSection{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-permissions.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-permissions.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-permissions.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-permissions.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-permissions.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-permissions.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-permissions.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-permissions.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-permissions.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-permissions.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-permissions.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-permissions.min.js")" crossorigin="anonymous"></script>
     </environment>
     @await Html.PartialAsync("_ProfileMenu")
     <div id="user-permissions-container" class="admin-page-container">

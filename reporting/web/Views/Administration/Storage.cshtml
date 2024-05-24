@@ -1,25 +1,27 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = globalAppSettings.SystemSettings.OrganizationName + " - [[[Storage Settings]]]";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 }
 
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var connectionType = "@ViewBag.ConnectionType"
 </script>
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/storage-page.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/storage-page.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/storage-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/storage-page.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/storage-page.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/storage-page.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/storage-page.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/storage-page.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/storage-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/storage-page.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/storage-page.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/storage-page.min.js")" crossorigin="anonymous"></script>
     </environment>
 }
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     $(document).ready(function () {
         addPlacehoder("#blob_storage_form");
     });
@@ -123,7 +125,7 @@
             </form>
         </div>
 
-        <script>
+        <script nonce="@Context.Items["ScriptNonce"]">
             if (connectionType == "customendpoint") {
                 $(".customendpointformelement").show();
             }

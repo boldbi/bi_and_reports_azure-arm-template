@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = "[[[Manage License]]] - " + globalAppSettings.SystemSettings.OrganizationName;
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.LicenseSettings);
@@ -8,12 +10,12 @@
 }
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/license-settings.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/license-settings.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/license-settings.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrapjs.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/license-settings.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/license-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/license-settings.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrapjs.min.js")" crossorigin="anonymous"></script>
     </environment>
 }
 
@@ -77,7 +79,7 @@
 
     @if (!isValidLicense)
     {
-        <script>
+        <script nonce="@Context.Items["ScriptNonce"]">
             var licenseMessage = "@ViewBag.LicenseMessage";
             var urlRegularExpression = /(\b(http|ftp|https):\/\/([\w-]+\.[\w-]+)+([\w.,@@?^=%&amp;:\/~+#-]*[\w@@?^=%&amp;\/~+#-])?)/ig;
             var licenseMessageWithLink = licenseMessage.replace(urlRegularExpression, "<a target='_blank' href='$1'>$1</a>");

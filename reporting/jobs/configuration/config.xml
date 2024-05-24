@@ -15,6 +15,10 @@
     <DisablePageSplitting>false</DisablePageSplitting>
     <Exporting UsePuppeteer="true" PuppeteerPath=""></Exporting>
   </ReportViewerFeatures>
+  <IsOldViewerDesigner>false</IsOldViewerDesigner>
   <CustomFont></CustomFont>
   <OfflineCapable>false</OfflineCapable>
+  <EnableClone>false</EnableClone>
+  <EnablePublic>false</EnablePublic>
+  <EnableViewsInReportsMenu>false</EnableViewsInReportsMenu>
 </SystemSettings>

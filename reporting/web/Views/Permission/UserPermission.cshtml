@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
 
     ViewBag.Title = "[[[User Permissions]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -11,12 +13,12 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/permissionpage.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/permissionpage.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/permissionpage.css")" crossorigin="anonymous" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/permissionpage.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/permissionpage.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/permissionpage.min.css")" crossorigin="anonymous" />
     </environment>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var addUserPermissionViewIframeUrl = "@Url.Action("AddUserPermissionView", "permission")";
         var getPermissionEntityUrl = "@Url.Action("GetPermissionEntity", "permission")";
         var getItemScopeUrl = "@Url.Action("GetItemScope", "permission")";
@@ -26,10 +28,10 @@
     </script>
 
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/permissionpage.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/permissionpage.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/permissionpage.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/permissionpage.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/permissionpage.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/permissionpage.min.js")" crossorigin="anonymous"></script>
     </environment>
 }
 
@@ -66,7 +68,7 @@
     <input type="hidden" id="user-id-hidden" value="@Context.Request.Query["userid"]" />
 
 
-    <script type="text/x-jsrender" id="commandstemplate">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="commandstemplate">
         <div>
             {{if IsUserPermission}}
             <span><a href="javascript:void(0);" class="delete-permission" data-permission-id="{{:PermissionId}}"> [[[Remove]]]</a></span>
@@ -75,28 +77,28 @@
             {{/if}}
         </div>
     </script>
-    <script type="text/x-jsrender" id="accessmodetemplate">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="accessmodetemplate">
         <div class="item-name" title="{{:PermissionAccessDescription}}" data-toggle="tooltip">{{:PermissionAccessDescription}}</div>
     </script>
-    <script type="text/x-jsrender" id="scopetemplate">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="scopetemplate">
         <div class="grid-content" title="{{:ItemName}}" data-toggle="tooltip">{{:ItemName}}</div>
     </script>
-    <script type="text/x-jsrender" id="entitytemplate">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="entitytemplate">
         <div class="item-name" title="{{:PermissionEntityDescription}}" data-toggle="tooltip">{{:PermissionEntityDescription}}</div>
     </script>
-    <script type="text/x-jsrender" id="accessmodeheader">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="accessmodeheader">
         <div class="item-name">[[[Access Mode]]]</div>
     </script>
-    <script type="text/x-jsrender" id="entityheader">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="entityheader">
         <div class="item-header">[[[Entity]]]</div>
     </script>
-    <script type="text/x-jsrender" id="scopeheader">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="scopeheader">
         <div class="item-header">[[[Scope]]]</div>
     </script>
-    <script type="text/x-jsrender" id="actionsheader">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="actionsheader">
         <div class="item-header">[[[Actions]]]</div>
     </script>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var userId = @Context.Request.Query["userid"]
 
             $(document).ready(function () {
@@ -185,9 +187,9 @@
     </script>
     @await Html.PartialAsync("../Permission/_DeletePermission")
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

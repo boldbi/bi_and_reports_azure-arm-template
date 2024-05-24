@@ -1,4 +1,7 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+@model string
+
+@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -8,10 +11,10 @@
 <html>
 
 <environment include="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.css" />
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/scheduleemaileditor.css")" crossorigin="anonymous" />
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.min.css" />
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/scheduleemaileditor.min.css")" crossorigin="anonymous" />
 </environment>
 
 <head>
@@ -49,11 +52,11 @@
 </body>
 </html>
 <environment include="Development,CloudDevelopment">
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.js"></script>
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecipients.js"></script>
+    <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleemaileditor.js")" crossorigin="anonymous"></script>
+    <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecipients.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedulerrecipients.js")" crossorigin="anonymous"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.min.js"></script>
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecipients.min.js"></script>
+    <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleemaileditor.min.js")" crossorigin="anonymous"></script>
+    <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecipients.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedulerrecipients.min.js")" crossorigin="anonymous"></script>
 </environment>
 

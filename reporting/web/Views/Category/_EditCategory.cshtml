@@ -1,4 +1,6 @@
-﻿@model ItemDetail
+﻿@using Syncfusion.Server.Base.Helpers
+@model ItemDetail
+
 <!DOCTYPE html>
 @{ 
     Layout = null;
@@ -13,7 +15,7 @@
     <title>
         @ViewBag.Title
     </title>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
     var editcategoryUrl = "@Url.Action("editcategory", "category")";
             var reportsUrl = "@Url.Action("reports", "reports")";
 
@@ -30,12 +32,12 @@
     </script>
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-category.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-category.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/edit-category.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-category.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-category.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-category.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/edit-category.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-category.min.js")" crossorigin="anonymous"></script>
     </environment>
 
 </head>
@@ -81,13 +83,13 @@
 </body>
 </html>
 
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     $(function () {
         window.isEdited = false;
         window.editData = {
             ItemId: "@Model.Id",
-            Name: "@Model.Name",
-            Description: "@Model.Description"
+            Name: decodeHtmlAsString("@Model.Name"),
+            Description: decodeHtmlAsString("@Model.Description")
         }
         window.parent.$("#EditCategoryPopup_wrapper").ejWaitingPopup("hide");
     });

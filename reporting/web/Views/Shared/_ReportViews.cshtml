@@ -1,4 +1,6 @@
-﻿@inject ServerPrincipal _identityResponse
+﻿@using Syncfusion.Server.Base.Helpers
+@inject ServerPrincipal _identityResponse
+
 @{
     var enableComment = "false";
     var isUserAuthenticated = "false";
@@ -16,7 +18,7 @@
 
 @if (ViewBag.IsViewLoadedInIframe != null && ViewBag.IsViewLoadedInIframe == true)
 {
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var isViewerV2Enabled = true;
         var viewReportClick = false;
         var viewId = parent.viewId;
@@ -34,26 +36,26 @@
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.js"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/jquery-dependencies.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/bootstrap-dependencies.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-utilities.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-views-v2.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrap-dependencies.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-ej-dependencies.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-views-v2.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.min.js"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/jquery-dependencies.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/bootstrap-dependencies.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-utilities.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-views-v2.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrap-dependencies.min.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-ej-dependencies.min.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-views-v2.min.js")" crossorigin="anonymous"></script>
     </environment>
-    <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     <style>
         #report-view-toogle {
@@ -69,7 +71,7 @@
     </style>
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 }
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     $(document).ready(function () {
 
         try {

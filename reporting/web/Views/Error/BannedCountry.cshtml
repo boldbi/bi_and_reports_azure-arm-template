@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = string.Empty;
@@ -17,13 +19,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>[[[Syncfusion Cloud Management - Access Denied]]]</title>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/error-page.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/error-page.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
 </head>
@@ -39,8 +41,7 @@
                         [[[Access Denied]]]
                     </div>
                     <div class="page-content">
-                        @(GlobalAppSettings.Branding == AppBranding.BoldReports.Identifier ? "Bold Reports(Powered By Syncfusion)" : "Syncfusion") [[[is a United States company and is subject to US export laws. Consequently, due to your location, we may not allow access to any material on our site.
-                        If you believe that this is inaccurate, please contact]]] <a href="mailto:@ServerAppConfig.AppSettings.Syncfusion.SalesTeam">@ServerAppConfig.AppSettings.Syncfusion.SalesTeam<</a> [[[Thank you.]]]
+                        @(GlobalAppSettings.Branding == AppBranding.BoldReports.Identifier ? "Bold Reports(Powered By Syncfusion)" : "Syncfusion") [[[is a United States company and is subject to US export laws. Consequently, due to your location, we may not allow access to any material on our site. If you believe that this is inaccurate, please contact]]] <a href="mailto:@ServerAppConfig.AppSettings.Syncfusion.SalesTeam">@ServerAppConfig.AppSettings.Syncfusion.SalesTeam<</a> [[[Thank you.]]]
                     </div>
                     <p class="text-danger">[[[We are unable to service your request.]]]</p>
                 </div>

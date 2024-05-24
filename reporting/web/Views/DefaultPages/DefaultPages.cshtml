@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
     var model = ViewBag.Permissions as Dictionary<ItemType, bool>;
     var itemType = ViewBag.ItemType;
@@ -11,15 +13,14 @@
 }
 
 <environment include="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/default-pages.css" />
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/default-pages.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/default-pages.css")" crossorigin="anonymous" />
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/default-pages.min.css" />
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/default-pages.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/default-pages.min.css")" crossorigin="anonymous" />
 </environment>
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var dashboardItemCount = "@itemsCount[ItemType.Report]";
 </script>
-<link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
 <div class="col-xs-12 defafult-pages-container no-padding">
     <div class="default-pages">
         <img class="default-pages-dashboard-image" src="@(GlobalAppSettings.CdnDomain)/static/default-pages/v1/@fileName">

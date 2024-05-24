@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     ViewBag.Title = "[[[Synchronize Users]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -7,66 +9,66 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/import-database-users-sync.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/synchronize-users.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/import-database-users-sync.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/import-database-users-sync.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/synchronize-users.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/synchronize-users.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/import-database-users-sync.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/synchronize-users.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/import-database-users-sync.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/import-database-users-sync.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/synchronize-users.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/synchronize-users.min.js")" crossorigin="anonymous"></script>
     </environment>
 
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var synchronizeSelectedDbUsersUrl = "@Url.Action("SynchronizeSelectedImportedUsers", "UserManagement")";
     </script>
-    <script type="text/x-jsrender" id="user-profile-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-profile-template">
         <a class="user-name" title="{{:FullName}}" data-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:FullName}}</a>
     </script>
 
-    <script type="text/x-jsrender" id="username-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="username-template">
         <span title="{{:Username}}" class="grid-content" data-toggle="tooltip">
             {{:Username}}
         </span>
     </script>
-    <script type="text/x-jsrender" id="email-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-template">
         <span title="{{:EmailId}}" class="grid-content" data-toggle="tooltip">
             {{:EmailId}}
         </span>
     </script>
 
-    <script type="text/x-jsrender" id="checkbox-row-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-row-template">
         <input type="checkbox" class="checkbox-row material-checkbox" name="checkbox-row" data-checked-id="{{:UserId}}" id="row-check{{:UserId}}" />
         <input name="row-check{{:UserId}}" type="hidden" value="false">
         <label for="row-check{{:UserId}}"> </label>
     </script>
 
-    <script type="text/x-jsrender" id="checkbox-header-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-header-template">
         @Html.CheckBox("checkbox-header", new { @class = "material-checkbox" })
         @Html.Label("checkbox-header", " ", new { @class = "checkbox-header-label" })
     </script>
 
-    <script type="text/x-jsrender" id="name-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="name-header">
         <div class="item-header">[[[Name]]]</div>
     </script>
 
-    <script type="text/x-jsrender" id="username-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="username-header">
         <div class="item-header">[[[Username]]]</div>
     </script>
 
-    <script type="text/x-jsrender" id="email-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-header">
         <div class="item-header">[[[Email Address]]]</div>
     </script>
 
-    <script type="text/x-jsrender" id="userid-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="userid-header">
         <div class="item-header">[[[User id]]]</div>
     </script>
 
-    <script type="text/x-jsrender" id="user-detail-validation">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-detail-validation">
         {{if IsDuplicated}}
         <span class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></span>
         {{/if}}
     </script>
 
-    <script type="text/javascript" language="javascript">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" language="javascript">
         ej.support.stableSort = false;
         $("#search-ad-users").val("");
         var data = @Json.Serialize(ViewBag.DatabaseUsers);

@@ -1,4 +1,6 @@
-﻿@inject ServerPrincipal _identityResponse
+﻿@using Syncfusion.Server.Base.Helpers
+@inject ServerPrincipal _identityResponse
+
 @{
     var userId = _identityResponse.User.UserId;
     var isMobile = new DeviceDetection(Context).IsMobile;
@@ -11,21 +13,21 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/list-tickets.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/list-tickets.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/list-tickets.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/list-tickets.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/list-tickets.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/list-tickets.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/list-tickets.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/list-tickets.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/list-tickets.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/list-tickets.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/list-tickets.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/list-tickets.min.js")" crossorigin="anonymous"></script>
     </environment>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var uploadDashboardUrl = "@Url.Action("AddDashboard", "SharedDashboard")";
         var updateDashboardUrl =  "@Url.Action("UpdateDashboard", "SharedDashboard")";
         var fileUploadUrl = "@Url.Action("Upload", "fileupload")";
         var getSharedDashboardDetailsUrl = "@Url.Action("GetSharedDashboardDetails", "SharedDashboard")";
     </script>
 
-    <script type="text/x-jsrender" id="incident-item">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="incident-item">
         <a href="@Url.Action("ViewIncident", "Support")/{{:IncidentId}}">
             <div class="col-lg-12 col-md-12 col-sm-12 info-template">
                 <h3 class="ticket-title">
@@ -61,7 +63,7 @@
         </a>
     </script>
 
-    <script type="text/javascript" language="javascript">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" language="javascript">
 
         var filters = { filterType: "menu" };
 

@@ -1,4 +1,7 @@
 ﻿@using System.Runtime.InteropServices;
+@using Syncfusion.Server.Base.Helpers
+@using System.Web;
+
 @{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = "[[[User Directory Settings]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -15,29 +18,35 @@
     var userDirectoryWindowsHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ADSettings);
     var userDirectoryAzureHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.AzureAdSettings);
     var userDirectoryDatabaseHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DatabaseSettings);
+    var activeDirectoryUserName = HttpUtility.HtmlDecode(ViewBag.SystemSettings.ActiveDirectoryUserName);
+    var serverName = HttpUtility.HtmlDecode(ViewBag.DbSettings.ServerName);
+    var databaseName = HttpUtility.HtmlDecode(ViewBag.databaseName);
+    var userName = HttpUtility.HtmlDecode(ViewBag.DbSettings.UserName);
+    var ldapUrl = HttpUtility.HtmlDecode(ViewBag.SystemSettings.LdapUrl);
+    var distinguishedName = HttpUtility.HtmlDecode(ViewBag.SystemSettings.DistinguishedName);
 }
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var defaultAuthentication = "";
 </script>
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/site-settings.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/site-settings.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/site-settings.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.css")" crossorigin="anonymous" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/site-settings.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/site-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/site-settings.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.min.css")" crossorigin="anonymous" />
     </environment>
 }
 @section scripts{
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         serverApp.controller("adSettingsController", ["$scope", function ($scope) {
             $scope.regex = '^(?!(ftp|https?):\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-]+(\.[a-z]{2,6})?(:\d{1,5})?(\/[a-zA-Z0-9]+[a-zA-Z0-9]*(\.[a-z]{2,8})?)*?$';
             $scope.distinguishedNameRegex = /^(\w+[=]{1}[a-zA-Z0-9-_\s]+)([\,{1}]\w+[=]{1}[a-zA-Z0-9-_\s]+)*$/;
         }]);
 
     </script>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var itemInfoCtrl = angular.element('[ng-controller=adSettingsController]').scope();
         var defaultAuthentication = "";
         var updateAdSettingsUrl = "@Url.Action("UpdateActiveDirectorySettings", "Administration")";
@@ -57,7 +66,7 @@
         var isAzureApplication = @Json.Serialize(isAzureApplication);
         var enableWindowsAD = @Json.Serialize(enableWindowsAD);
     </script>
-    <script type="text/javascript">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
 
         $(document)
             .ready(function () {
@@ -140,10 +149,10 @@
         }
     </script>
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/site-settings.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/site-settings.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/site-settings.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/site-settings.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/site-settings.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/site-settings.min.js")" crossorigin="anonymous"></script>
     </environment>
 }
 
@@ -217,7 +226,7 @@
                                     @Html.Label("username", "[[[Username]]]", new { @class = "app-textbox-label col-md-4 no-margin" })
 
                                     <div class="col-md-8 no-margin form-input-field" ng-class="(windowsAdSettingsForm.userName.$dirty && windowsAdSettingsForm.userName.$invalid) ? 'has-error' : ''">
-                                        <input type="text" class="form-control col-md-6 no-margin" name="userName" placeholder="[[[Username]]]" id="username" ng-model="windowsAduserName" ng-init="windowsAduserName='@ViewBag.SystemSettings.ActiveDirectoryUserName'" required />
+                                        <input type="text" class="form-control col-md-6 no-margin" name="userName" placeholder="[[[Username]]]" id="username" ng-model="windowsAduserName" ng-init="windowsAduserName='@activeDirectoryUserName'" required />
                                         <span class="validation-message" ng-show="windowsAdSettingsForm.userName.$dirty && windowsAdSettingsForm.userName.$invalid">[[[Please enter username]]]</span>
                                     </div>
                                 </div>
@@ -238,7 +247,7 @@
                                 <div class="col-md-6 no-padding no-margin">
                                     @Html.Label("ldapurl", "[[[LDAP URL]]](LDAP://)", new { @class = "app-textbox-label col-md-4 no-margin" })
                                     <div class="col-md-8 no-margin form-input-field" ng-class="(windowsAdSettingsForm.ldapUrl.$dirty && windowsAdSettingsForm.ldapUrl.$invalid) ? 'has-error' : ''">
-                                        <input type="text" class="form-control col-md-6 no-margin" name="ldapUrl" placeholder="[[[LDAP URL]]]" id="ldapurl" ng-model="windowsLdapUrl" ng-init="windowsLdapUrl='@ViewBag.SystemSettings.LdapUrl'" ng-pattern="@ldapRegEx" required />
+                                        <input type="text" class="form-control col-md-6 no-margin" name="ldapUrl" placeholder="[[[LDAP URL]]]" id="ldapurl" ng-model="windowsLdapUrl" ng-init="windowsLdapUrl='@ldapUrl'" ng-pattern="@ldapRegEx" required />
                                         <span class="validation-message" ng-show="windowsAdSettingsForm.ldapUrl.$error.required && windowsAdSettingsForm.ldapUrl.$dirty ">[[[Please enter LDAP URL]]]</span>
                                         <span class="validation-message" ng-show="windowsAdSettingsForm.ldapUrl.$error.pattern ">[[[Invalid LDAP URL]]]</span>
                                     </div>
@@ -248,7 +257,7 @@
                                 <div class="col-md-6 no-padding no-margin">
                                     @Html.Label("distinguished-name", "[[[Distinguished Name]]]", new { @class = "app-textbox-label col-md-4 no-margin" })
                                     <div class="col-md-8 no-margin form-input-field" ng-class="(windowsAdSettingsForm.distinguishedName.$dirty && windowsAdSettingsForm.distinguishedName.$invalid) ? 'has-error' : ''">
-                                        <input type="text" class="form-control col-md-6 no-margin" name="distinguishedName" placeholder="[[[DC=example,DC=com]]]" id="distinguished-name" ng-model="windowsDistinguishedName" ng-init="windowsDistinguishedName='@ViewBag.SystemSettings.DistinguishedName'" ng-pattern="distinguishedNameRegex" required />
+                                        <input type="text" class="form-control col-md-6 no-margin" name="distinguishedName" placeholder="[[[DC=example,DC=com]]]" id="distinguished-name" ng-model="windowsDistinguishedName" ng-init="windowsDistinguishedName='@distinguishedName'" ng-pattern="distinguishedNameRegex" required />
                                         <span class="validation-message" ng-show="windowsAdSettingsForm.distinguishedName.$error.required && windowsAdSettingsForm.distinguishedName.$dirty ">[[[Please enter Distinguished Name]]]</span>
                                         <span class="validation-message" ng-show="windowsAdSettingsForm.distinguishedName.$error.pattern ">[[[Invalid Distinguished Name]]]</span>
                                     </div>
@@ -404,7 +413,7 @@
                                                     [[[Server name]]]
                                                 </label>
                                                 <div class="col-md-8 connect-database-padding txt-holder">
-                                                    <input type="text" id="txt-servername" name="servername" class="form-control" placeholder="[[[Server name]]]" value="@ViewBag.DbSettings.ServerName" />
+                                                    <input type="text" id="txt-servername" name="servername" class="form-control" placeholder="[[[Server name]]]" value="@serverName" />
                                                     <span class="validation-txt-errors"></span>
                                                 </div>
                                             </div>
@@ -434,7 +443,7 @@
                                                     [[[Username]]]
                                                 </label>
                                                 <div class="col-md-8 connect-database-padding txt-holder">
-                                                    <input type="text" id="txt-login" name="username" class="form-control" placeholder="[[[Username]]]" value="@ViewBag.DbSettings.UserName" />
+                                                    <input type="text" id="txt-login" name="username" class="form-control" placeholder="[[[Username]]]" value="@userName" />
                                                     <span class="validation-txt-errors"></span>
                                                 </div>
                                             </div>
@@ -458,7 +467,7 @@
                                                     [[[Database name]]]
                                                 </label>
                                                 <div class="col-md-8 connect-database-padding txt-holder">
-                                                    <input type="text" id="txt-dbname" name="dbname" class="form-control system-settings-startup-page-fields dbname-fields db-fields" value="@ViewBag.databaseName" placeholder="[[[Existing Database name]]]" autocomplete="off">
+                                                    <input type="text" id="txt-dbname" name="dbname" class="form-control system-settings-startup-page-fields dbname-fields db-fields" value="@databaseName" placeholder="[[[Existing Database name]]]" autocomplete="off">
                                                     <div class="loader-blue loader-icon database-select-loader-icon display-none " id="sql-loader-icon">
                                                         <svg class="circular">
                                                             <circle class="path" cx="27" cy="27" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>
@@ -507,7 +516,7 @@
                                                     [[[Username]]]
                                                 </label>
                                                 <div class="col-md-8 connect-database-padding txt-holder">
-                                                    <input type="text" id="postgresql-login" name="username" class="form-control" placeholder="[[[Username]]]" value="@ViewBag.DbSettings.UserName" />
+                                                    <input type="text" id="postgresql-login" name="username" class="form-control" placeholder="[[[Username]]]" value="@userName" />
                                                     <span class="validation-txt-errors"></span>
                                                 </div>
                                             </div>
@@ -531,7 +540,7 @@
                                                     [[[Database name]]]
                                                 </label>
                                                 <div class="col-md-8 connect-database-padding txt-holder">
-                                                    <input type="text" id="postgresql-dbname" name="dbname" class="form-control system-settings-startup-page-fields dbname-fields db-fields" value="@ViewBag.databaseName" placeholder="[[[Existing Database name]]]" autocomplete="off">
+                                                    <input type="text" id="postgresql-dbname" name="dbname" class="form-control system-settings-startup-page-fields dbname-fields db-fields" value="@databaseName" placeholder="[[[Existing Database name]]]" autocomplete="off">
                                                     <div class="loader-blue loader-icon database-select-loader-icon display-none " id="postgresql-loader-icon">
                                                         <svg class="circular">
                                                             <circle class="path" cx="27" cy="27" r="20" fill="none" stroke-width="4" stroke-miterlimit="10"></circle>

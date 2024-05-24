@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var tenantAppConfig = new TenantAppConfiguration(globalAppSettings);
@@ -11,14 +13,14 @@
 <head>
     @await Html.PartialAsync("_OGPContent", new ViewDataDictionary(ViewData) { { "PageTitle", "Login" }, { "OrganizationName", globalAppSettings.SystemSettings.OrganizationName }, { "Logo", loginImage } })
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/account-page.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/account-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/account-page.css")" crossorigin="anonymous" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/account-page.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/account-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/account-page.min.css")" crossorigin="anonymous" />
     </environment>
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 
-    <script type="text/javascript">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
         window.onload = function () {
             document.getElementById('login-form').submit();
         }
