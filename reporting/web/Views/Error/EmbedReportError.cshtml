@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     Layout = null;
     ViewBag.MessageBox = false;
     var globalAppSettings = _globalAppSettings;
@@ -18,10 +20,10 @@
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connection-error.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connection-error.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/connection-error.css")" crossorigin="anonymous" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connection-error.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connection-error.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/connection-error.min.css")" crossorigin="anonymous" />
     </environment>
     <title>[[[EmbedReport Error]]]</title>
     <style>

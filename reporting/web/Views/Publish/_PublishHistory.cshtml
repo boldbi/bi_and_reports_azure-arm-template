@@ -16,7 +16,7 @@
             <input type="button" id="close-button" title="[[[Close]]]" class="app-button app-secondary-button pull-right popup-close" value="[[[Close]]]" tabindex="-1" />
         </div>
     </div>
-    <script type="text/x-jsrender" id="job-status-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="job-status-template">
         {{if Status == "Failed"}}
         <div class="item-dashboard grid-content" title="[[[Failed]]]">
             <span><a class="grid-content" href="javascript:void(0);" onclick="onFailureStatusClick()">[[[Failed]]]</a></span>
@@ -55,7 +55,7 @@
         </div>
     </div>
 </div>
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     $(document).ready(function () {
         $("#PublishHistoryGrid").ejGrid({
             dataSource: window.publishedItemDetails,

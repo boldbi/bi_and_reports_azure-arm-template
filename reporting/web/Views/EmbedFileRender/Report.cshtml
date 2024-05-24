@@ -1,6 +1,8 @@
 ﻿
 <!DOCTYPE html>
 @using System.Globalization;
+@using Syncfusion.Server.Base.Helpers
+
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
@@ -37,28 +39,28 @@
     @if (!isMobile)
     {
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.css" />
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.js"></script>
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report.css")" crossorigin="anonymous" />
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render.js")" crossorigin="anonymous"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.min.css" />
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.min.js"></script>
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report.min.css")" crossorigin="anonymous" />
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render.min.js")" crossorigin="anonymous"></script>
         </environment>
     }
     else
     {
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report-mobile.css" />
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.js"></script>
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report-mobile.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report-mobile.css")" crossorigin="anonymous" />
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-mobile.js")" crossorigin="anonymous"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report-mobile.min.css" />
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.min.js"></script>
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report-mobile.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report-mobile.min.css")" crossorigin="anonymous" />
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-mobile.min.js")" crossorigin="anonymous"></script>
         </environment>
     }
-    <script src="@reportServerResourceUrl/cdn/scripts/localization/reportviewer/ej.localetexts.@string.Concat(language,".js")"></script>
+    <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/reportviewer/ej.localetexts.@string.Concat(language,".js")"></script>
 
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var filterParameters = JSON.parse('@Json.Serialize(ViewBag.FilterParameters)');
         var itemViewShareIframeUrl = "@Url.Action("shareItemView", "items")";
         var getViewParameterUrl = "@Url.Action("GetReportViewParameter", "ReportViews")";
@@ -155,45 +157,45 @@
                         if (enableComment == "true" && enableView == "true")
                         {
                             <li class="col-xs-4">
-                                <a href="javascript:void(0)" class="su su-report active"></a>
+                                <a href="javascript:void(0);" class="su su-report active"></a>
                             </li>
                             <li class="col-xs-4">
                                 @if (ViewBag.IsReportCommented == "true")
                                 {
-                                    <a href="javascript:void(0)" class="su su-with-comment server-comment"></a>
+                                    <a href="javascript:void(0);" class="su su-with-comment server-comment"></a>
                                 }
                                 else
                                 {
-                                    <a href="javascript:void(0)" class="su su-without-comment server-comment"></a>
+                                    <a href="javascript:void(0);" class="su su-without-comment server-comment"></a>
                                 }
                             </li>
                             <li class="col-xs-4">
-                                <a href="javascript:void(0)" class="su su-filter server-item-view"></a>
+                                <a href="javascript:void(0);" class="su su-filter server-item-view"></a>
                             </li>
                         }
                         else if (enableComment == "false" && enableView == "true")
                         {
                             <li class="col-xs-6">
-                                <a href="javascript:void(0)" class="su su-report active"></a>
+                                <a href="javascript:void(0);" class="su su-report active"></a>
                             </li>
                             <li class="col-xs-6">
-                                <a href="javascript:void(0)" class="su su-filter server-item-view"></a>
+                                <a href="javascript:void(0);" class="su su-filter server-item-view"></a>
                             </li>
 
                         }
                         else if (enableComment == "true" && enableView == "false")
                         {
                             <li class="col-xs-6">
-                                <a href="javascript:void(0)" class="su su-report active"></a>
+                                <a href="javascript:void(0);" class="su su-report active"></a>
                             </li>
                             <li class="col-xs-6">
                                 @if (ViewBag.IsReportCommented == "true")
                                 {
-                                    <a href="javascript:void(0)" class="su su-with-comment server-comment"></a>
+                                    <a href="javascript:void(0);" class="su su-with-comment server-comment"></a>
                                 }
                                 else
                                 {
-                                    <a href="javascript:void(0)" class="su su-without-comment server-comment"></a>
+                                    <a href="javascript:void(0);" class="su su-without-comment server-comment"></a>
                                 }
                             </li>
 
@@ -201,7 +203,7 @@
                         else if (enableComment == "false" && enableView == "false")
                         {
                             <li class="col-xs-12">
-                                <a href="javascript:void(0)" class="su su-report active"></a>
+                                <a href="javascript:void(0);" class="su su-report active"></a>
                             </li>
                         }
                     }
@@ -249,7 +251,7 @@
 </html>
 @if (!Context.User.Identity.IsAuthenticated)
 {
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         $(document).ready(function () {
             if (externalLogin != null && externalLogin.toLowerCase() == "windowsad" && sso != null && sso.toLowerCase() == "true") {
                 $.ajax({
@@ -421,7 +423,7 @@
 }
 else
 {
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var externalLogin = "@externalLogin";
         $(document).ready(function () {
             if(externalLogin != ""){
@@ -430,7 +432,7 @@ else
         });
     </script>
 }
-<script type="text/javascript">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
     var enableComment = "@enableComment";
     var enableView = "@enableView";
 
@@ -759,18 +761,18 @@ else
         if ($("#is_mobile").val() == "true" && "@isAuthenticated" == "true") {
 
             var reportComment = isReportCommented.toLowerCase() == "true"
-                ? '<a href="javascript:void(0)" class="su su-with-comment server-comment"></a>'
-                : '<a href="javascript:void(0)" class="su su-without-comment server-comment"></a>';
+                ? '<a href="javascript:void(0);" class="su su-with-comment server-comment"></a>'
+                : '<a href="javascript:void(0);" class="su su-without-comment server-comment"></a>';
             if ('@enableComment' == "true" && '@enableView' == "true") {
                 var enableCommentSave =
-                    '<li class="col-xs-6"><a href="javascript:void(0)" class="su su-report active"></a></li><li class="col-xs-6">' + reportComment + '</li>';
+                    '<li class="col-xs-6"><a href="javascript:void(0);" class="su su-report active"></a></li><li class="col-xs-6">' + reportComment + '</li>';
                 if (!($(".e-reportviewer-viewer").hasClass("e-reportviewer-parameter"))) {
                     var elementCommentSave = $("#server-mobile-navbar").children().find(".navbar-nav");
                     elementCommentSave.html("");
                     elementCommentSave.append(enableCommentSave);
                 } else {
                     var missingCommentSave =
-                        '<li class="col-xs-4"><a href="javascript:void(0)" class="su su-report active"></a></li><li class="col-xs-4">' + reportComment + '</li><li class="col-xs-4"><a href="javascript:void(0)" class="su su-filter server-item-view"></a></li>';
+                        '<li class="col-xs-4"><a href="javascript:void(0);" class="su su-report active"></a></li><li class="col-xs-4">' + reportComment + '</li><li class="col-xs-4"><a href="javascript:void(0);" class="su su-filter server-item-view"></a></li>';
                     var elementMissingCommentSave = $("#server-mobile-navbar").children().find(".navbar-nav");
                     elementMissingCommentSave.html("");
                     elementMissingCommentSave.append(missingCommentSave);
@@ -779,13 +781,13 @@ else
 
             if ('@enableComment' == "false" && '@enableView' == "true") {
                 var enableSave =
-                    '<li class="col-xs-12"><a href="javascript:void(0)" class="su su-report active"></a></li>';
+                    '<li class="col-xs-12"><a href="javascript:void(0);" class="su su-report active"></a></li>';
                 if (!($(".e-reportviewer-viewer").hasClass("e-reportviewer-parameter"))) {
                     $("#server-mobile-navbar").children().find(".navbar-nav").remove();
                     $("#server-mobile-navbar").remove();
                 } else {
                     var missingSave =
-                        '<li class="col-xs-6"><a href="javascript:void(0)" class="su su-report active"></a></li><li class="col-xs-6"><a href="javascript:void(0)" class="su su-filter server-item-view"></a></li>';
+                        '<li class="col-xs-6"><a href="javascript:void(0);" class="su su-report active"></a></li><li class="col-xs-6"><a href="javascript:void(0);" class="su su-filter server-item-view"></a></li>';
                     var elementMissingSave = $("#server-mobile-navbar").children().find(".navbar-nav");
                     elementMissingSave.html("");
                     elementMissingSave.append(missingSave);
@@ -794,7 +796,7 @@ else
 
             if ('@enableComment' == "true" && '@enableView' == "false") {
                 var enableComments =
-                    '<li class="col-xs-6"><a href="javascript:void(0)" class="su su-report active"></a></li><li class="col-xs-6">' + reportComment + '</li>';
+                    '<li class="col-xs-6"><a href="javascript:void(0);" class="su su-report active"></a></li><li class="col-xs-6">' + reportComment + '</li>';
                 var elementEnableComment = $("#server-mobile-navbar").children().find(".navbar-nav");
                 elementEnableComment.html("");
                 elementEnableComment.append(enableComments);

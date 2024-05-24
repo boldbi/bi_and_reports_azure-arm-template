@@ -1,24 +1,26 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 }
 
 <environment include="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/custom-domain.css" />
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-domain.js"></script>
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/custom-domain.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/custom-domain.css")" crossorigin="anonymous" />
+    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-domain.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/custom-domain.js")" crossorigin="anonymous"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/custom-domain.min.css" />
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-domain.min.js"></script>
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/custom-domain.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/custom-domain.min.css")" crossorigin="anonymous" />
+    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-domain.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/custom-domain.min.js")" crossorigin="anonymous"></script>
 </environment>
 
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var validateCustomDomainUrl = "@Url.Action("ValidateCustomDomain", "CustomDomain")";
     var addCustomDomainUrl = "@Url.Action("AddCustomDomain", "CustomDomain")";
     var createSubscriptionCardUrl = "@Url.Action("AddPaymentDetail", "Payment")";
     var isCardExist = "@(GlobalAppSettings.Branding == AppBranding.BoldBI.Identifier && ViewBag.SaasPlan != (int)SaaSPlan.SingleUserPlan ? true : ViewBag.IsCardExist)";
 </script>
-<script src="https://js.stripe.com/v3/"></script>
+<script nonce="@Context.Items["ScriptNonce"]" src="https://js.stripe.com/v3/"></script>
 <div id="stripePublicKey" style="display:none">
     @ServerAppConfig.AppSettings.Subscription.StripeKey
 </div>

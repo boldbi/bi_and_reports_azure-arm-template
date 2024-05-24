@@ -1,9 +1,12 @@
+@using Syncfusion.Server.Base.Helpers
+
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var cdnLink = string.Empty;
     var faviconLogo = string.Empty;
     var reportServerResourceUrl = string.Empty;
+    var subscriptionLink = ServerAppConfig.AppSettings.EndPoints.TenantAppUrl + "sites/" + _globalAppSettings.SystemSettings.TenantId + "/subscription";
     if (ServerAppConfig.IsSelfHosted)
     {
         cdnLink = (Context.Request.PathBase.ToString().Equals("/") ? string.Empty : Context.Request.PathBase.ToString()) + ServerAppConfig.AppSettings.EndPoints.CdnLink + "/cdn/images";
@@ -23,13 +26,13 @@
     <meta name="viewport" content="width=device-width" />
     <title>Site Suspended - @GlobalAppSettings.BrandingDisplayName</title>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/error-page.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/error-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/error-page.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
 
@@ -52,7 +55,7 @@
                         @if (!ServerAppConfig.IsSelfHosted)
                         {
                             <div>
-                                <span>[[[If you are a subscription administrator for ]]]@(globalAppSettings.SystemSettings.OrganizationName)[[[, you can activate your suspended site ]]]<a href='" + @ServerAppConfig.AppSettings.EndPoints.TenantAppUrl + "sites/" + @_globalAppSettings.SystemSettings.TenantId + "/subscription' class='redirect-link' target='_blank'>[[[here.]]]</a></span>
+                                <span>[[[If you are a subscription administrator for ]]]@(globalAppSettings.SystemSettings.OrganizationName)[[[, you can activate your suspended site ]]]<a href='@subscriptionLink' class='redirect-link' target='_blank'>[[[here.]]]</a></span>
                             </div>
                         }
                         else

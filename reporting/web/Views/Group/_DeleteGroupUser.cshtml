@@ -1,5 +1,5 @@
 ﻿@{ Layout = null; }
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
         var deleteUserFromGroupUrl = "@Url.Action("DeleteUserFromGroup", "Group")";
         var deleteGroupUrl = "@Url.Action("DeleteGroup", "Group")";
 </script>

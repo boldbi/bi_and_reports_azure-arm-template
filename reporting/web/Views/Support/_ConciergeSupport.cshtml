@@ -5,7 +5,7 @@
     var supportFilePath = ServerAppConfig.AppSettings.EndPoints.TenantAppUrl + idpReferenceId + "/";
 }
 
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var conciergeSupportUrl = "@Url.Action("CreateSupport", "Support")";
     var checkConciergeUserAccess = "@Url.Action("CheckConciergeUserAccess", "Support")";
     var conciergeSupportSettingsUrl = "@Url.Action("ConciergeSupport", "Support")";

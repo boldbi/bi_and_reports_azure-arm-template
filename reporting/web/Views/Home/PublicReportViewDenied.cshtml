@@ -1,4 +1,6 @@
-﻿@inject ServerPrincipal _identityResponse
+﻿@using Syncfusion.Server.Base.Helpers
+@inject ServerPrincipal _identityResponse
+
 @{
     var globalAppSettings = _globalAppSettings;
 
@@ -27,13 +29,13 @@
 {
     @section scripts{
         <environment include="Development,CloudDevelopment">
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrapjs.js")" crossorigin="anonymous"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.min.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrapjs.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrapjs.min.js")" crossorigin="anonymous"></script>
         </environment>
 
-        <script type="text/javascript">
+        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
             function IframeLoad() {
                 var parentRefUrl = (window.location != window.parent.location) ? document.referrer : document.location.href.replace(document.location.pathname + document.location.search, "");
                 if (parentRefUrl == "") {

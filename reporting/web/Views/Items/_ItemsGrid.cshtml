@@ -9,7 +9,7 @@
     var query = ViewBag.SearchQuery;
     var granularPermissions = ViewBag.GranularPermissions as Dictionary<object, bool>;
 }
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var copyIframeUrl = "@Url.Action("copyviewitem", "items")";
     var moveIframeUrl = "@Url.Action("moveviewitem", "items")";
     var versionIframeUrl = "@Url.Action("itemversion", "items")";
@@ -30,7 +30,7 @@
     var i_am_ie9 = false;
 </script>
 <!--[if LT IE  10]>
-        <script>
+        <script nonce="@Context.Items["ScriptNonce"]">
             i_am_ie9 = true;
         </script>
     <![endif]-->
@@ -38,28 +38,28 @@
 <div id="items">
 </div>
 
-<script type="text/x-jsrender" id="itemnameheader">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemnameheader">
     <div class="item-name">[[[Name]]]</div>
 </script>
-<script type="text/x-jsrender" id="descriptionheader">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="descriptionheader">
     <div class="item-header">[[[Description]]]</div>
 </script>
-<script type="text/x-jsrender" id="categoryheader">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="categoryheader">
     <div class="item-header">[[[Category]]]</div>
 </script>
-<script type="text/x-jsrender" id="ownerheader">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="ownerheader">
     <div class="item-header">[[[Owner]]]</div>
 </script>
-<script type="text/x-jsrender" id="last-modified-header">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="last-modified-header">
     <div class="item-header">[[[Last Modified]]]</div>
 </script>
-<script type="text/x-jsrender" id="data-rows-header">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="data-rows-header">
     <div class="item-header">[[[Data Rows]]]</div>
 </script>
-@*<script type="text/x-jsrender" id="data-status-header">
+@*<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="data-status-header">
         <div class="item-header">[[[Data Refresh Status]]]</div>
     </script>*@
-<script type="text/x-jsrender" id="description">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="description">
     <div class="item-description grid-content" title="{{:~renderDoubleQuotes(Description)}}" data-toggle="tooltip" data-placement="top">
         <span>
             {{>Description}}
@@ -67,26 +67,26 @@
     </div>
 </script>
 
-<script type="text/x-jsrender" id="category">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="category">
     <span title="{{:CategoryName}}" data-toggle="tooltip" data-placement="top">
         {{>CategoryName}}
     </span>
 </script>
 
-<script type="text/x-jsrender" id="createdbydisplayname">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="createdbydisplayname">
     <span title="{{:CreatedByDisplayName}}" data-toggle="tooltip" data-placement="top">
         {{>CreatedByDisplayName}}
     </span>
 </script>
 
-<script type="text/x-jsrender" id="modifieddate">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="modifieddate">
     <div title="{{:ModifiedDate}}" data-toggle="tooltip" data-placement="top">
         {{>ModifiedDate}}
     </div>
 </script>
 
 
-<script type="text/x-jsrender" id="itemname">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemname">
     {{if ItemType=="2"}}
     <div class="item-name no-left-margin grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
         {{if ItemType=="2"}}
@@ -118,7 +118,7 @@
     {{/if}}
 </script>
 
-<script type="text/x-jsrender" id="options">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
     <div class="dropdown">
         <span class="dropdown-toggle option-icon" title="[[[Actions]]]" data-toggle="dropdown">
             <i class="su su-options"></i>
@@ -359,7 +359,7 @@
     </div>
 </script>
 
-<script type="text/x-jsrender" id="data-rows">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="data-rows">
     {{if DatasourceType=="@((int)ConnectionMode.Extract)"}}
     <span title="{{:RowCount}}" data-toggle="tooltip" data-placement="top">
         {{:RowCount}}
@@ -369,7 +369,7 @@
     {{/if}}
 </script>
 
-@*<script type="text/x-jsrender" id="data-status">
+@*<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="data-status">
         {{if DatasourceType=="@((int)ConnectionMode.Extract)"}}
         <div>
             {{if ScheduleStatus=="@((int)ScheduleStatus.Success)"}}
@@ -415,10 +415,10 @@
 <div><iframe id="hiddeniframe" src="" style="display:none"></iframe></div>
 <input type="hidden" id="applauncherinputhidden" style="width:0;margin:0;border:0;height:0; display:inherit" />
 
-<script type="text/javascript" language="javascript">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" language="javascript">
     var gridName = $('#item-grid-container').attr("data-grid-name");
     var toolbarItems = [{ templateID: "#openTemplate" }, { templateID: "#openwithdashboarddesignerTemplate" }, { templateID: "#DownloadTemplate" }, { templateID: "#Separator1" }, { templateID: "#can-edit-template" }, { templateID: "#can-delete-template" }, { templateID: "#separator2" }, { templateID: "#move-template" }, { templateID: "#copy-template" }, { templateID: "#clone-template" }, { templateID: "#separator3" }, { templateID: "#schedule-template" }, { templateID: "#Separator4" }, { templateID: "#VersionTemplate" }];
-    var categoryName = "@Context.Request.Query["categoryName"]".toString();
+    var categoryName = decodeHtmlAsString("@Context.Request.Query["categoryName"]".toString());
     var filters = { filterType: "menu" };
     if (gridName == "dashboards" && categoryName != "") {
         var filters = { filterType: "menu", "filteredColumns": [{ field: "CategoryName", operator: "equal", value: categoryName }] };

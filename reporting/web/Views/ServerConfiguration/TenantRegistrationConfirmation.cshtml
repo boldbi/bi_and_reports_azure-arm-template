@@ -1,4 +1,6 @@
 ﻿@using Syncfusion.Server.Base.Environment;
+@using Syncfusion.Server.Base.Helpers
+
 @{
     Layout = null;
     var token = ViewBag.Token;
@@ -10,6 +12,9 @@
     var headerLogo = string.Empty;
     var favLogo = string.Empty;
     var orgName = string.Empty;
+    var tenantId = ViewBag.TenantInfoId;
+    var baseUrl = ViewBag.BaseUrl;
+    var isFirstTenant = ViewBag.IsFirstTenant;
     if (!string.IsNullOrWhiteSpace(ViewBag.appsettings.SystemSettings.LoginLogo))
     {
         headerLogo = ViewBag.appsettings.SystemSettings.LoginLogo;
@@ -30,62 +35,68 @@
     <link rel="icon" href="@favLogo" />
     <title>[[[Registration]]] - @orgName Enterprise Reporting</title>
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/tenant-registration.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/signalr/signalr.js"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/tenant-registration-page.css" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/tenant-registration.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/tenant-registration.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/tenant-registration-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/tenant-registration-page.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/tenant-registration.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/signalr/signalr.min.js"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/tenant-registration-page.min.css" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/tenant-registration.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/tenant-registration.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/tenant-registration-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/tenant-registration-page.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
-    <script>
-        var statusTracker;
+    <script nonce="@Context.Items["ScriptNonce"]">
+    var statusTracker;
     var setSystemSettingsUrl = "@Url.Action("SetSystemSettings", "ServerConfiguration")";
+    var progressStatusUrl = "@Url.Action("ProgressStatus", "ServerConfiguration")";
     var idpUrl = "@ServerAppConfig.InternalAppIdpUrl";
+    var isFirstTenant = @Json.Serialize(isFirstTenant);
+    var siteRegistrationCompleted = false;
         $(function () {
-            // Declare a proxy to reference the hub.
-            var connection = new signalR.HubConnectionBuilder()
-                .withUrl("@pathbase" + "/messageHub", { transport: signalR.HttpTransportType.WebSockets | signalR.HttpTransportType.LongPolling })
-                .build();
-            // Create a function that the hub can call to broadcast messages.
-            connection.on("sendMessage", function (percent, message, additionalData) {
-                // Html encode display name and message.
-                var circleValue = $('#circle').circleProgress('value');
-                if ((percent / 100) > circleValue) {
-                    $('#circle').circleProgress('value', percent / 100);
-                }
-
-                if (message != undefined && message != null) {
-                    $("#deployment-status").text(message + "...");
-                }
-
-                if (additionalData != undefined && additionalData != null) {
-                    $(".user-name span").text(additionalData.DisplayName);
-                    $(".profile-pic-tag").attr({
-                        "data-id": additionalData.UserId,
-                        "data-display-name": additionalData.DisplayName
-                    });
-
-                    generateProfileAvatar();
-
-                    $(".dashboard-parent-container > a, #close-welcome-page").attr("href", additionalData.RedirectUrl);
-                }
-            });
-
-            connection.start().then(function () {
-                connection.invoke("addTenantGroup", "@ViewBag.TenantInfoId");
-                setTimeout(function () {
+            setTimeout(function () {
                     $('#circle').circleProgress('value', 0.18);
                         IsSentRequest();
                 }, 2000);
 
                 $('#circle').circleProgress('value', 0.05);
-            });
+            setInterval(function () {
+                if (!siteRegistrationCompleted) {
+                    $.ajax({
+                        type: "POST",
+                        url: progressStatusUrl,
+                        data: {
+                            tenantId: "@tenantId"
+                        },
+                        success: function (result) {
+                            var circleValue = $('#circle').circleProgress('value');
+                            if ((result.Percentage / 100) > circleValue) {
+                                $('#circle').circleProgress('value', result.Percentage / 100);
+                            }
+
+                            if (result.Message != undefined && result.Message != null && result.Status) {
+                                $("#deployment-status").text(result.Message + "...");
+                            }
+
+                            if (typeof (result.AdditionalData) != "undefined" && result.AdditionalData != null && result.Percentage == 100) {
+                                siteRegistrationCompleted = true;
+                                if (typeof (result.AdditionalData.RedirectUrl) != "undefined" && !isNullOrWhitespace(result.AdditionalData.RedirectUrl) && isFirstTenant) {
+                                    $(".user-name span").text(result.AdditionalData.DisplayName);
+                                    $(".profile-pic-tag").attr({
+                                        "data-id": result.AdditionalData.UserId,
+                                        "data-display-name": result.AdditionalData.DisplayName
+                                    });
+
+                                    generateProfileAvatar();
+                                } 
+                                else {
+                                    window.location = "@baseUrl";
+                                }
+                            }
+                        }
+                    });
+                }
+            }, 3000);
         });
 
         $(window).on("load", function () {
@@ -116,6 +127,7 @@
                         $(".deploy-tenant-parent, .deployment-footer").addClass("hide");
                         $("body").addClass("welcome-page-footer-alignment");
                         $(".deployment-header, .welcome-tenant-parent, .base-footer-wrapper").removeClass("hide");
+                        $(".dashboard-parent-container > a, #close-welcome-page").attr("href", result.redirectUrl);
                     }
                     else {
                         window.location = result.redirectUrl

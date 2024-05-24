@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Syncfusion.Server.Base.Helpers
+
+<!DOCTYPE html>
 @{
     Layout = null;
     var isSuccess = ViewData["IsSuccess"] != null ? Convert.ToBoolean(ViewData["IsSuccess"]) : false;
@@ -23,21 +25,21 @@
         }
     </style>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-datasets.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-datasets.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-datasets.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-datasets.min.js")" crossorigin="anonymous"></script>
     </environment>
 
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
             var datasetselectdatasourceUrl ="@Url.Action("DatasetSelectDataSource", "Datasets")";
             var isDatasetExistUrl = "@Url.Action("IsDatasetExist", "Datasets")";
             var addDatasetUrl = "@Url.Action("AddSharedDataset", "Datasets")";
@@ -186,14 +188,14 @@ else
 
 <head>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.css" />
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-datasets.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-datasets.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.min.css" />
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-datasets.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-datasets.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-datasets.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-datasets.min.js")" crossorigin="anonymous"></script>
     </environment>
 </head>
 
@@ -201,7 +203,7 @@ else
 </html>
 @if (ViewBag.Action == "Create")
 {
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         $(function () {
                 window.parent.$('#addDataSetDom_wrapper').ejWaitingPopup("hide");
         });

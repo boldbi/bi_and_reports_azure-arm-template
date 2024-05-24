@@ -9,7 +9,7 @@
     var gridName = ViewBag.gridName;
 }
 
-<script type="text/x-jsrender" id="permission-grid-template">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="permission-grid-template">
     <div class="item-name" data-placement="top">
         {{if (PermissionEntity=="@((int)PermissionEntity.SpecificDashboard)" || PermissionEntity=="@((int)PermissionEntity.SpecificCategory)" || PermissionEntity=="@((int)PermissionEntity.SpecificDataSource)" || PermissionEntity=="@((int)PermissionEntity.SpecificDataset)" || PermissionEntity=="@((int)PermissionEntity.SpecificFile)" || PermissionEntity=="@((int)PermissionEntity.SpecificItemView)"||PermissionEntity=="@((int)PermissionEntity.SpecificReports)" || PermissionEntity=="@((int)PermissionEntity.SpecificSchedule)" || PermissionEntity=="@((int)PermissionEntity.SpecificWidget)")}}
             <span>{{:PermissionAccessDescription}} [[[access for the]]] </span>
@@ -32,7 +32,7 @@
     </div>
 </script>
 
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     $.views.helpers({
         urlEncode: function (id, category, item, isDraft) {
             if (isDraft) {

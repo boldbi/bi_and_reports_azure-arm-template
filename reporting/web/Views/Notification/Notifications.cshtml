@@ -1,6 +1,8 @@
 ﻿@model LogResponse
 
 @using System.Configuration
+@using Syncfusion.Server.Base.Helpers
+
 @{
     var globalAppSettings = _globalAppSettings;
 
@@ -14,17 +16,17 @@
 
 @section Scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-listing.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.dialog.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-listing.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-listing.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/notification-listing.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.dialog.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-listing.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/notification-listing.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-listing.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.dialog.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-listing.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-listing.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/notification-listing.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.dialog.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-listing.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/notification-listing.min.js")" crossorigin="anonymous"></script>
     </environment>
 
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         $(document).ready(function () {
             $("#notifciation-page-container #user-notification-container").show();
             $("#user-system-notification").hide();

@@ -12,7 +12,7 @@
     </div>
 </div>
 
-<script type="text/x-jsrender" id="options">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
     @if (gridName == "files")
     {
         <div class="dropdown">
@@ -60,7 +60,7 @@
 </script>
 
 
-<script type="text/x-jsrender" id="item-name-template">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="item-name-template">
     {{if ItemType=="@((int)ItemType.File)"}}
     <a class="item-name" title="{{:Name}}" href="@url/{{:ItemTypeString}}/{{:Name}}" target="_blank">
         <span class="name">{{:Name}}</span>
@@ -72,15 +72,15 @@
     {{/if}}
 </script>
 
-<script id="expand-template" type="text/x-jsrender">
+<script nonce="@Context.Items["ScriptNonce"]" id="expand-template" type="text/x-jsrender">
     <span class="collapsed su su-angle-right" href="#{{:Id}}" data-toggle="collapse" aria-expanded="false"></span>
 </script>
 
-<script id="expand-temp" type="text/x-jsrender">
+<script nonce="@Context.Items["ScriptNonce"]" id="expand-temp" type="text/x-jsrender">
     <a class="expand-collapse" data-value="expand-all" title="[[[Expand All]]]">[[[Expand All]]]</a>
 </script>
 
-<script id="search-temp" type="text/x-jsrender">
+<script nonce="@Context.Items["ScriptNonce"]" id="search-temp" type="text/x-jsrender">
     <div id="search-area" title="[[[Search]]]" class="pull-right no-margin">
         <input id="search-items" class="pull-left no-margin" placeholder="[[[Search data sources]]]" style="display: none;" autocomplete="off" type="text">
         <span class="su close-icon su-inner-close pull-left no-margin clear-search" id="clear-search" title="[[[Clear search]]]"></span>
@@ -88,7 +88,7 @@
     </div>
 </script>
 
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var gridNamejs = $('#item-grid-container').attr("data-grid-name");
     $(".grid-container").css("margin-top", "0");
     var dataManger = ej.DataManager({ url: "@Url.Action("GetItems", (string)gridName)", adaptor: "UrlAdaptor" });

@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
 
     ViewBag.Title = "[[[Schedules]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -12,20 +14,20 @@
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedules.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedules.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedules.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedules.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedules.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedules.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
 }
 
 @section scripts{
 
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var dashboardServerResourceUrl = "@globalAppSettings.SystemSettings.CDNLink";
         var enableScheduleUrl = "@Url.Action("EnableSchedule", "scheduler")";
         var disableScheduleUrl = "@Url.Action("DisableSchedule", "scheduler")";
@@ -46,12 +48,12 @@
     @if (!isMobile)
     {
         <environment include="Development,CloudDevelopment">
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleslisting.js")" crossorigin="anonymous"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting.min.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleslisting.min.js")" crossorigin="anonymous"></script>
         </environment>
-        <script type="text/javascript">
+        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
             $(document).ready(function () {
                 GridLocalization();
                     $("#search-schedules").val("");
@@ -59,6 +61,12 @@
                         checkMobile: function() {
                             return ("@isMobile.ToString().ToLower()" == "false" &&
                             (window.innerWidth > 1040));
+                        },
+                        renderDoubleQuotes: function (inputString) {
+                            return inputString.replace(new RegExp("\"", 'g'), '&quot;');
+                        },
+                        encodeString: function (inputString) {
+                            return inputString.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
                         }
                     });
                     addPlacehoder("#search-area");
@@ -187,10 +195,10 @@
     else
     {
         <environment include="Development,CloudDevelopment">
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting-mobile.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleslisting-mobile.js")" crossorigin="anonymous"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting-mobile.min.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleslisting-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleslisting-mobile.min.js")" crossorigin="anonymous"></script>
         </environment>
     }
 
@@ -201,7 +209,7 @@
     {
         if (!isMobile)
         {
-            <script id="template-data" type="text/x-jsrender">
+            <script nonce="@Context.Items["ScriptNonce"]" id="template-data" type="text/x-jsrender">
                 <div class="details">
                     <a href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:ItemCategoryName}}/{{:ItemName}}" target="_blank">
                         <div class="item-name">{{:Name}}<span class="{{toLowerCase:Status}} su su-schedule-status"></span></div><br />
@@ -211,12 +219,12 @@
                     </a>
                 </div>
             </script>
-            <script type="text/x-jsrender" id="dashboard-template">
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="dashboard-template">
                 <div class="item-dashboard grid-content" title="{{:ItemName}}" data-toggle="tooltip" data-placement="top">
                     <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:ItemCategoryName}}/{{:ItemName}}" target="_blank">{{:ItemName}}</a></span>
                 </div>
             </script>
-            <script type="text/x-jsrender" id="status-template">
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="status-template">
                 {{if Status=="Active"}}
                 <span class="active su su-schedule-status"></span>
                 {{:Status}}
@@ -228,28 +236,28 @@
                 {{:Status}}
                 {{/if}}
             </script>
-            <script type="text/x-jsrender" id="schedule-template">
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="schedule-template">
                 <div class="item-name grid-content">
                     <span title="{{:Name}}" data-toggle="tooltip" data-placement="top">{{:Name}}</span>
                 </div>
             </script>
-            <script type="text/x-jsrender" id="item-name-header">
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="item-name-header">
                 <div class="item-name">[[[Name]]]</div>
             </script>
-            <script type="text/x-jsrender" id="next-schedule-header">
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="next-schedule-header">
                 <div title="[[[Next Scheduled Run]]]">[[[Next Scheduled Run]]]</div>
             </script>
-            <script type="text/x-jsrender" id="schedule-path-template">
-                <div class="item-name grid-content" title="{{:ExportPath}}" data-toggle="tooltip" data-placement="top">
-                    <span>{{:ExportPath}}</span>
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="schedule-path-template">
+                <div class="item-name grid-content" title="{{:~renderDoubleQuotes(ExportPath)}}" data-toggle="tooltip" data-placement="top">
+                    <span>{{:~encodeString(ExportPath)}}</span>
                 </div>
             </script>
-            <script type="text/x-jsrender" id="schedule-parameter-template">
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="schedule-parameter-template">
                 <div class="item-name grid-content" title="{{:ScheduleParameter}}" data-toggle="tooltip" data-placement="top">
                     <span>{{:ScheduleParameter}}</span>
                 </div>
             </script>
-            <script type="text/x-jsrender" id="options">
+            <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
                 <div class="dropdown">
                     <span class="dropdown-toggle option-icon" title="[[[Actions]]]" data-toggle="dropdown">
                         <span class="su su-options"> </span>
@@ -374,9 +382,9 @@
     </div>
 
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

@@ -1,4 +1,6 @@
 @using System.Runtime.InteropServices;
+@using Syncfusion.Server.Base.Helpers
+
 @{
     var globalAppSettings = _globalAppSettings;
 
@@ -12,7 +14,7 @@
 }
 
 @section scripts{
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var checkGroupnameUrl = "@Url.Action("CheckGroupname", "Group")";
         var addGroupUrl = "@Url.Action("AddGroup", "Group")";
         var deleteGroupViewUrl = "@Url.Action("DeleteGroupView", "Group")";
@@ -23,23 +25,23 @@
     </script>
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/addgroup.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/groups.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/addgroup.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/addgroup.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/groups.js"></script>
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/groups.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/groups.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/addgroup.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/groups.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/addgroup.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/addgroup.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/groups.min.js"></script>
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/groups.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/groups.min.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 
-    <script type="text/x-jsrender" id="group-profile-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="group-profile-template">
         <a class="item-name grid-content" title="{{:~renderDoubleQuotes(GroupName)}}" data-toggle="tooltip" href="@Url.Action("viewgroup", "group")/{{:GroupId}}">{{:GroupName}}</a>
 
         {{if DirectoryType == @((int)DirectoryType.AzureAD)}}
@@ -48,12 +50,12 @@
         <span title="Windows AD Group" class="su su-windows-ad grid-directory-icon"> </span>
         {{/if}}
     </script>
-    <script type="text/x-jsrender" id="group-description-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="group-description-template">
         <span class="grid-content" title="{{:~renderDoubleQuotes(GroupDescription)}}" data-toggle="tooltip">
             {{:~encodeString(GroupDescription)}}
         </span>
     </script>
-    <script type="text/x-jsrender" id="actions-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="actions-template">
         <div class="user-hover-options" data-groupid="{{:GroupId}}" data-directory-type="{{:DirectoryType}}">
             @if (isAdmin || granularPermissions[PermissionEntity.AllPermissions] || granularPermissions[PermissionEntity.SpecificPermissions])
             {
@@ -88,7 +90,7 @@
             {{/if}}
         </div>
     </script>
-    <script type="text/javascript">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
         GridLocalization();
         $(document).ready(function () {
             $("#search-groups").val("");
@@ -231,10 +233,10 @@
 
     </script>
 
-    <script type="text/x-jsrender" id="name-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="name-header">
         <div class="item-name">[[[Name]]]</div>
     </script>
-    <script type="text/x-jsrender" id="description-header">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="description-header">
         <div class="item-header">[[[Description]]]</div>
     </script>
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
@@ -262,7 +264,7 @@
 
                         <ul class="dropdown-menu" role="menu" id="dropdown-options">
                             <li id="new-group-button" title="Add new group">
-                                <a href="javascript:void(0)" title="[[[Add new group]]]" data-toggle="tooltip" data-placement="top">
+                                <a href="javascript:void(0);" title="[[[Add new group]]]" data-toggle="tooltip" data-placement="top">
                                     <i class="su su-group-1"></i>
                                     <span>[[[Create Group]]]</span>
                                 </a>

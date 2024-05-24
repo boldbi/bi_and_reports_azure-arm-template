@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     ViewBag.Title = "[[[Personal Access Token]]] - " + _globalAppSettings.SystemSettings.OrganizationName;
@@ -7,27 +9,27 @@
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-settings.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-settings.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/embed-settings.css")" crossorigin="anonymous" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-settings.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/embed-settings.min.css")" crossorigin="anonymous" />
     </environment>
 
 }
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-settings.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-settings.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/embed-settings.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-settings.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-settings.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/embed-settings.min.js")" crossorigin="anonymous"></script>
     </environment>
 
 }
 
 
 @section MainSection{
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var isGenerateAuthenticationTokenUrl = "@Url.Action("GetToken", "User")";
         $(document).ready(function () {
             var getLinkInputObj = $("#secret-code");

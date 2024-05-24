@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Syncfusion.Server.Base.Helpers
+
+<!DOCTYPE html>
 @{
     Layout = null;
     var isSuccess = ViewData["IsSuccess"] != null ? Convert.ToBoolean(ViewData["IsSuccess"]) : false;
@@ -15,7 +17,7 @@
     <title>
         @ViewBag.Title
     </title>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
             var isFileExistUrl = "@Url.Action("isfileexist", "files")";
     </script>
 
@@ -26,17 +28,17 @@
     </style>
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-files.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-files.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.min.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-files.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.min.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-files.min.js")" crossorigin="anonymous"></script>
     </environment>
   
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         $(document).ready(function () {
             $(document).on("click", ".PopupClose", function (e) {
                 $("#addFileDom").find("iframe").contents().find("html").html("");
@@ -129,16 +131,16 @@ else
 
 <head>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-files.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-files.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-files.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-files.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.min.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-files.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-files.min.js")" crossorigin="anonymous"></script>
     </environment>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         $(document).ready(function () {
             closeAddItemPopup();
             parent.messageBox("su-document", "[[[Upload File]]]", "[[[File has been added successfully.]]]", "success", function () {

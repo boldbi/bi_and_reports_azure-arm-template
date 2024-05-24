@@ -17192,10 +17192,6 @@ input.e-combobox.e-input::-ms-clear {
   display: inline-block;
   line-height: 1px;
 }
-.e-reportdesigner .e-publish-contentwrap.e-publish-contentwrap-div.e-mark-public-chk-box {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
 .e-reportdesigner .e-designer-select-category .e-select {
   margin-right: 12px;
 }
@@ -17230,16 +17226,6 @@ input.e-combobox.e-input::-ms-clear {
   height: 30px;
   width: calc(-140%);
   display: none;
-}
-.e-reportdesigner .e-mark-public-info {
-  padding-left: 5px;
-  font-size: 11px;
-  border-radius: 4px;
-}
-.e-reportdesigner .e-mark-public-info-span {
-  height: 14px;
-  line-height: 14px;
-  float: left;
 }
 .e-reportdesigner .e-map-field-container .e-header,
 .e-reportdesigner .e-rptvariables-field-container .e-header,

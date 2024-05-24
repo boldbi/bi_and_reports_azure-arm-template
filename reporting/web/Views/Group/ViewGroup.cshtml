@@ -1,4 +1,6 @@
-﻿@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+﻿@using Syncfusion.Server.Base.Helpers
+
+@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
 @{
     var globalAppSettings = _globalAppSettings;
 
@@ -13,21 +15,22 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/viewgroup.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/deleteconfirm.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/viewgroup.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/viewgroup.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/viewgroup.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/deleteconfirm.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/deleteconfirm.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/viewgroup.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/viewgroup.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/viewgroup.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/deleteconfirm.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/viewgroup.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/viewgroup.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/viewgroup.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/deleteconfirm.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/deleteconfirm.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/viewgroup.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/viewgroup.min.js")" crossorigin="anonymous"></script>
     </environment>
 
-    <script type="text/javascript">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
         var groupDetails = @Json.Serialize(ViewBag.groupDetails);
         var groupId = @ViewBag.groupId;
         var groupAttributesUrl = "@Url.Action("GetGroupAttributes", "CustomAttribute")";
-
+        groupDetails.GroupName = decodeHtmlAsString(groupDetails.GroupName);
+        groupDetails.GroupDescription = decodeHtmlAsString(groupDetails.GroupDescription);
         serverApp.controller('GroupEditController', function ($scope) {
             $scope.selectedRow = 1;
             $scope.page = 0;
@@ -147,43 +150,43 @@
         });
         $("#userList").selectpicker("refresh");
     </script>
-    <script type="text/x-jsrender" id="attribute-name-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="attribute-name-template">
         <span class="grid-content" title="{{:Name}}" data-toggle="tooltip">{{:Name}}</span>
     </script>
-    <script type="text/x-jsrender" id="attribute-description-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="attribute-description-template">
         <span class="grid-content" title="{{:Description}}" data-toggle="tooltip">{{:Description}}</span>
     </script>
-    <script type="text/x-jsrender" id="attribute-value-template">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="attribute-value-template">
         <span class="grid-content" title="{{:Value}}" data-toggle="tooltip">{{:Value}}</span>
     </script>
-    <script type="text/x-jsrender" id="NameTemplate">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="NameTemplate">
         <span class="item-name" title="{{:DisplayName}}" data-toggle="tooltip">{{:DisplayName}}</span>
     </script>
     <feature name=@FeatureManagement.Yokogawa>
-        <script type="text/x-jsrender" id="NameTemplate">
+        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="NameTemplate">
             <a class="item-name grid-content" title="{{:DisplayName}}" data-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:DisplayName}}</a>
         </script>
     </feature>
     <feature name=@FeatureManagement.Yokogawa negate="true">
-        <script type="text/x-jsrender" id="NameTemplate">
+        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="NameTemplate">
             <span class="item-name grid-content" title="{{:DisplayName}}" data-toggle="tooltip">{{:DisplayName}}</span>
         </script>
-    </feature>    <script type="text/x-jsrender" id="UsernameTemplate">
+    </feature>    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="UsernameTemplate">
         <span class="grid-content" title="{{:Username}}" data-toggle="tooltip">{{:Username}}</span>
     </script>
-    <script type="text/x-jsrender" id="EmailTemplate">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="EmailTemplate">
         <span class="grid-content" title="{{:Email}}" data-toggle="tooltip">{{:CanShowEmail ? Email : ""}}</span>
     </script>
-    <script type="text/x-jsrender" id="NameHeader">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="NameHeader">
         <div class="item-name">[[[Name]]]</div>
     </script>
-    <script type="text/x-jsrender" id="UsernameHeader">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="UsernameHeader">
         <div class="item-name">[[[Username]]]</div>
     </script>
-    <script type="text/x-jsrender" id="emailHeader">
+    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="emailHeader">
         <div class="item-header">[[[Email Address]]]</div>
     </script>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var checkGroupnameUrl = "@Url.Action("CheckGroupname", "group")";
         var addGroupUrl = "@Url.Action("AddGroup", "group")";
         var deleteGroupViewUrl = "@Url.Action("DeleteGroupView", "group")";
@@ -266,14 +269,14 @@
                 <div class="col-lg-12 admin-page-body">
                     <div id="GroupAttributesGrid"></div>
                 </div>
-                <script type="text/x-jsrender" id="inherited">
+                <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="inherited">
                     {{if AttributeType == @((int)AttributeType.Site)}}
                     <div title="{{:Inherited}}">
                         {{:Inherited}}
                     </div>
                     {{/if}}
                 </script>
-                <script type="text/x-jsrender" id="options">
+                <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
                     <div class="user-hover-options">
                         {{if AttributeType ==  @((int)AttributeType.Group)}}
                         <a href="javascript:void(0);" id="edit-group-attribute" title="[[[Edit]]]" data-toggle="tooltip" data-id="{{:Id}}" data-name="group" onclick="editCustomAttribute(this)">

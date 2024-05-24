@@ -1,4 +1,6 @@
-﻿@{
+﻿@using Syncfusion.Server.Base.Helpers
+
+@{
     Layout = null;
     var isMobile = new DeviceDetection(Context).IsMobile;
     var requestUrl = new Uri(Context.Request.GetDisplayUrl());
@@ -10,7 +12,7 @@
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 }
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     var isDraftExistUrl = "@Url.Action("IsDraftExist", "items")";
     var dashboardDesignerUrl = "@Url.Action("ReportDesigner", "Designer")";
     var createDatasetUrl = "@Url.Action("CreateDataSet", "DataSets")";
@@ -115,11 +117,25 @@
                         </div>
                     </div>
                 </li>}
+                    @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Report) && itemPermissions[ItemType.Report])
+                    {
+                        <li id="create-report-part">
+                            <div class="create-item-list-section">
+                                <div class="create-item-list-icon" style="float: left;">
+                                    <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/create-report-part.svg">
+                                </div>
+                                <div class="create-item-list-title">
+                                    <label>[[[Create Report Part]]]</label><br>
+                                    <span>[[[Create a new report part.]]]</span>
+                                </div>
+                            </div>
+                        </li>
+                    }
                     <environment include="Development,CloudDevelopment">
-                        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.js"></script>
+                        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/itemaction.js")" crossorigin="anonymous"></script>
                     </environment>
                     <environment exclude="Development,CloudDevelopment">
-                        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.min.js"></script>
+                        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/itemaction.min.js")" crossorigin="anonymous"></script>
                     </environment>
                     @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Datasource) && itemPermissions[ItemType.Datasource])
                     {
@@ -129,10 +145,9 @@
                                     <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/create-dataset.svg">
                                 </div>
                                 <div class="create-item-list-title">
-                                    <label>[[[Create Datasource]]]</label><br>
+                                    <label>[[[Create Data Source]]]</label><br>
                                     <span>
-                                        [[[Create a new data source from
-                                        connectors and build report.]]]
+                                        [[[Create a new data source from connectors and build a report.]]]
                                     </span>
                                 </div>
                             </div>
@@ -147,8 +162,7 @@
                                 <div class="create-item-list-title">
                                     <label>[[[Create Dataset]]]</label><br>
                                     <span>
-                                        [[[Create a new data set from
-                                        connectors and build report.]]]
+                                        [[[Create a new dataset from connectors and build a report.]]]
                                     </span>
                                 </div>
                             </div>
@@ -161,8 +175,7 @@
                                 <div class="create-item-list-title">
                                     <label>[[[Upload Dataset]]]</label><br>
                                     <span>
-                                        [[[Upload your existing RSD file
-                                        to the server.]]]
+                                        [[[Upload your existing RSD file to the server.]]]
                                     </span>
                                 </div>
                             </div>
@@ -178,8 +191,7 @@
                                 <div class="create-item-list-title">
                                     <label>[[[Schedule]]]</label><br>
                                     <span>
-                                        [[[Monitor your data in order
-                                        to recognize emerging trends]]]
+                                        [[[Monitor your data in order to recognize emerging trends]]]
                                     </span>
                                 </div>
                             </div>
@@ -194,7 +206,7 @@
 <div id="save-draft-container" class="e-control e-popup e-popup-close">
     <form id="save-draft-form" name="saveDraftForm">
         <div class="save-draft-content-section">
-            <div class="save-draft-title">[[[Let's start with a name for your report.]]]</div>
+            <div class="save-draft-title"></div>
             <div class="row save-draft-input-section">
                 <div class="col-xs-12 save-draft-input-segment">
                     <span>
@@ -205,18 +217,17 @@
                 </div>
             </div>
             <div class="save-draft-note">
-                [[[All reports are auto-saved as drafts for you to continue where you left off. Publishing a report must be done manually.]]]
             </div>
         </div>
     </form>
 </div>
 <environment include="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/create-item-menu.css" />
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/create-item-menu.js"></script>
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/create-item-menu.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/create-item-menu.css")" crossorigin="anonymous" />
+    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/create-item-menu.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/create-item-menu.js")" crossorigin="anonymous"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/create-item-menu.min.css" />
-    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/create-item-menu.min.js"></script>
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/create-item-menu.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/create-item-menu.min.css")" crossorigin="anonymous" />
+    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/create-item-menu.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/create-item-menu.min.js")" crossorigin="anonymous"></script>
 </environment>
 <div id="create-dataset-popup" class="no-padding" style="display:none">
     <iframe id="create-dataset-iframe" class="create-dataset-iframe"></iframe>

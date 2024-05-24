@@ -1,4 +1,6 @@
-﻿@model List<ItemDetail>
+﻿@using Syncfusion.Server.Base.Helpers
+
+@model List<ItemDetail>
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
@@ -11,7 +13,7 @@
     <title>
         [[[Select Dataset]]]
     </title>
-    <script>
+    <script nonce="@Context.Items["ScriptNonce"]">
         var addDatasetUrl = "@Url.Action("AddSharedDataset", "DataSets")";
         var datasetselectdatasourceUrl = "@Url.Action("DatasetSelectDataSource", "DataSets")";
         var isDatasetExistUrl = "@Url.Action("IsDatasetExist", "Datasets")";
@@ -29,16 +31,16 @@
         }
     </script>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/select-dataset.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/select-dataset.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/select-dataset.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/select-dataset.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/select-dataset.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/select-dataset.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
-        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/select-dataset.min.css" />
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/select-dataset.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/select-dataset.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/select-dataset.min.css")" crossorigin="anonymous" />
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/select-dataset.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/select-dataset.min.js")" crossorigin="anonymous"></script>
     </environment>
 </head>
 <body style="background-color:white" onload="load();">
@@ -101,7 +103,7 @@
     </div>
 </body>
 </html>
-<script>
+<script nonce="@Context.Items["ScriptNonce"]">
     $(function () {
         parent.$("#addDataSetDom_wrapper").ejWaitingPopup("hide");
     });

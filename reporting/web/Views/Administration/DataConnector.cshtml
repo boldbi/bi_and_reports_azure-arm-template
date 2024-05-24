@@ -1,66 +1,43 @@
 ﻿@using System.Globalization;
+@using Syncfusion.Server.Base.Helpers
+
 @{
     var globalAppSettings = _globalAppSettings;
     var cdnLink = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     ViewBag.Title = "[[[Data Connectors]]] - " + globalAppSettings.SystemSettings.OrganizationName;
-    bool isSelfHosted = ServerAppConfig.IsSelfHosted;
-    var language = CultureInfo.CurrentCulture.Name;
-    var boldReportsApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
-    var isAdmin = Context.Session.GetString("IsAdmin") != null && Convert.ToBoolean(Context.Session.GetString("IsAdmin"));
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DataConnectors);
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
-    var reportServiceUrl = ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/');
-    var isAzureApplication = ServerAppConfig.IsAzureApplication;
-    var isDesignerV2Enabled = ViewBag.IsDesignerV2Enabled;
-}
-
-@section meta{
-    <meta name="report_server:url" content="@boldReportsApiUrl" />
-    <meta name="user:is_admin" content="@isAdmin.ToString()" />
-    <meta name="designer_service:url" content="@reportServiceUrl" />
-    <meta name="designer_service:access_token" content="@ViewBag.AccessToken" />
-    <meta name="designer_service:isazureapp" content="@isAzureApplication.ToString().ToLower()" />
 }
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/reportdesigner/bootstrap-theme/bold.reportdesigner.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/reportdesigner/data-configuration/data-configuration.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connector-page.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-designer.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connector-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/connector-page.css")" crossorigin="anonymous" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/reportdesigner/bootstrap-theme/bold.reportdesigner.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/reportdesigner/data-configuration/data-configuration.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.min.css" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connector-page.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-designer.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/connector-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/connector-page.min.css")" crossorigin="anonymous" />
     </environment>
     <link rel="icon" href="@Url.Content(globalAppSettings.SystemSettings.FavIcon)" onerror="if (this.href != '~/content/images/application/favicon.png') this.href = '~/content/images/application/favicon.png';" />
 }
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/datatile-configuration-dependency.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportdesigner.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/datatile-configuration.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/datatile-configuration-dependency.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/essentialjs/datatile-configuration-dependency.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/connector-page.js")" crossorigin="anonymous"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/datatile-configuration-dependency.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportdesigner.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/datatile-configuration.min.js"></script>
-        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page.min.js"></script>
+        <script nonce ="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/datatile-configuration-dependency.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/essentialjs/datatile-configuration-dependency.min.js")" crossorigin="anonymous"></script>
+        <script nonce="@Context.Items["ScriptNonce"]"  asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/connector-page.min.js")" crossorigin="anonymous"></script>
     </environment>
-    <script src="@reportServerResourceUrl/cdn/scripts/localization/datatileconfiguration/ej.localetexts.@string.Concat(language, ".js")"></script>
     <script>
-        var isSelfHosted = "@isSelfHosted";
-        var language = "@language";
+        window.addEventListener('message', function (event) {
+            if (event && event.data && !isNaN(event.data)) {
+                $('#dataConnector_iframe').height(event.data);
+            }
+        });
     </script>
 }
 
@@ -82,9 +59,8 @@
             </button>
         </div>
 
-        <div id="look-and-feel-form col-lg-12 col-md-12">
-            <div id="container" style="display:none;height:0px !important;width:0px !important;"></div>
-            <div id="connectionDesigner" class="admin-page-body" style="height:100%;width:100%;"></div>
+        <div id="look-and-feel-form col-lg-12 col-md-12" style="padding-bottom: 20px !important">
+            <iframe id="dataConnector_iframe" class="dataConnector-iframe" src="@Url.Action("DataConnectorSettings", "Administration")" style="height: 100%; width: 100%; overflow: hidden;border: none;"></iframe>
         </div>
         <div class="admin-page-actions col-lg-12 col-md-12 no-margin">
             <a href="@Url.Action("Index", "Home")" class="secondary-button app-btn-secondary pull-right" id="cancel-connector-settings" title="">[[[Cancel]]]</a>
