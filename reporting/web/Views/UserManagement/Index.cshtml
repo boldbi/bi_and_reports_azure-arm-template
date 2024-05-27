@@ -1,5 +1,4 @@
 ﻿@using System.Runtime.InteropServices;
-@using Syncfusion.Server.Base.Helpers
 
 @{
     var globalAppSettings = _globalAppSettings;
@@ -17,15 +16,15 @@
 
 @section scripts{
  <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-management-module.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-management.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.css" />
+		<script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-management-module.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-management.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.min.css" />
+		<script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var checkMailSettingUrl = "@Url.Action("checkmailsettingsexist", "Administration")";
         var postactionUrl = "@Url.Action("postaction", "UserManagement")";
         var isPresentEmailId = "@Url.Action("IsPresentEmailId", "UserManagement")";
@@ -48,7 +47,7 @@
     </script>
     @if (isSelfHosted)
     {
-        <script nonce="@Context.Items["ScriptNonce"]">
+        <script>
             var minimumLength = "@passwordPolicy.MinimumLength";
             var lowerCaseRequired = "@passwordPolicy.LowerCaseRequired";
             var upperCaseRequired = "@passwordPolicy.UpperCaseRequired";
@@ -56,10 +55,10 @@
             var specialCharactersRequired = "@passwordPolicy.SpecialCharactersRequired";
         </script>
     }
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         window.data = JSON.parse(@Json.Serialize(ViewBag.users));
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         function selectItems(e) {
             var parentRow = $(e.event.currentTarget.parentNode).parents(".user-row-details");
             $(parentRow).hasClass('user-table-row-selected') ? $(parentRow).removeClass('user-table-row-selected') : $(parentRow).addClass("user-table-row-selected");
@@ -68,7 +67,7 @@
 
     </script>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-profile-template">
+    <script type="text/x-jsrender" id="user-profile-template">
         <a class="item-name grid-content" title="{{:DisplayName}}" data-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:DisplayName}}</a>
 
         {{if DirectoryType == @((int)DirectoryType.AzureAD)}}
@@ -91,42 +90,42 @@
         <span class="su su-google grid-directory-icon"><span class="su su-google path1"></span><span class="su su-google path2"></span><span class="su su-google path3"></span><span class="su su-google path4"></span></span>
         {{/if}}
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-name-template">
+    <script type="text/x-jsrender" id="user-name-template">
         <span class="grid-content" title="{{:Username}}" data-toggle="tooltip">{{:Username}}</span>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-email-template">
+    <script type="text/x-jsrender" id="user-email-template">
         <span class="grid-content" title="{{:Email}}" data-toggle="tooltip">{{:CanShowEmail ? Email : ""}}</span>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="status-description-template">
+    <script type="text/x-jsrender" id="status-description-template">
         {{if StatusDescription=="Active"}}
         [[[Active]]]
         {{else StatusDescription== "Inactive"}}
         [[[Inactive]]]
         {{/if}}
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-verification-template">
+    <script type="text/x-jsrender" id="email-verification-template">
         {{if IsActivated}}
         [[[Completed]]]
         {{else}}
         [[[Pending]]]
         {{/if}}
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemname-header">
+    <script type="text/x-jsrender" id="itemname-header">
         <div class="item-name">[[[Name]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="username-header">
+    <script type="text/x-jsrender" id="username-header">
         <div class="user-name">[[[Username]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-header">
+    <script type="text/x-jsrender" id="email-header">
         <div class="item-header">[[[Email Address]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="status-header">
+    <script type="text/x-jsrender" id="status-header">
         <div class="item-header">[[[Status]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-verification-header">
+    <script type="text/x-jsrender" id="email-verification-header">
         <div class="item-header">[[[Email Verification]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
+    <script type="text/x-jsrender" id="options">
         <div class="user-hover-options" data-content="{{:Email}}">
             @if (isAdmin || permissions[PermissionEntity.AllPermissions] || permissions[PermissionEntity.SpecificPermissions])
             {
@@ -153,7 +152,7 @@
         </div>
     </script>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         $(function () {
             GridLocalization();
             $("#search-users").val("");
@@ -284,7 +283,7 @@
                             </button>
                             <ul class="dropdown-menu add-user-dropdown multi-level" role="menu" id="dropdown-options">
                                 <li id="create-user" title="[[[Add new user]]]" onclick="onUserAddDialogOpen()">
-                                    <a href="javascript:void(0);" title="[[[Add user]]]" data-toggle="tooltip" data-placement="top">
+                                    <a href="javascript:void(0)" title="[[[Add user]]]" data-toggle="tooltip" data-placement="top">
                                         <i class="su su-user-add"> </i>
                                         <span>[[[Add User]]]</span>
                                     </a>
@@ -462,9 +461,9 @@
     @await Html.PartialAsync("../UserManagement/_SingleUserDeleteDialog")
     @await Html.PartialAsync("../UserManagement/_LimitUserCreation")
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

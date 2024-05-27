@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = globalAppSettings.SystemSettings.OrganizationName + " - [[[Schedule Synchronization Page]]]";
     ViewBag.MessageBox = false;
@@ -8,21 +6,21 @@
 }
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedule-synchronization.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.css" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedule-synchronization.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedule-synchronization.min.css" />
     </environment>
 }
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedule-synchronization.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedule-synchronization.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedule-synchronization.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var getScheduleInfoUrl = "@Url.Action("GetUmsScheduleInfo", "Administration")";
         var getRecurrenceTypeUrl = "@Url.Action("GetRecurrenceType", "Administration")";
         var updateAdScheduleUrl = "@Url.Action("UpdateUmsSchedule", "Administration")";

@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
 
     ViewBag.Title = "[[[Active Directory Groups import]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -13,24 +11,24 @@
 @section scripts{
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/group-active-directory.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/group-active-directory.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/group-active-directory.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/group-active-directory.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/group-active-directory.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/group-active-directory.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/group-active-directory.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/group-active-directory.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/group-active-directory.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/group-active-directory.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/group-active-directory.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/group-active-directory.min.js"></script>
     </environment>
 
     @if (ViewBag.AdImportGroup)
     {
-        <script nonce="@Context.Items["ScriptNonce"]">
+        <script>
             var saveSelectedActiveDirectoryGroupsUrl = "@Url.Action("SaveSelectedActiveDirectoryGroups", "group")";
             var searchActiveDirectoryGroupsUrl = "@Url.Action("SearchActiveDirectoryGroups", "group")";
         </script>
     }
     else
     {
-        <script nonce="@Context.Items["ScriptNonce"]">
+        <script>
             var saveSelectedActiveDirectoryGroupsUrl = "@Url.Action("SaveSelectedAzureADGroups", "Group")";
             var searchActiveDirectoryGroupsUrl = "@Url.Action("SearchAzureADGroups", "Group")";
         </script>
@@ -39,23 +37,23 @@
 @section MainSection{
     @await Html.PartialAsync("../UserManagement/_UserMenu")
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-detail-validation">
+    <script type="text/x-jsrender" id="user-detail-validation">
         {{if IsDuplicated}}
         <span class="su su-login-error group-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></span>
         {{/if}}
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="group-name-template">
+    <script type="text/x-jsrender" id="group-name-template">
         <span title="{{:~renderDoubleQuotes(GroupName)}}" class="grid-content" data-toggle="tooltip">
             {{:GroupName}}
         </span>
     </script>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" data-toggle="tooltip" id="group-description-template">
+    <script type="text/x-jsrender" data-toggle="tooltip" id="group-description-template">
         <span title="{{:~renderDoubleQuotes(GroupDescription)}}" class="grid-content" data-toggle="tooltip">
             {{:GroupDescription}}
         </span>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-row-template">
+    <script type="text/x-jsrender" id="checkbox-row-template">
         {{if IsDuplicated}}
         <input disabled type="checkbox" class="checkbox-row-disabled material-checkbox" name="checkbox-row-disabled" data-checked-id="{{:GroupId}}" id="row-check{{:GroupId}}" />
         <input name="row-check{{:GroupId}}" type="hidden" value="false">
@@ -66,22 +64,22 @@
         <label for="row-check{{:GroupId}}"> </label>
         {{/if}}
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-header-template">
+    <script type="text/x-jsrender" id="checkbox-header-template">
         @Html.CheckBox("checkbox-header", new { @class = "material-checkbox" })
         @Html.Label("checkbox-header", " ", new { @class = "checkbox-header-label" })
     </script>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="name-header">
+    <script type="text/x-jsrender" id="name-header">
         <div class="item-header">[[[Name]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="description-header">
+    <script type="text/x-jsrender" id="description-header">
         <div class="item-header">[[[Description]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="group-id-header">
+    <script type="text/x-jsrender" id="group-id-header">
         <div class="item-header">[[[group id]]]</div>
     </script>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
             @if (ViewBag.AdImportGroup)
             {
                 <text>

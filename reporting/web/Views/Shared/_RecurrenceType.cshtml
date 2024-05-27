@@ -1,7 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-@model string
-
-@{
+﻿@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -12,28 +9,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedulerrecurrence.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedulerrecurrence.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedulerrecurrence.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedulerrecurrence.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/schedulerrecurrence.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/schedulerrecurrence.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
 
 
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 
-    <script nonce="@Model">
+    <script>
          var getRecurrenceTypeUrl = "@Url.Action("GetRecurrenceType", "scheduler")";
          var getNextScheduleUrl = "@Url.Action("GetNextScheduleDate", "scheduler")";
     </script>
-    <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej.editor.min.js"></script>
-    <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.numerictextbox.min.js"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej.editor.min.js"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.numerictextbox.min.js"></script>
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecurrence.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedulerrecurrence.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecurrence.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecurrence.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/schedulerrecurrence.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/schedulerrecurrence.min.js"></script>
     </environment>
 
 </head>
@@ -263,10 +260,10 @@
         <div class="col-sm-10 col-xs-10" id="schedule-message-container"><span class="su su-info"></span><span id="schedule-message"></span></div>
     </div>
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Model" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Model" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 </body>
 </html>

@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     Layout = null;
     var datasourceList = ViewData["ItemsList"] as List<ItemDetail>;
     var dataSourceNames = ViewData["DataSourceName"] as List<DataSourceInfo>;
@@ -20,28 +18,28 @@
     <title>
         Update Data Source(s)
     </title>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
             var updatedatasource = "@Url.Action("updatedatasource", "reports")";
             var getdatasourcedetailsofreport = "@Url.Action("GetDataSourceDetailsbyReportId", "reports")";
             var getdatasourceUrl = "@Url.Action("GetItems", "datasources")";
             var getReportUrl = "@Url.Action("GetReportWithSharedDataSource", "reports")";
             var rootBaseUrl = '@Url.Content("~/")';
-            var categoryName = decodeHtmlAsString("@currentCategoryName");
+            var categoryName = "@Context.Request.Query["categoryName"].ToString()";
             var itemId = "@Context.Request.Query["itemId"].ToString()";
             var itemName = "@Context.Request.Query["itemName"].ToString()";
     </script>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/update-datasource.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/update-datasource.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/update-datasource.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/update-datasource.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         $(function () {
             $("#new-datasource-tab-content").css("height", window.innerHeight - 234 + "px");
             window.parent.ShowWaitingProgress("#update-data-source-popup_wrapper", "hide");
@@ -154,16 +152,16 @@ else
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/update-datasource.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/update-datasource.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/update-datasource.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/update-datasource.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/update-datasource.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/update-datasource.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(document).ready(function () {
             closeUpdateDataSourcePopup();
             parent.messageBox("su-update-data-source", "[[[Update Data Source(s)]]]", "[[[Internal server error. Please try again.]]]", "success", function () {

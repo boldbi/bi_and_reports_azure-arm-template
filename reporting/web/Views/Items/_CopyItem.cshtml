@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -10,7 +8,7 @@
     var isSelfHosted = ServerAppConfig.IsSelfHosted;
 }
 
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var copyItemUrl = "@Url.Action("copyitem", "items")";
     var cloneItemUrl = "@Url.Action("cloneitem", "items")";
     var canCreateCategory = "@canCreateCategory";
@@ -37,10 +35,10 @@
 
 
 <environment include="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/itemaction.js")" crossorigin="anonymous"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.js"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/itemaction.min.js")" crossorigin="anonymous"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/itemaction.min.js"></script>
 </environment>
 
 <body onload="load()">
@@ -309,14 +307,14 @@
             </div>
         }
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+            <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+            <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
         </environment>
     </div>
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(document).ready(function () {
             var categories = @Json.Serialize(ViewBag.CategoryDetails);
             var options = "";
@@ -329,7 +327,7 @@
             window.parent.$('#ItemAction_wrapper').ejWaitingPopup("hide");
         });
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(document).ready(function () {
             var tenants = @Json.Serialize(ViewBag.Tenant);
             var tenantoption = "";
@@ -342,7 +340,7 @@
             window.parent.$('#ItemAction_wrapper').ejWaitingPopup("hide");
         });
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(document).ready(function () {
             var sharedDataSet = @Json.Serialize(ViewBag.SharedDataset);
             var availableSharedDS = @Json.Serialize(ViewBag.AvailableSharedDS);
@@ -396,7 +394,7 @@
             $("#copyreport_shared_datasource").css('display', 'block');
         }
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(document).ready(function () {
             var reportCategoryList = @Json.Serialize(ViewBag.CategoryDetails);
             var drillthroughreportReferences = @Json.Serialize(ViewBag.itemReferences["drillthroughreport"]);

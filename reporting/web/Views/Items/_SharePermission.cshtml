@@ -1,7 +1,5 @@
 ﻿@inject ServerPrincipal _identityResponse
 @using Newtonsoft.Json
-@using Syncfusion.Server.Base.Helpers
-
 @{
     Layout = null;
     var reportType = (int)ItemType.Report;
@@ -24,7 +22,7 @@
 
 @if (ViewBag.IsViewLoadedInIframe != null && ViewBag.IsViewLoadedInIframe)
 {
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var isViewerV2Enabled = true;
         var viewReportClick = false;
         var viewId = parent.reportId;
@@ -41,32 +39,32 @@
     </script>
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/jquery-dependencies.js")" crossorigin="anonymous"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/bootstrap-dependencies.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-utilities.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission-v2.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/share-permission-v2.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-views-v2.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrap-dependencies.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-ej-dependencies.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/angular-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/angular-dependencies.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission-v2.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/share-permission-v2.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-views-v2.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission-v2.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/angular-dependencies.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission-v2.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/jquery-dependencies.min.js")" crossorigin="anonymous"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/bootstrap-dependencies.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-utilities.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission-v2.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/share-permission-v2.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-views-v2.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/bootstrap-dependencies.min.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-ej-dependencies.min.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/angular-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/angular-dependencies.min.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission-v2.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/share-permission-v2.min.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-views-v2.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/jquery-dependencies.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/bootstrap-dependencies.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-utilities.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission-v2.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-views-v2.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/bootstrap-dependencies.min.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.min.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/angular-dependencies.min.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission-v2.min.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-views-v2.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
 
     <style>
@@ -94,7 +92,7 @@
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 }
 
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var makeItemPublicUrl = "@Url.Action("MakePublicItem", "items")";
     var removeItemPublicUrl = "@Url.Action("RemoveItemPublic", "items")";
     var getShareItemPermissionUrl = "@Url.Action("ShareItemPermission", "items")";
@@ -140,12 +138,10 @@
                 </div>
                 <div class="col-xs-2 public-private-change-section">
                     <div class="public-private-change-action">
-                        <a href="javascript:void(0);" onclick="changeAccessMode()" id="access-mode-change-link" class="app-hyperlink">[[[Change]]]</a>
+                        <a href="javascript:void(0)" onclick="changeAccessMode()" id="access-mode-change-link" class="app-hyperlink">[[[Change]]]</a>
                     </div>
                 </div>
             </div>
-            @if (ServerAppConfig.EnablePublic)
-            {
             <div class="share-permission-private-section" style="display:none;">
                 <div class="col-xs-2 public-private-icon-section">
                     <div class="public-private-icon">
@@ -161,11 +157,10 @@
                 </div>
                 <div class="col-xs-2 public-private-change-section">
                     <div class="public-private-change-action">
-                        <a href="javascript:void(0);" onclick="changeAccessMode()" id="access-mode-change-link" class="app-hyperlink">[[[Change]]]</a>
+                        <a href="javascript:void(0)" onclick="changeAccessMode()" id="access-mode-change-link" class="app-hyperlink">[[[Change]]]</a>
                     </div>
                 </div>
             </div>
-            }
             <div class="share-permission-dashboard-setting-section" style="display:none;" ng-show="currentItemType != @categoryType && currentItemType != @datasourceType && currentItemType != @datasetType && currentItemType !=@userManagement && currentItemType !=@itemViewType">
                 <div class="col-xs-12 public-private-content-section">
                     <div class="public-private-content" ng-show="hasDashboardSettingsPermission">
@@ -181,7 +176,7 @@
                 <div class="form-control text focus" id="item-url-copy" readonly="" data-original-title="[[[Click to copy]]]">[[[Copy link]]]</div>
             </div>
             <div class="get-item-embed-link-section col-xs-12 no-padding" ng-show="currentItemType != @categoryType && currentItemType != @datasourceType && currentItemType != @datasetType && currentItemType !=@userManagement && currentItemType !=@itemViewType">
-                <a class="get-embed-link app-hyperlink pull-left" href="javascript:void(0);" onclick="getEmbedCode()">&lt;/&gt; [[[Get Embed code]]]</a>
+                <a class="get-embed-link app-hyperlink pull-left" href="javascript:void(0)" onclick="getEmbedCode()">&lt;/&gt; [[[Get Embed code]]]</a>
             </div>
             <hr class="divider-cls col-xs-12 no-padding" ng-if="currentItemType != @categoryType && currentItemType != @datasourceType && currentItemType !=@userManagement && currentItemType !=@itemViewType">
             <div id="assign-user-group-container">
@@ -204,7 +199,7 @@
                 </div>
             </div>
             <div id="show-shared-user-group-container" style="display:none;">
-                <a href="javascript:void(0);" onclick="showManageAccessContainer()" id="show-shared-user-group-link">
+                <a href="javascript:void(0)" onclick="showManageAccessContainer()" id="show-shared-user-group-link">
                     <div class="show-shared-user-group-section">
                         <div class="show-shared-user-group-label">[[[Shared with :]]]</div>
                         <div class="shared-user-group-name-section"></div>

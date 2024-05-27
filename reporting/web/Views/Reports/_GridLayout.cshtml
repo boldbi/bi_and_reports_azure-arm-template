@@ -10,7 +10,7 @@
     var isBlob = globalAppSettings.SystemSettings.StorageType;
     var isMasterTenant = globalAppSettings.SystemSettings.IsMaster;
 }
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var dashboardGrid;
     var filter = [];
 </script>
@@ -18,11 +18,11 @@
 <div id="items">
 </div>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="favorite">
+<script type="text/x-jsrender" id="favorite">
     <span title='{{:IsFavorite ? "[[[Remove from Favorites]]]" : "[[[Add to Favorites]]]"}}' data-is-favorite="{{:IsFavorite}}" data-item-id="{{:Id}}" onclick="dashboardGrid.toggleFavorite(this)" class='{{:IsFavorite ? "su-favorite" : "su-dis-favorite"}}'></span>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="description">
+<script type="text/x-jsrender" id="description">
     <div class="item-description grid-content" title="{{:~renderDoubleQuotes(Description)}}" data-toggle="tooltip" data-placement="top">
         <span>
             {{>Description}}
@@ -30,23 +30,23 @@
     </div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="category">
+<script type="text/x-jsrender" id="category">
     <span title="{{:CategoryName}}" data-toggle="tooltip" data-placement="top">
         {{>CategoryName}}
     </span>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="createdbydisplayname">
+<script type="text/x-jsrender" id="createdbydisplayname">
     <span title="{{:CreatedByDisplayName}}" data-toggle="tooltip" data-placement="top">
         {{>CreatedByDisplayName}}
     </span>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="gridhoveroptions">
+<script type="text/x-jsrender" id="gridhoveroptions">
     <div class="grid-hover" data-toggle="tooltip" data-placement="top">
         {{if !IsDraft}}
             <a class="dashboard-open grid-hover-options " title="[[[Open]]]" href="@dashboardUrl/{{:Id}}/{{:CategoryName}}/{{:Name}}?showmyreports=1" target="_blank">
-                <i class="su su-external-link"></i>
+                <i class="su su-open-link-newtab"></i>
             </a>
         {{/if}}
        {{if CanWrite &&  !IsDraft}}
@@ -69,7 +69,7 @@
     </div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemname">
+<script type="text/x-jsrender" id="itemname">
     <div class="item-name grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
         {{if !IsDraft}}
                 <a href="@Url.Action("Reports", "Reports")/{{:Id}}/{{:CategoryName}}/{{:Name}}" style="max-width: 100%;vertical-align: middle;" target="_blank">
@@ -87,7 +87,7 @@
     </div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
+<script type="text/x-jsrender" id="options">
     <div class="dropdown context-menu">
         <span class="dropdown-toggle option-icon" title="[[[Actions]]]" data-toggle="dropdown">
             <i class="su su-options"></i>
@@ -95,15 +95,6 @@
         <ul class="dropdown-menu dashboard-options" role="menu">
             {{if !IsDraft}}
             {{if CreatedById==@(userId) || @(Convert.ToBoolean(isAdmin).ToString().ToLower()) == true}}
-            {{if @(Convert.ToBoolean(ServerAppConfig.EnablePublic).ToString().ToLower()) == false && IsPublic}}
-            <li>
-                <a href="javascript:void(0);" ispublic="{{:IsPublic}}" data-item-type="{{:ItemType}}" data-item-name="{{:Name}}" data-item-id="{{:Id}}" class="remove-public option-click" onclick="dashboardGrid.makePrivate(this)">
-                <i class="su su-remove-public"><span class="su-remove-public path1"></span><span class="su-remove-public path2"></span><span class="su-remove-public path3"></span></i>
-                <span>[[[Make Private]]]</span>
-                </a>
-            </li>
-            {{/if}}
-            {{if @(Convert.ToBoolean(ServerAppConfig.EnablePublic).ToString().ToLower()) == true}}
             <li>
                 {{if !IsPublic}}
                 <a href="javascript:void(0);" ispublic="{{:IsPublic}}" data-item-type="{{:ItemType}}" data-item-name="{{:Name}}" data-item-id="{{:Id}}" data-url="{{:~fileUrlEncode(Id)}}" class="make-public option-click" onclick="dashboardGrid.makePublic(this)">
@@ -118,7 +109,6 @@
                 </a>
                 {{/if}}
             </li>
-            {{/if}}
             {{/if}}
             <li>
                 <a href="javascript:void(0);" data-item-type="{{:ItemType}}" data-item-id="{{:Id}}" data-name="{{:Name}}" data-category="{{:CategoryName}}" class="option-click" onclick="dashboardGrid.getItemLink(this)">
@@ -135,21 +125,19 @@
             </li>
             {{/if}}
             {{if ~checkTablet()}}
-                {{if (@(Convert.ToBoolean(ServerAppConfig.EnableViewsInReportsMenu).ToString().ToLower()) == true)}}
-                    <li class="dropdown dashboard-views" data-load="true" >
-                        <a href="javascript:void(0);" data-item-id="{{:Id}}" child-dashboard="{{:IsChildDashboard}}"  category-id="{{:CategoryId}}" parent-category-name="{{:ParentCategoryName}}" category-name="{{:CategoryName}}" data-item-name="{{:Name}}" onmouseover="dashboardGrid.getDashboardViews(event, this)" class="dropdown-toggle views" data-toggle="dropdown">
-                            <i class="su su-filter"></i>
-                            <span>[[[Views]]]</span>
-                        </a>
-                        <ul class="dropdown-menu item-views no-padding" role="menu">
-                            <li>
-                                <span class="view-name" href="javascript:void(0);">
-                                    [[[Loading...]]]
-                                </span>
-                            </li>
-                        </ul>
+            <li class="dropdown dashboard-views" data-load="true" >
+                <a href="javascript:void(0);" data-item-id="{{:Id}}" child-dashboard="{{:IsChildDashboard}}"  category-id="{{:CategoryId}}" parent-category-name="{{:ParentCategoryName}}" category-name="{{:CategoryName}}" data-item-name="{{:Name}}" onmouseover="dashboardGrid.getDashboardViews(event, this)" class="dropdown-toggle views" data-toggle="dropdown">
+                    <i class="su su-filter"></i>
+                    <span>[[[Views]]]</span>
+                </a>
+                <ul class="dropdown-menu item-views no-padding" role="menu">
+                    <li>
+                        <span class="view-name" href="javascript:void(0);">
+                            [[[Loading...]]]
+                        </span>
                     </li>
-                {{/if}}
+                </ul>
+            </li>
             <li>
                 <a class="view-scheduless option-click" href="@Url.Action("Schedules", "Scheduler")?report={{:Name}}" data-item-name="{{:Name}}" target="_blank" onclick="dashboardGrid.viewSchedules(this)">
                     <i class="su su-nav-schedule"></i>
@@ -158,7 +146,7 @@
             </li>
             {{/if}}
             <li>
-                <a href="javascript:void(0);" class="openInfo option-click" data-item-name="{{:Name}}" data-description="{{:~renderDoubleQuotes(Description)}}" data-item-id="{{:Id}}" data-createdByDisplayName="{{:CreatedByDisplayName}}" data-createdDate="{{:CreatedDate}}" data-modifiedByFullName="{{:ModifiedByFullName}}" data-modifiedDate="{{:ModifiedDate}}" data-categoryName="{{:CategoryName}}" data-isDraft="{{:IsDraft}}" data-itemType="{{:ItemType}}" onclick="dashboardGrid.openInfo(this)">
+                <a href="javascript:void(0);" class="openInfo option-click" data-item-name="{{:Name}}" data-description="{{:Description}}" data-item-id="{{:Id}}" data-createdByDisplayName="{{:CreatedByDisplayName}}" data-createdDate="{{:CreatedDate}}" data-modifiedByFullName="{{:ModifiedByFullName}}" data-modifiedDate="{{:ModifiedDate}}" data-categoryName="{{:CategoryName}}" data-isDraft="{{:IsDraft}}" onclick="dashboardGrid.openInfo(this)">
                     <i class="su su-info"></i>
                     <span>[[[Info]]]</span>
                 </a>
@@ -182,7 +170,7 @@
                 </a>
             </li>
             {{/if}}
-            {{if (@(Convert.ToBoolean(ServerAppConfig.EnableClone).ToString().ToLower()) == true) && CanClone && ~checkTablet() && !IsLocked}}
+            {{if CanClone && ~checkTablet() && !IsLocked}}
             <li>
                 <a href="javascript:void(0);" data-item-id="{{:Id}}" data-action="Clone" class="option-click" onclick="dashboardGrid.cloneDashboard(this)">
                     <i class="su su-clone"></i>
@@ -264,7 +252,7 @@
             {{else}}
             {{if (CreatedById==@(userId) || @(Convert.ToBoolean(isAdmin).ToString().ToLower()) == true) && ~checkTablet()}}
             <li>
-                <a href="javascript:void(0);" class="openInfo option-click" data-item-name="{{:Name}}" data-description="{{:~renderDoubleQuotes(Description)}}" data-item-id="{{:Id}}" data-createdByDisplayName="{{:CreatedByDisplayName}}" data-createdDate="{{:CreatedDate}}" data-modifiedByFullName="{{:ModifiedByFullName}}" data-modifiedDate="{{:ModifiedDate}}" data-categoryName="{{:CategoryName}}" data-isDraft="{{:IsDraft}}" data-itemType="{{:ItemType}}" onclick="dashboardGrid.openInfo(this)">
+                <a href="javascript:void(0);" class="openInfo option-click" data-item-name="{{:Name}}" data-description="{{:Description}}" data-item-id="{{:Id}}" data-createdByDisplayName="{{:CreatedByDisplayName}}" data-createdDate="{{:CreatedDate}}" data-modifiedByFullName="{{:ModifiedByFullName}}" data-modifiedDate="{{:ModifiedDate}}" data-categoryName="{{:CategoryName}}" data-isDraft="{{:IsDraft}}" onclick="dashboardGrid.openInfo(this)">
                     <i class="su su-info"></i>
                     <span>[[[Info]]]</span>
                 </a>
@@ -281,7 +269,7 @@
     </div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     $(window).resize(function () {
         var gridObj = $("#items").data("ejGrid");
         var gridName = $('#item-grid-container').attr("data-grid-name")
@@ -317,7 +305,7 @@
             return window.innerWidth > 900;
         },
         renderDoubleQuotes: function (inputString) {
-            return inputString ? inputString.replace(new RegExp("\"", 'g'), '&quot;') : "";
+            return inputString.replace(new RegExp("\"", 'g'), '&quot;');
         }
     });
 

@@ -25,10 +25,6 @@
   <InternalAppClientSecret></InternalAppClientSecret>
   <IdaTenant>
   </IdaTenant>
-  <SchemaName>
-  </SchemaName>
-  <Prefix>
-  </Prefix>
   <IdaAudience>
   </IdaAudience>
   <PreviewFeatures>

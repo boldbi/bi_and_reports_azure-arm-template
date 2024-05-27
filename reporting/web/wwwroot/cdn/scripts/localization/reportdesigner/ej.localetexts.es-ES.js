@@ -501,8 +501,7 @@ ej.ReportDesigner.Locale['es-ES'] = {
                 jpeg: 'imagen/jpeg',
                 gif: 'imagen/gif',
                 png: 'imagen/png',
-                xPng: 'imagen/x-png',
-                svg: 'imagen/svg'
+                xPng: 'imagen/x-png'
             }
         },
         categoryName: 'Vínculo',
@@ -1714,8 +1713,10 @@ ej.ReportDesigner.Locale['es-ES'] = {
         categoryPermission: 'Habilitar permiso de creación para crear una nueva categoría',
         categoryname: 'Nombre',
         emptyName: 'Por favor, ingresar nombre de informe',
+        invalidName: 'No se admiten los siguientes caracteres: \' + , [ ] % #',
         description: 'Descripción',
         maxCharacter: '*1024 caracteres como máximo',
+        markaspublic: 'Marcar como público',
         cancel: 'Cancelar',
         closeToolTip: 'Cerrar',
         tags: 'Etiquetas',
@@ -1907,19 +1908,6 @@ ej.ReportDesigner.Locale['es-ES'] = {
                 password: 'Especificar contraseña',
                 serverName: 'Especificar nombre de servidor',
                 databaseName: 'Especificar nombre de base de datos'
-            },
-            sshSettings: {
-                enable: 'Habilitar SSH',
-                serverName: 'Nombre del servidor SSH',
-                port: 'Puerto SSH',
-                userName: 'Nombre de usuario SSH',
-                password: 'Contraseña SSH',
-                alertMessage: {
-                    serverName: 'Especifique el nombre del servidor SSH',
-                    port: 'Especifique el número de puerto SSH',
-                    userName: 'Especifique el nombre de usuario SSH',
-                    password: 'Especifique la contraseña SSH'
-                }
             }
         },
         elasticSearchDatasource: {
@@ -2764,8 +2752,6 @@ ej.ReportDesigner.Locale['es-ES'] = {
             middleMessage: 'Haz clic aquí',
             endMessage: 'para ver los detalles del error',
             closeMessage: 'Cerrar este mensaje',
-            licenseMsgWeb: 'La licencia Bold no está registrada en su aplicación. Utilice una licencia válida para eliminar permanentemente este mensaje de validación de licencia. También puede obtener una licencia de evaluación gratuita de 30 días para eliminar temporalmente este mensaje durante el período de evaluación. Consulte este tema de ayuda. (https://help.boldreports.com/licensing/licensing-errors/#license-key-not-registered) para más información.',
-            licenseMsgNetCore: 'Esta aplicación se creó utilizando una versión de prueba de Bold. Utilice una licencia válida para eliminar permanentemente este mensaje de validación de licencia. También puede obtener una licencia de evaluación gratuita de 30 días para eliminar temporalmente este mensaje durante el período de evaluación. Consulte este tema de ayuda. (https://help.boldreports.com/licensing/licensing-errors/#license-key-not-registered) para más información.',
             exportAjaxFailureMsg: 'No se ha podido exportar el documento debido a un fallo en la conexión del servicio de informes.',
             printAjaxFailureMsg: 'No se ha podido imprimir el documento debido a un fallo en la conexión del servicio de informes.',
             reportLoadAjaxFailureMsg: 'No se ha podido avanzar en la acción del informe debido a un fallo en la conexión del servicio de informes.',
@@ -3132,11 +3118,11 @@ ej.ReportDesigner.Locale['es-ES'] = {
             join: 'Devuelve una cadena creada uniendo un número de subcadenas en un array.',
             lCase: 'Devuelve una cadena o carácter convertido a minúsculas.',
             leftStringType: 'Devuelve una cadena que contiene un número especificado de caracteres del lado izquierdo de una cadena.',
-            stringLength: 'Devuelve un número entero que contiene el número de caracteres de una cadena o el número de bytes necesarios para almacenar una variable.',
+            stringLength: 'Devuelve un entero que contiene el número de caracteres de una cadena o el número.',
             lSet: 'Devuelve una cadena alineada a la izquierda que contiene la cadena especificada ajustada a la longitud establecida.',
             leftTrim: 'Devuelve la cadena sin espacios finales a la izquierda en la cadena dada.',
             middle: 'Devuelve una cadena que contiene un número especificado de caracteres de una cadena.',
-            replace: 'Devuelve una cadena en la que una subcadena especificada ha sido reemplazada por otra subcadena un número específico de veces.',
+            replace: 'Devuelve una cadena en la que una subcadena especificada ha sido sustituida por otra.',
             rightString: 'Devuelve una cadena que contiene un número especificado de caracteres de la parte derecha de una cadena.',
             rightSet: 'Devuelve una cadena alineada a la derecha que contiene la cadena especificada ajustada a la longitud especificada.',
             rightTrim: 'Devuelve la cadena sin espacios finales a la derecha en la cadena dada.',
@@ -3199,8 +3185,8 @@ ej.ReportDesigner.Locale['es-ES'] = {
             tangent: 'Devuelve la tangente del ángulo especificado.',
             tangentH: 'Devuelve la tangente hiperbólica del ángulo especificado.',
             isArray: 'Devuelve un valor booleano que indica si la variable apunta a un array.',
-            isDate: 'Devuelve un valor booleano que indica si una expresión representa un valor de fecha válido.',
-            isNothing: 'Devuelve un valor booleano que indica si una expresión no tiene ningún objeto asignado.',
+            isDate: 'Devuelve un valor booleano que indica si una expresión representa un válido.',
+            isNothing: 'Devuelve un valor booleano que indica si una expresión no tiene objeto.',
             isNumeric: 'Devuelve un valor booleano que indica si una expresión puede ser evaluada como un número.',
             flowChoose: 'Selecciona y devuelve un valor de una lista de argumentos.',
             flowIIf: 'Devuelve uno de dos objetos dependiendo de la evaluación de una expresión.',
@@ -3219,7 +3205,7 @@ ej.ReportDesigner.Locale['es-ES'] = {
             runningValue: 'Utiliza una función especificada para devolver un agregado en ejecución de la expresión especificada.',
             aggregate: 'Devuelve un agregado personalizado de la expresión especificada, según lo definido por el proveedor de datos.',
             doubleDeclining: 'Devuelve un valor doble que especifica la depreciación de un activo para un período de tiempo específico utilizando el método de doble saldo decreciente o algún otro método que usted especifique.',
-            futureValue: 'Devuelve un valor doble que especifica el valor futuro de una anualidad basada en pagos fijos periódicos, y un tipo de interés fijo.',
+            futureValue: 'Devuelve un valor doble que especifica el valor futuro de una anualidad basada en pagos fijos periódicos y un tipo de interés fijo.',
             interestPayment: 'Devuelve un valor doble que especifica el pago de intereses para un periodo determinado de una anualidad basada en pagos periódicos fijos y un tipo de interés fijo.',
             numberOfPeriods: 'Devuelve un valor doble que especifica el número de periodos de una anualidad basada en pagos fijos periódicos y un tipo de interés fijo.',
             annuityPayment: 'Devuelve un valor doble que especifica el pago de una anualidad basada en pagos periódicos fijos y un tipo de interés fijo.',
@@ -3247,7 +3233,7 @@ ej.ReportDesigner.Locale['es-ES'] = {
             stringOfNumber: 'Devuelve una cadena que representa un número.',
             stringAsNumeric: 'Devuelve los números de una cadena como un valor numérico del tipo apropiado.',
             inScope: 'Devuelve verdadero si la instancia actual está dentro del ámbito especificado.',
-            depthLevel: 'Devuelve un entero de base cero que representa el nivel de profundidad actual de una jerarquía recursiva.',
+            depthLevel: 'Devuelve un entero de base cero que representa el nivel de profundidad actual.',
             lookup: 'Utiliza buscar para recuperar el valor del conjunto de datos especificado para un par nombre-valor en el que exista una relación 1 a 1. Por ejemplo, para un campo ID de una tabla, puedes utilizar buscar para recuperar el campo nombre correspondiente de un conjunto de datos que no esté vinculado a la región de datos.',
             lookupSet: 'Utiliza LookupSet para recuperar un conjunto de valores del conjunto de datos especificado para un par nombre-valor en el que exista una relación de 1 a muchos. Por ejemplo, para un identificador de cliente de una tabla, puedes utilizar LookupSet para recuperar todos los números de teléfono asociados a ese cliente de un conjunto de datos que no esté vinculado a la región de datos.',
             previous: 'Devuelve el valor de la expresión para la fila de datos anterior.',

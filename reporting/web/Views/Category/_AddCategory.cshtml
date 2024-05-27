@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
@@ -17,16 +15,16 @@
     </title>
     <environment include="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-category.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-category.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-category.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-category.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-category.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-category.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/add-category.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/add-category.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
             var isCategoryExistUrl = "@Url.Action("iscategoryexist", "category")";
             var setLanguageUrl = "@Url.Action("SetLanguage", "Administration")";
 
@@ -91,7 +89,7 @@
     }
     else
     {
-        <script nonce="@Context.Items["ScriptNonce"]">
+        <script>
             $(document).ready(function () {
                 var categoryScope = parent.angular.element(parent.document.getElementById("server-items-container")).scope();
                 parent.$(".item-list-panel").ejWaitingPopup();

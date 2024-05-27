@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@model List<ItemDetail>
+﻿@model List<ItemDetail>
 @{ 
     Layout = null;
     var globalAppSettings = _globalAppSettings;
@@ -14,7 +12,7 @@
     <title>
         [[[Select Data Source]]]
     </title>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
             var createdatasourceUrl = "@Url.Action("createdatasource", "datasources")";
         var testdatasourceconnectionUrl = "@Url.Action("testdatasourceconnection", "datasources")";
 
@@ -30,16 +28,16 @@
         }
     </script>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dataset-datasource.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/dataset-datasource.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/dataset-datasource.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/dataset-datasource.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dataset-datasource.css" />
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/dataset-datasource.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dataset-datasource.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/dataset-datasource.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/dataset-datasource.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/dataset-datasource.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dataset-datasource.min.css" />
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/dataset-datasource.min.js"></script>
     </environment>
  
 </head>
@@ -210,7 +208,7 @@
     </div>
 </body>
 </html>
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     $(function () {
         parent.$("#select_datasource_popup_wrapper").ejWaitingPopup("hide");
     });

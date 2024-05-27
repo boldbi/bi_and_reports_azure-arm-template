@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
 
     ViewBag.Title = "[[[User Notification Preference]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -13,12 +11,12 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-settings.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/notification-settings.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-settings.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/notification-settings.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-settings.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-settings.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/notification-settings.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-settings.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/notification-settings.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/notification-settings.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/notification-settings.min.js"></script>
     </environment>
 }
 
@@ -205,9 +203,9 @@
         </div>
     </div>
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

@@ -14,9 +14,8 @@
     var helpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DomainBinding);
     var isWindowsPlatform = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
     var copyrightInformation = HttpUtility.HtmlDecode(globalAppSettings.SystemSettings.CopyrightInformation);
-    var organizationName = HttpUtility.HtmlDecode(ViewBag.SystemSettings.OrganizationName);
 }
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var isSitesPage = "true";
 </script>
 <div id="look-and-feel-container" class="admin-page-container col-xs-12">
@@ -34,7 +33,7 @@
                 <div class="form-group margin_btm_30" style="margin-top:15px">
                     @Html.Label("site-orgname", "[[[Organization name]]]", new { @class = "col-xs-2 app-textbox-label" })
                     <div class="col-xs-4" id="site-orgname-section">
-                        <input type="text" id="site-orgname" class="form-control site-orgname-fields" placeholder="[[[Enter your Organization Name]]]" value="@organizationName" data-original-value="@organizationName" />
+                        <input type="text" id="site-orgname" class="form-control site-orgname-fields" placeholder="[[[Enter your Organization Name]]]" value="@ViewBag.SystemSettings.OrganizationName" data-original-value="@ViewBag.SystemSettings.OrganizationName" />
                     </div>
                 </div>
                 @if (ServerAppConfig.IsSelfHosted)
@@ -119,7 +118,7 @@
 
                 <div class="col-xs-6 no-margin no-padding blur-whitelable-content">
 
-                    <div class="form-group highlight-image login-screen-logo" data-image="login-screen">
+                    <div class="form-group highlight-image" data-image="login-screen">
                         @Html.Label("login-screen-image", "[[[Login screen logo]]]", new { @class = "col-xs-4 app-textbox-label" })
                         <div class="col-xs-8">
                             <div class="input-group">
@@ -132,11 +131,10 @@
                             <span class="info-text">
                                 *[[[200x40 pixels preferred]]]
                             </span>
-                            <div id="upload-login-image-textbox-error" class="col-xs-12 validation-error-image has-error hide"></div>
                         </div>
                     </div>
 
-                    <div class="form-group highlight-image header-logo" data-image="header-logo">
+                    <div class="form-group highlight-image" data-image="header-logo">
                         <label class="col-xs-4 app-textbox-label">[[[Header logo]]]</label>
                         <div class="col-xs-8">
                             <div class="input-group">
@@ -147,11 +145,10 @@
                             <span class="info-text">
                                 *[[[40x40 pixels preferred]]]
                             </span>
-                            <div id="upload-main-screen-image-textbox-error" class="col-xs-12 validation-error-image has-error hide"></div>
                         </div>
                     </div>
 
-                    <div class="form-group highlight-image favicon-logo" data-image="favicon">
+                    <div class="form-group highlight-image" data-image="favicon">
                         <label class="col-xs-4 app-textbox-label">[[[Favicon]]]</label>
                         <div class="col-xs-8">
                             <div class="input-group">
@@ -163,11 +160,10 @@
                             <span class="info-text">
                                 *[[[40x40 pixels preferred]]]
                             </span>
-                            <div id="upload-favicon-image-textbox-error" class="col-xs-12 validation-error-image has-error hide"></div>
                         </div>
                     </div>
 
-                    <div class="form-group highlight-image email-logo" data-image="email-logo">
+                    <div class="form-group highlight-image" data-image="email-logo">
                         <label class="col-xs-4 app-textbox-label">[[[Email logo]]]</label>
                         <div class="col-xs-8">
                             <div class="input-group">
@@ -179,7 +175,6 @@
                             <span class="info-text">
                                 *[[[200x40 pixels preferred]]]
                             </span>
-                            <div id="upload-emaillogo-image-textbox-error" class="col-xs-12 validation-error-image has-error hide"></div>
                         </div>
                     </div>
                         <div class="@showSyncfusionBrand blur-whitelable-content">
@@ -193,7 +188,7 @@
                         </div>
                       @if (ServerAppConfig.IsSelfHosted)
                       {
-                        <div class="form-group highlight-image footer-logo" data-image="powderedby-logo">
+                        <div class="form-group highlight-image" data-image="powderedby-logo">
                             <label class="col-xs-4 app-textbox-label">[[[Powered by logo]]]</label>
                             <div class="col-xs-8">
                                 <div class="input-group">
@@ -205,7 +200,6 @@
                                 <span class="info-text">
                                     *[[[200x40 pixels preferred]]]
                                 </span>
-                                <div id="upload-footerlogo-image-textbox-error" class="col-xs-12 validation-error-image has-error hide"></div>
                             </div>
                         </div>
                       }

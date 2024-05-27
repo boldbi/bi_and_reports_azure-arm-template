@@ -304,8 +304,6 @@
         var getUserNotificationsPartialViewResultUrl = "@Url.Action("GetUserNotificationsPartialViewResult", "notification")";
         var paymentPageUrl = "@(ServerAppConfig.IsSelfHosted ? string.Empty : (ServerAppConfig.AppSettings.EndPoints.TenantAppUrl?.TrimEnd('/') + "/sites/" + globalAppSettings.SystemSettings.TenantId + "/subscription"))";
         var getNotificationCountUrl = "@Url.Action("GetNotificationCount", "PartialView")";
-        var etlHealthyStatusUrl = "@Url.Action("CheckETLHealthStatus", "Accounts")";
-        var canCheckEtlHealthStatus = isSelfHosted;
         var getTenantStatusUrl = "@Url.Action("GetTenantStatus", "PartialView")";
         var helpSiteBaseUrl = "@helpSiteBaseUrl";
         var isSessionActiveUrl = "@Url.Action("IsSessionActive", "Accounts")";
@@ -322,7 +320,6 @@
         var currentProductVersion = "@currentVersion";
         var runTimeEnvironment = "@ServerAppConfig.RunTimeEnvironment";
         var isUmsAdmin = "@identityResponse.IsUmsAdmin";
-        var etlHelpLink = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ETL)";
         var charactersNotAllowedInFileName = @Json.Serialize(ServerAppConfig.CharactersNotAllowedInFileName);
 
         var value = {

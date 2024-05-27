@@ -501,8 +501,7 @@ ej.ReportDesigner.Locale['fr-FR'] = {
                 jpeg: 'image/jpeg',
                 gif: 'image/gif',
                 png: 'image/png',
-                xPng: 'image/x-png',
-                svg: 'image/svg'
+                xPng: 'image/x-png'
             }
         },
         categoryName: 'Lien',
@@ -1714,8 +1713,10 @@ ej.ReportDesigner.Locale['fr-FR'] = {
         categoryPermission: 'Activer l\'autorisation de création pour créer une nouvelle catégorie',
         categoryname: 'prénom',
         emptyName: 'Veuillez saisir un nom pour le rapport',
+        invalidName: 'Les caractères suivants ne sont pas pris en charge: \ \' +, []% #',
         description: 'La description',
         maxCharacter: '* 1024 caractères maximum',
+        markaspublic: 'Marquer comme public',
         cancel: 'Annuler',
         closeToolTip: 'proche',
         tags: 'Mots clés',
@@ -1907,19 +1908,6 @@ ej.ReportDesigner.Locale['fr-FR'] = {
                 password: 'Spécifiez le mot de passe',
                 serverName: 'Indiquez le nom du serveur',
                 databaseName: 'Indiquez le nom de la base de données'
-            },
-            sshSettings: {
-                enable: 'Activer SSH',
-                serverName: 'Nom du serveur SSH',
-                port: 'Port SSH',
-                userName: 'Nom d\'utilisateur SSH',
-                password: 'Mot de passe SSH',
-                alertMessage: {
-                    serverName: 'Spécifiez le nom du serveur SSH',
-                    port: 'Spécifiez le numéro de port SSH',
-                    userName: 'Spécifiez le nom d\'utilisateur SSH',
-                    password: 'Spécifiez le mot de passe SSH'
-                }
             }
         },
         elasticSearchDatasource: {
@@ -2764,8 +2752,6 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             middleMessage: ' Cliquez ici',
             endMessage: 'pour voir les détails de l\'erreur',
             closeMessage: 'Fermer ce message',
-            licenseMsgWeb: 'La licence Bold n\'est pas enregistrée dans votre application. Veuillez utiliser une licence valide pour supprimer définitivement ce message de validation de licence. Vous pouvez également obtenir une licence d\'évaluation gratuite de 30 jours pour supprimer temporairement ce message pendant la période d\'évaluation. Veuillez vous référer à ce sujet d\'aide (https://help.boldreports.com/licensing/licensing-errors/#invalid-license) pour plus d\'informations.',
-            licenseMsgNetCore: 'Cette application a été créée à l\'aide d\'une version d\'essai de Bold. Veuillez utiliser une licence valide pour supprimer définitivement ce message de validation de licence. Vous pouvez également obtenir une licence d\'évaluation gratuite de 30 jours pour supprimer temporairement ce message pendant la période d\'évaluation. Veuillez vous référer à ce sujet d\'aide (https://help.boldreports.com/licensing/licensing-errors/#license-key-not-registered) pour plus d\'informations.',
             exportAjaxFailureMsg: 'Impossible d\'exporter le document car la connexion au service de rapport a échoué.',
             printAjaxFailureMsg: 'Impossible d\'imprimer le document en raison de l\'échec de la connexion à Report Service.',
             reportLoadAjaxFailureMsg: 'Impossible de faire avancer l\'action Report en raison de l\'échec de la connexion du service de rapport.',
@@ -3132,11 +3118,11 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             join: 'Renvoie une chaîne créée en joignant un certain nombre de sous-chaînes dans un tableau.',
             lCase: 'Renvoie une chaîne ou un caractère converti en minuscules.',
             leftStringType: 'Renvoie une chaîne contenant un nombre spécifié de caractères du côté gauche d\'une chaîne.',
-            stringLength: 'Renvoie un entier contenant soit le nombre de caractères dans une chaîne, soit le nombre d\'octets requis pour stocker une variable.',
+            stringLength: 'Renvoie un entier contenant le nombre de caractères d\'une chaîne ou le nombre.',
             lSet: 'Renvoie une chaîne alignée à gauche contenant la chaîne spécifiée ajustée à la longueur spécifiée.',
             leftTrim: 'Renvoie la chaîne sans les espaces de fin du côté gauche dans la chaîne donnée.',
             middle: 'Renvoie une chaîne contenant un nombre spécifié de caractères d\'une chaîne.',
-            replace: 'Renvoie une chaîne dans laquelle une sous-chaîne spécifiée a été remplacée par une autre sous-chaîne un nombre de fois spécifié.',
+            replace: 'Renvoie une chaîne dans laquelle une sous-chaîne spécifiée a été remplacée par une autre.',
             rightString: 'Renvoie une chaîne contenant un nombre spécifié de caractères du côté droit d\'une chaîne.',
             rightSet: 'Renvoie une chaîne alignée à droite contenant la chaîne spécifiée ajustée à la longueur spécifiée.',
             rightTrim: 'Renvoie la chaîne sans les espaces de fin du côté droit dans la chaîne donnée.',
@@ -3199,8 +3185,8 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             tangent: 'Renvoie la tangente de l\'angle spécifié.',
             tangentH: 'Renvoie la tangente hyperbolique de l\'angle spécifié.',
             isArray: 'Renvoie une valeur booléenne indiquant si une variable pointe sur un tableau.',
-            isDate: 'Renvoie une valeur booléenne indiquant si une expression représente une valeur de date valide',
-            isNothing: 'Renvoie une valeur booléenne indiquant si aucun objet n\'est affecté à une expression',
+            isDate: 'Renvoie une valeur booléenne indiquant si une expression représente une valeur valide',
+            isNothing: 'Renvoie une valeur booléenne indiquant si une expression n\'a aucun objet',
             isNumeric: 'Renvoie une valeur booléenne indiquant si une expression peut être évaluée en tant que nombre.',
             flowChoose: 'Sélectionne et renvoie une valeur à partir d\'une liste d\'arguments.',
             flowIIf: 'Renvoie l\'un des deux objets en fonction de l\'évaluation d\'une expression.',
@@ -3219,7 +3205,7 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             runningValue: 'Utilise une fonction spécifiée pour renvoyer un agrégat en cours d\'exécution de l\'expression spécifiée.',
             aggregate: 'Renvoie un agrégat personnalisé de l\'expression spécifiée, tel que défini par le fournisseur de données.',
             doubleDeclining: 'Renvoie un double spécifiant la dépréciation d\'un actif pour une période donnée en utilisant la méthode du solde dégressif double ou une autre méthode que vous spécifiez.',
-            futureValue: 'Renvoie la valeur double en spécifiant la valeur future d\'une annuité sur la base de paiements fixes périodiques, et d\'un taux d\'intérêt fixe.',
+            futureValue: 'Renvoie la valeur double en spécifiant la valeur future d\'une annuité sur la base de paiements fixes périodiques et d\'un taux d\'intérêt fixe.',
             interestPayment: 'Renvoie une valeur double spécifiant le paiement d\'intérêts pour une période donnée d\'une rente sur la base de paiements périodiques et fixes et d\'un taux d\'intérêt fixe.',
             numberOfPeriods: 'Renvoie une valeur double spécifiant le nombre de périodes pour une annuité basée sur des paiements fixes périodiques et un taux d\'intérêt fixe.',
             annuityPayment: 'Renvoie  une valeur spécifiant le paiement d\'une annuité sur la base de paiements périodiques et fixes et d\'un taux d\'intérêt fixe.',
@@ -3247,7 +3233,7 @@ ej.ReportDesigner.Locale['fr-FR'] = {
             stringOfNumber: 'Renvoie une chaîne qui représente un nombre.',
             stringAsNumeric: 'Renvoie un nombre dans une chaîne sous la forme d\'une valeur numérique du type approprié.',
             inScope: 'Renvoie true si l\'instance actuelle est dans la portée spécifiée.',
-            depthLevel: 'Renvoie un entier de base zéro représentant le niveau de profondeur actuel d\'une hiérarchie récursive.',
+            depthLevel: 'Renvoie un entier basé sur zéro représentant le niveau de profondeur actuel.',
             lookup: 'Utilisez Lookup pour récupérer la valeur de l\'ensemble de données spécifié pour une paire nom-valeur dans laquelle il existe une relation 1 à 1. Par exemple, pour un champ ID dans une table, vous pouvez utiliser Lookup pour récupérer le champ Nom correspondant à partir d\'un ensemble de données qui n\'est pas lié à la région de données.',
             lookupSet: 'Utilisez LookupSet pour récupérer un ensemble de valeurs à partir de l\'ensemble de données spécifié pour une paire nom-valeur dans laquelle il existe une relation 1-à-plusieurs. Par exemple, pour un identifiant client dans une table, vous pouvez utiliser LookupSet pour récupérer tous les numéros de téléphone associés pour ce client à partir d\'un ensemble de données qui n\'est pas lié à la région de données.',
             previous: 'Renvoie la valeur de l\'expression pour la ligne de données précédente.',

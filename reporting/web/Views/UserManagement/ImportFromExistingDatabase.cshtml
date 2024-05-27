@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     ViewBag.Title = "[[[Users - Import from database]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -10,15 +8,15 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-database-import.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-database-import.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var testConnectionUrl = "@Url.Action("TestDatabaseConnection", "UserManagement")";
         var connectDatabaseUrl = "@Url.Action("ConnectDatabaseToImport", "UserManagement")";
         var getDatabaseUrl = "@Url.Action("GetDatabaseList", "UserManagement")";
