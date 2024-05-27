@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = globalAppSettings.SystemSettings.OrganizationName + " - [[[Files]]]";
     var isMobile = new DeviceDetection(Context).IsMobile;
@@ -8,15 +6,15 @@
 }
 
 @model List<ItemDetail>
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var EditFilePopupUrl = "@Url.Action("getfiledetails", "files")";
 </script>
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-page.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-page.css" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-page.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-page.min.css" />
     </environment>
 }
 
@@ -24,19 +22,19 @@
     @if (!isMobile)
     {
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/files-page.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/files-page.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page.min.js"></script>
         </environment>
     }
     else
     {
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/files-page-mobile.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page-mobile.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/files-page-mobile.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/files-page-mobile.min.js"></script>
         </environment>
     }
 }

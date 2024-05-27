@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = "[[[Security Settings]]] - " + globalAppSettings.SystemSettings.OrganizationName;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -21,21 +19,21 @@
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/site-settings.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.css" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/site-settings.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.min.css" />
     </environment>
 }
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/site-settings.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/site-settings.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var updateCSPSettingsUrl = "@Url.Action("UpdateSecuritySettings", "Administration")";
         var updateXFrameHeaderSettingsUrl = "@Url.Action("UpdateXFrameHeaderSettings", "Administration")";
         var styleSourcesList = @Json.Serialize(styleSources);
@@ -188,9 +186,9 @@
         
     </div>
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/content-security-policy.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/content-security-policy.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/content-security-policy.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/content-security-policy.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/content-security-policy.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/content-security-policy.min.js"></script>
     </environment>
 }

@@ -15,7 +15,7 @@
 @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 
 
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var makePublicUrl = "@Url.Action("makeitempublic", "items")";
     var makeItemPublicUrl = "@Url.Action("MakePublicItem", "items")";
 

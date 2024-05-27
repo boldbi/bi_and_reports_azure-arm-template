@@ -1,27 +1,25 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = "[[[Database User Import]]] - " + globalAppSettings.SystemSettings.OrganizationName;
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ImportDatabaseUsers);
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var usersettings = Url.Action("administration", "administration") + "/user-settings";
 }
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var importDatabaseQuerySchema = {};
 </script>
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-database-import.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-database-import.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-database-import.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var getSearchedResultUrl = "@Url.Action("GetDataWithSearchForImport", "UserManagement")";
         var saveSelectedUsersUrl = "@Url.Action("ImportSelectedUsersFromDatabase", "UserManagement")";
         var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
@@ -32,35 +30,35 @@
     @await Html.PartialAsync("_UserMenu")
     @if (globalAppSettings.SystemSettings.ActivationType == ActivationType.EmailActivation)
     {
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-detail-validation">
+        <script type="text/x-jsrender" id="user-detail-validation">
             {{if IsDuplicated}}
             <span class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></span>
             {{/if}}
         </script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-name-template">
+        <script type="text/x-jsrender" id="user-name-template">
             <span title="{{:~renderDoubleQuotes(Username)}}" class="grid-content" data-toggle="tooltip">
                 {{:Username}}
             </span>
         </script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="first-name-template">
+        <script type="text/x-jsrender" id="first-name-template">
             <span title="{{:~renderDoubleQuotes(FirstName)}}" class="grid-content" data-toggle="tooltip">
                 {{:FirstName}}
             </span>
         </script>
 
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="last-name-template">
+        <script type="text/x-jsrender" id="last-name-template">
             <span title="{{:~renderDoubleQuotes(LastName)}}" class="grid-content" data-toggle="tooltip">
                 {{:LastName}}
             </span>
         </script>
 
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-id-template">
+        <script type="text/x-jsrender" id="email-id-template">
             <span title="{{:EmailId}}" class="grid-content" data-toggle="tooltip">
                 {{:EmailId}}
             </span>
         </script>
 
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-row-template">
+        <script type="text/x-jsrender" id="checkbox-row-template">
             {{if IsDuplicated}}
             <input disabled type="checkbox" class="checkbox-row-disabled material-checkbox" data-checked-id="{{:Index}}" id="row-check{{:Index}}" />
             <input name="row-check{{:Index}}" type="hidden" value="false">
@@ -72,31 +70,31 @@
             {{/if}}
         </script>
 
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-header-template">
+        <script type="text/x-jsrender" id="checkbox-header-template">
             @Html.CheckBox("checkbox-header", new { @class = "material-checkbox" })
             @Html.Label("checkbox-header", " ", new { @class = "checkbox-header-label" })
         </script>
 
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="full-name-header">
+        <script type="text/x-jsrender" id="full-name-header">
             <span class="item-header">[[[Name]]]</span>
         </script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="last-name-header">
+        <script type="text/x-jsrender" id="last-name-header">
             <div class="item-header">[[[Last Name]]]</div>
         </script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="first-name-header">
+        <script type="text/x-jsrender" id="first-name-header">
             <div class="item-header">[[[First Name]]]</div>
         </script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-id-header">
+        <script type="text/x-jsrender" id="email-id-header">
             <span class="item-header">[[[Email Address]]]</span>
         </script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-name-header">
+        <script type="text/x-jsrender" id="user-name-header">
             <div class="item-header">[[[Username]]]</div>
         </script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+        <script type="text/javascript">
             var gridData = @Json.Serialize(ViewBag.ExternalDatabaseUsers);
         </script>
 
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+        <script type="text/javascript">
 
             $(function () {
                 $("#search-database-users").val("");

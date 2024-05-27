@@ -9,11 +9,11 @@
     var gridName = ViewBag.gridName;
 }
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemNameHeader">
+<script type="text/x-jsrender" id="itemNameHeader">
     <div class="item-name">[[[Scope]]]</div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemName">
+<script type="text/x-jsrender" id="itemName">
     <div class="item-name" data-placement="top">
         {{if ItemType=="@((int)ItemType.Report)" && ItemName!="-"}}
             {{if IsDraft}}
@@ -37,7 +37,7 @@
     </div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+<script type="text/javascript">
     function onQueryCellInfo(args) {
         if(args.data[args.column.field] !=="-"){
             $(args.cell).attr({

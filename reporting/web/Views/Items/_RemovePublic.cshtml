@@ -3,7 +3,7 @@
     var itemType = (ItemType)Model.Value;
     var itemTypeName = itemType.ToString().ToLower() == "datasource" ? "[[[Data Source]]]" : itemType.ToString();
 }
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var removeItemPublicUrl = "@Url.Action("RemoveItemPublic", "items")";
 
     function load() {

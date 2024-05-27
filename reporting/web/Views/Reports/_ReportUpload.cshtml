@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@model ReportUploadResponse
+﻿@model ReportUploadResponse
 @{
     Layout = null;
     var isUploaded = ViewData["IsUploaded"] != null ? Convert.ToBoolean(ViewData["IsUploaded"]) : false;
@@ -15,18 +13,18 @@
         [[[New RDL popup]]]
     </title>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-report.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/upload-report.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-report.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/upload-report.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-report.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-report.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-report.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/upload-report.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-report.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/upload-report.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-report.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-report.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(function () {
             if (window.parent.$("#rdl_filename").val() != "" && window.parent.$("#rdl_filename").val() != undefined) {
                 $("#upload_browse_file").val(window.parent.$("#rdl_filename").val());
@@ -111,7 +109,7 @@
     </form>
 </body>
 </html>
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     function onUploadReport() {
         if (window.parent.isEditPopup) {
             window.parent.editReportData.IsFileChanged = true;
@@ -132,7 +130,7 @@
 </script>
 @if (isUploaded)
 {
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(function () {
             window.parent.reportUploadComplete(@Json.Serialize(Model));
         });

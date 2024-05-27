@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var appLogo = globalAppSettings.SystemSettings.LoginLogo;
@@ -14,22 +12,22 @@
     <meta name="viewport" content="width=device-width" />
     <title>Embed - @globalAppSettings.SystemSettings.OrganizationName</title>
     <link rel="icon" href="@globalAppSettings.SystemSettings.FavIcon" onerror="if (this.href !== null && this.href.toLowerCase() !== '@reportServerResourceUrl/cdn/images/application/@IconFileNames.Favicon') this.href = '@reportServerResourceUrl/images/application/@IconFileNames.Favicon';" />
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var idLogin = '@globalAppSettings.SystemSettings.IDPUrl';
         var serverUrl = '@globalAppSettings.SystemSettings.BaseUrl';
     </script>
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-login.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/embed-login.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-login.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-login.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/embed-login.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-login.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-login.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/embed-login.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/embed-login.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-login.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/embed-login.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/embed-login.min.js"></script>
     </environment>
     @*<link rel="icon" href="@globalAppSettings.SystemSettings.FavIcon" onerror="if (this.href != '@globalAppSettings.SystemSettings.CDNLink/images/application/@ServerAppConfig.AppSettings.AppBranding.Identifier/@IconFileNames.Favicon') this.href = '@globalAppSettings.SystemSettings.CDNLink/images/application/@ServerAppConfig.AppSettings.AppBranding.Identifier/@IconFileNames.Favicon';" />*@
 </head>

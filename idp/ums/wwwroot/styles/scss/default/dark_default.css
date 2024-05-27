@@ -33,7 +33,6 @@
   --grey-black: #000000;
   --grey-white: #ffffff;
   --grey-300-40: #4c545f66;
-  --multi-tab-badge: var(--grey-400);
   /*Primary variants*/
   --primary-900: #1E3A8A;
   --primary-800: #1E40AF;
@@ -47,8 +46,8 @@
   --input-box-border: #969DA6;
   --place-holder: #B3BBC5;
   --section-backgroud: #222733;
-  --warning-700-25: #fed7aa40;
-  --warning-700-28: #fed7aa47;
+  --warning-700-25: #181e2b;
+  --warning-700-28: #fb923c;
   --warning-text: #FB923C;
   --nav-background-normal-color: var(--grey-200);
   --nav-background-hover-color: var(--grey-300-40);

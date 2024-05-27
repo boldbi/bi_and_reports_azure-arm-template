@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
 
     ViewBag.Title = "[[[Report Settings]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -11,28 +9,27 @@
     var makePublicHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ReportSiteSettings);
     var scheduleReportSettingsHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ScheduleReportSettings);
     var customScheduleTemplateHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.CustomScheduleTemplate);
-    var publicReportsDeprecateHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.PublicReportsDeprecated);
 }
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-settings.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-settings.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/scheduleemaileditor.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-settings.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.css" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-settings.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/scheduleemaileditor.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-settings.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/scheduleemaileditor.min.css" />
     </environment>
 }
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-settings.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-settings.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-settings.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-settings.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-settings.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-settings.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         var getExportFileSettingInfoUrl = "@Url.Action("GetExportFileSettingInfo", "Scheduler")";
         var getScheduleFileSettingTypeUrl = "@Url.Action("GetScheduleFileSettingType", "Scheduler")";
         var subjectItem = "@Url.Action("GetSubjectItem", "scheduler")";
@@ -41,8 +38,6 @@
         var makePublicHelpSiteUrl = "@makePublicHelpSiteUrl";
         var scheduleReportSettingsHelpSiteUrl = "@scheduleReportSettingsHelpSiteUrl";
         var customScheduleTemplateHelpSiteUrl = "@customScheduleTemplateHelpSiteUrl";
-        var publicReportsDeprecateHelpSiteUrl = "@publicReportsDeprecateHelpSiteUrl";
-        var enablePublic = @Json.Serialize(ServerAppConfig.EnablePublic);
     </script>
 }
 
@@ -129,11 +124,11 @@
         </div>
     </div>
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleemaileditor.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.js"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/scheduleemaileditor.min.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/scheduleemaileditor.min.js"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

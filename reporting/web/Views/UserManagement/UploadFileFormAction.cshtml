@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 
@@ -11,15 +9,15 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-management-module.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-management.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-management-module.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-management.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-module.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var checkMailSettingUrl = "@Url.Action("checkmailsettingsexist", "Administration")";
         var postactionUrl = "@Url.Action("postaction", "UserManagement")";
         var isPresentEmailId = "@Url.Action("IsPresentEmailId", "UserManagement")";
@@ -39,14 +37,14 @@
     </script>
 
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(document).ready(function () {
             $("a").click(function () {
                 return checkUserImported(this);
             });
         });
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         var data1 = @Json.Serialize(ViewBag.User);
         var csvImportGridColumn = [
             { field: "Username", cssClass: "user-name", headerText: "[[[Username]]]", width: 50, visible: isSelfHosted },

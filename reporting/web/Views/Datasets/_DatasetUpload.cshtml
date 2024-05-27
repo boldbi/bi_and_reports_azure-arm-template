@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@model ReportUploadResponse
+﻿@model ReportUploadResponse
 @{
     Layout = null;
     var isUploaded = ViewData["IsUploaded"] != null ? Convert.ToBoolean(ViewData["IsUploaded"]) : false;
@@ -15,16 +13,16 @@
         [[[New Dataset popup]]]
     </title>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-dataset.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/upload-dataset.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-dataset.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/upload-dataset.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-dataset.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-dataset.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-dataset.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/upload-dataset.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-dataset.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/upload-dataset.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/upload-dataset.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/upload-dataset.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(function () {
             if (window.parent.$("#rsd_filename").val() != "" && window.parent.$("#rsd_filename").val() != undefined) {
                 $("#upload_browse_file").val(window.parent.$("#rsd_filename").val());
@@ -105,7 +103,7 @@
     </form>
 </body>
 </html>
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     function onUploadDataset() {
         if (window.parent.isEditPopup) {
             window.parent.editDatasetData.IsFileChanged = true;
@@ -128,7 +126,7 @@
 </script>
 @if (isUploaded)
 {
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(function () {
             window.parent.datasetUploadComplete(@Json.Serialize(Model));
         });

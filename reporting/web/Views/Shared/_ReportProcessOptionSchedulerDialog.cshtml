@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-@model List<ItemDetail>
-
+﻿@model List<ItemDetail>
 <!DOCTYPE html>
 @{ 
     Layout = null;
@@ -12,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
     var getRecurrenceTypeUrl = "@Url.Action("GetRecurrenceType", "scheduler")";
     var getScheduleInfoUrl = "@Url.Action("GetScheduleInfo", "scheduler")";
     var updateScheduleUrl = "@Url.Action("UpdateSchedule", "scheduler")";
@@ -21,16 +19,16 @@
     </script>
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/processoptionschedulerdialog.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/processoptionschedulerdialog.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/processoptionschedulerdialog.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/processoptionschedulerdialog.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/processoptionschedulerdialog.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/processoptionschedulerdialog.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/processoptionschedulerdialog.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/processoptionschedulerdialog.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/processoptionschedulerdialog.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/processoptionschedulerdialog.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/processoptionschedulerdialog.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/processoptionschedulerdialog.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
 
             $(document).ready(function () {
                 addPlacehoder("#ScheduleDialog");

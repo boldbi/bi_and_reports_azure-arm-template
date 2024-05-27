@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
+﻿@addTagHelper *, Microsoft.FeatureManagement.AspNetCore
 @{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = "[[[Groups]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -16,31 +14,29 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/editdelete.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/editdelete.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/editdelete.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/groups.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/editgroup.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/editgroup.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/editgroup.js"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/editdelete.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/editdelete.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/editdelete.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/groups.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/editgroup.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/editgroup.min.js")" crossorigin="anonymous"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/groups.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/editgroup.min.js"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         var addGroupViewUrl = "@Url.Action("AddGroupView", "Group")";
         var saveGroupSettingsUrl = "@Url.Action("SaveGroupSettings", "Group")";
         var deleteGroupViewUrl = "@Url.Action("DeleteGroupView", "Group")";
         var deleteGroupUserViewUrl = "@Url.Action("DeleteGroupUserView", "Group")";
         var addUserInGroupUrl = "@Url.Action("AddUserInGroup", "Group")";
         var groupDetails = @Json.Serialize(ViewBag.groupDetails);
-        groupDetails.GroupName = decodeHtmlAsString(groupDetails.GroupName);
-        groupDetails.GroupDescription = decodeHtmlAsString(groupDetails.GroupDescription);
         var allUsers = @Json.Serialize(ViewBag.allUser);
         var groupId =@Context.Request.Query["groupId"];
         var checkMailSettingUrl = "@Url.Action("checkmailsettingsexist", "Administration")";
@@ -144,7 +140,7 @@
     </script>
     @if (isSelfHosted)
     {
-        <script nonce="@Context.Items["ScriptNonce"]">
+        <script>
             var minimumLength = "@passwordPolicy.MinimumLength";
             var lowerCaseRequired = "@passwordPolicy.LowerCaseRequired";
             var upperCaseRequired = "@passwordPolicy.UpperCaseRequired";
@@ -157,31 +153,31 @@
 @section MainSection{
     @await Html.PartialAsync("../UserManagement/_UserMenu")
     <feature name=@FeatureManagement.Yokogawa>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="nametemplate">
+        <script type="text/x-jsrender" id="nametemplate">
             <a class="item-name grid-content" title="{{:DisplayName}}" data-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:DisplayName}}</a>
         </script>
     </feature>
     <feature name=@FeatureManagement.Yokogawa negate="true">
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="nametemplate">
+        <script type="text/x-jsrender" id="nametemplate">
             <span class="item-name grid-content" title="{{:DisplayName}}" data-toggle="tooltip">{{:DisplayName}}</span>
         </script>
     </feature>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="UsernameTemplate">
+    <script type="text/x-jsrender" id="UsernameTemplate">
         <span class="grid-content" title="{{:Username}}" data-toggle="tooltip">{{:Username}}</span>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="emailtemplate">
+    <script type="text/x-jsrender" id="emailtemplate">
         <span class="grid-content" title="{{:Email}}" data-toggle="tooltip">{{:CanShowEmail ? Email : ""}}</span>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="nameheader">
+    <script type="text/x-jsrender" id="nameheader">
         <div class="item-name">[[[Name]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="UsernameHeader">
+    <script type="text/x-jsrender" id="UsernameHeader">
         <div class="item-name">[[[Username]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="emailheader">
+    <script type="text/x-jsrender" id="emailheader">
         <div class="item-header">[[[Email Address]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="actionstemplate">
+    <script type="text/x-jsrender" id="actionstemplate">
         {{if @Convert.ToInt32(Context.Request.Query["groupId"])!=1}}
         <div>
             <span><a href="javascript:void(0);" class="delete-user" title="" data-username="{{:DisplayName}}" data-userid="{{:UserId}}"><i class="su su-close"></i> [[[Remove]]]</a></span>
@@ -211,7 +207,7 @@
                     {
                         <feature name=@FeatureManagement.Yokogawa>
                             <li id="add-user-button" title="[[[Add user]]]" onclick="onUserAddDialogOpen()">
-                                <a href="javascript:void(0);" title="[[[Add user]]]" data-toggle="tooltip" data-placement="top">
+                                <a href="javascript:void(0)" title="[[[Add user]]]" data-toggle="tooltip" data-placement="top">
                                     <i class="su su-user-add"> </i>
                                     <span>[[[Add User]]]</span>
                                 </a>
@@ -222,7 +218,7 @@
                         @if ((isAdmin || granularPermissions[PermissionEntity.UsersandGroups]) && ViewBag.IsLocalDirectory)
                         {
                             <li id="add-user-button" title="[[[Add user]]]" onclick="onUserAddDialogOpen()">
-                                <a href="javascript:void(0);" title="[[[Add user]]]" data-toggle="tooltip" data-placement="top">
+                                <a href="javascript:void(0)" title="[[[Add user]]]" data-toggle="tooltip" data-placement="top">
                                     <i class="su su-user-add"> </i>
                                     <span>[[[Add User]]]</span>
                                 </a>
@@ -233,7 +229,7 @@
                         @if (ViewBag.IsLocalDirectory && Convert.ToInt32(Context.Request.Query["groupId"]) != 1)
                         {
                             <li id="add-owner-button" title="[[[Add Owner]]]" onclick="addGroupOwnerDialogOpen()" data-groupid="@Context.Request.Query["groupId"]" data-groupname="{{allGroupDetails.GroupName}}">
-                                <a href="javascript:void(0);" title="[[[Add Owner]]]" data-toggle="tooltip" data-placement="top">
+                                <a href="javascript:void(0)" title="[[[Add Owner]]]" data-toggle="tooltip" data-placement="top">
                                     <i class="su su-add-owner"> </i>
                                     <span>[[[Add Owner]]]</span>
                                 </a>
@@ -252,7 +248,7 @@
                     @if ((isAdmin || granularPermissions[PermissionEntity.UsersandGroups] || granularPermissions[PermissionEntity.SpecificGroup]) && Convert.ToInt32(Context.Request.Query["groupId"]) != 1)
                     {
                         <li id="delete-button" class="delete" title="[[[Delete Group]]]" data-groupid="@Context.Request.Query["groupId"]" data-groupname="{{allGroupDetails.GroupName}}">
-                            <a href="javascript:void(0);" title="[[[Delete Group]]]" data-toggle="tooltip" data-placement="top">
+                            <a href="javascript:void(0)" title="[[[Delete Group]]]" data-toggle="tooltip" data-placement="top">
                                 <i class="su su-delete"></i>
                                 <span>[[[Delete Group]]]</span>
                             </a>
@@ -313,9 +309,9 @@
     @await Html.PartialAsync("../UserManagement/_UserAddDialog", globalAppSettings)
     @await Html.PartialAsync("../Items/_SharePermission")
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

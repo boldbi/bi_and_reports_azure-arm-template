@@ -1,5 +1,5 @@
 ﻿@model List<SchemaInfo>
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var tableSchema = @Json.Serialize(Model);
     var importDatabaseQuerySchema = {};
 </script>

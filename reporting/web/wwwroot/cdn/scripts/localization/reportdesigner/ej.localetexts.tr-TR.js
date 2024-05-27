@@ -501,8 +501,7 @@ ej.ReportDesigner.Locale['tr-TR'] = {
                 jpeg: 'resim / jpeg',
                 gif: 'resim / gif',
                 png: 'resim / png',
-                xPng: 'resim / x-png',
-                svg: 'resim / svg'
+                xPng: 'resim / x-png'
             }
         },
         categoryName: 'Bağlantı',
@@ -1714,8 +1713,10 @@ ej.ReportDesigner.Locale['tr-TR'] = {
         categoryPermission: 'Yeni bir kategori oluşturmak için izin oluşturmayı etkinleştirin',
         categoryname: 'İsim',
         emptyName: 'Lütfen rapor için bir isim girin',
+        invalidName: 'Şu karakterler desteklenmiyor: \' +, []% #',
         description: 'Açıklama',
         maxCharacter: '* Maksimum 1024 karakter',
+        markaspublic: 'Herkese Açık Olarak İşaretle',
         cancel: 'İptal etmek',
         closeToolTip: 'Kapat',
         tags: 'etiketler',
@@ -1907,19 +1908,6 @@ ej.ReportDesigner.Locale['tr-TR'] = {
                 password: 'Parolayı belirtin',
                 serverName: 'Sunucu adını belirtin',
                 databaseName: 'Veritabanı adını belirtin'
-            },
-            sshSettings: {
-                enable: 'SSH\'yi etkinleştir',
-                serverName: 'SSH Sunucu adı',
-                port: 'SSH Bağlantı Noktası',
-                userName: 'SSH Kullanıcı adı',
-                password: 'SSH Şifresi',
-                alertMessage: {
-                    serverName: 'SSH Sunucu Adını Belirtin',
-                    port: 'SSH bağlantı noktası numarasını belirtin',
-                    userName: 'SSH Kullanıcı Adını Belirleyin',
-                    password: 'SSH Şifresini Belirleyin'
-                }
             }
         },
         elasticSearchDatasource: {
@@ -2764,8 +2752,6 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             middleMessage: ' Buraya Tıkla',
             endMessage: 'hata ayrıntılarını görmek için',
             closeMessage: 'Bu mesajı kapat',
-            licenseMsgWeb: 'Bold lisansı başvurunuzda kayıtlı değil. Bu lisans doğrulama mesajını kalıcı olarak kaldırmak için lütfen geçerli bir lisans kullanın. Ayrıca, değerlendirme süresi boyunca bu mesajı geçici olarak kaldırmak için 30 günlük ücretsiz bir değerlendirme lisansı da alabilirsiniz. Lütfen bu yardım konusuna bakın (https://help.boldreports.com/licensing/licensing-errors/#invalid-license-key) daha fazla bilgi için.',
-            licenseMsgNetCore: 'Bu uygulama Bold un deneme sürümü kullanılarak oluşturuldu. Bu lisans doğrulama mesajını kalıcı olarak kaldırmak için lütfen geçerli bir lisans kullanın. Ayrıca, değerlendirme süresi boyunca bu mesajı geçici olarak kaldırmak için 30 günlük ücretsiz bir değerlendirme lisansı da alabilirsiniz. Lütfen bu yardım konusuna bakın (https://help.boldreports.com/licensing/licensing-errors/#license-key-not-registered) daha fazla bilgi için.',
             exportAjaxFailureMsg: 'Rapor Hizmetine bağlanılamadığından belge dışa aktarılamıyor.',
             printAjaxFailureMsg: 'Rapor Hizmetine bağlanılamaması nedeniyle belge yazdırılamıyor.',
             reportLoadAjaxFailureMsg: 'Rapor Hizmetine bağlanılamaması nedeniyle Rapor eylemi ilerletilemiyor.',
@@ -3132,11 +3118,11 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             join: 'Bir dizideki bir dizi alt dizeyi birleştirerek oluşturulan bir dize döndürür.',
             lCase: 'Küçük harfe dönüştürülmüş bir dize veya karakter döndürür.',
             leftStringType: 'Bir dizenin sol tarafından belirtilen sayıda karakter içeren bir dize döndürür.',
-            stringLength: 'Bir dizedeki karakter sayısını veya bir değişkeni depolamak için gereken bayt sayısını içeren bir tamsayıyı döndürür.',
+            stringLength: 'Bir dizedeki karakter sayısını veya sayıyı içeren bir tamsayı döndürür.',
             lSet: 'Belirtilen uzunluğa ayarlanmış belirtilen dizeyi içeren sola hizalı bir dize döndürür.',
             leftTrim: 'Verilen dizede sol tarafta boşluk bırakmadan dizeyi döndürür.',
             middle: 'Bir dizeden belirtilen sayıda karakter içeren bir dize döndürür.',
-            replace: 'Belirtilen bir alt dizenin belirli sayıda başka bir alt dizeyle değiştirildiği bir dize döndürür.',
+            replace: 'Belirtilen bir alt dizenin başka bir alt dizeyle değiştirildiği bir dize döndürür.',
             rightString: 'Bir dizenin sağ tarafından belirtilen sayıda karakter içeren bir dize döndürür.',
             rightSet: 'Belirtilen uzunluğa ayarlanmış belirtilen dizeyi içeren sağa hizalı bir dize döndürür.',
             rightTrim: 'Verilen dizede sağ taraftaki boşluklar olmadan dizeyi döndürür.',
@@ -3199,8 +3185,8 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             tangent: 'Belirtilen açının tanjantını verir.',
             tangentH: 'Belirtilen açının hiperbolik tanjantını döndürür.',
             isArray: 'Değişkenin bir diziyi gösterip göstermediğini gösteren bir Boolean değeri döndürür.',
-            isDate: 'Bir ifadenin geçerli bir tarih değerini temsil edip etmediğini gösteren bir Boole değeri döndürür.',
-            isNothing: 'Bir ifadeye atanmış bir nesnenin olup olmadığını gösteren bir Boolean değeri döndürür.',
+            isDate: 'Bir ifadenin geçerli bir ifadeyi temsil edip etmediğini gösteren bir Boolean değeri döndürür.',
+            isNothing: 'Bir ifadenin nesnesi olup olmadığını gösteren bir Boolean değeri döndürür.',
             isNumeric: 'Bir ifadenin sayı olarak değerlendirilip değerlendirilemeyeceğini gösteren bir Boolean değeri döndürür.',
             flowChoose: 'Bağımsız değişkenler listesinden bir değer seçer ve döndürür.',
             flowIIf: 'Bir ifadenin değerlendirmesine bağlı olarak iki nesneden birini döndürür.',
@@ -3247,7 +3233,7 @@ ej.ReportDesigner.Locale['tr-TR'] = {
             stringOfNumber: 'Bir sayıyı temsil eden bir dize döndürür.',
             stringAsNumeric: 'Bir dizedeki sayıları uygun türde sayısal değer olarak döndürür.',
             inScope: 'Geçerli örnek belirtilen kapsam dahilindeyse doğru döndürür.',
-            depthLevel: 'Özyinelemeli hiyerarşinin geçerli derinlik düzeyini temsil eden sıfır tabanlı bir tamsayıyı döndürür.',
+            depthLevel: 'Geçerli derinlik seviyesini temsil eden sıfır tabanlı bir tamsayı döndürür.',
             lookup: '1\'e 1 ilişkinin olduğu bir ad-değer çifti için belirtilen veri kümesinden değeri almak için Arama\'yı kullanın. Örneğin, bir tablodaki bir kimlik alanı için, veri bölgesine bağlı olmayan bir veri kümesinden karşılık gelen Ad alanını almak için Arama\'yı kullanabilirsiniz.',
             lookupSet: '1\'den çoka bir ilişkinin olduğu bir ad-değer çifti için belirtilen veri kümesinden bir değer kümesi almak için LookupSet\'i kullanın. Örneğin, tablodaki bir müşteri tanımlayıcısı için, veri bölgesine bağlı olmayan bir veri kümesinden o müşterinin tüm ilişkili telefon numaralarını almak için LookupSet\'i kullanabilirsiniz.',
             previous: 'Önceki veri satırı için ifadenin değerini döndürür.',

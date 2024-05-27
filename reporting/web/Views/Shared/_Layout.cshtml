@@ -1,9 +1,7 @@
 ﻿@using Newtonsoft.Json
 @using Microsoft.AspNetCore.Mvc.ViewFeatures;
 @using Microsoft.AspNetCore.Builder;
-@using Syncfusion.Server.Base.Helpers
 @inject RequestLocalizationOptions _localizationOptions
-
 @{
     var globalAppSettings = _globalAppSettings;
     var nativeNameTitleCase = _localizationOptions.DefaultRequestCulture.Culture.NativeName.ToLower();
@@ -168,6 +166,7 @@
                 "@Scripts.Url("~/bundles/scripts/dashboard-viewer-v1-all")",
                 "@Scripts.Url("~/bundles/scripts/dashboard-viewer-v1-common-all")",
                 "@Scripts.Url("~/bundles/scripts/dashboard-viewer-v1-utilities")",*@
+ this.Context.RequestServices.GetRequiredService<IFileVersionProvider>().AddFileVersionToPath(this.Context.Request.PathBase, reportServerResourceUrl + "/cdn/scripts/signalr-bundle.min.js")
 };
 
  if (!isSelfHosted) {
@@ -200,16 +199,16 @@
         </div>
     }
 <environment include="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
+    <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
     <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.css")" crossorigin="anonymous" />
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.css" />
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
+    <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
     <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/layout.min.css")" crossorigin="anonymous" />
+    <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/layout.min.css" />
 </environment>
 
     @RenderSection("styles", false)
@@ -218,34 +217,34 @@
         if (isExludeEjDialog)
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page-layout.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/connector-page-layout.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page-layout.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page-layout.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/connector-page-layout.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/connector-page-layout.min.js"></script>
             </environment>
         }
         else
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/layout.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/layout.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout.min.js"></script>
             </environment>
         }
 
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.dialog.min.js"></script>
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.dialog.min.js"></script>
     }
     else
     {
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/layout-mobile.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout-mobile.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/layout-mobile.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/layout-mobile.min.js"></script>
         </environment>
     }
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         $.extend(ej, Syncfusion);
         var baseUrl = "@globalAppSettings.SystemSettings.BaseUrl";
         var manageLicenseUrl = "@(ServerAppConfig.IsSelfHosted ? globalAppSettings.SystemSettings.IDPUrl + "/" + ServerAppConfig.TenantManagementHostName + "/administration/license-settings" : Url.Action("LicenseSettings", "Administration"))";
@@ -264,13 +263,10 @@
         var rootUrl = "@rootUrl";
         var rootUrlAction = "@rootUrl";
         var canCheckSession = "@ServerAppConfig.IsSelfHosted";
-        var etlHealthyStatusUrl = "@Url.Action("CheckETLHealthStatus", "Accounts")";
-        var etlHelpLink = helpSiteBaseUrl + "@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ETL)";
-        var isUmsAdmin = "@identityResponse.IsUmsAdmin";
     </script>
     @if (isMobile)
     {
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+        <script type="text/javascript">
             $(document).ready(function () {
                 GetGridName();
 
@@ -338,7 +334,7 @@
     }
     @if (includeMessageBox)
     {
-        <script nonce="@Context.Items["ScriptNonce"]">
+        <script>
             $(document).ready(function () {
                 generateProfileAvatar();
                 $("#messageBox").ejDialog({
@@ -474,7 +470,7 @@
     <div id="alert-notification">
     </div>
     <div id="collapse-menu-backdrop" style="display: none;"></div>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var showFeedbackDialog = "@showFeedback";
     </script>
     @*@if (showTour)
@@ -484,20 +480,20 @@
             @Scripts.Render("~/bundles/scripts/dashboard-server-tour")
         }*@
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/dashboard-feedback.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.css" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/dashboard-feedback.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.min.css" />
     </environment>
     @if (!ServerAppConfig.IsSelfHosted)
     {
         @await Html.PartialAsync("~/Views/Shared/_GeneralFeedback.cshtml")
         @await Html.PartialAsync("~/Views/Support/_ConciergeSupport.cshtml")
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/dashboard-feedback.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.css" />
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/dashboard-feedback.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/dashboard-feedback.min.css" />
         </environment>
     }
 

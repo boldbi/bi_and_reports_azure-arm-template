@@ -1,7 +1,4 @@
 ﻿@using System.Globalization;
-@using Syncfusion.Server.Base.Helpers
-@using System.Web;
-
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
@@ -28,8 +25,6 @@
     var isAdmin = Context.Session.GetString("IsAdmin") != null && Convert.ToBoolean(Context.Session.GetString("IsAdmin"));
     var reportServiceCdnLink = globalAppSettings.SystemSettings.ReportServiceCdnLink.TrimEnd('/');
     var canShowSession = ServerAppConfig.IsSelfHosted && (ViewBag.CanHideSessionInEmbed == null ? true : ViewBag.CanHideSessionInEmbed != true);
-    var categoryName = HttpUtility.HtmlDecode(ViewBag.itemDetail.CategoryName);
-    var itemName = HttpUtility.HtmlDecode(ViewBag.itemDetail.Name);
 
     if (embedConfig.IsEmbedReport || embedConfig.IsEmbedCode)
     {
@@ -55,23 +50,23 @@
     @if (!isMobile)
     {
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.min.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
         </environment>
     }
     else
     {
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report-mobile.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report-mobile.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report-mobile.css" />
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/file-render-report.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/file-render-report.min.css" />
         </environment>
     }
 
@@ -80,113 +75,113 @@
         @if (!isMobile)
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.min.js"></script>
             </environment>
         }
         else
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery-mobile.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery-mobile.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.min.js"></script>
             </environment>
         }
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-base.min.js"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-pdf-export.min.js"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-data.min.js"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-svg-base.min.js"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/data-visualization/ej2-circulargauge.min.js"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/data-visualization/ej2-lineargauge.min.js"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/data-visualization/ej2-maps.min.js"></script>
+        <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-base.min.js"></script>
+        <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-pdf-export.min.js"></script>
+        <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-data.min.js"></script>
+        <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/common/ej2-svg-base.min.js"></script>
+        <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/data-visualization/ej2-circulargauge.min.js"></script>
+        <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/data-visualization/ej2-lineargauge.min.js"></script>
+        <script type="text/javascript" src="@reportServerResourceUrl/cdn/scripts/essentialjs/data-visualization/ej2-maps.min.js"></script>
         @if (!isMobile)
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render.min.js"></script>
             </environment>
         }
         else
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-mobile.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-mobile.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/bold.reportviewer.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/custom.salesforce.min.js"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-mobile.min.js"></script>
             </environment>
         }
-        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/reportviewer/ej.localetexts.@string.Concat(language,".js")"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/i18n/ej.culture.@string.Concat(language,".min.js")"></script>
+        <script src="@reportServerResourceUrl/cdn/scripts/localization/reportviewer/ej.localetexts.@string.Concat(language,".js")"></script>
+        <script src="@reportServerResourceUrl/cdn/scripts/localization/i18n/ej.culture.@string.Concat(language,".min.js")"></script>
     }
     else
     {
         @if (!isMobile)
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery.min.js"></script>
             </environment>
         }
         else
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery-mobile.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-jquery-mobile.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-jquery-mobile.min.js"></script>
             </environment>
         }
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-base.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-pdf-export.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-data.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-svg-base.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/data-visualization/ej2-circulargauge.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/data-visualization/ej2-lineargauge.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/data-visualization/ej2-maps.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/bold.reportviewer.min.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/custom.salesforce.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-base.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-pdf-export.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-data.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/common/ej2-svg-base.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/data-visualization/ej2-circulargauge.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/data-visualization/ej2-lineargauge.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/data-visualization/ej2-maps.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/bold.reportviewer.min.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/cdn/scripts/essentialjs/custom.salesforce.min.js'></script>
         @if (!isMobile)
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-server.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-server.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server.min.js"></script>
             </environment>
         }
         else
         {
             <environment include="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-server-mobile.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server-mobile.js"></script>
             </environment>
             <environment exclude="Development,CloudDevelopment">
-                <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-render-server-mobile.min.js")" crossorigin="anonymous"></script>
+                <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-render-server-mobile.min.js"></script>
             </environment>
         }
     }
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/share-permission.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/share-permission.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/share-permission.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/share-permission.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/share-permission.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/share-permission.min.js"></script>
     </environment>
 
     @if (isMobile && !Context.User.Identity.IsAuthenticated)
@@ -212,7 +207,7 @@
     <input id="favorite_Item" type="hidden" data-item-id="@ViewBag.ItemId" data-parent-id="@ViewBag.ParentId" data-favorite-value="@ViewBag.IsFavorite">
     <input id="comment_Type" type="hidden" data-item-id="@ViewBag.DataItemId" data-item-type="@ViewBag.ItemType">
     <input id="report_Comment" type="hidden" data-item-id="@ViewBag.ItemId.Split('/')[0]">
-    <input id="dashboard_Comment" type="hidden" data-item-id="@ViewBag.ItemId" data-category-name="@categoryName" data-item-name="@itemName">
+    <input id="dashboard_Comment" type="hidden" data-item-id="@ViewBag.ItemId" data-category-name="@ViewBag.itemDetail.CategoryName" data-item-name="@ViewBag.itemDetail.Name">
     <input id="is_mobile" type="hidden" value="@isMobile.ToString().ToLower()">
     <input id="item-version" type="hidden" value="@ViewBag.Version" />
 
@@ -231,20 +226,20 @@
                             <a href="@Url.Action("reports", "reports")" class="su su-nav-home" onclick="loadPopup();"></a>
                         </li>
                         <li class="col-xs-3">
-                            <a href="javascript:void(0);" class="su su-report active"></a>
+                            <a href="javascript:void(0)" class="su su-report active"></a>
                         </li>
                         <li class="col-xs-3">
                             @if (ViewBag.IsReportCommented == "true")
                             {
-                                <a href="javascript:void(0);" class="su su-with-comment server-comment"></a>
+                                <a href="javascript:void(0)" class="su su-with-comment server-comment"></a>
                             }
                             else
                             {
-                                <a href="javascript:void(0);" class="su su-without-comment server-comment"></a>
+                                <a href="javascript:void(0)" class="su su-without-comment server-comment"></a>
                             }
                         </li>
                         <li class="col-xs-3">
-                            <a href="javascript:void(0);" class="su su-view active"></a>
+                            <a href="javascript:void(0)" class="su su-view active"></a>
                         </li>
                     }
                     else
@@ -253,10 +248,10 @@
                             <a href="@Url.Action("reports", "reports")" class="su su-nav-home" onclick="loadPopup();"></a>
                         </li>
                         <li class="col-xs-4">
-                            <a href="javascript:void(0);" class="su su-report active"></a>
+                            <a href="javascript:void(0)" class="su su-report active"></a>
                         </li>
                         <li class="col-xs-4">
-                            <a href="javascript:void(0);" class="su su-view server-item-view"></a>
+                            <a href="javascript:void(0)" class="su su-view server-item-view"></a>
                         </li>
                     }
                 </ul>
@@ -342,12 +337,12 @@
 </html>
 
 <environment include="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
 </environment>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+<script type="text/javascript">
 
     @{
         var userName = "";
@@ -381,13 +376,12 @@
      var canSaveView = '@canSaveView';
      var isReportCommented = '@ViewBag.IsReportCommented';
      var canEdit = "@canEdit";
-     var categoryName = decodeHtmlAsString("@itemDetail.CategoryName");
-     var itemName = decodeHtmlAsString("@itemDetail.Name");
-     var editReportUrl = encodeURI("@Url.Action("ReportDesigner", "Designer")" + "/@itemDetail.Id/" + categoryName + "/" + itemName);
+     var editReportUrl = encodeURI("@Url.Action("ReportDesigner", "Designer")" + "/@itemDetail.Id/@itemDetail.CategoryName/@itemDetail.Name");
      var filterParameters = JSON.parse('@Json.Serialize(ViewBag.FilterParameters)');
      var itemViewShareIframeUrl = "@Url.Action("shareItemView", "items")";
      var commentPageUrl = "@Url.Action("CommentPartialView", "Comments")";
 
+     var updateViewerUserPreference = "@Url.Action("SaveViewerUserPreference", "User")";
      var getViewParameterUrl = "@Url.Action("GetReportViewParameter", "ReportViews")";
      var addViewUrl = { "web": "@Url.Action("OnFilterSave", "ReportViews")", "api": "/items/views/add" };
      var deleteViewUrl = { "web": "@Url.Action("DeleteView", "ReportViews")", "api": "/items/views/delete" };
@@ -440,8 +434,8 @@
     function mobileViewAvailable()
     {
         if ($("#is_mobile").val() == "true" && '@isUserAuthenticated' == "true") {
-            var reportComment = isReportCommented.toLowerCase() == "true" ? '<a href="javascript:void(0);" class="su su-with-comment server-comment"></a>' : '<a href="javascript:void(0);" class="su su-without-comment server-comment"></a>';
-            var mobileNavBar = '<li class="col-xs-4"> <a href="@Url.Action("reports", "reports")" class="su su-nav-home" onclick="loadPopup();"></a></li><li class="col-xs-4"><a href="javascript:void(0);" class="su su-report active"></a></li><li class="col-xs-4">' + reportComment + '</li>';
+            var reportComment = isReportCommented.toLowerCase() == "true" ? '<a href="javascript:void(0)" class="su su-with-comment server-comment"></a>' : '<a href="javascript:void(0)" class="su su-without-comment server-comment"></a>';
+            var mobileNavBar = '<li class="col-xs-4"> <a href="@Url.Action("reports", "reports")" class="su su-nav-home" onclick="loadPopup();"></a></li><li class="col-xs-4"><a href="javascript:void(0)" class="su su-report active"></a></li><li class="col-xs-4">' + reportComment + '</li>';
             if (!($(".e-reportviewer-viewer").hasClass("e-reportviewer-parameter"))) {
                 var element = $("#server-mobile-navbar").children().find(".navbar-nav");
                 element.html("");
@@ -470,6 +464,28 @@
 
         if ("@enableExport" == "false") {
             $("#sync_report_viewer_toolbar_li_export").remove();
+        }
+
+//Toggle button
+        if (!embedConfig.IsEmbedCode && (isUserAuthenticatedInCurrentTenant || !reportItemDetail.IsPublic)) {
+            var $litoggle = ej.buildTag("li.e-reportviewer-toolbarli e-tooltxt", "", {},
+                {
+                    'id': 'sync_report_viewer_toolbar_li_ReportViewToggle',
+                    'data-toggle': 'tooltip', 
+                    'data-placement': 'bottom',
+                    'title': window.Server.App.LocalizationContent.ViewerToggleInfo,
+                    'data-container': 'body' 
+                }
+            );
+            var $spantoggle = ej.buildTag("span.e-customoption",
+                "",
+                {},
+                { 'id': 'sync_report_viewer_toolbar_ReportViewToggle' }
+            );
+            var $toggleTag = ejToggleInitialize();
+            $spantoggle.append($toggleTag);
+            $litoggle.append($spantoggle);
+            $divouter.append($litoggle);
         }
 
 //Render custom icons
@@ -846,6 +862,54 @@
                 url: "/robots.txt",
             });
         })
+    }
+
+    function ejToggleInitialize() {
+            var toggleTag = ej.buildTag(
+                'div.e-viewer-code-switcher e-viewer-tab-focus',
+                '',
+                {},
+                { 'id': 'ReportViewToggle_div', 'tabindex': '0', 'role': 'button', 'aria-label': 'ReportViewToggle', 'style': 'float: left; width: 50px; display: contents' });
+            var label = ej.buildTag(
+                'span.switchLabel',
+                window.Server.App.LocalizationContent.TryNewViewer,
+                {
+                    'align-items': 'center',
+                    'color': 'var(--primary-black)',
+                    'display': 'inline-flex',
+                    'float': 'left',
+                    'font-style': 'normal',
+                    'font-weight': '400',
+                    'line-height': '18px',
+                    'margin-right': '2px'
+                },
+                {
+                    'id': 'ReportViewToggle_label'
+                }
+                );
+            var switcher = ej.buildTag(
+                'label.e-viewer-switch',
+                '',
+                {
+                    'display': 'inline-flex',
+                    'float': 'left'
+                },
+                {
+                    'id': 'ReportViewToggle_container'
+                });
+            var isChecked = isViewerV2Enabled ? "checked" : "";
+            this.paramSwitcher = $('<input type=\'checkbox\' id=ReportViewToggle_input ' + isChecked + '>');
+            this.paramSwitcher.bind("change", onToggleChange);
+            switcher.append(this.paramSwitcher);
+            switcher.append('<div style=\'cursor:pointer;\' class=\'e-viewer-slider round\'></div>');
+            switcher.before('Open: ');
+            toggleTag.append(label);
+            toggleTag.append(switcher);
+            return toggleTag;
+    }
+    
+    function onToggleChange(e) {
+        saveViewerUserPreference(userId, e.target.checked);
     }
 
 </script>
