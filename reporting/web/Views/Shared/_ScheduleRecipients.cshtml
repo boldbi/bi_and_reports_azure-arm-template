@@ -1,6 +1,4 @@
-﻿@model string
-
-@{
+﻿@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -64,13 +62,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-xs-12 send-mail-align">
-            <div id="enable-mail-attachment" class="col-sm-6 col-xs-6 no-padding no-margin">
-                @Html.CheckBox("enable-send-mail", false, new { @class = "material-checkbox  enable-sendmail-checkbox" })
-                @Html.Label("enable-send-mail", "[[[Email attachment]]]", new { @class = "clspadleft app-checkbox-label normal-font sendmail-label" })
+        @if (ServerAppConfig.IsSelfHosted)
+        {
+            <div class="col-sm-12 col-xs-12 send-mail-align">
+                <div id="enable-mail-attachment" class="col-sm-6 col-xs-6 no-padding no-margin">
+                    @Html.CheckBox("enable-send-mail", false, new { @class = "material-checkbox  enable-sendmail-checkbox" })
+                    @Html.Label("enable-send-mail", "[[[Email attachment]]]", new { @class = "clspadleft app-checkbox-label normal-font sendmail-label" })
+                </div>
             </div>
-        </div>
-        
+        }
         @if (ServerAppConfig.IsSelfHosted && !isAzureApplication)
         {
             <div class="col-sm-12 col-xs-12 enable-save-block">
@@ -118,33 +118,35 @@
                 </div>
             </div>
         }
-        <div id="location-export-checkbox" class="col-sm-12 col-xs-12">
-            @Html.CheckBox("ftp-location-export", false, new { @class = "material-checkbox overwrite-checkbox" })
-            @Html.Label("ftp-location-export", "[[[FTP Location Export]]]")
-        </div>
-        <div class="col-sm-6 col-xs-6" id="checkbox-validation" style="visibility: hidden">[[[Please select at least one option to schedule a report ]]]</div>
-        <form class="col-sm-12 col-xs-12" id="ftp-form">
-            <div class="col-sm-12 col-xs-12 no-padding ftp-form-container">
-                <div class="col-sm-4 col-xs-4">
-                    <label class="path-label">[[[Host]]]</label>
-                    <input type="text" class="form-control" id="ftp-host-name" placeholder="Host" name="host-name" autocomplete="off" disabled="disabled" />
-                    <div id="ftp-hostname-validation" style="display: none"></div>
-                </div>
-                <div class="col-sm-4 col-xs-4">
-                    <label class="path-label">[[[Username]]]</label>
-                    <input type="text" class="form-control" id="ftp-user-name" placeholder="[[[Username]]]" name="user-name" autocomplete="off" disabled="disabled" />
-                    <div id="ftp-username-validation" style="display: none"></div>
-                </div>
-                <div class="col-sm-4 col-xs-4">
-                    <label class="path-label">[[[Password]]]</label>
-                    <input type="password" class="form-control password-field" id="ftp-password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" autocomplete="off" disabled="disabled">
-                    <div class="su su-eye show-hide-password ftp-password-icon" style="position: absolute; right: 22px; top:33px; cursor:pointer"></div>
-                    <div id="ftp-password-validation" style="display: none"></div>
-                </div>
-                <div class="col-sm-6 col-xs-6" id="ftp-validation" style="display: none"></div>
+        @if (ServerAppConfig.IsSelfHosted)
+        {
+            <div id="location-export-checkbox" class="col-sm-12 col-xs-12">
+                @Html.CheckBox("ftp-location-export", false, new { @class = "material-checkbox overwrite-checkbox" })
+                @Html.Label("ftp-location-export", "[[[FTP Location Export]]]")
             </div>
-        </form>
-        
+            <div class="col-sm-6 col-xs-6" id="checkbox-validation" style="visibility: hidden">[[[Please select at least one option to schedule a report ]]]</div>
+            <form class="col-sm-12 col-xs-12" id="ftp-form">
+                <div class="col-sm-12 col-xs-12 no-padding ftp-form-container">
+                    <div class="col-sm-4 col-xs-4">
+                        <label class="path-label">[[[Host]]]</label>
+                        <input type="text" class="form-control" id="ftp-host-name" placeholder="Host" name="host-name" autocomplete="off" disabled="disabled" />
+                        <div id="ftp-hostname-validation" style="display: none"></div>
+                    </div>
+                    <div class="col-sm-4 col-xs-4">
+                        <label class="path-label">[[[Username]]]</label>
+                        <input type="text" class="form-control" id="ftp-user-name" placeholder="[[[Username]]]" name="user-name" autocomplete="off" disabled="disabled" />
+                        <div id="ftp-username-validation" style="display: none"></div>
+                    </div>
+                    <div class="col-sm-4 col-xs-4">
+                        <label class="path-label">[[[Password]]]</label>
+                        <input type="password" class="form-control password-field" id="ftp-password" name="password" placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" autocomplete="off" disabled="disabled">
+                        <div class="su su-eye show-hide-password ftp-password-icon" style="position: absolute; right: 22px; top:33px; cursor:pointer"></div>
+                        <div id="ftp-password-validation" style="display: none"></div>
+                    </div>
+                    <div class="col-sm-6 col-xs-6" id="ftp-validation" style="display: none"></div>
+                </div>
+            </form>
+        }
         <div class="col-sm-12 col-xs-12 send-mail-block">
             <div class="col-sm-12 col-xs-12 send-mail-align">
                 <label class="col-sm-12 col-xs-12 clspadleft app-checkbox-label normal-font sendmail-label no-padding">Select Recipients</label>
@@ -196,7 +198,7 @@
     </div>
 </body>
 </html>
-<script nonce="@Model">
+<script>
            var getActiveandInactiveUserUrl = "@Url.Action("getallactivegroupsandusers", "accounts")";
            var updateScheduleUrl = "@Url.Action("UpdateSchedule", "scheduler")";
            var addScheduleUrl = "@Url.Action("AddSchedule", "scheduler")";

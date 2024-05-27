@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -8,7 +6,7 @@
 
 <!DOCTYPE html>
 <head>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var getActiveSitesUrl = "@Url.Action("GetAllActiveTenantsForPublish", "Publish")";
         var getUsersPermissionUrl = "@Url.Action("GetUsersWithCreatePermission", "Publish")";
         var getDatasourceUrl = "@Url.Action("GetDataSources", "Publish")";
@@ -18,12 +16,12 @@
         var getExternalSitesUrl = "@Url.Action("GetExternalSites", "Publish")";
     </script>
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/publish-report.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/publish-report.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/publish-report.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/publish-report.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/publish-report.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/publish-report.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/publish-report.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/publish-report.min.js")" crossorigin="anonymous"></script>
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/publish-report.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/publish-report.min.css")" crossorigin="anonymous" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/publish-report.min.js"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/publish-report.min.css" />
     </environment>
 
 </head>

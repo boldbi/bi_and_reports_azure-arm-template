@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var emailAddress = Context.Session.GetString("emailaddress") != null ? Context.Session.GetString("emailaddress") : string.Empty;
@@ -24,7 +22,7 @@
 
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var canCreateDashboard = @Json.Serialize(model[ItemType.Report]);
         var isCategoryExistUrl = "@Url.Action("iscategoryexist", "category")";
         var addCategoryUrl = "@Url.Action("addcategory", "category")";
@@ -36,13 +34,13 @@
     </script>
     <environment include="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-category.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-category.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/add-category.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-category.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/add-category.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.min.js"></script>
     </environment>
 </head>
 <body>
@@ -58,10 +56,10 @@
     }
 
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 </body>
 </html>

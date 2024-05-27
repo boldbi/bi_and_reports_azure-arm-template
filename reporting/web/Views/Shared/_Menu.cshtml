@@ -1,9 +1,7 @@
 ﻿@using Newtonsoft.Json;
 @using Syncfusion.Server.Base.Item;
-@using Syncfusion.Server.Base.Helpers
 @inject IItemManagement _itemManagement
 @inject ServerPrincipal identityResponse
-
 @{
     var globalAppSettings = (GlobalAppSettings)ViewBag.GlobalAppSettings;
 
@@ -44,8 +42,6 @@
     var userPermissionItem = ViewBag.ItemAddOptions;
     var hasOwnedReport = ViewBag.HasOwnedReport;
     var allItemsCount = ViewBag.ItemsCount as Dictionary<ItemType, int>;
-    var etlEndpointPrefix = ServerAppConfig.IsSelfHosted ? ServerAppConfig.InternalAppIdpUrl : ServerAppConfig.AppSettings.EndPoints.ETLSiteURL;
-    var navigateETLUrl = etlEndpointPrefix + (ServerAppConfig.IsSelfHosted ? $"/{ServerAppConfig.ETLHostName}/{globalAppSettings.SystemSettings.TenantId.ToString()}" : $"/{globalAppSettings.SystemSettings.TenantId.ToString()}");
     if (allItemsCount == null && ServerAppConfig.IsUserBasedMenu)
     {
         var itemtypeList = new List<ItemType>
@@ -61,14 +57,11 @@
 }
 
 <environment include="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-ui.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/custom-ui.js")" crossorigin="anonymous"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-ui.js"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-ui.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/custom-ui.min.js")" crossorigin="anonymous"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/custom-ui.min.js"></script>
 </environment>
-<script>
-    var isMasterTenant = @Json.Serialize(isMasterTenant);
-</script>
 
 <aside class="menu-bar" id="app-navigation" ng-controller="CustomMenuCtrl">
 
@@ -102,7 +95,7 @@
             @if (!ServerAppConfig.IsSelfHosted || (ServerAppConfig.IsSelfHosted && isItemPageRequested && itemPermissions != null && ((itemPermissions.ContainsKey(ItemType.Report) && itemPermissions[ItemType.Report]) || (itemPermissions.ContainsKey(ItemType.Dataset) && itemPermissions[ItemType.Dataset]) || (itemPermissions.ContainsKey(ItemType.Datasource) && itemPermissions[ItemType.Datasource]) || (itemPermissions.ContainsKey(ItemType.Schedule) && itemPermissions[ItemType.Schedule])))) 
             {
                 <li class="sf-nav-item mobile-hidden" id="create-item" data-action="create-items">
-                    <a class="sf-nav-link" href="javascript:void(0);">
+                    <a class="sf-nav-link" href="javascript:void(0)">
                         <span class="menu-icon-container create-menu-icon">
                             <i class="su su-add"></i>
                         </span>
@@ -110,25 +103,25 @@
                 </li>
             }
 
-            <li ng-repeat="items in menuList | orderBy:'Order' | filter:{ShowMenu:true} | filter: {Condition: true} as result" ng-init="count()" ng-if="items.Condition" id="{{items.Id}}">
+            <li ng-repeat="items in menuList | orderBy:'Order' | filter:{ShowMenu:true} | filter: {Condition: true} as result" ng-init="count()" ng-if="items.Condition">
                 <ul class="default-lists" style="padding: 0; display:none">
-                    <li class="mobile-hidden sf-nav-separator" ng-show="{{currentCount == '4' || currentCount == '7' && result.length < 7 }}"></li>
-                    <li class="{{items.IsSelected}} {{items.MobileClassName}}" ng-class="$index > menuCount ? 'sf-nav-administration-item sf-nav-item' : 'sf-nav-item'" ng-show="{{displayAllMenuItems || $index < 5}}">
-                        <a class="sf-nav-link" href="{{items.OpenLink}}" target="{{items.OpenBehavior}}" id="{{items.HrefId}}">
-                            <span class="menu-icon-container" ng-class="items.Id == 'bold-etl' ? 'etl-icon-custom-style' : ''">
+                    <li class="mobile-hidden sf-nav-separator" ng-show="{{currentCount == '3' || currentCount == '7' && result.length < 9 }}"></li>
+                    <li ng-if="@isMasterTenant || items.Display!=='Publish'" class="{{items.IsSelected}} {{items.MobileClassName}}" ng-class="$index > menuCount ? 'sf-nav-administration-item sf-nav-item' : 'sf-nav-item'" ng-show="{{result.length > 8 ? $index < 6 : $index < 8}}">
+                        <a class="sf-nav-link" href="{{items.OpenLink}}" target="{{items.OpenBehavior}}">
+                            <span class="menu-icon-container">
                                 <i class="{{items.ImageLink}} {{items.ImageClassName}}" ng-style="{'background-image': items.ImageClassName == 'custom-menu' ? 'url(' + items.ImageLink +')' : ''}"></i>
                             </span>
                             <span class="menu-label">{{items.Display}}</span>
                         </a>
                     </li>
-                    <li class="sf-nav-administration-collapse-item dropup" ng-class="result.length < 9 ? 'menu-toggle' : ''" ng-if="!displayAllMenuItems && $index >= 5">
-                        <a class="dropdown-toggle mobile-hidden" data-toggle="dropdown" ng-show="{{$index == 5 && items.Condition}}">
+                    <li class="sf-nav-administration-collapse-item dropup" ng-class="result.length < 9 ? 'menu-toggle' : ''" ng-if="$index > 5">
+                        <a class="dropdown-toggle mobile-hidden" data-toggle="dropdown" ng-show="{{$index == 6 && items.Condition}}">
                             <span class="menu-icon-container">
                                 <i class="su su-dots-menu"></i>
                             </span>
                         </a>
                         <ul class="dropdown-menu sub-menu" role="menu">
-                            <li ng-repeat="items in menuList | orderBy:'Order' | filter:{ShowMenu:true} | filter: {Condition: true}" class="sf-nav-item {{items.IsSelected}} {{items.MobileClassName}} remove-margin" ng-if="$index >= 5 && items.Condition">
+                            <li ng-repeat="items in menuList | orderBy:'Order' | filter:{ShowMenu:true} | filter: {Condition: true}" class="sf-nav-item {{items.IsSelected}} {{items.MobileClassName}}" ng-if="$index > menuCount && items.Condition">
                                 <a class="sf-nav-link" href="{{items.OpenLink}}" target="{{items.OpenBehavior}}">
                                     <span class="menu-icon-container">
                                         <i class="{{items.ImageLink}} {{items.ImageClassName}}" ng-style="{'background-image': items.ImageClassName == 'custom-menu' ? 'url(' + items.ImageLink +')' : ''}"></i>
@@ -213,7 +206,7 @@
                                         <div>[[[Explore]]]</div>
                                     </li>
                                     <li class="sub-menu-item">
-                                        <a class="add-sample-button" href="javascript:void(0);">
+                                        <a class="add-sample-button" href="javascript:void(0)">
                                             [[[Sample Reports]]]
                                         </a>
                                     </li>
@@ -338,7 +331,7 @@
     }
 
 </aside>
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
         var userTenantsUrl = "@Url.Action("GetUserTenants", "User")";
         var tenantIdentifierPrefix = "@ServerAppConfig.TenantIdentifierPrefix";
         var idpUrl = "@idPUrl";
@@ -356,8 +349,6 @@
         var groupPermissionUrl = "@Url.Action("grouppermission", "permission")";
         var userPermissionUrl = "@Url.Action("userpermission", "permission")";
         var currentUrlLocalPath = "@requestUrl.LocalPath.ToLower()";
-        var boldETLUrl = @Json.Serialize(navigateETLUrl);
-        var isAzureApplication = @Json.Serialize(ServerAppConfig.IsAzureApplication);
         var isMobile = @Json.Serialize(isMobile);
         var isImageRequest = @Json.Serialize(isImageRequest);
         var isAdmin = @Json.Serialize(Convert.ToBoolean(Context.Session.GetString("IsAdmin")));

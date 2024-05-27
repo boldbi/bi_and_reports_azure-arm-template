@@ -132,37 +132,24 @@
     }); 
 
     $("#user-account-proceed").on("click", function () {
-        validateStartup(function (result) {
-            if (result) {
-                messageBox("su-login-error", window.Server.App.LocalizationContent.ConfigurationError, window.Server.App.LocalizationContent.ConfigurationErrorMessage, "success", function () {
-                    onCloseMessageBox();
-                });
-            }
-            else {
-                if ($(".admin-account-fields-container").valid()) {
-                    $(".startup-waiting-popup").removeClass("storage-page-content");
-                    $("#system-settings-user-account-container").hide();
-                    $("#image-parent-container .startup-image").hide().attr("src", serverSetupImageUrl).fadeIn();
-                    $(".startup-content span.first-content").hide().text(window.Server.App.LocalizationContent.YourSite).slideDown();
-                    $(".startup-content span.second-content").hide().text(window.Server.App.LocalizationContent.YourSite2 + displayName + " " + window.Server.App.LocalizationContent.SiteLetter + ".").slideDown();
-                    $("#help-link").attr("href", databaseConfigurationUrl);
-                    $("#system-settings-db-selection-container").show();
-                    $("#db-content-holder,#db-config-submit").show();
-                    $("#sql-existing-db-submit, .sql-server-existing-db").hide();
-                    autoFocus("txt-servername");
-                    $("#advanced_tab_db_name").hide();
-                    prefillDbNames();
-                    if (!isBoldBI) {
-                        hideDataStore();
-                        $(".schema-prefix-hide").removeClass("hidden").addClass("show");
-                    }
-                    else {
-                        $(".schema-prefix-hide").removeClass("show").addClass("hidden");
-                    }
-                }
-                $('.popover').hide();
-            }
-        });
+        if ($(".admin-account-fields-container").valid()) {
+            $(".startup-waiting-popup").removeClass("storage-page-content");
+            $("#system-settings-user-account-container").hide();
+            $("#image-parent-container .startup-image").hide().attr("src", serverSetupImageUrl).fadeIn();
+            $(".startup-content span.first-content").hide().text(window.Server.App.LocalizationContent.YourSite).slideDown();
+            $(".startup-content span.second-content").hide().text(window.Server.App.LocalizationContent.YourSite2 + displayName + " " + window.Server.App.LocalizationContent.SiteLetter + ".").slideDown();
+            $("#help-link").attr("href", databaseConfigurationUrl);
+            $("#system-settings-db-selection-container").show();
+            $("#db-content-holder,#db-config-submit").show();
+            $("#sql-existing-db-submit, .sql-server-existing-db").hide();
+            autoFocus("txt-servername");
+            $("#advanced_tab_db_name").hide();
+            prefillDbNames();
+            if (!isBoldBI) {
+                hideDataStore();
+            }  
+        }
+        $('.popover').hide();
     });
 });
 

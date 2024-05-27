@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     var isMobile = new DeviceDetection(Context).IsMobile;
     ViewBag.Title = "[[[Data Sources]]] - " + globalAppSettings.SystemSettings.OrganizationName;
@@ -14,10 +12,10 @@
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/datasources.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/datasources.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/datasources.css" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/datasources.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/datasources.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/datasources.min.css" />
     </environment>
 
 }
@@ -27,27 +25,27 @@
     @if (!isMobile)
     {
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/datasource-page.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/datasource-page.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page.min.js"></script>
         </environment>
     }
     else
     {
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page-mobile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/datasource-page-mobile.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page-mobile.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page-mobile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/datasource-page-mobile.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/datasource-page-mobile.min.js"></script>
         </environment>
     }
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         let createDatasource = "@Url.Action("CreateDataSource", "DataSources")";
         let updateDatasource = "@Url.Action("UpdateDataSource", "DataSources")";
         var datasourceId = "@ViewBag.DataSourceId";
-        var datasourceName = decodeHtmlAsString("@ViewBag.DataSourceName");
+        var datasourceName = "@ViewBag.DataSourceName";
         var designerInstallationHelpUrl = "@(ServerAppConfig.AppSettings.Documentation.Uri + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DesignerInstallation))";
 
         $(document).ready(function () {
@@ -98,7 +96,7 @@
     {
         @await Html.PartialAsync("../DefaultPages/DefaultPages", new ViewDataDictionary(ViewData) { { "Permissions", itemPermissions }, { "ItemType", ItemType.Datasource } })
     }
-    <div id="ud-popup" class="ud-popup no-padding">
+    <div id="ud-popup" class="ud-popup no-padding" style="display:none">
         <iframe class="ud-iframe"></iframe>
     </div>
 

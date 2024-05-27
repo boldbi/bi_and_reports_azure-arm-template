@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = globalAppSettings.SystemSettings.OrganizationName + " - [[[Categories]]]";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,19 +6,19 @@
 }
 
 @model List<ItemDetail>
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var deleteConfirmUrl = "@Url.Action("deleteconfirmation", "items")";
 </script>
 
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/category-page.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/category-page.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/category-page.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/category-page.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/category-page.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/category-page.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/category-page.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/category-page.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/category-page.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/category-page.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/category-page.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/category-page.min.js"></script>
     </environment>
 }
 <div id="itemGridHeading">

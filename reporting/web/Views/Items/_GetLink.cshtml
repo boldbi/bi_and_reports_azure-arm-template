@@ -1,13 +1,11 @@
-﻿@model string
-
-@{
+﻿@{
     Layout = null;
 }
 
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 
 
-<script nonce="@Model">
+<script>
     $(document).ready(function () {
         $("#item-link-copy").removeClass("focusdiv");
         $("#item-link").on("focusin", function () {

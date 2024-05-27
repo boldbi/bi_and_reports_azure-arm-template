@@ -61,7 +61,7 @@
             This method is to get the sample items
             </summary>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Controllers.Items.ItemsController.IsDraftExist(System.String,Syncfusion.Server.Base.DataClasses.ItemType)">
+        <member name="M:Syncfusion.Server.Reports.Controllers.Items.ItemsController.IsDraftExist(System.String)">
              <summary>
             
              </summary>

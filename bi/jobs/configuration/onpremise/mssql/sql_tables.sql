@@ -934,8 +934,7 @@ CREATE TABLE [BOLDBI_BackgroundJobs](
 	[ResourceInfo] [nvarchar](max) NULL,
 	[CanIncludeSensitiveInfo] [bit] NULL,
 	[IsSampleData] [bit] NULL,
-    [IsActive] [bit] NOT NULL,
-	[ParentJobId] [int] NULL)
+    [IsActive] [bit] NOT NULL)
 ;
 
 CREATE TABLE [BOLDBI_UploadDataSourceMapping](
@@ -988,20 +987,6 @@ CREATE TABLE [BoldBI_ai_qnawidgethistory] (
    isreported BIT,
    search_date DATETIME,
    widgetid NVARCHAR(255))
-;
-
-CREATE TABLE [BOLDBI_Notification] (
-    [Id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
-    [CurrentUserId] [int] NOT NULL,
-    [ClubId] nvarchar(100) NOT NULL,
-    [CommentId] [int] NULL,
-    [ItemId] [uniqueidentifier] NULL,
-    [NotificationSource] nvarchar(100) NULL,
-    [NotifictionDetails] nvarchar(4000) NULL,
-    [NotificationTo] [int] NULL,    
-    [ModifiedDate] [datetime] NOT NULL,
-    [IsRead] [bit] NOT NULL,
-    [IsActive] [bit] NOT NULL)
 ;
 
 ---- PASTE INSERT Queries below this section --------
@@ -1512,10 +1497,6 @@ INSERT into [BOLDBI_LogField] (ModuleId,Field,Description,ModifiedDate,IsActive)
 INSERT into [BOLDBI_LogField] (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'IsEnablePoweredBySyncfusion',N'SiteSettings.ShowPoweredBySyncfusion',GETDATE(),1)
 ;
 INSERT into [BOLDBI_LogField] (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'CopyrightInformation',N'SiteSettings.CopyrightInformation',GETDATE(),1)
-;
-INSERT into [BOLDBI_LogField] (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'ResourceType',N'SiteSettings.ResourceType',GETDATE(),1)
-;
-INSERT into [BOLDBI_LogField] (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (1,N'ResourceOrder',N'SiteSettings.ResourceOrder',GETDATE(),1)
 ;
 
 INSERT into [BOLDBI_LogField] (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (2,N'EnableNotificationForDashboardOwner',N'UserNotificationSettings.UserSystemNotificationSettings.EnableNotificationForDashboardOwner',GETDATE(),1)

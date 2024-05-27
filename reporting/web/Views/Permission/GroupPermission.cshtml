@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = "[[[Group Permissions]]] - " + globalAppSettings.SystemSettings.OrganizationName;
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ManagePermissions);
@@ -11,15 +9,15 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/grouppermission.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/grouppermission.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/grouppermission.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/grouppermission.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/grouppermission.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/grouppermission.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/grouppermission.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/grouppermission.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/grouppermission.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/grouppermission.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/grouppermission.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/grouppermission.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var addGroupPermissionViewIframeUrl = "@Url.Action("AddGroupPermissionView", "permission")";
         var getPermissionEntityUrl = "@Url.Action("GetPermissionEntity", "permission")";
         var getItemScopeUrl = "@Url.Action("GetItemScope", "permission")";
@@ -57,33 +55,33 @@
 
     <input type="hidden" id="group-id-hidden" value="@Context.Request.Query["groupid"]" />
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="commandstemplate">
+    <script type="text/x-jsrender" id="commandstemplate">
         <div>
             <span><a href="javascript:void(0);" class="delete-permission" data-permission-id="{{:PermissionId}}"> [[[Remove]]]</a></span>
         </div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="accessmodetemplate">
+    <script type="text/x-jsrender" id="accessmodetemplate">
         <div class="item-name" title="{{:PermissionAccessDescription}}" data-toggle="tooltip">{{:PermissionAccessDescription}}</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="scopetemplate">
+    <script type="text/x-jsrender" id="scopetemplate">
         <div class="item-name" title="{{:ItemName}}" data-toggle="tooltip">{{:ItemName}}</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="entitytemplate">
+    <script type="text/x-jsrender" id="entitytemplate">
         <div class="grid-content" title="{{:PermissionEntityDescription}}" data-toggle="tooltip">{{:PermissionEntityDescription}}</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="accessmodeheader">
+    <script type="text/x-jsrender" id="accessmodeheader">
         <div class="item-name">[[[Access Mode]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="entityheader">
+    <script type="text/x-jsrender" id="entityheader">
         <div class="item-header">[[[Entity]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="scopeheader">
+    <script type="text/x-jsrender" id="scopeheader">
         <div class="item-header">[[[Scope]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="actionsheader">
+    <script type="text/x-jsrender" id="actionsheader">
         <div class="item-header">[[[Actions]]]</div>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var groupId = @Context.Request.Query["groupid"]
 
             $(document).ready(function () {
@@ -172,9 +170,9 @@
     </script>
     @await Html.PartialAsync("../Permission/_DeletePermission")
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 }

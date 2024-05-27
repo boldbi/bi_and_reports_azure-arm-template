@@ -1,4 +1,4 @@
-﻿<script nonce="@Context.Items["ScriptNonce"]">
+﻿<script>
     var isDataSetExistUrl = "@Url.Action("IsDatasetExists", "DataSets")";
 </script>
 <div class="dataset-form-scroller rs-scroller">
@@ -10,7 +10,7 @@
             @Html.AntiForgeryToken()
             <table unselectable="on" class="dataset-form-name-container">
                 <tr>
-                    <td><label class="e-designer-title-label">[[[DataSet Name]]]</label></td>
+                    <td><label class="e-designer-title-label">DataSet Name</label></td>
                     <td>
                         <span class="e-rptdesigner-error-icon e-rptdesigner-errorinfo e-error-tip e-rptdesigner-tab-focus" tabindex="0" data-title=""></span>
                     </td>
@@ -23,7 +23,7 @@
             </table>
             <table unselectable="on" class="dataset-form-desc-container">
                 <tr>
-                    <td><label class="e-designer-title-label">[[[Description (Optional)]]]</label></td>
+                    <td><label class="e-designer-title-label">Description (Optional)</label></td>
                     <td>
                         <span class="e-rptdesigner-error-icon e-rptdesigner-errorinfo e-error-tip e-rptdesigner-tab-focus" tabindex="0" data-title=""></span>
                     </td>
@@ -32,7 +32,7 @@
                     <td colspan="2">
                         <textarea class="e-textarea e-ejinputtext e-designer-content-label e-designer-constr-textarea dataset-form-desc" name="description"
                                   type="textarea" maxlength="1024" spellcheck="false" aria-multiline="true" aria-label="Description"></textarea>
-                        <div class="descname-info">[[[*1024 characters maximum]]]</div>
+                        <div class="descname-info">*1024 characters maximum</div>
                     </td>
                 </tr>
             </table>

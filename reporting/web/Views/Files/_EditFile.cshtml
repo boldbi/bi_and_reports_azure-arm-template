@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@model ItemDetail
+﻿@model ItemDetail
 <!DOCTYPE html>
 @{
     Layout = null;
@@ -19,16 +17,16 @@
             @ViewBag.Title
         </title>
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/edit-files.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-files.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/edit-files.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.min.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-files.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.min.js"></script>
         </environment>
-        <script nonce="@Context.Items["ScriptNonce"]">
+        <script>
             $(document).ready(function () {
                 $(document).on("click", ".PopupClose", function (e) {
                     $("#edit-file-popup").find("iframe").contents().find("html").html("");
@@ -138,12 +136,12 @@
         </form>
     </body>
 </html>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(function () {
             window.editData = {
                 ItemId: "@Model.Id",
-                Name: decodeHtmlAsString("@Model.Name"),
-                Description: decodeHtmlAsString("@Model.Description")
+                Name: "@Model.Name",
+                Description: "@Model.Description"
             }
         });
     </script>
@@ -154,17 +152,17 @@ else
     <html class="report-server">
     <head>
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/edit-files.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-files.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/edit-files.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/edit-files.min.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-files.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-files.min.js"></script>
         </environment>
 
-            <script nonce="@Context.Items["ScriptNonce"]">
+            <script>
                 $(document).ready(function () {
                     parent.$("#edit-file-popup").ejDialog("close");
                     parent.messageBox("su-document", "Update File", "File has been updated successfully.", "success", function () {

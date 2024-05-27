@@ -1,10 +1,7 @@
 ﻿<!DOCTYPE html>
 @using Newtonsoft.Json
 @using Syncfusion.Server.Base.Environment
-@using Syncfusion.Server.Base.Helpers
 @using System.Globalization;
-@using System.Web;
-
 @{
     Layout = null;
     var reportPath = string.Empty;
@@ -30,8 +27,8 @@
     var reportServiceUrl = designerServiceUrl + "/api/Designer";
     if (!string.IsNullOrWhiteSpace(ViewBag.categoryName) && !string.IsNullOrWhiteSpace(ViewBag.reportName))
     {
-        categoryName = HttpUtility.HtmlDecode(ViewBag.categoryName);
-        reportName = HttpUtility.HtmlDecode(ViewBag.reportName);
+        categoryName = ViewBag.categoryName;
+        reportName = ViewBag.reportName;
         reportPath = ViewBag.categoryName + "/" + ViewBag.reportName;
     }
 
@@ -48,7 +45,6 @@
     var isDesignerV2Enabled = ViewBag.IsDesignerV2Enabled;
     var userId = _identityResponse.User.UserId;
     var canShowSession = ServerAppConfig.IsSelfHosted && (ViewBag.CanHideSessionInEmbed == null ? true : ViewBag.CanHideSessionInEmbed != true);
-    var description = HttpUtility.HtmlDecode(ViewBag.description);
 }
 
 <html lang="en" style="height:100%;width:100%">
@@ -63,105 +59,105 @@
     {
         <title>Untitled - [[[Design Report]]] - @globalAppSettings.SystemSettings.OrganizationName</title>
     }
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+    <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     @if (ServerAppConfig.IsSelfHosted)
     {
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-designer.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/v2.0/tailwind-light/bold.report-designer.min.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/designer.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-designer.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.min.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/v2.0/tailwind-light/bold.report-designer.min.css" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/designer.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.min.css" />
             <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
         </environment>
 
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.min.js"></script>
         </environment>
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer-service.js")" crossorigin="anonymous"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/designercommon.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/designercommon.js")" crossorigin="anonymous"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/designercommon.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer-service.min.js")" crossorigin="anonymous"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/designercommon.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/designercommon.min.js")" crossorigin="anonymous"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/designercommon.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
         </environment>
-        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/reportdesigner/ej.localetexts.@string.Concat(language, ".min.js")"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/reportviewer/ej.localetexts.@string.Concat(language, ".min.js")"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/i18n/ej.culture.@string.Concat(language,".min.js")"></script>
+        <script src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/reportdesigner/ej.localetexts.@string.Concat(language, ".min.js")"></script>
+        <script src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/reportviewer/ej.localetexts.@string.Concat(language, ".min.js")"></script>
+        <script src="@reportServerResourceUrl/cdn/scripts/localization/i18n/ej.culture.@string.Concat(language,".min.js")"></script>
     }
     else
     {
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.css")" crossorigin="anonymous" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-designer.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/theme/light.min.css")" crossorigin="anonymous" />
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-designer.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/theme/light.min.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-designer.min.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
         </environment>
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/extensions/barcode.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/cdn/css/essentialjs/v2.0/tailwind-light/bold.report-designer.min.css" />
         <environment include="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/designer.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.css" />
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/designer.min.css")" crossorigin="anonymous" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/designer.min.css" />
         </environment>
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer.min.js"></script>
         </environment>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServiceCdnLink/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServiceCdnLink/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
+        <script asp-append-version="true" src="@reportServiceCdnLink/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
+        <script asp-append-version="true" src="@reportServiceCdnLink/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer-service.js")" crossorigin="anonymous"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-designer-service.min.js")" crossorigin="anonymous"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportviewer.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/v2.0/bold.reportdesigner.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-designer-service.min.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/barcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
         </environment>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/extension.config.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/qrbarcode.reportitem.js'></script>
-        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/barcode.reportitem.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/extensions/extension.config.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/extensions/qrbarcode.reportitem.js'></script>
+        <script type='text/javascript' src='@reportServiceCdnLink/extensions/barcode.reportitem.js'></script>
     }
 
     <link rel="icon" href="@Url.Content(globalAppSettings.SystemSettings.FavIcon)" onerror="if (this.href != '~/content/images/application/favicon.png') this.href = '~/content/images/application/favicon.png';" />
@@ -326,20 +322,21 @@
         </style>
     }
 
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var getUserNotificationsPartialViewResultUrl = "@Url.Action("GetUserNotificationsPartialViewResult", "notification")";
         var addCategoryUrl = "@Url.Action("addcategory", "category")";
         var rootUrlAction = "@rootUrlAction";
+        var updateDesignerUserPreference = "@Url.Action("SaveDesignerUserPreference", "User")";
         var controlId = 'container';
         var isEditReport = false;
         var relativeDateTimer = null;
 
-        var categoryName = decodeHtmlAsString("@categoryName");
+        var categoryName = "@ViewBag.categoryName";
         var categoryId = "";
         var reportId = "@ViewBag.ReportId";
-        var reportName = decodeHtmlAsString("@reportName");
+        var reportName = "@ViewBag.reportName";
         var datasetName = "@ViewBag.datasetId";
-        var description = decodeHtmlAsString("@description");
+        var description = "@ViewBag.description";
         var isPublic = "@ViewBag.isPublic";
         isPublic = isPublic.toLowerCase();
         var tags = @Json.Serialize(ViewBag.tags);
@@ -349,11 +346,14 @@
         isDraft = isDraft.toLowerCase();
         var isAdmin = "@ViewBag.IsAdmin";
         isAdmin = isAdmin.toLowerCase();
+        var canMarkReportAsPublic = "@ViewBag.CanMarkReportAsPublic";
+        canMarkReportAsPublic = canMarkReportAsPublic.toLowerCase();
         var enableCreateCategory = "@ViewBag.EnableCreateCategory";
         enableCreateCategory = enableCreateCategory === false || (typeof enableCreateCategory === 'string' && enableCreateCategory.toLowerCase() === 'false') ? false : true;
+        var warningMessage = isAdmin == "true" ? "[[[Public reports are disabled in]]] <a href='" + rootUrlAction + "/administration/report-settings' target='_blank'> [[[report settings]]]" : "[[[Public Reports are disabled by the system administrator. Please contact your system administrator to enable this.]]]";
         var isEdit = "@ViewBag.isEdit";
         isEdit = isEdit.toLowerCase();
-        var pageTitle = decodeHtmlAsString("@organizationName");
+        var pageTitle = "@organizationName";
         var readWriteDeletePermission = ej.ReportDesigner.Permission.All & ~ej.ReportDesigner.Permission.Create;
         var readWritePermission = ej.ReportDesigner.Permission.All & ~ej.ReportDesigner.Permission.Create & ~ej.ReportDesigner.Permission.Delete;
         var readPermission = ej.ReportDesigner.Permission.Shared;
@@ -382,6 +382,7 @@
             isEditReport = true;
         }
 
+        canMarkReportAsPublic = (canMarkReportAsPublic === "true") ? true : false;
         isPublic = (isPublic === "true") ? true : false;
         var isSubmit = true;
         var designerToken = "@ViewBag.AccessToken";
@@ -537,7 +538,6 @@
             $('#' + controlId + '_designer_header_reportName').val(reportName);
             designer.openAction = $.proxy(openBrowseDialog, this);
             designer.showImportData = true;
-            designer.isOnPremiseMode = @isSelfHosted.ToString().ToLower();
             if (isDraft === 'true' && isEmptyOrWhitespace(datasetName)) {
                 designer.openReportFromDraft(reportName);
             } else if (isEditReport) {
@@ -731,12 +731,13 @@
             designer.newReport(reportName);
         }
 
-        function saveAsServer(name, category, catId, reportDescription, tags) {
+        function saveAsServer(name, category, catId, reportDescription, isMarkPublic, tags) {
             var designer = $('#' + controlId).data('boldReportDesigner');
             categoryName = category;
             categoryId = catId;
             reportName = name;
             description = reportDescription;
+            isPublic = isMarkPublic;
             selectedTags = tags;
             designer.reportFileName = reportName;
             designer.saveReport(categoryName + '/' + reportName);
@@ -767,11 +768,11 @@
             var tagInfo = { tags: tags, selectedTags: selectedTags };
             var proxy = this;
             if (designer.isNewServerReport() || isDraft === 'true' || !isPublish || reportName !== designer.reportFileName) {
-                designer.openPublishDialog(description, function (args) {
+                designer.openPublishDialog(description, isPublic, function (args) {
                     if (args['type'] === 'Save') {
-                        proxy.saveAsServer(args.name, args.category, args.categoryId, args.description, args.tags);
+                        proxy.saveAsServer(args.name, args.category, args.categoryId, args.description, args.isPublic, args.tags);
                     }
-                }, enableCreateCategory, tagInfo );
+                }, canMarkReportAsPublic, enableCreateCategory, warningMessage, tagInfo );
             } else {
                 designer.saveReport();
                 $('#' + controlId + '_designer_header_reportName').val(reportName);
@@ -935,19 +936,30 @@
             });
             publishDiv.append(publishBtn);
             publishContainer.append(publishDiv);
-            divouter.append(backArrowOuterDiv, reportNameOuterDiv, draftDiv, designerViewDiv, publishContainer);
+            var toggleTag = onToggleInitialize();
+            divouter.append(backArrowOuterDiv, reportNameOuterDiv, draftDiv, designerViewDiv, publishContainer, toggleTag);
 
-            var items = [{ text: '[[[Publish As]]]', value: 'report' }];
+            var items = [{ text: 'Publish As', value: 'report' }];
             if (enableReportPart) {
-                items.push({ text: '[[[Publish Report Part]]]', value: 'reportpart' });
+                items.push({ text: 'Publish Report Part', value: 'reportpart' });
             }
             var splitButton = new ejs.splitbuttons.SplitButton({
-                items: items, content: '[[[Publish]]]',
+                items: items, content: 'Publish',
                 click: $.proxy(publishAction, this),
                 select: $.proxy(publishAction, this),
                 cssClass: 'e-designer-publish-drpdown'
             });
             splitButton.appendTo(publishBtn[0]);
+
+            var infoTooltip = new ejs.popups.Tooltip({ cssClass: 'e-designer-label-tooltip', content: window.Server.App.LocalizationContent.DesignerToggleInfo });
+            var switchObj = new ejs.buttons.Switch({
+                checked: isDesignerV2Enabled,
+                change: onToggleChange,
+                htmlAttributes: { style: "margin-right: 9px;width: 38px;height: 21px" }
+
+            });
+            switchObj.appendTo('#ReportViewToggle_input');
+            infoTooltip.appendTo("#ReportViewToggle_div");
         }
 
         function designViewChange(args) {
@@ -1099,13 +1111,69 @@
                 $('#' + controlId + '_design_header_preview').attr('disabled', 'disabled').css('opacity', '0.5');
                 $('#' + controlId + '_design_header_publish_div').css('opacity', '0.3');
                 $('#' + controlId + '_design_header_publish_btn')[0].ej2_instances[0].disabled = true;
+                $('#ReportViewToggle_div').css('opacity', '0.3');
+                $('#ReportViewToggle_input')[0].ej2_instances[0].disabled = true;
             } else {
                 $('#' + controlId + '_designer_header_reportName').removeAttr('disabled').css('opacity', '1');
                 $('#' + controlId + '_design_header_designview').removeAttr('disabled').css('opacity', '1');
                 $('#' + controlId + '_design_header_preview').removeAttr('disabled').css('opacity', '1');
                 $('#' + controlId + '_design_header_publish_div').css('opacity', '1');
                 $('#' + controlId + '_design_header_publish_btn')[0].ej2_instances[0].disabled = false;
+                $('#ReportViewToggle_div').css('opacity', '1');
+                $('#ReportViewToggle_input')[0].ej2_instances[0].disabled = false;
             }
+        }
+
+        function onToggleChange(e) {
+            var isEnabled = e.checked;
+            var toggleButton = document.getElementById("ReportViewToggle_input");
+            toggleButton = toggleButton.ej2_instances[0];
+            $.ajax({
+                type: "POST",
+                url: updateDesignerUserPreference,
+                data: { userId: @userId, isEnabled: isEnabled },
+                success: function (data) {
+                    if (data) {
+                        var params = new URLSearchParams(window.location.search);
+                        if (params.has("newlook")) {
+                            params.delete("newlook");
+                            history.pushState(null, '', '?' + params.toString());
+                        }
+                        window.location.reload();
+                    }
+                    else {
+                        toggleButton.checked = !isEnabled;
+                    }
+                },
+                error: function () {
+                    toggleButton.checked = !isEnabled;
+                    alertMessage(false, window.Server.App.LocalizationContent.DesignerVersion, window.Server.App.LocalizationContent.InternalServerError);
+                }
+            });
+        }
+
+        function onToggleInitialize(){
+            var toggleTag = ej.buildTag(
+                'div',
+                '',
+                {
+                    'display': 'inline-flex',
+                    'align-items': 'center',
+                    'float': 'right',
+                    'margin': '10px 13px',
+                    'border-right': '2px solid var(--light-grey)',
+                    'gap': '6px'
+                },
+                { 'id': 'ReportViewToggle_div', 'tabindex': '0', 'role': 'button', 'aria-label': 'ReportViewToggle' });
+            var label = ej.buildTag('span.e-designer-label', window.Server.App.LocalizationContent.NewDesigner, {},
+                {
+                    'id': 'ReportViewToggle_label'
+                }
+            );
+            toggleTag.append(label);
+            var switchTag = ejs.base.createElement('input', { attrs: { type: 'checkbox', id: 'ReportViewToggle_input', style: 'float:right;' } });
+            toggleTag.append(switchTag);
+            return toggleTag;
         }
     </script>
 </head>

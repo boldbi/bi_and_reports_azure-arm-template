@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     var globalAppSettings = _globalAppSettings;
     ViewBag.Title = "[[[CORS Settings]]] - " + globalAppSettings.SystemSettings.OrganizationName;
     ViewBag.MessageBox = false;
@@ -21,20 +19,20 @@
 
 @section styles{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/site-settings.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.css" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/site-settings.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/site-settings.min.css" />
     </environment>
 }
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/site-settings.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/site-settings.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/site-settings.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         var dashboardServerResourceUrl = "@globalAppSettings.SystemSettings.CDNLink";
         var updateCorsSettingsUrl = "@Url.Action("UpdateCorsSettings", "Administration")";
         var allowedOriginsList = @Json.Serialize(allowedOrigins);
@@ -159,9 +157,9 @@
         </div>
 </div>
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/cors-settings.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/cors-settings.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/cors-settings.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/cors-settings.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/cors-settings.min.js")" crossorigin="anonymous"></script>
+        <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/cors-settings.min.js"></script>
     </environment>
 }

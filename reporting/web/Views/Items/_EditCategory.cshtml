@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{ 
+﻿@{ 
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 }
@@ -47,8 +45,8 @@
     </div>
 </div>
 <environment include="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-category.js")" crossorigin="anonymous"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.js"></script>
 </environment>
 <environment exclude="Development,CloudDevelopment">
-    <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/edit-category.min.js")" crossorigin="anonymous"></script>
+    <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/edit-category.min.js"></script>
 </environment>

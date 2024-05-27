@@ -1,6 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
-
-@{
+﻿@{
     ViewBag.Title = "_SaveView";
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -13,33 +11,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/save-view.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/save-view.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/save-view.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/save-view.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/save-view.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/save-view.min.css" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
     @if (ViewBag.ViewerType == "v2")
     {
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view-v2.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view-v2.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.min.js"></script>
         </environment>
     }
     else
     {
         <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view.js"></script>
         </environment>
         <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view.min.js")" crossorigin="anonymous"></script>
+            <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view.min.js"></script>
         </environment>
     }
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         var rootUrlAction = "@Url.Action("", "")";
         var addViewUrl = { "web": "@Url.Action("onfiltersave", "ReportViews")", "api": "/items/views/add" };
         var getSavedViewUrl = { "web": "@Url.Action("GetViews", "ReportViews")", "api": "/items/views/get-by-item-id" };
@@ -81,7 +79,7 @@
             </div>
         </div>
     </div>
-    <script nonce="@Context.Items["ScriptNonce"]">
+    <script>
         $(document).ready(function () {
             var dashboardViewWaitingPopupTemplateId = createLoader("dashboard-view-toogle");
             parent.$("#dashboard-view-toogle").ejWaitingPopup({ template: $("#" + dashboardViewWaitingPopupTemplateId) });
@@ -89,10 +87,10 @@
         });
     </script>
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
 </body>
 </html>

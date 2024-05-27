@@ -316,23 +316,5 @@
     "BoldReportsUrl": "/enterprise-reporting/administrator-guide/manage-app-settings/content-security-policy/",
     "RedirectOnPremiseId": 4078,
     "RedirectCloudId": 8038
-  },
-  {
-    "UrlName": "ErrorAndDebugLogs",
-    "BoldReportsUrl": "/enterprise-reporting/administrator-guide/faq/where-can-i-find-the-error-and-debug-log-files/",
-    "RedirectOnPremiseId": 4079,
-    "RedirectCloudId": null
-  },
-  {
-    "UrlName": "ETL",
-    "BoldReportsUrl": "/working-with-data-sources/working-with-bold-etl/",
-    "RedirectOnPremiseId": 4081,
-    "RedirectCloudId": null
-  },
-  {
-    "UrlName": "PublicReportsDeprecated",
-    "BoldReportsUrl": "/enterprise-reporting/designer-guide/manage-content/reports/public-report/",
-    "RedirectOnPremiseId": 4082,
-    "RedirectCloudId": null
   }
 ] 

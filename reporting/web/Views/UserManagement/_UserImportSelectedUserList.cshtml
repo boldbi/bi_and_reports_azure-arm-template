@@ -20,12 +20,12 @@
 <div id="error-value" class="col-xs-12">
     <span class="error-message"></span>
 </div>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-detail-validation">
+<script type="text/x-jsrender" id="user-detail-validation">
     {{if IsDuplicated}}
     <span class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></span>
     {{/if}}
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-row-template">
+<script type="text/x-jsrender" id="checkbox-row-template">
     {{if IsDuplicated}}
     <input disabled type="checkbox" class="checkbox-row-disabled material-checkbox" data-checked-id="{{:Index}}" id="row-check{{:Index}}" />
     <input name="row-check{{:Index}}" type="hidden" value="false">
@@ -37,28 +37,28 @@
     {{/if}}
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="checkbox-header-template">
+<script type="text/x-jsrender" id="checkbox-header-template">
     @Html.CheckBox("checkbox-header", new { @class = "material-checkbox" })
     @Html.Label("checkbox-header", " ", new { @class = "checkbox-header-label" })
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="full-name-header">
+<script type="text/x-jsrender" id="full-name-header">
     <span class="item-header">[[[Name]]]</span>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="user-name-header">
+<script type="text/x-jsrender" id="user-name-header">
     <span class="item-header">[[[Username]]]</span>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="last-name-header">
+<script type="text/x-jsrender" id="last-name-header">
     <div class="item-header">[[[Last Name]]]</div>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="first-name-header">
+<script type="text/x-jsrender" id="first-name-header">
     <div class="item-header">[[[First Name]]]</div>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="email-id-header">
+<script type="text/x-jsrender" id="email-id-header">
     <span class="item-header">[[[Email Address]]]</span>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+<script type="text/javascript">
     var gridData = @Json.Serialize(ViewBag.ExternalDatabaseUsers);
 </script>
 

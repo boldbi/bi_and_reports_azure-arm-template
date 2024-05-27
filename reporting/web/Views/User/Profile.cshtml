@@ -1,7 +1,5 @@
 ﻿@using System.Configuration
-@using Syncfusion.Server.Base.Helpers
 @model NotificationSettings
-
 @{
     var globalAppSettings = _globalAppSettings;
     var identityResponse = Context.RequestServices.GetRequiredService<ServerPrincipal>();
@@ -23,14 +21,14 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/profile.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/profile.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/profile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/profile.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/profile.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/profile.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/profile.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/profile.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/profile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/profile.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/profile.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/profile.min.js"></script>
     </environment>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         var dashboardServerResourceUrl = "@globalAppSettings.SystemSettings.CDNLink";
         var updateprofilepictureUrl = "@Url.Action("updateprofilepicture", "User")";
         var isAdmin = @Json.Serialize(ViewBag.IsAdminAccount);
@@ -41,6 +39,7 @@
         var deleteavatarUrl = "@Url.Action("deleteavatar", "UserManagement")";
         var getdefaultavatarUrl = "@Url.Action("getdefaultavatar", "User")";
         var saveUserNotificationSettingsUrl = "@Url.Action("savenotificationsettings", "User")";
+        var updateViewerDesignerUserPreference = "@Url.Action("SaveViewerDesignerUserPreference", "User")";
 
         var successMessage = "@isProfileUpdateSuccess";
         var failureMessage = "@isProfileUpdateFailure";
@@ -212,6 +211,59 @@
                 </div>
             </div>
             @await Html.PartialAsync("_UserNotificationPreference")
+            <div id="user-preference-settings" class="col-md-12 col-lg-12 col-sm-12 col-xs-12 no-margin admin-page-body">
+                <input type="hidden" class="page-title" data-page="Viewer / Designer preference">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="user-preference-heading-form-div">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding" id="section-heading">
+                        [[[Viewer / Designer preference]]]
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding" id="user-preference-form-div">
+                    <form class="col-xs-12 col-sm-12 col-md-12 col-lg-12 user-preference-form no-padding" autocomplete="off">
+                        <div class="user-preference-table col-sm-8 col-xs-12" cellpadding="20">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding margin-top16">
+                                <label valign="top" class="user-preference-content col-xs-12 col-sm-5 col-md-6 col-lg-5 no-padding text-right">
+                                    [[[Switch to the new Viewer]]]
+                                    <div id="user-preference-info-tag">
+                                        <span class="dropdown-toggle cursor-type" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                        <div class="col-xs-2 dropdown-menu" id="tooltip-info" role="menu">
+                                            [[[Toggle between the old and new viewer]]]
+                                        </div>
+                                    </div>
+                                </label>
+                                <div class="col-xs-11 col-sm-6 col-md-4 col-lg-3 no-padding dropdown">
+                                    <span class="material-switch text-left">
+                                        <input class="selectpicker ej2-user-preference-toggle-disabled" type="checkbox" id="user-profile-report-view-input" @(ViewBag.IsViewerV2Enabled ? "checked" : string.Empty) />
+                                        <label for="user-profile-report-view-input" class="label-primary"></label>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding margin-top16">
+                                <label class="col-xs-12 col-sm-5 col-md-6 col-lg-5 no-padding user-preference-content text-right">
+                                    [[[Switch to the new Designer]]]
+                                    <div id="user-preference-info-tag">
+                                        <span class="dropdown-toggle cursor-type" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                        <div class="col-xs-2 dropdown-menu" id="tooltip-info" role="menu">
+                                            [[[Toggle between the old and new designer]]]
+                                        </div>
+                                    </div>
+                                </label>
+                                <div class="hidden-visibility col-xs-11 col-sm-6 col-md-4 col-lg-3 no-padding dropdown">
+                                    <span class="material-switch text-left">
+                                        <input class="selectpicker ej2-user-preference-toggle-disabled" type="checkbox" id="user-profile-report-design-input" @(ViewBag.IsDesignerV2Enabled ? "checked" : string.Empty) />
+                                        <label for="user-profile-report-design-input" class="label-primary"></label>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="edit-ej2-preference-button" class="col-sm-4 col-xs-12 no-padding">
+                            <input type="button" class="secondary-button app-btn-secondary pull-right" id="edit-ej2-user-preference-settings" title="" value="[[[Edit]]]">
+                            <input type="button" class="secondary-button app-btn-secondary pull-right" title="" id="cancel-ej2-user-preference-settings" value="[[[Cancel]]]">
+                            <input type="button" class="primary-button app-btn-primary pull-right inactive-content" id="update-ej2-user-preference-settings" title="" value="[[[Save]]]">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <input type="hidden" id="image" value="" />

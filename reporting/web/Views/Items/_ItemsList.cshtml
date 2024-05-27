@@ -29,7 +29,7 @@
         currentSection = ViewBag.sectionName;
     }
 }
-<script nonce="@Context.Items["ScriptNonce"]">
+<script>
     var copyIframeUrl = "@Url.Action("copyviewitem", "items")";
     var moveIframeUrl = "@Url.Action("moveviewitem", "items")";
     var versionIframeUrl = "@Url.Action("itemversion", "items")";
@@ -53,26 +53,26 @@
 <div id="items" class="item-grid">
 </div>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="favoriteHeader">
+<script type="text/x-jsrender" id="favoriteHeader">
     <div class=""></div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemNameHeader">
+<script type="text/x-jsrender" id="itemNameHeader">
     <div class="item-name">[[[Name]]]</div>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="descriptionHeader">
+<script type="text/x-jsrender" id="descriptionHeader">
     <div class="item-header">[[[Description]]]</div>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="categoryHeader">
+<script type="text/x-jsrender" id="categoryHeader">
     <div class="item-header">[[[Category]]]</div>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="ownerHeader">
+<script type="text/x-jsrender" id="ownerHeader">
     <div class="item-header">[[[Owner]]]</div>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="lastModifiedHeader">
+<script type="text/x-jsrender" id="lastModifiedHeader">
     <div class="item-header">[[[Last Modified]]]</div>
 </script>
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="Description">
+<script type="text/x-jsrender" id="Description">
     <div class="item-description" title="{{:~renderDoubleQuotes(Description)}}" data-toggle="tooltip" data-placement="top">
         <span>
             {{:Description}}
@@ -80,25 +80,25 @@
     </div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="Category">
+<script type="text/x-jsrender" id="Category">
     <span title="{{:CategoryName}}" data-toggle="tooltip" data-placement="top">
         {{:CategoryName}}
     </span>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="CreatedByDisplayName">
+<script type="text/x-jsrender" id="CreatedByDisplayName">
     <span title="{{:CreatedByDisplayName}}" data-toggle="tooltip" data-placement="top">
         {{:CreatedByDisplayName}}
     </span>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="modifiedDate">
+<script type="text/x-jsrender" id="modifiedDate">
     <div title="{{:ModifiedDate}}" data-toggle="tooltip" data-placement="top">
         {{:ModifiedDate}}
     </div>
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="favoriteItem">
+<script type="text/x-jsrender" id="favoriteItem">
     {{if ItemType=="@((int)ItemType.Dashboard)"}}
     {{if IsFavorite== true}}
     <div class="su su-favorite favorite favoriteItem" title="{{:Favorite}}" data-toggle="tooltip" data-placement="top" data-itemid="{{:Id}}" data-value="False" data-original-title="[[[Remove from favorites]]]">
@@ -111,7 +111,7 @@
 
 </script>
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="itemName">
+<script type="text/x-jsrender" id="itemName">
     {{if ItemType == "@((int)ItemType.Dashboard)"}}
     {{if !IsChildDashboard}}
     <a class="item-link col-lg-12 col-md-12 col-sm-12 col-xs-12 disabled" href="{{if IsDraft}} {{:~draftDesignerEditUrlEncode(Name, Id)}} {{else}} {{:~urlWithSection(CategoryName, Name, Id)}} {{/if}}" data-culture="/@culture" role="tab" data-toggle="tooltip" data-placement="@(!isMobile ? "right" : "auto top")" data-name="{{:Name}}" data-itemid="{{:Id}}" data-category-name="{{:CategoryName}}" data-isdraft="{{:IsDraft}}" data-html="true" data-container="body" title="[[[Name]]] : {{:Name}} <br> {{if Description}} [[[Description]]]: {{:~renderDoubleQuotes(Description)}} <br> {{/if}} {{if CategoryName}} [[[Category]]] : {{:CategoryName}} <br> {{/if}} [[[Added Date]]] : {{:CreatedDate}}">
@@ -781,11 +781,11 @@
 <input type="hidden" value="@ViewContext.RouteData.Values["category"]" id="url-category" />
 <input type="hidden" value="@ViewContext.RouteData.Values["dashboard"]" id="url-name" />
 
-<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript" language="javascript">
+<script type="text/javascript" language="javascript">
     var gridName = $("#item-grid-container").attr("data-grid-name");
     var gridHeight = ($(window).height() - ($(".item-navigation").outerHeight() + $("#header-area").outerHeight() + $("#category-listing").outerHeight())) - 0;
     var toolbarItems = [{ templateID: "#OpenTemplate" }, { templateID: "#openwithdashboarddesignerTemplate" }, { templateID: "#DownloadTemplate" }, { templateID: "#Separator1" }, { templateID: "#CanEditTemplate" }, { templateID: "#CanDeleteTemplate" }, { templateID: "#Separator2" }, { templateID: "#MoveTemplate" }, { templateID: "#CopyTemplate" }, { templateID: "#CloneTemplate" }, { templateID: "#Separator3" }, { templateID: "#ScheduleTemplate" }, { templateID: "#Separator4" }, { templateID: "#VersionTemplate" }];
-    var categoryName = decodeHtmlAsString("@categoryName");
+    var categoryName = "@categoryName";
     var filters = { filterType: "menu" };
     if ("@gridName" === "dashboards" && categoryName !== "") {
         filters = { filterType: "menu", filteredColumns: [{ field: "CategoryName", operator: "equal", value: categoryName }] };

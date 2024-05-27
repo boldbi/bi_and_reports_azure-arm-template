@@ -1,6 +1,4 @@
 ﻿@using System.Configuration
-@using Syncfusion.Server.Base.Helpers
-
 @{
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -28,15 +26,15 @@
 
 @section scripts{
     <environment include="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-profile.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-management-profile.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management-profile.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-management-profile.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-profile.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management-profile.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-profile.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-management-profile.min.css")" crossorigin="anonymous" />
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management-profile.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/user-management-profile.min.js")" crossorigin="anonymous"></script>
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-management-profile.min.css" />
+        <script asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/user-management-profile.min.js"></script>
     </environment>
 
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
+    <script type="text/javascript">
         var dashboardServerResourceUrl = "@globalAppSettings.SystemSettings.CDNLink.TrimEnd('/')";
         var checkMailSettingUrl = "@Url.Action("checkmailsettingsexist", "Administration")";
         var activateDeactivateUserUrl = "@Url.Action("ActivateDeactivateUser", "UserManagement")";
@@ -135,24 +133,24 @@
             });
         });
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="attribute-name-template">
+    <script type="text/x-jsrender" id="attribute-name-template">
         <span class="grid-content" title="{{:Name}}" data-toggle="tooltip">{{:Name}}</span>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="attribute-description-template">
+    <script type="text/x-jsrender" id="attribute-description-template">
         <span class="grid-content" title="{{:Description}}" data-toggle="tooltip">{{:Description}}</span>
     </script>
-    <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="attribute-value-template">
-        <span class="grid-content" title="{{:Value}}" data-toggle="tooltip">{{:Value}}</span>
+    <script type="text/x-jsrender" id="attribute-value-template">
+        <span class="grid-content" title="{{attr:Value}}" data-toggle="tooltip">{{:Value}}</span>
     </script>
 }
 
 @section MainSection {
     @await Html.PartialAsync("_UserMenu")
     <environment include="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
-        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
+        <script asp-append-version="true" src="~/js/localizationcontent.js?c=@System.Globalization.CultureInfo.CurrentCulture"></script>
     </environment>
     <div id="view-user-profile">
         <div id="view-profile-info">
@@ -350,7 +348,7 @@
                             <div id="UserAttributesGrid">
                             </div>
                         </div>
-                        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
+                        <script type="text/x-jsrender" id="options">
                             <div class="user-hover-options">
                                 {{if AttributeType ==  @((int)AttributeType.User)}}
                                 <a href="javascript:void(0);" title="[[[Edit]]]" id="edit-user-attribute" data-toggle="tooltip" data-id="{{:Id}}" data-name="user" onclick="editCustomAttribute(this)">
@@ -369,7 +367,7 @@
                                 {{/if}}
                             </div>
                         </script>
-                        <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="inherited">
+                        <script type="text/x-jsrender" id="inherited">
                             {{if AttributeType ==  @((int)AttributeType.Group)}}
                             <div title="{{:Inherited}}">
                                 <a href="@Url.Action("ViewGroup", "Group")/{{:GroupId}}?tab=attributes">{{:Inherited}}</a>
