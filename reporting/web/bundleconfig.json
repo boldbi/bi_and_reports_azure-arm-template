@@ -2428,7 +2428,7 @@
       "wwwroot/Scripts/scheduler/ScheduleRecipients.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ],
-    "integrity": "sha384-gAED8yOms/XeusNIGXYRZP0l9LDSNdNBP1PJwDxYrlEq5CKUTGa2SQctiORKWls3"
+    "integrity": "sha384-ATnON0gyX9txQ/BbMco1G+7g9FcVan7OssPIXWXU4AuO0B9GnMICOx9T6sF1eEs7"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/emaileditor.min.js",
