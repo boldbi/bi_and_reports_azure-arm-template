@@ -46,12 +46,14 @@ Please follow the below step to create combined Bold BI and Bold Reports Azure w
 9.	Bold BI and Reports Azure App service(web app) deployment gets started. This may take 5-10 minutes to complete the deployment.
 10.	We have created an app service plan for the web app which will be in “Basic – B1” by default. Learn more about App service plans [here](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview). Bold BI web app does not support Free or Shared app service plans.
 Bold BI and Reports supports Basic, Standard, and Premium App Service plans in the Azure.
-11. 	The minimum recommended App Service plan to run the Bold BI application is the premium V3P2V3 plan. Please refer to the official Microsoft documentation on scaling an App Service plan.
-	![az-app-scaleup](az-app-scaleup.png)
+11. The minimum recommended App Service plan to run the Bold BI application is the Premium v3 P1V3 plan. Please refer to the official Microsoft documentation on scaling an App Service plan.
 
-You can find information on how to scale up here: https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale
+	![image](https://github.com/user-attachments/assets/2f8c6613-b890-460f-83fc-93d2ff92858e)
 
-**Note:** After you increase the plan, make sure to restart the web service. Restarting the web service will ensure that the new scaling settings are applied correctly and that the Bold BI application runs optimally on the upgraded plan. If you need to scale down, refer to this link for scaling out: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-how-to-scale
+
+	To scale up, visit: https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale
+
+	**Note:** After you increase the plan, make sure to restart the web service. Restarting the web service will ensure that the new scaling settings are applied correctly and that the Bold BI application runs optimally on the upgraded plan. If you need to scale down, refer to this link for scaling out: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-how-to-scale
 
 ## Configure Application 
 
