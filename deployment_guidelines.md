@@ -5,26 +5,26 @@ Please follow the below step to create combined Bold BI and Bold Reports Azure w
 1.	Login to Azure portal: https://portal.azure.com.
     
 
-2.	Click on the “New” in the left menu.
+2.	Click on the “Create a resource” in the left menu.
 
-    ![Crete new template](images/create-new-template.jpg)    
+    ![Create resources](images/create-resources.png)   
 
 3.	Search “Template deployment” in the marketplace and select Template deployment.
 
-    ![Choose template](images/choose-template-deployment.jpg)      
+    ![Search template](images/search-template-deployment.png)     
 
 4.	Then click on the create button.
 
-    ![Click create template deployment](images/click-create-template.jpg)    
+      ![Create template](images/template-create.png)  
 
 5.	Now select “Build your own template in the editor” in the “Custom deployment” window.
 
-    ![Choose custom deployment](images/choose-own-template-editor.jpg)
+    ![Choose custom deployment](images/build-own-template.png)
     
 6.	[Click here](https://raw.githubusercontent.com/boldbi/bi_and_reports_azure-arm-template/main/armtemplates/boldbi_v7.10.16_boldreports_v6.1.45/BoldServicesAppServiceTemplate.json) to download the ARM template file.
 7.	Copy all the contents in the template file and replace them in the “Edit template” window. Then click on the save button.
 
-    ![Editor template window](images/edit-template-window.jpg)
+    ![Edit template and save](images/save-template.png)
 
 8.	Fill the form as instructed below to complete the deployment steps.
 
@@ -40,17 +40,17 @@ Please follow the below step to create combined Bold BI and Bold Reports Azure w
 
 	**Storage account type**: This is optional if you have chosen File storage in Storage type and mandatory for Blob storage. Learn more about storage account types [here](https://docs.microsoft.com/en-us/azure/storage/blobs/object-replication-overview).
 
-    Click the agreement checkbox and click on the purchase to deploy the Bold BI and Reports web app.
-    ![](custodeployment-credentials.jpg)
+    Click on the Review and Create to deploy the Bold BI and Reports web app.
+    
+    ![Review and  create](images/reviewandcreate.png)
 
 9.	Bold BI and Reports Azure App service(web app) deployment gets started. This may take 5-10 minutes to complete the deployment.
-10.	We have created an app service plan for the web app which will be in “Basic – B1” by default. Learn more about App service plans [here](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview). Bold BI web app does not support Free or Shared app service plans.
-Bold BI and Reports supports Basic, Standard, and Premium App Service plans in the Azure. The minimum recommended App Service plan to run the application is the Basic plan.
-To get better performance, can scale up the App Service plan from Basic to Standard or Premium plans. Please find the below documentation links on how to scale up and scale out the App Service plan.
 
-Scale-up: https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale
+10. We have created an app service plan for the web app, which will be set to "Basic - B1" by default. For the common deployment (BI and Reports), we require a minimum of 2 vCPU and 8 Memory(GB) of memory. Therefore, we kindly request that you scale the app service plan to either Standard or Premium after the deployment. You can find the recommended Azure app service plans for development and production environments in the following link: ([DEV, TEST, and PROD Environments – App Service | Bold BI Docs]( https://help.boldbi.com/deploying-bold-bi/deploying-on-azure-app-service/recommendations/)). To learn more about app service plans, please click [here]( https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview). Additionally, you can refer to the documentation links below for instructions on how to scale up and scale out the App Service plan.
 
-Scale-out: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-how-to-scale
+	Scale-up: https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale
+
+	Scale-out: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-how-to-scale
 
 ## Configure Application 
 
