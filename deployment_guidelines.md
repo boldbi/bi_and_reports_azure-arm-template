@@ -46,9 +46,11 @@ Please follow the below step to create combined Bold BI and Bold Reports Azure w
 
 9.	Bold BI and Reports Azure App service(web app) deployment gets started. This may take 5-10 minutes to complete the deployment.
 
-10. Now the Bold BI and Reports application is ready to use. You can access the Azure App Service domain in your browser. If you encounter any accessibility issues, they may occur due to the lower plan, as the Bold BI and reports deployment is on the Basic B1 plan by default. For better performance and accessibility, you can upgrade the plan to Basic B2, Standard S2, Premium P2, or higher. Learn more about [App Service plans](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale).
+10. We have created an app service plan for the web app, which will be set to "Basic - B1" by default. For the common deployment (BI and Reports), we require a minimum of 2 vCPU and 8 Memory(GB) of memory. Therefore, we kindly request that you scale the app service plan to either Standard or Premium after the deployment. You can find the recommended Azure app service plans for development and production environments in the following link: ([DEV, TEST, and PROD Environments – App Service | Bold BI Docs]( https://help.boldbi.com/deploying-bold-bi/deploying-on-azure-app-service/recommendations/)). To learn more about app service plans, please click [here]( https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview). Additionally, you can refer to the documentation links below for instructions on how to scale up and scale out the App Service plan.
 
-**Note:** After you increase the plan, make sure to restart the web service. Restarting the web service will ensure that the new scaling settings are applied correctly and that the Bold BI application runs optimally on the upgraded plan. If you need to scale down, refer to this link for [scaling out](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-how-to-scale). The Bold BI web app does not support Free or Shared App Service plans.
+	Scale-up: https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale
+
+	Scale-out: https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-how-to-scale
 
 ## Configure Application 
 
