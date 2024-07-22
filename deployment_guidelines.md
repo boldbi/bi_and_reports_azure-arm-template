@@ -46,7 +46,7 @@ Please follow the below step to create combined Bold BI and Bold Reports Azure w
 
 9.	Bold BI and Reports Azure App service(web app) deployment gets started. This may take 5-10 minutes to complete the deployment.
 
-10. Now the Bold BI application is ready to use. You can access the Azure App Service domain in your browser. If you encounter any accessibility issues, they may occur due to the lower plan, as the Bold BI and reports deployment is on the Basic B1 plan by default. For better performance and accessibility, you can upgrade the plan to Basic B2, Standard, Premium P2, or higher. Learn more about [App Service plans](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale).
+10. Now the Bold BI and Reports application is ready to use. You can access the Azure App Service domain in your browser. If you encounter any accessibility issues, they may occur due to the lower plan, as the Bold BI and reports deployment is on the Basic B1 plan by default. For better performance and accessibility, you can upgrade the plan to Basic B2, Standard S2, Premium P2, or higher. Learn more about [App Service plans](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-scale).
 
 **Note:** After you increase the plan, make sure to restart the web service. Restarting the web service will ensure that the new scaling settings are applied correctly and that the Bold BI application runs optimally on the upgraded plan. If you need to scale down, refer to this link for [scaling out](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-how-to-scale). The Bold BI web app does not support Free or Shared App Service plans.
 
