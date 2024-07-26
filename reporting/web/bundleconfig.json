@@ -14,7 +14,7 @@
       "wwwroot/Styles/scss/pages/Accounts/Footer.css",
       "wwwroot/Styles/scss/pages/notification/user-notification.css"
     ],
-    "integrity": "sha384-DI1Q++5IUf2C1eHDxIU+X2ZV32AnVQ4QKw8FIDpVHuRDCH4Gx39imhAgYnzIUiNW"
+    "integrity": "sha384-AqGr/yKfrhn2PdfkB4Qk9lmReyZ62gL66cwfivULnmZLRnCmihuawaxxzOVXwaFZ"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/layout.min.js",
@@ -141,7 +141,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-tUSA1CUqM0YGnJja4h4zy2LvzQAgKL3Zxt3Pv8ESZjMQVKoDf5xNViMHmYh+ZpML"
+    "integrity": "sha384-GRxCfT375HvVxMfSAc9jm9LMAItXO9vOQUIV5aiA8abF54zu2x1RT8tlGogEslTs"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/add-report.min.js",
@@ -196,7 +196,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-Ob4wB9xLhnmLjPbBvKps1pxf2CSk/YmL3neWs7LWgDchXv8QHBE8PpePZ3EkO2JJ"
+    "integrity": "sha384-BPhn0znChgdr3c0XIX57/vsglEPRgXbkEUyJ767bLcFYLD1wqR811mYqC9vJYbFB"
   },
   {
     "outputFileName": "wwwroot/cdn/css/select-datasource.min.css",
@@ -214,7 +214,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-IZOpwX9aPQqXqfW1JifiZRFdRCXIwoejuCrgBBIO3BELms31xXxJfmTNKKS0CUas"
+    "integrity": "sha384-Lm9SHCn8z9Svbj42gjDzsM8z1KI+L918Us1gr7LNZxQxnBX4J17T6B4Gyd7D0nln"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/select-datasource.min.js",
@@ -261,7 +261,7 @@
       "wwwroot/Styles/scss/pages/AddDataSource.css",
       "wwwroot/Styles/scss/pages/SelectDataSource.css"
     ],
-    "integrity": "sha384-2rj/iUlpqMXP6ddUFjNpeeXtLinkW7pZvBBB0iZlM7CK8bH++9HqysP9TjmeM3vd"
+    "integrity": "sha384-Qb8rdCugdjGNzxbvN2EyY3+vDycQ5Aps/ulAKw7EQlxZbOKakZbTRc4YSPybI0cm"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/dataset-datasource.min.js",
@@ -308,7 +308,7 @@
       "wwwroot/Styles/scss/pages/Dataset.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-x2vgJ/y/avRRe17zUD1sKx8U8DXiTzl/QsUqrT4gJDJBpHjwEgCkXcw04mpauNIS"
+    "integrity": "sha384-TD79HWU7bOdSWtyRiaAfX9qndLXoPh7DBhjtMcYWjTe1R00bSfjUq/g2ou9MBJTu"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/select-dataset.min.js",
@@ -352,7 +352,7 @@
       "wwwroot/Styles/scss/pages/DataSets/EditDataset.css",
       "wwwroot/Styles/scss/pages/Dataset.css"
     ],
-    "integrity": "sha384-SpVX0KM2N6i89V//kuBvTb87esSCbhjLupe9hOOse8HaSpyL6OANMgyzmG+4UNnc"
+    "integrity": "sha384-voI0VFz3zbpHw8yBqHAMUoy1rh3GrxgCJuco/v903mkKXDVPAHQ/iNBn2HxOIabg"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/edit-datasets.min.js",
@@ -411,7 +411,7 @@
       "wwwroot/Styles/scss/pages/Dataset.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-NdsOEmgc/CVzUFkeH7WiPY0/LGKXkVX0Se6EJwXr/6DKMLijscwfYlHBpC04cv5z"
+    "integrity": "sha384-pERsax8YCPFlAdjltuR+qkovWmHzyGuaXdxW9LMRneuqHI4lXILvxpErN6uwRU1X"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/add-datasets.min.js",
@@ -451,7 +451,7 @@
       "wwwroot/Styles/scss/pages/Dataset.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-AL0THCDjahsrNpoqfiM4FhZRje9I55Ng3B5bdFe6p2VArlLB1uvgA1Pzn7DmfBuO"
+    "integrity": "sha384-qeUgnrlJTkAq3DLqq2iN0P6f6vyM2h5awjkzvoU8eHzPmhiyaPCI4+e5rRb8fOjh"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/datasource-page.min.js",
@@ -611,7 +611,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Items.css"
     ],
-    "integrity": "sha384-PW/oyc1PzqKaFQPrmbhAyHPAfLwJ+ZKCPMaLoF43IikCBqdqQ9uFOpiqgat80f4C"
+    "integrity": "sha384-pyYwi6BehxZwmbmXFUc+il7lrI5wIsJ+vA0BGK2W8RlamJw48zLluyN8yC/wBTVn"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/widget-page.min.js",
@@ -768,7 +768,7 @@
       "wwwroot/Styles/scss/pages/ItemsList.css",
       "wwwroot/Styles/scss/pages/Items.css"
     ],
-    "integrity": "sha384-Z0qZPGcD+S3qPLX3KKeJvWMiJt2IVHLCqq9I+J1SOyW7FqsItF1PIzZgweoLZn75"
+    "integrity": "sha384-YWJJbg08rR/I3H/6lqr2T98lIJoRTWgTJz/0cgZLqfzvhZp/5oEIsuCKerTcG2Or"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/add-files.min.js",
@@ -800,7 +800,7 @@
       "wwwroot/Styles/scss/pages/ItemsList.css",
       "wwwroot/Styles/scss/pages/Items.css"
     ],
-    "integrity": "sha384-7MLiYj7zGD4g929Dese6acCtJpvX4PiU1BWoD/vhrOlzIUdN/1UTLlkcNFgCaaKW"
+    "integrity": "sha384-DtNYhNog6vjwUj7AGK4fUSdai8Bog9nDBUvkt3CzQ3/CFY36vEtdRYokUFs9TsM6"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/edit-files.min.js",
@@ -827,7 +827,7 @@
     "inputFiles": [
       "wwwroot/Styles/scss/pages/Items.css"
     ],
-    "integrity": "sha384-Jac4NKQNwlIo0l2Ddx8shO0dpNUmB/r2mIdLQPiF/PkclcH35Pip6w34KI5Fsj21"
+    "integrity": "sha384-DOmpS8gl8RRFH17Wn1Nh0drk1rzvFvBDrekbY1YiI1Tygs2xUKCwpkpmTiakLuYY"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/category-page.min.js",
@@ -849,7 +849,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-9DU4I6ldtkJHL2Uy/GYLTdONLYT2BFIzPs0n/At426PAr7SxvXttmBbddLE0onzo"
+    "integrity": "sha384-O0o6pWzIEju+rD4VCfBAkEW7TQpYKDObg1ulPUUyS/vusJ12jbZz3QQEoGQxpYQn"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/add-category.min.js",
@@ -858,7 +858,7 @@
       "wwwroot/Scripts/Category/AddCategory.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ],
-    "integrity": "sha384-ls5RfD6MKqXbPNr2+vivxv64eG9o/0VqVmgCFD7dSBOL15WdNsWn3pKLfxZ90h7P"
+    "integrity": "sha384-NKb22RCZY6vEBNXljJo/P0IATXAPUW2lA0h30HyiO+Mu/6rVBHO4w/L7CkTwTM8e"
   },
   {
     "outputFileName": "wwwroot/cdn/css/edit-category.min.css",
@@ -869,7 +869,7 @@
       "wwwroot/Styles/scss/pages/CategoryDialog.css",
       "wwwroot/Styles/scss/pages/Dialogs.css"
     ],
-    "integrity": "sha384-ZLmp2OtFNDKQ7+K1gWbLP4uR7szarb0f/MpgByVwdWb0fgGv9hjpCMu4GKKVyuWM"
+    "integrity": "sha384-OBY3Ffy/OnVfqe4zGK8KcXgb6WuXsJoOSSlANriczy3z+hwkj1aef8LFhOeWnBC6"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/edit-category.min.js",
@@ -934,7 +934,7 @@
       "wwwroot/Styles/scss/pages/Scheduler.css",
       "wwwroot/Styles/scss/pages/ProcessOptionScheduler.css"
     ],
-    "integrity": "sha384-w4gX8Fk0eGIJ6vs6wWv4tWT4gDBmq5PIXLgUyJMV4OeSaNcBYwPzfKdld9rkKrDM"
+    "integrity": "sha384-czeb1IHatskN2Xk7qa4M+dqqIvIAwIaVySnzjhYuvmQsgix0Dj/4klXvH0RL9RoI"
   },
   {
     "outputFileName": "wwwroot/cdn/css/report-process-options.min.css",
@@ -955,7 +955,7 @@
       "wwwroot/Styles/scss/pages/Scheduler.css",
       "wwwroot/Styles/scss/pages/ProcessOptionScheduler.css"
     ],
-    "integrity": "sha384-4VbMMx+3MI/QlsVfkCw5k+LI0GsN2z9+qR55sXm4iP7H7PsckDynmMSGozT9j7T/"
+    "integrity": "sha384-fsWwnzrY+Jaypoj6C/XFI89Q5jPelVGJetxje4WIFpp4fiq+yIecCmGU5//RTVjm"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/report-process-options.min.js",
@@ -1042,7 +1042,7 @@
       "wwwroot/Styles/scss/pages/ItemsView.css",
       "wwwroot/Styles/scss/pages/Components/RadioButton.css"
     ],
-    "integrity": "sha384-e49m5GTvQJTrJsFtkoNDLQEkh+WAuO9ozCYnYPYZZD0275USpt7wCSi8ftcXlQDO"
+    "integrity": "sha384-qc+4sX9V05ioH9z9k8r386IbxQl3Dd5bcTmIlBEzUw4OjgS9VxO3jmFql0q6XOiP"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/tile-dashboards-page.min.js",
@@ -1071,16 +1071,17 @@
       "wwwroot/Scripts/launcher/launcher.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ],
-    "integrity": "sha384-2E1K5/mhjP3aMqWIsd0mNjHlAsNMgaogZCJvtBKKeRS4bUZ4iKe/IXavTWlN35qL"
+    "integrity": "sha384-l4r4kxDU/csyBNBDgGsYEAWO/D5YgzAylv/rKhb0e1+wqeE21ksRyfn5guuzKE4D"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/itemaction.min.js",
     "inputFiles": [
       "wwwroot/Scripts/jQuery/jquery.validate.min.js",
       "wwwroot/Scripts/Items/ItemActions.js",
+      "wwwroot/Scripts/Items/external.sites.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ],
-    "integrity": "sha384-Hkw7PlN3ZQHHe/P/+4iJOujUtYOqwQ7AL+11aNuMRdnLtjBESedvDxFvXh2wGtX7"
+    "integrity": "sha384-7Lp7PsqKRctvNAprUeH1Zjc4zmyDdLe16k0ZzP908BZ6g/MZ55clFEUcuz262HKC"
   },
   {
     "outputFileName": "wwwroot/cdn/css/itemversion.min.css",
@@ -1143,7 +1144,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-tmtQ7Vboh7cwHczzA7Tx4fnEe8gBjIjshElHmb1+S1alUvEDKS+eBzgMQdlFzZp7"
+    "integrity": "sha384-UfrtZhYsceXXPD4zt4Ur4mSiGz4BCeaI3uc9qhYhyPkKocNUAnY5iEA9PUjr7PLm"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/itempermission.min.js",
@@ -1245,7 +1246,7 @@
     "inputFiles": [
       "wwwroot/Scripts/Core/LocalizationContent.js"
     ],
-    "integrity": "sha384-kNep2OROo7q6NTVLgDUWs54Hs7YoN1b4u7KGb/nkPMad8VNqvQ5gIfWWHUSfQSjj"
+    "integrity": "sha384-osGGO0McWJtxQez02sW7z+LYycQUkk4DOUvEi30RhpM79Q7BbDBaGpfCzwWIC0BN"
   },
   {
     "outputFileName": "wwwroot/cdn/css/adduserpermission.min.css",
@@ -1256,7 +1257,7 @@
       "wwwroot/Styles/scss/pages/Permission.css",
       "wwwroot/Styles/scss/pages/NewMaster.css"
     ],
-    "integrity": "sha384-O7a/pH41ABV4dztBcydOwjA+WP3w5PXreJ+H9L0ADe3vsFlzgdKHtxmSxnEjqTwC"
+    "integrity": "sha384-I1j4zbGmI7AEaU+Kk9p/xI3lgzXHYVWDDPObY2kwnk40JxnmySGNlByZdQ++o+4Q"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/adduserpermission.min.js",
@@ -1285,7 +1286,7 @@
       "wwwroot/Styles/scss/pages/Permission.css",
       "wwwroot/Styles/scss/pages/NewMaster.css"
     ],
-    "integrity": "sha384-2fAWvj93M5o9bJda97qSN4Z5pO4GLr2WFddgAkMmTqmljB+IuuCnuWfV7JEHKJ5b"
+    "integrity": "sha384-YsWT3ITIP3bDQplZTmuSNnNOF/he64ENlVEmbOjXtfvmFp+qj0LqY0CZR3EynC7R"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/addgrouppermission.min.js",
@@ -2175,7 +2176,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/Payment/UpdateCard.css"
     ],
-    "integrity": "sha384-9WXUpfswCgd9PVD0hY/xMOCeWmKwvaQPf1jEitNGqQYh39Hfz/883W1L/gSaiIH9"
+    "integrity": "sha384-g/oMzfr2RiWJmKsbfqw5MWG7Ut6dlCOENIZfq2ay7DAS1SO5dXSb9JrANScqpiMR"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/update-card.min.js",
@@ -2239,7 +2240,7 @@
       "wwwroot/Styles/scss/pages/NewMaster.css",
       "wwwroot/Styles/scss/pages/GroupManagement.css"
     ],
-    "integrity": "sha384-+gTJug2XXkaqKPsjRZgBJ9Mfxk0Oth1sGXOvjrS9ecP3N8aUaam0XZObdq1tAPNu"
+    "integrity": "sha384-XNjYI4vzcFcX+dHrS54OsNMXOwLkugEEsYsFD4+niRXx4GJX8UT21Rmx6NeEm0vG"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/addgroup.min.js",
@@ -2428,7 +2429,7 @@
       "wwwroot/Scripts/scheduler/ScheduleRecipients.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ],
-    "integrity": "sha384-gAED8yOms/XeusNIGXYRZP0l9LDSNdNBP1PJwDxYrlEq5CKUTGa2SQctiORKWls3"
+    "integrity": "sha384-x3pWwEbNOCLusTHFQ75oZ5UNOkBVzHAMyaMGlrpB52OGMkADyzd7zkoL/N9ntPEq"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/emaileditor.min.js",
@@ -2485,7 +2486,7 @@
       "wwwroot/Scripts/Scheduler/ScheduleParameter.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ],
-    "integrity": "sha384-JutFktdmZPWRbP21MsG6SHRUCb41rJDP2hxvGac4ZlvklJEukn0kKivl9K8v7g/j"
+    "integrity": "sha384-TIGBXTDOFOqYXN8kmbclfPpRrENUQMCSyiPbPTA2RwOAkuqJB1RJxrhHGGoGgLzH"
   },
   {
     "outputFileName": "wwwroot/cdn/css/schedulerdialog.min.css",
@@ -2497,7 +2498,7 @@
       "wwwroot/Styles/Bootstrap/bootstrap-select.css",
       "wwwroot/Styles/scss/pages/scheduler.css"
     ],
-    "integrity": "sha384-gNhkvu4spjyvAvvWIF/tjzWfOCdnWRnLESvaWyP2Kye/2GZh3fOQLRMjrHMVmvwo"
+    "integrity": "sha384-tRezLaqh1C3nfD3tM3pCws0IarvKiOX4tAptzI1W1Y2rZCAVEFk3RXVM5izexhp8"
   },
   {
     "outputFileName": "wwwroot/cdn/css/datachanges.min.css",
@@ -2713,7 +2714,7 @@
       "wwwroot/Styles/scss/pages/Dialogs.css",
       "wwwroot/Styles/scss/pages/SaveView.css"
     ],
-    "integrity": "sha384-/EfwliL0W1azagXuQj0lTLlVd8QyO3++P36yfH6gf4WMh/s98LKSi/kWqrDxnC/m"
+    "integrity": "sha384-naNAg09pF03L7+RAdvr8cR/aAJWQu7gFO/wAEVEgYD7tMODB9TQNPUE2dyXxapX4"
   },
   {
     "outputFileName": "wwwroot/cdn/css/error-page.min.css",
@@ -2917,7 +2918,7 @@
       "wwwroot/Styles/scss/pages/AddSampleItem.css",
       "wwwroot/Styles/scss/pages/Components/Buttons.css"
     ],
-    "integrity": "sha384-K26FXIVpbE2mcinbUWpgTWucgxwgXmJLFBgfLUeXwxeubvQ5L/2ec1rmHubjJA4+"
+    "integrity": "sha384-LLhk6w7ACO8xVxCcWmykF3Nz33VpYSWSu+UBghvKRKwxSPVjiPL3CUfZdB4ynHJV"
   },
   {
     "outputFileName": "wwwroot/cdn/scripts/addsampleitem.min.js",
@@ -3236,7 +3237,7 @@
       "wwwroot/Styles/scss/pages/Components/Buttons.css",
       "wwwroot/Styles/scss/pages/Components/popup.css"
     ],
-    "integrity": "sha384-dAB7NVHA3wOdFoaWorMl89V23UXHGU+zrdbEQIMi9X+kXG9iI4IG+XjcDjsDeJxM"
+    "integrity": "sha384-e+XeZO5U+IxEXdlJ9Pxwnqe9uY5LwHtFFgGz/iuzw4l6ASQeiIWcEyPkIcVLPo2s"
   },
   {
     "outputFileName": "wwwroot/cdn/css/file-render-report-mobile.min.css",
@@ -3477,7 +3478,7 @@
       "wwwroot/Scripts/Password/ShowHidePassword.js",
       "wwwroot/Scripts/Core/ServerCommon.js"
     ],
-    "integrity": "sha384-LeAsRekZViEhLmvxZ6QTu2rNCiiCocDFHBKvMIvgPxp4FmEwkA094TMIRMLQlDuJ"
+    "integrity": "sha384-BDOSVfix1l5sHelZkZ9+0dx2zxhs9dlPcbr5jV5Li7tkprkcHgAZ/4cggYCUqxbF"
   },
   {
     "outputFileName": "wwwroot/cdn/css/publish-report.min.css",
@@ -3576,7 +3577,7 @@
       "wwwroot/Styles/scss/pages/Components/Buttons.css",
       "wwwroot/Styles/scss/pages/Components/popup.css"
     ],
-    "integrity": "sha384-KYgLp36j2xpiVJkw0amDHp4CBN2Cc+o5RMGjgPU4Hlc/Tw8g/s2AfLdIe9IRFFfJ"
+    "integrity": "sha384-SkAWvaxwNrrsEzsX6he//RgcoHQ7ZevM8PWsBTmqyGNkKVggoRqSqzHDD0PKfNjS"
   },
   {
     "outputFileName": "wwwroot/cdn/css/report-viewer-v2.min.css",
