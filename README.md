@@ -64,17 +64,17 @@ The Bold BI Enterprise Edition is an end-to-end solution for creating, managing,
 
 Bold BI Enterprise Edition can be installed in the following environments.
 
-* [Windows](https://help.boldbi.com/embedded-bi/setup/deploying-in-windows/)
-* [New Windows VM - Azure Marketplace](https://help.boldbi.com/embedded-bi/setup/deploying-in-azure/)
-* [Linux](https://help.boldbi.com/embedded-bi/setup/deploying-in-linux/)
-* [Kubernetes](https://help.boldbi.com/embedded-bi/setup/deploying-in-kubernetes/)
-* [Docker](https://help.boldbi.com/embedded-bi/setup/deploying-in-docker/)
+* [Windows](https://help.boldbi.com/embedded-bi/setup/deploying-in-windows/?utm_source=github&utm_medium=backlinks)
+* [New Windows VM - Azure Marketplace](https://help.boldbi.com/embedded-bi/setup/deploying-in-azure/?utm_source=github&utm_medium=backlinks)
+* [Linux](https://help.boldbi.com/embedded-bi/setup/deploying-in-linux/?utm_source=github&utm_medium=backlinks)
+* [Kubernetes](https://help.boldbi.com/embedded-bi/setup/deploying-in-kubernetes/?utm_source=github&utm_medium=backlinks)
+* [Docker](https://help.boldbi.com/embedded-bi/setup/deploying-in-docker/?utm_source=github&utm_medium=backlinks)
 
 ## Reference Link
 
-* [Documentation](https://help.syncfusion.com/bold-bi/on-premise/setup/application-startup)
+* [Documentation](https://help.boldbi.com/application-startup/?utm_source=github&utm_medium=backlinks)
 
-* [Feature tour](https://www.boldbi.com/embedded/features)
+* [Feature tour](https://www.boldbi.com/embedded-analytics?utm_source=github&utm_medium=backlinks)
 
 ## Bold Reports Enterprise Edition
 
@@ -82,12 +82,12 @@ The Bold Reports Enterprise Edition is an end-to-end solution for creating, mana
 
 Bold Reports Enterprise Edition can be installed in the following environments.
 
-* [Windows](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/windows-installer/)
-* [Linux](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-linux/)
-* [Kubernetes](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-kubernetes//)
-* [Docker](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-docker/)
+* [Windows](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/windows-installer/?utm_source=github&utm_medium=backlinks)
+* [Linux](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-linux/?utm_source=github&utm_medium=backlinks)
+* [Kubernetes](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-kubernetes/?utm_source=github&utm_medium=backlinks)
+* [Docker](https://help.boldreports.com/enterprise-reporting/administrator-guide/installation/deploy-in-docker/?utm_source=github&utm_medium=backlinks)
 
 ## Reference Link
 
-* [Documentation](https://redirect.boldbi.com/?id=4007)
-* [Feature tour](https://www.boldreports.com/features)
+* [Documentation](https://help.boldreports.com/?utm_source=github&utm_medium=backlinks)
+* [Feature tour](https://www.boldreports.com/features?utm_source=github&utm_medium=backlinks)
