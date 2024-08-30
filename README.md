@@ -66,11 +66,11 @@ The Bold BI Enterprise Edition is an end-to-end solution for creating, managing,
 
 Bold BI Enterprise Edition can be installed in the following environments.
 
-* [Windows](https://help.boldbi.com/embedded-bi/setup/deploying-in-windows/?utm_source=github&utm_medium=backlinks)
-* [New Windows VM - Azure Marketplace](https://help.boldbi.com/embedded-bi/setup/deploying-in-azure/?utm_source=github&utm_medium=backlinks)
-* [Linux](https://help.boldbi.com/embedded-bi/setup/deploying-in-linux/?utm_source=github&utm_medium=backlinks)
-* [Kubernetes](https://help.boldbi.com/embedded-bi/setup/deploying-in-kubernetes/?utm_source=github&utm_medium=backlinks)
-* [Docker](https://help.boldbi.com/embedded-bi/setup/deploying-in-docker/?utm_source=github&utm_medium=backlinks)
+* [Windows](https://help.boldbi.com/deploying-bold-bi/deploying-on-windows/?utm_source=github&utm_medium=backlinks)
+* [New Windows VM - Azure Marketplace](https://help.boldbi.com/deploying-bold-bi/deploying-on-azure/?utm_source=github&utm_medium=backlinks)
+* [Linux](https://help.boldbi.com/deploying-bold-bi/deploying-on-linux/?utm_source=github&utm_medium=backlinks)
+* [Kubernetes](https://help.boldbi.com/deploying-bold-bi/deploying-on-kubernetes/?utm_source=github&utm_medium=backlinks)
+* [Docker](https://help.boldbi.com/deploying-bold-bi/deploying-on-docker/?utm_source=github&utm_medium=backlinks)
 
 ## Reference Link
 
