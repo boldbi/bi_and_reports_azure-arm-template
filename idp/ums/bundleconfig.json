@@ -184,7 +184,7 @@
       "wwwroot/scripts/system/licenseselection.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-Zc9MgFAvbwmQhqdKcnBRAmnUlufGc2ap/YIuSd48OiQo0pQFmFBOuITAUr0Ys8ap"
+    "integrity": "sha384-A4nDLDP71jUoTk4hjg2rF9vWgmt2utbuwHTtw12HlxyJkGMoJBL9eUZZzfHHBIpH"
   },
   {
     "bundles/js/addtenantiframe.js": [
@@ -207,7 +207,7 @@
       "wwwroot/scripts/tenants/addtenant.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-wgU58aCr/DwQAEJ4Lk1h1+TDZ9RJBS6hzbmMRcREnX4pm1rZOvldWEsprP737Q4d"
+    "integrity": "sha384-jdE0SzHAXsw0eyB3VQbOV4JtYbSCGBUauj9wDmIR/pctAS6hTQAir4mMpGAW4npK"
   },
   {
     "bundles/js/ej2.js": [
