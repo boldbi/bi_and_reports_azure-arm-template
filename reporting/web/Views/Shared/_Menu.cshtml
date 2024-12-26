@@ -357,7 +357,6 @@
         var userPermissionUrl = "@Url.Action("userpermission", "permission")";
         var currentUrlLocalPath = "@requestUrl.LocalPath.ToLower()";
         var boldETLUrl = @Json.Serialize(navigateETLUrl);
-        var isAzureApplication = @Json.Serialize(ServerAppConfig.IsAzureApplication);
         var isMobile = @Json.Serialize(isMobile);
         var isImageRequest = @Json.Serialize(isImageRequest);
         var isAdmin = @Json.Serialize(Convert.ToBoolean(Context.Session.GetString("IsAdmin")));

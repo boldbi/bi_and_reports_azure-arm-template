@@ -9,7 +9,7 @@
       "wwwroot/scripts/core/profilepicture.js",
       "wwwroot/scripts/angularjs/serverapp.js"
     ],
-    "integrity": "sha384-MPX2qdYHx8gQh3D74sIEmxUF0bQAIO3Cz/BLBPBn2e9UbiaHufsAlfGYOfP5HSYo"
+    "integrity": "sha384-UpQfn5WmQdFwKcy44FWbnDLIJrN504SNP3JJgzmyUoITTBN8jEgUpeSFo+iOjAFC"
   },
   {
     "bundles/js/layout-mobile.js": [
@@ -20,7 +20,7 @@
       "wwwroot/scripts/angularjs/serverapp.js",
       "wwwroot/scripts/core/mobilemenu.js"
     ],
-    "integrity": "sha384-HyplkEXwynXwikjp28reLhoM8hlnDiPwFi+rPmF/k0JsgUAItxjzDbnmPn7Twp7k"
+    "integrity": "sha384-cjEAXe8Ksn1m4y/nbHIffDMgI8yQvFfNHBdXvrw4bcEIy1HCY2M5RKK/z/yemJ1D"
   },
   {
     "bundles/js/additional-settings.js": [
@@ -42,14 +42,14 @@
       "wwwroot/scripts/administration/emailactivitylog.js",
       "wwwroot/scripts/administration/managelanguage.js"
     ],
-    "integrity": "sha384-Kjo/QTSPssayVKL/Ui7VrQ2MyT498v8s16joRaCyk/SbNFu+Z4lokhFCnh01Zprg"
+    "integrity": "sha384-qgoOhmyeUxk5TgeP+gq4vTmnZix75qtNW6gsPX3qFV6nqJZghYSBlocRb6/7PjzV"
   },
   {
     "bundles/js/user-settings.js": [
       "wwwroot/scripts/administration/usersettings.js",
       "wwwroot/scripts/administration/admin-common.js"
     ],
-    "integrity": "sha384-5Aufp5y31soK5aZdLy1MLlY/FiQosvTkyJHqqY/qYUD0gdait+R/aplA6VqkdQW0"
+    "integrity": "sha384-kMdXKYV3c+ZpPTF9051NciSj/tvfn9v7BJrdaSQjKzj8Q0OXcrMBR+SZ59sM97AF"
   },
   {
     "bundles/js/licenese-settings.js": [
@@ -65,7 +65,7 @@
       "wwwroot/scripts/home/home.js",
       "wwwroot/scripts/core/profilepicture.js"
     ],
-    "integrity": "sha384-lWES6qAOwZcGMCdAzAQA1jmcNAx5Q4o6MlCW30PNlxdiWeWo9byktmUYfEYstAQF"
+    "integrity": "sha384-nfwPUv/U2x4dpJfiZyCQMG835HFUMSQR2HuO9a8bETG+MSSnvhhHcq3GAEF36uwl"
   },
   {
     "bundles/js/sites.js": [
@@ -82,7 +82,7 @@
       "wwwroot/scripts/administration/api-keys.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-W/kc6Pmr4rVl0URA/eFX3tKKCIm6466axS9a7MfDOvJRYuv3Z8KkQWmemP9+W4Ls"
+    "integrity": "sha384-3jH5qADZhl6kpxRxNqLCzjDkI36HUQ7FnbvblFns2xOQaEyUuZW2OY6ZZ+9YfhU8"
   },
   {
     "bundles/js/auth-settings-page.js": [
@@ -92,7 +92,7 @@
       "wwwroot/scripts/administration/authsettings.js",
       "wwwroot/scripts/administration/admin-common.js"
     ],
-    "integrity": "sha384-Ck0WrGuNiSo5IprKQc1sB/mb4jY3I/vGrf/GhEtWDnCSHpGnsTKJvJCM+VMU84qU"
+    "integrity": "sha384-Nrv53QsEwne7/37SoSDtuxWDZ858o0feq6wFCGE3dq4/d1MHd99zNjlhbQQR2sXx"
   },
   {
     "bundles/js/change-password.js": [
@@ -101,7 +101,7 @@
       "wwwroot/scripts/password/changepassword.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-unRmSDmb53NfNNyuQRV+fvXpp/VJasA9fky+Sve5UELSReHECneQu5LAST4AROc4"
+    "integrity": "sha384-Dx2dsmbBmnMHq8174KXkc9Y1B5/b+lHGSjZnFyiokuLntKNaRAFRLZ/estF/spvK"
   },
   {
     "bundles/js/view-user-profile.js": [
@@ -124,7 +124,7 @@
       "wwwroot/scripts/tenants/customattribute.js",
       "wwwroot/scripts/user/userattributes.js"
     ],
-    "integrity": "sha384-woPHlQd5vM9HztWqFTB5xMZl1qqP078N/c+4b7lEzgfVNtccibi9CcpNfPdyg42g"
+    "integrity": "sha384-xDtuNYiFmXYQUdI/SwjPQuX5GwLApKaxj+R6pmQ1O5T97b/1F8fSQA0mZFCxIc77"
   },
   {
     "bundles/js/user-management.js": [
@@ -139,7 +139,7 @@
       "wwwroot/scripts/password/passwordpolicy.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-1LTX3q1vTvBzF3zjefbxS/9BnoXp1HNX5R9mOggZEmR7OQ44FgP7eDLZ/XvsYHYW"
+    "integrity": "sha384-VMkjJLqV0Ma2yLpo/qzsQzfuw6PT9XcX9ezMRbL5yOvfRv7/1iLRe9g8jngXQ+uQ"
   },
   {
     "bundles/js/iframe.js": [
@@ -150,7 +150,7 @@
       "wwwroot/scripts/angularjs/angular.min.js",
       "wwwroot/scripts/core/server.core.js"
     ],
-    "integrity": "sha384-VaLStXc1v0f55iF8XCV9rqVCzM6WUrug7L/aVkxHpskXvwNj4zT3GFW4/2okUDas"
+    "integrity": "sha384-Q2k6LejwjZ6VBX0kfHR4/+nBcHtWoMVVOoID9A2LrmXLYqKy7eEqiLMzh4wyrGMM"
   },
   {
     "bundles/js/system-configuration.js": [
@@ -172,7 +172,7 @@
       "wwwroot/scripts/system/licenseselection.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-Dpy/1C6rzwdV7174B7xD5CK78pVDIOh11vubj+fhUw2ImAaD/Xgn8c2SZdzNNjZO"
+    "integrity": "sha384-+inXe+xcjsjMx2vGAG2YUHjAeorQUFN7SjB8GhF2xDZ+e3ceA5HKhGydNt10rBb0"
   },
   {
     "bundles/js/addtenantiframe.js": [
@@ -195,13 +195,13 @@
       "wwwroot/scripts/tenants/addtenant.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-yV+itD/wSCKyiodOu3l/UaWsSk8L+vqK8H9BYVXE+O2kQTvv+T9F5Ub3CXNpmHqf"
+    "integrity": "sha384-eQrAC8kuyunbGL2QNj+BYuLDztr6JXXQvvytA86f3ukJH7w/ONHYHb/c/I6LVMDp"
   },
   {
     "bundles/js/ej2.js": [
       "wwwroot/scripts/essentialjs2/ej2.min.js"
     ],
-    "integrity": "sha384-kf9myfBzfD8Dr8tyVJfOy0vDofWTy98QjLivgGPQrbDfi1YUiao/47ZJfkT1g3+P"
+    "integrity": "sha384-41B4fK8Zmt1PYgV7AavFfUh3cFD0Dd0vgRipU4oB6I9YPPqC9AEqAn0cTHOovTwL"
   },
   {
     "bundles/js/embed-settings.js": [
@@ -213,7 +213,7 @@
     "bundles/js/offline-license-update.js": [
       "wwwroot/scripts/administration/offlinelicenseupdate.js"
     ],
-    "integrity": "sha384-hy0qa38ZiPcteS6357RWqQGlYb8WOEHaMO0A7qhBwBoHW9M3ev/3Hts+2ulxoWPy"
+    "integrity": "sha384-uzytxIAzz+ckE4Nu5Hgw6JdCHWn6fyeYvWsrfnHvNy4cKiyXjkmdyWtopcvyVU3O"
   },
   {
     "bundles/js/api-keys.js": [
@@ -234,7 +234,7 @@
       "wwwroot/scripts/administration/look-feel.js",
       "wwwroot/scripts/administration/admin-common.js"
     ],
-    "integrity": "sha384-mTfaxRdG1PDO0wYgBsYoYEn28HIIQDZ6nsSSG5TIQSFfIO0Areu2xUr32m5B0RcB"
+    "integrity": "sha384-1zHSF6YHcIsCefjg80GywFYxgw/HDk6vUanfoEgJSoYtYGnMc08Gjv08yJKOoaRu"
   },
   {
     "bundles/js/security-settings.js": [
@@ -249,13 +249,13 @@
       "wwwroot/scripts/bootstrap/bootstrap.min.js",
       "wwwroot/scripts/error/error.js"
     ],
-    "integrity": "sha384-bWkrmuknOMYef10xrezTSIQdEt5mQAxkSKL3HOMuuLjGen7R4LlHwcmHxT/57Ljs"
+    "integrity": "sha384-1IVa+fHw1rf5biiW/z05Y0x0gP/U6+HyZ5jxcmx9r/jBahPz0Z2y0qpnlC/QEqB1"
   },
   {
     "bundles/js/auto-deployment.js": [
       "wwwroot/scripts/system/autodeployment.js"
     ],
-    "integrity": "sha384-Dz1No29aKEnrooKYn725uOOm1wyXv7TZmSrWNK7fCRQOsEHV3HostbPcy4eYMyxw"
+    "integrity": "sha384-wR292Rbq84pzFz2Lu5C/foOEuhHllEjMUcylPtt4KMdCTGa03BYBw7XHeOMr9VGN"
   },
   {
     "bundles/css/layout.css": [

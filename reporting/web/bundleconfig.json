@@ -3535,7 +3535,7 @@
     "inputFiles": [
       "wwwroot/Scripts/Core/custom-ui.js"
     ],
-    "integrity": "sha384-/obrpdrqsYZad+JSqYGWRhMobLPI6a84GTGwn7S65BSiaqcSPXb6hzvQoCCY0wuo"
+    "integrity": "sha384-eOs7KT5ztkV50koe/u1V3MvuVRIZuvJN0llT/xO2jhXBb72e9P+3VHzYeDPJqx8s"
   },
   {
     "outputFileName": "wwwroot/cdn/css/theme/light.min.css",
