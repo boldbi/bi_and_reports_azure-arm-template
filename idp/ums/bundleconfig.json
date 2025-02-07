@@ -94,7 +94,7 @@
       "wwwroot/scripts/administration/api-keys.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-X6T3eRyhL73oKpZjofUQKQV5Qe0jS/AJ0T+YBU9AKT42Fi8Ww4Ro/N/M+LJvzSZB"
+    "integrity": "sha384-M/8OGKsyNF69mdTOiumHPNBrQTkWE5yNFjZZC5wgjqBg9bieNTcZUs/4xQpv8ZVQ"
   },
   {
     "bundles/js/auth-settings-page.js": [
@@ -180,12 +180,13 @@
       "wwwroot/scripts/system/systemsettings.js",
       "wwwroot/scripts/system/storageconfiguration.js",
       "wwwroot/scripts/system/useraccount.js",
+      "wwwroot/scripts/system/configurationmode.js",
       "wwwroot/scripts/system/databaseconfiguration.js",
       "wwwroot/scripts/system/licenseselection.js",
       "wwwroot/scripts/password/showhidepassword.js",
       "wwwroot/scripts/tenants/customattribute.js"
     ],
-    "integrity": "sha384-dl2TZOVjxETdu/D9xp5DcaMhqCq9ZaXo0bTymAhQ32Dv759djsibVAWXYPnRrfR3"
+    "integrity": "sha384-G64jRvT9z0wgzk6MQmqpB++joJd/+hbtzeptZ5qcNRxJclFEY14RrT3DCCekAxVC"
   },
   {
     "bundles/js/addtenantiframe.js": [
@@ -200,6 +201,7 @@
       "wwwroot/scripts/system/systemsettings.js",
       "wwwroot/scripts/system/databaseconfiguration.js",
       "wwwroot/scripts/system/storageconfiguration.js",
+      "wwwroot/scripts/system/configurationmode.js",
       "wwwroot/scripts/tenants/siteconfiguration.js",
       "wwwroot/scripts/tenants/customattribute.js",
       "wwwroot/scripts/tenants/adminselection.js",
@@ -208,7 +210,7 @@
       "wwwroot/scripts/tenants/addtenant.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-gH/B3kSnBS2k5937eDMnC5S2JH2NeXdug2JE76bT7sCEdwqSCTd4uj74GNUH0YBO"
+    "integrity": "sha384-PDFMJvFC3uBFWedPvsYXA3fMYTg4GBPzImPNuM8IvObgfAd6OVbo4358NkpBIruJ"
   },
   {
     "bundles/js/ej2.js": [
@@ -283,7 +285,7 @@
     "bundles/js/auto-deployment.js": [
       "wwwroot/scripts/system/autodeployment.js"
     ],
-    "integrity": "sha384-QitsOgU5mWOcTqtLf08tC/MOrYv/Hu1tc7uFFdaEjljbhlSqPv5Ozw4vJSykihI9"
+    "integrity": "sha384-4pG6WqLaOebkv09Jid/LRAAilIAExpmL7Zf3VytfwqdiDFLKGxBKxam9tZoYy3mh"
   },
   {
     "bundles/css/layout.css": [
@@ -467,7 +469,7 @@
       "wwwroot/styles/scss/ej2customization/spinner-customization.css",
       "wwwroot/styles/scss/pages/components/radiobutton.css"
     ],
-    "integrity": "sha384-5iBt5fyn8CBNJPPNPNQ9QcC2j2v2frNFa5971eZUPigv12IOzGJnWj3LQxKbkEiV"
+    "integrity": "sha384-UV8meAXImR0dV56vSohOtAj0N4iBt6Tm/9gw1cX8GxacmlfH24pNogehIeePqUtb"
   },
   {
     "bundles/css/addtenantiframe.css": [
@@ -490,7 +492,7 @@
       "wwwroot/styles/scss/pages/customattribute/custom-attribute.css",
       "wwwroot/styles/scss/pages/addtenant.css"
     ],
-    "integrity": "sha384-sVORgekycxjHx8V5VsloIIeaERTDidXbPxmCele0yVDy6bcbidYZ2H44mqLmRhpY"
+    "integrity": "sha384-ddfEFr32UGkec9IDuQheEwW8DwVDGvTkXHM/SXfCksRQuKgOzEw46/SSYA0FWm8J"
   },
   {
     "bundles/fonts/font-robotoregular.css": [
