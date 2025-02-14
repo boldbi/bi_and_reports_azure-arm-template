@@ -68,6 +68,8 @@
         dashboardCutomTheme = ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsInheritFromGlobalLookAndFeelSettings ? ServerAppConfig.Theme.DashboardTheme : globalAppSettings.SystemSettings.CustomDashboardTheme;
     }
     var isSandBox = GlobalAppSettings.IsUrlInDnsList(globalAppSettings.DisplayUri);
+    var isSingleDatabaseMode = _globalAppSettings.SystemSettings.ConfigurationMode ==
+                               ConfigurationMode.SingleDatabaseForAllTenants;
 }
 <!DOCTYPE html>
 
@@ -179,6 +181,7 @@
         var canCheckSession = @Html.Raw(Json.Serialize(canShowSession));
         var canHideLogoAndProfile = @ServerAppConfig.CanHideLogoAndProfile.ToString().ToLower();
         var isSandBox = "@isSandBox";
+        var isSingleDatabaseMode = "@isSingleDatabaseMode";
     </script>
     @if (!isSelfHosted && isUrlInDnsList) {
        @await Html.PartialAsync("~/Views/Shared/_GoogleTag.cshtml")

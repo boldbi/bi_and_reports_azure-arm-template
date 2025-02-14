@@ -26,7 +26,7 @@
                 enableRowHover: true,
                 enableAltRow: false,
                 dataBound: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip();
+                    $('[data-bs-toggle="tooltip"]').tooltip();
                 },
                 columns: [
                     { field: 'Name', templateID: "#reports-site-name-template", headerText: '@T["Name"]', width: 40, allowSorting: true, allowFiltering: true },
@@ -38,42 +38,42 @@
         });
 </script>
 <script type="text/x-jsrender" id="reports-site-name-template">
-    <span class="grid-content" title="{{:Name}}" data-toggle="tooltip">{{:Name}}</span>
+    <span class="grid-content" title="{{:Name}}" data-bs-toggle="tooltip">{{:Name}}</span>
 </script>
 <script type="text/x-jsrender" id="reports-site-clientid-template">
-    <span class="grid-content" title="{{:ClientId}}" data-toggle="tooltip">{{:ClientId}}</span>
+    <span class="grid-content" title="{{:ClientId}}" data-bs-toggle="tooltip">{{:ClientId}}</span>
 </script>
 <script type="text/x-jsrender" id="reports-site-url-template">
-    <span class="grid-content" title="{{:SiteURL}}" data-toggle="tooltip">{{:SiteURL}}</span>
+    <span class="grid-content" title="{{:SiteURL}}" data-bs-toggle="tooltip">{{:SiteURL}}</span>
 </script>
-<div class="col-xs-12 no-padding info-section">
+<div class="col-12 no-padding info-section">
     <div id="reports-site-info" class="col-xs-10 no-padding">
         <label>@string.Format(T["Please add required {0} site here which will be shown when you configure the {1} widget."].Value, "reports", "report")</label>
     </div>
-    <div class="col-xs-2 no-padding pull-right">
-        <button class="primary-button app-btn-primary pull-right" id="add-new-site" title="@T["Add new site"]" onclick="getExternalSitesDetailDialog(1)"><span>@T["Add new site"] </span></button>
+    <div class="col-xs-2 no-padding float-end">
+        <button class="primary-button app-btn-primary float-end" id="add-new-site" title="@T["Add new site"]" onclick="getExternalSitesDetailDialog(1)"><span>@T["Add new site"] </span></button>
     </div>
 </div>
 
-<div class="col-xs-12 no-padding ">
+<div class="col-12 no-padding ">
     <div id="ReportsConnectedSitesGrid"></div>
 </div>
 
 <script type="text/x-jsrender" id="options">
     <div class="dropdown context-menu">
-        <span class="dropdown-toggle option-icon" title="Actions" data-toggle="dropdown">
+        <span class="dropdown-toggle option-icon" title="Actions" data-bs-toggle="dropdown">
             <span class="su su-options">
             </span>
         </span>
         <ul class="dropdown-menu" role="menu">
             <li class="menu-group">
-                <a class="edit-class" href="javascript:void(0);" id="edit-reports-external-sites" title="@T["Edit"]" data-toggle="tooltip" data-id="{{:Id}}" data-name="{{:Name}}" data-clientid="{{:ClientId}}" data-site-url="{{:SiteURL}}" onclick="getExternalSitesDetailDialog(1,1,this)">
+                <a class="edit-class" href="javascript:void(0);" id="edit-reports-external-sites" title="@T["Edit"]" data-bs-toggle="tooltip" data-id="{{:Id}}" data-name="{{:Name}}" data-clientid="{{:ClientId}}" data-site-url="{{:SiteURL}}" onclick="getExternalSitesDetailDialog(1,1,this)">
                     <i class="su su-edit"></i>
                     <span class="menu-text">@T["Edit"]</span>
                 </a>
             </li>
             <li class="menu-group">
-                <a class="delete-class" href="javascript:void(0);" id="remove-reports-external-sites" title="@T["Remove"]" data-toggle="tooltip" data-id="{{:Id}}" data-site-type="{{:SiteType}}" data-name="group" onclick="deleteReportsSiteConfirmation(this)">
+                <a class="delete-class" href="javascript:void(0);" id="remove-reports-external-sites" title="@T["Remove"]" data-bs-toggle="tooltip" data-id="{{:Id}}" data-site-type="{{:SiteType}}" data-name="group" onclick="deleteReportsSiteConfirmation(this)">
                     <i class="su su-delete"></i>
                     <span class="menu-text">@T["Remove"]</span>
                 </a>

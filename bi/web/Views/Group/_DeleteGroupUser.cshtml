@@ -35,11 +35,11 @@
         <input type="hidden" id="hidden-id" value="@ViewBag.id" />
         <input type="hidden" id="hidden-name" value="@ViewBag.name" />
         <input type="hidden" id="hidden-group-id" value="@ViewBag.groupId" />
-        <div class="col-md-12 error-message pull-left no-padding">@TempData["ErrorMessage"]</div>
-        <div class="col-md-12 success-message pull-left no-padding"></div>
-        <div class="col-xs-12 no-padding" id="container">
-            <div class="modal-body col-xs-12 no-padding">
-                <div class="col-xs-12 no-padding">
+        <div class="col-md-12 error-message float-start no-padding">@TempData["ErrorMessage"]</div>
+        <div class="col-md-12 success-message float-start no-padding"></div>
+        <div class="col-12 no-padding" id="container">
+            <div class="modal-body col-12 no-padding">
+                <div class="col-12 no-padding">
                     <div class="delete-msg">@T["Are you sure you want to remove user access?"]</div>
                 </div>
             </div>

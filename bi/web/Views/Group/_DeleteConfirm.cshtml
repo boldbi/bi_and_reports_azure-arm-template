@@ -31,11 +31,11 @@
 <div id="delete-resolution-fix">
     <div id="group-delete-confirmation" class="no-padding">
         <input type="hidden" id="hidden-id" value="@ViewBag.id" />
-        <div class="col-md-12 error-message pull-left no-padding">@TempData["ErrorMessage"]</div>
-        <div class="col-md-12 success-message pull-left no-padding"></div>
-        <div class="col-xs-12 no-padding" id="container">
-            <div class="modal-body col-xs-12 no-padding">
-                <div class="col-xs-12 no-padding">
+        <div class="col-md-12 error-message float-start no-padding">@TempData["ErrorMessage"]</div>
+        <div class="col-md-12 success-message float-start no-padding"></div>
+        <div class="col-12 no-padding" id="container">
+            <div class="modal-body col-12 no-padding">
+                <div class="col-12 no-padding">
                     <div class="delete-msg">@Html.Raw(String.Format(T["Are you sure you want to delete the group {0}?"].Value, " &mdash; <span class='highlight-name'>" + Context.Request.Query["name"] + "</span>"))</div>
                 </div>
             </div>

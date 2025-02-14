@@ -1386,7 +1386,7 @@
             <param name="userImportType">User import type</param>
             <returns>returns the errorneous users list</returns>
         </member>
-        <member name="M:Syncfusion.Server.API.ApiOAuthProvider.GenerateToken(Microsoft.AspNetCore.Http.HttpContext,Syncfusion.Server.Base.DataClasses.User,System.String,System.String,System.String,System.Collections.Generic.List{System.Int32},System.String,System.String,System.Boolean)">
+        <member name="M:Syncfusion.Server.API.ApiOAuthProvider.GenerateToken(Microsoft.AspNetCore.Http.HttpContext,Syncfusion.Server.Base.DataClasses.User,System.String,System.String,System.String,System.Collections.Generic.List{System.Int32},System.String,System.String,System.String,System.Boolean)">
             <summary>
             Do not use this method for generation token unless needed.
             This is used only when this API application needs a new token to send to the client
@@ -1398,6 +1398,7 @@
             <param name="expiresIn">Specifies the expiry time in seconds</param>
             <param name="subId"></param>
             <param name="userGroupIds"></param>
+            <param name="anonymousGroupName"></param>
             <param name="datasourceFilter"></param>
             <param name="customAttribute"></param>
             <param name="isUsageAnalytics"></param>

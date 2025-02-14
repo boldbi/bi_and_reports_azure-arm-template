@@ -175,6 +175,7 @@ CREATE TABLE SyncDS_ItemLog(
 	ToCategoryId uuid NULL,
 	UpdatedUserId int NOT NULL,	
 	ModifiedDate timestamp NOT NULL,
+    AnonymousUsername varchar(255) NULL,
 	IsActive smallint NOT NULL)
 ;
 
@@ -247,6 +248,7 @@ CREATE TABLE SyncDS_ScheduleDetail(
 	CreatedDate timestamp NOT NULL,
 	ModifiedDate timestamp NOT NULL,
 	ScheduleExportInfo text NULL,
+        DashboardWidgetIds text NULL,
 	IsActive smallint NOT NULL)
 ;
 
@@ -1032,6 +1034,38 @@ CREATE TABLE SyncDS_ApiKeyDetails (
     TokenValidity timestamp NULL,
     IsActive smallint NOT NULL)
 ;
+
+CREATE TABLE BOLDBI_AI_CHAT (
+    SearchID TEXT,
+    SessionID TEXT,
+    SearchDateTime TIMESTAMP WITH TIME ZONE,
+    InputToken INTEGER,
+    OutputToken INTEGER,
+    TotalToken INTEGER,
+    InputTokenCost DOUBLE PRECISION,
+    OutputTokenCost DOUBLE PRECISION,
+    TotalTokensCost DOUBLE PRECISION,
+    UserInfo TEXT,
+    TenantID TEXT,
+    RequestType TEXT,
+    Environment TEXT
+);
+
+
+CREATE TABLE BOLDBI_AI_SESSIONS (
+    SessionID TEXT Primary key,
+    SessionStartTime TIMESTAMP WITH TIME ZONE,
+    SessionEndTime TIMESTAMP WITH TIME ZONE,
+    InputToken INTEGER,
+    OutputToken INTEGER,
+    TotalToken INTEGER,
+    InputTokenCost DOUBLE PRECISION,
+    OutputTokenCost DOUBLE PRECISION,
+    TotalTokensCost DOUBLE PRECISION,
+    UserInfo TEXT,
+    TenantID TEXT,
+    Environment TEXT
+);
 
 ---- PASTE INSERT Queries below this section --------
 

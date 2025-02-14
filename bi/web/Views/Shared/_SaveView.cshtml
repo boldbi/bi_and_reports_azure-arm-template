@@ -70,20 +70,20 @@
         </div>
         <span id="user-name" type="hidden" value="@ViewBag.userName"></span>
         <span id="user-id" type="hidden" value="@ViewBag.userId"></span>
-        <form name="save-view-form" id="save-view-form" class="dialog-body col-xs-12 no-padding" onsubmit="$('#save-button').trigger('click'); return false;">
+        <form name="save-view-form" id="save-view-form" class="dialog-body col-12 no-padding" onsubmit="$('#save-button').trigger('click'); return false;">
             <div>
-                <div class="col-xs-12 padding20 no-bottom-padding" id="item-name-division">
-                    <div class="col-xs-3 no-padding text-right text-label">@T["Name"]<span class="mandatory">*</span></div>
-                    <div class="col-xs-1 no-padding"></div>
-                    <div class="col-xs-8 no-padding">
+                <div class="col-12 padding20 no-bottom-padding" id="item-name-division">
+                    <div class="col-3 no-padding text-right text-label">@T["Name"]<span class="mandatory">*</span></div>
+                    <div class="col-1 no-padding"></div>
+                    <div class="col-8 no-padding">
                         <input type="text" id="view-name" name="viewnewname" data-maxlength="255" class="form-control site-orgname-fields text" />
                         <span class="validation-errors"></span>
                     </div>
                 </div>
-                <div class="col-xs-12 padding20 no-bottom-padding" id="default-view-division">
-                    <div class="col-xs-3 no-padding text-right text-label">@T["Mark as Default"]</div>
-                    <div class="col-xs-1 no-padding"></div>
-                    <div class="col-xs-8 no-padding switch-padding">
+                <div class="col-12 padding20 no-bottom-padding" id="default-view-division">
+                    <div class="col-3 no-padding text-right text-label">@T["Mark as Default"]</div>
+                    <div class="col-1 no-padding"></div>
+                    <div class="col-8 no-padding switch-padding">
 
                         <div class="col-md-2 no-padding switch-align">
                             <span class="material-switch text-left">
@@ -102,8 +102,8 @@
                             {
                                 if (!isDefaultView)
                                 {
-                                    <div class="tool-tip col-xs-1">
-                                        <span class="dropdown-toggle" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                    <div class="tool-tip col-1">
+                                        <span class="dropdown-toggle" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
                                         <div class="dropdown-menu" role="menu">
                                             @T["Based on your Dashboard Settings, these filters will be applied by default when next time render the Dashboard"].
                                         @if (!@ServerAppConfig.IsHideHelpLink)
@@ -115,8 +115,8 @@
                             }
                             else
                             {
-                                <div class="tool-tip col-xs-1">
-                                    <span class="dropdown-toggle" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                <div class="tool-tip col-1">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
                                     <div class="dropdown-menu default-msg" role="menu">
                                         @T["If enabled, the current view will be set as your default view for this dashboard."]
                                         @if (!@ServerAppConfig.IsHideHelpLink)
@@ -131,8 +131,8 @@
                         {
                             if (isDefaultView)
                             {
-                                <div class="tool-tip col-xs-1">
-                                    <span class="dropdown-toggle" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                <div class="tool-tip col-1">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
                                     <div class="dropdown-menu default-msg" role="menu">
                                         @T["If enabled, the current view will be set as your default view for this dashboard."]
                                         @if (!@ServerAppConfig.IsHideHelpLink)
@@ -144,8 +144,8 @@
                             }
                             else
                             {
-                                <div class="tool-tip col-xs-1">
-                                    <span class="dropdown-toggle" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                <div class="tool-tip col-1">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
                                     <div class="dropdown-menu" role="menu">@T["Default views are disabled by the system administrator. Please contact your system administrator to enable them."]</div>
                                 </div>
                             }
@@ -155,7 +155,7 @@
                 </div>
             </div>
         </form>
-        <div class="col-xs-12 dialog-footer no-right-padding no-left-padding" id="action-button-division">
+        <div class="col-12 dialog-footer no-right-padding no-left-padding" id="action-button-division">
             <div class="rightAlign">
                 <input type="button" title="" id="save-button" class="btn primary-button app-btn-primary" value=@T["Save"] />
                 <input type="button" id="cancel-button" title="" class="btn secondary-button app-btn-secondary" value="@T["Cancel"]" onclick="closeSaveViewPopup()" />

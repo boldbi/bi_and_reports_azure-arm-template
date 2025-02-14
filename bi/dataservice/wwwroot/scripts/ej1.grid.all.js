@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.grid.all.js
-*  version : 9.1.73
+*  version : 10.1.18
 *  Copyright Syncfusion Inc. 2001 - 2025. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -416,7 +416,7 @@
     BoldBIDashboard.gridFeatures.common = {
         
         refreshContent: function (refreshTemplate) {
-            if (refreshTemplate) {
+            if (refreshTemplate && !(this.model.allowFiltering && this.model.filterSettings.filterType == "excel" && this.model.filterSettings.filteredColumns.length > 0)) {
                 this.refreshTemplate();
                 this._refreshHeader();
             }
@@ -1341,13 +1341,12 @@
                 if (this._virtualSelectedRows && this._virtualSelectedRows.length > 0) {
                     this.model.query.addParams('virtualSelectRecords', this._virtualSelectedRows)
                 }
-                if (this._isExcelFilter) {
-                    for (var i = 0; i < this.model.query.queries.length; i++) {
-                        var queries = this.model.query.queries;
-                        if (queries[i].fn === 'onWhere') {
-                            this.model.query.queries[i].e.predicates = [args.predicated];
-                            break;
-                        }
+                if (this._isExcelFilter && this.model.filterSettings.filterType == "excel" && args.requestType != "refresh" && args.requestType != "paging") {
+                    for (var i = 0; i < this._excelFilter._columnsFiltered.length; i++) {
+                        this.model.query.where(this._excelFilter._predicates[0][this._excelFilter._columnsFiltered[i]]);
+                    }
+                    if (args.requestType == "sorting") {
+                        this._bbdesigner$fDlgIsOpen = false;
                     }
                 }
                 var queryPromise = this._queryPromise = this._dataSource().executeQuery(this.model.query);
@@ -1391,6 +1390,8 @@
                         proxy._processIdentityField(e.result, args);
                     if (proxy.model.pageSettings.currentPage == proxy.model.pageSettings.totalPages - 1 && !proxy._remoteLastPageRendered)
                         proxy._previousPageRendered = true;
+                    if (proxy.model.pageSettings.disableVirtualization)
+                        this._initJsonData = e.result;
                     proxy.model.currentViewData = e.result == null ? [] : e.result;
                     if (proxy._bbdesigner$fkColumn && proxy.model.filterSettings.filterType == "excel" && proxy.model.filterSettings.filteredColumns.length > 0)
                         proxy._fkParentTblData = e.result;
@@ -2679,10 +2680,16 @@
 			if(field)
 				this._clearFilter(field);					
 			else{
-				var fltrCols = this.model.filterSettings.filteredColumns, i=0;				
-				while(i < fltrCols.length){
-					this._clearFilter(fltrCols[i].field);					
-				}
+				var fltrCols = this.model.filterSettings.filteredColumns, i=0;
+                if (this.model.filterSettings.filterType != "excel") {				
+                    while(i < fltrCols.length){
+                        this._clearFilter(fltrCols[i].field);					
+                    }
+                } else {
+                    while(i < this._excelFilter._columnsFiltered.length){
+                        this._clearFilter(this._excelFilter._columnsFiltered[i]);
+                    }
+                }
 				if(this.model.filterSettings.filterType == "menu" || this.model.filterSettings.filterType == "excel")
 					this.getHeaderTable().find(".e-filtericon").removeClass("e-filteredicon e-filternone");
 			}
@@ -2720,6 +2727,10 @@
 					delete this._excelFilter._predicates.length > 0 ? this._excelFilter._predicates[0][field] : field;						
 					this._excelFilter.closeXFDialog();
 					this._bbdesigner$curFieldName = field;
+                    this._renderExcelFilter();
+                    this._renderFilterDialogs();
+                    this.model.filterSettings.filteredColumns = [];
+                    this.refreshContent();
 					break;
 			}
 			this.filterColumn(field, "", "", "or");							
@@ -4493,7 +4504,7 @@
                                     var columnName = columnHeader.eq(i).find(".e-headercelldiv").attr("ej-mappingname");
 									if(!BoldBIDashboard.isNullOrUndefined(columnName)){
 										var column = this.getColumnByField(columnName);
-										if (!BoldBIDashboard.isNullOrUndefined(column) && !(this.model.filterSettings.filterType == BoldBIDashboard.Grid.FilterType.Excel && column.IsMeasure) && column.dateFormat == "None" && (BoldBIDashboard.isNullOrUndefined(column.allowFiltering) || column.allowFiltering))
+										if (!BoldBIDashboard.isNullOrUndefined(column) && !(this.model.filterSettings.filterType == BoldBIDashboard.Grid.FilterType.Excel && column.IsMeasure) && (this.model.filterSettings.filterType == "menu" && column.dateFormat == "None") && (BoldBIDashboard.isNullOrUndefined(column.allowFiltering) || column.allowFiltering))
 											columnHeader.eq(i).addClass("e-headercellfilter").append(BoldBIDashboard.buildTag('div.e-filtericon e-icon e-filterset'));
 									}
 								}                               
@@ -4582,11 +4593,14 @@
                         break;
                     case "dataSource":
                         var bbdesigner$content = this.element.find(".e-gridcontent").first();
-                        if (!bbdesigner$.isFunction(options["dataSource"]))
+                        if (!bbdesigner$.isFunction(options["dataSource"]) && !(this._requestType == 'filtering' && this.model.filterSettings.filterType == "excel" && this._isExcelFilter && (this._excelFilter.filteredColumns.length > 0 || (!BoldBIDashboard.isNullOrUndefined(this._excelFilter.filteredColumn) && this._excelFilter.filteredColumn.length > 0))))
                             this.resetModelCollections();
 						if(this._gridRecordsCount == 1 && !BoldBIDashboard.isNullOrUndefined(this._cDeleteData) && bbdesigner$.inArray(this._cDeleteData[0], this._dataSource()) == -1 && this.model.editSettings.allowDeleting)
                             this._gridRecordsCount =this._dataSource().length;
-						this._refreshDataSource(this._dataSource());
+						if (this._requestType == 'refresh' && this.model.filterSettings.filterType == "excel") {
+                            this._initJsonData = this._dataSource().dataSource.json;
+                        }
+                        this._refreshDataSource(this._dataSource());
 						this.element.children(".e-gridfooter").remove();
 						if (this.model.showSummary && this.model.currentViewData.length > 0) {
 						    this._renderGridFooter().insertAfter(bbdesigner$content);
@@ -4599,16 +4613,20 @@
 						if(!this.model.scrollSettings.enableVirtualization || this._gridRows.length < this._virtualRowCount)
 							this._addLastRow();
                         break;
-                    case "filterDialogSwitch":
+                    case "filterDialogRefresh":
                         this._closeFDialog();
                         if (this.model.filterSettings.filterType == "menu" || this.model.filterSettings.filterType == "excel") {
-                            if(this.model.filterSettings.filterType == "menu"){
+                            if (this.model.filterSettings.filterType == "menu") {
                                 this._isExcelFilter = false;
-                            } else{
+                            } else {
                                 this._isExcelFilter = true;
+                                this._renderExcelFilter();
                             }
                             this._renderFilterDialogs();
-                        
+                            this.model.filterSettings.filteredColumns = [];
+                        }
+                        if (this.model.filterSettings.filterType != "excel") {
+                            this._isExcelFilter = false;
                         }
                         break;
                     case "selectedRowIndex":
@@ -4619,6 +4637,18 @@
                         else if (this._selectedRow() == -1) {
                             this.clearSelection();
                             this.selectedRowsIndexes = [];
+                        }
+                        break;
+                    case "selectedRowIndices":
+                        if (this.model.allowSelection == true && this.model.selectionType == "multiple" && this._selectedMultipleRows().length > 0) {
+                            var val = typeof options[prop] === 'function' ? options[prop]() : options[prop];
+                            this.clearSelection();							
+                            this.selectedRowsIndexes = val;
+                            this.selectRows(val);
+                            this.model.selectedRecords = this.getSelectedRecords();
+                        }
+                        else if (this._selectedMultipleRows().length == 0) {
+                            this.clearSelection();
                         }
                         break;
                     case "editType":
@@ -8057,6 +8087,59 @@
                 this.setWidthToColumns();
         },
         
+        updateSortedIconVisiblity: function (sortedColumns) {
+            this.getHeaderTable().find(".e-columnheader").find(".e-headercelldiv")
+                    .find(".e-ascending,.e-descending,.e-number").remove();
+            if (this.model.allowGrouping && this.model.groupSettings.groupedColumns.length != 0)
+                this.element.find(".e-groupdroparea").find("div[ej-mappingname='" + args.columnName + "']").find(".e-ascending,.e-descending,.e-number").not(".e-ungroupbutton").remove();
+            this.getHeaderTable().find("[aria-sort]").removeAttr("aria-sort");
+            for (var i = 0; i < sortedColumns.length; i++)
+                this.sortIconUpdate(sortedColumns[i].field, sortedColumns[i].direction, sortedColumns);
+            this.sortedColumns = sortedColumns;
+        },
+
+        sortIconUpdate: function (field, direction, sortedColumns) {
+            var column = this.getColumnByField(field);
+            if (BoldBIDashboard.isNullOrUndefined(column))
+                return;
+            var index = bbdesigner$.inArray(column, this.model.columns);
+            var sortcolumn = this.getsortedColumnByField(field, sortedColumns);
+            var sortindex = bbdesigner$.inArray(sortcolumn, sortedColumns);
+            var bbdesigner$headerCellDiv = this.getHeaderTable().find("thead tr:not('.e-stackedHeaderRow')").find(".e-headercell").not(".e-detailheadercell").eq(index).find(".e-headercelldiv");
+            direction = BoldBIDashboard.isNullOrUndefined(direction) ? "ascending" : direction.toLowerCase();
+            bbdesigner$headerCellDiv.find(".e-ascending,.e-descending").remove();
+            if (this.model.allowGrouping && this.model.groupSettings.groupedColumns.length != 0)
+                this.element.find(".e-groupdroparea").find("div[ej-mappingname='" + field + "']").find(".e-ascending,.e-descending").not(".e-ungroupbutton").remove();
+            imageDirection = direction != "descending" ? "e-rarrowup-2x" : "e-rarrowdown-2x";
+            var opacity = 1;
+            if (this.model.allowSorting && this.model.allowMultiSorting && sortedColumns.length > 1) {
+                for (var i = 1; i <= sortindex; i++) {
+                    opacity = opacity + 1;
+                }
+                if (bbdesigner$headerCellDiv.css("text-align") == "right") {
+                    bbdesigner$headerCellDiv.prepend(this._createSortNumber(opacity, bbdesigner$headerCellDiv).addClass("e-sortnumber"));
+                    bbdesigner$headerCellDiv.append(this._createSortElement().addClass("e-" + (direction || "ascending") + " " + imageDirection));
+                }
+                else {
+                    bbdesigner$headerCellDiv.prepend(this._createSortNumber(opacity, bbdesigner$headerCellDiv).addClass("e-sortnumber"));
+                    bbdesigner$headerCellDiv.append(this._createSortElement().addClass("e-" + (direction || "ascending") + " " + imageDirection));
+                }
+            }
+            else
+                bbdesigner$headerCellDiv.append(this._createSortElement().addClass("e-" + (direction || "ascending") + " " + imageDirection));
+            if (this.model.allowGrouping && this.model.groupSettings.groupedColumns.length != 0)
+                this.element.find(".e-groupdroparea").find("div[ej-mappingname='" + field + "']").append(this._createSortElement().addClass("e-" + (direction || "ascending") + " " + imageDirection));
+            bbdesigner$headerCellDiv.parent().attr("aria-sort", direction);
+        },
+
+        getsortedColumnByField: function (field, sortedColumns) {
+            for (var column = 0; column < sortedColumns.length; column++) {
+                if (sortedColumns[column]["field"] == field)
+                    break;
+            }
+            return column == sortedColumns.length ? null : sortedColumns[column];
+        },
+
         removeSortedColumns: function (fieldName) {
             if (bbdesigner$.isArray(fieldName)) {
                 for (var i = 0; i < fieldName.length; i++) {
@@ -8426,6 +8509,7 @@
                 this.closeXFDialog();
                 this._openedFltr = bbdesigner$("#" + this.id + this._bbdesigner$colType + "_excelDlg");
             }
+            this._dataSource = args.model.dataSource;
             this._listsWrap = bbdesigner$("#" + this.id + this._bbdesigner$colType + "_CheckBoxList");
             this._menuWrap = bbdesigner$("#" + this.id + this._bbdesigner$colType + "_MenuItem");
             this._searchBox = this._openedFltr.find(".e-searchbox input");
@@ -8433,6 +8517,7 @@
             this._openedFltr.addClass(options["cssClass"]);
             this._openedFltr.fadeIn(300, function () {
             });
+            this._ctrlInstance._bbdesigner$fDlgIsOpen = true;
 			var bbdesigner$popups = bbdesigner$("#" + this.id + this._bbdesigner$colType + "_MenuItem").find("li[ejfnrole='popup']");
             if (this._bbdesigner$enableColor) {
                 this._createDivTag(bbdesigner$popups.eq(0).find(".e-shadow"), this._bbdesigner$selectedColors, false, "sort");
@@ -8463,7 +8548,7 @@
                 if (!this._openedFltr.hasClass("e-dlgcustom")) {
                     this._openedFltr.fadeOut(300, function () {
                     });
-                    this._listsWrap.BoldBIDashboardWaitingPopup("hide");
+                    //this._listsWrap.BoldBIDashboardWaitingPopup("hide");
                 }
                 else {
                     this._openedFltr.BoldBIDashboardDialog("close");
@@ -8611,7 +8696,7 @@
                     return;
             }
             this._previousValue = parsed;
-            delay = this._dataSource instanceof BoldBIDashboard.DataManager && (this._ctrlInstance._gridRecordsCount > this._ctrlInstance.model.filterSettings.maxFilterChoices) ? 1500 : 0;
+            delay = 1500;
             sender = { type: "filterchoicesearch", value: parsed, operator: operator, matchcase: ["date", "datetime"].indexOf(this._bbdesigner$colType) != -1 ? false : this._matchCase, accent: this._accent }
             this._processSearch(sender, delay);
             if (bbdesigner$target.val() == "") {
@@ -8671,19 +8756,23 @@
         _processListData: function (params) {
             var result, promise, args = {}, query = new BoldBIDashboard.Query(), searchQuery = new BoldBIDashboard.Query().requiresCount(), evtArgs = {}; this._searchCount = 0;
             var predicates = this._predicates[this._bbdesigner$key], pred;
-			if(proxy.query._expands.length)
+            if (BoldBIDashboard.isNullOrUndefined(proxy.query))
+                proxy.query = query;
+			if(!BoldBIDashboard.isNullOrUndefined(proxy.query) && proxy.query._expands.length)
                 query._expands = proxy.query._expands;
 			var data = null, columnName = null, localJSON = null, result = null;
+            if (!BoldBIDashboard.isNullOrUndefined(this._ctrlInstance._excelFilter.fName))
+                this.fName = this._ctrlInstance._excelFilter.fName;
 			if(BoldBIDashboard.isNullOrUndefined(this._bbdesigner$foreignField && this._bbdesigner$foreignData)){
 				data = this._dataSource; 
-				columnName =  this.fName;
+				columnName = this.fName;
 				localJSON = this._localJSON;
 			}
 			else{
 				data = localJSON = this._bbdesigner$foreignData; 
 				if(this._dataSource instanceof BoldBIDashboard.DataManager && !(data instanceof BoldBIDashboard.DataManager))
                     data = BoldBIDashboard.DataManager(data);
-				columnName = this._bbdesigner$foreignField;
+				columnName = !BoldBIDashboard.isNullOrUndefined(this._bbdesigner$foreignField) ? this._bbdesigner$foreignField : this._ctrlInstance._excelFilter._bbdesigner$foreignField;;
 			}
             for (var prop in predicates) {
                 if (prop == this.fName)
@@ -8701,7 +8790,16 @@
                 this._onDemandSearch = true;
             }
 		    pred && query.where(pred);
-            BoldBIDashboard.merge(query.queries, this.query.queries) || BoldBIDashboard.merge(query._params, this.query._params)
+            if (this._ctrlInstance.model.sortSettings.sortedColumns.length) {
+                var sortedColumns = this._ctrlInstance.model.sortSettings.sortedColumns;
+               for (var i = sortedColumns.length - 1; i >= 0; i--){
+                   if (sortedColumns[i].field == this.fName) {
+                       query.sortBy(sortedColumns[i].field, sortedColumns[i].direction);						
+                   }
+                }
+           }
+            if (BoldBIDashboard.isNullOrUndefined(params) || params.type != "filterchoicesearch")
+                BoldBIDashboard.merge(query.queries, this.query.queries) || BoldBIDashboard.merge(query._params, this.query._params)
             evtArgs.requestType = params ? params.type : "filterchoicerequest",evtArgs.filterModel = this, evtArgs.query = query, evtArgs.dataSource = data;
             if(evtArgs.requestType == "filterchoicesearch")
 				evtArgs.queryParams = params;
@@ -8732,8 +8830,9 @@
                     else
                         this._dataProcessing(this._dataSource, query, args);
                 }
-                else
-                    this._dataProcessing(BoldBIDashboard.DataManager(this._localJSON), query, args);
+                else {
+                    this._dataProcessing(!BoldBIDashboard.isNullOrUndefined(this._dataSource) ? this._dataSource : this._ctrlInstance._excelFilter._dataSource, query, args);
+                }
             }
             else if (!(this._dataSource instanceof BoldBIDashboard.DataManager)) {
 				var result = [];
@@ -8763,7 +8862,7 @@
                             result = e.result;
                             args.data = proxy._localJSON = proxy._currentData = result;
                             proxy._totalRcrd = e.count;
-                            proxy._listsWrap.BoldBIDashboardWaitingPopup("hide");
+                            //proxy._listsWrap.BoldBIDashboardWaitingPopup("hide");
                             proxy._setCheckBoxList(args);;
                             proxy._reqInProgess = false;
                         }
@@ -8789,8 +8888,8 @@
                 result = fromPromise.result, count = fromPromise.count;
                 if (!!count)
                     query.where(this.getFilterFrom(this._bbdesigner$foreignData, result));
-                if (!this._listsWrap.BoldBIDashboardWaitingPopup("model.showOnInit"))
-                    this._listsWrap.BoldBIDashboardWaitingPopup("show");
+                // if (!this._listsWrap.BoldBIDashboardWaitingPopup("model.showOnInit"))
+                //     this._listsWrap.BoldBIDashboardWaitingPopup("show");
             }
             else {
                 tmp = fromPromise[0], defaults = fromPromise[0], actuals = fromPromise.slice();
@@ -8807,7 +8906,7 @@
                 if (!custom) {
                     args.data = proxy._localJSON = proxy._currentData = e.result;
                     proxy._totalRcrd = count;
-                    proxy._listsWrap.BoldBIDashboardWaitingPopup("hide");
+                    //proxy._listsWrap.BoldBIDashboardWaitingPopup("hide");
                     proxy._setCheckBoxList(args);
                     proxy._reqInProgess = false;
                 } else {
@@ -8822,13 +8921,21 @@
         _setCheckBoxList: function (args) {
             var evtArgs = {}, _blank ="", sortedData, flag, blank = this._blanks, bbdesigner$checked;
             evtArgs.requestType = args.type, evtArgs.dataSource = this._dataSource, evtArgs.filterModel = this;
-            if (this._currentData.length != 0) {                
+            if (BoldBIDashboard.isNullOrUndefined(this._listsWrap))
+                this._listsWrap = this._ctrlInstance._excelFilter._listsWrap;
+            if (BoldBIDashboard.isNullOrUndefined(this._chkList))
+                this._chkList = this._ctrlInstance._excelFilter._chkList; 
+            if (this._currentData.length != 0) {     
+                if (this._ctrlInstance._excelFilter._columnsFiltered.length && args.type == "filterchoicesearch" && BoldBIDashboard.isNullOrUndefined(args.value))
+                    args.data = this._ctrlInstance._excelFilter._currentData;
                 sortedData = this.getDistinct(args.data, args.columnName, true, !!this._bbdesigner$foreignKey);
                 flag = this._isFiltered;                
-                this._actualCount = sortedData.length; sortedData.length = this._maxCount > this._actualCount ? this._actualCount : this._maxCount;               
+                this._actualCount = sortedData.length; sortedData.length = this._maxCount > this._actualCount ? this._actualCount : this._maxCount;
+                if (BoldBIDashboard.isNullOrUndefined(this._openedFltr))
+                    this._openedFltr = this._ctrlInstance._excelFilter._openedFltr;            
                 (this._onDemandSearch && this._actualCount == 1000) || this._actualCount >= this._maxCount ? this._openedFltr.find("div.e-status").removeClass("e-hide") : this._openedFltr.find("div.e-status").addClass("e-hide");
                 this._islargeData = this._maxCount < this._actualCount ? true : false;
-				this._filterdCol = BoldBIDashboard.DataManager(this.filteredColumn).executeLocal(BoldBIDashboard.Query().where("field", "in", this.fName));               
+				this._filterdCol = BoldBIDashboard.DataManager(!BoldBIDashboard.isNullOrUndefined(this.filteredColumn) && this.filteredColumn.length > 0 ? this.filteredColumn : this.filteredColumns).executeLocal(BoldBIDashboard.Query().where("field", "in", this.fName));
 				if ((args.type == "filterchoicesearch") && (!BoldBIDashboard.isNullOrUndefined(args.value)))
                     this._listsWrap.find("div:first").html([this._selectAll, this._addToFilter, bbdesigner$.render[this.id + this._bbdesigner$colType + "_listBox_Template"](sortedData),  (BoldBIDashboard.isNullOrUndefined(args.value) && this._addAtLast) ? this.replacer(blank, /@@/g, this._setCheckState, this._empties.join(this._spliter)) : ""].join(""));                
                 else 
@@ -8848,18 +8955,26 @@
                 this._listsWrap.find("div").first().html(BoldBIDashboard.buildTag("div.e-ftrchk", this.localizedLabels.NoResult, {}, {}));
                 this._chkList = this._listsWrap.find("input:checkbox").not(".e-selectall");
             }
-            if (!BoldBIDashboard.isNullOrUndefined(this._chkList))
-                bbdesigner$checked = this._chkList.filter(":checked").length;
-            if (this._isFiltered && this._searchRequest && bbdesigner$checked == 0)
+            if (args.type == "filterchoicesearch" && BoldBIDashboard.isNullOrUndefined(args.value) && this._preChkList.length) {
+                bbdesigner$checked = this._preChkList.filter(":checked").length;
+                if (!BoldBIDashboard.isNullOrUndefined(bbdesigner$checked) && bbdesigner$checked.length) {
+                    this._listsWrap.find("input:checkbox").data("BoldBIDashboardCheckBox").option('checked', true);
+                    this._listsWrap.find("input:checkbox").data("BoldBIDashboardCheckBox").option('checked', false);
+                }
+            } else { 
+                if (!BoldBIDashboard.isNullOrUndefined(this._chkList))
+                    bbdesigner$checked = this._chkList.filter(":checked").length;
+            }
+            if ((this._isFiltered || this._ctrlInstance._excelFilter._isFiltered) && this._searchRequest && bbdesigner$checked == 0)
                 this._checkIsIndeterminate(args.columnName, this.filteredColumn);
-            if (!this._isFiltered || this._actualCount == bbdesigner$checked)
+            if (!(this._isFiltered || this._ctrlInstance._excelFilter._isFiltered) || this._actualCount == bbdesigner$checked || args.type == "filterchoicesearch" && !BoldBIDashboard.isNullOrUndefined(args.value))
                 this._listsWrap.find(".e-selectall").BoldBIDashboardCheckBox({ checked: true });
             else if (bbdesigner$checked > 0 || this._isIndeterminate && this._interDeterminateState)
                 this._listsWrap.find(".e-selectall").BoldBIDashboardCheckBox('model.checkState', 'indeterminate');
             bbdesigner$("#" + this.id + this._bbdesigner$colType + "_OkBtn").BoldBIDashboardButton({ enabled: bbdesigner$checked != 0 });
             this._listsWrap.BoldBIDashboardScroller({ scrollTop: 0 }).BoldBIDashboardScroller("refresh");
              if(this._listsWrap.hasClass('e-waitingpopup'))
-                this._listsWrap.BoldBIDashboardWaitingPopup("hide");
+                //this._listsWrap.BoldBIDashboardWaitingPopup("hide");
             if (this._ctrlInstance._trigger(this._onActionComplete, evtArgs))
                 return;
             this._isIndeterminate = false;
@@ -8867,6 +8982,14 @@
             if (args.type == "filterchoicerequest") {
                 this._preChkList = this._chkList;
                 this._checked = this._preChkList.filter(":checked");
+            }
+            if (args.type == "filterchoicesearch" && BoldBIDashboard.isNullOrUndefined(args.value) && this._preChkList.length) {
+                this._checked = this._preChkList.filter(":checked");
+                if (this._checked.length) {
+                    for (var i = 0; i < this._checked.length; i++){
+                        this._listsWrap.find("#" + this._checked[i].id).BoldBIDashboardCheckBox({checked: true});
+                    }
+                }
             }
             if (this._listsWrap.find(".e-addtofilter").length)
                 this._add = this._listsWrap.find(".e-addtofilter");
@@ -9356,8 +9479,8 @@
             if (this._clearSearchValue)
                 this._searchCount = 0;
             if (!this._openedFltr.hasClass("e-dlgcustom")) {
-                if (!this._isFiltered && this._listsWrap.find(".e-selectall").BoldBIDashboardCheckBox("model.checked") && (this._searchCount == 0 || (this._add && this._add.prop("checked"))))
-                    return this.closeXFDialog();                                  
+                // if (!this._isFiltered && this._listsWrap.find(".e-selectall").BoldBIDashboardCheckBox("model.checked") && (this._searchCount == 0 || (this._add && this._add.prop("checked"))))
+                //     return this.closeXFDialog();                                  
                 if (this._onDemandSearch || this._islargeData) {
                     if (this._listsWrap.find("input.e-ftrchk").filter(":checked:not(.e-selectall)").length <= this._listsWrap.find("input.e-ftrchk").filter(":not(:checked):not(.e-selectall)").length || this._listsWrap.find(".e-selectall").BoldBIDashboardCheckBox("model.checked")) {
                         checked = this._listsWrap.find("input.e-ftrchk").filter(":checked:not(.e-selectall)");
@@ -9374,8 +9497,8 @@
                     if ((this._add && this._add.prop("checked"))) {
                         if (unchkdata.length)
                             unchecked = unchkdata;
-                        checked = this._checked.length == 0 ? this._preChkList : this._checked;
-                        if (chkdata.length && this._checked.length != 0)
+                        checked = chkdata.length == 0 ? this._preChkList : chkdata;
+                        if (chkdata.length)
                             BoldBIDashboard.merge(checked, chkdata);
                     }
                     else
@@ -9451,8 +9574,11 @@
                 if (this._predicates[this._bbdesigner$key] == undefined)
                     this._predicates[this._bbdesigner$key] = {};
                 this._predicates[this._bbdesigner$key][this.fName] = !isTake ? predicate : { from: firstVal["from"], take: firstVal["take"] };
-                if (!this._openedFltr.hasClass("e-dlgcustom") && this._listsWrap.find(".e-selectall").BoldBIDashboardCheckBox("model.checked") && (!this._searchCount || ((this._add && this._add.prop("checked")) && (this._preChkList.filter(":not(':checked')").length == 0 || this._checked.length == 0)) || (valColl.length == this._preChkList.length)) && bbdesigner$.inArray(this.fName, this._columnsFiltered) != -1)
-                    arg = { action: "clearfiltering", filterDetails: { field: this.fName, operator: "", predicate: "or", value: "" }, fieldName: this.fName, tableID: this._bbdesigner$tableID }
+                if (!this._openedFltr.hasClass("e-dlgcustom") && (this._listsWrap.find(".e-selectall").BoldBIDashboardCheckBox("model.checked") && this._columnsFiltered.length <= 1) && (!this._searchCount || ((this._add && this._add.prop("checked")) && (this._preChkList.filter(":not(':checked')").length == 0 || this._checked.length == 0)) || (valColl.length == this._preChkList.length)) && bbdesigner$.inArray(this.fName, this._columnsFiltered) != -1) {
+                    if (valColl.length == this._preChkList.length) {
+                        arg = { action: "clearfiltering", filterDetails: { field: this.fName, operator: "", predicate: "or", value: "" }, fieldName: this.fName, tableID: this._bbdesigner$tableID }
+                    }
+                }
                 if (bbdesigner$.inArray(this.fName, this._columnsFiltered) == -1)
                     this._columnsFiltered.push(this.fName);                
                 this._filterHandler(arg);
@@ -9467,7 +9593,7 @@
 		        current = json[len], value = BoldBIDashboard.getObject(field, current), fd = value;
             if (!BoldBIDashboard.isNullOrUndefined(current)) {
 		        if (this.enableNormalize)
-		            fd = this._formatting(this._bbdesigner$format, value, this._locale);
+		            fd = this._formatting(!BoldBIDashboard.isNullOrUndefined(this._bbdesigner$format) ? this._bbdesigner$format : this._ctrlInstance._excelFilter._bbdesigner$format, value, this._locale);
 
 		        current["ejvalue"] = fd;
 
@@ -9902,13 +10028,36 @@
             }
             else if (args.action == "clearfiltering") {
                 var filterObj = args.filterDetails;
-                delete this._excelFilter._predicates[0][args.fieldName];
+                var valColl = [];
+                if (this._excelFilter._columnsFiltered.length > 0) {
+                    // for (var i = 0; i < this._excelFilter._chkList.length; i++) {
+                    //     valColl.push(this._excelFilter._chkList[i].value)
+                    // }
+                    if (this._excelFilter._predicates.length > 0) {
+                        this._excelFilter._predicates[0][args.fieldName]['value'] = filterObj.value;
+                        filterObj.predicate = this._excelFilter._predicates[0][args.fieldName];
+                    }
+                }
+                if (this._isExcelFilter) {
+                    delete this._excelFilter._predicates[0][args.fieldName];
+                    if (this._excelFilter._columnsFiltered.indexOf(args.fieldName) !== -1) {
+                        this._excelFilter._columnsFiltered.splice(this._excelFilter._columnsFiltered.indexOf(args.fieldName), 1);
+                    }
+                }
                 this.filterColumn(filterObj.field, filterObj.operator, filterObj.value, filterObj.predicate);
-                return;
+                if (this._excelFilter._columnsFiltered.length == 1) {
+                    return;
+                }
+                
             }
             else if (args.action == "sorting") {
                 var sortObj = args.sortDetails;
-                var valColl = this.model.filterSettings.filteredColumns;
+                var valColl = [];
+                if (this.model.filterSettings.filteredColumns.length) {
+                    for (var k = 0; k < this.model.currentViewData.length; k++) {
+                        valColl.push(...this.model.filterSettings.filteredColumns.filter(i => this.model.currentViewData[k][i.field] ==  i.value));
+                    }
+                }
                 var firstVal = valColl[0], predicate;
                 if (!BoldBIDashboard.isNullOrUndefined(firstVal)) {
                     isTake = firstVal["from"];
@@ -9919,12 +10068,13 @@
                 }
                 if (BoldBIDashboard.gridFeatures.sort)
                     this.sortColumn(sortObj.field, sortObj.direction, predicate);
-                this._excelFilter.closeXFDialog();
+                if (!BoldBIDashboard.isNullOrUndefined(this._excelFilter))
+                    this._excelFilter.closeXFDialog();
                 return;
             }
 
             arg.currentFilteringColumn = args.fieldName;
-            arg.predicated = args.ejpredicate;
+            arg.predicated = this._excelFilter._predicates[0];
             var returnValue = this._processBindings(arg);
             if (returnValue)
                 this.model.filterSettings.filteredColumns = temp;
@@ -10395,10 +10545,11 @@
             bbdesigner$("#" + id).BoldBIDashboardDialog({ showOnInit: false, "enableRTL": this.model.enableRTL, "cssClass": this.model.cssClass, "showHeader": false, width: 260, enableResize: false, allowKeyboardNavigation: false, content: "#" + this._id });
         },
         _closeFDialog: function () {
-            if (this._isExcelFilter || this._excelFilterRendered)
+            if (this._isExcelFilter || this._excelFilterRendered) {
                 if (!BoldBIDashboard.isNullOrUndefined(this._excelFilter)) {
                     this._excelFilter.closeXFDialog();
                 }
+            }
             if (this._bbdesigner$menuDlgIsOpen)
                 this._closeFilterDlg();
         },
@@ -11458,12 +11609,24 @@
         selectRows: function (rowIndex, toIndex, target, e) {
             if (!this._allowrowSelection)
                 return false;
+            var deselection = false;
+            if (this._enableCheckSelect) {
+                if (!BoldBIDashboard.isNullOrUndefined(target) && target.hasClass("e-checkselectall")) {
+                    deselection = target[0].checked;
+                }
+                if (BoldBIDashboard.isNullOrUndefined(target) && this._selectAllchecked && (BoldBIDashboard.isNullOrUndefined(rowIndex) || rowIndex.length == 0)) {
+                    this.unSelectedRowsIndexes = [];
+                    this.getHeaderTable().find(".e-headercelldiv .e-checkselectall").prop("checked", "checked");
+                }
+            } 
             if (this._traverseRow != rowIndex)
                 bbdesigner$(".e-traverse").removeClass("e-traverse");
             this._traverseRow = null;
             var rowIndexCollection = [];
-			if(this.initialRender)
+            var pagingRowIndex = [];
+			if(this.initialRender) {
 				this.model.currentIndex = rowIndex;
+            }
 			if(this.model.scrollSettings.enableVirtualization){
 				if (bbdesigner$.isArray(rowIndex))
 					this.model.currentIndex = rowIndex[0];
@@ -11472,12 +11635,25 @@
 				}							
 			}
             if (!this.multiSelectCtrlRequest && this.model.scrollSettings.allowVirtualScrolling) {
-                if (!this._virtuaOtherPage) {
+                if ( !BoldBIDashboard.isNullOrUndefined(this._virtuaOtherPage) && !this._virtuaOtherPage) {
                     this.clearSelection();
                     this._virtualScrollingSelection = false;
                 }
                 else
                     this._virtualScrollingSelection = true;
+            }
+            if (this._enableCheckSelect) {
+                if ((BoldBIDashboard.isNullOrUndefined(rowIndex) || rowIndex.length == 0) && this._enableCheckSelect && (this._selectAllchecked || this.model.deselection))  {
+                    rowIndex = [];
+                    this.selectedRowsIndexes = [];
+                    for (var i = 0; i < this._currentJsonData.length; i++) {
+                        var index = ((this.model.pageSettings.currentPage - 1) * this.model.pageSettings.pageSize) + i;
+                        rowIndex.push(index);
+                        if (this.model.allowPaging)
+                            pagingRowIndex.push(i);
+                        this._virtualSelectedRecords[index] = this._currentJsonData[i];
+                    }
+                }
             }
             if (bbdesigner$.isArray(rowIndex)) {
                 rowIndexCollection = rowIndex;
@@ -11525,7 +11701,7 @@
 						if(rowIndex == bbdesigner$rowIndex && !target)
 							rowIndex = rowIndex != 0 ? rowIndex % this._virtualRowCount + rowCount : rowIndex;											
 					}
-					if(rowIndexCollection.length){												
+					if (rowIndexCollection.length > 0) {												
 						for(var i = 0; i < rowIndexCollection.length; i++){
 							var viewIndex = this._getSelectedViewData(rowIndexCollection[i]).viewIndex;
 							if(bbdesigner$.inArray(viewIndex, this._currentLoadedIndexes) != -1)
@@ -11606,8 +11782,9 @@
                 if (((pagesLoaded * pageSize) - rowIndex) > pageSize && ((pagesLoaded * pageSize) - pageSize) > rowIndex) {
                     Data = this._loadedJsonData[this._loadedJsonData.length - 1].data[trIndex];
                 }
-                if (BoldBIDashboard.isNullOrUndefined(Data)) {
-                    Data = this._virtualLoadedRecords[pageIndex][trIndex];
+                if (BoldBIDashboard.isNullOrUndefined(Data) && !BoldBIDashboard.isNullOrUndefined(pageIndex) && !BoldBIDashboard.isNullOrUndefined(trIndex) && trIndex != '') {
+                    if (!BoldBIDashboard.isNullOrUndefined(this._virtualLoadedRecords[pageIndex]))
+                        Data = this._virtualLoadedRecords[pageIndex][trIndex];
                 }
             }
             args = { rowIndex: bbdesigner$rowIndex, row: bbdesigner$gridRows.eq(rowIndex), data: Data, target: target,  prevRow: bbdesigner$prevRow, prevRowIndex: bbdesigner$prevIndex, parentTarget: e  };
@@ -11623,9 +11800,25 @@
                 }
             }
             if (rowIndexCollection.length > 0) {
+                var currentIndex;
+                pageIndex = [];
                 for (var i = 0; i < rowIndexCollection.length; i++) {
-                    this.selectedRowsIndexes.push(rowIndexCollection[i]);
-                    bbdesigner$('input[type="checkbox"]').eq(rowIndexCollection[i]).prop('checked', true);
+                    if (this._enableCheckSelect) {
+                        if (!this.selectedRowsIndexes.includes(rowIndexCollection[i])) {
+                            this.selectedRowsIndexes.push(rowIndexCollection[i]);
+                        }
+                        if (this.model.allowPaging) {
+                            pageIndex.push((rowIndexCollection[i] - (this.model.pageSettings.currentPage - 1) * this.model.pageSettings.pageSize));
+                        }
+                        if (rowIndexCollection[i] >= this.model.pageSettings.pageSize || (this.model.allowPaging && this.model.pageSettings.currentPage > 1)) {
+                            currentIndex = rowIndexCollection[i] - ((this.model.pageSettings.currentPage - 1) * this.model.pageSettings.pageSize);
+                        } else {
+                            currentIndex = rowIndexCollection[i];
+                        }
+                        this._virtualSelectedRecords[rowIndexCollection[i]] = this._currentJsonData[currentIndex];
+                    } else {
+                        this.selectedRowsIndexes.push(rowIndexCollection[i]);
+                    }
                 }
 				if( !this.model.scrollSettings.enableVirtualization){
 					var diff = this._virtaulSel[0] - rowIndex;
@@ -11633,27 +11826,65 @@
 						this._virtaulSel[i] -= diff;
 					}
 				}
-                rows = this.getRowByIndex(this.model.scrollSettings.allowVirtualScrolling ? this._virtaulSel : rowIndexCollection);
+                if (this._enableCheckSelect) {
+                    rows = this.getRowByIndex(this.model.scrollSettings.allowVirtualScrolling ? this._virtaulSel : this.model.allowPaging ? pageIndex : rowIndexCollection);
+                    for (var i = 0;i < rows.length;i++) {
+                        if (BoldBIDashboard.isNullOrUndefined(rows[i])) {
+                            rows.splice(i,1);
+                        }
+                    }
+                } else {
+                    rows = this.getRowByIndex(this.model.scrollSettings.allowVirtualScrolling ? this._virtaulSel : rowIndexCollection);
+                }
                 if (this.model.scrollSettings.frozenColumns)
                     rows = bbdesigner$(rows[0]).add(rows[1]);
                 bbdesigner$(rows).attr("aria-selected", "true").find('.e-rowcell, .e-detailrowcollapse, .e-detailrowexpand').addClass("e-selectionbackground e-active");
+                if (this._enableCheckSelect && !this._isMapSelection) {
+                    bbdesigner$(rows).find(".e-checkcelldiv input").prop("checked", "checked");
+                }
                 Array.prototype.push.apply(this.model.selectedRecords, this.getSelectedRecords());
             }
             else if (BoldBIDashboard.isNullOrUndefined(toIndex) || BoldBIDashboard.isNullOrUndefined(rowIndex)) {
                 rowIndex = BoldBIDashboard.isNullOrUndefined(rowIndex) ? toIndex : rowIndex;
+                if (this._enableCheckSelect) {
+                    bbdesigner$rowIndex = this.model.allowPaging ? ((this.model.pageSettings.currentPage - 1) * this.model.pageSettings.pageSize) + rowIndex : rowIndex;
+                }
                 switch (this.model.selectionType) {
                     case BoldBIDashboard.Grid.SelectionType.Multiple:
-                        if (this.multiSelectCtrlRequest) {
+                        if (this.multiSelectCtrlRequest || this._enableCheckSelect) {
 							this.model.selectedRecords = [];
                             var selectedRowIndex = bbdesigner$.inArray(bbdesigner$rowIndex, this.selectedRowsIndexes);
-                            selectedRowIndex != -1 && this.clearSelection(bbdesigner$rowIndex) && this.selectedRowsIndexes.splice(selectedRowIndex, 0);
+                            if (this._enableCheckSelect) {
+                                selectedRowIndex != -1 && !this._isMapSelection && this.clearSelection(rowIndex, target) && this.selectedRowsIndexes.splice(selectedRowIndex, 0);
+                                if ( selectedRowIndex != -1 ) {
+                                    if (!this.unSelectedRowsIndexes.includes(bbdesigner$rowIndex)) {
+                                        this.unSelectedRowsIndexes.push(bbdesigner$rowIndex);
+                                    }
+                                }
+                            } else {
+                                selectedRowIndex != -1 && this.clearSelection(bbdesigner$rowIndex) && this.selectedRowsIndexes.splice(selectedRowIndex, 0);
+                            }
                             if (selectedRowIndex == -1) {
                                 this.selectedRowsIndexes.push(bbdesigner$rowIndex);
-                                this.getRowByIndex(rowIndex).attr("aria-selected", "true").find('.e-rowcell, .e-detailrowcollapse, .e-detailrowexpand').addClass("e-selectionbackground e-active");
+                                if (this._enableCheckSelect) {
+                                    var index = bbdesigner$.inArray(bbdesigner$rowIndex, this.unSelectedRowsIndexes);
+                                    this.unSelectedRowsIndexes.splice(index, 1);
+                                    this._virtualSelectedRecords[bbdesigner$rowIndex] = this._currentJsonData[rowIndex];
+                                    this._selectedMultipleRows(this.selectedRowsIndexes);
+                                    if(this.model.scrollSettings.enableVirtualization)
+                                        this._virtualSelectedRowIndex.push(args.rowIndex);
+                                }
+                                var tr = this.getRowByIndex(rowIndex);
+                                tr.attr("aria-selected", "true").find('.e-rowcell, .e-detailrowcollapse, .e-detailrowexpand').addClass("e-selectionbackground e-active");
                                 if(!this.model.scrollSettings.enableVirtualization)
 									this._virtualSelectAction(pageIndex, rowIndex, pageSize);
-								else
+								else {
 									this._virtualSelectedRecords[bbdesigner$rowIndex] = this._getSelectedViewData(rowIndex, target).data;
+                                    if (this._enableCheckSelect)
+                                        this._virtualCheckSelectedRecords[args.rowIndex] = this._getSelectedViewData(rowIndex, target).data;
+                                }
+                                if ((this._enableCheckSelect && target && !target.parent().hasClass("e-checkcelldiv")) || (BoldBIDashboard.isNullOrUndefined(target) && this._enableCheckSelect))
+                                    tr.find(".e-checkcelldiv input").prop("checked", "checked");
                             }
                             Array.prototype.push.apply(this.model.selectedRecords, this.getSelectedRecords());
                             break;
@@ -11662,8 +11893,10 @@
                         this.clearSelection();
                         this.clearColumnSelection();
                         this.selectedRowsIndexes = [];
+                        this.unSelectedRowsIndexes = [];
                         this.model.selectedRecords = [];
                         this._virtualSelectedRecords = {};
+                        this._virtualUnSelectedRecords = [];
                         this.selectedRowsIndexes.push(bbdesigner$rowIndex);
                         this.getRowByIndex(rowIndex).attr("aria-selected", "true").find('.e-rowcell, .e-detailrowcollapse, .e-detailrowexpand').addClass("e-selectionbackground e-active");
                         if(!this.model.scrollSettings.enableVirtualization)
@@ -11678,65 +11911,93 @@
                     this.clearSelection();
                     this.clearColumnSelection();
                     this.selectedRowsIndexes = [];
+                    this.unSelectedRowsIndexes = []
                     this.model.selectedRecords = [];                  
 					this._virtualSelectedRecords = {};
+                    this._virtualUnSelectedRecords = [];
 					bbdesigner$toIndex = toIndex;					
 					this._virtualUnSel = [];
 					this._virtualUnSelIndexes = [];
-					if(this.model.scrollSettings.enableVirtualization && target){
-						var viewIndex = this._getSelectedViewData(toIndex, target).viewIndex;
-						var remain = toIndex % this._virtualRowCount;																												
-						bbdesigner$toIndex = (viewIndex * this._virtualRowCount) - (this._virtualRowCount - remain);
-						if(bbdesigner$rowIndex != this._prevSelIndex)bbdesigner$rowIndex = this._prevSelIndex;																	
-					}					
-                    ascend = bbdesigner$rowIndex - bbdesigner$toIndex < 0;
-					if(!this.model.scrollSettings.enableVirtualization)
-						rows = ascend ? this.getRowByIndex(rowIndex, toIndex + 1) : this.getRowByIndex(toIndex, rowIndex + 1);
-                    if (this.model.scrollSettings.frozenColumns)
-                        rows = bbdesigner$(rows[0]).add(rows[1]);
-                    var rowIndexes = [];
-                    for (var i = ascend ? bbdesigner$rowIndex : bbdesigner$toIndex, to = ascend ? bbdesigner$toIndex : bbdesigner$rowIndex; i <= to; i++) {
-						 if(this.model.scrollSettings.allowVirtualScrolling){
-							if(!this.model.scrollSettings.enableVirtualization){
-								var nameIndx = this.getRowByIndex(i).attr("name");
-								var pageIndex = !BoldBIDashboard.isNullOrUndefined(nameIndx) ? (parseInt(nameIndx) / pageSize) + 1 : rowIndex;
-								this._virtualSelectAction(pageIndex, i, pageSize);
-							}
-							else {								
-								this._virtualSelectedRecords[i] = this._getSelectedViewData(i).data;
-								var viewIndex = this._getSelectedViewData(i).viewIndex;
-								if(bbdesigner$.inArray(viewIndex, this._currentLoadedIndexes) != -1){
-									var indx = this._currentLoadedIndexes.indexOf(viewIndex);
-									var selIndex = i % this._virtualRowCount + indx * this._virtualRowCount;
-									if(selIndex == 0) indx * this._virtualRowCount;
-									rowIndexes.push(selIndex);
-								}
-								else {
-									this._virtualUnSel.push(i);
-									if(bbdesigner$.inArray(viewIndex, this._virtualUnSelIndexes) == -1)
-										this._virtualUnSelIndexes.push(viewIndex);
-								}
-							}
-						}
-                        this.selectedRowsIndexes.push(i);
+					if (this._enableCheckSelect && deselection) {
+                        target[0].checked = deselection;
                     }
-					if(this.model.scrollSettings.enableVirtualization)
-						rows =  this.getRowByIndex(rowIndexes[0], rowIndexes[rowIndexes.length - 1] + 1);
-                    bbdesigner$(rows).attr("aria-selected", "true").find('.e-rowcell, .e-detailrowcollapse, .e-detailrowexpand').addClass("e-selectionbackground e-active");
-                    Array.prototype.push.apply(this.model.selectedRecords, this.getSelectedRecords());
+                    if (this._isMapSelection || !(target && target.hasClass("e-checkselectall") && target[0].checked) && !this._selectAllUnchecked || this._selectAllchecked) {
+                        if (this.model.scrollSettings.enableVirtualization && (target && !target.hasClass("e-checkselectall"))) {
+                            var viewIndex = this._getSelectedViewData(toIndex, target).viewIndex;
+                            var remain = toIndex % this._virtualRowCount;
+                            bbdesigner$toIndex = (viewIndex * this._virtualRowCount) - (this._virtualRowCount - remain);
+                            if (bbdesigner$rowIndex != this._prevSelIndex) bbdesigner$rowIndex = this._prevSelIndex;
+                        }						
+                        ascend = bbdesigner$rowIndex - bbdesigner$toIndex < 0;
+                        if(!this.model.scrollSettings.enableVirtualization)
+                            rows = ascend ? this.getRowByIndex(rowIndex, toIndex + 1) : this.getRowByIndex(toIndex, rowIndex + 1);
+                        if (this.model.scrollSettings.frozenColumns)
+                            rows = bbdesigner$(rows[0]).add(rows[1]);
+                        var rowIndexes = [];
+                        for (var i = ascend ? bbdesigner$rowIndex : bbdesigner$toIndex, to = ascend ? bbdesigner$toIndex : bbdesigner$rowIndex; i <= to; i++) {
+                            if(this.model.scrollSettings.allowVirtualScrolling || (this._enableCheckSelect && this.model.allowPaging)){
+                                if (!this.model.scrollSettings.enableVirtualization) {
+                                    var nameIndx = this.getRowByIndex(i).attr("name");
+                                    var pageIndex = !BoldBIDashboard.isNullOrUndefined(nameIndx) ? (parseInt(nameIndx) / pageSize) + 1 : rowIndex;
+                                    this._virtualSelectAction(pageIndex, i, pageSize);
+                                }
+                                else {
+                                    if (!this._enableCheckSelect) {
+                                        this._virtualSelectedRecords[i] = this._getSelectedViewData(i).data;
+                                    }							
+                                    var viewIndex = this._getSelectedViewData(i).viewIndex;
+                                    if(bbdesigner$.inArray(viewIndex, this._currentLoadedIndexes) != -1){
+                                        var indx = this._currentLoadedIndexes.indexOf(viewIndex);
+                                        var selIndex = i % this._virtualRowCount + indx * this._virtualRowCount;
+                                        if(selIndex == 0) indx * this._virtualRowCount;
+                                        rowIndexes.push(selIndex);
+                                    }
+                                    else {
+                                        this._virtualUnSel.push(i);
+                                        if(bbdesigner$.inArray(viewIndex, this._virtualUnSelIndexes) == -1)
+                                            this._virtualUnSelIndexes.push(viewIndex);
+                                    }
+                                }
+                            }
+                            this.selectedRowsIndexes.push(i);
+                            if (!(this.model.scrollSettings.enableVirtualization && this._enableCheckSelect)){
+                                this._virtualSelectedRecords[i] = this._currentJsonData[i];
+                            }
+                            if (this._enableCheckSelect)
+                                this._selectedMultipleRows(this.selectedRowsIndexes);
+                        }
+                        if (this.model.scrollSettings.enableVirtualization)
+                            rows = this.getRowByIndex(rowIndexes[0], rowIndexes[rowIndexes.length - 1] + 1);
+                        bbdesigner$(rows).attr("aria-selected", "true").find('.e-rowcell, .e-detailrowcollapse, .e-detailrowexpand').addClass("e-selectionbackground e-active");
+                        Array.prototype.push.apply(this.model.selectedRecords, this.getSelectedRecords());
+                        if (this._enableCheckSelect) {
+                            bbdesigner$(rows).find(".e-checkcelldiv input").prop("checked", "checked");
+                            if(this.multiSelectShiftRequest)
+                                target.prop("checked",false);
+
+                        }
+                    }
+                }
+            }
+            if (this._enableCheckSelect && !(target && target.hasClass("e-checkselectall"))) {
+                if ((this.unSelectedRowsIndexes.length > 0) || (this.initialRender && this.model.deselection)) {
+                    this.getHeaderTable().find(".e-headercelldiv .e-checkselectall").prop("checked", false);
+                }
+                else if ((this._selectAllchecked && this.unSelectedRowsIndexes.length == 0) || (!this._selectAllchecked && this.model.deselection && this.unSelectedRowsIndexes.length == 0) || (this.selectedRowsIndexes.length > 0 && this.selectedRowsIndexes.length == this.model.pageSettings.totalRecordsCount)) {
+                    this.getHeaderTable().find(".e-headercelldiv .e-checkselectall").prop("checked", "checked");
                 }
             }
             if (this._selectedRow() !== bbdesigner$rowIndex)
                 this._selectedRow(bbdesigner$rowIndex);
-            Data = this._virtualScrollingSelection ? this._virtualSelRecords : Data;
+            Data = this._virtualScrollingSelection || this.model.allowPaging || this._enableCheckSelect ? this._virtualSelectedRecords : Data;
 			var selectedIndex = this.model.scrollSettings.enableVirtualization ? bbdesigner$rowIndex : this._selectedRow();
-            var args = { rowIndex: selectedIndex, row: this.getRowByIndex(this._selectedRow()), data: Data, target: target, prevRow: bbdesigner$prevRow, prevRowIndex : bbdesigner$prevIndex, parentTarget: e };
+            var args = { rowIndex: selectedIndex, row: this.getRowByIndex(this._selectedRow()), data: Object.values(Data), target: target, prevRow: bbdesigner$prevRow, prevRowIndex : bbdesigner$prevIndex, parentTarget: e, hasUnselectedRows: this.unSelectedRowsIndexes.length > 0, isSelectAllChecked: this._selectAllchecked };
             this._previousIndex = this.selectedRowsIndexes.length ? rowIndex :this._previousIndex;
 			if(this.model.scrollSettings.enableVirtualization){
 				this._prevSelIndex = bbdesigner$rowIndex; 
 				this._prevSelRow = this.getRowByIndex(rowIndex);
 			}
-            if (bbdesigner$(this.getRowByIndex(rowIndex)).is('[role="row"]'))
+            if (bbdesigner$(this.getRowByIndex(rowIndex)).is('[role="row"]') || (target && target.hasClass("e-checkselectall")))
                 this._trigger("rowSelected", args);            
         },
 
@@ -12057,7 +12318,7 @@
         },
         
         clearSelection: function (index) {
-             var bbdesigner$gridRows, index;
+             var bbdesigner$gridRows, index, $gridRows = bbdesigner$(this.getRows());
             if (this._selectedRow() >= -1) {
                 if (this.model.scrollSettings.frozenColumns)
                     bbdesigner$gridRows = this._excludeDetailRows();
@@ -12071,6 +12332,10 @@
 						var remain = this._virtualRowCount - row.index() % this._virtualRowCount;	
 						index = limit - remain;
 					}
+                    if (this._enableCheckSelect) {
+                        index = this.model.allowPaging ? ((this.model.pageSettings.currentPage - 1) * this.model.pageSettings.pageSize) + index : index; 
+                        this._virtualUnSelectedRecords[index] = this._virtualSelectedRecords[index];
+                    }
                     index = bbdesigner$.inArray(index, this.selectedRowsIndexes);
                     if (index != -1)
                         this.selectedRowsIndexes.splice(index, 1);
@@ -12078,9 +12343,17 @@
                     if (this.model.scrollSettings.frozenColumns > 0)
                         bbdesigner$gridRows = bbdesigner$(bbdesigner$gridRows[0]).add(bbdesigner$gridRows[1]);
                     bbdesigner$gridRows.removeAttr("aria-selected").find(".e-rowcell, .e-detailrowcollapse, .e-detailrowexpand").removeClass("e-selectionbackground").removeClass("e-active");
+                    if (this._enableCheckSelect) {
+                        if ($gridRows.length > 0 && (this.selectedRowsIndexes.length > 0 || this._selectAllchecked)) {
+                            $gridRows.find(".e-checkcelldiv [type=checkbox]").prop("checked", false);
+                        }
+                    }
                     if(!this._clearVirtualSelection){
 						this.selectedRowsIndexes = [];
+                        this.unSelectedRowsIndexes = [];
 						this.model.selectedRecords = [];
+                        this._virtualSelectedRecords = [];
+                        this._virtualUnSelectedRecords = [];
 					}
                 }
                 if (!this.selectedRowsIndexes.length)
@@ -12186,11 +12459,11 @@
         },
         getSelectedRecords: function () {
             var records = [];
-            if (this._virtualScrollingSelection)
+            if (!this._enableCheckSelect && this._virtualScrollingSelection)
                 return this._virtualSelRecords;
             for (var i = 0; i < this.selectedRowsIndexes.length; i++) {
                 if (this.selectedRowsIndexes[i] != -1) {
-                    if (this.model.scrollSettings.allowVirtualScrolling)
+                    if (this.model.scrollSettings.allowVirtualScrolling || (this._enableCheckSelect && this.model.allowPaging))
                         records.push(this._virtualSelectedRecords[this.selectedRowsIndexes[i]]);
                     else
                         records.push(this._currentJsonData[this.selectedRowsIndexes[i]]);
@@ -12198,8 +12471,18 @@
             }
             return records;
         },
+        getUnselectedRecords: function () {
+            var records = [];
+            for (var i = 0; i < this.unSelectedRowsIndexes.length; i++) {
+                if (this.model.scrollSettings.allowVirtualScrolling || this.model.allowPaging)
+                    records.push(this._virtualUnSelectedRecords[this.unSelectedRowsIndexes[i]]);
+                else
+                    records.push(this._currentJsonData[this.unSelectedRowsIndexes[i]]);
+            }
+            return records;
+        },
         _setCurrentRow: function (requestType) {
-            if (requestType == BoldBIDashboard.Grid.Actions.Refresh || requestType == BoldBIDashboard.Grid.Actions.Ungrouping || requestType == BoldBIDashboard.Grid.Actions.Grouping || requestType == BoldBIDashboard.Grid.Actions.Filtering || requestType == BoldBIDashboard.Grid.Actions.Sorting || requestType == BoldBIDashboard.Grid.Actions.Delete || requestType == BoldBIDashboard.Grid.Actions.Save || requestType == BoldBIDashboard.Grid.Actions.Cancel || requestType == BoldBIDashboard.Grid.Actions.Paging) {
+            if (requestType == BoldBIDashboard.Grid.Actions.Refresh || requestType == BoldBIDashboard.Grid.Actions.Ungrouping || requestType == BoldBIDashboard.Grid.Actions.Grouping || requestType == BoldBIDashboard.Grid.Actions.Filtering || requestType == BoldBIDashboard.Grid.Actions.Sorting || requestType == BoldBIDashboard.Grid.Actions.Delete || requestType == BoldBIDashboard.Grid.Actions.Save || requestType == BoldBIDashboard.Grid.Actions.Cancel || (!this._enableCheckSelect && requestType == BoldBIDashboard.Grid.Actions.Paging)) {
                 this._selectedRow(-1);
 				if(!this._virtualDataRefresh)
 					this.selectedRowsIndexes = [];
@@ -12310,6 +12593,7 @@
         _dataSource: BoldBIDashboard.util.valueFunction("dataSource"),
         _selectedRow: BoldBIDashboard.util.valueFunction("selectedRowIndex"),
         _currentPage: BoldBIDashboard.util.valueFunction("pageSettings.currentPage"),
+        _selectedMultipleRows: BoldBIDashboard.util.valueFunction("selectedRowIndices"),
         // default model
         defaults: /** @lends BoldBIDashboardGrid# */ {            
             allowPaging: false,
@@ -12340,7 +12624,8 @@
             allowRowDragAndDrop: false,
             enableTouch: true,
             columnLayout:'auto',            
-            selectionType: "single",            
+            selectionType: "single",     
+            deselection: false,       
             dataSource: null,            
             cssClass: "",            
             allowScrolling: false,            
@@ -12383,7 +12668,8 @@
                 template: null,                
                 totalRecordsCount: null,                
                 enableQueryString: false,
-                printMode: "allpages"
+                printMode: "allpages",
+                disableVirtualization: false,
             },            
             groupSettings:  {               
                 showDropArea: true,                
@@ -12839,6 +13125,10 @@
         },
         _initPrivateProperties: function () {
             this._click = 0;
+            this._selectAllchecked = false;
+            this._initJsonData = [];
+			this._selectAllUnchecked = false;
+            this._enableCheckSelect = false;
 			this._tabKey = false;
             this._gridHeaderTable = null;
             this._gridWidth = this.element.width();
@@ -12932,7 +13222,9 @@
             this._currentVirtualIndex = 1;
             this._virtualRowCount = 0;
             this._virtualSelectedRecords = {};
+            this._virtualUnSelectedRecords = [];
             this.selectedRowsIndexes = [];
+            this.unSelectedRowsIndexes = [];
             this._isReorder = false;
             this._searchString = "";
             this._searchCount = null;
@@ -12956,6 +13248,7 @@
                 deleted: [],
                 changed: []
             };
+            this.checkSelectedRowsIndexes = [];
             this._bulkEditTemplate = bbdesigner$();
             this._confirmDialog = null;
             this._confirmedValue = false;
@@ -13162,7 +13455,7 @@
             this.element.css('margin-top', elementTop + buttHeight);
             var bbdesigner$mainDiv = BoldBIDashboard.buildTag("div");
             var bbdesigner$outerDiv = BoldBIDashboard.buildTag("div .e-grid e-columnChooser", '', {}, { id: this._id + "ccDiv" });
-            var bbdesigner$searchBox = BoldBIDashboard.buildTag("div.e-searchbox e-fields").append(BoldBIDashboard.buildTag("input#" + this._id + "_ccSearchBox.e-ejinputtext e-filtertext", {}, {}, { "type": "text" }))
+            var bbdesigner$searchBox = BoldBIDashboard.buildTag("div.e-searchbox e-fields").append(BoldBIDashboard.buildTag("input#" + this._id + "_ccSearchBox.e-ejinputtext e-filtertext", {}, {}, { "type": "text", "placeholder": "Search" }))
             var bbdesigner$sapnDiv = BoldBIDashboard.buildTag('span .e-searchfind e-icon')
             bbdesigner$searchBox.append(bbdesigner$sapnDiv);
             var bbdesigner$listOuterDiv = BoldBIDashboard.buildTag('div', '', { 'height': '228px' }, { id: this._id + "liScrollerDiv" })
@@ -13269,12 +13562,14 @@
                 this.element[checked ? "attr" : "removeAttr"]("checked", true);
             }
             var operation = !checked ? "addClass" : "removeClass";
-            bbdesigner$("#" + this._id + "ccDiv").find("button[aria-describedby='Done']")[operation]("e-disable");
+            var uniqueName = bbdesigner$("#" + this._id + "ccDiv").find("button").attr("aria-describedby");
+            bbdesigner$("#" + this._id + "ccDiv").find(`button[aria-describedby=${uniqueName}]`)[operation]("e-disable");
         },
         _columnChooserBeforeClose: function () {
             bbdesigner$(".e-columnChoosertail").remove();
             bbdesigner$(".e-columnChoosertailAlt").remove();
-            bbdesigner$("#" + this._id + "ccDiv").find("button[aria-describedby='Done']").removeClass("e-disable");
+            var uniqueName = bbdesigner$("#" + this._id + "ccDiv").find("button").attr("aria-describedby");
+            bbdesigner$("#" + this._id + "ccDiv").find(`button[aria-describedby=${uniqueName}]`).removeClass("e-disable");
             bbdesigner$("#" + this._id + "_ccSearchBox").val('');
             var args = {};
             args.target = {}; args.target.value = '';
@@ -13339,8 +13634,8 @@
             }
 
             if (columnCollection.length == 0) {
-                var bbdesigner$labeldiv = BoldBIDashboard.buildTag('div#nomatches', '');
-                var bbdesigner$label = BoldBIDashboard.buildTag('span', this.localizedLabels.NoResult);
+                var bbdesigner$labeldiv = BoldBIDashboard.buildTag('div#nomatches', '', {"padding": "11px 16px", "text-align":"center"});
+                var bbdesigner$label = BoldBIDashboard.buildTag('span', this.localizedLabels.NoRecords);
                 bbdesigner$labeldiv.append(bbdesigner$label);
                 bbdesigner$(div).append(bbdesigner$labeldiv);
             }
@@ -13348,7 +13643,8 @@
             if (columnCollection.length)
                 divs.eq(0).find("input.e-js").BoldBIDashboardCheckBox({ checked: isChk });
             divs.eq(0)[columnCollection.length == 0 ? "addClass" : "removeClass"]("e-hide");
-            bbdesigner$("#" + this._id + "ccDiv").find("button[aria-describedby='Done']")[!checkChecked ? "addClass" : "removeClass"]("e-disable");
+            var uniqueName = bbdesigner$("#" + this._id + "ccDiv").find("button").attr("aria-describedby");
+            bbdesigner$("#" + this._id + "ccDiv").find(`button[aria-describedby=${uniqueName}]`)[!checkChecked ? "addClass" : "removeClass"]("e-disable");
             bbdesigner$("#" + this._id + "liScrollerDiv").BoldBIDashboardScroller('refresh');
         },
         _addButtonCC: function () {
@@ -13415,9 +13711,16 @@
             bbdesigner$(".e-columnChoosertail").remove();
         },
         _ccClickHandler: function (e) {
-            var dlgWidth = 230, xPos;
+            var dlgWidth = 230, xPos, top, dialogObj, panelHeightEdge, evt = e.e, dialogHeight = 309, columnChoosertailOffset = 16, columnChoosertailAlt = 15, widgetHeight, cummalativeCalculationForDialog, chooserdialogHeight, isBrowserExceeded;
             var chooserButton = this.element.find(".e-ccButton");
             xPos = chooserButton.offset().left + chooserButton.width();
+            dialogObj = bbdesigner$("#" + this._id + "ccDiv").data('BoldBIDashboardDialog');
+            panelHeightEdge = bbdesigner$(document).height();
+            widgetHeight  = this.element.height() < dialogHeight ? this.element.height() : 0;
+            cummalativeCalculationForDialog = (dialogHeight + 35) + columnChoosertailOffset + columnChoosertailAlt;
+            chooserdialogHeight = evt.pageY + cummalativeCalculationForDialog;
+            isBrowserExceeded = chooserdialogHeight > panelHeightEdge;
+
             var dialogObj = bbdesigner$("#" + this._id + "ccDiv").data('BoldBIDashboardDialog')
             if (dialogObj && dialogObj.isOpened()) {
                 dialogObj.close();
@@ -13425,13 +13728,20 @@
                 bbdesigner$(".e-columnChoosertailAlt").remove();
             }
             else {
+                if (isBrowserExceeded) {
+                    top = panelHeightEdge - cummalativeCalculationForDialog - widgetHeight;
+                } else {
+                    top = chooserButton.offset().top + 35;
+                }
                 bbdesigner$("#" + this._id + "ccDiv").BoldBIDashboardDialog({ width: '230px', height: '309px', position: { X: (this.model.enableRTL ? (xPos - dlgWidth + 143) : (xPos - dlgWidth)), Y: chooserButton.offset().top + 35 } })
                    .BoldBIDashboardDialog("open");
                 var maxZindex = parseInt(bbdesigner$("#" + this._id + "ccDiv_wrapper").css('z-index'));
-                var bbdesigner$tailDiv = BoldBIDashboard.buildTag("div #" + this._id + "_ccTail .e-columnChoosertail", '', { 'display': 'block', 'position': 'absolute', 'left': (this.model.enableRTL ? (xPos - 78) : (xPos - 29)), 'top': chooserButton.offset().top + 15 });
-                var bbdesigner$tailDiv2 = BoldBIDashboard.buildTag("div #" + this._id + "_ccTailAlt .e-columnChoosertailAlt", '', { 'display': 'block', 'z-index': maxZindex + 2, 'position': 'absolute', 'left': (this.model.enableRTL ? (xPos - 78) : (xPos - 29)), 'top': chooserButton.offset().top + 16 });
-                bbdesigner$tailDiv.insertBefore(bbdesigner$("#" + this._id + "ccDiv_wrapper"));
-                bbdesigner$tailDiv2.insertBefore(bbdesigner$("#" + this._id + "ccDiv_wrapper"));
+                if (!isBrowserExceeded) {                    
+                    var bbdesigner$tailDiv = BoldBIDashboard.buildTag("div #" + this._id + "_ccTail .e-columnChoosertail", '', { 'display': 'block', 'position': 'absolute', 'left': (this.model.enableRTL ? (xPos - 78) : (xPos - 29)), 'top': chooserButton.offset().top + 15 });
+                    var bbdesigner$tailDiv2 = BoldBIDashboard.buildTag("div #" + this._id + "_ccTailAlt .e-columnChoosertailAlt", '', { 'display': 'block', 'z-index': maxZindex + 2, 'position': 'absolute', 'left': (this.model.enableRTL ? (xPos - 78) : (xPos - 29)), 'top': chooserButton.offset().top + 16 });
+                    bbdesigner$tailDiv.insertBefore(bbdesigner$("#" + this._id + "ccDiv_wrapper"));
+                    bbdesigner$tailDiv2.insertBefore(bbdesigner$("#" + this._id + "ccDiv_wrapper"));
+                }
             }
             this._refreshColumnChooserList();
             this._ccVisibleColumns = this.getVisibleColumnNames();
@@ -13464,6 +13774,7 @@
         },
         _initDataSource: function () {
             this._isLocalData = (!(this._dataSource() instanceof BoldBIDashboard.DataManager) || (this._dataSource().dataSource.offline || this._isRemoteSaveAdaptor || this._dataSource().adaptor instanceof BoldBIDashboard.ForeignKeyAdaptor));
+            this._initJsonData = this._dataSource().dataSource.json;
             this._ensureDataSource();
             this._trigger("actionBegin");
             var queryPromise = this._dataSource().executeQuery(this.model.query), subPromises, proxy = this;
@@ -13647,17 +13958,17 @@
                 var predicate, firstFilterCondition = this.model.filterSettings.filteredColumns[0];
 				var filteredColumns = this.model.filterSettings.filteredColumns;
                 if (this._isExcelFilter || this._excelFilterRendered) {
-                    if (!BoldBIDashboard.isNullOrUndefined(this._excelFilter)) {
-                        this._excelFilter.getPredicate(filteredColumns, null, true);
-                    }
-                    var predicates = this._excelFilter._predicates[0];
-                    for (var prop in predicates) {
-                        var obj = predicates[prop], isTake = obj["from"] != undefined;
-                        if (isTake)
-                            queryManagar.skip(obj["from"] == "top" ? 0 : this._gridRecordsCount - obj["take"]).take(obj["take"]);
-                        else
-                            predicate = predicate != undefined ? predicate["and"](obj) : obj;
-                    }
+                    // if (!BoldBIDashboard.isNullOrUndefined(this._excelFilter)) {
+                    //     this._excelFilter.getPredicate(filteredColumns, null, true);
+                    // }
+                    // var predicates = this._excelFilter._predicates[0];
+                    // for (var prop in predicates) {
+                    //     var obj = predicates[prop], isTake = obj["from"] != undefined;
+                    //     if (isTake)
+                    //         queryManagar.skip(obj["from"] == "top" ? 0 : this._gridRecordsCount - obj["take"]).take(obj["take"]);
+                    //     else
+                    //         predicate = predicate != undefined ? predicate["and"](obj) : obj;
+                    // }
                 }
                 else {
                     if (!(firstFilterCondition instanceof BoldBIDashboard.Predicate))
@@ -13678,7 +13989,7 @@
                 predicate && queryManagar.where(predicate);
                 if (this._isLocalData) {
                     var fresults = this._dataManager.executeLocal(queryManagar);
-                    this._filteredRecordsCount = isTake ? fresults.result.length : fresults.count;
+                    this._filteredRecordsCount = (!BoldBIDashboard.isNullOrUndefined(isTake) && isTake) ? fresults.result.length : fresults.count;
                     var lastPage = (this._filteredRecordsCount % this.model.pageSettings.pageSize == 0) ? (this._filteredRecordsCount / this.model.pageSettings.pageSize) : (parseInt(this._filteredRecordsCount / this.model.pageSettings.pageSize, 10) + 1);
                     if (this._currentPage() > lastPage)
                         this._currentPage(lastPage);
@@ -13815,7 +14126,8 @@
                     var count = this.model.pageSettings.pageSize - this._previousPageLength;
                     for (var dupRow = 0; dupRow < count; dupRow++) {
                         var removeEle = this.getRows()[this.getRows().length - (this.model.pageSettings.pageSize - dupRow)];
-                        removeEle.remove();
+                        if (removeEle.length > 0)
+                            removeEle.remove();
                     }
                     this._tempPageRendered = true;
                     this.model.currentViewData = result.result;
@@ -14228,7 +14540,7 @@
                                 this._enableCheckSelect = true;
                                 this.model.selectionType = "multiple";
                                 if(this.model.editSettings.allowDeleting) this.multiDeleteMode = true;
-                                this.model.selectionSettings.enableToggle = true;
+                                //this.model.selectionSettings.enableToggle = true;
                                 this._isMapSelection = (!BoldBIDashboard.isNullOrUndefined(columns[i].field) && (columns[i].field != ""));
                                 this._selectionMapColumn = columns[i].field;
                                 columns[i]["textAlign"] = "center";
@@ -14443,7 +14755,7 @@
                 if (columns[columnCount]["clipMode"] == BoldBIDashboard.Grid.ClipMode.Ellipsis || columns[columnCount]["clipMode"] == BoldBIDashboard.Grid.ClipMode.EllipsisWithTooltip)
                     bbdesigner$headerCellDiv.addClass("e-gridellipsis");
                 bbdesigner$headerCell.append(bbdesigner$headerCellDiv);
-                if (this.model.allowFiltering && ((this.model.filterSettings.filterType == "menu" || (this.model.filterSettings.filterType == "excel" && !columns[columnCount].IsMeasure)) && columns[columnCount].dateFormat == "None") &&
+                if (this.model.allowFiltering && ((this.model.filterSettings.filterType == "menu" && columns[columnCount].dateFormat == "None") || (this.model.filterSettings.filterType == "excel" && !columns[columnCount].IsMeasure)) &&
                                 (columns[columnCount]["allowFiltering"] == undefined || columns[columnCount]["allowFiltering"] === true) && (!BoldBIDashboard.isNullOrUndefined(columns[columnCount].field) || columns[columnCount].field == "")) {
                         var filtericon = 'e-filterset';
                     if (!this.initialRender && this.model.filterSettings.filteredColumns) {
@@ -14517,6 +14829,12 @@
                         this.columnsWidthCollection.push(parseInt(columns[columnCount]["width"]) / 100 * this.element.width());
                     else
                         this.columnsWidthCollection.push(columns[columnCount]["width"]);
+                }
+                if (BoldBIDashboard.getObject("type", columns[columnCount]) == "checkbox") {
+                    bbdesigner$headerCellDiv.addClass("e-headercheckcelldiv");
+                    bbdesigner$headerCellDiv.html("<input type = 'checkbox' class = 'e-checkselectall'></input>");
+                    if (!BoldBIDashboard.isNullOrUndefined(columns[columnCount].field))
+                        bbdesigner$headerCellDiv.attr("data-ej-mappingname", columns[columnCount].field);
                 }
                 if (columns[columnCount]["width"] == undefined && this.model.commonWidth !== undefined)
                     this.columnsWidthCollection[columnCount] = this.model.commonWidth;
@@ -15244,6 +15562,24 @@
 		        this.setWidthToColumns();
 		    if (this.model.allowRowDragAndDrop)
 		        this._rowsDragAndDrop();
+            if (!this.initialRender && this._enableCheckSelect) {
+		        var indexes = this.checkSelectedRowsIndexes[this._currentPage() - 1];
+                var headerCheckCell = this.getHeaderTable().find(".e-headercheckcelldiv .e-checkselectall");
+		        if (!this._selectAllchecked && !(this.model.allowScrolling && this.model.scrollSettings.allowVirtualScrolling && [].concat.apply([], this.checkSelectedRowsIndexes).length >= this._gridRecordsCount))
+					headerCheckCell.prop("checked", false);
+		        if (!this._isMapSelection && indexes && indexes.length > this._gridRows.length && !this.model.scrollSettings.enableVirtualization)
+		            indexes.splice(this._gridRows.length, indexes.length - this._gridRows.length);
+		        if (this._isMapSelection)
+		            this._mappingSelection();
+		        else if (args.requestType != "paging" && args.requestType != "save" && args.requestType != "cancel" && args.requestType != "virtualscroll")
+		            this.checkSelectedRowsIndexes = [];
+		        else if (indexes && indexes.length && !this.model.scrollSettings.enableVirtualization && !this.model.scrollSettings.allowVirtualScrolling)
+		            this.selectRows(indexes);
+		        if (this.model.currentViewData != null && this.model.currentViewData.length == 0)
+		            this.getHeaderTable().find(".e-headercelldiv .e-checkselectall").hide();
+		        else
+                    this.getHeaderTable().find(".e-headercelldiv .e-checkselectall").show();
+		    }
         },        
         _getDataIndex: function (data, item) {
             var flag = 0, _plen;
@@ -15664,10 +16000,10 @@
                 else
                     this.element.find(".e-gridheader").removeClass("e-scrollcss");
             }
-            if (this._selectedRow() != -1){
-                this.model.currentIndex = this._selectedRow();
-                this.selectRows(this._selectedRow());
-            }
+            // if (this._selectedRow() != -1){
+            //     this.model.currentIndex = this._selectedRow();
+            //     this.selectRows(this._selectedRow());
+            // }
             if (this.model.allowFiltering && this.model.filterSettings.filterType == "filterbar" && !this.model.allowPaging && !this.model.scrollSettings.allowVirtualScrolling)
                 this._createPagerStatusBar();
             if (BoldBIDashboard.gridFeatures.common)
@@ -15827,9 +16163,24 @@
             else
                 return BoldBIDashboard.buildTag('span.e-number', number, { "color": "white", "font-size": "9px", "float": "right" });
         },
+
+        _mouseClickOnPage: function (evt) {
+            var closestId = bbdesigner$(evt.target).closest('[id]').attr('id');
+            if (this.model.showColumnChooser && !bbdesigner$(evt.target)[0].classList.contains("e-ccButton") && 
+                bbdesigner$(evt.target).closest(".e-ccButton").find(".e-btn-span, .e-btntxt, .e-down-arrow").length === 0 && (closestId !== this._id + "ccDiv"
+                && closestId !== this._id + "liScrollerDiv" && closestId !== this._id +"_ccSearchBox")) {
+                    if (bbdesigner$(evt.target).closest(".e-columnChooserListDiv").length === 0) {                        
+                        bbdesigner$("#" + this._id + "ccDiv").BoldBIDashboardDialog('close');
+                        bbdesigner$(".e-columnChoosertailAlt").remove();
+                        bbdesigner$(".e-columnChoosertail").remove();
+                    }
+            }
+        },
+
         _wireEvents: function () {
             this._on(this.element, (bbdesigner$.isFunction(bbdesigner$.fn.tap) && this.model.enableTouch) ? "tap" : "click", this._clickHandler);
             this._on(this.element, (bbdesigner$.isFunction(bbdesigner$.fn.tap) && this.model.enableTouch) ? "tap" : "click", ".e-gridheader", this._mouseClickHandler);
+            this._on(bbdesigner$(document), "click", bbdesigner$.proxy(this._mouseClickOnPage, this));
             if (BoldBIDashboard.gridFeatures.common) {
                 this._on(this.element, (bbdesigner$.isFunction(bbdesigner$.fn.doubletap) && this.model.enableTouch) ? "doubletap" : "dblclick", ".e-gridcontent > div:first", this._recorddblClickHandler);
                 if (this.model.rightClick)
@@ -16221,7 +16572,7 @@
                                 bbdesigner$(bbdesigner$id).BoldBIDashboardDialog({ position: { X: xPos, Y: yPos }, width: dlgWidth, cssClass: filterDlgLargeCss })
                                 .BoldBIDashboardDialog("open");
                             else
-                                this._excelFilter.openXFDialog({ field: columnName, displayName: currentColumn.headerText, dataSource: this._dataSource(), position: { X: xPos, Y: yPos }, type: this._bbdesigner$colType, format: currentColumn.format, foreignKey: currentColumn.foreignKeyField, foreignKeyType: currentColumn.originalType, foreignKeyValue: currentColumn.foreignKeyValue, foreignDataSource: currentColumn.dataSource, localizedStrings: localXFLabel });
+                                this._excelFilter.openXFDialog({ field: columnName, displayName: currentColumn.headerText, dataSource: this._dataSource(), position: { X: xPos, Y: yPos }, type: this._bbdesigner$colType, format: currentColumn.format, foreignKey: currentColumn.foreignKeyField, foreignKeyType: currentColumn.originalType, foreignKeyValue: currentColumn.foreignKeyValue, foreignDataSource: currentColumn.dataSource, localizedStrings: localXFLabel, sortedColumns: this.model.sortSettings.sortedColumns.length ? this.model.sortSettings.sortedColumns : this.sortedColumns });
                         }
                     }
                     this._setFilterFieldValues(bbdesigner$id);
@@ -16240,7 +16591,19 @@
         },
         _clickHandler: function (e) {
             var bbdesigner$target = bbdesigner$(e.target),tempChooser = bbdesigner$("[id$='ccDiv'].e-grid.e-columnChooser"),fieldName, bbdesigner$form = bbdesigner$("#" + this._id + "EditForm"), index, columnIndex, rowIndex;
-			if(tempChooser.length) {
+			if(this._enableCheckSelect && bbdesigner$(e.target).hasClass('e-checkselectall')){
+			    if(e.target.checked) {
+					this._selectAllUnchecked = true;
+                    this._selectAllchecked = false;
+                    this.model.deselection = false;
+                }
+				else {
+					this._selectAllchecked = true;
+                    this._selectAllUnchecked = false;
+                    this.model.deselection = true;
+                }
+			}
+            if(tempChooser.length) {
                 var  flag = true;
                 for(var i = 0; i < tempChooser.length; i++){
                     if(bbdesigner$target.parents(".e-ccButton").length|| bbdesigner$target.hasClass('e-ccButton')) flag = bbdesigner$(e.target).closest(".e-grid").attr("id")+"ccDiv" != tempChooser[i].id;
@@ -16256,7 +16619,25 @@
             if (bbdesigner$target.closest(".e-grid").attr("id") !== this._id) return;
             if (bbdesigner$target.closest("#" + this._id + "EditForm").length)
                 return;
-            if (bbdesigner$target.hasClass("e-rowcell") || bbdesigner$target.closest("td").is(".e-rowcell") || (bbdesigner$target.hasClass("e-headercell") && ((e.clientY - bbdesigner$target.offset().top) < (bbdesigner$target.height() / 4)))) {
+            if (bbdesigner$target.hasClass("e-linking-hyperlink") || bbdesigner$target.parent().hasClass("e-linking-hyperlink")) {
+                var bbdesigner$rowIndex = this.getIndexByRow(bbdesigner$target.closest('tr')), bbdesigner$prevIndex = this._previousIndex, bbdesigner$prevRow = this.getRowByIndex(this._previousIndex);
+                var Data = this._currentJsonData[BoldBIDashboard.isNullOrUndefined(this.getIndexByRow(bbdesigner$target.closest("tr"))) ? null : this.getIndexByRow(bbdesigner$target.closest('tr'))];
+                Data = this._virtualScrollingSelection ? this._virtualSelRecords : Data;
+                var selectedIndex = this.model.scrollSettings.enableVirtualization ? bbdesigner$rowIndex : this._selectedRow();
+                var args = { rowIndex: selectedIndex, row: this.getRowByIndex(this._selectedRow()), data: Data, target: bbdesigner$target, prevRow: bbdesigner$prevRow, prevRowIndex : bbdesigner$prevIndex, parentTarget: e };
+                this._previousIndex = this.selectedRowsIndexes.length ? rowIndex :this._previousIndex;
+                this._trigger("rowSelected", args);
+                return;
+            }
+            if (bbdesigner$target.hasClass("e-rowcell") || bbdesigner$target.closest("td").is(".e-rowcell") || bbdesigner$target.is('input') || (bbdesigner$target.hasClass("e-headercell") && ((e.clientY - bbdesigner$target.offset().top) < (bbdesigner$target.height() / 4))) || bbdesigner$target.parents(".e-headercheckcelldiv").length) {
+                this.multiSelectCtrlRequest = this.model.multiSelectCheckBox;
+                if (!bbdesigner$target.is('input') && bbdesigner$target.parents(".e-row").find("input[type=checkbox]").prop("checked")) {
+                    bbdesigner$target.parents(".e-row").find("input[type=checkbox]").prop("checked", false);
+                } else if (!bbdesigner$target.is('input') && bbdesigner$target.parents(".e-alt_row").find("input[type=checkbox]").prop("checked")) {
+                    bbdesigner$target.parents(".e-alt_row").find("input[type=checkbox]").prop("checked", false);
+                } else if (!bbdesigner$target.is('input')) {
+                    bbdesigner$target.parents(".e-row").find("input[type=checkbox]").prop("checked", true);
+                }
                 if (this._bulkEditCellDetails.cancelSave) {
                     this._bulkEditCellDetails.cancelSave = false;
                     return;
@@ -16274,6 +16655,11 @@
                 this._bulkEditCellDetails.columnIndex = columnIndex;
                 this._bulkEditCellDetails.rowIndex = rowIndex;
                 if (this.model.allowSelection && BoldBIDashboard.gridFeatures.selection) {
+                    var checkBoxSelection = this._enableCheckSelect && bbdesigner$target.parent(".e-checkcelldiv").length ? true : false;
+                    if (bbdesigner$target.hasClass("e-checkselectall")) {
+						var rows = this._gridRows.length;
+						this.selectRows(0, rows - 1, bbdesigner$target);
+                    }
                     if (this.model.selectionType == "multiple") {
                         if (e.ctrlKey || this._enableSelectMultiTouch) {
                             this.multiSelectCtrlRequest = true;
@@ -16282,7 +16668,7 @@
                             this.multiSelectShiftRequest = true;
                             if (this._allowcellSelection && rowIndex > -1)
                                 this.selectCells([[rowIndex, [columnIndex]]]);
-                            if (this._allowrowSelection && rowIndex > -1)
+                            if (this._allowrowSelection && rowIndex > -1 && (!this._enableCheckSelect || checkBoxSelection))
                                 this.selectRows(this._previousIndex, this.getIndexByRow(bbdesigner$target.closest('tr')), bbdesigner$target, e);
                                 this._selectedRow(this.getIndexByRow(bbdesigner$target.closest('tr')));
                             if (this._allowcolumnSelection && bbdesigner$target.hasClass("e-headercell") && !bbdesigner$target.hasClass("e-stackedHeaderCell") && ((e.clientY - bbdesigner$target.offset().top) < (bbdesigner$target.height() / 4)))
@@ -16307,7 +16693,9 @@
                         }
                         if (this._allowrowSelection && rowIndex > -1) {
 							var selectedIndex = this.getIndexByRow(bbdesigner$target.closest('tr'));
-							if(this.model.scrollSettings.enableVirtualization){
+							if (this._enableCheckSelect)
+                                this.multiSelectCtrlRequest = true;
+                            if(this.model.scrollSettings.enableVirtualization){
 								var remain = rowIndex % this._virtualRowCount, viewIndex;							
 								viewIndex = parseInt(bbdesigner$(bbdesigner$target).closest("tr").attr("name"), 32);																												
 								selectedIndex = (viewIndex * this._virtualRowCount) - (this._virtualRowCount - remain);	
@@ -16520,7 +16908,9 @@
         FirstPage: "First Page",
         LastPage: "Last Page",
         EmptyRowValidationMessage:"Atleast one field must be updated",
-		NoResult: "No Matches Found"
+		NoResult: "No Matches Found",
+        NoRecords: "No Records Found",
+        Apply: "Apply"
     };
     BoldBIDashboard.Grid.Actions = {
         /** Used to specify paging action in grid   */

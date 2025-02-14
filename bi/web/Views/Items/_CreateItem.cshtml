@@ -27,8 +27,8 @@
     <aside class="create-menu create-menu-effect" id="create-aside-container">
         @if (!fromOtherView)
         {
-            <div class="create-dashboard-section col-xs-12">
-                <div class="create-dashboard-header-section col-xs-12 no-padding">
+            <div class="create-dashboard-section col-12">
+                <div class="create-dashboard-header-section col-12 no-padding">
                     <div class="create-dashboard-header-title">
                         @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dashboard) && itemPermissions[ItemType.Dashboard])
                         {
@@ -40,8 +40,8 @@
                         }
                     </div>
                 </div>
-                <div class="create-item-body-section col-xs-12 no-padding">
-                    <ul class="col-xs-12 no-padding">
+                <div class="create-item-body-section col-12 no-padding">
+                    <ul class="col-12 no-padding">
                         @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dashboard) && itemPermissions[ItemType.Dashboard])
                         {
                             <li class="create-dashboard-scratch">
@@ -130,9 +130,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="create-item-section col-xs-12">
-                <div class="create-item-body-section col-xs-12 no-padding">
-                    <ul class="col-xs-12 no-padding">
+            <div class="create-item-section col-12">
+                <div class="create-item-body-section col-12 no-padding">
+                    <ul class="col-12 no-padding">
                         @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Datasource) && itemPermissions[ItemType.Datasource])
                         {
                             <li id="create-datasource-connection">
@@ -205,7 +205,7 @@
         <div class="save-draft-content-section">
             <div class="save-draft-title">@T["Let's start with a name for your dashboard."]</div>
             <div class="row save-draft-input-section">
-                <div class="col-xs-12 save-draft-input-segment">
+                <div class="col-12 save-draft-input-segment">
                     <span>
                         <input class="save-draft-input" id="save-draft-input" name="dashboardName" data-maxlength="255" tabindex="1" data-msg-containerid="plugin_validation" />
                     </span>

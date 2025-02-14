@@ -32,7 +32,7 @@
             @if (showHelp) 
             {
                 <li class="icon-list-item help-icon-list-item">
-                    <a class="dropdown-toggle" data-toggle="dropdown">
+                    <a class="dropdown-toggle" data-bs-toggle="dropdown">
                         <span class="icon-container">
                             <i class="su su-help"></i>
                         </span>
@@ -121,10 +121,10 @@
             }
             @if (showProfile)
             {
-                <li class="icon-list-item profile-section-list" id="dropdown-profile">
-                    <div class="dropdown-toggle" data-toggle="dropdown">
+                <li class="icon-list-item profile-section-list listing-dropdown" id="dropdown-profile">
+                    <div class="dropdown-toggle" data-bs-toggle="dropdown">
                         <span class="icon-container">
-                            <div class="profile-pic-tag" data-id="@idpreferenceId" data-type="user" data-display-name="@displayName" data-image-size="32" data-toggle="tooltip" title="@displayName" data-placement="bottom"></div>
+                            <div class="profile-pic-tag" data-id="@idpreferenceId" data-type="user" data-display-name="@displayName" data-image-size="32" data-bs-toggle="profile-tag-tooltip" title="@displayName" data-placement="bottom"></div>
                         </span>
                     </div>
                     <ul class="dropdown-menu sub-menu" role="menu">

@@ -52,17 +52,17 @@
 
     <script type="text/x-jsrender" id="user-detail-validation">
         {{if IsDuplicated}}
-        <span class="su su-login-error group-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></span>
+        <span class="su su-login-error group-import-validation" title="{{:DisplayMessage}}" data-html="true" data-bs-toggle="tooltip" data-placement="left"></span>
         {{/if}}
     </script>
     <script type="text/x-jsrender" id="group-name-template">
-        <span title="{{:~renderDoubleQuotes(GroupName)}}" class="grid-content" data-toggle="tooltip">
+        <span title="{{:~renderDoubleQuotes(GroupName)}}" class="grid-content" data-bs-toggle="tooltip">
             {{:GroupName}}
         </span>
     </script>
 
-    <script type="text/x-jsrender" data-toggle="tooltip" id="group-description-template">
-        <span title="{{:~renderDoubleQuotes(GroupDescription)}}" class="grid-content" data-toggle="tooltip">
+    <script type="text/x-jsrender" data-bs-toggle="tooltip" id="group-description-template">
+        <span title="{{:~renderDoubleQuotes(GroupDescription)}}" class="grid-content" data-bs-toggle="tooltip">
             {{:GroupDescription}}
         </span>
     </script>
@@ -143,7 +143,7 @@
                 },
                 dataBound: function (args) {
                     $("#checkbox-header").change(headCheckboxOnChange);
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                     this.model.indexes = {}; /* Additional property*/
                 },
                 columns: [
@@ -161,23 +161,23 @@
             });
         });
     </script>
-    <div class="col-xs-12 no-padding no-margin width-alignment">
-        <div class="col-xs-12 no-padding">
+    <div class="col-12 no-padding no-margin width-alignment">
+        <div class="col-12 no-padding">
             @await Html.PartialAsync("../Shared/_TopHeaderSection")
         </div>
-        <div class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
-            <div class="col-xs-12 no-padding">
+        <div class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
+            <div class="col-12 no-padding">
                 <div class="col-xs-6 no-padding button-section">
-                    <input type="button" disabled="" value="@T["Import groups"]" title="@T["Import the selected groups from the list"]" onclick="SaveAuthGroups()" id="import-button" class="primary-button app-btn-primary pull-right pull-right" />
+                    <input type="button" disabled="" value="@T["Import groups"]" title="@T["Import the selected groups from the list"]" onclick="SaveAuthGroups()" id="import-button" class="primary-button app-btn-primary float-end float-end" />
                 </div>
             </div>
         </div>
     </div>
-    <div class="auth-group-container bi-page-container col-xs-12 @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid">
-        <div class="col-xs-12 bi-page-content no-padding">
+    <div class="auth-group-container bi-page-container col-12 @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid">
+        <div class="col-12 bi-page-content no-padding">
             <div class="import-auth-group">
-                <div class="col-md-12 col-xs-12 bi-page-body">
-                    <div class="col-md-12 col-xs-12 no-padding no-margin">
+                <div class="col-md-12 col-12 bi-page-body">
+                    <div class="col-md-12 col-12 no-padding no-margin">
                         <div class="col-md-8 col-xs-8 no-padding">
                             <div class="col-md-12 directory-path no-padding">
                                 <label class="provider-name-label">
@@ -194,19 +194,19 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12 no-padding user-data-grid">
+                    <div class="col-12 no-padding user-data-grid">
                         <span class="import-message">
                             @T["Please select the groups from the following list to import"]
                         </span>
-                        <div class="col-xs-12 no-padding no-margin">
-                            <div class="list" id="grid-validation-messages pull-left">
-                                <div class="col-xs-12">
-                                    <span id="empty-validation" class="validation-message pull-right empty-validation no-padding">@T["Please select group(s) to import"]</span>
+                        <div class="col-12 no-padding no-margin">
+                            <div class="list" id="grid-validation-messages float-start">
+                                <div class="col-12">
+                                    <span id="empty-validation" class="validation-message float-end empty-validation no-padding">@T["Please select group(s) to import"]</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div id="grid-container" class="col-xs-12 no-padding">
+                        <div id="grid-container" class="col-12 no-padding">
                             <div class="col-md-12 no-padding ">
                                 <div id="Grid" class="grid">
                                 </div>

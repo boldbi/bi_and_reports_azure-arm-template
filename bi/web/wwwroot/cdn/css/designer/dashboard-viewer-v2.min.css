@@ -563,14 +563,14 @@
 .custom-bootstrap-styles .row-no-gutters [class*="col-"] {
   padding-right: 0;
   padding-left: 0; }
-.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-sm-1, .custom-bootstrap-styles .col-md-1, .custom-bootstrap-styles .col-lg-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-sm-2, .custom-bootstrap-styles .col-md-2, .custom-bootstrap-styles .col-lg-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-sm-3, .custom-bootstrap-styles .col-md-3, .custom-bootstrap-styles .col-lg-3, .custom-bootstrap-styles .col-xs-4, .custom-bootstrap-styles .col-sm-4, .custom-bootstrap-styles .col-md-4, .custom-bootstrap-styles .col-lg-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-sm-5, .custom-bootstrap-styles .col-md-5, .custom-bootstrap-styles .col-lg-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-sm-6, .custom-bootstrap-styles .col-md-6, .custom-bootstrap-styles .col-lg-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-sm-7, .custom-bootstrap-styles .col-md-7, .custom-bootstrap-styles .col-lg-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-sm-8, .custom-bootstrap-styles .col-md-8, .custom-bootstrap-styles .col-lg-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-sm-9, .custom-bootstrap-styles .col-md-9, .custom-bootstrap-styles .col-lg-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-sm-10, .custom-bootstrap-styles .col-md-10, .custom-bootstrap-styles .col-lg-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-sm-11, .custom-bootstrap-styles .col-md-11, .custom-bootstrap-styles .col-lg-11, .custom-bootstrap-styles .col-xs-12, .custom-bootstrap-styles .col-sm-12, .custom-bootstrap-styles .col-md-12, .custom-bootstrap-styles .col-lg-12 {
+.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-sm-1, .custom-bootstrap-styles .col-md-1, .custom-bootstrap-styles .col-lg-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-sm-2, .custom-bootstrap-styles .col-md-2, .custom-bootstrap-styles .col-lg-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-sm-3, .custom-bootstrap-styles .col-md-3, .custom-bootstrap-styles .col-lg-3, .custom-bootstrap-styles .col-4, .custom-bootstrap-styles .col-sm-4, .custom-bootstrap-styles .col-md-4, .custom-bootstrap-styles .col-lg-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-sm-5, .custom-bootstrap-styles .col-md-5, .custom-bootstrap-styles .col-lg-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-sm-6, .custom-bootstrap-styles .col-md-6, .custom-bootstrap-styles .col-lg-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-sm-7, .custom-bootstrap-styles .col-md-7, .custom-bootstrap-styles .col-lg-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-sm-8, .custom-bootstrap-styles .col-md-8, .custom-bootstrap-styles .col-lg-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-sm-9, .custom-bootstrap-styles .col-md-9, .custom-bootstrap-styles .col-lg-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-sm-10, .custom-bootstrap-styles .col-md-10, .custom-bootstrap-styles .col-lg-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-sm-11, .custom-bootstrap-styles .col-md-11, .custom-bootstrap-styles .col-lg-11, .custom-bootstrap-styles .col-12, .custom-bootstrap-styles .col-sm-12, .custom-bootstrap-styles .col-md-12, .custom-bootstrap-styles .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px; }
-.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-xs-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-xs-12 {
+.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-12 {
   float: left; }
-.custom-bootstrap-styles .col-xs-12 {
+.custom-bootstrap-styles .col-12 {
   width: 100%; }
 .custom-bootstrap-styles .col-xs-11 {
   width: 91.66666667%; }
@@ -586,7 +586,7 @@
   width: 50%; }
 .custom-bootstrap-styles .col-xs-5 {
   width: 41.66666667%; }
-.custom-bootstrap-styles .col-xs-4 {
+.custom-bootstrap-styles .col-4 {
   width: 33.33333333%; }
 .custom-bootstrap-styles .col-xs-3 {
   width: 25%; }
@@ -2032,10 +2032,10 @@
   width: 100%; }
 .custom-bootstrap-styles .btn-group-justified > .btn-group .dropdown-menu {
   left: auto; }
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn input[type="radio"],
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn input[type="checkbox"],
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn input[type="radio"],
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn-group > .btn input[type="radio"],
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn input[type="checkbox"],
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
@@ -3711,7 +3711,7 @@
   overflow: visible !important;
   min-height: 1px !important;
   min-width: 1px !important; }
-  #commentImage_popup_wrapper .col-md-12, #commentImage_popup_wrapper .col-xs-12, #commentImage_popup_wrapper .col-lg-12 {
+  #commentImage_popup_wrapper .col-md-12, #commentImage_popup_wrapper .col-12, #commentImage_popup_wrapper .col-lg-12 {
     float: none !important; }
 
 #commentImage_popup {
@@ -4138,6 +4138,68 @@ a:hover, a:focus {
 
 @charset "UTF-8";
 /*************Old variables**************/
+.option-icon.dropdown-toggle::after, .icon-list-item .dropdown-toggle::after, .options-area.dropdown-toggle::after, #category-sort-dropdown .dropdown-toggle::after, #datasource-create::after, .embed-configuration .info-popup .dropdown-toggle::after, .menu-toggle, #dashboard-filter-dropdown .dropdown-toggle::after, #dashboard-sort-dropdown .dropdown-toggle::after, .sf-nav-administration-collapse-item .dropdown-toggle::after, .dashboard-views .dropdown-toggle::after, #save-view-form .switch-align .dropdown-toggle::after, #create-rule .dropdown-toggle::after, .tool-tip-description .dropdown-toggle::after, .add-user-dropdown .dropdown-toggle::after, #profile-action-section .dropdown-toggle::after, .language-group .dropdown-toggle::after, #options-container .dropdown-toggle::after, .sync-user-dropdown .dropdown-toggle::after {
+  display: none; }
+
+#access-mode-selection-container .dropdown-toggle::after {
+  display: block; }
+
+.btn.disabled, .btn.disabled:focus {
+  background-color: var(--drop-down-menu-btn-bg-disable-color) !important;
+  border: 1px solid var(--secondary-border-color);
+  color: var(--drop-down-menu-btn-text-disable-color); }
+
+.dropdown.bootstrap-select .btn.dropdown-toggle:not(.btn-default.disabled), .dropdown.bootstrap-select .btn.dropdown-toggle:not(.btn.disabled) {
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-normal-color) !important;
+  border: 1px solid var(--secondary-border-color);
+  text-decoration: none;
+  outline: none !important; }
+.dropdown.bootstrap-select .dropdown-toggle.bs-placeholder:hover {
+  color: var(--primary-text-normal-color) !important; }
+
+.check-mark {
+  color: var(--active-text) !important; }
+
+.import-users .search-user, .import-users .close-icon {
+  margin-top: 0px !important; }
+
+.form-control {
+  font-size: 14px; }
+
+.hidden, .hide {
+  display: none !important; }
+
+.tooltip {
+  font-size: 12px; }
+
+.col-12 {
+  float: left;
+  position: relative; }
+
+a {
+  text-decoration: none !important; }
+
+.su-search, .su-inner-close {
+  display: block;
+  margin-top: -32px !important; }
+
+.su-search::before, .su-inner-close::before {
+  float: left; }
+
+.float-end {
+  float: right; }
+
+#item-info-popup #close-info-dialog, #item-info-popup #share-close-popup, #share-permission-popup #close-info-dialog, #share-permission-popup #share-close-popup {
+  float: right;
+  background: 0 0;
+  border: none; }
+#item-info-popup h4, #share-permission-popup h4 {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+#item-info-popup p, #share-permission-popup p {
+  margin-bottom: 10px; }
+
 .dashboard-server *, .base-comment-container *, .server-dashboard-view *, #viewShare_popup *, .schedule-dialog *, #get-item-link_wrapper *, #messageBox_wrapper *, #delete-div_wrapper *, #permission_delete_confirmation_wrapper *, #designer-header * {
   font-family: var(--font-family); }
 
@@ -4160,6 +4222,8 @@ body .viewer-blue-loader {
 
 .recurrence-field-row .e-input {
   font-family: var(--font-family) !important; }
+.recurrence-field-row .col-1, .recurrence-field-row .col-10 {
+  float: left; }
 
 .e-datetime-popup .e-btn {
   font-family: var(--font-family) !important; }
@@ -4302,13 +4366,17 @@ input::-ms-clear, input::-ms-reveal {
 
 .dropdown-menu {
   border-radius: 2px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175) !important;
   padding: 5px 0; }
+  .dropdown-menu .bs-searchbox input[type=search] {
+    height: 28px; }
   .dropdown-menu li {
     height: 30px;
     width: 100%; }
     .dropdown-menu li > a, .dropdown-menu li > span {
-      padding: 5px 10px;
-      width: 100%; }
+      padding: 2px 10px;
+      width: 100%;
+      display: block; }
       .dropdown-menu li > a i, .dropdown-menu li > span i {
         font-size: 14px;
         padding: 0 10px; }
@@ -4319,7 +4387,9 @@ input::-ms-clear, input::-ms-reveal {
         font-weight: 400; }
     .dropdown-menu li.divider {
       cursor: default;
-      margin: 2px 0; }
+      margin: 2px 0;
+      height: 1px;
+      overflow: hidden; }
     .dropdown-menu li a:focus {
       outline: none !important; }
 
@@ -5059,6 +5129,7 @@ input::-ms-clear, input::-ms-reveal {
   position: relative;
   height: 32px;
   margin: 0px 0px 0px 30px;
+  float: left;
   width: 280px;
   padding: 0px;
   background: var(--top-header-bg-color); }
@@ -5757,7 +5828,7 @@ select.selectpicker + .btn-group.open .dropdown-toggle, select.select-picker + .
   background: var(--primary-background-color);
   border: 1px solid var(--secondary-border-color); }
   .dropdown-menu li > a, .dropdown-menu li > span, .dropdown-menu#layout-items > a, .dropdown-menu#layout-items > span, .dropdown-menu .selectpicker li > a, .dropdown-menu .selectpicker li > span, .dropdown-menu .selectpicker#layout-items > a, .dropdown-menu .selectpicker#layout-items > span, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu li > a, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu li > span, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu#layout-items > a, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu#layout-items > span, .custom-bootstrap-styles #user-search-container .dropdown-menu.open li > a, .custom-bootstrap-styles #user-search-container .dropdown-menu.open li > span, .custom-bootstrap-styles #user-search-container .dropdown-menu.open#layout-items > a, .custom-bootstrap-styles #user-search-container .dropdown-menu.open#layout-items > span, .custom-bootstrap-styles #group-search-container .dropdown-menu.open li > a, .custom-bootstrap-styles #group-search-container .dropdown-menu.open li > span, .custom-bootstrap-styles #group-search-container .dropdown-menu.open#layout-items > a, .custom-bootstrap-styles #group-search-container .dropdown-menu.open#layout-items > span, #show-excel-format .dropdown-menu.open li > a, #show-excel-format .dropdown-menu.open li > span, #show-excel-format .dropdown-menu.open#layout-items > a, #show-excel-format .dropdown-menu.open#layout-items > span, #share-permission-popup_wrapper .dropdown-menu li > a, #share-permission-popup_wrapper .dropdown-menu li > span, #share-permission-popup_wrapper .dropdown-menu#layout-items > a, #share-permission-popup_wrapper .dropdown-menu#layout-items > span, #user-group-search-input_suggestion .dropdown-menu li > a, #user-group-search-input_suggestion .dropdown-menu li > span, #user-group-search-input_suggestion .dropdown-menu#layout-items > a, #user-group-search-input_suggestion .dropdown-menu#layout-items > span, #people-container .dropdown-menu li > a, #people-container .dropdown-menu li > span, #people-container .dropdown-menu#layout-items > a, #people-container .dropdown-menu#layout-items > span, .custom-bootstrap-styles .dropdown-menu li > a, .custom-bootstrap-styles .dropdown-menu li > span, .custom-bootstrap-styles .dropdown-menu#layout-items > a, .custom-bootstrap-styles .dropdown-menu#layout-items > span, .manage-group-dropdown.dropdown-menu li > a, .manage-group-dropdown.dropdown-menu li > span, .manage-group-dropdown.dropdown-menu#layout-items > a, .manage-group-dropdown.dropdown-menu#layout-items > span {
-    color: var(--primary-text-normal-color); }
+    color: var(--primary-text-normal-color) !important; }
     .dropdown-menu li > a:hover, .dropdown-menu li > span:hover, .dropdown-menu#layout-items > a:hover, .dropdown-menu#layout-items > span:hover, .dropdown-menu .selectpicker li > a:hover, .dropdown-menu .selectpicker li > span:hover, .dropdown-menu .selectpicker#layout-items > a:hover, .dropdown-menu .selectpicker#layout-items > span:hover, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu li > a:hover, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu li > span:hover, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu#layout-items > a:hover, #homepage-page-container #homepage-header #element-container #options-container #layout-container .dropdown-menu#layout-items > span:hover, .custom-bootstrap-styles #user-search-container .dropdown-menu.open li > a:hover, .custom-bootstrap-styles #user-search-container .dropdown-menu.open li > span:hover, .custom-bootstrap-styles #user-search-container .dropdown-menu.open#layout-items > a:hover, .custom-bootstrap-styles #user-search-container .dropdown-menu.open#layout-items > span:hover, .custom-bootstrap-styles #group-search-container .dropdown-menu.open li > a:hover, .custom-bootstrap-styles #group-search-container .dropdown-menu.open li > span:hover, .custom-bootstrap-styles #group-search-container .dropdown-menu.open#layout-items > a:hover, .custom-bootstrap-styles #group-search-container .dropdown-menu.open#layout-items > span:hover, #show-excel-format .dropdown-menu.open li > a:hover, #show-excel-format .dropdown-menu.open li > span:hover, #show-excel-format .dropdown-menu.open#layout-items > a:hover, #show-excel-format .dropdown-menu.open#layout-items > span:hover, #share-permission-popup_wrapper .dropdown-menu li > a:hover, #share-permission-popup_wrapper .dropdown-menu li > span:hover, #share-permission-popup_wrapper .dropdown-menu#layout-items > a:hover, #share-permission-popup_wrapper .dropdown-menu#layout-items > span:hover, #user-group-search-input_suggestion .dropdown-menu li > a:hover, #user-group-search-input_suggestion .dropdown-menu li > span:hover, #user-group-search-input_suggestion .dropdown-menu#layout-items > a:hover, #user-group-search-input_suggestion .dropdown-menu#layout-items > span:hover, #people-container .dropdown-menu li > a:hover, #people-container .dropdown-menu li > span:hover, #people-container .dropdown-menu#layout-items > a:hover, #people-container .dropdown-menu#layout-items > span:hover, .custom-bootstrap-styles .dropdown-menu li > a:hover, .custom-bootstrap-styles .dropdown-menu li > span:hover, .custom-bootstrap-styles .dropdown-menu#layout-items > a:hover, .custom-bootstrap-styles .dropdown-menu#layout-items > span:hover, .manage-group-dropdown.dropdown-menu li > a:hover, .manage-group-dropdown.dropdown-menu li > span:hover, .manage-group-dropdown.dropdown-menu#layout-items > a:hover, .manage-group-dropdown.dropdown-menu#layout-items > span:hover {
       background: var(--hover-bg-normal-color);
       color: var(--drop-down-menu-text-hover-color); }
@@ -5826,6 +5897,11 @@ body #share-permission-container .btn-default, #people-container .btn-default {
 .bootstrap-select.btn-group ul li.no-results {
   background: var(--hover-bg-normal-color); }
 
+.bootstrap-select .no-results {
+  font-size: 14px;
+  margin: 0px !important;
+  padding: 3px 10px !important; }
+
 body .custom-bootstrap-styles #user-search-container .dropdown-menu.open li:hover, .custom-bootstrap-styles #group-search-container .dropdown-menu.open li:hover {
   background-color: var(--primary-background-color);
   color: var(--drop-down-menu-btn-text-hover-color); }
@@ -5881,38 +5957,41 @@ body .tooltip.bottom .tooltip-arrow {
 .custom-bootstrap-styles .tooltip.top .tooltip-arrow {
   border-top-color: var(--tool-tip-bg-normal-color); }
 
-.email-editor .e-control.e-toolbar {
+.email-editor.bi-dashboard .e-richtexteditor .e-toolbar-wrapper .e-rte-toolbar:not(.e-rte-tb-float) {
+  border-bottom: none; }
+
+.email-editor .e-control.e-toolbar, .email-editor.bi-dashboard .e-control.e-toolbar {
   background-color: var(--secondary-background-color); }
-  .email-editor .e-control.e-toolbar .e-toolbar-items, .email-editor .e-control.e-toolbar .e-tbar-btn {
+  .email-editor .e-control.e-toolbar .e-toolbar-items, .email-editor .e-control.e-toolbar .e-tbar-btn, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn {
     background-color: var(--secondary-background-color);
     color: var(--primary-text-normal-color); }
-    .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-separator, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-separator {
+    .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-separator, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-separator, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-separator, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-separator {
       border-color: var(--secondary-border-color); }
-    .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item {
+    .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-toolbar-item, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn .e-toolbar-item {
       background-color: var(--secondary-background-color); }
-      .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay button span, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item button span, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay button span, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item button span {
+      .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay button span, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-toolbar-items .e-toolbar-item button span, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay button span, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item button span.e-btn-icon, .email-editor .e-control.e-toolbar .e-tbar-btn .e-toolbar-item button span, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay button span.e-btn-icon, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-toolbar-item.e-tbtn-align.e-overlay button span, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-toolbar-item button span.e-btn-icon, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-toolbar-item button span, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay button span.e-btn-icon, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn .e-toolbar-item.e-tbtn-align.e-overlay button span, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn .e-toolbar-item button span.e-btn-icon, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn .e-toolbar-item button span {
         color: var(--primary-text-normal-color); }
-  .email-editor .e-control.e-toolbar .e-toolbar-items .e-btn-icon.e-icons {
+  .email-editor .e-control.e-toolbar .e-toolbar-items .e-btn-icon.e-icons, .email-editor.bi-dashboard .e-control.e-toolbar .e-toolbar-items .e-btn-icon.e-icons {
     color: var(--primary-text-normal-color); }
-  .email-editor .e-control.e-toolbar .e-tbar-btn:hover {
+  .email-editor .e-control.e-toolbar .e-tbar-btn:hover, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn:hover {
     background-color: var(--hover-bg-normal-color);
     color: var(--primary-hover-text-color); }
-    .email-editor .e-control.e-toolbar .e-tbar-btn:hover .e-btn-icon.e-icons {
+    .email-editor .e-control.e-toolbar .e-tbar-btn:hover .e-btn-icon.e-icons, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn:hover .e-btn-icon.e-icons {
       color: var(--primary-hover-text-color); }
-  .email-editor .e-control.e-toolbar .e-tbar-btn:focus, .email-editor .e-control.e-toolbar .e-tbar-btn:active {
+  .email-editor .e-control.e-toolbar .e-tbar-btn:focus, .email-editor .e-control.e-toolbar .e-tbar-btn:active, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn:focus, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn:active {
     background-color: var(--active-bg-normal-color);
     color: var(--active-text-normal-color); }
-    .email-editor .e-control.e-toolbar .e-tbar-btn:focus .e-btn-icon.e-icons, .email-editor .e-control.e-toolbar .e-tbar-btn:active .e-btn-icon.e-icons {
+    .email-editor .e-control.e-toolbar .e-tbar-btn:focus .e-btn-icon.e-icons, .email-editor .e-control.e-toolbar .e-tbar-btn:active .e-btn-icon.e-icons, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn:focus .e-btn-icon.e-icons, .email-editor.bi-dashboard .e-control.e-toolbar .e-tbar-btn:active .e-btn-icon.e-icons {
       color: var(--active-text-normal-color); }
-.email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn, .email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn:focus {
+.email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn, .email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn:focus, .email-editor.bi-dashboard .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn, .email-editor.bi-dashboard .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn:focus {
   background-color: var(--active-bg-normal-color);
   color: var(--active-text-normal-color); }
-  .email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn .e-btn-icon.e-icons, .email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn:focus .e-btn-icon.e-icons {
+  .email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn .e-btn-icon.e-icons, .email-editor .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn:focus .e-btn-icon.e-icons, .email-editor.bi-dashboard .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn .e-btn-icon.e-icons, .email-editor.bi-dashboard .e-control.e-richtexteditor .e-rte-toolbar .e-toolbar-item.e-active .e-tbar-btn:focus .e-btn-icon.e-icons {
     color: var(--active-text-normal-color); }
-.email-editor .e-control.e-richtexteditor.e-rte-tb-expand {
+.email-editor .e-control.e-richtexteditor.e-rte-tb-expand, .email-editor.bi-dashboard .e-control.e-richtexteditor.e-rte-tb-expand {
   border-color: var(--secondary-border-color);
   background: var(--primary-background-color); }
-  .email-editor .e-control.e-richtexteditor.e-rte-tb-expand .e-source-content, .email-editor .e-control.e-richtexteditor.e-rte-tb-expand .e-rte-content {
+  .email-editor .e-control.e-richtexteditor.e-rte-tb-expand .e-source-content, .email-editor .e-control.e-richtexteditor.e-rte-tb-expand .e-rte-content, .email-editor.bi-dashboard .e-control.e-richtexteditor.e-rte-tb-expand .e-source-content, .email-editor.bi-dashboard .e-control.e-richtexteditor.e-rte-tb-expand .e-rte-content {
     background-color: var(--primary-background-color);
     color: var(--primary-text-normal-color);
     border-top: 1px solid var(--secondary-border-color);
@@ -6007,13 +6086,13 @@ a, .custom-bootstrap-styles a {
   a:hover, a:focus, .custom-bootstrap-styles a:hover, .custom-bootstrap-styles a:focus {
     color: var(--hyper-link-hover-color); }
 
-body .tool-tip .dropdown-menu, body .popover, body .tool-tip-description .dropdown-menu, body .data-alert-description.dropdown-menu, body #get-embed-code-container .info-popup.open .dropdown-menu, body .record-count-info.open .dropdown-menu, body .common-tooltip-info.dropdown-menu, .custom-bootstrap-styles .tool-tip .dropdown-menu, .custom-bootstrap-styles .popover, .custom-bootstrap-styles .tool-tip-description .dropdown-menu, .custom-bootstrap-styles .data-alert-description.dropdown-menu, .custom-bootstrap-styles #get-embed-code-container .info-popup.open .dropdown-menu, .custom-bootstrap-styles .record-count-info.open .dropdown-menu, .custom-bootstrap-styles .common-tooltip-info.dropdown-menu {
+body .tool-tip .dropdown-menu, body .popover, body .popover-body, body .tool-tip-description .dropdown-menu, body .data-alert-description.dropdown-menu, body #get-embed-code-container .info-popup.open .dropdown-menu, body .record-count-info.open .dropdown-menu, body .common-tooltip-info.dropdown-menu, .custom-bootstrap-styles .tool-tip .dropdown-menu, .custom-bootstrap-styles .popover, .custom-bootstrap-styles .popover-body, .custom-bootstrap-styles .tool-tip-description .dropdown-menu, .custom-bootstrap-styles .data-alert-description.dropdown-menu, .custom-bootstrap-styles #get-embed-code-container .info-popup.open .dropdown-menu, .custom-bootstrap-styles .record-count-info.open .dropdown-menu, .custom-bootstrap-styles .common-tooltip-info.dropdown-menu {
   background-color: var(--primary-background-color);
-  color: var(--primary-text-normal-color);
+  color: var(--primary-text-normal-color) !important;
   border: 1px solid var(--secondary-border-color); }
-  body .tool-tip .dropdown-menu.bottom .arrow:after, body .popover.bottom .arrow:after, body .tool-tip-description .dropdown-menu.bottom .arrow:after, body .data-alert-description.dropdown-menu.bottom .arrow:after, body #get-embed-code-container .info-popup.open .dropdown-menu.bottom .arrow:after, body .record-count-info.open .dropdown-menu.bottom .arrow:after, body .common-tooltip-info.dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .tool-tip .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .popover.bottom .arrow:after, .custom-bootstrap-styles .tool-tip-description .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .data-alert-description.dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles #get-embed-code-container .info-popup.open .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .record-count-info.open .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .common-tooltip-info.dropdown-menu.bottom .arrow:after {
+  body .tool-tip .dropdown-menu.bottom .arrow:after, body .popover.bottom .arrow:after, body .popover-body.bottom .arrow:after, body .tool-tip-description .dropdown-menu.bottom .arrow:after, body .data-alert-description.dropdown-menu.bottom .arrow:after, body #get-embed-code-container .info-popup.open .dropdown-menu.bottom .arrow:after, body .record-count-info.open .dropdown-menu.bottom .arrow:after, body .common-tooltip-info.dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .tool-tip .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .popover.bottom .arrow:after, .custom-bootstrap-styles .popover-body.bottom .arrow:after, .custom-bootstrap-styles .tool-tip-description .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .data-alert-description.dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles #get-embed-code-container .info-popup.open .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .record-count-info.open .dropdown-menu.bottom .arrow:after, .custom-bootstrap-styles .common-tooltip-info.dropdown-menu.bottom .arrow:after {
     border-bottom-color: var(--primary-background-color); }
-  body .tool-tip .dropdown-menu.left .arrow:after, body .popover.left .arrow:after, body .tool-tip-description .dropdown-menu.left .arrow:after, body .data-alert-description.dropdown-menu.left .arrow:after, body #get-embed-code-container .info-popup.open .dropdown-menu.left .arrow:after, body .record-count-info.open .dropdown-menu.left .arrow:after, body .common-tooltip-info.dropdown-menu.left .arrow:after, .custom-bootstrap-styles .tool-tip .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .popover.left .arrow:after, .custom-bootstrap-styles .tool-tip-description .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .data-alert-description.dropdown-menu.left .arrow:after, .custom-bootstrap-styles #get-embed-code-container .info-popup.open .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .record-count-info.open .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .common-tooltip-info.dropdown-menu.left .arrow:after {
+  body .tool-tip .dropdown-menu.left .arrow:after, body .popover.left .arrow:after, body .popover-body.left .arrow:after, body .tool-tip-description .dropdown-menu.left .arrow:after, body .data-alert-description.dropdown-menu.left .arrow:after, body #get-embed-code-container .info-popup.open .dropdown-menu.left .arrow:after, body .record-count-info.open .dropdown-menu.left .arrow:after, body .common-tooltip-info.dropdown-menu.left .arrow:after, .custom-bootstrap-styles .tool-tip .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .popover.left .arrow:after, .custom-bootstrap-styles .popover-body.left .arrow:after, .custom-bootstrap-styles .tool-tip-description .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .data-alert-description.dropdown-menu.left .arrow:after, .custom-bootstrap-styles #get-embed-code-container .info-popup.open .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .record-count-info.open .dropdown-menu.left .arrow:after, .custom-bootstrap-styles .common-tooltip-info.dropdown-menu.left .arrow:after {
     border-left-color: var(--primary-background-color); }
 body .popover.bottom > .arrow, .custom-bootstrap-styles .popover.bottom > .arrow {
   top: -11px !important; }
@@ -6034,25 +6113,27 @@ body #ad-tab-nav, body #dashboards-tab-nav, body .nav-tabs {
       background: none;
       border-color: var(--tab-bg-normal-color);
       color: var(--tab-text-hover-color); }
-  body #ad-tab-nav li.active a, body #ad-tab-nav li.active a:hover, body #ad-tab-nav li.active a:focus, body #dashboards-tab-nav li.active a, body #dashboards-tab-nav li.active a:hover, body #dashboards-tab-nav li.active a:focus, body .nav-tabs li.active a, body .nav-tabs li.active a:hover, body .nav-tabs li.active a:focus {
-    background: var(--tab-bg-normal-color);
-    color: var(--tab-text-active-color);
-    border: none; }
-  body #ad-tab-nav li.active::after, body #dashboards-tab-nav li.active::after, body .nav-tabs li.active::after {
-    background: var(--sub-nav-menu-header-bg-color);
-    border: 1px solid var(--sub-nav-menu-header-border-color);
-    border-radius: 10px;
-    content: "";
-    display: block;
-    height: 5px;
-    z-index: 1;
-    position: inherit;
-    -webkit-transition-property: left, right;
-    transition-property: left, right;
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-timing-function: ease-out;
-    transition-timing-function: ease-out; }
+  body #ad-tab-nav li.active, body #dashboards-tab-nav li.active, body .nav-tabs li.active {
+    margin-bottom: 0px; }
+    body #ad-tab-nav li.active a, body #ad-tab-nav li.active a:hover, body #ad-tab-nav li.active a:focus, body #dashboards-tab-nav li.active a, body #dashboards-tab-nav li.active a:hover, body #dashboards-tab-nav li.active a:focus, body .nav-tabs li.active a, body .nav-tabs li.active a:hover, body .nav-tabs li.active a:focus {
+      background: var(--tab-bg-normal-color);
+      color: var(--tab-text-active-color);
+      border: none; }
+    body #ad-tab-nav li.active::after, body #dashboards-tab-nav li.active::after, body .nav-tabs li.active::after {
+      background: var(--sub-nav-menu-header-bg-color);
+      border: 1px solid var(--sub-nav-menu-header-border-color);
+      border-radius: 10px;
+      content: "";
+      display: block;
+      height: 5px;
+      z-index: 1;
+      position: inherit;
+      -webkit-transition-property: left, right;
+      transition-property: left, right;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-timing-function: ease-out;
+      transition-timing-function: ease-out; }
 body #group-general-tab .admin-page-body:not(#acc-activate-setting), body #group-general-tab .user-profile-section, body #group-attribute-tab .admin-page-body:not(#acc-activate-setting), body #group-attribute-tab .user-profile-section, body .tab-content .admin-page-body:not(#acc-activate-setting), body .tab-content .user-profile-section {
   background-color: var(--tab-bg-normal-color);
   border: 1px solid var(--tab-border-normal-color);

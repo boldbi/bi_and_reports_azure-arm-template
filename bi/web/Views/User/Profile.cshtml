@@ -38,6 +38,7 @@
     List<string> groupName = new List<string>();
     var isUserLanguagePreferenceDisabled = globalAppSettings.SystemSettings != null && globalAppSettings.SystemSettings.IsSystemLanguagePreference;
     var pageDescription = T["Manage your profile settings and privacy controls"];
+    var isSingleDataBaseMode = ServerAppConfig.TenantConfigurationMode == ConfigurationMode.SingleDatabaseForAllTenants;
 }
 
 
@@ -80,6 +81,7 @@
         var scheduleRangeDateFormat = "@_clientDateTimeInfo.ClientDateTime.DateFormat";
         var scheduleRangeTimeFormat = "@_clientDateTimeInfo.ClientDateTime.TimeFormat";
         var today = new Date();
+        var isSingleDataBaseMode = @Json.Serialize(@isSingleDataBaseMode);
         $(document).ready(function () {
             $("#token-datePicker").ejDatePicker({
                 footer: false,
@@ -128,51 +130,51 @@
 }
 @section MainSection{
     @await Html.PartialAsync("_ProfileMenu")
-    <div class="col-xs-12 no-padding no-margin width-alignment">
+    <div class="col-12 no-padding no-margin width-alignment">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["My Profile"] }, { "PageDescription", @pageDescription } })
-        <div id="profile-details-heading-div" class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton">
-            <div class="col-xs-12 no-padding">
-                <div class="col-xs-6 no-padding button-section">
+        <div id="profile-details-heading-div" class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton">
+            <div class="col-12 no-padding">
+                <div class="col-6 no-padding button-section">
                     @if (!ViewBag.IsAdUser && userDetail.DirectoryType != DirectoryType.Syncfusion)
                     {
-                        <a rel="alternate" hreflang="en" href="@idpChangePasswordUrl" target="@(ViewBag.HasOAuthOpenIDProviderUrl ? "_blank": "_self")" class="link-button app-btn-link pull-right edit-password" title="">@T["Change Password"]</a>
+                        <a rel="alternate" hreflang="en" href="@idpChangePasswordUrl" target="@(ViewBag.HasOAuthOpenIDProviderUrl ? "_blank": "_self")" class="link-button app-btn-link float-end edit-password" title="">@T["Change Password"]</a>
                     }
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 no-padding bi-page-nav-bar">
+        <div class="col-12 no-padding bi-page-nav-bar">
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="@isProfileDetailsTab">
-                    <a href="#profile-details" id="profile-details-tab" aria-controls="profile-details-tab-control" role="tab" data-toggle="tab">@T["PROFILE DETAILS"]</a>
+                    <a href="#profile-details" id="profile-details-tab" aria-controls="profile-details-tab-control" role="tab" data-bs-toggle="tab">@T["PROFILE DETAILS"]</a>
                 </li>
                 <li role="presentation" class="@isProfileSettingsTab">
-                    <a href="#profile-settings" id="profile-settings-tab" aria-controls="profile-settings-tab-control" role="tab" data-toggle="tab">@T["SETTINGS"]</a>
+                    <a href="#profile-settings" id="profile-settings-tab" aria-controls="profile-settings-tab-control" role="tab" data-bs-toggle="tab">@T["SETTINGS"]</a>
                 </li>
                 <li role="presentation" class="@isProfileNotificationsTab">
-                    <a href="#profile-notifications" id="profile-notifications-tab" aria-controls="profile-notifications-tab-control" role="tab" data-toggle="tab">@T["NOTIFICATIONS"]</a>
+                    <a href="#profile-notifications" id="profile-notifications-tab" aria-controls="profile-notifications-tab-control" role="tab" data-bs-toggle="tab">@T["NOTIFICATIONS"]</a>
                 </li>
                 @* <li role="presentation" class="@isTokenGenerateTab"> *@
                 @*     <a href="#personal-token-generate" id="profile-notifications-tab" aria-controls="token-generate-tab-control" role="tab" data-toggle="tab">@T["PERSONAL ACCESS TOKEN"]</a> *@
                 @* </li> *@
                 <li role="presentation" class="@isApiKeyGenerateTab">
-                    <a href="#generate-api-key" id="generate-api-key-tab" aria-controls="api-key-generate-tab-control" role="tab" data-toggle="tab">@T["API KEY"]</a>
+                    <a href="#generate-api-key" id="generate-api-key-tab" aria-controls="api-key-generate-tab-control" role="tab" data-bs-toggle="tab">@T["API KEY"]</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div id="profile-base-div" role="tabpanel" class="col-xs-12 bi-page-container bi-page-container-with-tab">
+    <div id="profile-base-div" role="tabpanel" class="col-12 bi-page-container bi-page-container-with-tab">
         <input type="hidden" class="page-name" data-content="@T["USER PROFILE"]">
         <input type="hidden" id="user-id" value="@identityResponse.User.Email;" />
         <span id="is-aduser">@ViewBag.IsAdUser</span>
         <span id="logged-user">@ViewBag.LoggedUser</span>
-        <div class="col-xs-12 no-padding bi-page-content" id="user-profile-master">
-            <div class="col-xs-12 no-padding tab-content">
-                <div role="tabpanel" id="profile-details" class=" profile-section profile-section-first-div col-xs-12 tab-pane bi-page-body @isProfileDetailsTab">
-                    <div class="col-xs-12 no-padding profile-img-name">
-                        <div class="img-view-holder col-xs-4 no-padding" style="border: 0px">
-                            <div class="profile-pic-tag" data-id="@idpreferenceId" data-type="user" data-display-name="@userDetail.DisplayName" data-image-size="64" data-toggle="tooltip" title="@userDetail.DisplayName" data-placement="top"></div>
+        <div class="col-12 no-padding bi-page-content" id="user-profile-master">
+            <div class="col-12 no-padding tab-content">
+                <div role="tabpanel" id="profile-details" class=" profile-section profile-section-first-div col-12 tab-pane bi-page-body @isProfileDetailsTab">
+                    <div class="col-12 no-padding profile-img-name">
+                        <div class="img-view-holder col-4 no-padding" style="border: 0px">
+                            <div class="profile-pic-tag" data-id="@idpreferenceId" data-type="user" data-display-name="@userDetail.DisplayName" data-image-size="64" data-bs-toggle="profile-tag-tooltip" title="@userDetail.DisplayName" data-placement="top"></div>
                         </div>
-                        <div class="col-xs-8 no-padding account-edit">
+                        <div class="col-8 no-padding account-edit">
                             <label class="display-name">@userDetail.DisplayName</label>
                             <label id="edit-button">
                                 <span class="bg-info" id="id-account-link">
@@ -183,11 +185,11 @@
                     </div>
                     @if (userDetail.DirectoryType != DirectoryType.Local)
                     {
-                        <div id="azure-user-info" class="col-xs-12 no-padding profile-note-sec">
+                        <div id="azure-user-info" class="col-12 no-padding profile-note-sec">
                             <label>@string.Format(T["Editing your user profile, except the picture, is not currently supported for {0} and database accounts."].Value, "Azure Active Directory, Windows Active Directory, Office 365, OAuth, OpenID Connect") </label>
                         </div>
                     }
-                    <div id="profile-details-form-div" class="col-xs-12 no-padding">
+                    <div id="profile-details-form-div" class="col-12 no-padding">
                         <form class="form-horizontal profile-details-form" autocomplete="off">
                             @if (ServerAppConfig.IsSelfHosted)
                             {
@@ -213,7 +215,7 @@
                                 <span id="user-phonenumber" name="user-phonenumber" type="text" value="@(!string.IsNullOrWhiteSpace(userDetail.ContactNumber) ? userDetail.ContactNumber : "--")">@(!string.IsNullOrWhiteSpace(userDetail.ContactNumber) ?  userDetail.ContactNumber : "--")</span>
                             </div>
                             <div class="form-element-label" style="display:none">
-                                <label class="app-textbox-label col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                                <label class="app-textbox-label col-lg-6 col-md-6 col-sm-6 col-6 no-padding">
                                     @T["Isolation Code"]:
                                 </label>
                             </div>
@@ -245,25 +247,25 @@
                         </form>
                     </div>
                 </div>
-                <div role="tabpanel" id="profile-settings" class="col-xs-12 no-margin no-padding tab-pane @isProfileSettingsTab">
-                    <div class="profile-section col-xs-12 no-margin  bi-page-body">
+                <div role="tabpanel" id="profile-settings" class="col-12 no-margin no-padding tab-pane @isProfileSettingsTab">
+                    <div class="profile-section col-12 no-margin  bi-page-body">
                         @if (isUserLanguagePreferenceDisabled)
                         {
-                            <div id="profile-settings-info" class="col-xs-12 no-padding profile-note-sec">
+                            <div id="profile-settings-info" class="col-12 no-padding profile-note-sec">
                                 <label>@T["Your preferred application and data language will not be applied here as the user preference for these settings is disabled."]</label>
                             </div>
                         }
-                        <div id="profile-settings-form-div" class="col-xs-12 no-padding">
+                        <div id="profile-settings-form-div" class="col-12 no-padding">
                             <form class="col-md-12 no-padding content-display text-wrap" autocomplete="off">
                                 <input type="hidden" class="page-title" data-page="ACCOUNT PREFERENCE">
                                 @if (ServerAppConfig.IsSelfHosted)
                                 {
-                                    <div class="account-preference-table col-xs-12 no-padding form-fields">
+                                    <div class="account-preference-table col-12 no-padding form-fields">
                                         <label class="profile-textbox-label app-language-label">@T["Application language"]</label>
                                         <h6 class="no-margin">@T["The language used in the application user interface (such as menu items, dialog boxes, toolboxes, and more)."]</h6>
                                         <div class="txt-holder dropdown language-group">
                                             <div id="language" class="margin-top-12">
-                                                <button class="btn btn-default dropdown-toggle pull-left disabled" type="button" id="dropdown-lang" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="@nativeNameTitleCase">
+                                                <button class="btn btn-default dropdown-toggle float-start disabled" type="button" id="dropdown-lang" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="@nativeNameTitleCase">
                                                     <span class="lang-overflow">@nativeNameTitleCase</span>
                                                     <i class="su-dropdown-arrow arrow-margin"></i>
                                                 </button>
@@ -312,13 +314,13 @@
                                         </div>
                                     </div>
                                 }
-                                <div class="col-xs-12 no-padding form-fields" id="data-language-container">
+                                <div class="col-12 no-padding form-fields" id="data-language-container">
                                     <label class="profile-textbox-label user-model-language">@T["Data language"]</label>
                                     <h6 class="no-margin">@T["The language used in date, number, and currency formats."]</h6>
                                     @if (ServerAppConfig.IsSelfHosted)
                                     {
                                         <div class="txt-holder dropdown margin-top-12" id="user-model-dropdown-container">
-                                            @Html.DropDownList("model-language", ViewBag.UserModelLanguages as IEnumerable<SelectListItem>, new { @class = "selectpicker user-model-language-dropdown pull-left", disabled = "disabled", data_live_search = "true", data_size = 10 })
+                                            @Html.DropDownList("model-language", ViewBag.UserModelLanguages as IEnumerable<SelectListItem>, new { @class = "selectpicker user-model-language-dropdown float-start", disabled = "disabled", data_live_search = "true", data_size = 10 })
                                         </div>
                                         <div id="id-account-link">
                                             <a hreflang="en" href="@idpUserPreferenceUrl" id="edit-link">@T["Update data language details through your account"]</a>
@@ -327,11 +329,11 @@
                                     else
                                     {
                                         <div class="txt-holder dropdown margin-top-12" id="user-model-dropdown-container">
-                                            @Html.DropDownList("model-language", ViewBag.UserModelLanguages as IEnumerable<SelectListItem>, new { @class = "selectpicker user-model-language-dropdown pull-left", data_live_search = "true", data_size = 10 })
+                                            @Html.DropDownList("model-language", ViewBag.UserModelLanguages as IEnumerable<SelectListItem>, new { @class = "selectpicker user-model-language-dropdown float-start", data_live_search = "true", data_size = 10 })
                                         </div>
                                     }
                                 </div>
-                                <div class="col-xs-12 no-padding form-fields">
+                                <div class="col-12 no-padding form-fields">
                                     <label class="profile-textbox-label ">@T["Default pinboard"]</label>
                                     @if (!@ServerAppConfig.IsHideHelpLink)
                                     {
@@ -339,33 +341,33 @@
                                     }
 
                                     <div class="txt-holder margin-top-12" id="homepage-list">
-                                        @Html.DropDownList("default-homepage", ViewBag.UserHomePages as IEnumerable<SelectListItem>, new { @class = "selectpicker default-homepage-dropdown pull-left", data_live_search = "true", data_size = 10 })
+                                        @Html.DropDownList("default-homepage", ViewBag.UserHomePages as IEnumerable<SelectListItem>, new { @class = "selectpicker default-homepage-dropdown float-start", data_live_search = "true", data_size = 10 })
                                     </div>
                                 </div>
                                 @await Html.PartialAsync("_UserDashboardSettings")
                             </form>
                         </div>
                     </div>
-                    <div class="bi-page-footer col-xs-12">
-                        <div class="bi-page-actions col-xs-12 col-md-12">
-                            <a href="@Url.Action("dashboards", "dashboards")" class="secondary-button app-btn-secondary pull-right" id="cancel-button" title="">@T["Cancel"]</a>
-                            <input type="button" class="primary-button app-btn-primary pull-right" id="save-button" title="" onclick="SaveProfileSettings()" value="@T["Save"]">
+                    <div class="bi-page-footer col-12">
+                        <div class="bi-page-actions col-12 col-md-12">
+                            <a href="@Url.Action("dashboards", "dashboards")" class="secondary-button app-btn-secondary float-end" id="cancel-button" title="">@T["Cancel"]</a>
+                            <input type="button" class="primary-button app-btn-primary float-end" id="save-button" title="" onclick="SaveProfileSettings()" value="@T["Save"]">
                         </div>
                     </div>
                 </div>
                 @await Html.PartialAsync("_UserNotificationPreference")
-                <div role="tabpanel" id="personal-token-generate" class="profile-section col-xs-12 tab-pane bi-page-body @isTokenGenerateTab">
+                <div role="tabpanel" id="personal-token-generate" class="profile-section col-12 tab-pane bi-page-body @isTokenGenerateTab">
                     <div class="bg-warning api-key-alert">
                         @T["Personal access tokens will no longer be supported and will be removed in upcoming releases. We recommend using API keys, which are the alternative to personal access tokens, to ensure continued access to our services."]
                     </div>
                     <div id="generate-token-container">
                         <div class="personal-access-token-description">@T["A personal access token serves the same purpose as an OAuth access token. It enables secure embedding of the dashboard viewer and designer within your application. Additionally, this token grants access to all our REST API endpoints."]</div>
-                        <div id="get-access-token" class="input-field-wrapper col-xs-12 no-padding">
+                        <div id="get-access-token" class="input-field-wrapper col-12 no-padding">
                             <label class="token-expiration-label no-margin">
                                 @T["Token Expiration"]
                             </label>
                         </div>
-                        <div class="col-xs-6 no-padding">
+                        <div class="col-6 d-flex no-padding">
                             <div class="form-input-field col-md-2 no-padding">
                                 @Html.DropDownList("expiry", ViewBag.ExpirationDays as IEnumerable<SelectListItem>, new { @class = "selectpicker form-control", id = "expiration-days" })
                             </div>
@@ -376,7 +378,7 @@
                             </div>
                         </div>
                         <div class="col-md-7 access-token-container no-padding">
-                            <div id="access-token-link" class="col-xs-5" style="display:none">
+                            <div id="access-token-link" class="col-5" style="display:none">
                                 <input type="text" id="access-token" name="" class="form-control" placeholder="@T["Authentication token"]" disabled="disabled" autocomplete="off" onClick="this.setSelectionRange(0, this.value.length)" readonly>
                                 <div class="form-control su su-copy text focus" id="access-token-copy" disabled="disabled" data-original-title="@T["Click to copy"]"></div>
                             </div>
@@ -386,7 +388,7 @@
                     </div>
                     
                 </div>
-                <div role="tabpanel" id="generate-api-key" class="profile-section col-xs-12 tab-pane bi-page-body @isApiKeyGenerateTab">
+                <div role="tabpanel" id="generate-api-key" class="profile-section col-12 tab-pane bi-page-body @isApiKeyGenerateTab">
                     @await Html.PartialAsync("~/Views/User/_ApiKeyMenu.cshtml")
                 </div>
             </div>

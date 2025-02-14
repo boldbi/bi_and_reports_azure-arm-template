@@ -4,8 +4,8 @@
     bool isSelfHosted = ServerAppConfig.IsSelfHosted;
 }
 
-<div id="x-frame-options-settings-body" class="col-xs-12 no-padding">
-    <div class="col-xs-12 no-padding field-container-dashboard">
+<div id="x-frame-options-settings-body" class="col-12 no-padding">
+    <div class="col-12 no-padding field-container-dashboard">
         <div class="info-label">
             @Html.CheckBox("x-frame", (bool)globalAppSettings.SystemSettings.IsXFrameOptionsEnabled, new { @class = "material-checkbox" })
             <label for="x-frame">

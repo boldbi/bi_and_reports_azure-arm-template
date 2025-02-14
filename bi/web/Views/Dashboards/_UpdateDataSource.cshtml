@@ -57,12 +57,12 @@
         <div class="col-md-12 header-menu dialog-header">
             <span class="su su-nav-datasource Head-icon"></span>
             <span class="PopupTitle modal-title">@T["Update Data Source(s)"]</span>
-            <div class="dashboard-name report-name">@Html.Raw("<div class='float-left'>" + string.Format(T["Update data sources connected to the Dashboard - {0}"].Value,"</div><span class='item-name' data-toggle='tooltip' data-placement='bottom' data-original-title=" + ViewBag.FullItemName + ">" + ViewBag.FullItemName + "</span>"))</div>
+            <div class="dashboard-name report-name">@Html.Raw("<div class='float-left'>" + string.Format(T["Update data sources connected to the Dashboard - {0}"].Value,"</div><span class='item-name' data-bs-toggle='tooltip' data-placement='bottom' data-original-title=" + ViewBag.FullItemName + ">" + ViewBag.FullItemName + "</span>"))</div>
             <a href="javascript:void(0);" title="@T["Close"]" class="PopupClose" onclick="closeUpdateDataSourcePopup()"><span class="su su-close"></span></a>
         </div>
         <div id="datasource-popup-module">
             <div class="datasource-btns dialog-footer">
-                <div class="pull-right">
+                <div class="float-end">
                     <input type='button' title='' id="share-datasource" value="@T["Update"]" class='primary-button app-btn-primary' data-item-id=@ViewData["ItemId"] data-mapid="name" tabindex="17">
                     <input type='button' title='' value="@T["Cancel"]" class='secondary-button  app-btn-secondary' onclick="closeUpdateDataSourcePopup()" tabindex="18">
                 </div>
@@ -93,7 +93,7 @@
                                     </div>
                                 </td>
                                 @*<td>
-                                        <span id="add-new-datasource" class="su-add" data-toggle="tooltip" data-placement="left" title="@T["Add new Data Source"]"></span>
+                                        <span id="add-new-datasource" class="su-add" data-bs-toggle="tooltip" data-placement="left" title="@T["Add new Data Source"]"></span>
                                     </td>*@
                             </tr>
                         }

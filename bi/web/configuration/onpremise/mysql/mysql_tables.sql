@@ -189,6 +189,7 @@ CREATE TABLE {database_name}.BOLDBI_ItemLog(
 	ToCategoryId Char(38) NULL,
 	UpdatedUserId int NOT NULL,	
 	ModifiedDate datetime NOT NULL,
+    AnonymousUsername varchar(255) NULL,
 	IsActive tinyint NOT NULL,
 	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
@@ -267,6 +268,7 @@ CREATE TABLE {database_name}.BOLDBI_ScheduleDetail(
 	CreatedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	ScheduleExportInfo text NULL,
+        DashboardWidgetIds text NULL,
 	IsActive tinyint NOT NULL,
 	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
@@ -1106,8 +1108,8 @@ CREATE TABLE {database_name}.BOLDBI_CustomEmailTemplate (
 	IsSystemDefault BIT NOT NULL,
 	Description VARCHAR(255) NULL,
 	ModifiedBy int NOT NULL,
-	TemplateLocalizationKey VARCHAR(255) NULL
-);
+	TemplateLocalizationKey VARCHAR(255) NULL) ROW_FORMAT=DYNAMIC
+;
 
 CREATE TABLE {database_name}.BOLDBI_ApiKeyDetails (
     Id Char(38) NOT NULL,
@@ -1121,6 +1123,38 @@ CREATE TABLE {database_name}.BOLDBI_ApiKeyDetails (
     ModifiedBy int NOT NULL,
     IsActive tinyint NOT NULL,
     PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
+;
+
+CREATE TABLE {database_name}.BOLDBI_AI_CHAT (
+    SearchID VARCHAR(255) PRIMARY KEY,
+    SessionID TEXT,
+    SearchDateTime DATETIME,
+    InputToken INT,
+    OutputToken INT,
+    TotalToken INT,
+    InputTokenCost DOUBLE,
+    OutputTokenCost DOUBLE,
+    TotalTokensCost DOUBLE,
+    UserInfo TEXT,
+    TenantID TEXT,
+    RequestType TEXT,
+    Environment TEXT) ROW_FORMAT=DYNAMIC
+;
+
+
+CREATE TABLE {database_name}.BOLDBI_AI_SESSIONS (
+    SessionID VARCHAR(255) PRIMARY KEY,
+    SessionStartTime DATETIME,
+    SessionEndTime DATETIME,
+    InputToken INT,
+    OutputToken INT,
+    TotalToken INT,
+    InputTokenCost DOUBLE,
+    OutputTokenCost DOUBLE,
+    TotalTokensCost DOUBLE,
+    UserInfo TEXT,
+    TenantID TEXT,
+    Environment TEXT) ROW_FORMAT=DYNAMIC
 ;
 
 -- -- PASTE INSERT Queries below this section --------

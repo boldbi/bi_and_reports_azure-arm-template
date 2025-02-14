@@ -8,17 +8,17 @@
     </script>
 </head>
 <body>
-    <div id="run-history-container" class="col-xs-12 no-padding dialog refresh-history-container" style="display:none">
+    <div id="run-history-container" class="col-12 no-padding dialog refresh-history-container" style="display:none">
         <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog col-lg-12 popup-header no-padding" role="document">
                 <div class="modal-content col-lg-12" data-spy="scroll">
                     <div class="col-lg-12 modal-header modal-header-datasource">
                         <div class="col-lg-11 col-xs-11 col-sm-11 col-md-11 no-padding header-placement">
                             <span style="right:20px" class="version-modal-title popup-title ellipsis col-xs-10" data-container="body">@T["Refresh History"]</span>
-                            <span class="modal-title popup-title schedule-popup-title ellipsis col-lg-10 col-xs-10 col-sm-10 col-md-10 no-padding" data-toggle="tooltip" data-placement="bottom" data-container="body" style="font-size:13px;"></span>
+                            <span class="modal-title popup-title schedule-popup-title ellipsis col-lg-10 col-xs-10 col-sm-10 col-md-10 no-padding" data-bs-toggle="tooltip" data-placement="bottom" data-container="body" style="font-size:13px;"></span>
                         </div>
                         <div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 no-padding">
-                            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="left" data-container="body" title="@T["Close"]" class="popup-close pull-right"><span class="su su-close"></span></a>
+                            <a href="javascript:void(0);" data-bs-toggle="tooltip" data-placement="left" data-container="body" title="@T["Close"]" class="popup-close float-end"><span class="su su-close"></span></a>
                         </div>
                     </div>
                     <div class="modal-body modal-body-datasource col-lg-12">
@@ -34,15 +34,15 @@
                             <span class="su su-info"></span>
                             <div class="message">@T["A refresh cannot be initiated because another refresh is already in progress. Click Check Status to view the current refresh progress."]</div>
                         </div>
-                        <div class="total-move-container total-move-container-datasource col-xs-12 version-container-padding">
-                            <div id="item-history-container" class="show col-xs-12 no-padding version-area" data-previous-parent-id="none" data-parent-id="home" data-type="self">
-                                <div class="col-xs-12 no-padding" style="display:block; padding-top:20px; float:left;">
+                        <div class="total-move-container total-move-container-datasource col-12 version-container-padding">
+                            <div id="item-history-container" class="show col-12 no-padding version-area" data-previous-parent-id="none" data-parent-id="home" data-type="self">
+                                <div class="col-12 no-padding" style="display:block; padding-top:20px; float:left;">
                                     <div id="historygrid" class="grid">
                                     </div>
                                 </div>
                             </div>
-                            <div id="refresh-log-container" class="hidden col-xs-12 no-padding version-area " data-previous-parent-id="none" data-parent-id="home" data-type="self">
-                                <div class="col-xs-12 no-padding" style="display:block; padding-top:20px; float:left;">
+                            <div id="refresh-log-container" class="hidden col-12 no-padding version-area " data-previous-parent-id="none" data-parent-id="home" data-type="self">
+                                <div class="col-12 no-padding" style="display:block; padding-top:20px; float:left;">
                                     <div id="refreshloggrid" class="grid">
                                     </div>
                                 </div>
@@ -50,8 +50,8 @@
                         </div>
                     </div>
                     <div class="col-lg-12 modal-footer">
-                        <div class="col-xs-12 no-padding">
-                            <input type="button" id="close-button" title="@T["Close"]" class="app-button app-secondary-button app-btn-secondary pull-right popup-close" value="@T["Close"]" tabindex="-1" />
+                        <div class="col-12 no-padding">
+                            <input type="button" id="close-button" title="@T["Close"]" class="app-button app-secondary-button app-btn-secondary float-end popup-close" value="@T["Close"]" tabindex="-1" />
                         </div>
                     </div>
                 </div>
@@ -59,20 +59,20 @@
         </div>
     </div>
     <div id="ScheduleFailureStatus" class="fluent-popup custom-bootstrap-styles custom-server-style no-padding" style="display: none">
-        <div class="fluent-popup-header col-xs-12 no-padding">
+        <div class="fluent-popup-header col-12 no-padding">
             <h4 class="popup-title">
                 <span class="su su-info"></span>
                 <span id="info-dialog-header">@T["Failure Info"]</span>
-                <button id="close-info-dialog" type="button" title="@T["Close"]" data-toggle="tool-tip" data-container="body" class="close popup-close" onclick="closeFailureInfo()" aria-label="Close">
+                <button id="close-info-dialog" type="button" title="@T["Close"]" data-bs-toggle="tool-tip" data-container="body" class="btn-close popup-close" onclick="closeFailureInfo()" aria-label="Close">
                     <span class="su su-close"></span>
                 </button>
             </h4>
         </div>
-        <div class="fluent-item-popup-body col-xs-12">
+        <div class="fluent-item-popup-body col-12">
             <span id="ScheduleFailureStatusMessage"></span>
         </div>
-        <div class="fluent-popup-footer col-xs-12">
-            <div class="col-xs-12 no-padding">
+        <div class="fluent-popup-footer col-12">
+            <div class="col-12 no-padding">
                 <button class="app-button app-secondary-button app-btn-secondary fluent" onclick="copyScheduleHistoryToClipboard()" title=@T["Copy to Clipboard"]>@T["Copy to Clipboard"]</button>
                 <button class="close-fluent app-button app-secondary-button app-btn-secondary" onclick="closeFailureInfo()" title=@T["Close"]>@T["Close"]</button>
             </div>
@@ -93,7 +93,7 @@
         {{/if}}
 </script>
 <script type="text/x-jsrender" id="schedule_message">
-    <div class="grid-content" title="{{:Message}}" data-toggle="tooltip">{{:Message}}</div>
+    <div class="grid-content" title="{{:Message}}" data-bs-toggle="tooltip">{{:Message}}</div>
 </script>
 <script type="text/x-jsrender" id="started_date">
     <div class="grid-content" title="{{:StartedDateString}}">{{:StartedDateString}}</div>
@@ -113,7 +113,7 @@
 </script>
 <script type="text/x-jsrender" id="view_logs">
     {{if RefreshRequestId == "00000000-0000-0000-0000-000000000000"}}
-    <span class="grid-content" data-toggle="tooltip" title="@T["The refresh log has either been deleted or is currently not available."]"><a class="grid-content" href="{{:~renderDoubleQuotesForRefreshHistory(RefreshRequestId, ScheduleStatus)}}" >@T["View"]</a></span>
+    <span class="grid-content" data-bs-toggle="tooltip" title="@T["The refresh log has either been deleted or is currently not available."]"><a class="grid-content" href="{{:~renderDoubleQuotesForRefreshHistory(RefreshRequestId, ScheduleStatus)}}" >@T["View"]</a></span>
     {{else}}
     <span><a class="grid-content" href="{{:~renderDoubleQuotesForRefreshHistory(RefreshRequestId, ScheduleStatus)}}" target="_blank">@T["View"]</a></span>
     {{/if}}
@@ -122,16 +122,16 @@
     <div class="grid-content" title="{{:Details}}">{{:Details}}</div>
 </script>
 <script type="text/x-jsrender" id="logs_started_date">
-    <div class="grid-content" data-toggle="tooltip">{{:StartedDateString}}</div>
+    <div class="grid-content" data-bs-toggle="tooltip">{{:StartedDateString}}</div>
 </script>
 <script type="text/x-jsrender" id="action">
-    <div class="grid-content" title="{{:Status}}" data-toggle="tooltip">{{:Status}}</div>
+    <div class="grid-content" title="{{:Status}}" data-bs-toggle="tooltip">{{:Status}}</div>
 </script>
 <script type="text/x-jsrender" id="missing_events">
-    <div class="grid-content" data-toggle="tooltip">{{:MissingType}}</div>
+    <div class="grid-content" data-bs-toggle="tooltip">{{:MissingType}}</div>
 </script>
 <script type="text/x-jsrender" id="logs_updated_date">
-    <div class="grid-content" data-toggle="tooltip">{{:ExecutedDateString}}</div>
+    <div class="grid-content" data-bs-toggle="tooltip">{{:ExecutedDateString}}</div>
 </script>
 <script type="text/javascript">
     $(function () {
@@ -167,27 +167,27 @@
                 var statusElement = $(children[1]).children(".add-space-for-info");
                 if (rowIndex > 4){
                     if (childOfChildrenElement.length > 0){
-                        $(childOfChildrenElement[0]).attr("data-toggle", "tooltip");
+                        $(childOfChildrenElement[0]).attr("data-bs-toggle", "tooltip");
                         $(childOfChildrenElement[0]).attr("data-placement","top");
                     }
                     if (statusElement.length > 0) {
-                        $(statusElement[0]).attr("data-toggle", "tooltip");
+                        $(statusElement[0]).attr("data-bs-toggle", "tooltip");
                         $(statusElement[0]).attr("data-placement", "top");
                     }
 
                 }
                 else{
                     if (childOfChildrenElement.length > 0) {
-                        $(childOfChildrenElement[0]).attr("data-toggle", "tooltip");
+                        $(childOfChildrenElement[0]).attr("data-bs-toggle", "tooltip");
                         $(childOfChildrenElement[0]).attr("data-placement", "bottom");
                     }
 
                     if (statusElement.length > 0) {
-                        $(statusElement[0]).attr("data-toggle", "tooltip");
+                        $(statusElement[0]).attr("data-bs-toggle", "tooltip");
                         $(statusElement[0]).attr("data-placement", "bottom");
                     }
                 }
-                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-bs-toggle="tooltip"]').tooltip();
             },
             columns: [
                 {
@@ -238,10 +238,10 @@
             allowSelection: true,
             enableRowHover: true,
             rowDataBound: function (args) {
-                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-bs-toggle="tooltip"]').tooltip();
             },
             dataBound: function (args) {
-                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-bs-toggle="tooltip"]').tooltip();
             },
             columns: [
                 // {

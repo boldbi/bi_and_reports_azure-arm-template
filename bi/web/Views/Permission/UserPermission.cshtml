@@ -38,26 +38,26 @@
 
 @section MainSection{
     @await Html.PartialAsync("../Administration/_AdminMenu")
-    <div class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-        <div class="col-xs-12 no-padding">
+    <div class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+        <div class="col-12 no-padding">
             @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["Manage Permissions"] }, { "DisplayNameInHeader", @ViewBag.DisplayName } })
         </div>
-        <div id="user-header" class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton">
-            <div class="col-xs-12 no-padding">
+        <div id="user-header" class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton">
+            <div class="col-12 no-padding">
                 <div class="col-xs-6 no-padding button-section">
-                    <input type="button" title="@T["Add Permission to the user"]" id="add-permission-button-top" value="@T["Add Permission"]" class="primary-button app-btn-primary pull-right" />
+                    <input type="button" title="@T["Add Permission to the user"]" id="add-permission-button-top" value="@T["Add Permission"]" class="primary-button app-btn-primary float-end" />
                     @if (!ViewBag.IsAdUser)
                     {
-                        <a type="button" class="link-button app-btn-link pull-right margin-right" href="@Url.Action("ViewProfile", "UserManagement")?id=@ViewBag.UserId">@T["View Profile"]</a>
+                        <a type="button" class="link-button app-btn-link float-end margin-right" href="@Url.Action("ViewProfile", "UserManagement")?id=@ViewBag.UserId">@T["View Profile"]</a>
                     }
                 </div>
             </div>
         </div>
     </div>
-    <div id="base-container" class="bi-page-container user-permission col-xs-12 @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-        <div class="bi-page-content col-xs-12 no-padding">
-            <div class="active-directory-form col-xs-12 bi-page-body">
-                <div class="col-md-12 col-xs-12 col-sm-12 permission-grid">@await Html.PartialAsync("_PermissionGrid", Model)</div>
+    <div id="base-container" class="bi-page-container user-permission col-12 @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+        <div class="bi-page-content col-12 no-padding">
+            <div class="active-directory-form col-12 bi-page-body">
+                <div class="col-md-12 col-12 col-sm-12 permission-grid">@await Html.PartialAsync("_PermissionGrid", Model)</div>
                 <div class="col-md-3">
                     <div id="add-permission" class="no-padding" style="display:none">
                         @await Html.PartialAsync("_AddUserPermission")
@@ -75,18 +75,18 @@
             {{if IsUserPermission && CanDelete}}
             <span><a href="javascript:void(0);" class="delete-permission" data-permission-id="{{:PermissionId}}">@T["Remove"]</a></span>
             {{else}}
-            <span title="{{:GroupName}}" data-toggle="tooltip"><a href="@Url.Action("grouppermission","permission")?groupId={{:TargetId}}">{{:GroupName}}</a></span>
+            <span title="{{:GroupName}}" data-bs-toggle="tooltip"><a href="@Url.Action("grouppermission","permission")?groupId={{:TargetId}}">{{:GroupName}}</a></span>
             {{/if}}
         </div>
     </script>
     <script type="text/x-jsrender" id="accessmodetemplate">
-        <div class="item-name" title="{{:PermissionAccessDescription}}" data-toggle="tooltip">{{:PermissionAccessDescription}}</div>
+        <div class="item-name" title="{{:PermissionAccessDescription}}" data-bs-toggle="tooltip">{{:PermissionAccessDescription}}</div>
     </script>
     <script type="text/x-jsrender" id="scopetemplate">
-        <div class="grid-content" title="{{:ItemName}}" data-toggle="tooltip">{{:ItemName}}</div>
+        <div class="grid-content" title="{{:ItemName}}" data-bs-toggle="tooltip">{{:ItemName}}</div>
     </script>
     <script type="text/x-jsrender" id="entitytemplate">
-        <div class="grid-content" title="{{:PermissionEntityDescription}}" data-toggle="tooltip">{{:PermissionEntityDescription}}</div>
+        <div class="grid-content" title="{{:PermissionEntityDescription}}" data-bs-toggle="tooltip">{{:PermissionEntityDescription}}</div>
     </script>
     <script type="text/x-jsrender" id="accessmodeheader">
         <div class="item-name">@T["Access Mode"]</div>
@@ -131,7 +131,7 @@
                     pageSettings: { pageSize: 10 },
                     actionBegin: "fnOnUserPermissionActionBegin",
                     actionComplete: function (args) {
-                        $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                        $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                         if (args.model.currentViewData.length == 0) {
                             rowBound();
                         }
@@ -145,7 +145,7 @@
                         }
                     },
                     dataBound: function (args) {
-                        $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                        $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                     },
                     enableRowHover: true,
                     columns: [

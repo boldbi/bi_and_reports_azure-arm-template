@@ -13,10 +13,10 @@ new SelectListItem { Text = T["Inherit from global settings"].Value, Value = ((i
     var notificationSettings = @Html.Raw(Json.Serialize(ViewBag.userNotificationSettings));
     var globalNotificationSettings =  @Html.Raw(Json.Serialize(_globalAppSettings.SystemSettings.NotificationAdministration));
 </script>
-<div role="tabpanel" id="profile-notifications" class="col-xs-12 no-padding no-margin tab-pane @isProfileNotificationsTab">
-    <div class="col-xs-12 bi-page-body no-margin ">
+<div role="tabpanel" id="profile-notifications" class="col-12 no-padding no-margin tab-pane @isProfileNotificationsTab">
+    <div class="col-12 bi-page-body no-margin ">
         <input type="hidden" class="page-title" data-page="NOTIFICATION PREFERENCE">
-        <div class="col-xs-12 no-padding" id="notification-preference-form-div">
+        <div class="col-12 no-padding" id="notification-preference-form-div">
             <div class="notification-preference-table">
                 <div class="col-xs-8 field-container-notification no-padding">
                     <div ng-controller="UserMailNotificationSettingsController">
@@ -156,10 +156,10 @@ new SelectListItem { Text = T["Inherit from global settings"].Value, Value = ((i
             </div>
         </div>
     </div>
-    <div class="bi-page-footer col-xs-12 update-user-notification-settings">
-        <div class="bi-page-actions col-xs-12 col-md-12">
-            <a href="@Url.Action("dashboards", "dashboards")" class="secondary-button app-btn-secondary pull-right" id="cancel-settings" title="">@T["Cancel"]</a>
-            <input type="button" class="primary-button app-btn-primary pull-right inactive-content" id="update-notification-settings" title="" value="@T["Save"]">
+    <div class="bi-page-footer col-12 update-user-notification-settings">
+        <div class="bi-page-actions col-12 col-md-12">
+            <a href="@Url.Action("dashboards", "dashboards")" class="secondary-button app-btn-secondary float-end" id="cancel-settings" title="">@T["Cancel"]</a>
+            <input type="button" class="primary-button app-btn-primary float-end inactive-content" id="update-notification-settings" title="" value="@T["Save"]">
         </div>
     </div>
 </div>

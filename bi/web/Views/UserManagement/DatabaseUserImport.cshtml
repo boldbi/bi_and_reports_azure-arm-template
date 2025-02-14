@@ -44,17 +44,17 @@
     {
         <script type="text/x-jsrender" id="user-detail-validation">
             {{if IsDuplicated}}
-            <span class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></span>
+            <span class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-bs-toggle="tooltip" data-placement="left"></span>
             {{/if}}
         </script>
         <script type="text/x-jsrender" id="user-name-template">
-            <span title="{{:~renderDoubleQuotes(Username)}}" class="grid-content" data-toggle="tooltip">
+            <span title="{{:~renderDoubleQuotes(Username)}}" class="grid-content" data-bs-toggle="tooltip">
                 {{:Username}}
             </span>
         </script>
         <script type="text/x-jsrender" id="first-name-template">
             {{if FirstName != ""}}
-            <span title="{{:~renderDoubleQuotes(FirstName)}}" class="grid-content" data-toggle="tooltip">
+            <span title="{{:~renderDoubleQuotes(FirstName)}}" class="grid-content" data-bs-toggle="tooltip">
                 {{:FirstName}}
             </span>
             {{else}}
@@ -66,7 +66,7 @@
 
         <script type="text/x-jsrender" id="last-name-template">
             {{if LastName != ""}}
-            <span title="{{:~renderDoubleQuotes(LastName)}}" class="grid-content" data-toggle="tooltip">
+            <span title="{{:~renderDoubleQuotes(LastName)}}" class="grid-content" data-bs-toggle="tooltip">
                 {{:LastName}}
             </span>
             {{else}}
@@ -77,7 +77,7 @@
         </script>
 
         <script type="text/x-jsrender" id="email-id-template">
-            <span title="{{:EmailId}}" class="grid-content" data-toggle="tooltip">
+            <span title="{{:EmailId}}" class="grid-content" data-bs-toggle="tooltip">
                 {{:EmailId}}
             </span>
         </script>
@@ -148,7 +148,7 @@
                         actionBegin: "fnOnUserGridActionBegin",
                         enableAltRow: false,
                         rowDataBound: function () {
-                            $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                            $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                             $("input.checkbox-row-disabled").parents("tr").addClass("row-disabled");
                         },
                         columns: [
@@ -212,33 +212,33 @@
                     }
                 });
                 $("#Grid").data("ejGrid").refreshContent();
-                $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                 $("#content-area").ejWaitingPopup("hide");
             });
         </script>
 
-        <div class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-            <div class="col-xs-12 no-padding">
+        <div class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+            <div class="col-12 no-padding">
                 @await Html.PartialAsync("../Shared/_TopHeaderSection")
             </div>
-            <div class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
-                <div class="col-xs-12 no-padding">
+            <div class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
+                <div class="col-12 no-padding">
                     <div class="col-xs-6 no-padding button-section">
-                        <input type="button" value="@T["Import Selected Users"]" disabled="" title="@T["Import the selected users and activate their accounts"]" onclick="SaveSelectedUsers()" id="import-selected" class="primary-button app-btn-primary pull-right import-button bi-header-btn" />
-                        <input type="button" value="@T["Import All Users"]" title="@T["Import all users and activate their accounts"]" id="import-all" class="primary-button app-btn-primary pull-right import-button bi-header-btn" style="margin-right : 23px" />
+                        <input type="button" value="@T["Import Selected Users"]" disabled="" title="@T["Import the selected users and activate their accounts"]" onclick="SaveSelectedUsers()" id="import-selected" class="primary-button app-btn-primary float-end import-button bi-header-btn" />
+                        <input type="button" value="@T["Import All Users"]" title="@T["Import all users and activate their accounts"]" id="import-all" class="primary-button app-btn-primary float-end import-button bi-header-btn" style="margin-right : 23px" />
                     </div>
-                    <div id="search-area" class="pull-left col-xs-4">
-                        <input type="text" id="search-database-users" class="pull-left" placeholder="@T["Search users"]" autocomplete="off" />
-                        <span class="su su-inner-close close-icon pull-left" id="clear-search" title="@T["Clear search"]"></span>
-                        <span class="su su-search search-user pull-left" title="@T["Search"]"></span>
+                    <div id="search-area" class="float-start col-4">
+                        <input type="text" id="search-database-users" class="float-start" placeholder="@T["Search users"]" autocomplete="off" />
+                        <span class="su su-inner-close close-icon float-end" id="clear-search" title="@T["Clear search"]"></span>
+                        <span class="su su-search search-user float-end" title="@T["Search"]"></span>
                     </div>
                 </div>
             </div>
         </div>
-        <div id="import-database-users" class="col-xs-12 bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-            <div class="col-xs-12 bi-page-content no-padding">
-                <div class="content-section bi-page-body col-xs-12">
-                    <div class="col-md-12 col-xs-12 no-margin no-padding import-user-search">
+        <div id="import-database-users" class="col-12 bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+            <div class="col-12 bi-page-content no-padding">
+                <div class="content-section bi-page-body col-12">
+                    <div class="col-md-12 col-12 no-margin no-padding import-user-search">
                         <div class="col-md-9 col-xs-9 no-padding connection-string-area">
                             <div class="connection-path no-padding">
                                 <span id="txt-connection">@T["Connection String"] : </span>
@@ -250,13 +250,13 @@
                             <div class="no-padding error-msg"></div>
                         </div>
                     </div>
-                    <div class="col-xs-12 no-padding no-margin user-data-grid">
-                        <div class="col-xs-12 no-padding">
-                            <div class="col-xs-12 col-md-12 no-padding">
+                    <div class="col-12 no-padding no-margin user-data-grid">
+                        <div class="col-12 no-padding">
+                            <div class="col-12 col-md-12 no-padding">
                                 <span class="import-message">
                                     @T["Select the users from the following list to import"]
                                 </span>
-                                <div id="error-value" class="col-xs-12">
+                                <div id="error-value" class="col-12">
                                     <span class="error-message"></span>
                                 </div>
                             </div>
@@ -267,7 +267,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xs-4 no-padding"></div>
+                        <div class="col-4 no-padding"></div>
                         <div class="col-xs-8 no-padding"></div>
                     </div>
                 </div>
@@ -280,14 +280,14 @@
 
     else
     {
-        <div class="col-xs-12 no-padding no-margin width-alignment top-nav-header-without-btn @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-            <div class="col-xs-12 no-padding">
+        <div class="col-12 no-padding no-margin width-alignment top-nav-header-without-btn @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+            <div class="col-12 no-padding">
                 @await Html.PartialAsync("../Shared/_TopHeaderSection")
             </div>
         </div>
-        <div id="import-database-container" class="col-xs-12 container-fluid bi-page-container bg-grid import-database-container-with-warning @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-            <div class="col-xs-12 bi-page-content no-padding">
-                <div class="col-xs-12 bi-page-body">
+        <div id="import-database-container" class="col-12 container-fluid bi-page-container bg-grid import-database-container-with-warning @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+            <div class="col-12 bi-page-content no-padding">
+                <div class="col-12 bi-page-body">
                     @if (!disableEmailActivation && globalAppSettings.SystemSettings.ActivationType != ActivationType.EmailActivation)
                     {
                         <h5 class="user-import-from-db-automatic-type">@T["Importing users from existing database is not available in automatic account activation type."]</h5>

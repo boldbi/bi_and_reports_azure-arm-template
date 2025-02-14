@@ -11,12 +11,14 @@
       letter-spacing: 0.3px;
       line-height: 21px;
       font-weight: 600;
-      margin-left: 12px; }
+      margin-left: 12px;
+      margin-top: 13px; }
       .fluent-popup .fluent-popup-header .popup-title .popup-close {
         font-size: 16px;
         margin-right: 7px;
         opacity: 0.7;
-        padding: 2px; }
+        padding: 2px;
+        float: right; }
         .fluent-popup .fluent-popup-header .popup-title .popup-close:focus {
           outline: none !important;
           outline-color: var(--grey-000) !important;
@@ -573,7 +575,9 @@ body .e-dialog > .e-dialog-scroller .e-dialog .add-permissions .modal .modal-con
       margin-top: 5px; }
     #item-info-popup .fluent-item-popup-body .info-label {
       color: var(--secondary-text-color);
-      width: 140px; }
+      width: 140px;
+      margin-bottom: 5px;
+      font-weight: 700; }
   #item-info-popup .su-info {
     padding: 3px; }
   #item-info-popup .fluent-popup-footer {
@@ -1842,6 +1846,11 @@ body .e-dialog > .e-dialog-scroller .e-dialog .add-permissions .modal .modal-con
     line-height: 28px; }
     #share-permission-popup_wrapper .glyphicon-ok:before, #user-group-search-input_suggestion .glyphicon-ok:before {
       content: ""; }
+  #share-permission-popup_wrapper .popover .popover-body, #user-group-search-input_suggestion .popover .popover-body {
+    border: none;
+    padding: 16px;
+    font-size: 14px;
+    font-family: var(--font-family); }
   #share-permission-popup_wrapper .dropdown-menu, #user-group-search-input_suggestion .dropdown-menu {
     border-radius: 2px;
     padding: 2px 0; }
@@ -1884,7 +1893,7 @@ body .e-dialog > .e-dialog-scroller .e-dialog .add-permissions .modal .modal-con
 body .loader-icon .path {
   stroke: var(--primary-branding-color); }
 
-@media screen and (min-height: 590px) {
+@media only screen and (min-height: 560px) and (max-height: 560px) {
   #popup-container_wrapper {
     top: 5px; }
     #popup-container_wrapper #popup-container {
@@ -1929,7 +1938,8 @@ body .loader-icon .path {
     float: right;
     padding: 21px 16px 21px;
     display: inline-block;
-    cursor: pointer; }
+    cursor: pointer;
+    pointer-events: visible; }
 
 .success-toast {
   height: 70px;
@@ -1949,9 +1959,20 @@ body .loader-icon .path {
 
 .warning-toast-dialog #warning-toast-dialog_dialog-content {
   padding: 0 !important; }
+.warning-toast-dialog .fluent-popup-header .popup-close {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: 0 0;
+  border: 0;
+  float: right;
+  font-weight: 700;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff; }
 .warning-toast-dialog .fluent-item-popup-body #warning-toast-content {
   padding: 20px 0;
-  font-size: 12px; }
+  font-size: 12px;
+  margin-left: 30px; }
 .warning-toast-dialog .fluent-popup-footer {
   display: flex;
   justify-content: space-between;
@@ -1964,6 +1985,8 @@ body .loader-icon .path {
 #progress-alert-container .success-toast, #progress-alert-container .warning-toast {
   position: relative !important;
   margin-bottom: 15px; }
+  #progress-alert-container .success-toast a, #progress-alert-container .warning-toast a {
+    pointer-events: auto; }
 
 @media screen and (max-width: 768px) {
   body #progress-alert-container {

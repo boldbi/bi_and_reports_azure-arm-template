@@ -76,7 +76,7 @@
                     $("#status-div").addClass("line-spacing");
                 }
             }
-            $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+            $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
             $(document).on("click", ".popup-close", function (e) {
                 $(".edit-profile-field").attr("value","updateUserProfileUrl");
                 $("#profile-picture").attr("src", "@globalAppSettings.SystemSettings.CDNLink/images/preview.jpg");
@@ -114,7 +114,7 @@
                 enableAltRow: false,
                 create: "initialUserGridCreate",
                 dataBound: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                 },
                 columns: [
                     { field: 'Name', templateID: "#attribute-name-template", headerText: "@T["Name"]", width: 40, allowSorting: true, allowFiltering: true },
@@ -141,60 +141,60 @@
         });
     </script>
     <script type="text/x-jsrender" id="attribute-name-template">
-        <span class="grid-content" title="{{:Name}}" data-toggle="tooltip">{{:Name}}</span>
+        <span class="grid-content" title="{{:Name}}" data-bs-toggle="tooltip">{{:Name}}</span>
     </script>
     <script type="text/x-jsrender" id="attribute-description-template">
         {{if Description != ""}}
-        <span class="grid-content" title="{{:Description}}" data-toggle="tooltip">{{:Description}}</span>
+        <span class="grid-content" title="{{:Description}}" data-bs-toggle="tooltip">{{:Description}}</span>
         {{else}}
         --
         {{/if}}
     </script>
     <script type="text/x-jsrender" id="attribute-value-template">
-        <span class="grid-content" title="{{:Value}}" data-toggle="tooltip">{{:Value}}</span>
+        <span class="grid-content" title="{{:Value}}" data-bs-toggle="tooltip">{{:Value}}</span>
     </script>
 }
 
 @section MainSection {
     @await Html.PartialAsync("../Administration/_AdminMenu")
-    <div class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+    <div class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @ViewBag.UserDetail.DisplayName }, { "IsViewUserProfile", "true" } })
-        <div class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton">
-            <div class="col-xs-12 no-padding">
+        <div class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton">
+            <div class="col-12 no-padding">
                 <div class="col-xs-6 no-padding button-section">
                     @if (userDetail.Email.ToLower() != ViewBag.LoggedUser.ToLower() && (isAdmin || (!isAdmin && !userDetail.IsAdmin && permissions[PermissionEntity.UsersandGroups])))
                     {
-                        @*<input class="primary-button password-save-button pull-right @showDeactivateButton" type="button" id="deactivate-button-click" value="@T["Deactivate User"]" title="" />
-                <input class="primary-button pull-right @showResendButton" type="button" id="resend-button-click" value="@T["Resend Activation Code"]" title="" />
-                <input class="primary-button password-save-button pull-right @showActivationButton" type="button" id="activate-button-click" value="@T["Activate User"]" title="" />*@
+                        @*<input class="primary-button password-save-button float-end @showDeactivateButton" type="button" id="deactivate-button-click" value="@T["Deactivate User"]" title="" />
+                <input class="primary-button float-end @showResendButton" type="button" id="resend-button-click" value="@T["Resend Activation Code"]" title="" />
+                <input class="primary-button password-save-button float-end @showActivationButton" type="button" id="activate-button-click" value="@T["Activate User"]" title="" />*@
 
-                        <div id="profile-action-section" class="dropdown pull-right no-padding">
-                            <a class="dropdown-toggle" data-toggle="dropdown">
+                        <div id="profile-action-section" class="dropdown float-end no-padding">
+                            <a class="dropdown-toggle" data-bs-toggle="dropdown">
                                 <span class="su su-options-menu"></span>
                             </a>
                             <ul class="dropdown-menu" role="menu" id="profile-action-menus">
-                                <li class="deactivate-user-option dropdown-submenu pull-left @showDeactivateButton" onclick="activateDeactivateUser(false)">
+                                <li class="deactivate-user-option dropdown-submenu float-start @showDeactivateButton" onclick="activateDeactivateUser(false)">
                                     <a class="dropdown-option">
                                         <span>
                                             @T["Deactivate User"]
                                         </span>
                                     </a>
                                 </li>
-                                <li class="activate-user-option dropdown-submenu pull-left @showActivationButton" onclick="activateDeactivateUser(true)">
+                                <li class="activate-user-option dropdown-submenu float-start @showActivationButton" onclick="activateDeactivateUser(true)">
                                     <a class="dropdown-option">
                                         <span>
                                             @T["Activate User"]
                                         </span>
                                     </a>
                                 </li>
-                                <li class="dropdown-submenu pull-left @showResendButton" onclick="onResendActivationClick()">
+                                <li class="dropdown-submenu float-start @showResendButton" onclick="onResendActivationClick()">
                                     <a class="dropdown-option">
                                         <span>
                                             @T["Resend Activation Code"]
                                         </span>
                                     </a>
                                 </li>
-                                <li class="dropdown-submenu pull-left" onclick="onDeleteDialogOpen()">
+                                <li class="dropdown-submenu float-start" onclick="onDeleteDialogOpen()">
                                     <a class="dropdown-option">
                                         <span>
                                             @T["Remove User"]
@@ -205,37 +205,37 @@
                         </div>
                     }
 
-                    <input type="button" class="primary-button app-btn-primary pull-right" id="add-custom-attribute" title="" value="@T["Add Attribute"]" data-id="@userDetail.UserId" onclick="addCustomAttribute('user')">
+                    <input type="button" class="primary-button app-btn-primary float-end" id="add-custom-attribute" title="" value="@T["Add Attribute"]" data-id="@userDetail.UserId" onclick="addCustomAttribute('user')">
                     @if (isAdmin || permissions[PermissionEntity.UsersandGroups] && (permissions[PermissionEntity.AllPermissions] || permissions[PermissionEntity.SpecificPermissions]))
                     {
                         <a href="@Url.Action("userpermission", "permission")?userId=@userDetail.UserId" title="">
-                            <input type="button" class="link-button app-btn-link pull-right" value="@T["Manage Permissions"]">
+                            <input type="button" class="link-button app-btn-link float-end" value="@T["Manage Permissions"]">
                         </a>
                     }
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 no-padding bi-page-nav-bar">
+        <div class="col-12 no-padding bi-page-nav-bar">
             <ul id="ad-tab-nav" class="nav nav-tabs" role="tablist">
                 <li id="profile-tab" role="presentation" class='@isProfileTab'>
-                    <a href="#user-profile-tab" id="user-profile" aria-controls="user-profile-tab" role="tab" data-toggle="tab">@T["Profile"]</a>
+                    <a href="#user-profile-tab" id="user-profile" aria-controls="user-profile-tab" role="tab" data-bs-toggle="tab">@T["Profile"]</a>
                 </li>
                 <li id="attribute-tab" role="presentation" class='@isAttributeTab'>
-                    <a href="#user-attribute-tab" id="user-attribute" aria-controls="user-attribute-tab" role="tab" data-toggle="tab">@T["Attributes"]</a>
+                    <a href="#user-attribute-tab" id="user-attribute" aria-controls="user-attribute-tab" role="tab" data-bs-toggle="tab">@T["Attributes"]</a>
                 </li>
             </ul>
         </div>
     </div>
-    <div id="view-profile-info" class="bi-page-container col-xs-12 bi-page-container-with-tab @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+    <div id="view-profile-info" class="bi-page-container col-12 bi-page-container-with-tab @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
         <span id="is-aduser">@ViewBag.IsAdUser</span>
         <span id="logged-user">@ViewBag.LoggedUser</span>
-        <div id="edit-user-profile-master" role="tabpanel" class="user-permission bi-page-content col-xs-12 no-padding">
-            <div class="col-xs-12 no-padding tab-content">
-                <div id="user-profile-tab" role="tabpanel" class="col-xs-12 tab-pane no-padding @isProfileTab">
-                    <div class="user-profile-section col-lg-12 col-md-12 col-sm-12 col-xs-12 bi-page-body col-xs-12">
-                        <div class="col-xs-12 no-padding profile-img-name">
-                            <div class="img-view-holder col-xs-4 no-padding">
-                                <div class="profile-pic-tag" id="profile-name-text" data-id="@userDetail.IdPReferenceId" data-type="user" data-display-name="@ViewBag.UserDetail.DisplayName" data-image-size="64" data-toggle="tooltip" title="@ViewBag.UserDetail.DisplayName" data-placement="top"></div>
+        <div id="edit-user-profile-master" role="tabpanel" class="user-permission bi-page-content col-12 no-padding">
+            <div class="col-12 no-padding tab-content">
+                <div id="user-profile-tab" role="tabpanel" class="col-12 tab-pane no-padding @isProfileTab">
+                    <div class="user-profile-section col-lg-12 col-md-12 col-sm-12 col-12 bi-page-body col-12">
+                        <div class="col-12 no-padding profile-img-name">
+                            <div class="img-view-holder col-4 no-padding">
+                                <div class="profile-pic-tag" id="profile-name-text" data-id="@userDetail.IdPReferenceId" data-type="user" data-display-name="@ViewBag.UserDetail.DisplayName" data-image-size="64" data-bs-toggle="profile-tag-tooltip" title="@ViewBag.UserDetail.DisplayName" data-placement="top"></div>
                             </div>
                             <div class="col-xs-8 no-padding account-edit">
                                 <label id="display-name-field" class="display-name">@userDetail.DisplayName</label>
@@ -251,29 +251,29 @@
                         </div>
                         @if (userDetail.DirectoryType != DirectoryType.Local && !isOAuthorOpenIdUser)
                         {
-                            <div id="azure-user-info" class="col-xs-12 no-padding profile-note-sec">
+                            <div id="azure-user-info" class="col-12 no-padding profile-note-sec">
                                 <label>@String.Format(T["Profile editing is not currently supported for {0} and database accounts."].Value, ServerAppConfig.IsSelfHosted ? "Azure Active Directory, Windows Active Directory, Office 365, OpenID Connect, JWT SSO, OAuth" : "Azure Active Directory, Office 365, LinkedIn, OAuth, Syncfusion.com")</label>
                             </div>
                         }
                         @if (ServerAppConfig.IsSelfHosted && isOAuthorOpenIdUser)
                         {
-                            <div id="azure-user-info" class="col-xs-12 no-padding profile-note-sec">
+                            <div id="azure-user-info" class="col-12 no-padding profile-note-sec">
                                 <label>@String.Format(T["Only Firstname and Lastname editing is supported for {0} accounts."].Value, " OpenID Connect, OAuth")</label>
                             </div>
                         }
                         @if (!isAdmin && userDetail.IsAdmin)
                         {
-                            <div id="admin-user-info" class="col-xs-12 no-padding profile-note-sec">
+                            <div id="admin-user-info" class="col-12 no-padding profile-note-sec">
                                 <label>@T["You do not have the privilege to edit the admin user’s profile."]</label>
                             </div>
                         }
                         @if (!ServerAppConfig.IsSelfHosted && (userDetail.DirectoryType == DirectoryType.Local || isOAuthorOpenIdUser))
                         {
-                            <div id="profile-cannot-edit" class="col-xs-12 no-padding profile-note-sec">
+                            <div id="profile-cannot-edit" class="col-12 no-padding profile-note-sec">
                                 <label>@T["Modifying another user's profile is not currently permitted. If you would like to update your profile, please navigate to the 'My Profile' section and make the necessary changes."]</label>
                             </div>
                         }
-                        <div id="edit-user-profile-form-div" class="col-xs-12 col-sm-7 col-md-7 col-lg-7 no-padding">
+                        <div id="edit-user-profile-form-div" class="col-12 col-sm-7 col-md-7 col-lg-7 no-padding">
                             <form class="form-horizontal edit-user-profile-form" autocomplete="off">
                                 @if (ServerAppConfig.IsSelfHosted)
                                 {
@@ -284,7 +284,7 @@
                                         </div>
                                         <div class="hide input-field-edit">
                                             <label class="label-panel app-textbox-label">@T["Username"]<i class="mandatory">*</i> </label>
-                                            <div class="col-sm-5 col-xs-12 group-list">
+                                            <div class="col-sm-5 col-12 group-list">
                                                 @Html.TextBox("user-username", userDetail.Username, new { id = "user-username", placeholder = T["Please enter the username"].Value, @class = "form-control content-size edit-user-profile-field disable-content", disabled = "disabled", maxlength = "254" })
                                                 <span id="user-name-validation" class="alert-messages validation-message"></span>
                                             </div>
@@ -298,7 +298,7 @@
                                     </div>
                                     <div class="hide input-field-edit">
                                         <label class="label-panel app-textbox-label">@T["First Name"]<i class="mandatory">*</i> </label>
-                                        <div class="col-sm-5 col-xs-12 group-list">
+                                        <div class="col-sm-5 col-12 group-list">
                                             @Html.TextBox("user-firstname", userDetail.FirstName, new { id = "user-firstname", placeholder = T["Please enter the first name"].Value, @class = "form-control content-size edit-user-profile-field disable-content", disabled = "disabled" })
                                             <span id="first-name-validation" class="alert-messages validation-message"></span>
                                         </div>
@@ -311,7 +311,7 @@
                                     </div>
                                     <div class="hide input-field-edit">
                                         <label class="label-panel app-textbox-label"> @T["Last Name"]</label>
-                                        <div class="col-sm-5 col-xs-12 group-list">
+                                        <div class="col-sm-5 col-12 group-list">
                                             @Html.TextBox("user-lastname", userDetail.LastName, new { id = "user-lastname", placeholder = T["Please enter the last name"].Value, @class = "form-control content-size edit-user-profile-field disable-content", disabled = "disabled" })
                                             <span id="last-name-validation" class="alert-messages validation-message"></span>
                                         </div>
@@ -324,14 +324,14 @@
                                     </div>
                                     <div class="hide input-field-edit">
                                         <label class="label-panel app-textbox-label">@T["Email"]<i class="mandatory">@(ServerAppConfig.IsSelfHosted && globalAppSettings.SystemSettings.IsEmailRequired ? "*" : string.Empty)</i> </label>
-                                        <div class="col-sm-5 col-xs-12 group-list">
+                                        <div class="col-sm-5 col-12 group-list">
                                             @if (ServerAppConfig.IsSelfHosted)
                                             {
                                                 @Html.TextBox("user-email", userDetail.CanShowEmail && !string.IsNullOrWhiteSpace(userDetail.Email) ? userDetail.Email : "--", new { id = "user-email", placeholder = T["Please enter the email address"].Value, @class = "form-control content-size edit-user-profile-field disable-content", disabled = "disabled", style = "margin-top:0" })
                                             }
                                             else
                                             {
-                                                <a class="back-button pull-left" id="user-email" href="mailto:@userDetail.Email">@(userDetail.CanShowEmail && !string.IsNullOrWhiteSpace(userDetail.Email) ? userDetail.Email : "--")</a>
+                                                <a class="back-button float-start" id="user-email" href="mailto:@userDetail.Email">@(userDetail.CanShowEmail && !string.IsNullOrWhiteSpace(userDetail.Email) ? userDetail.Email : "--")</a>
                                             }
 
                                             <span id="email-duplicate-validation" class="alert-messages validation-message"></span>
@@ -345,7 +345,7 @@
                                     </div>
                                     <div class="hide input-field-edit">
                                         <label class="label-panel app-textbox-label">@T["Phone"]</label>
-                                        <div class="col-sm-5 col-xs-12 group-list">
+                                        <div class="col-sm-5 col-12 group-list">
                                             @Html.TextBox("user-phonenumber", userDetail.ContactNumber, new { id = "user-phonenumber", placeholder = T["Please enter the phone number"].Value, @class = "form-control content-size edit-user-profile-field disable-content", disabled = "disabled" })
                                             <span id="contact-validation" class="alert-messages validation-message"></span>
                                         </div>
@@ -357,7 +357,7 @@
                                         <label class="label-panel app-textbox-label" id="groups">
                                             @T["Groups"]
                                         </label>
-                                        <div class="col-sm-5 col-xs-12 group-list groups  group-view">
+                                        <div class="col-sm-5 col-12 group-list groups  group-view">
                                             @{ for (var group = 0; group < ViewBag.GroupList.Count; group++)
                                                 {
                                                     groupName.Add(@ViewBag.GroupList[group].Name);
@@ -379,18 +379,18 @@
                                     <label class="label-panel app-textbox-label">@T["Email Verification"]</label>
                                     @if (userDetail.IsActivated)
                                     {
-                                        <div id="completed-status" class="col-sm-5 col-xs-12 group-list group-view">
+                                        <div id="completed-status" class="col-sm-5 col-12 group-list group-view">
                                             <span class="label status-label-success no-padding">@T["Completed"]</span>
                                         </div>
                                     }
                                     else
                                     {
-                                        <div id="pending-status" class="col-sm-5 col-xs-12 group-list group-view"><span class="label status-label-warning no-padding">@T["Pending"]</span></div>
+                                        <div id="pending-status" class="col-sm-5 col-12 group-list group-view"><span class="label status-label-warning no-padding">@T["Pending"]</span></div>
                                     }
                                 </div>
                                 <div class="form-element-label" id="status-div">
                                     <label class="label-panel app-textbox-label">@T["Status"]</label>
-                                    <div id="status-show" class="col-sm-5 col-xs-12 group-list group-view">
+                                    <div id="status-show" class="col-sm-5 col-12 group-list group-view">
                                         <i class='su su-schedule-status'></i>
                                         @Html.TextBox("status-user", "", new { id = "status-user", @class = "content-size status", @readonly = "readonly" })
                                     </div>
@@ -399,30 +399,30 @@
                                     @if ((userDetail.DirectoryType == DirectoryType.Local || isOAuthorOpenIdUser) && (isAdmin || (!isAdmin && !userDetail.IsAdmin)))
                                     {
                                         <div id="edit-button">
-                                            <input type="button" class="secondary-button app-btn-secondary pull-right popup-close" title="" id="cancel-button" value="@T["Cancel"]">
-                                            <input type="button" class="primary-button app-btn-primary pull-right inactive-content" id="save-button" title="" onclick="SaveUserdetails()" data-userId="@userDetail.UserId" value="@T["Save"]">
+                                            <input type="button" class="secondary-button app-btn-secondary float-end popup-close" title="" id="cancel-button" value="@T["Cancel"]">
+                                            <input type="button" class="primary-button app-btn-primary float-end inactive-content" id="save-button" title="" onclick="SaveUserdetails()" data-userId="@userDetail.UserId" value="@T["Save"]">
                                         </div>
                                     }
                                 </div>
                             </form>
                         </div>
-                        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-3 no-padding" id="message">
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-3 no-padding" id="message">
                             <h5 id="updation-validation-message"></h5>
                         </div>
                     </div>
-                    <div class="user-profile-section col-lg-12 col-md-12 col-sm-12 col-xs-12 isolation-code-container bi-page-body col-xs-12" style="display:none">
-                        <div id="edit-user-isolation-form-div" class="col-xs-12 col-md-12 col-sm-12 col-xs-12 no-padding validation">
+                    <div class="user-profile-section col-lg-12 col-md-12 col-sm-12 col-12 isolation-code-container bi-page-body col-12" style="display:none">
+                        <div id="edit-user-isolation-form-div" class="col-12 col-md-12 col-sm-12 col-12 no-padding validation">
                             <form class="form-horizontal edit-user-isolation-form" autocomplete="off">
                                 <div id="edit-isolation">
-                                    <input type="button" class="link-button app-btn-link pull-right" title="" onclick="editIsolationMethod()" value="@T["Edit Isolation Code"]">
+                                    <input type="button" class="link-button app-btn-link float-end" title="" onclick="editIsolationMethod()" value="@T["Edit Isolation Code"]">
                                 </div>
                                 <div id="save-cancel-buttons" style="display: none;">
-                                    <input type="button" class="secondary-button app-btn-secondary pull-right popup-close" title="" id="cancel-isolation-button" onclick="cancelIsolationCode()" value="@T["Cancel"]">
-                                    <input type="button" class="primary-button app-btn-primary pull-right inactive-content" id="save-isolation-button" title="" onclick="saveIsolationCode()" value="@T["Save"]">
+                                    <input type="button" class="secondary-button app-btn-secondary float-end popup-close" title="" id="cancel-isolation-button" onclick="cancelIsolationCode()" value="@T["Cancel"]">
+                                    <input type="button" class="primary-button app-btn-primary float-end inactive-content" id="save-isolation-button" title="" onclick="saveIsolationCode()" value="@T["Save"]">
                                 </div>
                                 <div class="form-group no-padding line-spacing" id="isolation-div">
                                     <label class="label-panel text-right app-textbox-label">@T["Isolation Code"]<span class="mandatory"></span> </label>
-                                    <div class="col-sm-5  col-xs-12 group-list">
+                                    <div class="col-sm-5  col-12 group-list">
                                         @Html.TextBox("isolation-code", isolationCode, new { id = "isolation-code", placeholder = T["Please enter the isolation code"].Value, @class = "form-control content-size edit-isolation-code disable-content", disabled = "disabled" })
                                         <span id="isolation-code-validation" class="alert-messages validation-message"></span>
                                     </div>
@@ -432,25 +432,25 @@
                         </div>
                     </div>
                 </div>
-                <div id="user-attribute-tab" role="tabpanel" class="tab-pane @isAttributeTab bi-page-body col-xs-12">
-                    <div class="user-profile-section col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">
+                <div id="user-attribute-tab" role="tabpanel" class="tab-pane @isAttributeTab bi-page-body col-12">
+                    <div class="user-profile-section col-lg-12 col-md-12 col-sm-12 col-12 no-padding">
                         <div id="UserAttributesGrid">
                         </div>
                     </div>
                     <script type="text/x-jsrender" id="options">
                         <div class="user-hover-options">
                             {{if AttributeType ==  @((int)AttributeType.User)}}
-                            <a href="javascript:void(0);" title="@T["Edit"]" id="edit-user-attribute" data-toggle="tooltip" data-id="{{:Id}}" data-name="user" onclick="editCustomAttribute(this)">
+                            <a href="javascript:void(0);" title="@T["Edit"]" id="edit-user-attribute" data-bs-toggle="tooltip" data-id="{{:Id}}" data-name="user" onclick="editCustomAttribute(this)">
                                 <i class="su su-edit"></i>
                             </a>
-                            <a class="delete-class" href="javascript:void(0);" title="@T["Remove"]" id="remove-user-attribute" data-toggle="tooltip" data-id="{{:Id}}" data-name="user" onclick="deleteConfirmation(this)">
+                            <a class="delete-class" href="javascript:void(0);" title="@T["Remove"]" id="remove-user-attribute" data-bs-toggle="tooltip" data-id="{{:Id}}" data-name="user" onclick="deleteConfirmation(this)">
                                 <i class="su su-delete"></i>
                             </a>
                             {{else}}
-                            <a href="javascript:void(0);" title="@T["Edit"]" data-toggle="tooltip" data-content="{{:Id}}">
+                            <a href="javascript:void(0);" title="@T["Edit"]" data-bs-toggle="tooltip" data-content="{{:Id}}">
                                 <i class="su su-edit disabled-icon-color"></i>
                             </a>
-                            <a class="delete-class" href="javascript:void(0);" title="@T["Remove"]" data-toggle="tooltip" data-content="{{:Id}}">
+                            <a class="delete-class" href="javascript:void(0);" title="@T["Remove"]" data-bs-toggle="tooltip" data-content="{{:Id}}">
                                 <i class="su su-delete disabled-icon-color"></i>
                             </a>
                             {{/if}}
@@ -484,11 +484,11 @@
         @*@if (!ViewBag.IsAdUser)
             {
                 <div id="change-password" class="change-password-div">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="change-password-content">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12" id="change-password-content">
                         <form class="col-xs-11 col-sm-11 col-md-11 col-lg-11 change-password-form no-padding">
                             <div class="user-profile-table" cellpadding="20">
-                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding password-div">
-                                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 no-padding label-section text-right">
+                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 no-padding password-div">
+                                    <div class="col-12 col-sm-5 col-md-5 col-lg-4 no-padding label-section text-right">
                                         @Html.Label("new-password", "T["New Password"]", new { @class = "password-label" })
                                         <span class="mandatory">*</span>
                                     </div>
@@ -499,8 +499,8 @@
                                         <span id="new-password-validate" class="password-validate-holder"></span>
                                     </div>
                                 </div>
-                                <div id="confirm-password-section" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 no-padding password-div">
-                                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-4 no-padding confirm-section label-section text-right">
+                                <div id="confirm-password-section" class="col-12 col-sm-12 col-md-12 col-lg-12 no-padding password-div">
+                                    <div class="col-12 col-sm-5 col-md-5 col-lg-4 no-padding confirm-section label-section text-right">
                                         @Html.Label("confirm-password", "T["Confirm Password"]", new { @class = "password-label" })
                                         <span class="mandatory">*</span>
                                     </div>
@@ -513,9 +513,9 @@
                             </div>
                         </form>
                         <div class="col-xs-1 no-padding button-section">
-                            <input type="button" class="primary-button password-save-button profile-save-button pull-right" value="@T["Update"]" onclick="onUserChangePasswordClick()">
+                            <input type="button" class="primary-button password-save-button profile-save-button float-end" value="@T["Update"]" onclick="onUserChangePasswordClick()">
                         </div>
-                        <div class="col-xs-12 col-sm-3 col-md-2 col-lg-2 no-padding validation">
+                        <div class="col-12 col-sm-3 col-md-2 col-lg-2 no-padding validation">
                             <h5 id="password-validation" class="password-validate-holder"></h5>
                         </div>
                     </div>

@@ -117,25 +117,25 @@
         <div class="modal-dialog col-lg-12 popup-header no-margin no-padding" role="document">
             <div class="modal-content col-lg-12" id="popup-container" data-spy="scroll">
                 <div class="modal-header no-margin col-sm-12">
-                    <div class="col-sm-10 col-xs-10 no-padding pull-left nav-top"><span title="@T["Schedule"]" class="su su-nav-schedule col-lg-1 col-xs-1 col-sm-1 col-md-1 header-icon"></span><span class="popup-title schedule-popup-title ellipsis col-lg-9 col-xs-9 col-sm-9 col-md-9 no-padding"></span><span class="dashboard-schedule"></span></div>
-                    <div class="col-sm-2 col-xs-2 title no-padding"><a href="javascript:void(0);" class="popup-close" title="@T["Close"]"><span id="schedule-popup" class="su su-close pull-right"></span></a></div>
-                    <div id="windowCaption" class="report-name no-padding col-xs-12 link-item-name ellipsis" style="font-size: 12px;padding-top: 2px !important;">
+                    <div class="col-sm-10 col-xs-10 no-padding float-start nav-top"><span title="@T["Schedule"]" class="su su-nav-schedule col-lg-1 col-xs-1 col-sm-1 col-md-1 header-icon"></span><span class="popup-title schedule-popup-title ellipsis col-lg-9 col-xs-9 col-sm-9 col-md-9 no-padding"></span><span class="dashboard-schedule"></span></div>
+                    <div class="col-sm-2 col-xs-2 title no-padding"><a href="javascript:void(0);" class="popup-close" title="@T["Close"]"><span id="schedule-popup" class="su su-close float-end"></span></a></div>
+                    <div id="windowCaption" class="report-name no-padding col-12 link-item-name ellipsis" style="font-size: 12px;padding-top: 2px !important;">
                         @T["Create a data driven or a time based schedule"]
                     </div>
                 </div>
-                <div class="modal-body share-popup col-xs-12" id="schedule-dialog">
-                    <div class="col-sm-12 col-xs-12 no-margin no-padding schedule-popup-body">
-                        <div class="col-sm-12 col-xs-12 no-padding">
+                <div class="modal-body share-popup col-12" id="schedule-dialog">
+                    <div class="col-sm-12 col-12 no-margin no-padding schedule-popup-body">
+                        <div class="col-sm-12 col-12 no-padding">
                             <div class="col-sm-2 col-xs-2 no-padding align-center"><label>@T["Category "]<span class="mandatory">*</span></label></div>
-                            <div class="category-dropdown col-sm-4 col-xs-4">
-                                <input id="selected_category" title='@T["Select category"]' name="categoryId" class="col-sm-4 col-xs-4" />
+                            <div class="category-dropdown col-sm-4 col-4">
+                                <input id="selected_category" title='@T["Select category"]' name="categoryId" class="col-sm-4 col-4" />
                                 <span id="category-message" class="ErrorMessage validate-error">@T["Please select category"]</span>
                                 <input type="hidden" id="category_change_validation" name="isCategoryChanged" value="false" />
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xs-12 no-padding">
+                        <div class="col-sm-12 col-12 no-padding">
                             <div class="col-sm-2 col-xs-2 no-padding align-center"><label>@T["Dashboard "]<span class="mandatory">*</span></label></div>
-                            <div id="dashboard-dropdown" class="dashboard-dropdown col-sm-4 col-xs-4">
+                            <div id="dashboard-dropdown" class="dashboard-dropdown col-sm-4 col-4">
                                 <select id="selected_dashboard" data-live-search="true" title='@T["Select dashboard"]' name="dashboardId" class="selectpicker col-sm-4 col-xs-4" data-size="5">
                                     @if (Context.Request.Query["actionType"].ToString().ToLower() == "create")
                                     {
@@ -163,15 +163,13 @@
                                             <option value="@Context.Request.Query["itemId"].ToString()" selected="selected">@Context.Request.Query["itemName"].ToString()</option>
                                         }
                                     }
-
-
                                 </select>
                                 <input type="hidden" id="dashboard_change_validation" name="isDashboardChanged" value="false" />
                                 <span id="dashboard-message" class="ErrorMessage validate-error">@T["Please select the dashboard"]</span>
                             </div>
                             @*<div class="col-sm-1 col-xs-1 align-center text-right"><label style="text-align:right;">@T["Tabs"]</label></div>
-                                <div class="childdashboard-dropdown col-sm-4 col-xs-4">
-                                    <select id="selected_childdashboard" data-live-search="true" title='@T["Select dashboard"]' name="childdashboardId" class="selectpicker col-sm-4 col-xs-4" data-size="5">
+                                <div class="childdashboard-dropdown col-sm-4 col-4">
+                                    <select id="selected_childdashboard" data-live-search="true" title='@T["Select dashboard"]' name="childdashboardId" class="selectpicker col-sm-4 col-4" data-size="5">
                                         @if (HttpContext.Current.Request.QueryString["multiDashboardName"] != "")
                                         {
                                             <option value="@HttpContext.Current.Request.QueryString["itemId"]" selected="selected">@HttpContext.Current.Request.QueryString["itemName"]</option>
@@ -183,7 +181,7 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-1 col-xs-1 no-padding tab-info">
-                                    <span class="dropdown-toggle cursor-type pull-left" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                    <span class="dropdown-toggle cursor-type float-start" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
                                     <div class="col-xs-2 dropdown-menu tab-description">
                                         @T["This can be enabled if the selected dashboard contains multiple tabs."]
                                     </div>
@@ -191,40 +189,28 @@
                         </div>
                         @if (disableWidgetScheduleExport)
                         {
-                            <div class="col-sm-12 col-xs-12 no-padding">
+                            <div class="col-sm-12 col-12 no-padding">
                                 <div class="col-sm-2 col-xs-2 no-padding align-center"><label>@T["Widget "]</label></div>
-                                <div class="widget-dropdown col-sm-4 col-xs-4">
-                                    <select id="selected_widget" data-live-search="true" title='@T["Select widget"]' name="widgetId" class="selectpicker col-sm-4 col-xs-4" data-size="5">
-                                        @if (Context.Request.Query["actionType"].ToString().ToLower() == "create")
+                                <div class="widget-dropdown col-sm-4 col-4">
+                                    <select id="selected_widget" data-live-search="true" title='@T["Select widget"]' class="selectpicker col-sm-4 col-4 bs-select-hidden" title='@T["Select Users"]' multiple="">
+                                        @if (ViewBag.WidgetsDetails != null)
                                         {
-                                            <option value="" selected="selected" class="hide-option" disabled="disabled">@T["Select widget"]</option>
-                                        }
-                                        else if (IsWidgetDeleted && Context.Request.Query["actionType"].ToString().ToLower() == "edit")
-                                        {
-                                            <option value="@widgetId" selected="selected">@Context.Request.Query["WidgetItemName"].ToString()</option>
-                                        }
-                                        else
-                                        {
-                                            @if (!string.IsNullOrWhiteSpace(widgetId.ToString()) && !string.IsNullOrWhiteSpace(widgetName.ToString()))
+                                            foreach (var widget in ViewBag.WidgetsDetails)
                                             {
-                                                <option value="@widgetId" selected="selected" data-excel="@widgetInformation.Exportoption.Excel.ToString().ToLower()" data-pdf="@widgetInformation.Exportoption.Pdf.ToString().ToLower()" data-csv="@widgetInformation.Exportoption.Csv.ToString().ToLower()" data-image="@widgetInformation.Exportoption.Image.ToString().ToLower()" data-export-pagewise="@widgetInformation.CanExportPdfPageWise.ToString().ToLower()">@widgetName</option>
-                                            }
-                                            else
-                                            {
-                                                <option value="" selected="selected" class="hide-option" disabled="disabled">@T["Select widget"]</option>
+                                                <option value="@widget.WidgetDesignerId" selected="selected" data-excel="@widget.WidgetInformation.Exportoption.Excel.ToString().ToLower()" data-pdf="@widget.WidgetInformation.Exportoption.Pdf.ToString().ToLower()" data-csv="@widget.WidgetInformation.Exportoption.Csv.ToString().ToLower()" data-image="@widget.WidgetInformation.Exportoption.Image.ToString().ToLower()" data-export-pagewise="@widget.WidgetInformation.CanExportPdfPageWise.ToString().ToLower()">@widget.WidgetItemName</option>
                                             }
                                         }
                                     </select>
                                 </div>
                             </div>
                         }
-                        <div class="col-sm-12 col-xs-12 no-padding">
+                        <div class="col-sm-12 col-12 no-padding">
                         @if (canShowViewDropDown)
                         {
-                            <div class="col-sm-12 col-xs-12 no-padding">
+                            <div class="col-sm-12 col-12 no-padding">
                                 <div class="col-sm-2 col-xs-2 no-padding align-center"><label>@T["View"]</label></div>
-                                <div id="views-dropdown" class="views-dropdown col-sm-4 col-xs-4">
-                                    <select id="selected_view" data-live-search="true" title='@T["Select view"]' name="viewId" class="selectpicker col-sm-4 col-xs-4" data-size="5">
+                                <div id="views-dropdown" class="views-dropdown col-sm-4 col-4">
+                                    <select id="selected_view" data-live-search="true" title='@T["Select view"]' name="viewId" class="selectpicker col-sm-4 col-4" data-size="5">
                                         @if (IsViewDeleted && Context.Request.Query["actionType"].ToString().ToLower() == "edit")
                                         {
                                             <option value="@viewId" selected="selected">@Context.Request.Query["ViewItemName"].ToString()</option>
@@ -243,23 +229,23 @@
                                 </div>
                             </div>
                         }
-                        <div class="col-sm-12 col-xs-12 no-padding">
+                        <div class="col-sm-12 col-12 no-padding">
                             <div class="col-sm-2 col-xs-2 no-padding align-center"><label>@T["Schedule Name"]<span class="mandatory">*</span></label></div>
-                            <div class="col-sm-4 col-xs-4 name-field">
+                            <div class="col-sm-4 col-4 name-field">
                                 <input type="text" class="form-control cls-schname" name="" id="schedule-name" data-maxlength="100">
                                 <div class="validate-error" id="schedule-name-error-container">
                                     <div id="schedule-name-validator"></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-xs-12 no-padding">
+                        <div class="col-sm-12 col-12 no-padding">
                             <div class="col-sm-2 col-xs-2 no-padding align-center"><label>@T["Parameter"]</label></div>
-                            <div class="col-sm-4 col-xs-4 name-field">
+                            <div class="col-sm-4 col-4 name-field">
                                 <input type="text" class="form-control" name="" id="parameter">
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-xs-12 no-padding alert-type">
+                        <div class="col-sm-12 col-12 no-padding alert-type">
                             <div class="col-sm-2 col-xs-2 no-padding"><label>@T["Data Alerts"]</label></div>
                             <div class="col-sm-3 col-xs-3 line-removal">
                                 <span class="material-switch">
@@ -267,7 +253,7 @@
                                     <label for="data-alerts" class="label-primary"></label>
                                 </span>
                                 <div class="col-sm-1 col-xs-1 no-padding data-alert-info">
-                                    <span class="dropdown-toggle cursor-type pull-left" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                    <span class="dropdown-toggle cursor-type float-start" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
                                     <div class="col-xs-2 dropdown-menu data-alert-description">
                                         @T["Receive email notifications when specified criteria is met; for example, when the total sales value is greater than $10,000."]
                                     </div>
@@ -288,11 +274,11 @@
                             <div id="alert-value" class="hide">false</div>
                             <div id="previous-data" class="hide"></div>
                         </div>
-                        <div class="col-sm-12 col-xs-12 no-padding enabled-div">
+                        <div class="col-sm-12 col-12 no-padding enabled-div">
                             <div class="col-sm-2 col-xs-2 no-padding  align-center">
                                 @Html.Label("enable-schedule", T["Enabled"].Value, new { @class = "enabled-label" })
                             </div>
-                            <div class="col-sm-10 col-xs-10 pull-left no-margin enabled-label-div line-removal">
+                            <div class="col-sm-10 col-xs-10 float-start no-margin enabled-label-div line-removal">
                                 <span class="material-switch text-left">
                                     <input type="checkbox" name="Enabled" id="enable-schedule" checked="checked" />
                                     <label class="label-primary" for="enable-schedule"></label>
@@ -302,16 +288,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer col-xs-12">
-                    <div class="col-sm-12 col-xs-12 no-margin" id="next-container">
-                        <input id="schedule-back" type="button" title="@T["Back"]" value='@T["Back"]' tabindex="6" class="secondary-button app-btn-secondary pull-left button-left">
-                        <input id="schedule-next-cancel" title="@T["Cancel"]" type="button" value='@T["Cancel"]' tabindex="5" class="secondary-button app-btn-secondary leftmargin pull-right">
-                        <input id="schedule-next" title="@T["Next"]" type="button" value='@T["Next"]' tabindex="4" class="primary-button app-btn-primary pull-right">
+                <div class="modal-footer col-12">
+                    <div class="col-sm-12 col-12 no-margin" id="next-container">
+                        <input id="schedule-back" type="button" title="@T["Back"]" value='@T["Back"]' tabindex="6" class="secondary-button app-btn-secondary float-start button-left">
+                        <input id="schedule-next-cancel" title="@T["Cancel"]" type="button" value='@T["Cancel"]' tabindex="5" class="secondary-button app-btn-secondary leftmargin float-end">
+                        <input id="schedule-next" title="@T["Next"]" type="button" value='@T["Next"]' tabindex="4" class="primary-button app-btn-primary float-end">
                     </div>
-                    <div id="submit-container" class="col-sm-12 col-xs-4 no-margin">
-                        <input id="schedule-back" type="button" title="@T["Back"]" value='@T["Back"]' tabindex="6" class="secondary-button app-btn-secondary pull-left button-left">
-                        <input id="schedule-submit-cancel" title="@T["Cancel"]" type="button" value='@T["Cancel"]' tabindex="5" class="secondary-button app-btn-secondary leftmargin pull-right button-right">
-                        <input id="schedule-submit" title="@T["Schedule"]" type="button" value='@T["Schedule"]' tabindex="4" class="primary-button app-btn-primary pull-right button-right">
+                    <div id="submit-container" class="col-sm-12 col-4 no-margin">
+                        <input id="schedule-back" type="button" title="@T["Back"]" value='@T["Back"]' tabindex="6" class="secondary-button app-btn-secondary float-start button-left">
+                        <input id="schedule-submit-cancel" title="@T["Cancel"]" type="button" value='@T["Cancel"]' tabindex="5" class="secondary-button app-btn-secondary leftmargin float-end button-right">
+                        <input id="schedule-submit" title="@T["Schedule"]" type="button" value='@T["Schedule"]' tabindex="4" class="primary-button app-btn-primary float-end button-right">
                     </div>
                 </div>
             </div>
@@ -348,7 +334,7 @@
     var dataChanges = "@Url.Action("DataChanges", "scheduler")";
     var getwidgetUrl = "@Url.Action("GetWidgets", "scheduler")";
     var getCategoryUrl = { "web": "@Url.Action("GetCategories", "scheduler")", "api": "/internal/items/get-categories" };
-    var specificEventListURL = "@Url.Action("SpecificEvents", "Administration")";
+    var specificEventListURL = { "web": "@Url.Action("SpecificEvents", "Administration")", "api": "/internal/e-mail-template/get-specific-templates" };
     var getTenantStatusUrl = "@Url.Action("GetTenantStatus", "PartialView")";
     var getNotificationCountUrl = "@Url.Action("GetNotificationCount", "PartialView")";
     var dataAlertUrl = { "web": "@Url.Action("DataAlert", "scheduler")", "api": "/internal/schedules/data-alert" };
@@ -374,7 +360,7 @@
     var getwidgetsDetailUrl = "@Url.Action("GetWidgetsDetails", "scheduler")";
     var getViewsByItemIdUrl = "@Url.Action("GetViewsByItemId","Items")";
     var dashboardServerApiUrlForServerEmbed = "@dashboardServerApiUrlForServerEmbed";
-
+   
     $("#selected_dashboard").selectpicker();
     $("#selected_childdashboard").attr("disabled", true);
 

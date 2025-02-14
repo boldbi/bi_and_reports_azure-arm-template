@@ -29,10 +29,10 @@
         {
             <form class="dialog-body no-padding" id="download-item-form">
                 <input type="hidden" id="download-dashboard-status" value="true" />
-            <div class="col-xs-12 no-padding">
+            <div class="col-12 no-padding">
                     <label>@Html.Raw(String.Format(T["The dashboard will be prepared for download with its data sources. It will take some time, depending on the data sources. You can track the file preparation status in the {0} tab on the Publish page and you can download the file once it is ready."].Value, "<a href = " + Url.Action("GetPublishedItems", "publish") + "?tab=offline-files target=_blank" + ">" + @ViewBag.OfflineFilesLink + "</a>"))</label>
             </div>
-            <div class="col-xs-12 include-sensitiveinfo">
+            <div class="col-12 include-sensitiveinfo">
                 <div class="info-label">
                     @Html.CheckBox("include-sensitiveinfo", new { @class = "material-checkbox", @checked = "checked" })
                     @Html.Hidden("include-sensitiveinfo")
@@ -50,7 +50,7 @@
         }
         else
         {
-            <div class="col-xs-12 no-padding">
+            <div class="col-12 no-padding">
                 <div class="permission-denied">@TempData["ErrorMessage"]</div>
             </div>
         }

@@ -3,7 +3,7 @@
         <h4 class="popup-title">
             <span class="su su-info"></span>
             <span id="info-dialog-header">@T["Info"]</span>
-            <button id="close-info-dialog" type="button" title='@T["Close"]' data-toggle="tool-tip" data-container="body" class="close popup-close" ng-click="closeItemInfo()" aria-label="Close">
+            <button id="close-info-dialog" type="button" title='@T["Close"]' data-bs-toggle="tool-tip" data-container="body" class="btn-close popup-close" ng-click="closeItemInfo()" aria-label="Close">
                 <span class="su su-close"></span>
             </button>
         </h4>
@@ -36,13 +36,13 @@
         </span>
     </div>
     <div class="fluent-popup-footer">
-        <div class="col-xs-12" ng-if="showDashboardLinkButton && !ItemDetail.IsUploadDraft">
+        <div class="col-12" ng-if="showDashboardLinkButton && !ItemDetail.IsUploadDraft">
             <a href="{{viewDashboardUrl(ItemDetail.Id, ItemDetail.CategoryName, ItemDetail.Name, ItemDetail.IsDraft)}}" class="link-button app-btn-link" target="_blank" title="">{{GetInfoButtonText(ItemDetail.IsDraft)}}</a>
         </div>
-        <div class="col-xs-12" ng-if="showDashboardLinkButton && ItemDetail.IsUploadDraft">
+        <div class="col-12" ng-if="showDashboardLinkButton && ItemDetail.IsUploadDraft">
             <span class="link-button app-btn-link" ng-click="openUploadDashboardDialog(ItemDetail.Id)">@T["Complete Upload"]</span>
         </div>
-        <div class="col-xs-12 " ng-if="!showDashboardLinkButton">
+        <div class="col-12 " ng-if="!showDashboardLinkButton">
             <button class="secondary-button app-btn-secondary" ng-click="closeItemInfo()" title="">@T["Close"]</button>
         </div>
     </div>

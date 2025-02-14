@@ -32,6 +32,9 @@
     var isPublic = globalAppSettings.SystemSettings.IsMarkItemsPublic && ViewBag.MultiDashboardDetails.IsPublic;
     var dashboardCutomTheme = string.Empty;
     var embedThemeEnabled = false;
+    var isAIEnabledGlobally = ServerAppConfig.EnableAiFeature;
+    var isAiSummariesEnabledGlobally = ServerAppConfig.IsAiSummariesEnabledGlobally;
+    var isBoldAISelected = ServerAppConfig.IsAiModel;
     var applyURLFilterAlone = ViewBag.ApplyURLFilterAlone != null;
     var faviconLogo = globalAppSettings.SystemSettings.FavIcon;
     var aiLogo = globalAppSettings.SystemSettings.AILogo;
@@ -178,15 +181,25 @@
             var canHideCommentIcon = @Json.Serialize(canHideCommentIcon);
             var applyURLFilterAlone = @Json.Serialize(applyURLFilterAlone);
             var isAIFeatureEnabled = @Json.Serialize(globalAppSettings.SystemSettings.IsAiServiceEnabled);
+            var isWidgetSummarizationFeatureEnabled = @Json.Serialize(globalAppSettings.SystemSettings.IsWidgetSummarizationEnabled);
+            var isDashboardInsightFeatureEnabled = @Json.Serialize(globalAppSettings.SystemSettings.IsDashboardInsightEnabled);
+            var isBoldAISelected = @Html.Raw(Json.Serialize(isBoldAISelected));
+            var isAIEnabledGlobally = @Html.Raw(Json.Serialize(isAIEnabledGlobally));
+            var isAiSummariesEnabledGlobally = @Html.Raw(Json.Serialize(isAiSummariesEnabledGlobally));
             var faviconLogo = "@faviconLogo";
             var aiLogo = "@aiLogo";
+            var isHideHelpLink = @Json.Serialize(ServerAppConfig.IsHideHelpLink);
+            var customHelpLinkDomain = "@(ServerAppConfig.AllowCustomHelpLink ? ServerAppConfig.AppSettings.Documentation.BaseUri : string.Empty)";
+            var custombrandName = "@ServerAppConfig.CustomBrandName";
+            var dashboardId = "@ViewBag.ItemId";
+            var getRenderDashboardDetailsUrl = "@Url.Action("GetRenderDashboardDetails", "Dashboards")";
     </script>
     @if (!isSelfHosted && canHideCommentIcon) {
         @await Html.PartialAsync("~/Views/Shared/_GoogleTag.cshtml")
     }
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 </head>
-    <body id="body" ng-app="serverApp" style="overflow: hidden; position: static; margin: 0; padding: 0; height: 100%; width: 100%;">
+    <body id="body" ng-app="serverApp" style="overflow: hidden; position: static; margin: 0; padding: 0; height: 100%; width: 100%;" class="bi-dashboard">
         <div class="preloader-wrap viewer-blue-loader" style="width: 100%;height: 100%; position: fixed; top: 0; bottom: 0; background: white; z-index : 2;">
             <div id="loader_image" align="center" style="position:relative;top:45%;">
                 <div class="loader-blue loader-icon" id="loader-icon">
@@ -314,15 +327,15 @@
             {
                 <nav id="server-mobile-navbar" class="navbar navbar-inverse custom-bootstrap-styles">
                     <div class="container-fluid">
-                        <ul class="nav navbar-nav col-xs-12 no-padding no-margin">
-                            <li class="@(enableComment.ToLower() == "true" && embedConfig.HasViews && embedConfig.HasDashboardComments ? "col-xs-4":"col-xs-6") icon">
+                        <ul class="nav navbar-nav col-12 no-padding no-margin">
+                            <li class="@(enableComment.ToLower() == "true" && embedConfig.HasViews && embedConfig.HasDashboardComments ? "col-4":"col-xs-6") icon">
                                 <a href="javascript:void(0)" class="su su-nav-dashboard active">
                                     <span class="nav-menu-label">@T["Dashboard"]</span>
                                 </a>
                             </li>
                             @if (enableComment.ToLower() == "true" && (!embedConfig.IsEmbedDashboard || embedConfig.HasDashboardComments))
                             {
-                                <li class="@(embedConfig.HasViews ? "col-xs-4":"col-xs-6") icon" id="comment-li">
+                                <li class="@(embedConfig.HasViews ? "col-4":"col-xs-6") icon" id="comment-li">
                                     <a href="javascript:void(0)" class="su su-without-comment server-comment">
                                         <span class="nav-menu-label">@T["Comment"]</span>
                                     </a>
@@ -331,7 +344,7 @@
 
                             @if (!embedConfig.IsEmbedDashboard || embedConfig.HasViews)
                             {
-                                <li class="@(embedConfig.HasDashboardComments && enableComment.ToLower() == "true" ? "col-xs-4":"col-xs-6") icon" id="view-li">
+                                <li class="@(embedConfig.HasDashboardComments && enableComment.ToLower() == "true" ? "col-4":"col-xs-6") icon" id="view-li">
                                     <a href="javascript:void(0)" class="su-view">
                                         <span class="nav-menu-label">@T["Views"]</span>
                                     </a>

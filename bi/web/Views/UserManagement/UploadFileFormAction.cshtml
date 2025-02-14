@@ -142,23 +142,23 @@
 
 @section MainSection{
     @await Html.PartialAsync("../Administration/_AdminMenu")
-    <div class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-        <div class="col-xs-12 no-padding">
+    <div class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+        <div class="col-12 no-padding">
             @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["Import Users"] } })
         </div>
-        <div class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
-            <div class="col-xs-12 no-padding">
+        <div class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
+            <div class="col-12 no-padding">
                 <div class="col-xs-6 no-padding button-section">
-                    <input type="button" value="@T["Import Users"]" title="@T["Import users from the list below"]" onclick="SaveUserListFromCSV()" id="import-button" class="primary-button app-btn-primary pull-right bi-header-btn" disabled />
+                    <input type="button" value="@T["Import Users"]" title="@T["Import users from the list below"]" onclick="SaveUserListFromCSV()" id="import-button" class="primary-button app-btn-primary float-end bi-header-btn" disabled />
                 </div>
             </div>
         </div>
     </div>
-    <div class="container-fluid bi-page-container col-xs-12 @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-        <div class="bi-page-content col-xs-12 no-padding">
+    <div class="container-fluid bi-page-container col-12 @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+        <div class="bi-page-content col-12 no-padding">
             <div class="content-section bi-page-body">
                 <form id="csv-form" action="@Url.Action("UploadFileFormAction", "UserManagement")" method="post" onsubmit="" enctype="multipart/form-data">
-                    <div class="col-md-12 col-xs-12 import-file no-padding">
+                    <div class="col-md-12 col-12 import-file no-padding">
                         <div class="col-md-10 col-xs-10 no-padding">
                             <div class="no-padding browse-file">
                                 <div class="browse-file-group">
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                 </form>
-                <div class="col-xs-12 grid-area no-padding">
+                <div class="col-12 grid-area no-padding">
                     <div class="list" id="grid-validation-messages">
                         <span id="grid-nodata-validation">@T["There is no data in the uploaded file. Please check and try uploading again."]</span>
                         <span id="grid-validation">@Html.Raw(String.Format(T["{0} user(s) has been added successfully."].Value, "<span id='userCount'>@ViewBag.UserCount</span>"))</span>

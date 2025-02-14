@@ -25,16 +25,16 @@
     <div id="PopupContainer" class="dialog">
         <form class="dialog-body no-padding move-category" id="move_report_form" style="display: none">
             <input type="hidden" id="move-dashboard-status" value="true" />
-            <div class="col-xs-12" id="item-name-division">
-                <div class="col-xs-12 no-padding text-label" style="font-weight:bold">@T["Name"]<span class="mandatory">*</span></div>
+            <div class="col-12" id="item-name-division">
+                <div class="col-12 no-padding text-label" style="font-weight:bold">@T["Name"]<span class="mandatory">*</span></div>
                 <div class="col-lg-12 no-padding">
                     <input type="text" id="move_item_name" name="itemName" data-maxlength="255" value="" class="form-control site-orgname-fields text" />
                     <span class="validation-error text"></span>
                 </div>
             </div>
-            <div class="col-xs-12" id="action-category-division">
-                <div class="col-xs-12 no-padding text-label" style="font-weight:bold">@T["Move to Category"]</div>
-                <div class="col-xs-12 no-padding">
+            <div class="col-12" id="action-category-division">
+                <div class="col-12 no-padding text-label" style="font-weight:bold">@T["Move to Category"]</div>
+                <div class="col-12 no-padding">
                     <input id="CategoryList" />
                     <span class="category-validation-error text"></span>
                 </div>
@@ -43,7 +43,7 @@
             <input type="hidden" id="userIdHidden" value="@identityResponse.User.UserId" />
         </form>
 
-        <div class="col-xs-12 no-padding">
+        <div class="col-12 no-padding">
             <div class="permission-denied" id="move-item-denied" style="display: none"></div>
         </div>
     </div>

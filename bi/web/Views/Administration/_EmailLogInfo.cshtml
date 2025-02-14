@@ -10,10 +10,10 @@
             <label class="info-label">@T["Status"]</label> {{EmailLogDetail.Status}}
         </span>
         <span class="email-log-recipient">
-            <label class="info-label">@T["Recipient"]</label> <span data-toggle="tooltip" data-original-title="{{EmailLogDetail.RecipientEmail}}">{{EmailLogDetail.RecipientEmail}}</span>
+            <label class="info-label">@T["Recipient"]</label> <span data-bs-toggle="tooltip" data-original-title="{{EmailLogDetail.RecipientEmail}}">{{EmailLogDetail.RecipientEmail}}</span>
         </span>
         <span class="email-log-initiated">
-            <label class="info-label">@T["Initiated By"]</label> <span data-toggle="tooltip" data-original-title="{{EmailLogDetail.InitiatedBy}}">{{EmailLogDetail.InitiatedBy}}</span>
+            <label class="info-label">@T["Initiated By"]</label> <span data-bs-toggle="tooltip" data-original-title="{{EmailLogDetail.InitiatedBy}}">{{EmailLogDetail.InitiatedBy}}</span>
         </span>
         <div class="mail-error-message" ng-show="EmailLogDetail.Status === 'Failed'">
             <label class="info-label">@T["Error Message"]</label>

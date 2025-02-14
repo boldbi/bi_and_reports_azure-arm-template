@@ -72,8 +72,10 @@
     var createItemMenuScript = string.Empty;
     var userGroupSuggestion = string.Empty;
     var itemActionScript = string.Empty;
+    var knowDomainsList = KnownDomainList.AllowedDomainList;
     var dashboardCreateLimitCount = !ServerAppConfig.IsSelfHosted && !string.IsNullOrWhiteSpace(ServerAppConfig.AppSettings.DashboardCreateLimitCount) ? ServerAppConfig.AppSettings.DashboardCreateLimitCount : string.Empty;
     var dataSourceCreateLimitCount = !isSelfHosted && !string.IsNullOrWhiteSpace(ServerAppConfig.AppSettings.DataSourceCreateLimitCount) ? ServerAppConfig.AppSettings.DataSourceCreateLimitCount : string.Empty;
+    var isSingleDataBaseMode = ServerAppConfig.TenantConfigurationMode == ConfigurationMode.SingleDatabaseForAllTenants;
 }
 @{
     var preloadScriptsFiles = new string[]
@@ -225,13 +227,15 @@
         var validateDashboardCountUrl = "@Url.Action("ValidateDashboardCreateLimit", "Items")";
         var resourceLimitationCountUrl = "@Url.Action("ResourceCreateLimit", "Items")";
         var itemActionScript = @Json.Serialize(itemActionScript);
+        var isSingleDataBaseMode = @Json.Serialize(@isSingleDataBaseMode);
     </script>
-<script>
+    <script>
         var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
         var enableApplicationEmbed = @ServerAppConfig.EnableSameTabLinkTarget.ToString().ToLower();
         var canHideLogoAndProfile = @ServerAppConfig.CanHideLogoAndProfile.ToString().ToLower();
         var cdnLink = "@dashboardServerResourceUrl";
         var appVersion = "@ServerAppConfig.ProductVersion";
+        var knowDomainsList = @Json.Serialize(knowDomainsList);
 
         window.onload = function () {
             var preloadStyles = @Json.Serialize(preloadStylesFiles);
@@ -445,7 +449,7 @@
             <div class="header-bar col-lg-12 col-md-12 col-sm-12">
                 @if (!isWelcomePage)
                 {
-                    <div class="mobile-menu-icon text-center mobile-visible collapsed" data-toggle="collapse" aria-expanded="false" data-target="#menu-area">
+                    <div class="mobile-menu-icon text-center mobile-visible collapsed" data-bs-toggle="collapse" aria-expanded="false" data-target="#menu-area">
                         <span>
                             <i class="su su-mobile-menu-icon"></i>
                         </span>
@@ -455,7 +459,7 @@
                     <h5 class="header-org-name">@globalAppSettings.SystemSettings.OrganizationName</h5>
                 </div>
 
-                <div class="pull-right" id="notification-section">
+                <div class="float-end" id="notification-section">
                     <a id="notification-link" class="notification-mobile-link no-padding" href="@Url.Action("getusernotifications", "notification" )">
                         <span id="notification-icon" class="su su-notification-alert">
 
@@ -479,7 +483,7 @@
                 </section>
             }
         }
-        <div id="content-area" class="clearfix col-xs-12 @(isSlideshow ? "no-padding" : string.Empty)">
+        <div id="content-area" class="clearfix col-12 @(isSlideshow ? "no-padding" : string.Empty)">
             <div class="suspension-warning" style="display:none">
                 <div class="warning-content"></div>
                 <div class="close-warning-icons su-close"></div>

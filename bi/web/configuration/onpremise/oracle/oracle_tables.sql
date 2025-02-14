@@ -181,6 +181,7 @@ CREATE TABLE BOLDBI_ItemLog (
     ToCategoryId  VARCHAR(36),
     UpdatedUserId NUMBER NOT NULL,
     ModifiedDate TIMESTAMP NOT NULL,
+    AnonymousUsername NVARCHAR2(255) NULL,
     IsActive NUMBER(1,0) NOT NULL
 );
 
@@ -253,6 +254,7 @@ CREATE TABLE BOLDBI_ScheduleDetail (
     CreatedDate TIMESTAMP NOT NULL,
     ModifiedDate TIMESTAMP NOT NULL,
     ScheduleExportInfo CLOB,
+    DashboardWidgetIds CLOB,
     IsActive NUMBER(1,0) NOT NULL
 );
 
@@ -1040,6 +1042,37 @@ CREATE TABLE BOLDBI_ApiKeyDetails
     TokenValidity TIMESTAMP NULL,
     IsActive      NUMBER(1,0) NOT NULL
 ) ;
+
+CREATE TABLE BOLDBI_AI_SESSIONS (
+    "SessionID" VARCHAR2(255) PRIMARY KEY,
+    "SessionStartTime" TIMESTAMP,
+    "SessionEndTime" TIMESTAMP,
+    "InputToken" NUMBER,
+    "OutputToken" NUMBER,
+    "TotalToken" NUMBER,
+    "InputTokenCost" FLOAT,
+    "OutputTokenCost" FLOAT,
+    "TotalTokensCost" FLOAT,
+    "UserInfo" VARCHAR2(255),
+    "TenantID" VARCHAR2(255),
+    "Environment" VARCHAR2(255)
+);
+
+CREATE TABLE BOLDBI_AI_CHAT (
+    "SearchID" VARCHAR2(255) PRIMARY KEY,
+    "SessionID" VARCHAR2(255),
+    "SearchDateTime" TIMESTAMP,
+    "InputToken" NUMBER,
+    "OutputToken" NUMBER,
+    "TotalToken" NUMBER,
+    "InputTokenCost" FLOAT,
+    "OutputTokenCost" FLOAT,
+    "TotalTokensCost" FLOAT,
+    "UserInfo" VARCHAR2(255),
+    "TenantID" VARCHAR2(255),
+    "RequestType" VARCHAR2(255),
+    "Environment" VARCHAR2(255)
+);
 
 ---- PASTE INSERT Queries below this section --------
 

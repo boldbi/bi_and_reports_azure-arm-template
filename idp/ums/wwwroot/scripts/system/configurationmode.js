@@ -24,13 +24,13 @@ function ValidateConfigurationMode() {
             hideDataStore();
         }
 
-        $(".schema-prefix-hide").removeClass("hide").addClass("show");
+        $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
         if (!IsBiPrefixSchema) {
-            $(".schema-prefix-hide").removeClass("show").addClass("hide");
+            $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
         }
 
         if (IsReportsPrefixSchema && !isBoldBI) {
-            $(".schema-prefix-hide").removeClass("hide").addClass("show");
+            $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
         }
 
         var obj = document.getElementById("database-type");
@@ -60,19 +60,19 @@ function ValidateConfigurationMode() {
             hideDataStore();
         }
 
-        $(".schema-prefix-hide").removeClass("hide").addClass("show");
+        $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
         if (!IsBiPrefixSchema) {
-            $(".schema-prefix-hide").removeClass("show").addClass("hide");
+            $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
         }
 
         if (IsReportsPrefixSchema && !isBoldBI) {
-            $(".schema-prefix-hide").removeClass("hide").addClass("show");
+            $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
         }
 
         var configurationModeType = getRadioButtonValue('ConfigurationMode');
         if (configurationModeType !== undefined && configurationModeType === "0")
         {
-            $(".schema-prefix-hide").removeClass("show").addClass("hide");
+            $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
         }
 
         var obj = document.getElementById("database-type");

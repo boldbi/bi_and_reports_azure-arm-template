@@ -306,6 +306,7 @@
                 imageTooltipSettingsText: "Tooltip Settings",
                 imagePaddingSettingsText: "Padding Settings",
 				widgetTitleLengthErrorText: "The name should not exceed 255 characters",
+                persistVirtualSelectionText: "Disabling this property will clear virtually selected filter values",
 				pageSettings: {
 					pageSettingsText: "Page Settings",
 					pageSizeText: "Page Size",
@@ -330,7 +331,8 @@
                     actAsMasterWidget: "Act As Master Widget",
                     ignoreFilterActions: "Ignore Filter Actions",
                     hierarchicalFilter: "Enable Hierarchical Filtering",
-                    allowFiltering: "Allow Filter"
+                    allowFiltering: "Allow Filter",
+                    persistVirtualSelection: "Persist Virtual Selection"
                 },
                 linking: {
                     enableLinkText: "Enable Link",
@@ -551,6 +553,7 @@
                     titleCategoryText: "Title",
                     dashboardExistsError: "A dashboard with the same name already exists in the category",
                     enableAlternativeRow: "Enable Alternative Row",
+                    enableMultiRowSelect: "Enable Multi Row Selection",
                     showHeader: "Show Header",
                     border: "Show Border",
                     alternativeRowForeground: "Alternative Foreground",
@@ -583,7 +586,8 @@
                     apiType:"API Type",
                     listBoxShowAll:"Show All",
                     tabLoaderText: "Enable Tab loader",
-                    mapValueType: "Value Type"
+                    mapValueType: "Value Type",
+                    columnChooser: "Enable Column Chooser"
                 },
                 tooltipSettings: {
                     showTooltip: "Show Tooltip",
@@ -1059,14 +1063,14 @@
                 dataSourceText: "Data Source",
                 dsnNameText: "DSN Name",
 		        appendTextBoxName: "Data Source Name",
-                appendFileRadioBtnText: 'Append data from file',
-                appendDatasourceRadioBtnText: 'Append data from data store',
-                appendDsSaveBtn: 'Save',
+                appendFileRadioBtnText: "Append data from file",
+                appendDatasourceRadioBtnText: "Append data from data store",
+                appendDsSaveBtn: "Save",
                 appendDsSaveAsBtn: "Save as",
                 appendDsAppendBtn: "Append",
                 appendDsCloseBtn: "Close",
-                appendDsChooseFile: 'Choose File',
-                appendDsEstimatedFileSize: "(up to 200MB)",
+                appendDsChooseFile: "Choose File",
+                appendDsEstimatedFileSize: "(up to 200 MB)",
                 appendDsBrowseText: "Browse File",
                 appendDsSelectedTables: "Selected Tables",
                 appendDsdragAndDropText: "Drop files here or ",
@@ -1188,6 +1192,7 @@
                 editContextMenu: "Edit",
                 deleteContextMenu: "Remove",
                 specifyServerName: "Server name cannot be empty.",
+				specifyServiceName: "Service instance name cannot be empty.",
                 specifyConnectionTimeout: "Connection Timeout cannot be empty.",
                 specifyDatabaseName: "Database name cannot be empty.",
 				specifyCollectionName: "Collection name cannot be empty.",
@@ -1241,6 +1246,8 @@
 				impersonateInfo: "While using Windows AD login in Bold BI you can impersonate the logged-in user while processing the data from ",
 				enableImpersonate: "Impersonate User",
 				emptyCollection: "There are no collections in the currently selected database.",
+				oracleExtractAlertText: "Extract connections are supported only when using MSSQL, PostgresSQL or MySQL as Data Store.",
+                oracleExtractAlertHeaderText: "Data Source",
                 invalidSheetsNoteTxt: "Ignore invalid data sheets and continue data extraction by clicking ‘Yes’.",
                 continueButtonText: "Yes",
 				 oracleExtractAlertText: "Extract connections are supported only when using MSSQL, PostgresSQL or MySQL as Data Store.",
@@ -2296,7 +2303,7 @@
                     ]
                 },
                 youScan: {
-                    name: 'YouScan',
+                    name: "YouScan",
                     templates: [
                         { 
 							projects: { 
@@ -2565,8 +2572,8 @@
                 defaultNullErrorMessage: "An error occured.",
                 knowMore: "Know More...",
                 authenticationFailedTryAgain: "Authorization failed. Please try again to connect.",
-                clientValuesNullForAdmin: "OAuth configuration is required for this connection. Please configure it in the connectors ",
-                clientValuesNullForNonAdmin: "OAuth configuration is required for this connection. Please contact your System Administrator.",
+                clientValuesNullForAdmin: "OAuth configuration is necessary to establish this connection. Please ensure it is set up within the connectors ",
+                clientValuesNullForNonAdmin: "OAuth configuration is necessary to establish this connection. Please contact your System Administrator.",
                 setting: "settings",
                 noDashboard: "No dashboards in this list",
                 AccessDeniedText: "Access denied for the request",
@@ -2574,38 +2581,38 @@
 				exportFail: "Exporting failed",
 				exportFailedContent: "Your export request has failed.",
                 exportRestrictContent: "An export request with similar settings is already in progress. Please wait until it is completed.",
-                dialogmsgETL:"We recommend utilizing the Bold ETL to manage data source operations. To initiate this process, click on the 'Redirect to Bold ETL' button.",
-                etlDialogHeaderText: "Redirect to Bold ETL",
+                dialogmsgETL:"We recommend utilizing the Data Hub to manage data source operations. To initiate this process, click on the 'Redirect to Data Hub' button.",
+                etlDialogHeaderText: "Redirect to Data Hub",
                 etlContinuebtnText: "Continue with connector"
             },
             errorCodes: {
-                deserializingError: 'An error ​occurred while deserializing the request payload. ',
-                fetchingError: 'An error occurred while fetching data from the data source ',
-                formattingError:'An error occurred while formatting the visual data. ',
-                KeyNotConfigured : 'OpenAI key or model name not configured.',
-                configureOpenAi : 'to learn more about how to configure OpenAI credentials to enable this feature.',
-                InvalidAPIKey : 'Invalid OpenAI API key. Please ensure that the provided API key is accurate and has not expired.',
-				IncorrectModelName : 'An error has occurred while connecting to the AI service. Please double-check the configured model name and attempt the operation again. ',
-				InvalidQuestion : 'Sorry, we cannot generate a visual with the provided details. Please rephrase your question so we can assist you effectively.',
-				InvalidAIResponse : ' AI failed to bring required properties for the question. Kindly rephrase the question and report to ',
-				contactSupport : ' support if issue not resolved. ',
-				FieldInfoEmpty : 'The provided question lacks details necessary for visual generation. Kindly revise the question and try again. ',
-				UnsupportedWidgetType : 'The requested visual is not supported. Rephrase the question with supported visuals: charts, grid, and number card.',
-				InvalidSummaryType : 'Cannot apply function to the given field. Kindly rephrase the question and report to BoldBI support if issue not resolved. ',
-                InvalidDataForColumn : 'The specified column does not contain the values needed to answer the question. Please verify and provide the exact values for fetching the relevant data. ',
-                IncorrectValueFormatInFilter : 'The specified column does not contain the values needed to answer the question. Please verify and provide the exact values for fetching the relevant data. ',
-				InvalidColumnName:' AI failed to find the required field for the question. Kindly rephrase the question and report to ',
-				InvalidValues : ' AI failed to generate required properties for the question. Kindly rephrase the question and report to ',
-                InvalidAzureOpenAIAPIkey : 'Invalid Azure OpenAI key. Please ensure that the provided API key is accurate and has not expired. ',
-                DeployModelNameWrongException : 'An error has occurred while connecting to the AI service. Please double-check the configured deployed model name and attempt the operation again. ',
-                MissingOpenAIKey : 'OpenAI key not configured.',
-                MissingOpenAIModel : 'OpenAI model name not configured.',
-                MissingAzureAIKey : 'Azure OpenAI key not configured.',
-                configureAzureAi:'to learn more about how to configure Azure OpenAI credentials to enable this feature.',
-                MissingAzureAIResourceName : 'Azure OpenAI Resource name not configured.',
-                MissingAzureAIDeploymentName : 'Azure OpenAI Deployment name not configured.',
-                MetaDBConnectionFailed : 'Internal Server Error. ',
-				AiNotConfigured : 'The AI service is currently not active.',
+                deserializingError: "An error ​occurred while deserializing the request payload. ",
+                fetchingError: "An error occurred while fetching data from the data source ",
+                formattingError:"An error occurred while formatting the visual data. ",
+                KeyNotConfigured : "OpenAI key or model name not configured.",
+                configureOpenAi : "to learn more about how to configure OpenAI credentials to enable this feature.",
+                InvalidAPIKey : "Invalid OpenAI API key. Please ensure that the provided API key is accurate and has not expired.",
+				IncorrectModelName : "An error has occurred while connecting to the AI service. Please double-check the configured model name and attempt the operation again. ",
+				InvalidQuestion : "Sorry, we cannot generate a visual with the provided details. Please rephrase your question so we can assist you effectively.",
+				InvalidAIResponse : " AI failed to bring required properties for the question. Kindly rephrase the question and report to ",
+				contactSupport : " support if issue not resolved. ",
+				FieldInfoEmpty : "The provided question lacks details necessary for visual generation. Kindly revise the question and try again. ",
+				UnsupportedWidgetType : "The requested visual is not supported. Rephrase the question with supported visuals: charts, grid, and number card.",
+				InvalidSummaryType : "Cannot apply function to the given field. Kindly rephrase the question and report to BoldBI support if issue not resolved. ",
+                InvalidDataForColumn : "The specified column does not contain the values needed to answer the question. Please verify and provide the exact values for fetching the relevant data. ",
+                IncorrectValueFormatInFilter : "The specified column does not contain the values needed to answer the question. Please verify and provide the exact values for fetching the relevant data. ",
+				InvalidColumnName:" AI failed to find the required field for the question. Kindly rephrase the question and report to ",
+				InvalidValues : " AI failed to generate required properties for the question. Kindly rephrase the question and report to ",
+                InvalidAzureOpenAIAPIkey : "Invalid Azure OpenAI key. Please ensure that the provided API key is accurate and has not expired. ",
+                DeployModelNameWrongException : "An error has occurred while connecting to the AI service. Please double-check the configured deployed model name and attempt the operation again. ",
+                MissingOpenAIKey : "OpenAI key not configured.",
+                MissingOpenAIModel : "OpenAI model name not configured.",
+                MissingAzureAIKey : "Azure OpenAI key not configured.",
+                configureAzureAi:"to learn more about how to configure Azure OpenAI credentials to enable this feature.",
+                MissingAzureAIResourceName : "Azure OpenAI Resource name not configured.",
+                MissingAzureAIDeploymentName : "Azure OpenAI Deployment name not configured.",
+                MetaDBConnectionFailed : "Internal Server Error. ",
+				AiNotConfigured : "The AI service is currently not active.",
             },
             browseDialogMessages: {
                 selectCategory: "Please select a category",
@@ -2613,6 +2620,7 @@
                 doYouWantToReplace: ". Do you want to replace it?",
                 dashboardNameErrorMsg: "The following characters are not supported",
                 dashboardNameEmptyErr: "Please enter a name for dashboard",
+				dashboardVersionEmptyErr: "Please add a comment for the dashboard",
                 createCategory: "Please create a category to continue",
                 loadCategoryErr: "An error occurred while fetching category information.",
                 loadDashboardErr: "An error occurred while fetching dashboard information in the selected category.",
@@ -2620,6 +2628,8 @@
                 categoryLabelText: "Category *",
                 nameLabelText: "Name *",
                 descriptionLabelText: "Description",
+				versionCommentLabelText: "Comment",
+				commentLabelText: "Comment *",
                 cancelBtnText: "Cancel",
                 openBtnText: "Open",
                 retryText: "Retry",
@@ -2627,6 +2637,7 @@
                 dashboardDescExceedsMaxLength: "*1024 characters maximum",
                 ok: "OK",
                 publishDashboard: "Publish As Dashboard",
+				publishWithCommentDashboard: "Publish Dashboard with Comment",
                 selectDashboard: "Select Dashboard",
                 createCategoryTooltip: "Create category",
                 selectCategoryWatermarkText: "Select Category",
@@ -2733,7 +2744,7 @@
                 differentSchema: "The new schema is different from the existing one. If you click 'Yes,' you will lose the previous widget and data, and the new connection table data will be displayed. If you click 'No,' the data source will be reconnected with new credentials, and the widget data will depend on the availability of the table and fields in the target connection. Alternatively, click the 'x' icon to close the popup without taking any action.",
                 columnNotExist: "Some columns do not exist in the new schema, and this affects the dashboard. Would you like to proceed with the schema changes?",
 				dataTypeMismatch: "Changing the data type may result in data loss and this affects the dashboard. Do you want to continue?",
-				invalidSchemaAlertMessage: 'Invalid Fields in Expression - There is an invalid expression in the data source. Please click the \'RUN\' button to resolve the invalid expression. If you click \'YES\', the data source will be saved with the invalid expression. If you choose \'NO\', the Query Designer page will remain open until the expression is resolved.',
+				invalidSchemaAlertMessage: "Invalid Fields in Expression - There is an invalid expression in the data source. Please click the \'RUN\' button to resolve the invalid expression. If you click \'YES\', the data source will be saved with the invalid expression. If you choose \'NO\', the Query Designer page will remain open until the expression is resolved.",
                 doYouWant: "will be deleted. Do you want to continue",
                 tableremove: "Some associated tables will be dropped from the data source.",
                 tableList: "The list of tables to be dropped ",
@@ -2767,7 +2778,7 @@
                 exportingSuccessContent: "export was completed successfully. If the download does not begin, please",
                 exportingSuccessClick: "click here",
 				exportingSuccessEndContent: " to download the file.",
-                connectorFileSizeValidationMessage: 'The chosen file name length must be up to 100 characters.',
+                connectorFileSizeValidationMessage: "The chosen file name length must be up to 100 characters.",
                 fileNotFoundError: "The shape data file was not found. Please add the file and try again.",
                 filesNotValid: "The following file has a schema mismatch compared to the initial uploaded file. Do you want to remove and continue?",
 				joinMessageMySQL: "MySQL does not support the FULL OUTER JOIN",
@@ -3750,14 +3761,13 @@
                 statisticsLink: "Statistics Links",
                 mentions:"Mentions"
             },
-            viewUnderlyingDataSettings:
-            {
+            viewUnderlyingDataSettings: {
                 dataConfiguration: "View Underlying Data Configuration",
-                    cancelButtonText: "Cancel",
-                        okButtonText: "Apply",
-						multiselectText: "Hold CTRL to select multiple items",
-						enableAll: "Enable all",
-						dragDropText: "Drag and drop the column from the left side panel"
+                cancelButtonText: "Cancel",
+                okButtonText: "Apply",
+				multiselectText: "Hold CTRL to select multiple items",
+				enableAll: "Enable all",
+				dragDropText: "Drag and drop the column from the left side panel"
             },
             almaDataSource: {
                 ping: "Ping",
@@ -4328,7 +4338,7 @@
                 fileSizeAlert:"The selected file size is very large at ",
                 fileUploadBrowseText: "Browse File",
                 fileUploaddragAndDropText: "Drop files here or ",
-                fileuploadEstimatedFileSize: "(up to 200MB)",
+                fileuploadEstimatedFileSize: "(up to 200 MB)",
                 uploadedSuccessfully: "Uploaded successfully",
                 ofText: " OF ",
                 invalidFileText: "Uploaded failed",
@@ -5169,12 +5179,12 @@
                 graphAPIDisplayText: "Graph API",
                 pagesDisplayText: "Pages",
                 campaignsDisplayText: "Campaigns",
-				emptyPagesValidation: 'No pages were found in your account',
-				emptyCampaignsValidation: 'No campaigns found in your account',
-				emptyAccountValidation: 'No account found',
-				errorPagesValidation: 'Error occurred while fetching the Pages',
-				errorCampaignsValidation: 'Error occurred while fetching the Campaigns',
-				errorAccountValidation: 'Error occured while fetching the account details',
+				emptyPagesValidation: "No pages were found in your account",
+				emptyCampaignsValidation: "No campaigns found in your account",
+				emptyAccountValidation: "No account found",
+				errorPagesValidation: "Error occurred while fetching the Pages",
+				errorCampaignsValidation: "Error occurred while fetching the Campaigns",
+				errorAccountValidation: "Error occured while fetching the account details",
                 nullCampaignValidation: "Cannot find any Campaign for the user",
                 dailyReach: "Daily Reach",
                 demographics: "Demographics",
@@ -5745,8 +5755,7 @@
                     nov: "Nov",
                     dec: "Dec"
                 },
-                showValueType: 
-                {
+                showValueType: {
                     capitalizeEachWord: 'Capitalize Each Word',
                 },
                 rename: "Rename",
@@ -6179,7 +6188,8 @@
             },
             saveMenuItemsText: {
                 publish: "Publish",
-                publishAs: "Publish As"
+                publishAs: "Publish As",
+				publishWithComment: "Publish with Comment"
             },
             saveDraftText: {
                 saveDraft: "Draft auto-saved ",
@@ -6223,8 +6233,7 @@
                 enableCommentDisplayText: "Enable Comment",
 				performanceMetricsPopText:"Metrics",
 				enableMetrics: "Enable Metrics",
-				enableMobileView: "Restrict Mobile View On Desktop"
-				
+				enableMobileView: "Restrict Mobile View On Desktop"				
             },
             filterOverviewPopup: {
                 appliedFilters: "Applied Filters",
@@ -6389,7 +6398,7 @@
                 oAuthConnection: "OAuth Connection",
                 clientId: "Client ID",
                 clientSecret: "Client Secret",
-                emptyValidation: "Value should not be empty",
+                emptyValidation: "Value should not be empty.",
                 oAuthConfiguration: "OAuth Configuration",
                 alertMessage: "There are unsaved changes. Do you want to continue?",
                 configure: "Configure",
@@ -6397,7 +6406,7 @@
                 help: "Help",
                 enableAll: "Enable All",
                 headerText: "Configure any number of connections for your application by choosing the connectors from the list below.",
-                learnMoreText: "LEARN MORE",
+                learnMoreText: "Learn more",
                 oAuthHeaderPrefixText: "The data sources marked",
                 oAuthHeaderSuffixText: "require OAuth configuration to be used in the application.",
                 searchWaterMarkText: "Search Connector",
@@ -7607,7 +7616,7 @@
 				siteIdentifier: "Current Site Identifier"
             },
 			defaultParameter: {
-                browserCulture: 'Current Browser Culture',
+                browserCulture: "Current Browser Culture",
             },
             tabWidget: {
                 deleteTab: "Delete Tab",
@@ -7660,7 +7669,7 @@
 				nextButtonLabelText: "Next",
 			    dragAndDropText: "Drag and drop files or ",
 				browseText: "Browse",
-				estimatedFileSize: "Preferred format: bbix or zip (up to 300MB)",
+				estimatedFileSize: "Preferred format: bbix or zip (up to 300 MB)",
 				uploadedFilesText: "UPLOADED FILES",
 				invalidFileText: "Invalid File",
 				uploadingText: "Uploading...",
@@ -7774,7 +7783,8 @@
 			boldbiaiassistant: {
 				brandName: "Bold BI",
 				greetMessage: "Hi ",
-                aiTitle: "AI Assistant",
+				viewModeAiTitle: "AI Agent",
+				DesignPreviewModeAiTitle: "AI Copilot",
                 chatCloseTooltip: "Close",
                 chatUsageTooltip: "AI Usage",
                 detailedUsageView: "Detailed usage view",
@@ -7790,10 +7800,11 @@
                 conflictSelectedWidgetMessage: "Several widgets have identical names. Please select the one you want to update.",
                 widgetNameQuery: "Please provide the widget name to update the property as requested.",
 				defaultBrand: "<Brand>",
-                like: 'Like',
-                disLike: 'Dislike',
+                like: "Like",
+                disLike: "Dislike",
                 sessionEndMessage: "The session ended due to inactivity. Please enter a query to start a new session.",
-				bannerText: "Try our new AI Assistant",
+				bannerText: "Try our new ",
+				bannerToolTipText: "Check Out What's New",
 				selectedWidget: "selected_widget",
 				selectedWidgetDeletion: "Selected widget deleted successfully.",
 				specifiedWidgetDeletion: "Widget deleted successfully.",
@@ -7812,7 +7823,8 @@
 				restartSession: "Restart Session",
 				help: "Help",
 				getStarted: "Get started",
-				activateContent1: "By activating the AI assistant, you agree that your conversations may be recorded and stored for up to 90 days. This data is retained solely to evaluate service quality and identify technical issues.",
+				activateContenta1: "By activating the ",
+				activateContenta2: ", you agree that your conversations may be recorded and stored for up to 90 days. This data is retained solely to evaluate service quality and identify technical issues.",
 				activateContent2: "For inquiries regarding our data handling, please contact our support team.",
 				activate: "Activate now",
 				termsAndCondition1: " I accept the ",
@@ -7833,8 +7845,77 @@
 				cloudlicenseWarning: "The license must be updated to enable AI features.",
 				cloudActivationSuccess: "Note: Activation has been completed. Click 'Continue' to validate your license.",
 				manageLicense: "Manage License",
-				summaryText: "Summary",
-				AiSummary: "Summarize"
+				summaryText: "Insight",
+				AiSummary: "Summarize",
+				AiSummaryCopy: "Copy",
+				AiPoweredSummarization: "AIPoweredSummarization",
+				AiPoweredSummarizationDisplayName: "AI-Powered Summarization",
+				DashboardSummaryName: "EnableSummarize",
+				DashboardSummaryDisplayName: "Enable Summarize",
+				AiSummaryCopySuccessMessage: "Copied!",
+				releaseNoteTitle: "Latest Updates",
+				releaseNotes: {
+					releaseNote1:"",	
+				},
+				
+				linkBasedNotes : {
+					releaseNotes1:[
+						{
+							linkName : "ConfigureKey",
+							textContent1 : "Configure your own OpenAI or Azure OpenAI key for AI features.",
+							textContent2 : " Click for details.",
+							replaceText : " Click for details." 
+						}
+					],
+					releaseNotes2:[
+						{
+							linkName : "DataPolicies",
+							textContent1 : "Data policies have been updated.",
+							textContent2: "Please review them by visiting the following link.",
+							replaceText : " link" 
+						}
+					],
+					releaseNotes3:[
+						{
+							linkName : "TextualResponse",
+							textContent1 : "The AI agent can now respond in text to your data queries. We have made a few changes in data processing.",
+							textContent2: " See them here.",
+							replaceText : " See them here." 
+						}
+					],
+					releaseNotes4:[
+						{
+							linkName : "WidgetInsights",
+							textContent1 : "Introducing widget insights ",
+							textContent2 : "widget insights ",
+							replaceText : "widget insights " 
+						},
+						{
+							linkName : "DashboardSummaries",
+							textContent1 : "and dashboard summaries",
+							textContent2 : "dashboard summaries",
+							replaceText : "dashboard summaries" 
+						},
+						{
+							linkName : "",
+							textContent1 : " : see the story behind your data. ",
+							textContent2 : "" ,
+							replaceText : "" 
+						},
+						
+					],
+					
+				},
+				connectionFailed : "Connection failed: The AI server is not accepting connections at the moment." ,
+				aiSettingPage: "Ai settings page.",
+				incorrectApi: "Please ensure the AI configuration is completed on the ",
+				configureAi: "Please ensure the AI configuration is completed on the ",
+				UnauthorizedMessage : "AI service access is denied due to authentication failure or inactive service activation.",
+				configurationMessage : "Please verify the AI configuration on the ",
+				configurationUnauthorized : "The AI credentials provided are either invalid or expired.",
+				updateCredentials : " Please check and update them on the ",
+				widgetInsightError: "Unable to generate widget insights.",
+				dashboardSummaryError: "Unable to generate dashboard summary.",
             },
 			replaceValues: { 
 				applyBtnText: "Apply",

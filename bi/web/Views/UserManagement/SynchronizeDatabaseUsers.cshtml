@@ -24,16 +24,16 @@
         var synchronizeSelectedDbUsersUrl = "@Url.Action("SynchronizeSelectedImportedUsers", "UserManagement")";
     </script>
     <script type="text/x-jsrender" id="user-profile-template">
-        <a class="user-name" title="{{:FullName}}" data-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:FullName}}</a>
+        <a class="user-name" title="{{:FullName}}" data-bs-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:FullName}}</a>
     </script>
 
     <script type="text/x-jsrender" id="username-template">
-        <span title="{{:Username}}" class="grid-content" data-toggle="tooltip">
+        <span title="{{:Username}}" class="grid-content" data-bs-toggle="tooltip">
             {{:Username}}
         </span>
     </script>
     <script type="text/x-jsrender" id="email-template">
-        <span title="{{:EmailId}}" class="grid-content" data-toggle="tooltip">
+        <span title="{{:EmailId}}" class="grid-content" data-bs-toggle="tooltip">
             {{:EmailId}}
         </span>
     </script>
@@ -67,7 +67,7 @@
 
     <script type="text/x-jsrender" id="user-detail-validation">
         {{if IsDuplicated}}
-        <span class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></span>
+        <span class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-bs-toggle="tooltip" data-placement="left"></span>
         {{/if}}
     </script>
 
@@ -97,7 +97,7 @@
                 filterSettings: { filterType: "menu" },
                 selectionSettings: { selectionMode: ["row"] },
                 dataBound: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                     $("#checkbox-header").change(headCheckboxOnChange);
                     this.model.indexes = {}; /* Additional property*/
                     var selecteduserIdValues = [];
@@ -174,30 +174,30 @@
 
 @section MainSection{
     @await Html.PartialAsync("../Administration/_AdminMenu")
-<div class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-    <div class="col-xs-12 no-padding">
+<div class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+    <div class="col-12 no-padding">
             @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @pageHeader }, { "PageDescription", @pageDescription }, { "IsUserSyncPage", "true" } })
     </div>
-    <div class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton" id="user-title">
-        <div class="col-xs-12 no-padding">
+    <div class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton" id="user-title">
+        <div class="col-12 no-padding">
             <div class="col-xs-6 no-padding button-section hide" id="synchronize-users">
-                <span class="primary-button app-btn-primary pull-right" title="@T["Synchronize Users with Existing Database"]" onclick="SynchronizeDatabaseUsers()">@T["Synchronize"]</span>
+                <span class="primary-button app-btn-primary float-end" title="@T["Synchronize Users with Existing Database"]" onclick="SynchronizeDatabaseUsers()">@T["Synchronize"]</span>
             </div>
-            <div id="search-area" class="pull-left col-xs-4">
-                <input type="text" id="search-ad-users" class="pull-left no-margin" placeholder="@T["Search database users"]" autocomplete="off" />
-                <span class="su close-icon su-inner-close pull-left no-margin" id="clear-search" title="@T["Clear search"]"></span>
-                <span class="su su-search search-icon pull-left no-margin search-user" title="@T["Search"]"></span>
+            <div id="search-area" class="float-start col-4">
+                <input type="text" id="search-ad-users" class="float-start no-margin" placeholder="@T["Search database users"]" autocomplete="off" />
+                <span class="su close-icon su-inner-close float-end no-margin" id="clear-search" title="@T["Clear search"]"></span>
+                <span class="su su-search search-icon float-start no-margin search-user" title="@T["Search"]"></span>
             </div>
         </div>
     </div>
 </div>
-<div class="col-xs-12 bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-    <div class="col-xs-12 bi-page-content no-padding">
-        <div class="col-xs-12 bi-page-body col-lg-12">
+<div class="col-12 bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+    <div class="col-12 bi-page-content no-padding">
+        <div class="col-12 bi-page-body col-lg-12">
             <div class="col-xs-7 no-padding">
-                <span class="db-userlist-info pull-left">@T["Only users imported from the database configured in this organization are listed here."]</span>
+                <span class="db-userlist-info float-start">@T["Only users imported from the database configured in this organization are listed here."]</span>
             </div>
-            <div id="user_grid" class="col-xs-12 no-padding"></div>
+            <div id="user_grid" class="col-12 no-padding"></div>
         </div>
     </div>
     @await Html.PartialAsync("../Shared/_Footer", new ViewDataDictionary(ViewData) { { "appsettings", globalAppSettings } })

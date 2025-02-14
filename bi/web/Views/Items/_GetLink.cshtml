@@ -36,10 +36,10 @@
 </script>
 
 <body onload="load()">
-    <div id="get_item_link" class="col-xs-12 no-padding dialog custom-bootstrap-styles" style="display:none">
-        <div class="dialog-body col-xs-12 no-padding">
+    <div id="get_item_link" class="col-12 no-padding dialog custom-bootstrap-styles" style="display:none">
+        <div class="dialog-body col-12 no-padding">
                 <div class="get-link-body">
-                    <div class="col-sm-12 col-xs-12 no-padding">
+                    <div class="col-sm-12 col-12 no-padding">
                         <span class="get-link-label" style="white-space:normal;float:left;margin-bottom:-5px">
 
                             <span class="dashboard-link" style="display:none">@T["Link to Dashboard"]:</span>
@@ -56,9 +56,9 @@
 
                     <span class="update-link small" style="float:right;margin-right:14px;margin-bottom:2px;color: green;visibility: hidden">@T["Link updated."]</span>
                     <input onClick="this.setSelectionRange(0, this.value.length)" id="item-link" class="form-control" readonly />
-                <div class="form-control su su-copy text focus" id="item-link-copy" readonly="" data-toggle="tooltip" data-placement="top" data-container="#get_item_link" data-original-title="@T["Click to copy"]"></div>
+                <div class="form-control su su-copy text focus" id="item-link-copy" readonly="" data-bs-toggle="get-link-tooltip" data-bs-placement="top" data-bs-container="#get_item_link" data-bs-original-title="@T["Click to copy"]"></div>
 
-                    <div class="col-sm-12 col-xs-12 file-link no-padding" style="margin-top:15px;display:none">
+                    <div class="col-sm-12 col-12 file-link no-padding" style="margin-top:15px;display:none">
                         <div class="col-sm-5 col-xs-5 resolution no-padding">
                             <strong class="enable-compression">@T["Download as"] .zip</strong>
                         </div>

@@ -41,7 +41,7 @@
                 enableRowHover: true,
                 enableAltRow: false,
                 dataBound: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip();
+                    $('[data-bs-toggle="tooltip"]').tooltip();
                 },
                 columns: [
                     { field: 'Name', templateID: "#site-name-template", headerText: '@T["Name"]', width: 40, allowSorting: true, allowFiltering: true },
@@ -54,54 +54,54 @@
         });
     </script>
     <script type="text/x-jsrender" id="site-name-template">
-        <span class="grid-content" title="{{:Name}}" data-toggle="tooltip">{{:Name}}</span>
+        <span class="grid-content" title="{{:Name}}" data-bs-toggle="tooltip">{{:Name}}</span>
     </script>
     <script type="text/x-jsrender" id="site-clientid-template">
-        <span class="grid-content" title="{{:ClientId}}" data-toggle="tooltip">{{:ClientId}}</span>
+        <span class="grid-content" title="{{:ClientId}}" data-bs-toggle="tooltip">{{:ClientId}}</span>
     </script>
     <script type="text/x-jsrender" id="site-url-template">
-        <span class="grid-content" title="{{:SiteURL}}" data-toggle="tooltip">{{:SiteURL}}</span>
+        <span class="grid-content" title="{{:SiteURL}}" data-bs-toggle="tooltip">{{:SiteURL}}</span>
     </script>
 }
 
 @section MainSection{
     @await Html.PartialAsync("_AdminMenu")
-    <div id="external-site-container" class="bi-page-container col-xs-12 @(canShowAdminMenu ? string.Empty : "admin-panel-full-width")" role="tabpanel">
-        <div class="bi-page-content col-xs-12 no-padding">
-            <div class="bi-page-header col-xs-12">
+    <div id="external-site-container" class="bi-page-container col-12 @(canShowAdminMenu ? string.Empty : "admin-panel-full-width")" role="tabpanel">
+        <div class="bi-page-content col-12 no-padding">
+            <div class="bi-page-header col-12">
                 <hgroup class="col-xs-8 bi-page-header-description no-padding">
                     <h1 class="page-title">@T["Connected Sites"]</h1>
                     <h5 class="no-padding page-description">@string.Format(T["Manage all the {0} and {1} connected sites"].Value, "BI", "Reports")</h5>
                 </hgroup>
             </div>
-            <div class="col-xs-12 no-padding bi-page-nav-bar">
+            <div class="col-12 no-padding bi-page-nav-bar">
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="@isBISitesTab">
-                        <a href="#bi-sites" id="bi-sites-tab" aria-controls="bi-sites-tab" role="tab" data-toggle="tab">@string.Format(T["{0} Sites"].Value, "BI")</a>
+                        <a href="#bi-sites" id="bi-sites-tab" aria-controls="bi-sites-tab" role="tab" data-bs-toggle="tab">@string.Format(T["{0} Sites"].Value, "BI")</a>
                     </li>
                     <li role="presentation" class="@isReportsSitesTab">
-                        <a href="#reports-sites" id="reports-sites-tab" aria-controls="reports-sites-tab" role="tab" data-toggle="tab">@string.Format(T["{0} Sites"].Value, "Reports")</a>
+                        <a href="#reports-sites" id="reports-sites-tab" aria-controls="reports-sites-tab" role="tab" data-bs-toggle="tab">@string.Format(T["{0} Sites"].Value, "Reports")</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-xs-12 no-padding tab-content">
-                <div role="tabpanel" class="tab-pane bi-page-body col-md-12 col-xs-12 @isBISitesTab" id="bi-sites">
+            <div class="col-12 no-padding tab-content">
+                <div role="tabpanel" class="tab-pane bi-page-body col-md-12 col-12 @isBISitesTab" id="bi-sites">
                     <div id="ConnectedSitesGrid"></div>
                     <script type="text/x-jsrender" id="admin-externalsite-options">
                         <div class="dropdown context-menu">
-                            <span class="dropdown-toggle option-icon" title="Actions" data-toggle="dropdown">
+                            <span class="dropdown-toggle option-icon" title="Actions" data-bs-toggle="dropdown">
                                 <span class="su su-options">
                                 </span>
                             </span>
                             <ul class="dropdown-menu" role="menu">
                                 <li class="menu-group">
-                                    <a class="edit-class" href="javascript:void(0);" id="edit-bi-external-sites" title="@T["Edit"]" data-toggle="tooltip" data-id="{{:Id}}" data-name="{{:Name}}" data-clientid="{{:ClientId}}" data-site-url="{{:SiteURL}}" onclick="getExternalSitesDetailDialog(0,1,this)">
+                                    <a class="edit-class" href="javascript:void(0);" id="edit-bi-external-sites" title="@T["Edit"]" data-bs-toggle="tooltip" data-id="{{:Id}}" data-name="{{:Name}}" data-clientid="{{:ClientId}}" data-site-url="{{:SiteURL}}" onclick="getExternalSitesDetailDialog(0,1,this)">
                                         <i class="su su-edit"></i>
                                         <span class="menu-text">@T["Edit"]</span>
                                     </a>
                                 </li>
                                 <li class="menu-group">
-                                    <a class="delete-class" href="javascript:void(0);" id="remove-bi-external-sites" title="@T["Remove"]" data-toggle="tooltip" data-id="{{:Id}}" data-site-type="{{:SiteType}}" data-name="group" onclick="deleteConfirmation(this)">
+                                    <a class="delete-class" href="javascript:void(0);" id="remove-bi-external-sites" title="@T["Remove"]" data-bs-toggle="tooltip" data-id="{{:Id}}" data-site-type="{{:SiteType}}" data-name="group" onclick="deleteConfirmation(this)">
                                         <i class="su su-delete"></i>
                                         <span class="menu-text">@T["Remove"]</span>
                                     </a>
@@ -110,7 +110,7 @@
                         </div>
                     </script>
                 </div>
-                <div role="tabpanel" class="tab-pane bi-page-body col-xs-12 @isReportsSitesTab" id="reports-sites">
+                <div role="tabpanel" class="tab-pane bi-page-body col-12 @isReportsSitesTab" id="reports-sites">
                     @await Html.PartialAsync("../Shared/_ReportsConnectedSites", new ViewDataDictionary(ViewData) { { "fromAdminPage", true } })
                 </div>
             </div>

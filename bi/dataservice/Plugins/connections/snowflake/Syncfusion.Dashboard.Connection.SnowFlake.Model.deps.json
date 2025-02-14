@@ -9,7 +9,7 @@
       "Syncfusion.Dashboard.Connection.SnowFlake.Model/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "Snowflake.Data": "4.2.0"
+          "Snowflake.Data": "4.3.0"
         },
         "runtime": {
           "Syncfusion.Dashboard.Connection.SnowFlake.Model.dll": {}
@@ -359,7 +359,7 @@
           }
         }
       },
-      "Snowflake.Data/4.2.0": {
+      "Snowflake.Data/4.3.0": {
         "dependencies": {
           "AWSSDK.S3": "3.7.0.4",
           "Apache.Arrow": "14.0.2",
@@ -371,12 +371,13 @@
           "Newtonsoft.Json": "13.0.3",
           "System.IdentityModel.Tokens.Jwt": "6.34.0",
           "System.Text.RegularExpressions": "4.3.1",
+          "Tomlyn.Signed": "0.17.0",
           "log4net": "2.0.12"
         },
         "runtime": {
           "lib/netstandard2.0/Snowflake.Data.dll": {
-            "assemblyVersion": "4.2.0.0",
-            "fileVersion": "4.2.0.0"
+            "assemblyVersion": "4.3.0.0",
+            "fileVersion": "4.3.0.0"
           }
         }
       },
@@ -512,7 +513,15 @@
           "System.Runtime": "4.3.1"
         }
       },
-      "System.Threading.Tasks.Extensions/4.5.4": {}
+      "System.Threading.Tasks.Extensions/4.5.4": {},
+      "Tomlyn.Signed/0.17.0": {
+        "runtime": {
+          "lib/netstandard2.0/Tomlyn.Signed.dll": {
+            "assemblyVersion": "0.17.0.0",
+            "fileVersion": "0.17.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -703,12 +712,12 @@
       "path": "newtonsoft.json/13.0.3",
       "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
-    "Snowflake.Data/4.2.0": {
+    "Snowflake.Data/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-inMPNllxeBCVZTkjSujkSgb+O8bCkUCGXDEYmfjk3rIJvbM1Wfdc5M3wI6ZPdI6tI8k+MkBK73oggHiSW3BgWw==",
-      "path": "snowflake.data/4.2.0",
-      "hashPath": "snowflake.data.4.2.0.nupkg.sha512"
+      "sha512": "sha512-4Mw41eofznSyWXoYRXJNOfv5q4MRkZjmM23NkyRivR0YzTotA5E04X952oTfHzX0sWDuqRMiMG+w1LjG/fvOAg==",
+      "path": "snowflake.data/4.3.0",
+      "hashPath": "snowflake.data.4.3.0.nupkg.sha512"
     },
     "System.CodeDom/7.0.0": {
       "type": "package",
@@ -842,6 +851,13 @@
       "sha512": "sha512-zteT+G8xuGu6mS+mzDzYXbzS7rd3K6Fjb9RiZlYlJPam2/hU7JCBZBVEcywNuR+oZ1ncTvc/cq0faRr3P01OVg==",
       "path": "system.threading.tasks.extensions/4.5.4",
       "hashPath": "system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    },
+    "Tomlyn.Signed/0.17.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zSItaqXfXlkWYe4xApYrU2rPgHoSlXvU2NyS5jq66bhOyMYuNj48sc8m/guWOt8id1z+cbnHkmEQPpsRWlYoYg==",
+      "path": "tomlyn.signed/0.17.0",
+      "hashPath": "tomlyn.signed.0.17.0.nupkg.sha512"
     }
   }
 }

@@ -58,6 +58,9 @@
     var canCreateDatasource = permissions[ItemType.Datasource];
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var dashboardDesignerResourceUrl = globalAppSettings.SystemSettings.DesignerCdnLink.TrimEnd('/');
+    var isAIEnabledGlobally = ServerAppConfig.EnableAiFeature;
+    var isAiSummariesEnabledGlobally = ServerAppConfig.IsAiSummariesEnabledGlobally;
+    var isBoldAISelected = ServerAppConfig.IsAiModel;
     var etlEndpointPrefix = ServerAppConfig.IsSelfHosted ? ServerAppConfig.InternalAppIdpUrl : ServerAppConfig.AppSettings.EndPoints.ETLSiteURL;
     var navigateETLUrl = etlEndpointPrefix + (ServerAppConfig.IsSelfHosted ? $"/etlservice/{globalAppSettings.SystemSettings.TenantId.ToString()}" : $"/{globalAppSettings.SystemSettings.TenantId.ToString()}");
 
@@ -83,6 +86,8 @@
     var canShowSession = ServerAppConfig.IsSelfHosted && (ViewBag.CanHideSessionInEmbed == null ? true : (ViewBag.CanHideSessionInEmbed != null && ViewBag.CanHideSessionInEmbed == true) ? false : true);
     var isEmbed = (ViewBag.isEmbed != null && ViewBag.isEmbed == "true") ? true : false;
     var embedConfig = ViewBag.EmbedConfig as EmbedConfig;
+    var isSingleDatabaseMode = _globalAppSettings.SystemSettings.ConfigurationMode ==
+                               ConfigurationMode.SingleDatabaseForAllTenants;
     if (isEmbedTrue)
     {
         dashboardCutomTheme = Context.Request.Query["embed_theme"];
@@ -115,6 +120,7 @@
     <meta name="dashboard:name" content="@ViewBag.DashboardName" />
     <meta name="category:name" content="@ViewBag.CategoryName" />
     <meta name="dashboard:description" content="@ViewBag.Description" />
+    <meta name="dashboard:versioncomment" content="@ViewBag.VersionComment" />
 
     <meta name="datasource:version" content="@ViewBag.DatasourceVersion" />
     <meta name="datasource:id" content="@ViewBag.DatasourceId" />
@@ -179,6 +185,11 @@
         var licenseSettings =@Html.Raw(JsonConvert.SerializeObject(licenseSettings));
 		var baseUrl = "@globalAppSettings.SystemSettings.BaseUrl"; // If you are working on local developemnt change the baseurl as localsource url
         var isAIFeatureEnabled =  @Json.Serialize(globalAppSettings.SystemSettings.IsAiServiceEnabled);
+        var isWidgetSummarizationFeatureEnabled = @Json.Serialize(globalAppSettings.SystemSettings.IsWidgetSummarizationEnabled);
+        var isDashboardInsightFeatureEnabled = @Json.Serialize(globalAppSettings.SystemSettings.IsDashboardInsightEnabled);
+        var isBoldAISelected = @Html.Raw(Json.Serialize(isBoldAISelected));
+        var isAIEnabledGlobally = @Html.Raw(Json.Serialize(isAIEnabledGlobally));
+        var isAiSummariesEnabledGlobally = @Html.Raw(Json.Serialize(isAiSummariesEnabledGlobally));
         var currentUrl = "@currentUrl";
         var organizationName = "@globalAppSettings.SystemSettings.OrganizationName";
         var isDebug = "@isDebug";
@@ -219,6 +230,7 @@
         var embedConfig = @Html.Raw(Json.Serialize(embedConfig));
         var faviconLogo = "@faviconLogo";
         var aiLogo = "@aiLogo";
+        var isSingleDatabaseMode = "@isSingleDatabaseMode";
     </script>
     <script type="text/javascript">
         window.addEventListener("beforeunload", function (e) {

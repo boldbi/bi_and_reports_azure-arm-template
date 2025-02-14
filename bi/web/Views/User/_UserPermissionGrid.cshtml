@@ -15,7 +15,7 @@
 </script>
 
 <script type="text/x-jsrender" id="itemName">
-    <div class="item-name" title="{{:ItemName}}" data-toggle="tooltip" data-placement="top">
+    <div class="item-name" title="{{:ItemName}}" data-bs-toggle="tooltip" data-placement="top">
         {{if ~isDash(ItemName)}}
             <span>{{:ItemName}}</span>
         {{else}}
@@ -40,19 +40,19 @@
     </div>
 </script>
 <script type="text/x-jsrender" id="entitytemplate">
-    <div class="grid-content" title="{{:PermissionEntityDescription}}" data-toggle="tooltip">{{:PermissionEntityDescription}}</div>
+    <div class="grid-content" title="{{:PermissionEntityDescription}}" data-bs-toggle="tooltip">{{:PermissionEntityDescription}}</div>
 </script>
 <script type="text/x-jsrender" id="accessmodetemplate">
-    <div class="item-name" title="{{:PermissionAccessDescription}}" data-toggle="tooltip">{{:PermissionAccessDescription}}</div>
+    <div class="item-name" title="{{:PermissionAccessDescription}}" data-bs-toggle="tooltip">{{:PermissionAccessDescription}}</div>
 </script>
 <script type="text/x-jsrender" id="grouptemplate">
-    <div class="item-name" title="{{:GroupName}}" data-toggle="tooltip">{{:GroupName}}</div>
+    <div class="item-name" title="{{:GroupName}}" data-bs-toggle="tooltip">{{:GroupName}}</div>
 </script>
 
 <script type="text/javascript">
 
     function refreshTooltipAndPositionForGrid(args) {
-        $("[data-toggle=tooltip]").tooltip();
+        $("[data-bs-toggle=tooltip]").tooltip();
 
     }
 

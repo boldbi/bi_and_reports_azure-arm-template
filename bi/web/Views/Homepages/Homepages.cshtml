@@ -133,9 +133,9 @@
     </script>
 }
 @section MainSection{
-    <div class="col-xs-12 no-padding">
+    <div class="col-12 no-padding">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["Pinboards"] }, { "IsDefaultPage", "true" } })
-        <div id="homepage-header" class="col-xs-12 no-padding" ng-app="serverApp" ng-controller="homepagesController">
+        <div id="homepage-header" class="col-12 no-padding" ng-app="serverApp" ng-controller="homepagesController">
             <div id="element-container">
                 @if (allHomepagesCount != 0)
                 {
@@ -148,7 +148,7 @@
                     </div>
                 }
                 <div id="options-container">
-                    <span id="homepage-options" class="dropdown-toggle su su-nav-settings" data-toggle="dropdown"></span>
+                    <span id="homepage-options" class="dropdown-toggle su su-nav-settings" data-bs-toggle="dropdown"></span>
                     <ul class="dropdown-menu" id="options" role="menu">
                         @if (!isMobile)
                         {
@@ -176,7 +176,7 @@
                     @if (!isMobile)
                     {
                         <div id="layout-container">
-                            <div id="layout" class="dropdown-toggle" data-toggle="dropdown">@T["Edit Layout"]</div>
+                            <div id="layout" class="dropdown-toggle" data-bs-toggle="dropdown">@T["Edit Layout"]</div>
                             <div class="dropdown-menu" id="layout-items" role="menu">
                                 <span class="su su-single-column" id="1"></span>
                                 <span class="su su-two-column" id="11"></span>
@@ -189,7 +189,7 @@
                         {
                             <div id="divider"></div>
                             <div id="add-button-container">
-                                <button class="dropdown-toggle primary-button app-btn-primary" data-toggle="dropdown" id="add-button" title="@T["Add Pinboard"]">
+                                <button class="dropdown-toggle primary-button app-btn-primary" data-bs-toggle="dropdown" id="add-button" title="@T["Add Pinboard"]">
                                     <span>@T["Add Pinboard"] </span>
                                     <span class="caret"></span>
                                 </button>
@@ -205,8 +205,8 @@
             </div>
         </div>
     </div>
-    <div id="homepage-page-container" ng-app="serverApp" ng-controller="homepagesController" class="col-xs-12 no-padding">
-        <div class="col-xs-12 no-padding" id="widget-elemnt-container">
+    <div id="homepage-page-container" ng-app="serverApp" ng-controller="homepagesController" class="col-12 no-padding">
+        <div class="col-12 no-padding" id="widget-elemnt-container">
             @if (!isMobile)
             {
                 <div id="initial-message" class="hidden"><span id="message"><span class="su su-info"></span><span>@T["You have not added any widget to the pinboard yet. Start tracking data from multiple dashboards. Click pin icon on dashboard widgets to add widgets to the pinboard."]</span><span id="close-icon"><span class="su su-close" title="@T["Close"]"></span></span></span></div>
@@ -260,7 +260,7 @@
                     {
                         <div id="add-button-wrapper">
                             <div id="add-button-container">
-                                <button class="dropdown-toggle primary-button app-btn-primary" data-toggle="dropdown" id="add-button" title="@T["Add Pinboard"]">
+                                <button class="dropdown-toggle primary-button app-btn-primary" data-bs-toggle="dropdown" id="add-button" title="@T["Add Pinboard"]">
                                     <span>@T["Add Pinboard"]</span>
                                     <span class="caret"></span>
                                 </button>
@@ -283,10 +283,10 @@
         <input type="hidden" id="homepage-name" data-original-title="" />
         <input type="hidden" title="" data-value="" id="save-button" value="@T["Save"]" />
         <div id="homepage-option-container" class="dialog">
-            <form class="dialog-body col-xs-12 no-padding" id="homepage-option-form" data-homepage-id="">
+            <form class="dialog-body col-12 no-padding" id="homepage-option-form" data-homepage-id="">
                 <div>
-                    <div class="col-xs-12 no-bottom-padding" id="item-name-division">
-                        <div class="col-xs-4 no-padding text-right text-label">@T["Name"]<span class="mandatory">*</span></div>
+                    <div class="col-12 no-bottom-padding" id="item-name-division">
+                        <div class="col-4 no-padding text-right text-label">@T["Name"]<span class="mandatory">*</span></div>
                         <div class="col-xs-1 no-padding"></div>
                         <div class="col-xs-7 no-padding">
                             <input type="text" id="homepage-new-name" name="homepagenewname" data-maxlength="255" value="" class="form-control site-orgname-fields text" autofocus />
@@ -294,25 +294,25 @@
                         </div>
                     </div>
 
-                    <div class="col-xs-12" id="default-homepage-section">
-                        @Html.Label("makedefault", T["Make default"].Value, new { @class = "col-xs-4 no-padding text-right text-label", @id = "make-default-label" })
-                        <div class="col-xs-4 makedefault switch-align">
+                    <div class="col-12" id="default-homepage-section">
+                        @Html.Label("makedefault", T["Make default"].Value, new { @class = "col-4 no-padding text-right text-label", @id = "make-default-label" })
+                        <div class="col-4 makedefault switch-align">
                             <span class="material-switch text-left">
                                 <input type="checkbox" id="makedefault" name="make-default" />
                                 <label for="makedefault" class="label-primary"></label>
                             </span>
                         </div>
                     </div>
-                    <div class="col-xs-12 display-none" id="filter-container">
-                        @Html.Label("keepfilter", T["Keep filters"].Value, new { @class = "col-xs-4 no-padding text-right text-label", @id = "keep-filter-label" })
-                        <div class="col-xs-4 keepfilter switch-align">
+                    <div class="col-12 display-none" id="filter-container">
+                        @Html.Label("keepfilter", T["Keep filters"].Value, new { @class = "col-4 no-padding text-right text-label", @id = "keep-filter-label" })
+                        <div class="col-4 keepfilter switch-align">
                             <span class="material-switch text-left">
                                 <input type="checkbox" id="keepfilter" name="keep-filter" checked />
                                 <label for="keepfilter" class="label-primary"></label>
                             </span>
                         </div>
                         <div id="info-tag">
-                            <span id="filter-info" class="su su-info info-popup" data-toggle="popover" data-placement="top" data-content="@T["When “keep filter” is switched on, the widget will be added to the pinboard in its current filtered state."]"></span>
+                            <span id="filter-info" class="su su-info info-popup" data-bs-toggle="popover" data-placement="top" data-content="@T["When “keep filter” is switched on, the widget will be added to the pinboard in its current filtered state."]"></span>
                         </div>
                     </div>
                 </div>

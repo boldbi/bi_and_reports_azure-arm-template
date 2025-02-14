@@ -10,11 +10,11 @@
     var canEdit = permissionList.Contains((int)EnumClass.PermissionList.EditGroup);
 }
 
-<div id="MiddleContainer" class="col-md-9 pull-left sticky-next-container page-inner-small-padding no-margin">
-    <div id="GroupTItleContainer" data-id="@ViewBag.GroupDetails.GroupId" class="col-md-12 no-margin page-inner-small-padding pull-left content">
+<div id="MiddleContainer" class="col-md-9 float-start sticky-next-container page-inner-small-padding no-margin">
+    <div id="GroupTItleContainer" data-id="@ViewBag.GroupDetails.GroupId" class="col-md-12 no-margin page-inner-small-padding float-start content">
 
         <div class="col-xs-7 UserProfileHeading" style="padding-top: 5px;">
-            <div class="pull-left">
+            <div class="float-start">
                 <span class="report-security-head group-edit-back">
                     <i class="su su-back-trans-fill"></i>
                 </span>
@@ -31,7 +31,7 @@
             }
         </div>
     </div>
-    <div id="GroupMainContainer" class="col-xs-12  page-inner-small-padding pull-left content droppable">
+    <div id="GroupMainContainer" class="col-12  page-inner-small-padding float-start content droppable">
 
         <div id="TabContainer">
             <div class="GroupTabs GroupNameClicked" id="PeopleTab">[[[People]]]</div>
@@ -50,8 +50,8 @@
         </div>
         <div id="InfoContainer" class="TabInvisible TabContent ">
             <div class="row">
-                <div class="GroupInfoLabel col-md-4 pull-left">[[[Group Name]]]</div>
-                <div class="GroupInfoText col-md-4 pull-left">
+                <div class="GroupInfoLabel col-md-4 float-start">[[[Group Name]]]</div>
+                <div class="GroupInfoText col-md-4 float-start">
                     @if (canEdit)
                     {
                         <input id="GroupInfoName" type="text" class="form-control NotificationContent" value="@ViewBag.GroupDetails.GroupName" autocomplete="off" />
@@ -63,10 +63,10 @@
                 </div>
             </div>
             <div class="row">
-                <div class="GroupInfoLabel col-md-4 pull-left">[[[Color]]]</div>
+                <div class="GroupInfoLabel col-md-4 float-start">[[[Color]]]</div>
                 @if (canEdit)
                 {
-                    <div id="GroupInfoColor" class="GroupInfoText col-md-2 pull-left" data-color="@ViewBag.GroupDetails.GroupColor">
+                    <div id="GroupInfoColor" class="GroupInfoText col-md-2 float-start" data-color="@ViewBag.GroupDetails.GroupColor">
                         <input id="ColorDropDown" class="form-control" style="background-color: @ViewBag.GroupDetails.GroupColor; margin-top: 5px; height: 22px; width: 22px; margin-left: 5px; cursor: pointer;" />
                     </div>
                 }
@@ -76,8 +76,8 @@
                 }
             </div>
             <div class="row">
-                <div class="GroupInfoLabel col-md-4 pull-left">[[[Description]]]</div>
-                <div class="GroupInfoText col-md-8 pull-left">
+                <div class="GroupInfoLabel col-md-4 float-start">[[[Description]]]</div>
+                <div class="GroupInfoText col-md-8 float-start">
                     @if (canEdit)
                     {
                         <textarea id="GroupInfoDescription" class="form-control NotificationContent">@ViewBag.GroupDetails.GroupDescription</textarea>
@@ -97,16 +97,16 @@
     <div class="col-md-3 no-right-padding no-left-padding no-margin right-panel-top-padding" id="UserContainer">
         <div class="col-md-12 " id="UserHeader">
             <div class="tabStyleArrowUserList"></div>
-            <div class=" pull-left  User`n UserHeader">[[[Users]]]</div>
+            <div class=" float-start  User`n UserHeader">[[[Users]]]</div>
 
             <div class="su su-search searchIcon UserSelection"></div>
             <div class="su su-sort sortIcon SortAscending UserSelection "></div>
         </div>
-        <div id="UserSearchBar" class="col-xs-12" style="display: none">
+        <div id="UserSearchBar" class="col-12" style="display: none">
             <input id="UserSearch" class="form-control" autofocus placeholder="[[[Search Here]]]..." />
         </div>
 
-        <div class="col-xs-12 page-inner-small-padding" id="UserListContainer">
+        <div class="col-12 page-inner-small-padding" id="UserListContainer">
         </div>
     </div>
 }*@

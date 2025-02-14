@@ -17,7 +17,7 @@
 <div id="apiKeyGrid" class="col-lg-12 no-padding dialog-override">
 </div>
 <script type="text/x-jsrender" id="last-used-date">
-    <div class="token-validity" title="{{:LastUsedDate}}" data-toggle="tooltip" data-placement="top">
+    <div class="token-validity" title="{{:LastUsedDate}}" data-bs-toggle="tooltip" data-placement="top">
          {{if ~isDash(LastUsedDate)}}
             <span>-</span>
         {{else}}
@@ -26,7 +26,7 @@
     </div>
 </script>
 <script type="text/x-jsrender" id="token-validity-value">
-    <div class="token-validity" title="{{:Validity}}" data-toggle="tooltip" data-placement="top">
+    <div class="token-validity" title="{{:Validity}}" data-bs-toggle="tooltip" data-placement="top">
          {{if ~isDash(TokenValidity)}}
             <span>-</span>
         {{else}}
@@ -38,13 +38,13 @@
     <div>
         <span class="api-key-column">
             <span id="apikey-value-id" title="{{:Validity}}">{{:ApiKey}}</span>
-            <span class="su su-copy form-control copy-apikey-values" id="copy-apikey-id" onclick="fnCopyApiKey('#apikey-value-id','#copy-apikey-id')" data-toggle="tooltip" data-original-title="@T["Click to copy"]"></span>
+            <span class="su su-copy form-control copy-apikey-values" id="copy-apikey-id" onclick="fnCopyApiKey('#apikey-value-id','#copy-apikey-id')" data-bs-toggle="tooltip" data-bs-original-title="@T["Click to copy"]"></span>
         </span>
     </div>
 </script>
 <script type="text/x-jsrender" id="api-key-options">
     <div class="dropdown">
-        <span class="dropdown-toggle option-icon" data-toggle="dropdown">
+        <span class="dropdown-toggle option-icon" data-bs-toggle="dropdown">
             <span class="su su-options"> </span>
         </span>
         <ul class="dropdown-menu" role="menu">
@@ -88,10 +88,10 @@
             maskApiKeys();
         },
         rowDataBound: function () {
-            $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+            initializeTooltips();
         },
         dataBound: function () {
-            $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+            initializeTooltips();
         },
         columns: [
             { field: 'Name', headerText: "@T["Name"]", width: 40, allowSorting: false, allowFiltering: false},
@@ -103,5 +103,16 @@
             { field: 'Options', headerText: '', templateID: "#api-key-options", width: 20, allowSorting: false, allowFiltering: false }
         ]
     });
+
+    function initializeTooltips() {
+        $.fn.tooltip = function(options) {
+            return this.each(function() {
+                new bootstrap.Tooltip(this, options);
+            });
+        };
+
+        // Initialize tooltips
+        $('[data-bs-toggle="tooltip"]').tooltip({ container: 'body' });
+    }
 
 </script>

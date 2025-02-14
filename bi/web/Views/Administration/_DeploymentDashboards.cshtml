@@ -23,17 +23,17 @@
 </script>
 
 <script type="text/x-jsrender" id="dashboard-template">
-    <div class="grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
+    <div class="grid-content" title="{{:Name}}" data-bs-toggle="tooltip" data-placement="top">
         <span><a class="grid-content" href="@Url.Action("Dashboards", "Dashboards")/{{:ItemId}}/{{:CategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a></span>
     </div>
 </script>
 <script type="text/x-jsrender" id="dashboard-name-template">
-    <div class="grid-content" title="{{:DeploymentDashboardName}}" data-toggle="tooltip" data-placement="top">
+    <div class="grid-content" title="{{:DeploymentDashboardName}}" data-bs-toggle="tooltip" data-placement="top">
         <span>{{:DeploymentDashboardName}}</span>
     </div>
 </script>
 <script type="text/x-jsrender" id="category-template">
-    <div class="grid-content" title="{{:CategoryName}}" data-toggle="tooltip" data-placement="top">
+    <div class="grid-content" title="{{:CategoryName}}" data-bs-toggle="tooltip" data-placement="top">
         <span>{{:CategoryName}}</span>
     </div>
 </script>
@@ -57,6 +57,6 @@
     {{/if}}
 </script>
 
-<div id="dashboardGrid" class="col-xs-12 no-padding dialog-override">
+<div id="dashboardGrid" class="col-12 no-padding dialog-override">
 </div>
 

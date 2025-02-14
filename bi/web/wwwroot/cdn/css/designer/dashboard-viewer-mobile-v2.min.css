@@ -563,14 +563,14 @@
 .custom-bootstrap-styles .row-no-gutters [class*="col-"] {
   padding-right: 0;
   padding-left: 0; }
-.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-sm-1, .custom-bootstrap-styles .col-md-1, .custom-bootstrap-styles .col-lg-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-sm-2, .custom-bootstrap-styles .col-md-2, .custom-bootstrap-styles .col-lg-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-sm-3, .custom-bootstrap-styles .col-md-3, .custom-bootstrap-styles .col-lg-3, .custom-bootstrap-styles .col-xs-4, .custom-bootstrap-styles .col-sm-4, .custom-bootstrap-styles .col-md-4, .custom-bootstrap-styles .col-lg-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-sm-5, .custom-bootstrap-styles .col-md-5, .custom-bootstrap-styles .col-lg-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-sm-6, .custom-bootstrap-styles .col-md-6, .custom-bootstrap-styles .col-lg-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-sm-7, .custom-bootstrap-styles .col-md-7, .custom-bootstrap-styles .col-lg-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-sm-8, .custom-bootstrap-styles .col-md-8, .custom-bootstrap-styles .col-lg-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-sm-9, .custom-bootstrap-styles .col-md-9, .custom-bootstrap-styles .col-lg-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-sm-10, .custom-bootstrap-styles .col-md-10, .custom-bootstrap-styles .col-lg-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-sm-11, .custom-bootstrap-styles .col-md-11, .custom-bootstrap-styles .col-lg-11, .custom-bootstrap-styles .col-xs-12, .custom-bootstrap-styles .col-sm-12, .custom-bootstrap-styles .col-md-12, .custom-bootstrap-styles .col-lg-12 {
+.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-sm-1, .custom-bootstrap-styles .col-md-1, .custom-bootstrap-styles .col-lg-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-sm-2, .custom-bootstrap-styles .col-md-2, .custom-bootstrap-styles .col-lg-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-sm-3, .custom-bootstrap-styles .col-md-3, .custom-bootstrap-styles .col-lg-3, .custom-bootstrap-styles .col-4, .custom-bootstrap-styles .col-sm-4, .custom-bootstrap-styles .col-md-4, .custom-bootstrap-styles .col-lg-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-sm-5, .custom-bootstrap-styles .col-md-5, .custom-bootstrap-styles .col-lg-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-sm-6, .custom-bootstrap-styles .col-md-6, .custom-bootstrap-styles .col-lg-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-sm-7, .custom-bootstrap-styles .col-md-7, .custom-bootstrap-styles .col-lg-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-sm-8, .custom-bootstrap-styles .col-md-8, .custom-bootstrap-styles .col-lg-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-sm-9, .custom-bootstrap-styles .col-md-9, .custom-bootstrap-styles .col-lg-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-sm-10, .custom-bootstrap-styles .col-md-10, .custom-bootstrap-styles .col-lg-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-sm-11, .custom-bootstrap-styles .col-md-11, .custom-bootstrap-styles .col-lg-11, .custom-bootstrap-styles .col-12, .custom-bootstrap-styles .col-sm-12, .custom-bootstrap-styles .col-md-12, .custom-bootstrap-styles .col-lg-12 {
   position: relative;
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px; }
-.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-xs-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-xs-12 {
+.custom-bootstrap-styles .col-xs-1, .custom-bootstrap-styles .col-xs-2, .custom-bootstrap-styles .col-xs-3, .custom-bootstrap-styles .col-4, .custom-bootstrap-styles .col-xs-5, .custom-bootstrap-styles .col-xs-6, .custom-bootstrap-styles .col-xs-7, .custom-bootstrap-styles .col-xs-8, .custom-bootstrap-styles .col-xs-9, .custom-bootstrap-styles .col-xs-10, .custom-bootstrap-styles .col-xs-11, .custom-bootstrap-styles .col-12 {
   float: left; }
-.custom-bootstrap-styles .col-xs-12 {
+.custom-bootstrap-styles .col-12 {
   width: 100%; }
 .custom-bootstrap-styles .col-xs-11 {
   width: 91.66666667%; }
@@ -586,7 +586,7 @@
   width: 50%; }
 .custom-bootstrap-styles .col-xs-5 {
   width: 41.66666667%; }
-.custom-bootstrap-styles .col-xs-4 {
+.custom-bootstrap-styles .col-4 {
   width: 33.33333333%; }
 .custom-bootstrap-styles .col-xs-3 {
   width: 25%; }
@@ -2032,10 +2032,10 @@
   width: 100%; }
 .custom-bootstrap-styles .btn-group-justified > .btn-group .dropdown-menu {
   left: auto; }
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn input[type="radio"],
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn-group > .btn input[type="radio"],
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn input[type="checkbox"],
-.custom-bootstrap-styles [data-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn input[type="radio"],
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn-group > .btn input[type="radio"],
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn input[type="checkbox"],
+.custom-bootstrap-styles [data-bs-toggle="buttons"] > .btn-group > .btn input[type="checkbox"] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
@@ -3711,7 +3711,7 @@
   overflow: visible !important;
   min-height: 1px !important;
   min-width: 1px !important; }
-  #commentImage_popup_wrapper .col-md-12, #commentImage_popup_wrapper .col-xs-12, #commentImage_popup_wrapper .col-lg-12 {
+  #commentImage_popup_wrapper .col-md-12, #commentImage_popup_wrapper .col-12, #commentImage_popup_wrapper .col-lg-12 {
     float: none !important; }
 
 #commentImage_popup {
@@ -4204,6 +4204,13 @@ body #server-mobile-navbar.dark-theme-mob-nav {
   font-size: 12px; }
 #save-view-container #save-view-form #item-name-division {
   padding-top: 0px; }
+#save-view-container #save-view-form .col-3 {
+  float: left;
+  text-align: right; }
+#save-view-container #save-view-form .col-8 {
+  float: left;
+  margin-left: 42px;
+  position: relative; }
 #save-view-container #save-view-form .notification-alert-message {
   padding: 10px;
   margin-left: 5px; }

@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.card.all.js
-*  version : 9.1.73
+*  version : 10.1.18
 *  Copyright Syncfusion Inc. 2001 - 2025. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -6592,7 +6592,11 @@ var BoldBIDashboardSparkline;
             if (this.singleTimer) {
                 clearTimeout(this.singleTimer);
             }
+            var that = this;
+            var args = {};
             this.singleTimer = setTimeout(() => {
+                    args = { model: that.model, currentTarget: event.target, PageX:event.pageX, PageY:event.pageY};
+                    that._trigger("onMouseLeave", args);
                     if (!BoldBIDashboard.isNullOrUndefined(bbdesigner$("#" + this.pluginName + "_Track_ToolTip_Template"))) {
                         bbdesigner$("#" + this.pluginName + "_Track_ToolTip_Template").css('display', 'none');
                     }
@@ -7938,7 +7942,11 @@ var BoldBIDashboardSparkline;
             if (this.singleTimer) {
                 clearTimeout(this.singleTimer);
             }
+            var that = this;
+            var args = {};
             this.singleTimer = setTimeout(() => {
+                    args = { model: that.model, currentTarget: event.target, PageX:event.pageX, PageY:event.pageY};
+                    that._trigger("onMouseLeave", args);
                     if (!BoldBIDashboard.isNullOrUndefined(bbdesigner$("#" + this.pluginName + "_Track_ToolTip_Template"))) {
                         bbdesigner$("#" + this.pluginName + "_Track_ToolTip_Template").css('display', 'none');
                     }

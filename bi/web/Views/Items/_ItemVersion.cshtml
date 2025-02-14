@@ -15,17 +15,17 @@
     @await Html.PartialAsync("~/Views/Shared/_LoaderIcon.cshtml")
 </head>
 <body>
-    <div id="version-window-container" class="col-xs-12 no-padding dialog" style="display:none">
+    <div id="version-window-container" class="col-12 no-padding dialog" style="display:none">
         <div class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog col-lg-12 popup-header no-padding" role="document">
                 <div class="modal-content col-lg-12" data-spy="scroll">
                     <div class="col-lg-12 modal-header">
                         <div class="col-lg-11 col-xs-11 col-sm-11 col-md-11 no-padding">
                             <span class="version-modal-title popup-title ellipsis col-xs-10" data-container="body">@T["Version History"]</span>
-                            <span class="modal-title popup-title schedule-popup-title ellipsis col-lg-10 col-xs-10 col-sm-10 col-md-10 no-padding" data-toggle="tooltip" data-placement="bottom" data-container="body" style="font-size: 13px; margin-left: 13px;"></span>
+                            <span class="modal-title popup-title schedule-popup-title ellipsis col-lg-10 col-xs-10 col-sm-10 col-md-10 no-padding" data-bs-toggle="version-tooltip" data-placement="bottom" data-container="body" style="font-size: 13px; margin-left: 13px;"></span>
                         </div>
                         <div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 no-padding">
-                            <a href="javascript:void(0);" data-toggle="tooltip" data-placement="left" data-container="body" title="@T["Close"]" class="popup-close pull-right"><span class="su su-close"></span></a>
+                            <a href="javascript:void(0);" data-bs-toggle="version-tooltip" data-placement="left" data-container="body" title="@T["Close"]" class="popup-close float-end"><span class="su su-close"></span></a>
                         </div>
                     </div>
                     <div class="modal-body col-lg-12">
@@ -42,15 +42,15 @@
                         <span style="display: none;">
                             <input id="current-folder" type="text" ng-model="CurrentFolderId" value="">
                         </span>
-                        <div class="total-move-container col-xs-12 version-container-padding">
-                            <div id="item-version-container" class="show col-xs-12 no-padding version-area" data-previous-parent-id="none" data-parent-id="home" data-type="self">
-                                <div class="col-xs-12 no-padding" style="display:block; padding-top:20px; float:left;">
+                        <div class="total-move-container col-12 version-container-padding">
+                            <div id="item-version-container" class="show col-12 no-padding version-area" data-previous-parent-id="none" data-parent-id="home" data-type="self">
+                                <div class="col-12 no-padding" style="display:block; padding-top:20px; float:left;">
                                     <div id="grid" class="grid">
                                     </div>
                                 </div>
                             </div>
-                            <div id="item-log-container" class="hidden col-xs-12 no-padding version-area " data-previous-parent-id="none" data-parent-id="home" data-type="self">
-                                <div class="col-xs-12 no-padding" style="display:block; padding-top:20px; float:left; overflow:auto;">
+                            <div id="item-log-container" class="hidden col-12 no-padding version-area " data-previous-parent-id="none" data-parent-id="home" data-type="self">
+                                <div class="col-12 no-padding" style="display:block; padding-top:20px; float:left; overflow:auto;">
                                     <div id="loggrid" class="grid">
                                     </div>
                                 </div>
@@ -58,26 +58,26 @@
                         </div>
                     </div>
                     <div class="col-lg-12 modal-footer">
-                        <div class="col-xs-12 no-padding margin-top">
-                            <input type="button" id="close-button" title="@T["Close"]" class="app-button app-secondary-button app-btn-secondary pull-right popup-close" value="@T["Close"]" tabindex="-1" />
+                        <div class="col-12 no-padding margin-top">
+                            <input type="button" id="close-button" title="@T["Close"]" class="app-button app-secondary-button app-btn-secondary float-end popup-close" value="@T["Close"]" tabindex="-1" />
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <script type="text/x-jsrender" id="version_comment">
-            <div class="grid-content" title="{{:Comment}}" data-toggle="tooltip">{{:Comment}}</div>
+            <div class="grid-content" title="{{:Comment}}" data-bs-toggle="version-tooltip">{{:Comment}}</div>
         </script>
         <script type="text/x-jsrender" id="user_name">
-            <div class="grid-content" title="{{:CreatedByName}}" data-toggle="tooltip">{{:CreatedByName}}</div>
+            <div class="grid-content" title="{{:CreatedByName}}" data-bs-toggle="version-tooltip">{{:CreatedByName}}</div>
         </script>
         <script type="text/x-jsrender" id="created_date">
-            <div class="grid-content" title="{{:CreatedDateString}}" data-toggle="tooltip">{{:CreatedDateString}}</div>
+            <div class="grid-content" title="{{:CreatedDateString}}" data-bs-toggle="version-tooltip">{{:CreatedDateString}}</div>
         </script>
         <script type="text/x-jsrender" id="Options">
             <div class="dropdown">
                 {{if ItemTypeId != "@((int)ItemType.Datasource)"}}
-                <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-toggle="dropdown">
+                <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-bs-toggle="dropdown">
                     <span class="su su-options"></span>
                 </span>
                 <ul class="dropdown-menu" role="menu">
@@ -119,7 +119,7 @@
                 </ul>
                {{else}}
                 {{if !IsCurrentVersion && CanWrite}}
-                <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-toggle="dropdown">
+                <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-bs-toggle="dropdown">
                     <span class="su su-options"></span>
                 </span>
                 <ul class="dropdown-menu" role="menu">
@@ -139,16 +139,16 @@
             </div>
         </script>
         <script type="text/x-jsrender" id="display_name">
-            <div class="grid-content" title="{{:DisplayName}}" data-toggle="tooltip">{{:DisplayName}}</div>
+            <div class="grid-content" title="{{:DisplayName}}" data-bs-toggle="version-log-tooltip">{{:DisplayName}}</div>
         </script>
         <script type="text/x-jsrender" id="action">
-            <div class="grid-content" title="{{:DisplayAction}}" data-toggle="tooltip">{{:DisplayAction}}</div>
+            <div class="grid-content" title="{{:DisplayAction}}" data-bs-toggle="version-log-tooltip">{{:DisplayAction}}</div>
         </script>
         <script type="text/x-jsrender" id="event">
-            <div class="grid-content" title="{{:DisplayEvent}}" data-toggle="tooltip">{{:DisplayEvent}}</div>
+            <div class="grid-content" title="{{:DisplayEvent}}" data-bs-toggle="version-log-tooltip">{{:DisplayEvent}}</div>
         </script>
         <script type="text/x-jsrender" id="updated_date">
-            <div class="grid-content" title="{{:UpdatedDateString}}" data-toggle="tooltip">{{:UpdatedDateString}}</div>
+            <div class="grid-content" title="{{:UpdatedDateString}}" data-bs-toggle="version-log-tooltip">{{:UpdatedDateString}}</div>
         </script>
         <script>
             $(document).ready(function () {
@@ -164,10 +164,24 @@
                     allowSelection: true,
                     enableRowHover: true,
                     rowDataBound: function () {
-                        $('[data-toggle="tooltip"]').tooltip();
+                        document.querySelectorAll('[data-bs-toggle="version-tooltip"]').forEach(function (element) {
+                            new bootstrap.Tooltip(element, {
+                                animation: true,
+                                container: document.querySelector('#item-version-container'),
+                                placement: "top",
+                                html: true
+                            });
+                        });
                     },
                     dataBound: function (args) {
-                        $('[data-toggle="tooltip"]').tooltip();
+                        document.querySelectorAll('[data-bs-toggle="version-tooltip"]').forEach(function (element) {
+                            new bootstrap.Tooltip(element, {
+                                animation: true,
+                                container: document.querySelector('#item-version-container'),
+                                placement: "top",
+                                html: true
+                            });
+                        });
                     },
                     columns: [
                         {
@@ -224,10 +238,24 @@
                     allowSelection: true,
                     enableRowHover: true,
                     rowDataBound: function () {
-                        $('[data-toggle="tooltip"]').tooltip();
+                        document.querySelectorAll('[data-bs-toggle="version-log-tooltip"]').forEach(function (element) {
+                            new bootstrap.Tooltip(element, {
+                                animation: true,
+                                container: document.querySelector('#item-log-container'),
+                                placement: "top",
+                                html: true
+                            });
+                        });
                     },
                     dataBound: function (args) {
-                        $('[data-toggle="tooltip"]').tooltip();
+                        document.querySelectorAll('[data-bs-toggle="version-log-tooltip"]').forEach(function (element) {
+                            new bootstrap.Tooltip(element, {
+                                animation: true,
+                                container: document.querySelector('#item-log-container'),
+                                placement: "top",
+                                html: true
+                            });
+                        });
                     },
                     columns: [
                         {

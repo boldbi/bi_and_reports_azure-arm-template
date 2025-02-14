@@ -74,10 +74,10 @@
             <a href="javascript:void(0);" title="@T["Close"]" class="popup-close" onclick="closePinWidgetPopup()"><span class="su su-close"></span></a>
             @if (isCurrentVersion)
             {
-                <div id="homepage-name"><div id="sub-title" data-toggle="tooltip" data-placement="bottom" data-original-title="">@T["Select an existing pinboard or add a new one."]</div></div>
-                <div id="widget-name-container" class="col-xs-12">
-                    @Html.Label("widget-label", T["Widget name"].Value, new { @class = "app-textbox-label widget-name-label col-xs-3" })
-                    <div id="widget-input" class="col-xs-4">
+                <div id="homepage-name"><div id="sub-title" data-bs-toggle="tooltip" data-placement="bottom" data-original-title="">@T["Select an existing pinboard or add a new one."]</div></div>
+                <div id="widget-name-container" class="col-12">
+                    @Html.Label("widget-label", T["Widget name"].Value, new { @class = "app-textbox-label widget-name-label col-3" })
+                    <div id="widget-input" class="col-4">
                         <input type="text" id="widget-name" name="widgetname" class="form-control" data-maxlength="255" autofocus />
                         <span class="validation-errors"></span>
                     </div>
@@ -90,8 +90,8 @@
                 @T["You are viewing an older version of the dashboard. Only widgets in the latest version of a dashboard can be added to the pinboard."]
                 <div id="new-version-link">@Html.Raw(string.Format(T["Click {0}here{1} to open the latest version."].Value,"<a href='"+dashboardUrl+symbol+versionLink+"' target='_blank' style='text-decoration:underline;'>","</a>"))</div>
             </div>
-            <div class="col-xs-12 dialog-footer rightAlign no-right-padding no-left-padding">
-                <div class="pull-right"></div>
+            <div class="col-12 dialog-footer rightAlign no-right-padding no-left-padding">
+                <div class="float-end"></div>
                 <div class="no-padding centerAlign validationArea" id="close">
                     <input title="" type="button" id="version-Alert-button" class="btn secondary-button app-btn-secondary PopupClose" value="@T["OK"]" onclick="onAlertDialogClose()" />
                 </div>
@@ -100,14 +100,14 @@
         else
         {
             <div id="pin-widget-container">
-                <div class="col-xs-3">
-                    @Html.Label("homepage-label", T["Pinboard"].Value, new { @class = "app-textbox-label homepage-name-label col-xs-3" })
+                <div class="col-3">
+                    @Html.Label("homepage-label", T["Pinboard"].Value, new { @class = "app-textbox-label homepage-name-label col-3" })
                 </div>
-                <div class="col-xs-4">
+                <div class="col-4">
                     <input type="radio" class="css-radio" id="existing-homepage" name="pin-widget-option" value="pin-exist" @(isHomepageExists ? "checked" : string.Empty) />
                     <label for="existing-homepage">@T["Existing"]</label>
                 </div>
-                <div class="col-xs-4">
+                <div class="col-4">
                     <input type="radio" class="css-radio" id="new-homepage" name="pin-widget-option" value="pin-new" @(!isHomepageExists ? "checked" : string.Empty) />
                     <label for="new-homepage">@T["New"]</label>
                 </div>
@@ -128,16 +128,16 @@
                     <input type="text" id="new-homepage-name" name="newhomepagename" class="form-control" data-maxlength="255" placeholder="@T["New pinboard name"]" autofocus />
                     <span class="validation-errors"></span>
                 </div>
-                <div class="col-xs-12" id="filter-container" style="@canShowFilter">
-                    @Html.Label("keepfilter", T["Keep filters"].Value, new { @class = "app-textbox-label col-xs-4", @id = "keep-filter-label" })
-                    <div class="col-xs-4 keepfilter switch-align">
+                <div class="col-12" id="filter-container" style="@canShowFilter">
+                    @Html.Label("keepfilter", T["Keep filters"].Value, new { @class = "app-textbox-label col-4", @id = "keep-filter-label" })
+                    <div class="col-4 keepfilter switch-align">
                         <span class="material-switch text-left">
                             <input type="checkbox" id="keepfilter" name="keep-filter" />
                             <label for="keepfilter" class="label-primary"></label>
                         </span>
                     </div>
                     <div id="info-tag">
-                        <span id="filter-info" class="su su-info info-popup" data-toggle="popover" data-placement="top" data-content='@T["When “Keep filters” is switched on, the widget will be added to the pinboard along with the applied filters."]'></span>
+                        <span id="filter-info" class="su su-info info-popup" data-bs-toggle="popover" data-placement="top" data-content='@T["When “Keep filters” is switched on, the widget will be added to the pinboard along with the applied filters."]'></span>
                     </div>
                 </div>
                 <div id="pin-widget-button">

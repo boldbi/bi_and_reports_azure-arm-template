@@ -41,13 +41,13 @@
 
 @section MainSection{
     @await Html.PartialAsync("_AdminMenu")
-<div id="user-settings-header" class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+<div id="user-settings-header" class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["Accounts Settings"] }, { "PageDescription", @pageDescription } })
-    <div class="col-xs-12 bi-page-header top-nav-btn-secton">
-        <div class="col-xs-12 no-padding">
+    <div class="col-12 bi-page-header top-nav-btn-secton">
+        <div class="col-12 no-padding">
             <div class="col-xs-6 no-padding button-section">
-                    <a href="@Url.Action("Index","Home")" class="secondary-button app-btn-secondary pull-right" id="UpdateSystemSettingsCancel-bottom" title="">@T["Cancel"]</a>
-                    <button type="button" title="" id="UpdateSystemSettings-bottom" name="UpdateSystemSettings" class="primary-button app-btn-primary pull-right ums-inherit-accounts-setting-btn">
+                    <a href="@Url.Action("Index","Home")" class="secondary-button app-btn-secondary float-end" id="UpdateSystemSettingsCancel-bottom" title="">@T["Cancel"]</a>
+                    <button type="button" title="" id="UpdateSystemSettings-bottom" name="UpdateSystemSettings" class="primary-button app-btn-primary float-end ums-inherit-accounts-setting-btn">
                     <span>@T["Save"]</span>
                 </button>
             </div>
@@ -55,18 +55,18 @@
     </div>
 </div>
 <div id="user-settings-container" class="bi-page-container @(canShowAdminMenu ? string.Empty : "admin-panel-full-width")">
-    <div class="bi-page-content col-xs-12 no-padding">
+    <div class="bi-page-content col-12 no-padding">
             @if (isUMSAccountsSettingsInherited)
             {
-                <div class="col-xs-12 no-margin inherit-description">
+                <div class="col-12 no-margin inherit-description">
                      <span class="su su-info"></span>
                     <label>@T["Accounts settings have been inherited from the UMS settings. Please contact the UMS admin to disable the inheritance."]</label>
                 </div>
             }
-        <div class="col-xs-12 bi-page-body">
-            <form id="acc-activate-setting" name="accActivationSettingsForm" class="col-xs-12 no-padding" method="post" enctype="multipart/form-data" autocomplete="off">
-                <div class="account-activation-container col-xs-12 no-padding">
-                    <div class="col-xs-12 no-padding">
+        <div class="col-12 bi-page-body">
+            <form id="acc-activate-setting" name="accActivationSettingsForm" class="col-12 no-padding" method="post" enctype="multipart/form-data" autocomplete="off">
+                <div class="account-activation-container col-12 no-padding">
+                    <div class="col-12 no-padding">
                         <label class="account-field-label activation">@T["Account Activation Mode"]</label>
                     </div>
                     <div class="activation-mode" id="automatic">
@@ -84,8 +84,8 @@
                         </div>
                     }
                 </div>
-                <div class="col-xs-12 no-padding email-container">
-                    <div class="col-xs-12 no-padding">
+                <div class="col-12 no-padding email-container">
+                    <div class="col-12 no-padding">
                         <label class="account-field-label is-email-required">@T["User Email"]</label>
                         <div class="info-message">@T["This setting controls whether an email address is required for creating new users or not."]</div>
                     </div>
@@ -97,10 +97,29 @@
                         <input type="radio" id="email-required" name="email-required" class="css-radio" value="true" @(((int)ViewBag.ActivationType == (int)ActivationType.EmailActivation || globalAppSettings.SystemSettings.IsEmailRequired) ? "checked" : string.Empty) />
                         <label for="email-required" class="radio-btn-label notransition" id="label-email-required">@T["Required"]</label>
                     </div>
-                    <div class="col-xs-12 no-padding">
+                    <div class="col-12 no-padding">
                         <div id="email-required-warning" class="bg-warning email-settings-validation validation-errors hide">
                             @T["When the account activation preference is email, an email address is mandatory for activating the account."]
                         </div>
+                    </div>
+                </div>
+                <div class="user-default-group col-xs-12 no-padding">
+                    <div class="col-xs-12 no-padding">
+                        <label class="no-margin account-field-label is-email-required">@T["Default Group for New Users"]</label>
+                        <div class="info-message">@T["Assigns newly created users to this default group."]</div>
+                    </div>
+                    <div class="filename-dropdown default-group-dropdown no-padding float-start">
+                        <select id="default-group" data-live-search="true" title="" name="defaultGroup" class="selectpicker file-template" style="width:183px;" data-size="7">
+                            @if (ViewBag.GroupList != null)
+                            {
+                                <option value="0">@T["None"]</option>
+                                var selectedGroupId = ViewBag.DefaultGroup != "" ? Convert.ToInt32(ViewBag.DefaultGroup) : 0;
+                                foreach (var group in ViewBag.GroupList)
+                                {
+                                    <option value="@group.GroupId" selected="@(group.GroupId == selectedGroupId)">@group.GroupName</option>
+                                }
+                            }
+                        </select>
                     </div>
                 </div>
             </form>

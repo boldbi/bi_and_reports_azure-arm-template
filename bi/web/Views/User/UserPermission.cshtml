@@ -18,11 +18,11 @@
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/user-permissions.min.js"></script>
     </environment>
     @await Html.PartialAsync("_ProfileMenu")
-<div class="col-xs-12 no-padding no-margin width-alignment top-nav-header-without-btn">
+<div class="col-12 no-padding no-margin width-alignment top-nav-header-without-btn">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["My Permissions"] }, { "PageDescription", @pageDescription } })
 </div>
-<div id="user-permissions-container" class="bi-page-container col-xs-12 bg-grid">
-    <div class="bi-page-content col-xs-12 no-padding">
+<div id="user-permissions-container" class="bi-page-container col-12 bg-grid">
+    <div class="bi-page-content col-12 no-padding">
         <div class="bi-page-body col-md-12">
             @(!new DeviceDetection(Context).IsMobile ? await Html.PartialAsync("../User/_UserPermissionGrid") : await Html.PartialAsync("../User/_UserPermissionGridForMobile"))
         </div>

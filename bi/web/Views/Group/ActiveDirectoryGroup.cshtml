@@ -32,7 +32,7 @@
         </script>
     }
     <script type="text/x-jsrender" id="group-profile-template">
-        <a class="item-name" title="{{:~renderDoubleQuotes(GroupName)}}" data-toggle="tooltip" href="@Url.Action("viewgroup", "group")/{{:GroupId}}" data-groupid="{{:GroupId}}">{{:GroupName}}</a>
+        <a class="item-name" title="{{:~renderDoubleQuotes(GroupName)}}" data-bs-toggle="tooltip" href="@Url.Action("viewgroup", "group")/{{:GroupId}}" data-groupid="{{:GroupId}}">{{:GroupName}}</a>
     </script>
     <script type="text/x-jsrender" id="item-name-header">
         <div class="item-name">@T["Name"]</div>
@@ -43,7 +43,7 @@
         <label for="row-check{{:GroupId}}"> </label>
     </script>
     <script type="text/x-jsrender" id="group-description-template">
-        <div class="grid-content" title="{{:~renderDoubleQuotes(GroupDescription)}}" data-toggle="tooltip">
+        <div class="grid-content" title="{{:~renderDoubleQuotes(GroupDescription)}}" data-bs-toggle="tooltip">
             {{:GroupDescription}}
         </div>
     </script>
@@ -53,7 +53,7 @@
     </script>
     <script type="text/x-jsrender" id="group-detail-validation">
         {{if IsDuplicated}}
-        <div class="su su-login-error group-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></div>
+        <div class="su su-login-error group-import-validation" title="{{:DisplayMessage}}" data-html="true" data-bs-toggle="tooltip" data-placement="left"></div>
         {{/if}}
     </script>
     <script type="text/javascript">
@@ -85,7 +85,7 @@
                 locale: "en-US",
                 selectionType: ej.Grid.SelectionType.Multiple,
                 dataBound: function () {
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                     $("#checkbox-header").change(headCheckboxOnChange);
                     this.model.indexes = {}; /* Additional property*/
                 },
@@ -193,37 +193,37 @@
 }
 @section MainSection{
     @await Html.PartialAsync("../Administration/_AdminMenu")
-<div class="col-xs-12 no-padding no-margin width-alignment">
-    <div class="col-xs-12 no-padding">
+<div class="col-12 no-padding no-margin width-alignment">
+    <div class="col-12 no-padding">
             @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "IsGroupSyncPage", "true" } })
     </div>
-    <div class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
-        <div class="col-xs-12 no-padding">
+    <div class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton import-users">
+        <div class="col-12 no-padding">
             <div id="sync-button" class="col-xs-6 no-padding button-section">
-                <input type="button" name="SyncGroups" value="@T["Synchronize"]" title="@String.Format(T["Synchronize groups with {0}"].Value, "Active Directory")" data-toggle="tooltip" data-placement="left" id="syncronize-group" class="primary-button app-btn-primary pull-right" />
+                <input type="button" name="SyncGroups" value="@T["Synchronize"]" title="@String.Format(T["Synchronize groups with {0}"].Value, "Active Directory")" data-bs-toggle="tooltip" data-placement="left" id="syncronize-group" class="primary-button app-btn-primary float-end" />
             </div>
-            <div id="search-area" class="pull-left col-xs-4">
+            <div id="search-area" class="float-start col-4">
                 @if (ViewBag.AdSync > 0 || ViewBag.AzureAdSync > 0)
                 {
-                    <input type="text" id="search-ad-groups" class="pull-left no-margin" placeholder="@String.Format(T["Search {0} groups"].Value, ViewBag.AdSync > 0 ? "AD" : "Azure AD")" autocomplete="off" />
+                    <input type="text" id="search-ad-groups" class="float-start no-margin" placeholder="@String.Format(T["Search {0} groups"].Value, ViewBag.AdSync > 0 ? "AD" : "Azure AD")" autocomplete="off" />
                 }
-                <span class="su close-icon su-inner-close pull-left no-margin" id="clear-search" title="@T["Clear search"]"></span>
-                <span class="su su-search search-icon pull-left no-margin search-group" title="@T["Search"]"></span>
+                <span class="su close-icon su-inner-close float-end no-margin" id="clear-search" title="@T["Clear search"]"></span>
+                <span class="su su-search search-icon float-end no-margin search-group" title="@T["Search"]"></span>
             </div>
         </div>
     </div>
 </div>
-<div class="col-xs-12 sync-container bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid">
-    <div class="bi-page-content col-xs-12 no-padding">
-        <div id="grid-container" class="bi-page-body col-xs-12">
-            <div id="Grid" class="col-xs-12 no-padding" data-gridName="Group">
+<div class="col-12 sync-container bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid">
+    <div class="bi-page-content col-12 no-padding">
+        <div id="grid-container" class="bi-page-body col-12">
+            <div id="Grid" class="col-12 no-padding" data-gridName="Group">
             </div>
         </div>
         <div id="new-group-area" class="no-padding">
-            <iframe id="new-group-iframe" class="pull-left"></iframe>
+            <iframe id="new-group-iframe" class="float-start"></iframe>
         </div>
         <div id="delete-group-area" class="no-padding">
-            <iframe id="delete-group-iframe" class="pull-left"></iframe>
+            <iframe id="delete-group-iframe" class="float-start"></iframe>
         </div>
     </div>
     @await Html.PartialAsync("../Shared/_Footer", new ViewDataDictionary(ViewData) { { "appsettings", globalAppSettings } })

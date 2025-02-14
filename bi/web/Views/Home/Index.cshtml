@@ -66,7 +66,7 @@
                     </div>
                 </div>
                 <div class="col-md-1 col-lg-1 no-padding">
-                    <span class="su su-close donot-show-concierge" data-toggle="tooltip" title="@T["Close"]"></span>
+                    <span class="su su-close donot-show-concierge" data-bs-toggle="tooltip" title="@T["Close"]"></span>
                 </div>
             </div>
         }
@@ -113,10 +113,10 @@
             <div class="quick-actions-div col-md-12 col-lg-12 no-padding">
                 <div class="quick-actions-content">
                     <span class="header">@T["Quick Actions"]</span>
-                    <div class="dropdown pull-right col-md-8 col-lg-8 no-padding quick-search-area">
+                    <div class="dropdown float-end col-md-8 col-lg-8 no-padding quick-search-area">
                         @if (quickActions.Count > 0)
                         {
-                            <input class="secondary-button app-btn-secondary dropdown-toggle quick-actions" type="text" data-toggle="dropdown" placeholder="@T["Look for more quick options.."]">
+                            <input class="secondary-button app-btn-secondary dropdown-toggle quick-actions" type="text" data-bs-toggle="dropdown" placeholder="@T["Look for more quick options.."]">
                             <span class="su su-vertical-expand"></span>
                             <ul class="dropdown-menu" id="quick-action-ul">
                                 @for (int i = 0; i < quickActions.Count; i++)
@@ -160,7 +160,7 @@
 
             <div class="col-md-12 col-lg-12 no-padding quick-actions-list">
 
-                <div class="col-md-6 col-lg-6 no-padding pull-left">
+                <div class="col-md-6 col-lg-6 no-padding float-start">
                     @if (permission[ItemType.Schedule])
                     {
                         <div class="col-md-12 col-lg-12 no-padding options notification-from-dashboard">
@@ -214,7 +214,7 @@
                     }
                 </div>
 
-                <div class="col-md-6 col-lg-6 no-padding pull-right">
+                <div class="col-md-6 col-lg-6 no-padding float-end">
                     <div class="col-md-12 col-lg-12 no-padding options dashboard-help">
                         <h5>@T["Need help with building a Dashboard?"]</h5>
 
@@ -270,33 +270,33 @@
                         <ul class="no-padding datasource-list-ul">
                             <li class="datasource-item separator-right">
                                 <span class="datasource no-margin">
-                                    <img class="datasource-excel" id="datasource-excel" src="~/content/Styles/LESS/images/excel.png" title="Excel" data-toggle="tooltip" data-container="body" data-placement="top" />
+                                    <img class="datasource-excel" id="datasource-excel" src="~/content/Styles/LESS/images/excel.png" title="Excel" data-bs-toggle="tooltip" data-container="body" data-placement="top" />
                                 </span>
                             </li>
                             <li class="datasource-item separator"></li>
                             <li class="datasource-item separator-left">
                                 <span class="datasource no-margin">
-                                    <img class="datasource-mssql" id="datasource-mssql" src="~/content/Styles/LESS/images/sql.png" title="Microsoft SQL" data-toggle="tooltip" data-container="body" data-placement="top" />
+                                    <img class="datasource-mssql" id="datasource-mssql" src="~/content/Styles/LESS/images/sql.png" title="Microsoft SQL" data-bs-toggle="tooltip" data-container="body" data-placement="top" />
                                 </span>
                             </li>
                             <li class="datasource-item">
                                 <span class="datasource">
-                                    <img class="datasource-postgre" id="datasource-postgre" src="~/content/Styles/LESS/images/postgresql.png" title="PostgreSQL" data-toggle="tooltip" data-container="body" data-placement="top" />
+                                    <img class="datasource-postgre" id="datasource-postgre" src="~/content/Styles/LESS/images/postgresql.png" title="PostgreSQL" data-bs-toggle="tooltip" data-container="body" data-placement="top" />
                                 </span>
                             </li>
-                            <li class="datasource-item" title="Amazon Redshift" data-toggle="tooltip" data-container="body" data-placement="top">
+                            <li class="datasource-item" title="Amazon Redshift" data-bs-toggle="tooltip" data-container="body" data-placement="top">
                                 <span class="datasource">
-                                    <img class="datasource-redshift" id="datasource-redshift" src="~/content/Styles/LESS/images/amazonredshift.png" title="Amazon Redshift" data-toggle="tooltip" data-container="body" data-placement="top" />
-                                </span>
-                            </li>
-                            <li class="datasource-item">
-                                <span class="datasource">
-                                    <img class="datasource-google-analytics" id="datasource-google-analytics" src="~/content/Styles/LESS/images/google_analytics.png" title="Google Analytics" data-toggle="tooltip" data-container="body" data-placement="top" />
+                                    <img class="datasource-redshift" id="datasource-redshift" src="~/content/Styles/LESS/images/amazonredshift.png" title="Amazon Redshift" data-bs-toggle="tooltip" data-container="body" data-placement="top" />
                                 </span>
                             </li>
                             <li class="datasource-item">
                                 <span class="datasource">
-                                    <img class="datasource-jira" id="datasource-jira" src="~/content/Styles/LESS/images/jira.png" title="Jira" data-toggle="tooltip" data-container="body" data-placement="top" />
+                                    <img class="datasource-google-analytics" id="datasource-google-analytics" src="~/content/Styles/LESS/images/google_analytics.png" title="Google Analytics" data-bs-toggle="tooltip" data-container="body" data-placement="top" />
+                                </span>
+                            </li>
+                            <li class="datasource-item">
+                                <span class="datasource">
+                                    <img class="datasource-jira" id="datasource-jira" src="~/content/Styles/LESS/images/jira.png" title="Jira" data-bs-toggle="tooltip" data-container="body" data-placement="top" />
                                 </span>
                             </li>
                             <li class="datasource-item">
@@ -322,9 +322,9 @@
                             @foreach (var item in itemList)
                             {
                                 <li class="dashboard-item-link">
-                                    <a href="@viewDashboardUrl/@item.Id?showmydashboards=1" class="item-name col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <a href="@viewDashboardUrl/@item.Id?showmydashboards=1" class="item-name col-lg-12 col-md-12 col-sm-12 col-12">
                                         @item.Name
-                                        <span class="owner-name col-lg-12 col-md-12 col-sm-12 col-xs-12 no-padding">@item.CreatedByDisplayName</span>
+                                        <span class="owner-name col-lg-12 col-md-12 col-sm-12 col-12 no-padding">@item.CreatedByDisplayName</span>
                                     </a>
                                 </li>
                             }

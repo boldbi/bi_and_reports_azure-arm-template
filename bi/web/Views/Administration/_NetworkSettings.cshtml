@@ -14,14 +14,14 @@
 
 <script type="text/x-jsrender" id="application-edit">
     <div class="item-header">
-        <a href="#" class="tenant-action grid-content"  data-rule-name="{{:RuleName}}" data-ipaddress="{{:IPAddress}}" data-toggle="tooltip" data-ip-type="{{:IPAddressType}}" data-action="edit">
+        <a href="#" class="tenant-action grid-content"  data-rule-name="{{:RuleName}}" data-ipaddress="{{:IPAddress}}" data-bs-toggle="tooltip" data-ip-type="{{:IPAddressType}}" data-action="edit">
             <i class="su su-edit"></i>
         </a>
     </div>
 </script>
 <script type="text/x-jsrender" id="application-delete">
     <div class="item-header">
-        <a href="#" class="tenant-action grid-content"  data-rule-name="{{:RuleName}}" data-ipaddress="{{:IPAddress}}" data-toggle="tooltip" data-ip-type="{{:IPAddressType}}" data-action="delete">
+        <a href="#" class="tenant-action grid-content"  data-rule-name="{{:RuleName}}" data-ipaddress="{{:IPAddress}}" data-bs-toggle="tooltip" data-ip-type="{{:IPAddressType}}" data-action="delete">
             <i class="su su-delete"></i>
         </a>
     </div>
@@ -41,10 +41,10 @@
             pageSettings: { pageSize: 10 },
             enableHover: true,
             rowDataBound: function () {
-                $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
             },
             dataBound: function () {
-                $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
             },
             columns: [
                 { field: 'RuleName', headerText: '@T["Name"]', width: 90, allowSorting: true, allowFiltering: false },
@@ -57,9 +57,9 @@
     });
 </script>
 
-<div id="network-settings-body" class="col-xs-12 no-padding">
-    <div class="col-xs-12 no-padding field-container-dashboard">
-        <div class="network-authentication col-xs-12 no-padding">
+<div id="network-settings-body" class="col-12 no-padding">
+    <div class="col-12 no-padding field-container-dashboard">
+        <div class="network-authentication col-12 no-padding">
             <div class="material-switch rule-info inline-align">
                 <div class="app-textbox-label enable-config inline-align activation">
                     @T["Enable IP Whitelisting"]
@@ -82,11 +82,11 @@
 
 
             <div class="whitelisting-info">
-                <div class="ipaddress-info pull-left">
+                <div class="ipaddress-info float-start">
                     <span>@string.Format(T["Please add your current IP address {0} to the whitelisting. Once added all  required IP address please save this changes"].Value,currentUserIP)</span>
                 </div>
-                <div id="create-rule" class="pull-right">
-                    <button class="dropdown-toggle primary-button app-btn-primary pull-right" data-toggle="tooltip" id="add-rule-btn" data-placement="top" title="@T["Add new Rule"]">
+                <div id="create-rule" class="float-end">
+                    <button class="dropdown-toggle primary-button app-btn-primary float-end" data-bs-toggle="tooltip" id="add-rule-btn" data-placement="top" title="@T["Add new Rule"]">
                         <span>@T["Add IP Address"]</span>
                     </button>
                 </div>
@@ -95,7 +95,7 @@
     </div>
 </div>
 @await Html.PartialAsync("_AddRulesDialog")
-<div class="col-xs-12 no-padding dialog-override">
+<div class="col-12 no-padding dialog-override">
     <div id="rulesgrid">
     </div>
 </div>

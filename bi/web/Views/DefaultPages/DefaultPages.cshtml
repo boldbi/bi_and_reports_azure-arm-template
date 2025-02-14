@@ -23,7 +23,7 @@
 </script>
 <link href="https://fonts.googleapis.com/css?family=Bitter:400,700" rel="stylesheet">
 @await Html.PartialAsync("../Shared/_TopHeaderSection")
-<div id ="defafult-pages-container" class="col-xs-12 defafult-pages-container no-padding">
+<div id ="defafult-pages-container" class="col-12 defafult-pages-container no-padding">
     <div class="default-pages">
         <img class="default-pages-dashboard-image" src="@(itemType == ItemType.Dashboard ? @themeBasedImageHelper.DashboardImage() : itemType == ItemType.Schedule ? @themeBasedImageHelper.ScheduleImage() : itemType == ItemType.Datasource ? @themeBasedImageHelper.DatasourceImage() : @themeBasedImageHelper.SlideshowImage())">
         <h1 class="default-pages-header">@(itemType == ItemType.Dashboard ? @T["Dashboards"] : itemType == ItemType.Schedule ? @T["Schedules"] : itemType == ItemType.Datasource ? @T["Data Sources"] : @T["Slideshow"])</h1>

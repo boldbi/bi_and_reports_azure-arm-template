@@ -31,64 +31,64 @@
     </script>
 
     @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @pageHeader }, { "PageDescription", @pageDescription } })
-    <div class="bi-page-header col-xs-12 top-nav-btn-secton top-nav-search-secton">
+    <div class="bi-page-header col-12 top-nav-btn-secton top-nav-search-secton">
         @if (!canHidePublishTab)
         {
-            <div id="publish-items-search-container" class="col-xs-12 no-padding no-margin">
-                <div id="search-area" class="col-xs-4 pull-left">
-                    <input type="text" class="pull-left" id="search-published-items" placeholder="@T["Search resources"]" />
-                    <span class="su su-inner-close close-icon pull-left" id="clear-search" title="@T["Clear search"]"></span>
-                    <span class="su su-search search-user pull-left" title="@T["Search"]"></span>
+            <div id="publish-items-search-container" class="col-12 no-padding no-margin">
+                <div id="search-area" class="float-start col-4">
+                    <input type="text" class="float-start" id="search-published-items" placeholder="@T["Search resources"]" />
+                    <span class="su su-inner-close close-icon float-start" id="clear-search" title="@T["Clear search"]"></span>
+                    <span class="su su-search search-user float-start" title="@T["Search"]"></span>
                 </div>
             </div>
         }
-        <div id="download-items-search-container" class="col-xs-12 no-padding no-margin">
-            <div id="search-area" class="col-xs-4 pull-left">
-                <input type="text" class="pull-left" id="search-downloaded-items" placeholder="@T["Search resources"]" />
-                <span class="su su-inner-close close-icon pull-left" id="clear-downloadfiles-search" title="@T["Clear search"]"></span>
-                <span class="su su-search search-user pull-left" title="@T["Search"]"></span>
+        <div id="download-items-search-container" class="col-12 no-padding no-margin">
+            <div id="search-area" class="float-start col-4">
+                <input type="text" class="float-start" id="search-downloaded-items" placeholder="@T["Search resources"]" />
+                <span class="su su-inner-close close-icon float-start" id="clear-downloadfiles-search" title="@T["Clear search"]"></span>
+                <span class="su su-search search-user float-start" title="@T["Search"]"></span>
             </div>
         </div>
     </div>
 
     @if (!canHidePublishTab)
     {
-        <div class="col-xs-12 no-padding bi-page-nav-bar">
+        <div class="col-12 no-padding bi-page-nav-bar">
             <ul id="migration-tab-nav" class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="@isPublishedItemsTab">
-                    <a href="#online-publish" id="online-publish-tab" aria-controls="online-publish-tab" role="tab" data-toggle="tab">@T["Published Online "]</a>
+                    <a href="#online-publish" id="online-publish-tab" aria-controls="online-publish-tab" role="tab" data-bs-toggle="tab">@T["Published Online "]</a>
                 </li>
                 <li role="presentation" class="@isDownloadItemsTab">
-                    <a href="#offline-files" id="offline-files-tab" aria-controls="offline-files-tab" role="tab" data-toggle="tab">@T["Offline Files"]</a>
+                    <a href="#offline-files" id="offline-files-tab" aria-controls="offline-files-tab" role="tab" data-bs-toggle="tab">@T["Offline Files"]</a>
                 </li>
             </ul>
         </div>
     }
 
-    <div id="base-container" class="col-xs-12 bi-page-container grid-page-container bi-page-container-with-tab">
+    <div id="base-container" class="col-12 bi-page-container grid-page-container bi-page-container-with-tab">
         <div class="bi-page-content col-md-12 no-padding">
-            <div class="tab-content col-xs-12 no-padding" id="published-resources">
+            <div class="tab-content col-12 no-padding" id="published-resources">
                 @if (!canHidePublishTab)
                 {
-                    <div role="tabpanel" id="online-publish" class="tab-pane list col-xs-12 bi-page-body @isPublishedItemsTab">
+                    <div role="tabpanel" id="online-publish" class="tab-pane list col-12 bi-page-body @isPublishedItemsTab">
                     @if (ViewBag.IsShowSyncIgnoredWarning)
                     {
                         <div class="col-xs-9 site-deleted-warning">
                             @T["The synchronization process will disregard deleted sites during the bulk sync process. To synchronize the latest changes, please remove dashboards/data sources of the deleted sites and publish it again."]
                         </div>
                     }
-                    <div class="col-xs-12 no-padding">
+                    <div class="col-12 no-padding">
                         <div class="control-section">
                             <div class="content-wrapper">
                                 <script type="text/x-jsrender" id="options">
                                     <div class="dropdown context-menu">
-                                        <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-toggle="dropdown">
+                                        <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-bs-toggle="dropdown">
                                             <span class="su su-options"> </span>
                                         </span>
                                         <ul class="dropdown-menu" role="menu">
                                             {{if (IsPublishedSiteActive != null && !IsPublishedSiteActive) || (!IsPublishedUserActive && IsPublishedUserDeleted)}}
                                             <li class="menu-group">
-                                                <a href="javascript:void(0);" title="@T["Deleted"]" data-toggle="tooltip">
+                                                <a href="javascript:void(0);" title="@T["Deleted"]" data-bs-toggle="tooltip">
                                                     <i class="su su-synchronize disabled-icon-color"></i>
                                                     <span class="menu-text disabled-icon-color">@T["Synchronize"]</span>
                                                 </a>
@@ -139,7 +139,7 @@
                                     </div>
                                 </script>
                                 <script type="text/x-jsrender" id="dashboard-template">
-                                    <div class="item-dashboard grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="{{:Name}}" data-bs-toggle="tooltip" data-placement="top">
                                         {{if ItemType == "Dashboard"}}
                                         <span><a class="grid-content" href="@Url.Action("Dashboards", "Dashboards")/{{:ItemId}}/{{:CategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a></span>
                                         {{else}}
@@ -148,7 +148,7 @@
                                     </div>
                                 </script>
                                 <script type="text/x-jsrender" id="site-name-template">
-                                    <div class="item-dashboard grid-content" title="{{:SiteURL}}" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="{{:SiteURL}}" data-bs-toggle="tooltip" data-placement="top">
                                       {{if (IsPublishedSiteActive != null && !IsPublishedSiteActive) || (!IsPublishedUserActive && IsPublishedUserDeleted)}}
                                         <span class="site-deleted">{{:TenantName}}</span>
                                         <span class="badge badge-secondary1 badge-secondary2">@T["Deleted"]</span>
@@ -159,30 +159,30 @@
                                 </script>
                                 <script type="text/x-jsrender" id="status-template">
                                     {{if PublishJobHistory[0].Status == "Started"}}
-                                    <div class="item-dashboard grid-content" title="@T["Started"]" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="@T["Started"]" data-bs-toggle="tooltip" data-placement="top">
                                         <span>@T["Started"]</span>
                                     </div>
                                     {{else PublishJobHistory[0].Status == "InProgress"}}
-                                    <div class="item-dashboard grid-content" title="@T["In Progress"]" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="@T["In Progress"]" data-bs-toggle="tooltip" data-placement="top">
                                         <span>@T["In Progress"]</span>
                                     </div>
                                     {{else PublishJobHistory[0].Status == "Success"}}
-                                    <div class="item-dashboard grid-content" title="@T["Success"]" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="@T["Success"]" data-bs-toggle="tooltip" data-placement="top">
                                         <span>@T["Success"]</span>
                                     </div>
                                     {{else}}
-                                    <div class="item-dashboard grid-content" title="@T["Failed"]" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="@T["Failed"]" data-bs-toggle="tooltip" data-placement="top">
                                         <span>@T["Failed"]</span>
                                     </div>
                                     {{/if}}
                                 </script>
                                 <script type="text/x-jsrender" id="itemType-template">
                                     {{if ItemType == "Dashboard"}}
-                                    <div class="item-dashboard grid-content" title="@T["Dashboard"]" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="@T["Dashboard"]" data-bs-toggle="tooltip" data-placement="top">
                                         <span>@T["Dashboard"]</span>
                                     </div>
                                     {{else}}
-                                    <div class="item-dashboard grid-content" title="@T["Datasource"]" data-toggle="tooltip" data-placement="top">
+                                    <div class="item-dashboard grid-content" title="@T["Datasource"]" data-bs-toggle="tooltip" data-placement="top">
                                         <span>@T["Data source"]</span>
                                     </div>
                                     {{/if}}
@@ -196,25 +196,25 @@
                                 @await Html.PartialAsync("_PublishHistory")
                                 @await Html.PartialAsync("_PublishInfo")
                                 <div id="publish-remove-container" class="display-none">
-                                    <div class="col-xs-12 modal-header">
+                                    <div class="col-12 modal-header">
                                         <div class="col-lg-11 col-xs-11 col-sm-11 col-md-11 no-padding">
                                             <span class="header-icon col-xs-1 no-padding"><i class="su su-delete"></i></span>
-                                            <span class="modal-title popup-title schedule-popup-title ellipsis col-lg-11 col-xs-11 col-sm-11 col-md-11 no-padding" data-toggle="tooltip" data-placement="bottom" data-container="body"><b>@T["Remove Published Dashboard"]</b></span>
+                                            <span class="modal-title popup-title schedule-popup-title ellipsis col-lg-11 col-xs-11 col-sm-11 col-md-11 no-padding" data-bs-toggle="tooltip" data-placement="bottom" data-container="body"><b>@T["Remove Published Dashboard"]</b></span>
                                         </div>
                                         <div class="col-lg-1 col-xs-1 col-sm-1 col-md-1 no-padding">
-                                            <a href="javascript:void(0);" title="@T["Close"]" class="popup-close pull-right" onclick="hideRemoveConfirmation()"><span class="su su-close"></span></a>
+                                            <a href="javascript:void(0);" title="@T["Close"]" class="popup-close float-end" onclick="hideRemoveConfirmation()"><span class="su su-close"></span></a>
                                         </div>
                                     </div>
-                                    <div class="col-xs-12 modal-body">
+                                    <div class="col-12 modal-body">
                                         <p>
                                             @T["Are you sure you want to remove the published dashboard?"]<br /><br />
                                             <b>@T["Note:"]</b>
                                             @T["Removing the published dashboard does not remove the dashboard in the published site."]
                                         </p>
                                     </div>
-                                    <div class="col-xs-12 modal-footer">
-                                        <input type="button" class="app-button app-secondary-button app-btn-secondary pull-right popup-close" value="@T["No"]" onclick="hideRemoveConfirmation()" tabindex="-1" />
-                                        <input type="button" class="app-button app-critical-action-button app-btn-danger pull-right popup-close" value="@T["Yes"]" onclick="removePublishedItem()" tabindex="-1" />
+                                    <div class="col-12 modal-footer">
+                                        <input type="button" class="app-button app-secondary-button app-btn-secondary float-end popup-close" value="@T["No"]" onclick="hideRemoveConfirmation()" tabindex="-1" />
+                                        <input type="button" class="app-button app-critical-action-button app-btn-danger float-end popup-close" value="@T["Yes"]" onclick="removePublishedItem()" tabindex="-1" />
                                     </div>
                                 </div>
                             </div>
@@ -222,7 +222,7 @@
                     </div>
                 </div>
                 }
-                <div role="tabpanel" class="tab-pane list col-xs-12 bi-page-body @isDownloadItemsTab" id="offline-files">
+                <div role="tabpanel" class="tab-pane list col-12 bi-page-body @isDownloadItemsTab" id="offline-files">
                     @await Html.PartialAsync("_DownloadedItems")
                 </div>
 

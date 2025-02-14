@@ -5,6 +5,7 @@
     var url = new Uri(Context.Request.GetDisplayUrl());
     var requestUrl = url.AbsolutePath.ToString().ToLower();
     var dashboardsPageUrl = Url.Action("Dashboards", "Dashboards");
+    var isSingleDataBaseMode = ServerAppConfig.TenantConfigurationMode == ConfigurationMode.SingleDatabaseForAllTenants;
 }
 <!DOCTYPE html>
 <head>
@@ -15,6 +16,7 @@
     var publishDashboardUrl = { "dashboard": "@Url.Action("PublishDashboardItem", "Publish")", "datasource": "@Url.Action("PublishDatasourceItem", "Publish")" };
     var validatePublishItemUrl = { "dashboard": "@Url.Action("ValidatePublishItem", "Publish")", "datasource": "@Url.Action("ValidateDatasourcePublishItem", "Publish")" };
     var getExternalSitesUrl = "@Url.Action("GetExternalSites", "Publish")";
+    var isSingleDataBaseMode = @Json.Serialize(@isSingleDataBaseMode);
     </script>
     <environment include="Development,CloudDevelopment">
         <script asp-append-version="true" src="@dashboardServerResourceUrl/cdn/scripts/publish-dashboard.js"></script>
@@ -24,17 +26,17 @@
     </environment>
 </head>
 <body>
-    <div id="publish-site-content" class="col-xs-12 no-padding" style="display:none" ng-controller="PublishCtrl">
+    <div id="publish-site-content" class="col-12 no-padding" style="display:none" ng-controller="PublishCtrl">
         <div id="publish-base-container" style="display:none">
-            <div class="col-xs-6 publish-container">
+            <div class="col-6 publish-container">
                 <div>
                     <label ng-if="publishType=='@PublishType.Internal.ToString()'">@T["Publish to these sites"]:</label>
                     <label class="external-dropdown" ng-if="publishType=='@PublishType.External.ToString()'">@T["Publish to external sites"]:</label>
                     <div id="active-sites-dropdown" class="selectpicker">
                         <select id="multiselect-dropdown" class="form-control selectpicker" data-size="5" multiple="" data-actions-box="true" data-live-search="true" data-none-results-text="@T["No results matched"]" data-select-all-text="@T["Select All"]" data-deselect-all-text="@T["Deselect All"]" data-none-Selected-text="@T["Nothing selected"]"></select>
                     </div>
-                    <span class="col-xs-1 input-group-btn no-padding" id="add-external-sites" ng-if="publishType == '@PublishType.External.ToString()'">
-                        <button class="btn btn-default" type="button" data-placement="right" title="@T["Add external sites"]" data-toggle="tooltip" onclick="getExternalSitesDetailDialog()"><span class="su-add"></span></button>
+                    <span class="col-1 input-group-btn no-padding" id="add-external-sites" ng-if="publishType == '@PublishType.External.ToString()'">
+                        <button class="btn btn-default" type="button" data-placement="right" title="@T["Add external sites"]" data-bs-toggle="tooltip" onclick="getExternalSitesDetailDialog()"><span class="su-add"></span></button>
                     </span>
                 </div>
                 <span id="active-sites-validation" class="validation-message text"></span>
@@ -51,14 +53,14 @@
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Data Source Name"]</label>
                 <input id="publish-dashboard-name" class="form-control" maxlength="253" ng-model="PublishedItems.Name" disabled>
                 <div id="use-source-name-checkbox" ng-if="itemType == '@((int)ItemType.Dashboard)'">
-                    <input type="checkbox" id="use-source-name" class="material-checkbox" />
+                    <input type="checkbox" id="use-source-name" class="material-checkbox" @(isSingleDataBaseMode ? "checked" : "") @(isSingleDataBaseMode ? "disabled" : "") />
                     <input name="use-source-name" type="hidden" value="false">
-                    <label for="use-source-name" data-toggle="tooltip" data-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]">@T["Use source dashboard and data source name."]</label>
+                    <label for="use-source-name" data-bs-toggle="tooltip" data-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]">@T["Use source dashboard and data source name."]</label>
                 </div>
                 <div id="use-source-name-checkbox" ng-if="itemType == '@((int)ItemType.Datasource)'">
-                    <input type="checkbox" id="use-source-name" class="material-checkbox" />
+                    <input type="checkbox" id="use-source-name" class="material-checkbox" @(isSingleDataBaseMode ? "checked" : "") @(isSingleDataBaseMode ? "disabled" : "") />
                     <input name="use-source-name" type="hidden" value="false">
-                    <label for="use-source-name" data-toggle="tooltip" data-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if data source with the same name exists in the destination site, the publishing will fail."]">@T["Use original data source and linked data source name."]</label>
+                    <label for="use-source-name" data-bs-toggle="tooltip" data-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if data source with the same name exists in the destination site, the publishing will fail."]">@T["Use original data source and linked data source name."]</label>
                 </div>
                 <label ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Dashboard description"] </label>
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Data Source Description"]</label>
@@ -88,7 +90,7 @@
                     @Html.Label("make-public", T["Make dashboard as public in published site."].Value, new { @class = "toggle-space" })
                 </div>
             </div>
-            <div class="col-xs-6 publish-info">
+            <div class="col-6 publish-info">
                 <h5>@T["Sites"]:</h5>
                 <p ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Choose the sites you want to publish the dashboard to."]</p>
                 <p ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Choose the sites you want to publish the data source to."]</p>
@@ -109,18 +111,18 @@
                 </div>
             </div>
         </div>
-        <div id="publish-advanced-container" class="col-xs-12 no-padding" style="display: none">
-            <div class="selected-sites col-xs-6">
-                <ul class="col-xs-11 publish-detail" ng-repeat="sites in selectedSites" ng-class="{active : activeMenu.TenantId === sites.TenantId}">
+        <div id="publish-advanced-container" class="col-12 no-padding" style="display: none">
+            <div class="selected-sites col-6">
+                <ul class="col-11 publish-detail" ng-repeat="sites in selectedSites" ng-class="{active : activeMenu.TenantId === sites.TenantId}">
                     <li class="publish-active-sites" ng-click="setActive(sites, $event)">
                         <span>{{sites.TenantName}}</span>
-                        <span id="warning-info" title="@T["One or more details are invalid"]" data-toggle="tooltip" data-placement="top" data-container="#publish-site-dialog" style="display: none">
+                        <span id="warning-info" title="@T["One or more details are invalid"]" data-bs-toggle="tooltip" data-placement="top" data-container="#publish-site-dialog" style="display: none">
                             <i class="su su-info"></i>
                         </span>
                     </li>
                 </ul>
             </div>
-            <div class="col-xs-6 advanced-page-container" ng-repeat="p in TargetSiteDetail" ng-if="p.TenantId == activeMenu.TenantId">
+            <div class="col-6 advanced-page-container" ng-repeat="p in TargetSiteDetail" ng-if="p.TenantId == activeMenu.TenantId">
                 <label ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Select the dashboard owner for the destination site."]</label>
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Select the data source owner for the destination site."]</label>
                 <div class="users-list">
@@ -143,12 +145,12 @@
                 <div ng-if="itemType == '@((int)ItemType.Dashboard)'" id="advanced-source-name-checkbox">
                     <input type="checkbox" id="advanced-source-name" class="material-checkbox" ng-model="p.UseSourceItemName" />
                     <input name="advanced-source-name" type="hidden" value="false" ng-model="p.UseSourceItemName">
-                    <label for="advanced-source-name" data-toggle="tooltip" data-placement="bottom" title='@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source dashboard and data source name."]</label>
+                    <label for="advanced-source-name" data-bs-toggle="tooltip" data-placement="bottom" title='@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source dashboard and data source name."]</label>
                 </div>
                 <div ng-if="itemType == '@((int)ItemType.Datasource)'" id="advanced-source-name-checkbox">
                     <input type="checkbox" id="advanced-source-name" class="material-checkbox" ng-model="p.UseSourceItemName" />
                     <input name="advanced-source-name" type="hidden" value="false" ng-model="p.UseSourceItemName">
-                    <label for="advanced-source-name" data-toggle="tooltip" data-placement="bottom" title='@T["On enabling this, if a data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source data source and linked data source name."]</label>
+                    <label for="advanced-source-name" data-bs-toggle="tooltip" data-placement="bottom" title='@T["On enabling this, if a data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source data source and linked data source name."]</label>
                 </div>
                 <label ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Dashboard description"]</label>
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Data Source Description"]</label>
@@ -178,17 +180,17 @@
                 </div>
             </div>
         </div>
-        <div id="publish-select-site-container" class="col-xs-12" style="display:none">
+        <div id="publish-select-site-container" class="col-12" style="display:none">
             <div class="site-content-container first-label">
                 <input type="radio" name="publish-site" class="css-radio" checked="checked" id="internal-site" ng-click="selectPublishType('@PublishType.Internal')" />
-                <label for="internal-site" class="pull-left app-radio-label normal-font">@T["Internal Site"]</label>
+                <label for="internal-site" class="float-start app-radio-label normal-font">@T["Internal Site"]</label>
                 <br />
                 <p class="site-content" ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Allows you to publish the dashboard to the sites created in the same server."]</p>
                 <p class="site-content" ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Allows you to publish a data source to the sites created in the same server."]</p>
             </div>
             <div class="site-content-container">
                 <input type="radio" name="publish-site" class="css-radio" id="external-site" ng-click="selectPublishType('@PublishType.External')" />
-                <label for="external-site" class="pull-left app-radio-label normal-font">@T["External Site"]</label>
+                <label for="external-site" class="float-start app-radio-label normal-font">@T["External Site"]</label>
                 <br />
                 <p class="site-content" ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Allows you to publish the dashboard to the sites created in other servers."]</p>
                 <p class="site-content" ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Allows you to publish a data source to the sites created in other servers."]</p>

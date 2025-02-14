@@ -22,10 +22,10 @@
 </script>
 
 <div class="filter-section">
-    <div class="col-sm-3 col-xs-3 date-picker no-padding">
+    <div class="col-sm-3 col-3 date-picker no-padding">
         <input type="text" name="webhook-log-filter-date-range" class="form-control full-width" id="datePicker">
     </div>
-    <div class="dropdown webhook-events-drop-down col-xs-12">
+    <div class="dropdown webhook-events-drop-down col-12">
         @Html.DropDownList("select-webhook-event", ViewBag.WebHookEvents as IEnumerable<SelectListItem>, new { id = "select-webhook-event", @class = "selectpicker form-control", data_none_results_text = T["No results match"].Value, data_size = "10", title = T["Select Event"].Value })
     </div>
     <button type="button" id="webhook-log-filter-apply-button" class="btn apply-button">@T["Apply"]</button>
@@ -56,10 +56,10 @@
         actionBegin: "fnWebhookLogActionBegin",
         toolbarSettings: { showToolbar: false, toolbarItems: [ej.Grid.ToolBarItems.Search] },
         rowDataBound: function () {
-            $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+            $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
         },
         dataBound: function () {
-            $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+            $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
         },
         columns: [
             { field: 'EventDescription', headerText: "@T["Event"]", type: "string", width: 120, allowFiltering: false, allowSorting: true },

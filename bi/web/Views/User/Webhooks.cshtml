@@ -22,17 +22,17 @@
     </environment>
 
     <script type="text/x-jsrender" id="webhook-name-template">
-        <span class="grid-content" title="{{:Name}}" data-toggle="tooltip">{{:Name}}</span>
+        <span class="grid-content" title="{{:Name}}" data-bs-toggle="tooltip">{{:Name}}</span>
     </script>
     <script type="text/x-jsrender" id="event-type-template">
-        <span class="grid-content" title="{{:EventDescription}}" data-toggle="tooltip">{{:EventDescription}}</span>
+        <span class="grid-content" title="{{:EventDescription}}" data-bs-toggle="tooltip">{{:EventDescription}}</span>
     </script>
     <script type="text/x-jsrender" id="modified-by-template">
-        <span class="grid-content" title="{{:ModifiedByName}}" data-toggle="tooltip">{{:ModifiedByName}}</span>
+        <span class="grid-content" title="{{:ModifiedByName}}" data-bs-toggle="tooltip">{{:ModifiedByName}}</span>
     </script>
     <script type="text/x-jsrender" id="options">
         <div class="dropdown">
-            <span class="dropdown-toggle option-icon" data-toggle="dropdown">
+            <span class="dropdown-toggle option-icon" data-bs-toggle="dropdown">
                 <span class="su su-options"> </span>
             </span>
             <ul class="dropdown-menu" role="menu">
@@ -100,7 +100,7 @@
                 load: "fnOnGridLoad",
                 actionBegin: "fnActionBegin",
                 actionComplete: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                     showOrHideGridPager("#webhooksGrid");
                     if (args.model.currentViewData.length === 0) {
                         this.getContentTable().find("tbody .emptyrecord").html(window.Server.App.Localization.NoWebhookRecords);
@@ -112,10 +112,10 @@
                     if (height != null) {
                         rowBound();
                     }
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                 },
                 dataBound: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                 },
                 columns: [
                     {
@@ -178,26 +178,26 @@
 
     @await Html.PartialAsync("_ProfileMenu")
 
-    <div class="col-xs-12 no-padding no-margin width-alignment">
+    <div class="col-12 no-padding no-margin width-alignment">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["Webhooks"] }, { "PageDescription", @pageDescription } })
-        <div class="bi-page-header col-xs-12 top-nav-btn-secton">
-            <div class="col-xs-12 no-padding">
-                <div id="search-area" class="pull-left col-xs-4">
-                    <input type="text" class="pull-left" id="search-webhooks" placeholder="@T["Search"]" />
-                    <span class="su su-inner-close close-icon pull-left" id="clear-search" title="@T["Clear search"]"></span>
-                    <span class="su su-search search-accounts pull-left" title="@T["Search"]"></span>
+        <div class="bi-page-header col-12 top-nav-btn-secton">
+            <div class="col-12 no-padding">
+                <div id="search-area" class="float-start col-4">
+                    <input type="text" class="float-start" id="search-webhooks" placeholder="@T["Search"]" />
+                    <span class="su su-inner-close close-icon float-start" id="clear-search" title="@T["Clear search"]"></span>
+                    <span class="su su-search search-accounts float-start" title="@T["Search"]"></span>
                 </div>
                 <div class="col-xs-6 no-padding button-section">
-                    <a href="@Url.Action("AddWebhookPage", "User")" class="primary-button app-btn-primary pull-right" title="@T["Add Webhook"]" data-toggle="tooltip" data-placement="bottom">@T["Add Webhook"]</a>
+                    <a href="@Url.Action("AddWebhookPage", "User")" class="primary-button app-btn-primary float-end" title="@T["Add Webhook"]" data-bs-toggle="tooltip" data-placement="bottom">@T["Add Webhook"]</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="webhooks-container" class="bi-page-container col-xs-12 bg-grid">
-        <div class="bi-page-content col-xs-12 no-padding">
+    <div id="webhooks-container" class="bi-page-container col-12 bg-grid">
+        <div class="bi-page-content col-12 no-padding">
             <div class="bi-page-body col-md-12">
-                <div class="col-xs-12 no-padding ">
+                <div class="col-12 no-padding ">
                     <div id="webhooksGrid"></div>
                 </div>
             </div>

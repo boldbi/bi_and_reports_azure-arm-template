@@ -12,7 +12,7 @@
     <input type="hidden" id="delete-slideshow" data-item-id="@ViewData["ItemId"]" data-datasource-type="@ViewData["DatasourceType"]" data-itemtype="@(Model.Value)" />
     <input type="hidden" id="delete-item" data-item-id="@ViewData["ItemId"]" data-datasource-type="@ViewData["DatasourceType"]" data-itemtype="@(Model.Value)" />
     <input type="hidden" id="delete-category-status" value="true" />
-    <div class="dialog-body col-xs-12 no-padding" style="height:auto;">
+    <div class="dialog-body col-12 no-padding" style="height:auto;">
         @if (ViewBag.Validation != null)
         {
             if (ViewBag.Validation[ItemType.Schedule] && ViewBag.Validation[ItemType.Dashboard] && ViewBag.Validation[ItemType.Slideshow])
@@ -84,7 +84,7 @@
 else
 {
     <div class="col-lg-12 no-padding dialog" id="delete-popup-container">
-        <div class="dialog-body col-xs-12 no-padding" style="height:auto;">
+        <div class="dialog-body col-12 no-padding" style="height:auto;">
             @switch ((ItemType)Model.Value)
             {
                 case ItemType.Category:

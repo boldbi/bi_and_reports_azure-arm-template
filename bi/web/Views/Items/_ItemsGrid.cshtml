@@ -83,7 +83,7 @@
     <div class="item-header">@T["Data Refresh Status"]</div>
 </script>
 <script type="text/x-jsrender" id="description">
-    <div class="item-description grid-content" title="{{:~renderDoubleQuotes(Description)}}" data-toggle="tooltip" data-placement="top">
+    <div class="item-description grid-content" title="{{:~renderDoubleQuotes(Description)}}" data-bs-toggle="tooltip" data-placement="top">
         <span>
             {{:Description}}
         </span>
@@ -91,19 +91,19 @@
 </script>
 
 <script type="text/x-jsrender" id="category">
-    <span title="{{:CategoryName}}" data-toggle="tooltip" data-placement="top">
+    <span title="{{:CategoryName}}" data-bs-toggle="tooltip" data-placement="top">
         {{:CategoryName}}
     </span>
 </script>
 
 <script type="text/x-jsrender" id="createdbydisplayname">
-    <span title="{{:CreatedByDisplayName}}" data-toggle="tooltip" data-placement="top">
+    <span title="{{:CreatedByDisplayName}}" data-bs-toggle="tooltip" data-placement="top">
         {{:CreatedByDisplayName}}
     </span>
 </script>
 
 <script type="text/x-jsrender" id="modifieddate">
-    <span title="{{:ModifiedDate}}" data-toggle="tooltip" data-placement="top">
+    <span title="{{:ModifiedDate}}" data-bs-toggle="tooltip" data-placement="top">
         {{:ModifiedDate}}
     </span>
 </script>
@@ -116,18 +116,18 @@
     {{else}}
         {{if DisplayName == "Unknown"}}
             <img class="service-image"
-                 title="@T["Please edit and save the data source again in order to obtain the data type of this data source."]" data-toggle="tooltip" src="@providerTypeUrl/images/datasource/{{:ProviderType}}/{{:IconName}}.png" style="width:20px;height:20px">
-            <span title="@T["Please edit and save the data source again in order to obtain the data type of this data source."]" data-toggle="tooltip" data-placement="top">
+                 title="@T["Please edit and save the data source again in order to obtain the data type of this data source."]" data-bs-toggle="tooltip" src="@providerTypeUrl/images/datasource/{{:ProviderType}}/{{:IconName}}.png" style="width:20px;height:20px">
+            <span title="@T["Please edit and save the data source again in order to obtain the data type of this data source."]" data-bs-toggle="tooltip" data-placement="top">
                 {{:DisplayName}}
             </span>
         {{else ProviderType=="tidb"}}
-             <img class="service-image" title="{{:DisplayName}}" data-toggle="tooltip" src="@providerTypeUrl/images/datasource/{{:ProviderType}}/{{:IconName}}.svg" style="width:20px;height:20px">
-            <span title="{{:DisplayName}}" data-toggle="tooltip" data-placement="top">
+             <img class="service-image" title="{{:DisplayName}}" data-bs-toggle="tooltip" src="@providerTypeUrl/images/datasource/{{:ProviderType}}/{{:IconName}}.svg" style="width:20px;height:20px">
+            <span title="{{:DisplayName}}" data-bs-toggle="tooltip" data-placement="top">
                 {{:DisplayName}}
             </span>
         {{else}}
-            <img class="service-image" title="{{:DisplayName}}" data-toggle="tooltip" src="@providerTypeUrl/images/datasource/{{:ProviderType}}/{{:IconName}}.png" style="width:20px;height:20px">
-            <span title="{{:DisplayName}}" data-toggle="tooltip" data-placement="top">
+            <img class="service-image" title="{{:DisplayName}}" data-bs-toggle="tooltip" src="@providerTypeUrl/images/datasource/{{:ProviderType}}/{{:IconName}}.png" style="width:20px;height:20px">
+            <span title="{{:DisplayName}}" data-bs-toggle="tooltip" data-placement="top">
                 {{:DisplayName}}
             </span>
         {{/if}}
@@ -136,7 +136,7 @@
 
 <script type="text/x-jsrender" id="itemname">
     {{if ItemType=="2"}}
-    <div class="item-name no-left-margin grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
+    <div class="item-name no-left-margin grid-content" title="{{:Name}}" data-bs-toggle="tooltip" data-placement="top">
         {{if ItemType=="2"}}
         <span><a href="{{:~urlEncode(CategoryName, Name)}}" target="_blank">{{:Name}}</a></span>
         {{else ItemType=="8"}}
@@ -150,7 +150,7 @@
         {{/if}}
     </div>
     {{else}}
-    <div class="item-name grid-content" title="{{:Name}}" data-toggle="tooltip" data-placement="top">
+    <div class="item-name grid-content" title="{{:Name}}" data-bs-toggle="tooltip" data-placement="top">
         {{if ItemType=="2"}}
         <span><a href="{{:~urlEncode(CategoryName, Name)}}" target="_blank">{{:Name}}</a></span>
         {{else ItemType=="8"}}
@@ -175,7 +175,7 @@
 
 <script type="text/x-jsrender" id="options">
     <div class="dropdown context-menu @(schemes != null && !schemes.ContextMenu ? "hide" : string.Empty)">
-        <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-toggle="dropdown">
+        <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-bs-toggle="dropdown">
             <i class="su su-options"></i>
         </span>
         <ul class="dropdown-menu" role="menu">
@@ -458,7 +458,7 @@
 
 <script type="text/x-jsrender" id="data-rows">
     {{if DatasourceType=="@((int)ConnectionMode.Extract)"}}
-    <span title="{{:RowCount}}" data-toggle="tooltip" data-placement="top">
+    <span title="{{:RowCount}}" data-bs-toggle="tooltip" data-placement="top">
         {{:RowCount}}
     </span>
     {{else}}
@@ -472,7 +472,7 @@
         {{if ScheduleStatus=="@((int)ScheduleStatus.Success)"}}
         <div>
             {{if !IsScheduleEnabled}}
-                <span class="refresh-data" data-toggle="tooltip" data-placement="top" data-icon="success" data-last-attempt="@Html.Raw(String.Format(T["Successful at {0}"].Value,"{{:LastAttemptAt}}"))" data-status="success" title="@T["Refresh Disabled"]">
+                <span class="refresh-data" data-bs-toggle="tooltip" data-placement="top" data-icon="success" data-last-attempt="@Html.Raw(String.Format(T["Successful at {0}"].Value,"{{:LastAttemptAt}}"))" data-status="success" title="@T["Refresh Disabled"]">
                     <span class="data-refresh-status su su-schedule-status {{:!IsScheduleEnabled ? 'failed' : 'success'}}"></span>
                     <Span class="data-refresh">@T["Refresh Disabled"]</Span>
                 </span>
@@ -480,7 +480,7 @@
                     <Span class="lastsuccessful">@Html.Raw(String.Format(T["Last Successful at {0}"].Value, "{{:LastAttemptAt}}"))</Span>
                 </div>
             {{else}}
-                <span class="refresh-data" data-toggle="tooltip" data-placement="top" data-icon="success" data-status="success" data-last-attempt="@Html.Raw(String.Format(T["Successful at {0}"].Value, "{{:LastAttemptAt}}"))" data-refresh-status="success" title="@Html.Raw(String.Format(T["Successful at {0}"].Value,"{{:LastAttemptAt}}"))">
+                <span class="refresh-data" data-bs-toggle="tooltip" data-placement="top" data-icon="success" data-status="success" data-last-attempt="@Html.Raw(String.Format(T["Successful at {0}"].Value, "{{:LastAttemptAt}}"))" data-refresh-status="success" title="@Html.Raw(String.Format(T["Successful at {0}"].Value,"{{:LastAttemptAt}}"))">
                     <span class="data-refresh-status su su-schedule-status {{:!IsScheduleEnabled ? 'failed' : 'success'}}"></span>
                     <Span class="data-refresh">@Html.Raw(String.Format(T["Successful at {0}"].Value, "{{:LastAttemptAt}}"))</Span>
                 </span>
@@ -491,7 +491,7 @@
         </div>
         {{else ScheduleStatus=="@((int)ScheduleStatus.Fail)"}}
         <div>
-            <span class="refresh-data" data-toggle="tooltip" data-placement="top" data-icon="failed" data-last-attempt="@Html.Raw(String.Format(T["Failure at {0}"].Value,"{{:LastAttemptAt}}"))" data-status="failed" title='{{:~refreshEncode(IsScheduleEnabled, LastAttemptAt)}}'>
+            <span class="refresh-data" data-bs-toggle="tooltip" data-placement="top" data-icon="failed" data-last-attempt="@Html.Raw(String.Format(T["Failure at {0}"].Value,"{{:LastAttemptAt}}"))" data-status="failed" title='{{:~refreshEncode(IsScheduleEnabled, LastAttemptAt)}}'>
                 <span class="failed data-refresh-status su su-schedule-status {{:LastSuccessfulAttemptAt == null ? '' : 'has-last-success'}}"></span>
                 {{if !IsScheduleEnabled}}
                        <Span class="data-refresh">@T["Refresh Disabled"]</span>
@@ -501,7 +501,7 @@
             </span>
             {{if LastSuccessfulAttemptAt != null}}
             <div>
-                <span class="last-successful" data-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Last successful at {0}"].Value,"{{:LastSuccessfulAttemptAt}}"))">
+                <span class="last-successful" data-bs-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Last successful at {0}"].Value,"{{:LastSuccessfulAttemptAt}}"))">
                     @Html.Raw(String.Format(T["Last successful at {0}"].Value, "{{:LastSuccessfulAttemptAt}}"))
                 </span>
             </div>
@@ -509,13 +509,13 @@
         </div>
         {{else ScheduleStatus=="@((int)ScheduleStatus.Run)"}}
         <div>
-            <span data-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Refresh Started at {0}"].Value, "{{:LastAttemptAt}}"))">
+            <span data-bs-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Refresh Started at {0}"].Value, "{{:LastAttemptAt}}"))">
                 <span class="refresh-started data-refresh-status su su-schedule-status {{:LastSuccessfulAttemptAt == null ? '' : 'has-last-success'}}"></span>
                 <span>@Html.Raw(String.Format(T["Refresh Started at {0}"].Value, "{{:LastAttemptAt}}"))</span>
             </span>
             {{if LastSuccessfulAttemptAt != null}}
             <div>
-                <span class="last-successful" data-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Last successful at {0}"].Value,"{{:LastSuccessfulAttemptAt}}"))">
+                <span class="last-successful" data-bs-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Last successful at {0}"].Value,"{{:LastSuccessfulAttemptAt}}"))">
                     @Html.Raw(String.Format(T["Last successful at {0}"].Value, "{{:LastSuccessfulAttemptAt}}"))
                 </span>
             </div>
@@ -523,14 +523,14 @@
         </div>
         {{else !IsScheduleConfigured}}
         <div>
-            <span class="refresh-data" data-toggle="tooltip" data-placement="top" data-icon="not-refreshed" data-last-attempt="" data-status="refreshnotconfigured" title="@T["Refresh schedule not configured"]">
+            <span class="refresh-data" data-bs-toggle="tooltip" data-placement="top" data-icon="not-refreshed" data-last-attempt="" data-status="refreshnotconfigured" title="@T["Refresh schedule not configured"]">
                 <span class="not-refreshed data-refresh-status su su-schedule-status"></span>
                 <span class="data-refresh">@T["Refresh schedule not configured"]</span>
             </span>
         </div>
         {{else}}
         <div>
-            <span class="refresh-data" data-toggle="tooltip" data-placement="top" data-icon="not-refreshed" data-last-attempt="" data-status="notrefreshed" title="{{:!IsScheduleEnabled ? "@T["Refresh Disabled"]" : "@T["Not refreshed yet"]" }}">
+            <span class="refresh-data" data-bs-toggle="tooltip" data-placement="top" data-icon="not-refreshed" data-last-attempt="" data-status="notrefreshed" title="{{:!IsScheduleEnabled ? "@T["Refresh Disabled"]" : "@T["Not refreshed yet"]" }}">
                 <span class="data-refresh-status su su-schedule-status {{:!IsScheduleEnabled ? 'failed' : 'not-refreshed'}}"></span>
                 {{if !IsScheduleEnabled}}
                      <Span class="data-refresh">@T["Refresh Disabled"]</span>
@@ -554,7 +554,7 @@
     {{else DatasourceType=="@((int)ConnectionMode.Live)"}}
     <div>
         <span class="live-connection data-refresh-status su-schedule-status"></span>
-        <span  data-toggle="tooltip" data-placement="top" title="@T["Live Connection"]">@T["Live Connection"]</span>
+        <span  data-bs-toggle="tooltip" data-placement="top" title="@T["Live Connection"]">@T["Live Connection"]</span>
     </div>
     {{else}}
     <div>
@@ -611,7 +611,14 @@
                 if (location.pathname.toLowerCase() === "/" || location.pathname.split("/")[location.pathname.split("/").length - 1].toLowerCase() == "dashboards") {
                     refreshScroller();
                 }
-                $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(function (element) {
+                    new bootstrap.Tooltip(element, {
+                        animation: true,
+                        container: 'body',
+                        placement: "top",
+                        html: true
+                    });
+                });
             },
             enableRowHover: true,
             columns: [

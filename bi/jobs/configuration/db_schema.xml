@@ -103,7 +103,7 @@
 	</DB_Group>
 	<DB_GroupPermission>
 		<DB_TableName>GroupPermission</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<PermissionAccessId>PermissionAccessId</PermissionAccessId>
 		<PermissionEntityId>PermissionEntityId</PermissionEntityId>
 		<ItemId>ItemId</ItemId>
@@ -115,7 +115,7 @@
 	</DB_GroupPermission>
 	<DB_Item>
 		<DB_TableName>Item</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<Description>Description</Description>
 		<ItemTypeId>ItemTypeId</ItemTypeId>
@@ -137,7 +137,7 @@
     </DB_Item>
 	<DB_ItemCommentLog>
 		<DB_TableName>ItemCommentLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemCommentLogTypeId>ItemCommentLogTypeId</ItemCommentLogTypeId>
 		<CurrentUserId>CurrentUserId</CurrentUserId>
 		<CommentId>CommentId</CommentId>
@@ -159,7 +159,7 @@
 	</DB_ItemCommentLogType>
 	<DB_ItemLog>
 		<DB_TableName>ItemLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemLogTypeId>ItemLogTypeId</ItemLogTypeId>
 		<ItemId>ItemId</ItemId>
 		<ItemVersionId>ItemVersionId</ItemVersionId>
@@ -170,6 +170,7 @@
 		<SourceTypeId>SourceTypeId</SourceTypeId>
 		<EventTypeId>EventTypeId</EventTypeId>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
+		<AnonymousUsername>AnonymousUsername</AnonymousUsername>
 		<IsActive>IsActive</IsActive>
 	</DB_ItemLog>
 	<DB_ItemLogType>
@@ -180,7 +181,7 @@
 	</DB_ItemLogType>
 	<DB_ItemTrash>
 		<DB_TableName>ItemTrash</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemId>ItemId</ItemId>
 		<TrashedById>TrashedById</TrashedById>
 		<TrashedDate>TrashedDate</TrashedDate>
@@ -188,7 +189,7 @@
 	</DB_ItemTrash>
 	<DB_ItemTrashDeleted>
 		<DB_TableName>ItemTrashDeleted</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemId>ItemId</ItemId>
 		<ItemTrashId>ItemTrashId</ItemTrashId>
 		<DeletedById>DeletedById</DeletedById>
@@ -203,7 +204,7 @@
 	</DB_ItemType>
 	<DB_ItemVersion>
 		<DB_TableName>ItemVersion</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemId>ItemId</ItemId>
 		<ItemTypeId>ItemTypeId</ItemTypeId>
 		<ItemName>ItemName</ItemName>
@@ -218,7 +219,7 @@
 	</DB_ItemVersion>
 	<DB_ItemView>
 		<DB_TableName>ItemView</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemId>ItemId</ItemId>
 		<UserId>UserId</UserId>
 		<ItemViewId>ItemViewId</ItemViewId>
@@ -228,7 +229,7 @@
 	</DB_ItemView>
 	<DB_ItemWatch>
 		<DB_TableName>ItemWatch</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemId>ItemId</ItemId>
 		<ParentItemId>ParentItemId</ParentItemId>
 		<UserId>UserId</UserId>
@@ -238,7 +239,7 @@
 	</DB_ItemWatch>
 	<DB_MultiTabDashboard>
 		<DB_TableName>MultiTabDashboard</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ParentDashboardId>ParentDashboardId</ParentDashboardId>
 		<ChildDashboardId>ChildDashboardId</ChildDashboardId>
 		<DashboardDesignerId>DashboardDesignerId</DashboardDesignerId>
@@ -277,7 +278,7 @@
 	</DB_RecurrenceType>
 	<DB_ReportDataSource>
 		<DB_TableName>ReportDataSource</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ReportItemId>ReportItemId</ReportItemId>
 		<DataSourceItemId>DataSourceItemId</DataSourceItemId>
 		<Name>Name</Name>
@@ -286,7 +287,7 @@
 	</DB_ReportDataSource>
 	<DB_SAMLSettings>
 		<DB_TableName>SAMLSettings</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<MetadataURI>MetadataURI</MetadataURI>
 		<Authority>Authority</Authority>
 		<DesignerClientId>DesignerClientId</DesignerClientId>
@@ -296,7 +297,7 @@
 	</DB_SAMLSettings>
 	<DB_SchdLogExtnRecpt>
 		<DB_TableName>SchdLogExtnRecpt</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<ScheduleStatusId>ScheduleStatusId</ScheduleStatusId>
 		<DeliveredEmailId>DeliveredEmailId</DeliveredEmailId>
@@ -306,10 +307,11 @@
 	</DB_SchdLogExtnRecpt>
 	<DB_ScheduleDetail>
 		<DB_TableName>ScheduleDetail</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<ItemId>ItemId</ItemId>
 		<DashboardWidgetId>DashboardWidgetId</DashboardWidgetId>
+        <DashboardWidgetIds>DashboardWidgetIds</DashboardWidgetIds>
 		<DashboardViewId>DashboardViewId</DashboardViewId>
 		<Name>Name</Name>
 		<Parameter>Parameter</Parameter>
@@ -334,7 +336,7 @@
 	</DB_ScheduleDetail>
 	<DB_ScheduleLog>
 		<DB_TableName>ScheduleLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleStatusId>ScheduleStatusId</ScheduleStatusId>
 		<ScheduleId>ScheduleId</ScheduleId>
 		<ExecutedDate>ExecutedDate</ExecutedDate>
@@ -347,7 +349,7 @@
 	</DB_ScheduleLog>
 	<DB_ScheduleMissingLogs>
 		<DB_TableName>ScheduleMissingLogs</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<MissingType>MissingType</MissingType>
 		<StartDate>StartDate</StartDate>
@@ -356,7 +358,7 @@
 	</DB_ScheduleMissingLogs>
 	<DB_ScheduleLogGroup>
 		<DB_TableName>ScheduleLogGroup</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<ScheduleStatusId>ScheduleStatusId</ScheduleStatusId>
 		<GroupId>GroupId</GroupId>
@@ -367,7 +369,7 @@
 	</DB_ScheduleLogGroup>
 	<DB_ScheduleLogUser>
 		<DB_TableName>ScheduleLogUser</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<ScheduleStatusId>ScheduleStatusId</ScheduleStatusId>
 		<DeliveredUserId>DeliveredUserId</DeliveredUserId>
@@ -388,7 +390,7 @@
 	</DB_ServerVersion>
 	<DB_SubscrExtnRecpt>
 		<DB_TableName>SubscrExtnRecpt</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<SubscribedById>SubscribedById</SubscribedById>
 		<EmailIds>EmailIds</EmailIds>
@@ -398,7 +400,7 @@
 	</DB_SubscrExtnRecpt>
 	<DB_SubscribedGroup>
 		<DB_TableName>SubscribedGroup</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<SubscribedById>SubscribedById</SubscribedById>
 		<RecipientGroupId>RecipientGroupId</RecipientGroupId>
@@ -408,7 +410,7 @@
 	</DB_SubscribedGroup>
 	<DB_SubscribedUser>
 		<DB_TableName>SubscribedUser</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<SubscribedById>SubscribedById</SubscribedById>
 		<RecipientUserId>RecipientUserId</RecipientUserId>
@@ -418,7 +420,7 @@
 	</DB_SubscribedUser>
 	<DB_SystemLog>
 		<DB_TableName>SystemLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<SystemLogTypeId>SystemLogTypeId</SystemLogTypeId>
 		<LogFieldId>LogFieldId</LogFieldId>
 		<OldValue>OldValue</OldValue>
@@ -436,7 +438,7 @@
 	</DB_SystemLogType>
 	<DB_SystemSettings>
 		<DB_TableName>SystemSettings</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Key>Key</Key>
 		<Value>Value</Value>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
@@ -444,7 +446,7 @@
 	</DB_SystemSettings>
 	<DB_User>
 		<DB_TableName>User</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<FirstName>FirstName</FirstName>
 		<LastName>LastName</LastName>
 		<DisplayName>DisplayName</DisplayName>
@@ -467,7 +469,7 @@
 	</DB_User>
 	<DB_UserGroup>
 		<DB_TableName>UserGroup</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<GroupId>GroupId</GroupId>
 		<UserId>UserId</UserId>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
@@ -475,7 +477,7 @@
 	</DB_UserGroup>
 	<DB_UserLog>
 		<DB_TableName>UserLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ActivityId>ActivityId</ActivityId>
 		<UserLogTypeId>UserLogTypeId</UserLogTypeId>
 		<LogFieldId>LogFieldId</LogFieldId>
@@ -490,7 +492,7 @@
 	</DB_UserLog>
 	<DB_UserLogin>
 		<DB_TableName>UserLogin</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<UserId>UserId</UserId>
 		<ClientToken>ClientToken</ClientToken>
 		<IpAddress>IpAddress</IpAddress>
@@ -505,7 +507,7 @@
 	</DB_UserLogType>
 	<DB_UserPermission>
 		<DB_TableName>UserPermission</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<PermissionAccessId>PermissionAccessId</PermissionAccessId>
 		<PermissionEntityId>PermissionEntityId</PermissionEntityId>
 		<ItemId>ItemId</ItemId>
@@ -517,7 +519,7 @@
 	</DB_UserPermission>
 	<DB_UserPreference>
 		<DB_TableName>UserPreference</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<UserId>UserId</UserId>
 		<Language>Language</Language>
 		<TimeZone>TimeZone</TimeZone>
@@ -537,7 +539,7 @@
 	</DB_UserType>
 	<DB_DashboardDataSource>
 		<DB_TableName>DashboardDataSource</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<DashboardItemId>DashboardItemId</DashboardItemId>
 		<DataSourceName>DataSourceName</DataSourceName>
 		<DataSourceItemId>DataSourceItemId</DataSourceItemId>
@@ -547,7 +549,7 @@
 	</DB_DashboardDataSource>
 	<DB_DBCredential>
 		<DB_TableName>DBCredential</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<DatabaseType>DatabaseType</DatabaseType>
 		<ConnectionString>ConnectionString</ConnectionString>
 		<EmailRelationId>EmailRelationId</EmailRelationId>
@@ -575,7 +577,7 @@
 	</DB_DBCredential>
 	<DB_TableRelation>
 		<DB_TableName>TableRelation</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<LeftTable>LeftTable</LeftTable>
 		<LeftTableColumnName>LeftTableColumnName</LeftTableColumnName>
 		<LeftTableCondition>LeftTableCondition</LeftTableCondition>
@@ -590,7 +592,7 @@
 	</DB_TableRelation>
 	<DB_Homepage>
 		<DB_TableName>Homepage</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<UserId>UserId</UserId>
 		<ItemInfo>ItemInfo</ItemInfo>
@@ -602,7 +604,7 @@
 	</DB_Homepage>
 	<DB_DataNotification>
 		<DB_TableName>DataNotification</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<DataSourceId>DataSourceId</DataSourceId>
 		<DaJsonString>DaJsonString</DaJsonString>
@@ -617,7 +619,7 @@
 	</DB_ConditionCategory>
 	<DB_CustomExpression>
 		<DB_TableName>CustomExpression</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<DashboardId>DashboardId</DashboardId>
 		<WidgetId>WidgetId</WidgetId>
 		<DatasourceId>DatasourceId</DatasourceId>
@@ -629,7 +631,7 @@
 	</DB_CustomExpression>
 	<DB_HomepageItemFilter>
 		<DB_TableName>HomepageItemFilter</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<HomepageId>HomepageId</HomepageId>
 		<FilterId>FilterId</FilterId>
 		<QueryString>QueryString</QueryString>
@@ -667,7 +669,7 @@
 	</DB_Source>
 	<DB_SlideshowInfo>
 		<DB_TableName>SlideshowInfo</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<SlideshowId>SlideshowId</SlideshowId>
 		<ItemInfo>ItemInfo</ItemInfo>
 		<LoopInterval>LoopInterval</LoopInterval>
@@ -675,13 +677,13 @@
 	</DB_SlideshowInfo>
 	<DB_PermissionLogType>
 		<DB_TableName>PermissionLogType</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<IsActive>IsActive</IsActive>
 	</DB_PermissionLogType>
 	<DB_UserPermissionLog>
 		<DB_TableName>UserPermissionLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<UserId>UserId</UserId>
 		<AffectedUserId>AffectedUserId</AffectedUserId>
 		<UserPermissionId>UserPermissionId</UserPermissionId>
@@ -691,7 +693,7 @@
 	</DB_UserPermissionLog>
 	<DB_GroupPermissionLog>
 		<DB_TableName>GroupPermissionLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<UserId>UserId</UserId>
 		<AffectedGroupId>AffectedGroupId</AffectedGroupId>
 		<GroupPermissionId>GroupPermissionId</GroupPermissionId>
@@ -701,7 +703,7 @@
 	</DB_GroupPermissionLog>
 	<DB_LogField>
 		<DB_TableName>LogField</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ModuleId>ModuleId</ModuleId>
 		<Field>Field</Field>
 		<Description>Description</Description>
@@ -710,7 +712,7 @@
 	</DB_LogField>
 	<DB_LogModule>
 		<DB_TableName>LogModule</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
 		<IsActive>IsActive</IsActive>
@@ -723,7 +725,7 @@
 	</DB_LogStatus>
 	<DB_GroupLog>
 		<DB_TableName>GroupLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ActivityId>ActivityId</ActivityId>
 		<GroupLogTypeId>GroupLogTypeId</GroupLogTypeId>
 		<LogFieldId>LogFieldId</LogFieldId>
@@ -744,7 +746,7 @@
 	</DB_GroupLogType>
 	<DB_ADCredentials>
 		<DB_TableName>ADCredential</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Username>Username</Username>
 		<Password>Password</Password>
 		<LdapUrl>LdapUrl</LdapUrl>
@@ -756,7 +758,7 @@
 	</DB_ADCredentials>
 	<DB_ItemSettings>
 		<DB_TableName>ItemSettings</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemId>ItemId</ItemId>
 		<ItemConfig>ItemConfig</ItemConfig>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
@@ -764,7 +766,7 @@
 	</DB_ItemSettings>
 	<DB_ItemUserPreference>
 		<DB_TableName>ItemUserPreference</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ItemId>ItemId</ItemId>
 		<UserId>UserId</UserId>
 		<AutosaveFilter>AutosaveFilter</AutosaveFilter>
@@ -774,7 +776,7 @@
 	</DB_ItemUserPreference>
 	<DB_PublishedItem>
 		<DB_TableName>PublishedItem</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<TenantId>TenantId</TenantId>
 		<ItemId>ItemId</ItemId>
 		<ItemName>ItemName</ItemName>
@@ -792,7 +794,7 @@
 	</DB_PublishedItem>
 	<DB_PublishJobs>
 		<DB_TableName>PublishJobs</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<PublishId>PublishId</PublishId>
 		<UserId>UserId</UserId>
 		<JobDetails>JobDetails</JobDetails>
@@ -804,7 +806,7 @@
 	</DB_PublishJobs>
 	<DB_DeploymentDashboards>
 		<DB_TableName>DeploymentDashboards</DB_TableName>
-		<ItemId>ItemId</ItemId>
+		<ItemId>ItemId</ItemId> 
 		<ItemName>ItemName</ItemName>
 		<Description>Description</Description>
 		<CategoryName>CategoryName</CategoryName>
@@ -818,7 +820,7 @@
 	</DB_DeploymentDashboards>
 	<DB_UserAttributes>
 		<DB_TableName>UserAttributes</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<Value>Value</Value>
 		<Description>Description</Description>
@@ -832,7 +834,7 @@
 	</DB_UserAttributes>
 	<DB_GroupAttributes>
 		<DB_TableName>GroupAttributes</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<Value>Value</Value>
 		<Description>Description</Description>
@@ -846,7 +848,7 @@
 	</DB_GroupAttributes>
 	<DB_SiteAttributes>
 		<DB_TableName>SiteAttributes</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<Value>Value</Value>
 		<Description>Description</Description>
@@ -859,7 +861,7 @@
 	</DB_SiteAttributes>
 	<DB_UserDataNotification>
 		<DB_TableName>UserDataNotification</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ScheduleId>ScheduleId</ScheduleId>
 		<UserId>UserId</UserId>
 		<FilterData>FilterData</FilterData>
@@ -867,7 +869,7 @@
 	</DB_UserDataNotification>
 	<DB_ExternalSites>
 		<DB_TableName>ExternalSites</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<ClientId>ClientId</ClientId>
 		<ClientSecret>ClientSecret</ClientSecret>
@@ -887,7 +889,7 @@
 	</DB_SettingsType>
 	<DB_EmailActivityLog>
 		<DB_TableName>EmailActivityLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Event>Event</Event>
 		<RecipientEmail>RecipientEmail</RecipientEmail>
 		<SenderEmail>SenderEmail</SenderEmail>
@@ -907,7 +909,7 @@
 	</DB_EmailActivityLog>
     <DB_Webhook>
 		<DB_TableName>Webhook</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<Description>Description</Description>
 		<Url>Url</Url>
@@ -927,7 +929,7 @@
 	</DB_Webhook>
 	<DB_WebhookLog>
 		<DB_TableName>WebhookLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<WebhookId>WebhookId</WebhookId>
 		<Event>Event</Event>
 		<RequestUrl>RequestUrl</RequestUrl>
@@ -941,7 +943,7 @@
 	</DB_WebhookLog>
   <DB_NotificationTrigger>
     <DB_TableName>NotificationTrigger</DB_TableName>
-    <Id>Id</Id>
+    <Id>Id</Id> 
     <WebhookId>WebhookId</WebhookId>
     <RecurrenceInfo>RecurrenceInfo</RecurrenceInfo>
     <RetryCount>RetryCount</RetryCount>
@@ -975,7 +977,7 @@
 	</DB_EventPayloadsMapping>
     <DB_CustomTheme>
 		<DB_TableName>CustomTheme</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<ThemeName>ThemeName</ThemeName>
 		<ThemeValue>ThemeValue</ThemeValue>
 		<ThemeType>ThemeType</ThemeType>
@@ -984,7 +986,7 @@
 	</DB_CustomTheme>
     <DB_CustomFont>
 		<DB_TableName>CustomFont</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<FontName>FontName</FontName>
 		<FontValue>FontValue</FontValue>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
@@ -992,7 +994,7 @@
 	</DB_CustomFont>
 	<DB_UserSession>
 		<DB_TableName>UserSession</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<IdpReferenceId>IdpReferenceId</IdpReferenceId>
 		<DirectoryTypeId>DirectoryTypeId</DirectoryTypeId>
 		<IpAddress>IpAddress</IpAddress>
@@ -1004,7 +1006,7 @@
 	</DB_UserSession>
 	<DB_BackgroundJobs>
 		<DB_TableName>BackgroundJobs</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<JobType>JobType</JobType>
 		<UserId>UserId</UserId>
 		<ItemId>ItemId</ItemId>
@@ -1056,7 +1058,7 @@
   </DB_Notification>
 	<DB_ApiKeyDetails>
 		<DB_TableName>ApiKeyDetails</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<Name>Name</Name>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
 		<CreatedDate>CreatedDate</CreatedDate>
@@ -1069,7 +1071,7 @@
 	</DB_ApiKeyDetails>
 	<DB_ActivityLog>
 		<DB_TableName>ActivityLog</DB_TableName>
-		<Id>Id</Id>
+		<Id>Id</Id> 
 		<EventCategory>EventCategory</EventCategory>
 		<EventType>EventType</EventType>
 		<EventDate>EventDate</EventDate>

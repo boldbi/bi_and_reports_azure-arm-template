@@ -27,27 +27,27 @@
     </script>
 
     <script type="text/x-jsrender" id="job-id-template">
-        <span class="grid-content" title="{{:JobId}}" data-toggle="tooltip">{{:JobId}}</span>
+        <span class="grid-content" title="{{:JobId}}" data-bs-toggle="tooltip">{{:JobId}}</span>
     </script>
     <script type="text/x-jsrender" id="import-type-template">
-        <span class="grid-content" title="{{:ImportSource}}" data-toggle="tooltip">{{:ImportSource}}</span>
+        <span class="grid-content" title="{{:ImportSource}}" data-bs-toggle="tooltip">{{:ImportSource}}</span>
     </script>
     <script type="text/x-jsrender" id="started-on-template">
-        <span class="grid-content" title="{{:CreatedDateString}}" data-toggle="tooltip">{{:CreatedDateString}}</span>
+        <span class="grid-content" title="{{:CreatedDateString}}" data-bs-toggle="tooltip">{{:CreatedDateString}}</span>
     </script>
     <script type="text/x-jsrender" id="created-by-template">
-        <span class="grid-content" title="{{:CreatedBy}}" data-toggle="tooltip">{{:CreatedBy}}</span>
+        <span class="grid-content" title="{{:CreatedBy}}" data-bs-toggle="tooltip">{{:CreatedBy}}</span>
     </script>
     <script type="text/x-jsrender" id="status-template">
         {{if ImportJobStatus == "Completed"}}
-        <span class="grid-content inprogress-or-completed-job"  title="@T["Completed"]" data-toggle="tooltip">@T["Completed"]</span>
+        <span class="grid-content inprogress-or-completed-job"  title="@T["Completed"]" data-bs-toggle="tooltip">@T["Completed"]</span>
         {{else ImportJobStatus == "In progress"}}
-        <span class="grid-content inprogress-or-completed-job"  title="@T["In progress"]" data-toggle="tooltip">@T["In progress"]</span>
+        <span class="grid-content inprogress-or-completed-job"  title="@T["In progress"]" data-bs-toggle="tooltip">@T["In progress"]</span>
         {{else ImportJobStatus == "Suspended"}}
-        <span class="grid-content suspended-job"  title="@T["Suspended"]" data-toggle="tooltip">@T["Suspended"]</span>
+        <span class="grid-content suspended-job"  title="@T["Suspended"]" data-bs-toggle="tooltip">@T["Suspended"]</span>
         {{else ImportJobStatus == "Yet to start"}}
-        <span class="grid-content yet-to-start-job"  title="@T["Yet to start"]" data-toggle="tooltip">@T["Yet to start"]</span>
-        <span class="grid-content su su-help" title="@T["The importing process will begin either within 3 minutes of the job creation time or after the completion of other import tasks already in the queue."]" data-toggle="tooltip"></span>
+        <span class="grid-content yet-to-start-job"  title="@T["Yet to start"]" data-bs-toggle="tooltip">@T["Yet to start"]</span>
+        <span class="grid-content su su-help" title="@T["The importing process will begin either within 3 minutes of the job creation time or after the completion of other import tasks already in the queue."]" data-bs-toggle="tooltip"></span>
         {{/if}}
     </script>
 
@@ -68,14 +68,14 @@
     </script>
     <script type="text/x-jsrender" id="options">
         <div class="dropdown context-menu" data-content="{{:JobId}}">
-            <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-toggle="dropdown">
+            <span class="dropdown-toggle option-icon" title="@T["Actions"]" data-bs-toggle="dropdown">
                 <span class="su su-options"> </span>
             </span>
             <ul class="dropdown-menu" role="menu">
         @if (ViewBag.IsGroupImport)
         {
                 <li class="menu-group">
-                        <a href="@Url.Action("BulkGroupImportResult" , "Group")?id={{:JobId}}" title="@T["View"]" data-toggle="tooltip">
+                        <a href="@Url.Action("BulkGroupImportResult" , "Group")?id={{:JobId}}" title="@T["View"]" data-bs-toggle="tooltip">
                             <i class="su su-eye"></i>
                             <span class="menu-text">@T["View"]</span>
                         </a>
@@ -84,7 +84,7 @@
         else
         {
                 <li class="menu-group">
-                        <a href="@Url.Action("BulkUserImportResult" , "UserManagement")?id={{:JobId}}" title="@T["View"]" data-toggle="tooltip">
+                        <a href="@Url.Action("BulkUserImportResult" , "UserManagement")?id={{:JobId}}" title="@T["View"]" data-bs-toggle="tooltip">
                             <i class="su su-eye"></i>
                             <span class="menu-text">@T["View"]</span>
                         </a>
@@ -92,14 +92,14 @@
         }
         {{if ImportJobStatus == "Yet to start" || ImportJobStatus == "In progress"}}
                 <li class="menu-group">
-                    <a href="javascript:void(0);" class="suspend-job" data-id="{{:JobId}}" data-import-type="{{:ImportSource}}" title="@T["Suspend"]" data-toggle="tooltip">
+                    <a href="javascript:void(0);" class="suspend-job" data-id="{{:JobId}}" data-import-type="{{:ImportSource}}" title="@T["Suspend"]" data-bs-toggle="tooltip">
                         <i class="su su-disable"></i>
                         <span class="menu-text">@T["Suspend"]</span>
                     </a>
                 </li>
                 {{else ImportJobStatus == "Completed" || ImportJobStatus == "Suspended"}}
                 <li class="menu-group">
-                    <a href="javascript:void(0);" class="delete-job" data-id="{{:JobId}}" data-import-type="{{:ImportSource}}" title="@T["Delete"]" data-toggle="tooltip">
+                    <a href="javascript:void(0);" class="delete-job" data-id="{{:JobId}}" data-import-type="{{:ImportSource}}" title="@T["Delete"]" data-bs-toggle="tooltip">
                         <i class="su su-delete"></i>
                         <span class="menu-text">@T["Delete"]</span>
                     </a>
@@ -134,7 +134,7 @@
                 filterSettings: { filterType: "menu" },
                 selectionSettings: { selectionMode: ["row"] },
                 dataBound: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                     this.model.indexes = {};
                 },
                 columns: [
@@ -197,13 +197,13 @@
 
 @section MainSection{
     @await Html.PartialAsync("../Administration/_AdminMenu")
-    <div class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width") top-nav-header-without-btn">
+    <div class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width") top-nav-header-without-btn">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["Bulk Import Result"] }, { "PageDescription", @pageDescription } })
     </div>
-    <div id="base-container" class="col-xs-12 bi-page-container bulk-import-result-list">
-        <div class="col-xs-12 bi-page-content no-padding">
-            <div id="user-list-container" class="list col-xs-12 bi-page-body">
-                <div class="col-xs-12 no-padding ">
+    <div id="base-container" class="col-12 bi-page-container bulk-import-result-list">
+        <div class="col-12 bi-page-content no-padding">
+            <div id="user-list-container" class="list col-12 bi-page-body">
+                <div class="col-12 no-padding ">
                     <div id="user_grid">
                     </div>
                 </div>

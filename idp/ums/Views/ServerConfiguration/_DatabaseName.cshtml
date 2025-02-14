@@ -29,7 +29,7 @@ $(document).on("keyup", "#txt-dbname,#server-dbname,#imdbname", function () {
     var IsDefaultPrefixUms = ("@ViewBag.IsDefaultPrefixUms".toLowerCase() === "true");
 </script>
 
-<div id="service-name" class="hidden">
+<div id="service-name" class="d-none">
     <div class="sql-server-existing-db-for-oracle center-align">
         <div class="txt-holder databse-dropdown text-wrap database-dropdown-margin center-align">
             <input type="text" id="txt-dbname-for-oracle" name="databaseName" class="" placeholder="@T["Database name"]" />

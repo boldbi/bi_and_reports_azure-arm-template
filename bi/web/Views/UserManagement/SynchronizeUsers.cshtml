@@ -42,17 +42,17 @@
         </script>
     }
     <script type="text/x-jsrender" id="user-profile-template">
-        <a class="user-name" title="{{:~renderDoubleQuotes(FullName)}}" data-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:TrimmedFullName}}</a>
+        <a class="user-name" title="{{:~renderDoubleQuotes(FullName)}}" data-bs-toggle="tooltip" href="@Url.Action("ViewProfile", "UserManagement")?id={{:UserId}}">{{:TrimmedFullName}}</a>
     </script>
 
     <script type="text/x-jsrender" id="username-template">
-        <span title="{{:Username}}" class="grid-content" data-toggle="tooltip">
+        <span title="{{:Username}}" class="grid-content" data-bs-toggle="tooltip">
             {{:Username}}
         </span>
     </script>
 
     <script type="text/x-jsrender" id="email-template">
-        <span title="" class="grid-content" data-toggle="tooltip">
+        <span title="" class="grid-content" data-bs-toggle="tooltip">
             {{:CanShowEmail ? EmailId : ""}}
         </span>
     </script>
@@ -87,7 +87,7 @@
 
     <script type="text/x-jsrender" id="user-detail-validation">
         {{if IsDuplicated}}
-        <div class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-toggle="tooltip" data-placement="left"></div>
+        <div class="su su-login-error user-import-validation" title="{{:DisplayMessage}}" data-html="true" data-bs-toggle="tooltip" data-placement="left"></div>
         {{/if}}
     </script>
 
@@ -122,7 +122,7 @@
                 filterSettings: { filterType: "menu" },
                 selectionSettings: { selectionMode: ["row"] },
                 dataBound: function (args) {
-                    $('[data-toggle="tooltip"]').tooltip({ container: $('body') });
+                    $('[data-bs-toggle="tooltip"]').tooltip({ container: $('body') });
                     $("#checkbox-header").change(headCheckboxOnChange);
                     this.model.indexes = {}; /* Additional property*/
                     var selecteduserIdValues = [];
@@ -198,46 +198,46 @@
 @section MainSection{
     @await Html.PartialAsync("../Administration/_AdminMenu")
     
-<div class="col-xs-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-    <div class="col-xs-12 no-padding">
+<div class="col-12 no-padding no-margin @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+    <div class="col-12 no-padding">
         @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "IsUserSyncPage", "true" } })
     </div>
-    <div class="col-xs-12 bi-page-header tabs-header-padding top-nav-btn-secton" id="user-title">
-        <div class="col-xs-12 no-padding">
+    <div class="col-12 bi-page-header tabs-header-padding top-nav-btn-secton" id="user-title">
+        <div class="col-12 no-padding">
                 <div class="col-xs-6 no-padding button-section hide" id="synchronize-users">
-                    <span class="primary-button app-btn-primary pull-right" title="Synchronize Users with Active Directory" onclick="SynchronizeUsers()">@T["Synchronize"]</span>
+                    <span class="primary-button app-btn-primary float-end" title="Synchronize Users with Active Directory" onclick="SynchronizeUsers()">@T["Synchronize"]</span>
             </div>
-            <div id="search-area" class="pull-left col-xs-4 @(ViewBag.AdSync > 0 ? "windows-ad-search" : "")">
+            <div id="search-area" class="float-start col-4 @(ViewBag.AdSync > 0 ? "windows-ad-search" : "")">
                 @if (ViewBag.AdSync > 0 || ViewBag.AzureAdSync > 0)
                 {
-                    <input type="text" id="search-ad-users" class="pull-left no-margin" placeholder="@String.Format(T["Search {0} users"].Value, ViewBag.AdSync > 0 ? "AD" : "Azure AD")" autocomplete="off" />
+                    <input type="text" id="search-ad-users" class="float-start no-margin" placeholder="@String.Format(T["Search {0} users"].Value, ViewBag.AdSync > 0 ? "AD" : "Azure AD")" autocomplete="off" />
 
                 }
-                <span class="su close-icon su-inner-close pull-left no-margin" id="clear-search" data-container="body" data-toggle="tooltip" data-placement="bottom" title="@T["Clear search"]"></span>
-                <span class="su su-search search-icon pull-left no-margin search-user" data-toggle="tooltip" data-placement="bottom" title="@T["Search"]"></span>
+                <span class="su close-icon su-inner-close float-end no-margin" id="clear-search" data-container="body" data-bs-toggle="tooltip" data-placement="bottom" title="@T["Clear search"]"></span>
+                <span class="su su-search search-icon float-end no-margin search-user" data-bs-toggle="tooltip" data-placement="bottom" title="@T["Search"]"></span>
             </div>
         </div>
     </div>
 </div>
-<div class="col-xs-12 bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
-    <div class="col-xs-12 bi-page-content no-padding">
-        <div class="col-xs-12 bi-page-body">
+<div class="col-12 bi-page-container @(ViewBag.ThirdPartyLogins ? string.Empty : "unlock-enterprise-features blur-content") bg-grid @(canShowAdminMenu ? "width-alignment" : "admin-panel-full-width")">
+    <div class="col-12 bi-page-content no-padding">
+        <div class="col-12 bi-page-body">
             <div class="col-xs-7 no-padding">
                 @if (ViewBag.AdSync > 0 || ViewBag.AzureAdSync > 0)
                 {
-                    <span class="ad-userlist-info pull-left">@String.Format(T["Only users imported from the {0} configured in this organization are listed here."].Value, ViewBag.AdSync > 0 ? "Windows AD" : "Azure AD")</span>
+                    <span class="ad-userlist-info float-start">@String.Format(T["Only users imported from the {0} configured in this organization are listed here."].Value, ViewBag.AdSync > 0 ? "Windows AD" : "Azure AD")</span>
                 }
             </div>
             @if (ViewBag.AdSync > 0)
             {
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bg-warning windows-ad-user-import-warning">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12 bg-warning windows-ad-user-import-warning">
                     <div class="warning-icon-container no-padding">
                         <span class="su su-info"></span>
                     </div>
                     <span class="no-padding text-warning">@String.Format(T["A user without an email address will be assigned a {0} or system-generated email address."].Value, "User Principal Name (UPN)")</span>
                 </div>
             }
-            <div id="user_grid"  class="col-xs-12 no-padding @(ViewBag.AdSync > 0 ? "windows-ad-content-margin" : "")"></div>
+            <div id="user_grid"  class="col-12 no-padding @(ViewBag.AdSync > 0 ? "windows-ad-content-margin" : "")"></div>
         </div>
     </div>
     @await Html.PartialAsync("../Shared/_Footer", new ViewDataDictionary(ViewData) { { "appsettings", globalAppSettings } })

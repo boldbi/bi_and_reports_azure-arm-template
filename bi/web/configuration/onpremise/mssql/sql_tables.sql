@@ -182,6 +182,7 @@ CREATE TABLE [BOLDBI_ItemLog](
 	[ToCategoryId] [uniqueidentifier] NULL,
 	[UpdatedUserId] [int] NOT NULL,	
 	[ModifiedDate] [datetime] NOT NULL,
+    [AnonymousUsername] [nvarchar](255) NULL,
 	[IsActive] [bit] NOT NULL)
 ;
 
@@ -234,6 +235,7 @@ CREATE TABLE [BOLDBI_ScheduleDetail](
 	[ScheduleId] [uniqueidentifier] NOT NULL UNIQUE,
 	[ItemId] [uniqueidentifier] NOT NULL,
 	[DashboardWidgetId] [uniqueidentifier] NULL,
+	[DashboardWidgetIds] [nvarchar](max) NULL,
 	[DashboardViewId] [uniqueidentifier] NULL,
 	[Name] [nvarchar](150) NOT NULL,
 	[Parameter] [nvarchar](max) NULL,
@@ -1038,6 +1040,37 @@ CREATE TABLE [BOLDBI_ApiKeyDetails] (
     [ModifiedBy] [int] NOT NULL,
     [IsActive] [bit] NOT NULL)
 ;
+
+CREATE TABLE [BOLDBI_AI_SESSIONS] (
+    [SessionID] NVARCHAR(255) PRIMARY KEY,
+    [SessionStartTime] DATETIMEOFFSET,
+    [SessionEndTime] DATETIMEOFFSET,
+    [InputToken] INT,
+    [OutputToken] INT,
+    [TotalToken] INT,
+    [InputTokenCost] FLOAT,
+    [OutputTokenCost] FLOAT,
+    [TotalTokensCost] FLOAT,
+    [UserInfo] NVARCHAR(MAX),
+    [TenantID] NVARCHAR(MAX),
+    [Environment] NVARCHAR(MAX)
+    );
+
+CREATE TABLE [BOLDBI_AI_CHAT] (
+    [SearchID] NVARCHAR(255) PRIMARY KEY,
+    [SessionID] NVARCHAR(MAX),
+    [SearchDateTime] DATETIMEOFFSET,
+    [InputToken] INT,
+    [OutputToken] INT,
+    [TotalToken] INT,
+    [InputTokenCost] FLOAT,
+    [OutputTokenCost] FLOAT,
+    [TotalTokensCost] FLOAT,
+    [UserInfo] NVARCHAR(MAX),
+    [TenantID] NVARCHAR(MAX),
+    [RequestType] NVARCHAR(MAX),
+    [Environment] NVARCHAR(MAX)
+    );
 
 ---- PASTE INSERT Queries below this section --------
 

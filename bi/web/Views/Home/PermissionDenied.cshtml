@@ -41,7 +41,7 @@
     </script>
     @if (!isEmbed)
     {
-        <div class="col-xs-12 no-padding no-margin top-header-sec-access-denied">
+        <div class="col-12 no-padding no-margin top-header-sec-access-denied">
             @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", @T["Access Denied"] } })
         </div>
     }

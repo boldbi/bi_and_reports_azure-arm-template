@@ -11,7 +11,10 @@ var storageButtonValue;
 var azureDataforBoldbi = null;
 
 $(document).ready(function () {
-    $('[data-toggle="popover"]').popover();
+    var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+    var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+        return new bootstrap.Popover(popoverTriggerEl)
+    })
     $("#blob-storage-form").hide();
     $("#report-storage").hide();
     $("#system-settings-user-account-container").hide();
@@ -37,6 +40,7 @@ $(document).ready(function () {
         return a
     }
 
+    $("#default-tab").addClass("active");
     $("#default-tab").popover({
         html: true,
         trigger: 'hover',
@@ -51,17 +55,17 @@ $(document).ready(function () {
         content: isSiteCreation ? window.Server.App.LocalizationContent.AdvanceTabSiteCreationMsg : window.Server.App.LocalizationContent.AdvanceTabStartupMsg
     });
 
-    $("a[data-toggle='tab']").on('click', function (e) {
+    $("a[data-bs-toggle='tab']").on('click', function (e) {
         removeError();
         var obj = document.getElementById("database-type");
         var itemsList = obj.ej2_instances[0].list.querySelectorAll('.e-list-item');
         if (isSiteCreation) {
             if (!isBoldReportsTenantType() && (IsBiPrefixSchema)) {
-                $(".schema-prefix-hide").removeClass("hide").addClass("show");
+                $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
             }
 
             if (isBoldReportsTenantType() && (IsReportsPrefixSchema)) {
-                $(".schema-prefix-hide").removeClass("hide").addClass("show");
+                $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
             }
         }
         var configurationModeType = getRadioButtonValue('ConfigurationMode');
@@ -75,7 +79,7 @@ $(document).ready(function () {
                 $("#advanced-tab").addClass("active");
                 $("#simple-tenant-prefix").hide();
                 $("#simple-server-prefix").hide();
-                /*$('.server-schema-prefix-hide').removeClass("show").addClass("hidden");*/
+                /*$('.server-schema-prefix-hide').removeClass("d-block").addClass("visually-hidden");*/
                 if (!isSiteCreation) {
                     $("#label_txt-dbname").html(window.Server.App.LocalizationContent.IDDatabaseName);
                     $("#label_database-name").html(window.Server.App.LocalizationContent.IDDatabaseName);
@@ -87,7 +91,7 @@ $(document).ready(function () {
                 }
 
                 $("#simple_tab_db_name").hide();
-                /*$("#simple_tab_db_name").removeClass("show").addClass("hidden");*/
+                /*$("#simple_tab_db_name").removeClass("d-block").addClass("visually-hidden");*/
                 $("#advanced_tab_db_name").show();
                 if (!isBoldBI && isSiteCreation && isBoldReportsTenantType() || !isBoldBI && !isSiteCreation) {
                     hideDataStore();
@@ -100,13 +104,13 @@ $(document).ready(function () {
                     showDataStore();
                 }
 
-                $(".simple-tab").removeClass("show").addClass("hidden");
+                $(".simple-tab").removeClass("d-block").addClass("visually-hidden");
                 if (!isSiteCreation) {
                     $("#simple_tab_db_name").show();
                     $(".db-name-info").html(window.Server.App.LocalizationContent.DatabaseInfo);
                     $(".db-schema-info").html(window.Server.App.LocalizationContent.SchemaInfo);
                     prefillDbNames();
-                    /*$('.simple-id-schema-prefix-hide').removeClass("hidden").addClass("show");*/
+                    /*$('.simple-id-schema-prefix-hide').removeClass("visually-hidden").addClass("d-block");*/
                 }
                 else {
                     $(".db-schema-info").html(window.Server.App.LocalizationContent.SchemaInfo);
@@ -114,26 +118,26 @@ $(document).ready(function () {
                 }
 
                 if (!isSiteCreation) {
-                    $('.id-schema-prefix-hide').removeClass("hidden").addClass("show");
+                    $('.id-schema-prefix-hide').removeClass("visually-hidden").addClass("d-block");
                 }
                 else {
-                    $('.id-schema-prefix-hide').removeClass("show").addClass("hidden");
+                    $('.id-schema-prefix-hide').removeClass("d-block").addClass("visually-hidden");
                 }
 
                 if ($("input[name='databaseType']:checked").val() === "1") {
-                    $(".old-db").removeClass("hidden").addClass("show");
-                    $(".new-smp-db").removeClass("show").addClass("hidden");
-                    $(".simple-exist-schema-prefix-hide").removeClass("show").addClass("hidden");
+                    $(".old-db").removeClass("visually-hidden").addClass("d-block");
+                    $(".new-smp-db").removeClass("d-block").addClass("visually-hidden");
+                    $(".simple-exist-schema-prefix-hide").removeClass("d-block").addClass("visually-hidden");
                 }
                 else {
-                    $(".old-db").removeClass("show").addClass("hidden");
-                    $(".new-smp-db").removeClass("hidden").addClass("show");
-                    $('.server-schema-prefix-hide').removeClass("show").addClass("hidden");
+                    $(".old-db").removeClass("d-block").addClass("visually-hidden");
+                    $(".new-smp-db").removeClass("visually-hidden").addClass("d-block");
+                    $('.server-schema-prefix-hide').removeClass("d-block").addClass("visually-hidden");
                 }
                 var databaseType = getDropDownValue("database-type").toLowerCase();;
                 if (databaseType == "oracle") {
-                    $(".advance-schema-prefix-hide").removeClass("show").addClass("hidden");
-                    $(".ser-schema-prefix-hide").removeClass("hidden").addClass("show");
+                    $(".advance-schema-prefix-hide").removeClass("d-block").addClass("visually-hidden");
+                    $(".ser-schema-prefix-hide").removeClass("visually-hidden").addClass("d-block");
                 }
 
                 if (!(configurationModeType !== undefined && configurationModeType === "0")) {
@@ -154,20 +158,20 @@ $(document).ready(function () {
             }
             if (isSiteCreation) {
                 if (!isBoldReportsTenantType() && (!IsBiPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
                 }
 
                 if (isBoldReportsTenantType() && (!IsReportsPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
                 }
             }
             else {
                 if (!IsBiPrefixSchema) {
-                    $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
                 }
 
                 if (IsReportsPrefixSchema && !isBoldBI) {
-                    $(".schema-prefix-hide").removeClass("hide").addClass("show");
+                    $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
                 }
             }
         }
@@ -189,12 +193,12 @@ $(document).ready(function () {
                 $("#table-prefix-name").hide();
             }
 
-            $('.advance-tab').removeClass("show").addClass("hidden");
+            $('.advance-tab').removeClass("d-block").addClass("visually-hidden");
             $(".db-name-info").html(isBoldBI ? window.Server.App.LocalizationContent.DatabaseInfoBI.format(biProductname) : window.Server.App.LocalizationContent.DatabaseInfoReports.format(reportsProductname));
             if (!isSiteCreation) {
                 $(".db-name-info").html(isBoldBI ? window.Server.App.LocalizationContent.DatabaseInfoBI3 : window.Server.App.LocalizationContent.DatabaseInfoReports2.format(reportsProductname, "report"));
                 prefillDbNames();
-                //$('.simple-tab').removeClass("show").addClass("hidden");
+                //$('.simple-tab').removeClass("d-block").addClass("visually-hidden");
             }
             else {
                 $(".db-schema-info").html(window.Server.App.LocalizationContent.SchemaInfo);
@@ -202,25 +206,25 @@ $(document).ready(function () {
             }
             $("#advanced_tab_db_name").hide();
             if (!isSiteCreation) {
-                $('.id-schema-prefix-hide').removeClass("hidden").addClass("show");
+                $('.id-schema-prefix-hide').removeClass("visually-hidden").addClass("d-block");
             }
             else {
-                $('.id-schema-prefix-hide').removeClass("show").addClass("hidden");
+                $('.id-schema-prefix-hide').removeClass("d-block").addClass("visually-hidden");
             }
 
             if ($("input[name='databaseType']:checked").val() === "1") {
-                $(".old-db").removeClass("hidden").addClass("show");
-                $(".new-smp-db").removeClass("show").addClass("hidden");
+                $(".old-db").removeClass("visually-hidden").addClass("d-block");
+                $(".new-smp-db").removeClass("d-block").addClass("visually-hidden");
             }
             else {
-                $(".old-db").removeClass("show").addClass("hidden");
-                $(".new-smp-db").removeClass("hidden").addClass("show");
+                $(".old-db").removeClass("d-block").addClass("visually-hidden");
+                $(".new-smp-db").removeClass("visually-hidden").addClass("d-block");
             }
 
             isSimpleModeValue = "true";
             if (itemsList && itemsList.length > 3) {
                 if (isSiteCreation) {
-                    $(".id-schema-prefix-hide").removeClass("show").addClass("hidden");
+                    $(".id-schema-prefix-hide").removeClass("d-block").addClass("visually-hidden");
                     if (isBoldReportsTenantType() && !IsOracleSupportReports) {
                         itemsList[3].style.display = "none";
                     }
@@ -257,26 +261,26 @@ $(document).ready(function () {
             }
             if (isSiteCreation) {
                 if (!isBoldReportsTenantType() && (!IsBiPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
                 }
 
                 if (isBoldReportsTenantType() && (!IsReportsPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
                 }
             }
             else {
                 if (!IsBiPrefixSchema) {
-                    $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
                 }
 
                 if (IsReportsPrefixSchema && !isBoldBI) {
-                    $(".schema-prefix-hide").removeClass("hide").addClass("show");
+                    $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
                 }
             }
 
             if (configurationModeType !== undefined && configurationModeType === "0")
             {
-                $(".schema-prefix-hide").removeClass("show").addClass("hide");
+                $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
             }
         }
 
@@ -291,7 +295,7 @@ $(document).ready(function () {
         $("#system-settings-welcome-container").hide();
         $(".welcome-content").addClass("display-none");
         $("#system-settings-offline-license-container").hide();
-        $('#auth-type-dropdown').removeClass("hide").addClass("show");
+        $('#auth-type-dropdown').removeClass("d-none").addClass("d-block");
         $("#system-settings-user-account-container").slideDown("slow");
         autoFocus("txt-firstname");
     }
@@ -468,13 +472,13 @@ function changeFooterPostion() {
 
 $(document).on("focus", "input[type=text],input[type=password]", function () {
     if (regexIe8.test(userAgent)) {
-        $(this).next(".placeholder").removeClass("show").addClass("hide");
+        $(this).next(".placeholder").removeClass("d-block").addClass("d-none");
     }
 });
 
 $(document).on("focusout", "input[type=text],input[type=password]", function () {
     if (regexIe8.test(userAgent) && $(this).val() === "") {
-        $(this).next(".placeholder").removeClass("hide").addClass("show");
+        $(this).next(".placeholder").removeClass("d-none").addClass("d-block");
     }
 });
 
@@ -587,7 +591,7 @@ function checkingExistingDB(element) {
                             html += "</ol>";
                             errorContent = html;
                             $(".database-error").html(databaseValidationMessage).show();
-                            $(".server-schema-prefix-hide").removeClass("show").addClass("hidden");
+                            $(".server-schema-prefix-hide").removeClass("d-block").addClass("visually-hidden");
 
                         } else if (!result.Data.key && items.length <= 0) {
                             delete window.serverName;
@@ -1016,12 +1020,12 @@ function autoFocus(id) {
 function ResizeHeightForDOM() {
     var height = /*$(window).height() - $(".modal-header").height() - 210*/"";
     var modalheight = /*$("#dialog-body-container").height() + $("#dialog-body-header").height() + 50*/"";
-    //if ($(".tenant-registration-form").hasClass("show")) {
+    //if ($(".tenant-registration-form").hasClass("d-block")) {
     //    height = $(window).height() - $(".modal-header").height() - 210 + 100;
     //    modalheight = $("#dialog-body-container").height() + $("#dialog-body-header").height() + 102;
     //}
 
-    if ($(".storage-form").hasClass("show")) {
+    if ($(".storage-form").hasClass("d-block")) {
         if ($("#file-storage").is(":checked")) {
             height = $(window).height() - $(".modal-header").height() - 210;
             modalheight = $("#dialog-body-container").height() + $("#dialog-body-header").height() + 102;
@@ -1031,17 +1035,17 @@ function ResizeHeightForDOM() {
         }
     }
 
-    //if ($(".tenant-user-form").hasClass("show")) {
+    //if ($(".tenant-user-form").hasClass("d-block")) {
     //    height = $(window).height() - $(".modal-header").height() - 210;
     //    modalheight = $("#dialog-body-container").height() + $("#dialog-body-header").height() + 102;
     //}
 
-    //if ($(".data-security-form").hasClass("show")) {
+    //if ($(".data-security-form").hasClass("d-block")) {
     //    height = $(window).height() - $(".modal-header").height() - 210;
     //    modalheight = $("#dialog-body-container").height() + $("#dialog-body-header").height() + 102;
     //}
 
-    //if ($(".tenant-database-form").hasClass("show")) {
+    //if ($(".tenant-database-form").hasClass("d-block")) {
     //    var databaseType = getDropDownValue("database-type").toLowerCase();
 
     //    if (databaseType == "postgresql") {
@@ -1069,3 +1073,14 @@ function validateStartup(result) {
         }
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    var newPasswordInput = document.getElementById("new-password");
+
+    if (newPasswordInput != null){
+        newPasswordInput.addEventListener("shown.bs.popover", function () {
+            var popoverId = newPasswordInput.getAttribute("aria-describedby");
+            document.getElementById(popoverId).classList.add("custom-popover");
+        });
+    }
+});
