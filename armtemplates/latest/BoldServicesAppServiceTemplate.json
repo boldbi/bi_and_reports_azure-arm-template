@@ -125,6 +125,10 @@
 								"physicalPath": "site\\wwwroot\\bi\\dataservice"
 							},
 							{
+								"virtualPath": "/aiservice",
+								"physicalPath": "site\\wwwroot\\ai\\aiservice"
+							},
+							{
 								"virtualPath": "/reporting",
 								"physicalPath": "site\\wwwroot\\reporting\\web"
 							},
@@ -137,9 +141,9 @@
 								"physicalPath": "site\\wwwroot\\reporting\\jobs"
 							},
 							{
-                                				"virtualPath": "/reporting/viewer",
-                                				"physicalPath": "site\\wwwroot\\reporting\\viewer"
-                            				},
+								"virtualPath": "/reporting/viewer",
+								"physicalPath": "site\\wwwroot\\reporting\\viewer"
+							},
 							{
 								"virtualPath": "/reporting/reportservice",
 								"physicalPath": "site\\wwwroot\\reporting\\reportservice"
@@ -161,7 +165,7 @@
 					],
 					"properties": {
 						"RepoUrl": "https://github.com/boldbi/bi_and_reports_azure-arm-template.git",
-						"branch": "boldbi_v9.1.73_boldreports_v7.1.9",
+						"branch": "boldbi_v10.1.18_boldreports_v7.1.9",
 						"IsManualIntegration": true
 					}
 				},
