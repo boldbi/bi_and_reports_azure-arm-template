@@ -328,6 +328,10 @@ $(document).ready(function () {
         return IsEmail(value) && !/^\s/.test(value);
     }, window.Server.App.LocalizationContent.InvalidEmailAddress);
 
+    $.validator.addMethod("isValidCopyRightInfo", function (value, element) {
+        return IsValideCopyRightInfo(value);
+    }, window.Server.App.LocalizationContent.AvoidInvalidCharacters);
+
     $(document).on("click", "#UpdateAiSettings", function () {
         var aiModel = document.getElementById("ai-providers").ej2_instances[0].value;
         var modelName= (aiModel == "Azure AI" ? $("#azure-model-name").val().trim() : "");
@@ -437,6 +441,7 @@ $(document).ready(function () {
             },
             "copy_right_info": {
                 isRequired: true,
+                isValidCopyRightInfo: true,
                 maxlength: 255
             }
         },

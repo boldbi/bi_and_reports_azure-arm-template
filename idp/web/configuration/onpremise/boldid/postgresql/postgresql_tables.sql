@@ -908,6 +908,14 @@ CREATE TABLE BOLDTC_UserAttributes(
 	IsActive smallint NOT NULL)
 ;
 
+CREATE TABLE BOLDTC_BackUp (
+    Id SERIAL primary key NOT NULL,
+    ConfigurationData text NOT NULL,
+    PrivateKey text NOT NULL,
+    ModifiedDate timestamp NOT NULL,
+    IsActive smallint NOT NULL
+);
+
 CREATE TABLE BOLDTC_CustomEmailTemplate (
     Id SERIAL PRIMARY KEY,
     IsEnabled smallint,
@@ -929,7 +937,7 @@ CREATE TABLE BOLDTC_CustomEmailTemplate (
 	TemplateLocalizationKey VARCHAR(255) NULL
 );
 
-CREATE TABLE BoldTC_AICredentials(
+CREATE TABLE BOLDTC_AICredentials(
     Id uuid NOT NULL,
     AIModel INTEGER NOT NULL,
     AIConfiguration varchar(4000) NULL,

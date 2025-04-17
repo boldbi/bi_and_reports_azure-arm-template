@@ -1157,6 +1157,14 @@ CREATE TABLE [BOLDTC_UserAttributes](
 	[IsActive] [bit] NOT NULL)
 ;
 
+CREATE TABLE [BOLDTC_BackUp](
+    Id int IDENTITY(1,1) NOT NULL,
+    ConfigurationData nvarchar(max) NOT NULL,
+    PrivateKey nvarchar(max) NOT NULL,
+    ModifiedDate datetime NOT NULL,
+    IsActive bit NOT NULL
+);
+
 CREATE TABLE [BOLDTC_CustomEmailTemplate](
 [Id] [int] IDENTITY(1,1) primary key NOT NULL,
 [IsEnabled] [bit] NULL,
@@ -1177,7 +1185,7 @@ CREATE TABLE [BOLDTC_CustomEmailTemplate](
 [ModifiedBy][uniqueidentifier] NOT NULL,
 [TemplateLocalizationKey][nvarchar](255) NULL);
 
-CREATE TABLE [BoldTC_AICredentials](
+CREATE TABLE [BOLDTC_AICredentials](
     [Id] uniqueidentifier NOT NULL,
     [AIModel] [int] NOT NULL,
     [AIConfiguration] [nvarchar](4000) NULL,

@@ -1277,6 +1277,14 @@
 		<ModifiedDate>ModifiedDate</ModifiedDate>
 		<IsActive>IsActive</IsActive>
 	</DB_UserAttributes>
+  <DB_BackUp>
+    <DB_TableName>BackUp</DB_TableName>
+    <Id>Id</Id>
+    <ConfigurationData>ConfigurationData</ConfigurationData>
+    <PrivateKey>PrivateKey</PrivateKey>
+    <ModifiedDate>ModifiedDate</ModifiedDate>
+    <IsActive>IsActive</IsActive>
+  </DB_BackUp>
   <DB_AICredentials>
     <DB_TableName>AICredentials</DB_TableName>
     <Id>Id</Id>

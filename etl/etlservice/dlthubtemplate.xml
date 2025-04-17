@@ -501,15 +501,15 @@ plugins:
     </yaml>
   </extractor>
   <extractor>
-    <name>HubSpot</name>
+    <name>Hubspot</name>
     <yaml>
       <![CDATA[
 version: 1.0.1
 destination: 
 plugins:
   extractors:
-    - name: HubSpot
-      connectorname: HubSpot
+    - name: Hubspot
+      connectorname: Hubspot
       config:
         api_key: <>
       properties:
@@ -556,9 +556,7 @@ plugins:
       config:
         api_key: <>
       properties:
-        selcted_database_ids: 
-      select:
-        - tablename
+        selected_database_ids: 
       ]]>
     </yaml>
   </extractor>

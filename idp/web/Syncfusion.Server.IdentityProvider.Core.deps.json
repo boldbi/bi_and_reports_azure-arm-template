@@ -34,7 +34,7 @@
   },
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "Syncfusion.Server.IdentityProvider.Core/11.2.7": {
+      "Syncfusion.Server.IdentityProvider.Core/9.1.7": {
         "dependencies": {
           "AspNet.Security.OpenId.Steam": "3.1.0",
           "AsyncFixer": "1.6.0",
@@ -53,7 +53,6 @@
           "Microsoft.IdentityModel.Tokens": "6.36.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.10.8",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.4",
-          "OpenIddict": "3.1.1",
           "OpenIddict.Server.AspNetCore": "3.1.1",
           "OpenIddict.Server.DataProtection": "3.1.1",
           "OpenIddict.Validation.AspNetCore": "3.1.1",
@@ -62,17 +61,17 @@
           "OrchardCore.Localization.Core": "1.5.0",
           "SecurityCodeScan.VS2019": "5.6.7",
           "StyleCop.Analyzers": "1.2.0-beta.435",
-          "Syncfusion.Server.API.Base.Core": "11.2.7",
-          "Syncfusion.Server.Base.Core": "11.2.7",
-          "Syncfusion.Server.Base.Data.Core": "11.2.7",
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7",
-          "Syncfusion.Server.Base.Encryption": "11.2.7",
-          "Syncfusion.Server.Base.LicenseManagement.Core": "11.2.7",
-          "Syncfusion.Server.Base.Logger": "11.2.7",
-          "Syncfusion.Server.Base.Middlewares": "11.2.7",
-          "Syncfusion.Server.Base.Resources.Storage.Core": "11.2.7",
-          "Syncfusion.Server.Base.TemplateGenerator": "11.2.7",
-          "Syncfusion.Server.Base.TenantManagement.Client.Core": "11.2.7",
+          "Syncfusion.Server.API.Base.Core": "9.1.7",
+          "Syncfusion.Server.Base.Core": "9.1.7",
+          "Syncfusion.Server.Base.Data.Core": "9.1.7",
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7",
+          "Syncfusion.Server.Base.Encryption": "9.1.7",
+          "Syncfusion.Server.Base.LicenseManagement.Core": "9.1.7",
+          "Syncfusion.Server.Base.Logger": "9.1.7",
+          "Syncfusion.Server.Base.Middlewares": "9.1.7",
+          "Syncfusion.Server.Base.Resources.Storage.Core": "9.1.7",
+          "Syncfusion.Server.Base.TemplateGenerator": "9.1.7",
+          "Syncfusion.Server.Base.TenantManagement.Client.Core": "9.1.7",
           "System.Text.RegularExpressions": "4.3.1",
           "jose-jwt": "5.1.1",
           "log4net": "2.0.17",
@@ -190,7 +189,7 @@
           "Microsoft.Extensions.FileSystemGlobbing.Reference": "8.0.0.0",
           "Microsoft.Extensions.Hosting.Abstractions.Reference": "8.0.0.0",
           "Microsoft.Extensions.Hosting.Reference": "8.0.0.0",
-          "Microsoft.Extensions.Http.Reference": "8.0.0.0",
+          "Microsoft.Extensions.Http": "8.0.0.0",
           "Microsoft.Extensions.Identity.Core": "8.0.0.0",
           "Microsoft.Extensions.Identity.Stores": "8.0.0.0",
           "Microsoft.Extensions.Localization.Abstractions.Reference": "8.0.0.0",
@@ -278,7 +277,7 @@
           "System.Memory.Reference": "8.0.0.0",
           "System.Net": "4.0.0.0",
           "System.Net.Http.Reference": "8.0.0.0",
-          "System.Net.Http.Json.Reference": "8.0.0.0",
+          "System.Net.Http.Json": "8.0.0.0",
           "System.Net.HttpListener": "8.0.0.0",
           "System.Net.Mail": "8.0.0.0",
           "System.Net.NameResolution": "8.0.0.0",
@@ -775,7 +774,7 @@
       "Microsoft.ApplicationInsights.PerfCounterCollector/2.21.0": {
         "dependencies": {
           "Microsoft.ApplicationInsights": "2.21.0",
-          "Microsoft.Extensions.Caching.Memory": "5.0.0",
+          "Microsoft.Extensions.Caching.Memory": "1.0.0",
           "System.Diagnostics.PerformanceCounter": "6.0.1"
         },
         "runtime": {
@@ -1721,18 +1720,21 @@
           }
         }
       },
-      "Microsoft.Extensions.Caching.Abstractions/5.0.0": {
+      "Microsoft.Extensions.Caching.Abstractions/1.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Primitives": "8.0.0"
+          "Microsoft.Extensions.Primitives": "8.0.0",
+          "System.Collections": "4.3.0",
+          "System.Threading": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
         }
       },
-      "Microsoft.Extensions.Caching.Memory/5.0.0": {
+      "Microsoft.Extensions.Caching.Memory/1.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "5.0.0",
+          "Microsoft.Extensions.Caching.Abstractions": "1.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
           "Microsoft.Extensions.Options": "8.0.2",
-          "Microsoft.Extensions.Primitives": "8.0.0"
+          "System.Linq": "4.3.0",
+          "System.Threading": "4.3.0"
         }
       },
       "Microsoft.Extensions.Configuration/6.0.0": {
@@ -1863,29 +1865,6 @@
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
           "Microsoft.Extensions.FileProviders.Abstractions": "6.0.0"
-        }
-      },
-      "Microsoft.Extensions.Http/3.1.16": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
-          "Microsoft.Extensions.Logging": "6.0.0",
-          "Microsoft.Extensions.Options": "8.0.2"
-        }
-      },
-      "Microsoft.Extensions.Http.Polly/3.1.16": {
-        "dependencies": {
-          "Microsoft.Extensions.Http": "3.1.16",
-          "Polly": "7.1.0",
-          "Polly.Extensions.Http": "3.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll": {
-            "assemblyVersion": "3.1.16.0",
-            "fileVersion": "3.100.1621.26206"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Microsoft.Extensions.Http.Polly.dll": {}
         }
       },
       "Microsoft.Extensions.Localization/2.2.0": {
@@ -2589,16 +2568,6 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
-      "OpenIddict/3.1.1": {
-        "dependencies": {
-          "OpenIddict.Abstractions": "3.1.1",
-          "OpenIddict.Core": "3.1.1",
-          "OpenIddict.Server": "3.1.1",
-          "OpenIddict.Validation": "3.1.1",
-          "OpenIddict.Validation.ServerIntegration": "3.1.1",
-          "OpenIddict.Validation.SystemNetHttp": "3.1.1"
-        }
-      },
       "OpenIddict.Abstractions/3.1.1": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.0",
@@ -2616,23 +2585,6 @@
         },
         "compile": {
           "lib/netstandard2.1/OpenIddict.Abstractions.dll": {}
-        }
-      },
-      "OpenIddict.Core/3.1.1": {
-        "dependencies": {
-          "Microsoft.Extensions.Caching.Memory": "5.0.0",
-          "Microsoft.Extensions.Logging": "6.0.0",
-          "Microsoft.Extensions.Options": "8.0.2",
-          "OpenIddict.Abstractions": "3.1.1"
-        },
-        "runtime": {
-          "lib/net5.0/OpenIddict.Core.dll": {
-            "assemblyVersion": "3.1.1.0",
-            "fileVersion": "3.100.121.42743"
-          }
-        },
-        "compile": {
-          "lib/net5.0/OpenIddict.Core.dll": {}
         }
       },
       "OpenIddict.Server/3.1.1": {
@@ -2738,22 +2690,6 @@
           "lib/netstandard2.1/OpenIddict.Validation.ServerIntegration.dll": {}
         }
       },
-      "OpenIddict.Validation.SystemNetHttp/3.1.1": {
-        "dependencies": {
-          "Microsoft.Extensions.Http.Polly": "3.1.16",
-          "OpenIddict.Validation": "3.1.1",
-          "System.Net.Http.Json": "3.2.1"
-        },
-        "runtime": {
-          "lib/netstandard2.1/OpenIddict.Validation.SystemNetHttp.dll": {
-            "assemblyVersion": "3.1.1.0",
-            "fileVersion": "3.100.121.42743"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.1/OpenIddict.Validation.SystemNetHttp.dll": {}
-        }
-      },
       "Oracle.ManagedDataAccess.Core/3.21.130": {
         "dependencies": {
           "System.Diagnostics.PerformanceCounter": "6.0.1",
@@ -2793,31 +2729,6 @@
         },
         "compile": {
           "lib/net6.0/OrchardCore.Localization.Core.dll": {}
-        }
-      },
-      "Polly/7.1.0": {
-        "runtime": {
-          "lib/netstandard2.0/Polly.dll": {
-            "assemblyVersion": "7.0.0.0",
-            "fileVersion": "7.1.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Polly.dll": {}
-        }
-      },
-      "Polly.Extensions.Http/3.0.0": {
-        "dependencies": {
-          "Polly": "7.1.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {
-            "assemblyVersion": "3.0.0.0",
-            "fileVersion": "3.0.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Polly.Extensions.Http.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
@@ -3483,11 +3394,6 @@
           "runtime.native.System.Security.Cryptography.OpenSsl": "4.3.2"
         }
       },
-      "System.Net.Http.Json/3.2.1": {
-        "dependencies": {
-          "System.Text.Json": "9.0.0"
-        }
-      },
       "System.Net.NetworkInformation/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
@@ -4088,26 +3994,26 @@
           "lib/net6.0/TimeZoneConverter.dll": {}
         }
       },
-      "Syncfusion.Server.API.Base.Core/11.2.7": {
+      "Syncfusion.Server.API.Base.Core/9.1.7": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
-          "Syncfusion.Server.Base.Core": "11.2.7",
-          "Syncfusion.Server.Base.Data.Core": "11.2.7",
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7",
-          "Syncfusion.Server.Base.Resources.Storage.Core": "11.2.7",
+          "Syncfusion.Server.Base.Core": "9.1.7",
+          "Syncfusion.Server.Base.Data.Core": "9.1.7",
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7",
+          "Syncfusion.Server.Base.Resources.Storage.Core": "9.1.7",
           "log4net": "2.0.17"
         },
         "runtime": {
           "Syncfusion.Server.API.Base.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.API.Base.Core.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Core/11.2.7": {
+      "Syncfusion.Server.Base.Core/9.1.7": {
         "dependencies": {
           "Azure.Identity": "1.13.1",
           "Azure.Storage.Blobs": "12.14.1",
@@ -4137,14 +4043,14 @@
           "SkiaSharp.NativeAssets.Win32": "3.116.1",
           "SkiaSharp.NativeAssets.macOS": "3.116.1",
           "Syncfusion.Bold.Core": "3.5.1",
-          "Syncfusion.Server.Base.Data.Core": "11.2.7",
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7",
-          "Syncfusion.Server.Base.Encryption": "11.2.7",
-          "Syncfusion.Server.Base.Localization": "11.2.7",
-          "Syncfusion.Server.Base.Logger": "11.2.7",
-          "Syncfusion.Server.Base.MarkdownSharp.Core": "11.2.7",
-          "Syncfusion.Server.Base.Resources.Storage.Core": "11.2.7",
-          "Syncfusion.Server.Base.TemplateGenerator": "11.2.7",
+          "Syncfusion.Server.Base.Data.Core": "9.1.7",
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7",
+          "Syncfusion.Server.Base.Encryption": "9.1.7",
+          "Syncfusion.Server.Base.Localization": "9.1.7",
+          "Syncfusion.Server.Base.Logger": "9.1.7",
+          "Syncfusion.Server.Base.MarkdownSharp.Core": "9.1.7",
+          "Syncfusion.Server.Base.Resources.Storage.Core": "9.1.7",
+          "Syncfusion.Server.Base.TemplateGenerator": "9.1.7",
           "System.CodeDom": "8.0.0",
           "System.DirectoryServices.AccountManagement": "8.0.0",
           "System.DirectoryServices.Protocols": "8.0.0",
@@ -4158,108 +4064,108 @@
         },
         "runtime": {
           "Syncfusion.Server.Base.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.Core.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Data.Core/11.2.7": {
+      "Syncfusion.Server.Base.Data.Core/9.1.7": {
         "dependencies": {
           "Microsoft.Data.SqlClient": "5.2.2",
           "Microsoft.Win32.Registry": "5.0.0",
           "MySqlConnector": "2.2.7",
           "Npgsql": "7.0.7",
           "Oracle.ManagedDataAccess.Core": "3.21.130",
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7",
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7",
           "System.Data.Odbc": "8.0.0",
           "System.IdentityModel.Tokens.Jwt": "6.36.0",
           "log4net": "2.0.17"
         },
         "runtime": {
           "Syncfusion.Server.Base.Data.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.Data.Core.dll": {}
         }
       },
-      "Syncfusion.Server.Base.DataClasses.Core/11.2.7": {
+      "Syncfusion.Server.Base.DataClasses.Core/9.1.7": {
         "dependencies": {
           "CsvHelper.Excel.Core": "27.2.1",
           "Microsoft.AspNetCore.Http.Abstractions": "2.3.0",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
           "Microsoft.Extensions.Localization.Abstractions": "6.0.9",
           "Newtonsoft.Json": "13.0.3",
-          "Syncfusion.Server.Base.Encryption": "11.2.7",
-          "Syncfusion.Server.Base.Localization": "11.2.7",
-          "Syncfusion.Server.Base.Logger": "11.2.7",
+          "Syncfusion.Server.Base.Encryption": "9.1.7",
+          "Syncfusion.Server.Base.Localization": "9.1.7",
+          "Syncfusion.Server.Base.Logger": "9.1.7",
           "System.Configuration.ConfigurationManager": "8.0.0",
           "System.Text.Encodings.Web": "9.0.0",
           "log4net": "2.0.17"
         },
         "runtime": {
           "Syncfusion.Server.Base.DataClasses.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.DataClasses.Core.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Encryption/11.2.7": {
+      "Syncfusion.Server.Base.Encryption/9.1.7": {
         "dependencies": {
-          "Syncfusion.Server.Base.Logger": "11.2.7"
+          "Syncfusion.Server.Base.Logger": "9.1.7"
         },
         "runtime": {
           "Syncfusion.Server.Base.Encryption.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.Encryption.dll": {}
         }
       },
-      "Syncfusion.Server.Base.LicenseManagement.Core/11.2.7": {
+      "Syncfusion.Server.Base.LicenseManagement.Core/9.1.7": {
         "dependencies": {
           "Microsoft.Win32.Registry": "5.0.0",
           "Newtonsoft.Json": "13.0.3",
           "Syncfusion.Bold.Core": "3.5.1",
-          "Syncfusion.Server.Base.Core": "11.2.7",
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7",
-          "Syncfusion.Server.Base.Encryption": "11.2.7"
+          "Syncfusion.Server.Base.Core": "9.1.7",
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7",
+          "Syncfusion.Server.Base.Encryption": "9.1.7"
         },
         "runtime": {
           "Syncfusion.Server.Base.LicenseManagement.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.LicenseManagement.Core.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Localization/11.2.7": {
+      "Syncfusion.Server.Base.Localization/9.1.7": {
         "dependencies": {
           "Microsoft.Extensions.Localization.Abstractions": "6.0.9"
         },
         "runtime": {
           "Syncfusion.Server.Base.Localization.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.Localization.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Logger/11.2.7": {
+      "Syncfusion.Server.Base.Logger/9.1.7": {
         "dependencies": {
           "Microsoft.ApplicationInsights.Log4NetAppender": "2.21.0",
           "System.Configuration.ConfigurationManager": "8.0.0",
@@ -4267,49 +4173,49 @@
         },
         "runtime": {
           "Syncfusion.Server.Base.Logger.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.Logger.dll": {}
         }
       },
-      "Syncfusion.Server.Base.MarkdownSharp.Core/11.2.7": {
+      "Syncfusion.Server.Base.MarkdownSharp.Core/9.1.7": {
         "dependencies": {
           "System.Configuration.ConfigurationManager": "8.0.0"
         },
         "runtime": {
           "Syncfusion.Server.Base.MarkdownSharp.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.MarkdownSharp.Core.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Middlewares/11.2.7": {
+      "Syncfusion.Server.Base.Middlewares/9.1.7": {
         "dependencies": {
           "Microsoft.ApplicationInsights.AspNetCore": "2.21.0",
-          "Syncfusion.Server.Base.Core": "11.2.7"
+          "Syncfusion.Server.Base.Core": "9.1.7"
         },
         "runtime": {
           "Syncfusion.Server.Base.Middlewares.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.Middlewares.dll": {}
         }
       },
-      "Syncfusion.Server.Base.Resources.Storage.Core/11.2.7": {
+      "Syncfusion.Server.Base.Resources.Storage.Core/9.1.7": {
         "dependencies": {
           "Azure.Storage.Blobs": "12.14.1",
           "Microsoft.Azure.Storage.Blob": "11.2.3",
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7",
-          "Syncfusion.Server.Base.Logger": "11.2.7",
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7",
+          "Syncfusion.Server.Base.Logger": "9.1.7",
           "System.Text.Encodings.Web": "9.0.0",
           "System.Text.Json": "9.0.0",
           "System.Text.RegularExpressions": "4.3.1",
@@ -4317,38 +4223,38 @@
         },
         "runtime": {
           "Syncfusion.Server.Base.Resources.Storage.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.Resources.Storage.Core.dll": {}
         }
       },
-      "Syncfusion.Server.Base.TemplateGenerator/11.2.7": {
+      "Syncfusion.Server.Base.TemplateGenerator/9.1.7": {
         "dependencies": {
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7"
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7"
         },
         "runtime": {
           "Syncfusion.Server.Base.TemplateGenerator.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
           "Syncfusion.Server.Base.TemplateGenerator.dll": {}
         }
       },
-      "Syncfusion.Server.Base.TenantManagement.Client.Core/11.2.7": {
+      "Syncfusion.Server.Base.TenantManagement.Client.Core/9.1.7": {
         "dependencies": {
-          "Syncfusion.Server.Base.Core": "11.2.7",
-          "Syncfusion.Server.Base.DataClasses.Core": "11.2.7",
+          "Syncfusion.Server.Base.Core": "9.1.7",
+          "Syncfusion.Server.Base.DataClasses.Core": "9.1.7",
           "log4net": "2.0.17"
         },
         "runtime": {
           "Syncfusion.Server.Base.TenantManagement.Client.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "9.1.7.0",
+            "fileVersion": "9.1.7.0"
           }
         },
         "compile": {
@@ -5039,7 +4945,7 @@
         },
         "compileOnly": true
       },
-      "Microsoft.Extensions.Http.Reference/8.0.0.0": {
+      "Microsoft.Extensions.Http/8.0.0.0": {
         "compile": {
           "Microsoft.Extensions.Http.dll": {}
         },
@@ -5567,7 +5473,7 @@
         },
         "compileOnly": true
       },
-      "System.Net.Http.Json.Reference/8.0.0.0": {
+      "System.Net.Http.Json/8.0.0.0": {
         "compile": {
           "System.Net.Http.Json.dll": {}
         },
@@ -6146,7 +6052,7 @@
     }
   },
   "libraries": {
-    "Syncfusion.Server.IdentityProvider.Core/11.2.7": {
+    "Syncfusion.Server.IdentityProvider.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -6795,19 +6701,19 @@
       "path": "microsoft.data.sqlclient.sni.runtime/5.2.0",
       "hashPath": "microsoft.data.sqlclient.sni.runtime.5.2.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Caching.Abstractions/5.0.0": {
+    "Microsoft.Extensions.Caching.Abstractions/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bu8As90/SBAouMZ6fJ+qRNo1X+KgHGrVueFhhYi+E5WqEhcnp2HoWRFnMzXQ6g4RdZbvPowFerSbKNH4Dtg5yg==",
-      "path": "microsoft.extensions.caching.abstractions/5.0.0",
-      "hashPath": "microsoft.extensions.caching.abstractions.5.0.0.nupkg.sha512"
+      "sha512": "sha512-IxlFDVOchL6tdR05bk7EiJvMtvZrVkZXBhkbXqc3GxOHOrHFGcN+92WoWFPeBpdpy8ot/Px5ZdXzt7k+2n1Bdg==",
+      "path": "microsoft.extensions.caching.abstractions/1.0.0",
+      "hashPath": "microsoft.extensions.caching.abstractions.1.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Caching.Memory/5.0.0": {
+    "Microsoft.Extensions.Caching.Memory/1.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-/1qPCleFOkJe0O+xmFqCNLFYQZTJz965sVw8CUB/BQgsApBwzAUsL2BUkDvQW+geRUVTXUS9zLa0pBjC2VJ1gA==",
-      "path": "microsoft.extensions.caching.memory/5.0.0",
-      "hashPath": "microsoft.extensions.caching.memory.5.0.0.nupkg.sha512"
+      "sha512": "sha512-6+7zTufCnZ+tfrUo7RbIRR3LB0BxwOwxfXuo0IbLyIvgoToGpWuz5wYEDfCYNOvpig9tY8FA0I1uRHYmITMXMQ==",
+      "path": "microsoft.extensions.caching.memory/1.0.0",
+      "hashPath": "microsoft.extensions.caching.memory.1.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration/6.0.0": {
       "type": "package",
@@ -6927,20 +6833,6 @@
       "sha512": "sha512-GcT5l2CYXL6Sa27KCSh0TixsRfADUgth+ojQSD5EkzisZxmGFh7CwzkcYuGwvmXLjr27uWRNrJ2vuuEjMhU05Q==",
       "path": "microsoft.extensions.hosting.abstractions/6.0.0",
       "hashPath": "microsoft.extensions.hosting.abstractions.6.0.0.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Http/3.1.16": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kJW/3MDXq0X10CowdpDy7DnJliq3i0FTYLIAW8gmXLVAguFoHxIvSchq3VLItBUOzBQCtNYKBn1WfVTfVQ8FDw==",
-      "path": "microsoft.extensions.http/3.1.16",
-      "hashPath": "microsoft.extensions.http.3.1.16.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Http.Polly/3.1.16": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3azScpCfXSvI+Ch16cBMPAjEKtKytwc29HJK7W6mtYdRCduJ7XxB9WJ4coIKL6N22HOaRpP9ny2jtzKmJoTwmA==",
-      "path": "microsoft.extensions.http.polly/3.1.16",
-      "hashPath": "microsoft.extensions.http.polly.3.1.16.nupkg.sha512"
     },
     "Microsoft.Extensions.Localization/2.2.0": {
       "type": "package",
@@ -7355,26 +7247,12 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
-    "OpenIddict/3.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-e3BJwTLtb3Z3aHijpLhg8KutYBBcl+yceMFvKChn9FBOzNWHCGxSZaidXw4hzeQ9W8cGK8nPHKaSSedaw1pU1w==",
-      "path": "openiddict/3.1.1",
-      "hashPath": "openiddict.3.1.1.nupkg.sha512"
-    },
     "OpenIddict.Abstractions/3.1.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-8V+BWOCjClN/iByyeBklT9pLX8Zka4IVrjO8BAwFfQsp3UyYtVoazI45Uqmwjb90gaGu8uSMLDKuox0xPC+sgg==",
       "path": "openiddict.abstractions/3.1.1",
       "hashPath": "openiddict.abstractions.3.1.1.nupkg.sha512"
-    },
-    "OpenIddict.Core/3.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-TI828w93+Zda+vm8ZnVZ/JWBFUhDhHBOrhE39Cd+JqTUQOf2QKiAYlQKYv0Ce8A6L70yUeR2CviOhpTdWUsOEg==",
-      "path": "openiddict.core/3.1.1",
-      "hashPath": "openiddict.core.3.1.1.nupkg.sha512"
     },
     "OpenIddict.Server/3.1.1": {
       "type": "package",
@@ -7425,13 +7303,6 @@
       "path": "openiddict.validation.serverintegration/3.1.1",
       "hashPath": "openiddict.validation.serverintegration.3.1.1.nupkg.sha512"
     },
-    "OpenIddict.Validation.SystemNetHttp/3.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Y8v8Kzejsocw29XAA4kT26TEDVnbC2mT2+RgPAiX1fSxhuDXHRA93c+9Rj/BLldOFy31oYxlkmZdAgdxHUBxnA==",
-      "path": "openiddict.validation.systemnethttp/3.1.1",
-      "hashPath": "openiddict.validation.systemnethttp.3.1.1.nupkg.sha512"
-    },
     "Oracle.ManagedDataAccess.Core/3.21.130": {
       "type": "package",
       "serviceable": true,
@@ -7452,20 +7323,6 @@
       "sha512": "sha512-5sq4CgZ29do7/CN7UL6k4o7+nfI4i+kqPe5BI9xrjQwO5CGUyETDyom//6ixTuTaPQ+VRrsCDlnmHLe9Wv+gWw==",
       "path": "orchardcore.localization.core/1.5.0",
       "hashPath": "orchardcore.localization.core.1.5.0.nupkg.sha512"
-    },
-    "Polly/7.1.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mpQsvlEn4ipgICh5CGyVLPV93RFVzOrBG7wPZfzY8gExh7XgWQn0GCDY9nudbUEJ12UiGPP9i4+CohghBvzhmg==",
-      "path": "polly/7.1.0",
-      "hashPath": "polly.7.1.0.nupkg.sha512"
-    },
-    "Polly.Extensions.Http/3.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-drrG+hB3pYFY7w1c3BD+lSGYvH2oIclH8GRSehgfyP5kjnFnHKQuuBhuHLv+PWyFuaTDyk/vfRpnxOzd11+J8g==",
-      "path": "polly.extensions.http/3.0.0",
-      "hashPath": "polly.extensions.http.3.0.0.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",
@@ -7915,13 +7772,6 @@
       "path": "system.net.http/4.3.4",
       "hashPath": "system.net.http.4.3.4.nupkg.sha512"
     },
-    "System.Net.Http.Json/3.2.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-KkevRTwX9uMYxuxG2/wSql8FIAItB89XT36zoh6hraQkFhf2yjotDswpAKzeuaEuMhAia6c50oZMkP1PJoYufQ==",
-      "path": "system.net.http.json/3.2.1",
-      "hashPath": "system.net.http.json.3.2.1.nupkg.sha512"
-    },
     "System.Net.NetworkInformation/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -8328,67 +8178,67 @@
       "path": "timezoneconverter/6.0.1",
       "hashPath": "timezoneconverter.6.0.1.nupkg.sha512"
     },
-    "Syncfusion.Server.API.Base.Core/11.2.7": {
+    "Syncfusion.Server.API.Base.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Core/11.2.7": {
+    "Syncfusion.Server.Base.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Data.Core/11.2.7": {
+    "Syncfusion.Server.Base.Data.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.DataClasses.Core/11.2.7": {
+    "Syncfusion.Server.Base.DataClasses.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Encryption/11.2.7": {
+    "Syncfusion.Server.Base.Encryption/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.LicenseManagement.Core/11.2.7": {
+    "Syncfusion.Server.Base.LicenseManagement.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Localization/11.2.7": {
+    "Syncfusion.Server.Base.Localization/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Logger/11.2.7": {
+    "Syncfusion.Server.Base.Logger/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.MarkdownSharp.Core/11.2.7": {
+    "Syncfusion.Server.Base.MarkdownSharp.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Middlewares/11.2.7": {
+    "Syncfusion.Server.Base.Middlewares/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.Resources.Storage.Core/11.2.7": {
+    "Syncfusion.Server.Base.Resources.Storage.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.TemplateGenerator/11.2.7": {
+    "Syncfusion.Server.Base.TemplateGenerator/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Server.Base.TenantManagement.Client.Core/11.2.7": {
+    "Syncfusion.Server.Base.TenantManagement.Client.Core/9.1.7": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -8963,7 +8813,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Http.Reference/8.0.0.0": {
+    "Microsoft.Extensions.Http/8.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""
@@ -9403,7 +9253,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "System.Net.Http.Json.Reference/8.0.0.0": {
+    "System.Net.Http.Json/8.0.0.0": {
       "type": "referenceassembly",
       "serviceable": false,
       "sha512": ""

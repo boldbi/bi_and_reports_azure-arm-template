@@ -1,5 +1,7 @@
-ALTER TABLE BOLDTC_TenantInfo ADD IsRowLevelSecurityEnabled smallint NOT NULL DEFAULT 1
-;
-
-ALTER TABLE BOLDTC_AuthSettings ADD EncryptionValues text
-;
+CREATE TABLE IF NOT EXISTS BOLDTC_BackUp (
+    Id SERIAL primary key NOT NULL,
+    ConfigurationData text NOT NULL,
+    PrivateKey text NOT NULL,
+    ModifiedDate timestamp NOT NULL,
+    IsActive smallint NOT NULL
+);

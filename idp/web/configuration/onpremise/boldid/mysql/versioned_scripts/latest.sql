@@ -1,3 +1,7 @@
-ALTER TABLE {database_name}.BOLDTC_TenantInfo ADD IsRowLevelSecurityEnabled tinyint(1) NOT NULL DEFAULT 1;
-
-ALTER TABLE {database_name}.BOLDTC_AuthSettings ADD EncryptionValues longtext;
+CREATE TABLE IF NOT EXISTS BOLDTC_BackUp (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    ConfigurationData LONGTEXT NOT NULL,
+    PrivateKey LONGTEXT NOT NULL,
+    ModifiedDate TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    IsActive TINYINT NOT NULL
+);

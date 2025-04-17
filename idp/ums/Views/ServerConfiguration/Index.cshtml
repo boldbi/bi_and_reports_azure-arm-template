@@ -8,7 +8,8 @@
     var containerName = GlobalAppSettings.Configuration["IdP:AzureBlobContainerName"];
     var helpLinkData = ViewBag.TenantType == TenantType.BoldBIOnPremise ? AppBranding.Bold.ProductName : AppBranding.BoldReports.ProductName;
     var pathbase = Context.Request.PathBase;
-    var serverUserHelp = string.Format(T["Please refer to {0}this{1} documentation to know about what are the permissions need to be assigned to allow {2} to connect and use the database."].Value, "<a class='text-decoration-none' target='_blank' href='" + await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.IdDatabaseConfiguration, ViewBag.TenantType) + "'>", "</a>", helpLinkData);
+    var productName = ViewBag.TenantType == TenantType.BoldBIOnPremise ? GlobalAppSettings.GetDescription(ProductName.BoldBIOnPremise) : GlobalAppSettings.GetDescription(ProductName.BoldReportsOnPremise);
+    var serverUserHelp = string.Format(T["Please refer to the {0}documentation{1} for details on the permissions required to allow {2} Server to connect to and use the database."].Value, "<a target='_blank' class='text-decoration-none' href='" + (await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.IdDatabaseConfiguration, ViewBag.TenantType)) + "'>", "</a>", productName);
     var sqlParameter = await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.MSSQL_Connection_Parameters);
     var postgresSQLParameter = await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.PostgreSQL_Connection_Parameters);
     var mySQLParameter = await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.MySQL_Connection_Parameters);
@@ -122,6 +123,7 @@
                             <div class="startup-content display-none">
                                 <span class="first-content">@T["Step 1: You’re an administrator"]</span>
                                 <span class="second-content">@T["Administrators have complete control over the application."]</span>
+                                <span class="third-content"></span>
                                 @if (!CloudAppConfig.IsHideHelpLink)
                                 {
                                     <a class="text-decoration-none" id="help-link" href="@(await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.AdminCreation))" target="_blank">@T["Need help?"]</a>

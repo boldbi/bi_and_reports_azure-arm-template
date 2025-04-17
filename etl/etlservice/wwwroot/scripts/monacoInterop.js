@@ -5,7 +5,8 @@
             value: initialContent,
             language: language,
             theme: 'vs-light',
-            automaticLayout: true
+            automaticLayout: true,
+            minimap: {enabled: false}
         });
         window.monacoEditor.onDidChangeModelContent(function (event) {
             const content = window.monacoEditor.getValue();
