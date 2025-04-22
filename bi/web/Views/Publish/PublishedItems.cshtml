@@ -217,6 +217,20 @@
                                         <input type="button" class="app-button app-critical-action-button app-btn-danger float-end popup-close" value="@T["Yes"]" onclick="removePublishedItem()" tabindex="-1" />
                                     </div>
                                 </div>
+                                <div class='col-12 mt-2' id='ignore-sync-section' style="display: none;">
+                                    <div id="hidden-checkbox-container">
+                                        @Html.CheckBox("ignore-sync", new { @class = "material-checkbox" })
+                                        @Html.Label("ignore-sync", T["Ignore Datasource Synchronization"].Value, new { @class = "checkbox-header-label" })
+                                    </div>
+                                    <div id='ignore-sync-note'>
+                                        <span class='note-header-content'>
+                                            @T["Note: "]
+                                        </span>
+                                        <span>
+                                            @T["Skipping data source synchronization may cause missing data or broken widgets if the source data structure has changed. Ensure data consistency before proceeding."]
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -225,7 +239,6 @@
                 <div role="tabpanel" class="tab-pane list col-12 bi-page-body @isDownloadItemsTab" id="offline-files">
                     @await Html.PartialAsync("_DownloadedItems")
                 </div>
-
             </div>
         </div>
         @await Html.PartialAsync("../Shared/_Footer", new ViewDataDictionary(ViewData) { { "appsettings", globalAppSettings } })

@@ -38,7 +38,13 @@ function ValidateConfigurationMode() {
         var dropDownList = obj.ej2_instances[0];
         var itemsList = obj.ej2_instances[0].list.querySelectorAll('.e-list-item');
 
-        dropDownList.value = 'MSSQL'; 
+        if (isBoldReports) {
+            dropDownList.value = 'MSSQL';
+        }
+        else {
+            dropDownList.value = 'PostgreSQL';
+            itemsList[0].style.display = "none";
+        }
         
         dropDownList.dataBind();
 

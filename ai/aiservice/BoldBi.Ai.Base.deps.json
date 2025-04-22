@@ -18,12 +18,12 @@
           "Microsoft.SemanticKernel": "1.34.0",
           "Microsoft.SemanticKernel.Connectors.OpenAI": "1.34.0",
           "Newtonsoft.Json": "13.0.3",
-          "System.Configuration.ConfigurationManager": "9.0.3",
+          "System.Configuration.ConfigurationManager": "9.0.4",
           "log4net": "2.0.17",
-          "Syncfusion.Dashboard.Core": "11.2.7.0",
-          "Syncfusion.Dashboard.DataManager": "11.2.7.0",
-          "Syncfusion.Dashboard.Designer.Logger": "11.2.7.0",
-          "Syncfusion.Dashboard.Web.Serialization.DOM": "11.2.7.0",
+          "Syncfusion.Dashboard.Core": "11.3.24.0",
+          "Syncfusion.Dashboard.DataManager": "11.3.24.0",
+          "Syncfusion.Dashboard.Designer.Logger": "11.3.24.0",
+          "Syncfusion.Dashboard.Web.Serialization.DOM": "11.3.24.0",
           "Syncfusion.Server.Base.Encryption": "1.0.3.0",
           "Syncfusion.Server.Base.Logger": "1.0.3.0"
         },
@@ -61,6 +61,23 @@
           }
         }
       },
+      "Azure.Identity/1.11.4": {
+        "dependencies": {
+          "Azure.Core": "1.44.1",
+          "Microsoft.Identity.Client": "4.61.3",
+          "Microsoft.Identity.Client.Extensions.Msal": "4.61.3",
+          "System.Memory": "4.5.4",
+          "System.Security.Cryptography.ProtectedData": "9.0.4",
+          "System.Text.Json": "9.0.0-rc.2.24473.5",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Identity.dll": {
+            "assemblyVersion": "1.11.4.0",
+            "fileVersion": "1.1100.424.31005"
+          }
+        }
+      },
       "FuzzySharp/2.0.2": {
         "runtime": {
           "lib/netcoreapp2.1/FuzzySharp.dll": {
@@ -71,7 +88,7 @@
       },
       "log4net/2.0.17": {
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.3"
+          "System.Configuration.ConfigurationManager": "9.0.4"
         },
         "runtime": {
           "lib/netstandard2.0/log4net.dll": {
@@ -510,7 +527,7 @@
           "Microsoft.Extensions.Logging": "9.0.0-rc.2.24473.5",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.0-rc.2.24473.5",
           "Microsoft.Extensions.Options": "9.0.0-rc.2.24473.5",
-          "System.Diagnostics.EventLog": "9.0.3"
+          "System.Diagnostics.EventLog": "9.0.4"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Logging.EventLog.dll": {
@@ -583,6 +600,38 @@
           "lib/net8.0/Microsoft.Extensions.VectorData.Abstractions.dll": {
             "assemblyVersion": "9.0.0.0",
             "fileVersion": "9.0.0.0"
+          }
+        }
+      },
+      "Microsoft.Identity.Client/4.61.3": {
+        "dependencies": {
+          "Microsoft.IdentityModel.Abstractions": "6.35.0",
+          "System.Diagnostics.DiagnosticSource": "9.0.0-rc.2.24473.5"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Identity.Client.dll": {
+            "assemblyVersion": "4.61.3.0",
+            "fileVersion": "4.61.3.0"
+          }
+        }
+      },
+      "Microsoft.Identity.Client.Extensions.Msal/4.61.3": {
+        "dependencies": {
+          "Microsoft.Identity.Client": "4.61.3",
+          "System.Security.Cryptography.ProtectedData": "9.0.4"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.Identity.Client.Extensions.Msal.dll": {
+            "assemblyVersion": "4.61.3.0",
+            "fileVersion": "4.61.3.0"
+          }
+        }
+      },
+      "Microsoft.IdentityModel.Abstractions/6.35.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.IdentityModel.Abstractions.dll": {
+            "assemblyVersion": "6.35.0.0",
+            "fileVersion": "6.35.0.41201"
           }
         }
       },
@@ -723,15 +772,15 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
-      "System.Configuration.ConfigurationManager/9.0.3": {
+      "System.Configuration.ConfigurationManager/9.0.4": {
         "dependencies": {
-          "System.Diagnostics.EventLog": "9.0.3",
-          "System.Security.Cryptography.ProtectedData": "9.0.3"
+          "System.Diagnostics.EventLog": "9.0.4",
+          "System.Security.Cryptography.ProtectedData": "9.0.4"
         },
         "runtime": {
           "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.325.11113"
+            "fileVersion": "9.0.425.16305"
           }
         }
       },
@@ -743,11 +792,11 @@
           }
         }
       },
-      "System.Diagnostics.EventLog/9.0.3": {
+      "System.Diagnostics.EventLog/9.0.4": {
         "runtime": {
           "lib/net8.0/System.Diagnostics.EventLog.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.325.11113"
+            "fileVersion": "9.0.425.16305"
           }
         },
         "runtimeTargets": {
@@ -761,7 +810,7 @@
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.325.11113"
+            "fileVersion": "9.0.425.16305"
           }
         }
       },
@@ -798,6 +847,7 @@
           }
         }
       },
+      "System.Memory/4.5.4": {},
       "System.Memory.Data/6.0.0": {
         "dependencies": {
           "System.Text.Json": "9.0.0-rc.2.24473.5"
@@ -832,11 +882,11 @@
           "System.Runtime": "4.3.1"
         }
       },
-      "System.Security.Cryptography.ProtectedData/9.0.3": {
+      "System.Security.Cryptography.ProtectedData/9.0.4": {
         "runtime": {
           "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
             "assemblyVersion": "9.0.0.0",
-            "fileVersion": "9.0.325.11113"
+            "fileVersion": "9.0.425.16305"
           }
         }
       },
@@ -871,14 +921,14 @@
       "System.Threading.Tasks.Extensions/4.5.4": {},
       "BoldBi.Ai.Configuration/1.0.0": {
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "9.0.3",
+          "System.Configuration.ConfigurationManager": "9.0.4",
           "System.Drawing.Common": "6.0.0",
           "System.Runtime.Extensions": "4.3.1"
         },
         "runtime": {
           "BoldBi.Ai.Configuration.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
@@ -890,53 +940,54 @@
         },
         "runtime": {
           "BoldBi.Ai.ConnectionManager.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
       "BoldBi.Ai.Core/1.0.0": {
         "dependencies": {
           "Azure.Core": "1.44.1",
+          "Azure.Identity": "1.11.4",
           "Microsoft.SemanticKernel": "1.34.0",
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "BoldBi.Ai.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Core/11.2.7.0": {
+      "Syncfusion.Dashboard.Core/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.DataManager/11.2.7.0": {
+      "Syncfusion.Dashboard.DataManager/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.DataManager.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Designer.Logger/11.2.7.0": {
+      "Syncfusion.Dashboard.Designer.Logger/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Designer.Logger.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Web.Serialization.DOM/11.2.7.0": {
+      "Syncfusion.Dashboard.Web.Serialization.DOM/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Web.Serialization.DOM.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
@@ -956,19 +1007,19 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Json.Base/11.2.7.0": {
+      "Syncfusion.Dashboard.Json.Base/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Json.Base.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Xml.Base/11.2.7.0": {
+      "Syncfusion.Dashboard.Xml.Base/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Xml.Base.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
@@ -988,19 +1039,19 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Core.XmlRepository/11.2.7.0": {
+      "Syncfusion.Dashboard.Core.XmlRepository/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.XmlRepository.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Renci.SshNet/2020.0.2.0": {
+      "Renci.SshNet/2024.2.0.1": {
         "runtime": {
           "Renci.SshNet.dll": {
-            "assemblyVersion": "2020.0.2.0",
-            "fileVersion": "2020.0.2.0"
+            "assemblyVersion": "2024.2.0.1",
+            "fileVersion": "2024.2.0.1"
           }
         }
       },
@@ -1020,11 +1071,11 @@
           }
         }
       },
-      "SshNet.Security.Cryptography/1.3.0.0": {
+      "BouncyCastle.Cryptography/2.0.0.0": {
         "runtime": {
-          "SshNet.Security.Cryptography.dll": {
-            "assemblyVersion": "1.3.0.0",
-            "fileVersion": "1.3.0.0"
+          "BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.4.0.33771"
           }
         }
       }
@@ -1049,6 +1100,13 @@
       "sha512": "sha512-YyznXLQZCregzHvioip07/BkzjuWNXogJEVz9T5W6TwjNr17ax41YGzYMptlo2G10oLCuVPoyva62y0SIRDixg==",
       "path": "azure.core/1.44.1",
       "hashPath": "azure.core.1.44.1.nupkg.sha512"
+    },
+    "Azure.Identity/1.11.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Sf4BoE6Q3jTgFkgBkx7qztYOFELBCo+wQgpYDwal/qJ1unBH73ywPztIJKXBXORRzAeNijsuxhk94h0TIMvfYg==",
+      "path": "azure.identity/1.11.4",
+      "hashPath": "azure.identity.1.11.4.nupkg.sha512"
     },
     "FuzzySharp/2.0.2": {
       "type": "package",
@@ -1351,6 +1409,27 @@
       "path": "microsoft.extensions.vectordata.abstractions/9.0.0-preview.1.24523.1",
       "hashPath": "microsoft.extensions.vectordata.abstractions.9.0.0-preview.1.24523.1.nupkg.sha512"
     },
+    "Microsoft.Identity.Client/4.61.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-naJo/Qm35Caaoxp5utcw+R8eU8ZtLz2ALh8S+gkekOYQ1oazfCQMWVT4NJ/FnHzdIJlm8dMz0oMpMGCabx5odA==",
+      "path": "microsoft.identity.client/4.61.3",
+      "hashPath": "microsoft.identity.client.4.61.3.nupkg.sha512"
+    },
+    "Microsoft.Identity.Client.Extensions.Msal/4.61.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-PWnJcznrSGr25MN8ajlc2XIDW4zCFu0U6FkpaNLEWLgd1NgFCp5uDY3mqLDgM8zCN8hqj8yo5wHYfLB2HjcdGw==",
+      "path": "microsoft.identity.client.extensions.msal/4.61.3",
+      "hashPath": "microsoft.identity.client.extensions.msal.4.61.3.nupkg.sha512"
+    },
+    "Microsoft.IdentityModel.Abstractions/6.35.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xuR8E4Rd96M41CnUSCiOJ2DBh+z+zQSmyrYHdYhD6K4fXBcQGVnRCFQ0efROUYpP+p0zC1BLKr0JRpVuujTZSg==",
+      "path": "microsoft.identitymodel.abstractions/6.35.0",
+      "hashPath": "microsoft.identitymodel.abstractions.6.35.0.nupkg.sha512"
+    },
     "Microsoft.Net.Http.Headers/2.2.0": {
       "type": "package",
       "serviceable": true,
@@ -1449,12 +1528,12 @@
       "path": "system.collections.immutable/6.0.0",
       "hashPath": "system.collections.immutable.6.0.0.nupkg.sha512"
     },
-    "System.Configuration.ConfigurationManager/9.0.3": {
+    "System.Configuration.ConfigurationManager/9.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0kw80ykL/iFhNtFbPpjxIavmCk7/l6MqQwNSNhEoSNuI9C82ZZ251thzQZ/btHut21Y2G9M+amQY1K5bhaAjKg==",
-      "path": "system.configuration.configurationmanager/9.0.3",
-      "hashPath": "system.configuration.configurationmanager.9.0.3.nupkg.sha512"
+      "sha512": "sha512-dvjqKp+2LpGid6phzrdrS/2mmEPxFl3jE1+L7614q4ZChKbLJCpHXg6sBILlCCED1t//EE+un/UdAetzIMpqnw==",
+      "path": "system.configuration.configurationmanager/9.0.4",
+      "hashPath": "system.configuration.configurationmanager.9.0.4.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/9.0.0-rc.2.24473.5": {
       "type": "package",
@@ -1463,12 +1542,12 @@
       "path": "system.diagnostics.diagnosticsource/9.0.0-rc.2.24473.5",
       "hashPath": "system.diagnostics.diagnosticsource.9.0.0-rc.2.24473.5.nupkg.sha512"
     },
-    "System.Diagnostics.EventLog/9.0.3": {
+    "System.Diagnostics.EventLog/9.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0nDJBZ06DVdTG2vvCZ4XjazLVaFawdT0pnji23ISX8I8fEOlRJyzH2I0kWiAbCtFwry2Zir4qE4l/GStLATfFw==",
-      "path": "system.diagnostics.eventlog/9.0.3",
-      "hashPath": "system.diagnostics.eventlog.9.0.3.nupkg.sha512"
+      "sha512": "sha512-getRQEXD8idlpb1KW56XuxImMy0FKp2WJPDf3Qr0kI/QKxxJSftqfDFVo0DZ3HCJRLU73qHSruv5q2l5O47jQQ==",
+      "path": "system.diagnostics.eventlog/9.0.4",
+      "hashPath": "system.diagnostics.eventlog.9.0.4.nupkg.sha512"
     },
     "System.Drawing.Common/6.0.0": {
       "type": "package",
@@ -1483,6 +1562,13 @@
       "sha512": "sha512-imrG8NvYH2f4Pdiu9xDUh2X7yoJgl6ginhAzuozH3HKERVf8kOOG09QrAnmgMNHLiWKsTztmE0CyzqfQs/X1IA==",
       "path": "system.io.pipelines/9.0.0-rc.2.24473.5",
       "hashPath": "system.io.pipelines.9.0.0-rc.2.24473.5.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
     },
     "System.Memory.Data/6.0.0": {
       "type": "package",
@@ -1526,12 +1612,12 @@
       "path": "system.runtime.extensions/4.3.1",
       "hashPath": "system.runtime.extensions.4.3.1.nupkg.sha512"
     },
-    "System.Security.Cryptography.ProtectedData/9.0.3": {
+    "System.Security.Cryptography.ProtectedData/9.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4PAwR9l3rhAESfymptisnO2KWpHmiTnKxovnREqmiY4BEakXD2ahQU4/NO0vzEarMw8RGzwpmWoiHwvL/waHfQ==",
-      "path": "system.security.cryptography.protecteddata/9.0.3",
-      "hashPath": "system.security.cryptography.protecteddata.9.0.3.nupkg.sha512"
+      "sha512": "sha512-o94k2RKuAce3GeDMlUvIXlhVa1kWpJw95E6C9LwW0KlG0nj5+SgCiIxJ2Eroqb9sLtG1mEMbFttZIBZ13EJPvQ==",
+      "path": "system.security.cryptography.protecteddata/9.0.4",
+      "hashPath": "system.security.cryptography.protecteddata.9.0.4.nupkg.sha512"
     },
     "System.Text.Encodings.Web/9.0.0-rc.2.24473.5": {
       "type": "package",
@@ -1569,22 +1655,22 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core/11.2.7.0": {
+    "Syncfusion.Dashboard.Core/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.DataManager/11.2.7.0": {
+    "Syncfusion.Dashboard.DataManager/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Designer.Logger/11.2.7.0": {
+    "Syncfusion.Dashboard.Designer.Logger/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Web.Serialization.DOM/11.2.7.0": {
+    "Syncfusion.Dashboard.Web.Serialization.DOM/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1599,12 +1685,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Json.Base/11.2.7.0": {
+    "Syncfusion.Dashboard.Json.Base/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Xml.Base/11.2.7.0": {
+    "Syncfusion.Dashboard.Xml.Base/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1619,12 +1705,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core.XmlRepository/11.2.7.0": {
+    "Syncfusion.Dashboard.Core.XmlRepository/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Renci.SshNet/2020.0.2.0": {
+    "Renci.SshNet/2024.2.0.1": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -1639,7 +1725,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "SshNet.Security.Cryptography/1.3.0.0": {
+    "BouncyCastle.Cryptography/2.0.0.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

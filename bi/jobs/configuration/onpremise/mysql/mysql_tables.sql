@@ -129,9 +129,10 @@ CREATE TABLE {database_name}.BOLDBI_ItemView(
 	ItemId Char(38) NOT NULL,
 	UserId int NOT NULL,
 	ItemViewId Char(38) NOT NULL,
-	QueryString varchar(4000) NOT NULL,
+	QueryString text NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
+	IsWidgetLinking tinyint NOT NULL,
 	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
@@ -261,7 +262,8 @@ CREATE TABLE {database_name}.BOLDBI_ScheduleDetail(
 	EndDate datetime NULL,
 	EndAfter int NULL DEFAULT 0,
 	NextSchedule datetime NULL,
-	ExportTypeId int NOT NULL,
+	ExportTypeId int NULL,
+        MultiExportType text NULL,
 	IsEnabled tinyint NOT NULL,
 	CreatedById int NOT NULL,
 	ModifiedById int NOT NULL,
@@ -1155,6 +1157,21 @@ CREATE TABLE {database_name}.BOLDBI_AI_SESSIONS (
     UserInfo TEXT,
     TenantID TEXT,
     Environment TEXT) ROW_FORMAT=DYNAMIC
+;
+
+CREATE TABLE {database_name}.BOLDBI_AICredentials(
+    Id char(38) NOT NULL,
+    AIModel INT NOT NULL,
+    AIConfiguration varchar(4000) NULL,
+    CreatedById char(38) NULL,
+    ModifiedById char(38) NULL,
+    CreatedDate datetime NOT NULL,
+    ModifiedDate datetime NOT NULL,
+    IsActive tinyint NOT NULL,
+    IsAISummariesEnabledGlobally tinyint NOT NULL DEFAULT 0,
+    EnableAIFeature tinyint NOT NULL DEFAULT 0,
+    IsAIModel tinyint NOT NULL DEFAULT 0,
+    PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 -- -- PASTE INSERT Queries below this section --------

@@ -2406,16 +2406,19 @@ msgstr ""
 msgid "{0} Users, {1} Groups, and {2} External Recipients"
 msgstr ""
 
-msgid "Copyright information cannot exceed 100 characters."
+msgid "Copyright information cannot exceed 225 characters."
 msgstr ""
 
-msgid "User Profile has been updated successfully."
+msgid "User profile has been updated successfully."
 msgstr ""
 
 msgid "User updated successfully."
 msgstr ""
 
-msgid "User profile update failed."
+msgid "Add the expression to enable inline response type"
+msgstr ""
+
+msgid "User profile updation failed."
 msgstr ""
 
 msgid "User profile has failed to update."
@@ -2604,19 +2607,19 @@ msgstr ""
 msgid "Delete Slideshow"
 msgstr ""
 
-msgid "Are you sure you want to delete Dashboard — {0}?"
+msgid "Are you sure you want to delete dashboard — {0}?"
 msgstr ""
 
-msgid "Are you sure you want to delete Data Source — {0}?"
+msgid "Are you sure you want to delete datasource — {0}?"
 msgstr ""
 
-msgid "Are you sure you want to delete Category — {0}?"
+msgid "Are you sure you want to delete category — {0}?"
 msgstr ""
 
 msgid "Are you sure you want to delete this schedule — {0}?"
 msgstr ""
 
-msgid "Are you sure you want to delete Slideshow — {0}?"
+msgid "Are you sure you want to delete slideshow — {0}?"
 msgstr ""
 
 msgid "Move to Category"
@@ -2659,9 +2662,6 @@ msgid "Refresh settings have been disabled."
 msgstr ""
 
 msgid "Refresh settings have been disabled by the system due to 5 consecutive failures."
-msgstr ""
-
-msgid "Moved"
 msgstr ""
 
 msgid "View slideshow"
@@ -2949,6 +2949,9 @@ msgstr ""
 msgid "Please enter the name."
 msgstr ""
 
+msgid "Please select any date."
+msgstr ""
+
 msgid "Invalid {0} Service endpoint"
 msgstr ""
 
@@ -3058,6 +3061,60 @@ msgid "Please choose a valid {0} file to upload"
 msgstr ""
 
 msgid "A dashboard with the same name already exists."
+msgstr ""
+
+msgid "You have reached the maximum limit of {0} dashboards. Please delete an existing dashboard before {1}."
+msgstr ""
+
+msgid "You have reached the maximum number of {0} allowed. Please inform the system administrator to increase the limit or delete an existing {1}."
+msgstr ""
+
+msgid "dashboard's"
+msgstr ""
+
+msgid "datasource's"
+msgstr ""
+
+msgid "slideshow's"
+msgstr ""
+
+msgid "schedule's"
+msgstr ""
+
+msgid "You have reached the maximum limit of {0} data sources. Please delete an existing data source before {1}."
+msgstr ""
+
+msgid "copying a dashboard"
+msgstr ""
+
+msgid "creating a draft dashboard"
+msgstr ""
+
+msgid "uploading a dashboard"
+msgstr ""
+
+msgid "adding a sample dashboard"
+msgstr ""
+
+msgid "adding a dashboard"
+msgstr ""
+
+msgid "adding a template dashboard"
+msgstr ""
+
+msgid "creating a multi-tab dashboard"
+msgstr ""
+
+msgid "adding a data source"
+msgstr ""
+
+msgid "copying a data source"
+msgstr ""
+
+msgid "creating a data source"
+msgstr ""
+
+msgid "merging data sources"
 msgstr ""
 
 msgid "Click to copy"
@@ -3205,6 +3262,9 @@ msgid "Please enter the dashboard name"
 msgstr ""
 
 msgid "Please enter the category name"
+msgstr ""
+
+msgid "Please enter the sub category name"
 msgstr ""
 
 msgid "Please enter the Server name"
@@ -3390,6 +3450,60 @@ msgstr ""
 msgid "View more"
 msgstr ""
 
+msgid "Add Rules"
+msgstr ""
+
+msgid "Please enter a rule name."
+msgstr ""
+
+msgid "Rule name already exists"
+msgstr ""
+
+msgid "IP Address already exists"
+msgstr ""
+
+msgid "Please enter the IP address."
+msgstr ""
+
+msgid "Rule has been added successfully."
+msgstr ""
+
+msgid "Failed to add rule"
+msgstr ""
+
+msgid "Failed to {0} api key"
+msgstr ""
+
+msgid "No api key available to display"
+msgstr ""
+
+msgid "Rule has been deleted successfully"
+msgstr ""
+
+msgid "Failed to delete rule, please try again later."
+msgstr ""
+
+msgid "Invalid IP address. Please provide valid IPv4 address"
+msgstr ""
+
+msgid "Invalid IP address. Please provide valid IPv6 address"
+msgstr ""
+
+msgid "Rule name should not contain any special characters or trailing whitespace."
+msgstr ""
+
+msgid "Rule has been edited successfully"
+msgstr ""
+
+msgid "Failed to edit rule. Please try again later"
+msgstr ""
+
+msgid "At least one rule must be defined."
+msgstr ""
+
+msgid "At least one rule must match the current user's IP address."
+msgstr ""
+
 msgid "User Settings"
 msgstr ""
 
@@ -3402,10 +3516,31 @@ msgstr ""
 msgid "Update Category"
 msgstr ""
 
-msgid "You do not have permission to update category."
+msgid "Update Sub Category"
+msgstr ""
+
+msgid "Create Sub Category"
+msgstr ""
+
+msgid "Generate Token"
+msgstr ""
+
+msgid "Create API Key"
+msgstr ""
+
+msgid "Edit API Key"
+msgstr ""
+
+msgid "Delete API Key"
+msgstr ""
+
+msgid "Access denied to update category."
 msgstr ""
 
 msgid "Error encountered while updating the category."
+msgstr ""
+
+msgid "API keys can be used to authenticate Bold BI API services"
 msgstr ""
 
 msgid "Update"
@@ -3484,6 +3619,9 @@ msgid "Delete Comment"
 msgstr ""
 
 msgid "Are you sure you want to delete this comment?"
+msgstr ""
+
+msgid "Are you sure you want to delete this key - {0}?"
 msgstr ""
 
 msgid "Comment has been deleted successfully."
@@ -4257,7 +4395,7 @@ msgstr ""
 msgid "The below table(s) are already exists in the selected database. Please change the prefix or choose some other database."
 msgstr ""
 
-msgid "Bold ETL"
+msgid "Data Hub"
 msgstr ""
 
 msgid "Please enter expression name."
@@ -4857,6 +4995,15 @@ msgstr ""
 msgid "Create a data-driven or a time-based schedule."
 msgstr ""
 
+msgid "Choose the user and group for send failure notification"
+msgstr ""
+
+msgid "Choose the recurrence interval to schedule a data refresh."
+msgstr ""
+
+msgid "others"
+msgstr ""
+
 msgid "Enter the alert message to be added in the scheduled email"
 msgstr ""
 
@@ -4930,6 +5077,18 @@ msgid "The latest version of this dashboard was already prepared and is availabl
 msgstr ""
 
 msgid "Offline Files"
+msgstr ""
+
+msgid "Delete Downloaded Dashboard File"
+msgstr ""
+
+msgid "Downloaded dashboard file has been deleted successfully."
+msgstr ""
+
+msgid "Error occured while deleting downloaded dashboard file."
+msgstr ""
+
+msgid "Are you sure you want to delete the downloaded dashboard file — {0} ?"
 msgstr ""
 
 msgid "Requested Date"
@@ -5052,6 +5211,9 @@ msgstr ""
 msgid "Category Deleted."
 msgstr ""
 
+msgid "Create subcategory limit exceeded"
+msgstr ""
+
 msgid "Category {0} has been added successfully."
 msgstr ""
 
@@ -5131,6 +5293,9 @@ msgid "An error occurred while retrieving categories."
 msgstr ""
 
 msgid "All"
+msgstr ""
+
+msgid "All ChildDashboards"
 msgstr ""
 
 msgid "default"
@@ -5233,6 +5398,12 @@ msgid "Expand All"
 msgstr ""
 
 msgid "Synchronize published dashboard"
+msgstr ""
+
+msgid "Skipping data source synchronization may cause missing data or broken widgets if the source data structure has changed. Ensure data consistency before proceeding."
+msgstr ""
+
+msgid "Ignore Datasource Synchronization"
 msgstr ""
 
 msgid "No published resources are available to display."
@@ -6186,6 +6357,9 @@ msgstr ""
 msgid "Edit Dashboard"
 msgstr ""
 
+msgid "Schedule Current View"
+msgstr ""
+
 msgid "My Dashboards"
 msgstr ""
 
@@ -6267,7 +6441,10 @@ msgstr ""
 msgid "All images sent via email using your custom domain URL may appear broken."
 msgstr ""
 
-msgid "We couldn't find the ETL service. Please refer to this {0}documentation{1} and configure an ETL service if one is not configured."
+msgid "We couldn't find the ETL service."
+msgstr ""
+
+msgid "Please refer to this {0}documentation{1} and configure an ETL service if one is not configured."
 msgstr ""
 
 msgid "Security"
@@ -6316,6 +6493,18 @@ msgid "Please select the provider logo."
 msgstr ""
 
 msgid "Choose login providers"
+msgstr ""
+
+msgid "Signing Key generated successfully."
+msgstr ""
+
+msgid "Error while generating signing key."
+msgstr ""
+
+msgid "Public Key generated successfully."
+msgstr ""
+
+msgid "There was an error while generating the public key."
 msgstr ""
 
 msgid "Reset Secret"
@@ -6537,9 +6726,6 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-msgid "Generate Token"
-msgstr ""
-
 msgid "Are you sure you want to generate the token?"
 msgstr ""
 
@@ -6675,6 +6861,18 @@ msgstr ""
 msgid "This request is invalid. Please reload the page and try again."
 msgstr ""
 
+msgid "Api key has been {0} successfully"
+msgstr ""
+
+msgid "Api key has been updated successfully"
+msgstr ""
+
+msgid "Api key name already exists"
+msgstr ""
+
+msgid "Api key has been deleted successfully"
+msgstr ""
+
 msgid "Custom Picker"
 msgstr ""
 
@@ -6694,6 +6892,165 @@ msgid "Form Relation"
 msgstr ""
 
 msgid "Select Relation"
+msgstr ""
+
+msgid "The email configuration has been successfully updated."
+msgstr ""
+
+msgid "Error while updating the email configuration."
+msgstr ""
+
+msgid "Email template configured successfully."
+msgstr ""
+
+msgid "Failed to configure the email template."
+msgstr ""
+
+msgid "Email template"
+msgstr ""
+
+msgid "The template name should not be empty."
+msgstr ""
+
+msgid "The template name is invalid."
+msgstr ""
+
+msgid "The email body should not be empty."
+msgstr ""
+
+msgid "The email template has been successfully deleted."
+msgstr ""
+
+msgid "Delete template"
+msgstr ""
+
+msgid "Failed to delete the email template."
+msgstr ""
+
+msgid "Are you sure you want to delete this template?"
+msgstr ""
+
+msgid "Email template has been marked as default successfully."
+msgstr ""
+
+msgid "Failed to mark the email template as default."
+msgstr ""
+
+msgid "Copy Template"
+msgstr ""
+
+msgid "The disclaimer should not be left empty."
+msgstr ""
+
+msgid "Set default template"
+msgstr ""
+
+msgid "Add template"
+msgstr ""
+
+msgid "Select a template"
+msgstr ""
+
+msgid "The email template has been copied successfully."
+msgstr ""
+
+msgid "The template name already exists."
+msgstr ""
+
+msgid "Failed to copy the email template."
+msgstr ""
+
+msgid "The email template has been added successfully."
+msgstr ""
+
+msgid "Failed to add the email template."
+msgstr ""
+
+msgid "Inherit default from settings"
+msgstr ""
+
+msgid "System template"
+msgstr ""
+
+msgid "New dashboard comment"
+msgstr ""
+
+msgid "Dashboard comment deleted"
+msgstr ""
+
+msgid "My dashboard comment deleted"
+msgstr ""
+
+msgid "Reply to dashboard comment"
+msgstr ""
+
+msgid "Reply To My Dashboard Comment"
+msgstr ""
+
+msgid "Edit dashboard comment"
+msgstr ""
+
+msgid "User mention in dashboard comment"
+msgstr ""
+
+msgid "Profile update"
+msgstr ""
+
+msgid "Global resources and settings share"
+msgstr ""
+
+msgid "Specific resource or setting share"
+msgstr ""
+
+msgid "Permission delegation"
+msgstr ""
+
+msgid "Alert-driven dashboard export"
+msgstr ""
+
+msgid "Timed dashboard export"
+msgstr ""
+
+msgid "Failed timed dashboard export"
+msgstr ""
+
+msgid "Failed alert-driven dashboard export"
+msgstr ""
+
+msgid "Failed data refresh"
+msgstr ""
+
+msgid "Disabled timed dashboard export"
+msgstr ""
+
+msgid "Disabled alert-driven dashboard export"
+msgstr ""
+
+msgid "Disabled data refresh"
+msgstr ""
+
+msgid "Synchronization Azure AD"
+msgstr ""
+
+msgid "Synchronized Windows AD"
+msgstr ""
+
+msgid "Synchronized database users"
+msgstr ""
+
+msgid "Failed Azure AD Synchronization"
+msgstr ""
+
+msgid "Failed Windows AD Synchronization"
+msgstr ""
+
+msgid "Failed database user Synchronization"
+msgstr ""
+
+msgid "User activation"
+msgstr ""
+
+msgid "User invitation"
 msgstr ""
 
 msgid "We are unable to load the dashboard view. The dashboard view has been deleted or the URL is invalid."
@@ -6751,6 +7108,18 @@ msgid "No connected sites to display."
 msgstr ""
 
 msgid "No email activity logs to display."
+msgstr ""
+
+msgid "No user activity logs to display."
+msgstr ""
+
+msgid "Dashboard Server Jobs"
+msgstr ""
+
+msgid "Dashboard Server API"
+msgstr ""
+
+msgid "Identity Provider API"
 msgstr ""
 
 msgid "Details"
@@ -6987,6 +7356,21 @@ msgstr ""
 msgid "Enter the list of {0} separated by commas"
 msgstr ""
 
+msgid "License warning"
+msgstr ""
+
+msgid "Your license is inactive or has expired."
+msgstr ""
+
+msgid " Please click"
+msgstr ""
+
+msgid " here "
+msgstr ""
+
+msgid "to manage your license."
+msgstr ""
+
 msgid "Manage Account Settings"
 msgstr ""
 
@@ -7021,6 +7405,15 @@ msgid "Required"
 msgstr ""
 
 msgid "When the account activation preference is email, an email address is mandatory for activating the account."
+msgstr ""
+
+msgid "Default Group for New Users"
+msgstr ""
+
+msgid "Assigns newly created users to this default group."
+msgstr ""
+
+msgid "None"
 msgstr ""
 
 msgid "User Directory Settings"
@@ -7140,6 +7533,48 @@ msgstr ""
 msgid "Right table"
 msgstr ""
 
+msgid "Summary"
+msgstr ""
+
+msgid "Timestamp"
+msgstr ""
+
+msgid "Performed By"
+msgstr ""
+
+msgid "User Email"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+msgid "Event Category"
+msgstr ""
+
+msgid "Event Type"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "User Agent"
+msgstr ""
+
+msgid "Change Summary"
+msgstr ""
+
+msgid "Updated Field"
+msgstr ""
+
+msgid "Changes"
+msgstr ""
+
+msgid "Old Value"
+msgstr ""
+
+msgid "New Value"
+msgstr ""
+
 msgid "Category Name"
 msgstr ""
 
@@ -7149,22 +7584,34 @@ msgstr ""
 msgid "1024 characters maximum"
 msgstr ""
 
-msgid "You don't have any categories to upload dashboards. Please create a category."
+msgid "New Sub Category"
 msgstr ""
 
-msgid "Category name for dashboard deployment"
+msgid "Choose Category"
 msgstr ""
 
-msgid "Dashboard name in deployment site"
-msgstr ""
-
-msgid "No results match"
+msgid "Source Category"
 msgstr ""
 
 msgid "Please select the category"
 msgstr ""
 
+msgid "Source Dashboard"
+msgstr ""
+
+msgid "No results match"
+msgstr ""
+
 msgid "Please select the dashboard"
+msgstr ""
+
+msgid "Category name for deployment site"
+msgstr ""
+
+msgid "Dashboard name for deployment site"
+msgstr ""
+
+msgid "Use the source category and dashboard name."
 msgstr ""
 
 msgid "Lock dashboard editing in published site."
@@ -7233,6 +7680,24 @@ msgstr ""
 msgid "Please select at least one entity and access mode."
 msgstr ""
 
+msgid "Rule Name"
+msgstr ""
+
+msgid "IP Type"
+msgstr ""
+
+msgid "IPv4"
+msgstr ""
+
+msgid "IPv6"
+msgstr ""
+
+msgid "IP Address"
+msgstr ""
+
+msgid "Add Rule"
+msgstr ""
+
 msgid "Categories"
 msgstr ""
 
@@ -7272,6 +7737,9 @@ msgstr ""
 msgid "Site Credentials"
 msgstr ""
 
+msgid "API Key"
+msgstr ""
+
 msgid "Designer"
 msgstr ""
 
@@ -7299,6 +7767,9 @@ msgstr ""
 msgid "Notification"
 msgstr ""
 
+msgid "Audit Logs"
+msgstr ""
+
 msgid "Notifications"
 msgstr ""
 
@@ -7306,6 +7777,21 @@ msgid "Integrations"
 msgstr ""
 
 msgid "{0} Policy"
+msgstr ""
+
+msgid "API keys provide a simpler alternative to OAuth for connecting to and authenticating services."
+msgstr ""
+
+msgid "Generate API Key"
+msgstr ""
+
+msgid "Manage Keys"
+msgstr ""
+
+msgid "API Key Expiration"
+msgstr ""
+
+msgid "Enable this option to configure expiry date for the API key."
 msgstr ""
 
 msgid "Group Import Settings"
@@ -7485,6 +7971,9 @@ msgstr ""
 msgid "Redirect {0}"
 msgstr ""
 
+msgid "This URI is used to receive the response from the authorization server. When setting up your OAuth 2.0 application, it's essential to register the redirect URI using only lowercase characters."
+msgstr ""
+
 msgid "Mobile App Redirect {0}"
 msgstr ""
 
@@ -7554,6 +8043,60 @@ msgstr ""
 msgid "These claims are normally represented by a {0} object that contains a collection of name and value pairs for each claim. Provide the {0} key to identify the unique identity (email) of the user."
 msgstr ""
 
+msgid "Response Type"
+msgstr ""
+
+msgid "id_token"
+msgstr ""
+
+msgid "code"
+msgstr ""
+
+msgid "Select the response type for OpenID authentication. The default type is id_token."
+msgstr ""
+
+msgid "This URI is used to receive the response from the authorization server. When setting up your OpenID Connect application, it's essential to register the redirect URI using only lowercase characters."
+msgstr ""
+
+msgid "Please enter the {0} name."
+msgstr ""
+
+msgid "Remote Login URL"
+msgstr ""
+
+msgid "Please enter the login url."
+msgstr ""
+
+msgid "Please enter a valid login url."
+msgstr ""
+
+msgid "An remote login {0} where the resource owner grants authorization to the {1} client to access protected resources."
+msgstr ""
+
+msgid "Remote Logout URL"
+msgstr ""
+
+msgid "Remote Logout URL(Optional)"
+msgstr ""
+
+msgid "Please enter a valid logout url."
+msgstr ""
+
+msgid "Signing Key"
+msgstr ""
+
+msgid "Click to view"
+msgstr ""
+
+msgid "Click to Regenerate"
+msgstr ""
+
+msgid "Enable Encryption"
+msgstr ""
+
+msgid "Enable encryption to enhance the security of JWT tokens. When enabled, tokens need to be encrypted using a public key before transmission."
+msgstr ""
+
 msgid "Organization Name"
 msgstr ""
 
@@ -7596,6 +8139,9 @@ msgstr ""
 msgid "User can logout of both the application and {0} using single Logout {1}."
 msgstr ""
 
+msgid "Beware! Any script or application using this signing key need to be updated."
+msgstr ""
+
 msgid "COMMENTS"
 msgstr ""
 
@@ -7614,6 +8160,66 @@ msgstr ""
 msgid "Oldest"
 msgstr ""
 
+msgid "Custom Email"
+msgstr ""
+
+msgid "This is a predefined template by the application."
+msgstr ""
+
+msgid "This is a custom template set as the default by user."
+msgstr ""
+
+msgid "Mark as default"
+msgstr ""
+
+msgid "Search Template"
+msgstr ""
+
+msgid "Create Template"
+msgstr ""
+
+msgid "Template name"
+msgstr ""
+
+msgid "Template name can't be empty"
+msgstr ""
+
+msgid "Copy from template"
+msgstr ""
+
+msgid "Select template"
+msgstr ""
+
+msgid "Template"
+msgstr ""
+
+msgid "Modified By"
+msgstr ""
+
+msgid "Email Content"
+msgstr ""
+
+msgid "You can customize email content, such as the subject and body here."
+msgstr ""
+
+msgid "Template Name"
+msgstr ""
+
+msgid "Please enter the subject"
+msgstr ""
+
+msgid "HTML Email"
+msgstr ""
+
+msgid "Pre Header"
+msgstr ""
+
+msgid "Body"
+msgstr ""
+
+msgid "Disclaimer Content"
+msgstr ""
+
 msgid "Copy the data source"
 msgstr ""
 
@@ -7624,9 +8230,6 @@ msgid "Select Dashboard Template"
 msgstr ""
 
 msgid "Quickly create a dashboard with the help of dashboard templates. Choose your required connection, build a dashboard, and share with other users within minutes."
-msgstr ""
-
-msgid "Search Template"
 msgstr ""
 
 msgid "Domains"
@@ -7704,9 +8307,6 @@ msgstr ""
 msgid "Select multitab dashboard category"
 msgstr ""
 
-msgid "Select Category"
-msgstr ""
-
 msgid "Add new Category"
 msgstr ""
 
@@ -7756,6 +8356,18 @@ msgid "Your domain has been registered successfully!"
 msgstr ""
 
 msgid "Are you sure you want to delete the custom domain?"
+msgstr ""
+
+msgid "Please select a template to set as the default for this event."
+msgstr ""
+
+msgid "select a template to make it as the default template"
+msgstr ""
+
+msgid "Configure"
+msgstr ""
+
+msgid "Default Template"
 msgstr ""
 
 msgid "Dashboard security options control which websites, IP addresses, and applications can access or embed the dashboard"
@@ -7810,9 +8422,6 @@ msgid "Filters"
 msgstr ""
 
 msgid "Refresh Settings"
-msgstr ""
-
-msgid "Choose the recurrence interval to schedule a data refresh."
 msgstr ""
 
 msgid "Type"
@@ -7908,6 +8517,12 @@ msgstr ""
 msgid "Send failure notification to data source owner"
 msgstr ""
 
+msgid "Send failure notification to other application and external users"
+msgstr ""
+
+msgid "Notification to :"
+msgstr ""
+
 msgid "Note: "
 msgstr ""
 
@@ -7915,6 +8530,30 @@ msgid "The application deactivates your refresh after {0} consecutive failures."
 msgstr ""
 
 msgid "To learn more, click {0}here{1}."
+msgstr ""
+
+msgid "You cannot add users to the recipients before configuring the email settings."
+msgstr ""
+
+msgid "Select Users"
+msgstr ""
+
+msgid "You cannot add groups to the recipients before configuring the email settings."
+msgstr ""
+
+msgid "Select Groups"
+msgstr ""
+
+msgid "You cannot add External User to the recipients before configuring the email settings."
+msgstr ""
+
+msgid "External Recipients (Email address)"
+msgstr ""
+
+msgid "Add external recipients"
+msgstr ""
+
+msgid "Select a user, group, or type an email address in the external recipient to schedule"
 msgstr ""
 
 msgid "Refresh History"
@@ -8016,10 +8655,13 @@ msgstr ""
 msgid "Dashboards that use this data source will no longer work. You can view the {0}dashboards{1} linked to this data source and then delete it."
 msgstr ""
 
-msgid "Cannot delete {0} as the Category contains dashboards."
+msgid "Cannot delete {0} as the category contains dashboards."
 msgstr ""
 
 msgid "This category may contain a dashboard that is not listed here due to its visibility settings."
+msgstr ""
+
+msgid "Cannot delete {0} as the category contains dashboards or subcategories."
 msgstr ""
 
 msgid "Unable to delete the report - {0} as it has been scheduled to run at certain times."
@@ -8028,7 +8670,7 @@ msgstr ""
 msgid "Unable to delete the dashboard - {0} as it has been scheduled to run at certain times."
 msgstr ""
 
-msgid "Cannot delete {0} as the Data Source is being used by dashboards."
+msgid "Cannot delete {0} as the data source is being used by dashboards."
 msgstr ""
 
 msgid "Are you sure you want to delete this schedule?"
@@ -8056,9 +8698,6 @@ msgid "Drag and drop suitable widgets for better illustration."
 msgstr ""
 
 msgid "PREV"
-msgstr ""
-
-msgid "Configure"
 msgstr ""
 
 msgid "Configure the widgets with appropriate data views."
@@ -8104,6 +8743,9 @@ msgid "Select ResourceType"
 msgstr ""
 
 msgid "Select ResourceOrder"
+msgstr ""
+
+msgid "Resource Type and Resource Order must both be Default or both have specific values. Mixing Default with specific values is not allowed."
 msgstr ""
 
 msgid "Date and Time"
@@ -8178,22 +8820,28 @@ msgstr ""
 msgid "Event"
 msgstr ""
 
-msgid "Date"
-msgstr ""
-
 msgid "Recipient"
 msgstr ""
 
 msgid "Initiated By"
 msgstr ""
 
+msgid "Choose a template"
+msgstr ""
+
+msgid "Please select an email template from the list to apply a predefined layout and content for your email."
+msgstr ""
+
+msgid "Email Customization"
+msgstr ""
+
+msgid "Enabling this option allows you to customize the email template content for this particular schedule. You cannot customize the email template when 'Inherit default from settings' option is selected."
+msgstr ""
+
 msgid "Select variables"
 msgstr ""
 
 msgid "Please enter the email subject"
-msgstr ""
-
-msgid "Body"
 msgstr ""
 
 msgid "Select Fields"
@@ -8301,10 +8949,10 @@ msgstr ""
 msgid "Store the secret key somewhere safe. As soon as you navigate away from this page, we will not be able to retrieve or restore this generated secret."
 msgstr ""
 
-msgid "You can use this Embed Secret code to render in {0} based Embedding and Single Sign-On authentication {1} based Embedding"
+msgid "You can use this embed secret code to render in {0} based embedding and Single Sign-On authentication {1} based embedding."
 msgstr ""
 
-msgid "{0} file will be exported with the details required for basic Dashboard Embedding. You can use this {0} file to run the {1} sample available {2}here{3}."
+msgid "{0} file will be exported with the details required for basic dashboard embedding. You can use this {0} file to run the {1} sample available {2}here{3}."
 msgstr ""
 
 msgid "Download"
@@ -8314,6 +8962,15 @@ msgid "We use cookies to give you the best experience on our website. If you con
 msgstr ""
 
 msgid "Powered by"
+msgstr ""
+
+msgid "Modified On"
+msgstr ""
+
+msgid "Last Used"
+msgstr ""
+
+msgid "Valid Till"
 msgstr ""
 
 msgid "Please enter the site name"
@@ -8346,13 +9003,13 @@ msgstr ""
 msgid "Note"
 msgstr ""
 
-msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view the Dashboard."
+msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view the dashboard."
 msgstr ""
 
-msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view the Widget"
+msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view the widget"
 msgstr ""
 
-msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view the File"
+msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view the file"
 msgstr ""
 
 msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view."
@@ -8361,16 +9018,16 @@ msgstr ""
 msgid "Anyone can navigate to this link, but only users with the appropriate permissions will be able to view dashboards in the slideshow."
 msgstr ""
 
-msgid "This Dashboard has been marked public, so anyone with this link will be able to view the contents of the Dashboard."
+msgid "This dashboard has been marked public, so anyone with this link will be able to view the contents of the dashboard."
 msgstr ""
 
-msgid "This Widget has been marked public, so anyone with this link will be able to view the contents of the Widget."
+msgid "This widget has been marked public, so anyone with this link will be able to view the contents of the widget."
 msgstr ""
 
 msgid "This has been marked public, so anyone with this link will be able to view the contents."
 msgstr ""
 
-msgid "This Dashboard has been unlisted, so this Dashboard will not be listed anywhere. Anyone with this link will be able to view the contents of the Dashboard."
+msgid "This dashboard has been unlisted, so this dashboard will not be listed anywhere. Anyone with this link will be able to view the contents of the dashboard."
 msgstr ""
 
 msgid "Support Incidents"
@@ -8448,10 +9105,16 @@ msgstr ""
 msgid "Data Refresh Status"
 msgstr ""
 
+msgid "Row Level Security"
+msgstr ""
+
 msgid "Failed to fetch"
 msgstr ""
 
 msgid "Please edit and save the data source again in order to obtain the data type of this data source."
+msgstr ""
+
+msgid "Row-Level Security applied"
 msgstr ""
 
 msgid "Draft"
@@ -8490,7 +9153,10 @@ msgstr ""
 msgid "Refresh Started at {0}"
 msgstr ""
 
-msgid "Combined Data Source"
+msgid "Not synced with {0}"
+msgstr ""
+
+msgid "Appended Data Source"
 msgstr ""
 
 msgid "Live Connection"
@@ -8530,9 +9196,6 @@ msgid "Restore"
 msgstr ""
 
 msgid "Version"
-msgstr ""
-
-msgid "User"
 msgstr ""
 
 msgid "DASHBOARDS"
@@ -8626,6 +9289,21 @@ msgid "Are you sure you want to delete the group(s)?"
 msgstr ""
 
 msgid "Are you sure you want to remove the user(s) from this site?"
+msgstr ""
+
+msgid "Enable IP Whitelisting"
+msgstr ""
+
+msgid "Enabling this option will permit requests from whitelisted IP addresses. However, activating this feature won't immediately enforce IP whitelisting. Please specify the necessary IP address to be whitelisted and click on the save option to apply the changes."
+msgstr ""
+
+msgid "Please add your current IP address {0} to the whitelisting. Once added all  required IP address please save this changes"
+msgstr ""
+
+msgid "Add new Rule"
+msgstr ""
+
+msgid "Add IP Address"
 msgstr ""
 
 msgid "Select an existing pinboard or add a new one."
@@ -8919,31 +9597,13 @@ msgstr ""
 msgid "Schedule Name"
 msgstr ""
 
+msgid "Parameter"
+msgstr ""
+
 msgid "Data Alerts"
 msgstr ""
 
 msgid "Receive email notifications when specified criteria is met; for example, when the total sales value is greater than $10,000."
-msgstr ""
-
-msgid "You cannot add users to the recipients before configuring the email settings."
-msgstr ""
-
-msgid "Select Users"
-msgstr ""
-
-msgid "You cannot add groups to the recipients before configuring the email settings."
-msgstr ""
-
-msgid "Select Groups"
-msgstr ""
-
-msgid "You cannot add External User to the recipients before configuring the email settings."
-msgstr ""
-
-msgid "External Recipients (Email address)"
-msgstr ""
-
-msgid "Add external recipients"
 msgstr ""
 
 msgid "Send failure notification to schedule owner"
@@ -8953,9 +9613,6 @@ msgid "Send failure notification to recipient"
 msgstr ""
 
 msgid "The application deactivates your schedule after {0} consecutive failures."
-msgstr ""
-
-msgid "Select a user, group, or type an email address in the external recipient to schedule"
 msgstr ""
 
 msgid "Export Format"
@@ -8980,6 +9637,15 @@ msgid "Please specify a resolution."
 msgstr ""
 
 msgid "File Type"
+msgstr ""
+
+msgid "Attachment"
+msgstr ""
+
+msgid "Inline"
+msgstr ""
+
+msgid "Both"
 msgstr ""
 
 msgid "Page Size"
@@ -9102,27 +9768,6 @@ msgstr ""
 msgid "Select {0} provider"
 msgstr ""
 
-msgid "Dashboard Comments"
-msgstr ""
-
-msgid "Show or hide the comment option for the dashboard."
-msgstr ""
-
-msgid "The comment option will be hidden by default if the dashboard is marked as public."
-msgstr ""
-
-msgid "Widget Comments"
-msgstr ""
-
-msgid "Show or hide the comment option for widgets in the dashboard."
-msgstr ""
-
-msgid "Show or hide the view option for the dashboard."
-msgstr ""
-
-msgid "If the dashboard is marked as public, the views marked as public will be listed."
-msgstr ""
-
 msgid "Export"
 msgstr ""
 
@@ -9243,6 +9888,9 @@ msgstr ""
 msgid "Email logo"
 msgstr ""
 
+msgid "AI logo"
+msgstr ""
+
 msgid "Show powered by information"
 msgstr ""
 
@@ -9256,6 +9904,30 @@ msgid "Site copyright information"
 msgstr ""
 
 msgid "Enter copyright information"
+msgstr ""
+
+msgid "Email Brand Configuration"
+msgstr ""
+
+msgid "These branding features will appear in the email to the recipient."
+msgstr ""
+
+msgid "Show Email Logo"
+msgstr ""
+
+msgid "Enabling this option will display the email logo in the email template."
+msgstr ""
+
+msgid "Show login link"
+msgstr ""
+
+msgid "Enabling this option will display login link in the email template."
+msgstr ""
+
+msgid "Show footer logo and copyright info"
+msgstr ""
+
+msgid "Enabling this option will display the footer logo and copyright information in the email template."
 msgstr ""
 
 msgid "Login Disclaimer"
@@ -9321,13 +9993,13 @@ msgstr ""
 msgid "Theme Name"
 msgstr ""
 
-msgid "Please download the default color definition files for dark and light themes from this {0}link{1}."
+msgid "Please download the default color definition files for dark and light themes from {0}this link{1}."
 msgstr ""
 
 msgid "You can customize the color code in this definition file and upload it to the application."
 msgstr ""
 
-msgid "Please refer to this {0}link{1} to learn more about how to customize color codes."
+msgid "Please refer to {0}this link{1} to learn more about how to customize color codes."
 msgstr ""
 
 msgid "Upload"
@@ -9403,6 +10075,12 @@ msgid "Your dashboard resource file is ready for download. Please click {0} to g
 msgstr ""
 
 msgid "An error occurred while processing your dashboard download request. Please click {0} to know more."
+msgstr ""
+
+msgid "Your API Key will be expire on {0} "
+msgstr ""
+
+msgid "Your API Key is expired on {0} "
 msgstr ""
 
 msgid "You have commented on the dashboard"
@@ -9549,6 +10227,9 @@ msgstr ""
 msgid "User synchronization notification"
 msgstr ""
 
+msgid "Enable notification for API key expiration"
+msgstr ""
+
 msgid "System Notifications"
 msgstr ""
 
@@ -9610,12 +10291,6 @@ msgid "Activate"
 msgstr ""
 
 msgid "Event Type"
-msgstr ""
-
-msgid "Modified By"
-msgstr ""
-
-msgid "Modified On"
 msgstr ""
 
 msgid "Failure Logs"
@@ -10032,9 +10707,6 @@ msgstr ""
 msgid "Client ID and secret for publishing resources between sites."
 msgstr ""
 
-msgid "Click to view"
-msgstr ""
-
 msgid "Widget Configuration"
 msgstr ""
 
@@ -10134,6 +10806,12 @@ msgstr ""
 msgid "Deployment Dashboards"
 msgstr ""
 
+msgid "Default Dashboard"
+msgstr ""
+
+msgid "This option ensures users land on the selected default dashboard if no redirect URL is provided during login"
+msgstr ""
+
 msgid "Mark dashboards as public"
 msgstr ""
 
@@ -10162,6 +10840,18 @@ msgid "Usage analytics"
 msgstr ""
 
 msgid "This setting allows you to hide or show usage analytics dashboards in the dashboard listing page."
+msgstr ""
+
+msgid "Performance Metrics"
+msgstr ""
+
+msgid "This setting allows you to hide or show the performance metrics dashboard in the usage analytics page."
+msgstr ""
+
+msgid "Query Metrics"
+msgstr ""
+
+msgid "This setting allows you to hide or show the query metrics dashboard in the usage analytics page."
 msgstr ""
 
 msgid "Show get Embed code for Dashboards"
@@ -10245,6 +10935,9 @@ msgstr ""
 msgid "Server Type"
 msgstr ""
 
+msgid "The Oracle database does not support extract connections. If you switch from MSSQL, MySQL, or PostgreSQL to Oracle, data will be lost."
+msgstr ""
+
 msgid "Server Name"
 msgstr ""
 
@@ -10293,10 +10986,10 @@ msgstr ""
 msgid "Create and manage data sources to connect your data with a dashboard. They can be databases, web services, or flat files."
 msgstr ""
 
-msgid "My Connections"
+msgid "Append Data Source"
 msgstr ""
 
-msgid "Combine Data Source"
+msgid "My Connections"
 msgstr ""
 
 msgid "Total dashboards linked with the data source"
@@ -10530,10 +11223,16 @@ msgstr ""
 msgid "{0}Go to sites page{1} or {2}Create a support{3} ticket with application logs by referring to this {4}link{5}."
 msgstr ""
 
+msgid "{0}Go to sites page{1} or {2}Create a support{3} ticket."
+msgstr ""
+
 msgid "{0}Go to sites page{1} or {2}Create a support ticket{3}"
 msgstr ""
 
 msgid "{0}Go to home page{1} or {2}Create a support{3} ticket with application logs by referring to this {4}link{5}."
+msgstr ""
+
+msgid "{0}Go to home page{1} or {2}Create a support{3} ticket."
 msgstr ""
 
 msgid "{0}Go to home page{1} or {2}Create a support ticket{3}"
@@ -10833,6 +11532,75 @@ msgstr ""
 msgid "Sorry! The dashboard you’re looking for isn’t available. It may have been moved or deleted."
 msgstr ""
 
+msgid "License Activation"
+msgstr ""
+
+msgid "See Clearly. Act Boldly."
+msgstr ""
+
+msgid "Need setup help?"
+msgstr ""
+
+msgid "Complete Your Setup"
+msgstr ""
+
+msgid "Complete setup with online activation or license upload, or skip to use trial mode for 30 days."
+msgstr ""
+
+msgid "Login to activate"
+msgstr ""
+
+msgid "Upload license file"
+msgstr ""
+
+msgid "Don’t have an account?"
+msgstr ""
+
+msgid "Sign Up"
+msgstr ""
+
+msgid "or"
+msgstr ""
+
+msgid "Proceed with 30 days trial"
+msgstr ""
+
+msgid "Upload your unlock Key file."
+msgstr ""
+
+msgid "Offline Setup"
+msgstr ""
+
+msgid "Provide the {0} unlock key file downloaded from the website to proceed with the offline installation. If you do not have a unlock key file, you can download it {1}here{2}."
+msgstr ""
+
+msgid "Provide the {0} unlock key file to proceed with the offline installation."
+msgstr ""
+
+msgid "Select the unlock key file"
+msgstr ""
+
+msgid "choose file"
+msgstr ""
+
+msgid "Subscription Id"
+msgstr ""
+
+msgid "Subscription Name"
+msgstr ""
+
+msgid "Plan Name"
+msgstr ""
+
+msgid "Tenant Status"
+msgstr ""
+
+msgid "Expiry Date"
+msgstr ""
+
+msgid "Proceed"
+msgstr ""
+
 msgid "Please wait..."
 msgstr ""
 
@@ -10953,6 +11721,9 @@ msgstr ""
 msgid "You do not have permission to edit the datasource."
 msgstr ""
 
+msgid "You have reached the maximum number of dashboard's allowed. Please inform the system administrator to increase the limit or delete an existing dashboard's."
+msgstr ""
+
 msgid "You do not have permission to view this page."
 msgstr ""
 
@@ -10971,7 +11742,7 @@ msgstr ""
 msgid "NOTIFICATIONS"
 msgstr ""
 
-msgid "PERSONAL ACCESS TOKEN"
+msgid "API KEY"
 msgstr ""
 
 msgid "USER PROFILE"
@@ -11005,6 +11776,9 @@ msgid "Default pinboard"
 msgstr ""
 
 msgid "Click {0}here{1} to learn how to set a default pinboard."
+msgstr ""
+
+msgid "Personal access tokens will no longer be supported and will be removed in upcoming releases. We recommend using API keys, which are the alternative to personal access tokens, to ensure continued access to our services."
 msgstr ""
 
 msgid "A personal access token serves the same purpose as an OAuth access token. It enables secure embedding of the dashboard viewer and designer within your application. Additionally, this token grants access to all our REST API endpoints."
@@ -11064,7 +11838,7 @@ msgstr ""
 msgid "Create and manage dashboard schedules to send out dashboard reports either at a specific date and time interval or when data changes."
 msgstr ""
 
-msgid "Next Scheduled Run"
+msgid "Next Run Scheduled At"
 msgstr ""
 
 msgid "Scheduled Dashboard is "
@@ -11080,6 +11854,9 @@ msgid "Schedule-History"
 msgstr ""
 
 msgid "Run History"
+msgstr ""
+
+msgid "Select Field"
 msgstr ""
 
 msgid "Security Settings"
@@ -11211,7 +11988,16 @@ msgstr ""
 msgid "Get started creating dashboards."
 msgstr ""
 
+msgid "Count - Descending"
+msgstr ""
+
+msgid "Count - Ascending"
+msgstr ""
+
 msgid "Search Categories"
+msgstr ""
+
+msgid "Add Sub Category"
 msgstr ""
 
 msgid "No categories available to display."
@@ -11281,6 +12067,15 @@ msgid "Download sample template"
 msgstr ""
 
 msgid "Download Template"
+msgstr ""
+
+msgid "Provides details about specific events or operations across the application, including what was changed and who made the changes."
+msgstr ""
+
+msgid "Event Category"
+msgstr ""
+
+msgid "User/Date"
 msgstr ""
 
 msgid "User Permissions"
@@ -11355,23 +12150,11 @@ msgstr ""
 msgid "Manage all your webhooks here."
 msgstr ""
 
-msgid "This URI is used to receive the response from the authorization server. When setting up your OAuth 2.0 application, it's essential to register the redirect URI using only lowercase characters."
+msgid "Single Database For All Tenants"
 msgstr ""
 
-msgid "This URI is used to receive the response from the authorization server. When setting up your OpenID Connect application, it's essential to register the redirect URI using only lowercase characters."
+msgid "Database Per Tenant"
 msgstr ""
 
-msgid "Data Hub"
-msgstr ""
-
-msgid "Not synced with Data Hub"
-msgstr ""
-
-msgid "Row Level Security"
-msgstr ""
-
-msgid "Row-Level Security applied"
-msgstr ""
-
-msgid "Setup Row Level Security"
+msgid "Pipeline does not exists in {0}"
 msgstr ""

@@ -11360,7 +11360,7 @@ msgstr ""
 msgid "Data Hub"
 msgstr ""
 
-msgid "Not synced with Data Hub"
+msgid "Not synced with {0}"
 msgstr ""
 
 msgid "Row Level Security"
@@ -11370,4 +11370,7 @@ msgid "Row-Level Security applied"
 msgstr ""
 
 msgid "Setup Row Level Security"
+msgstr ""
+
+msgid "Pipeline does not exists in {0}"
 msgstr ""

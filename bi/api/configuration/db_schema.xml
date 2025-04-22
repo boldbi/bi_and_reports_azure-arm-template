@@ -226,6 +226,7 @@
 		<QueryString>QueryString</QueryString>
 		<ModifiedDate>ModifiedDate</ModifiedDate>
 		<IsActive>IsActive</IsActive>
+		<IsWidgetLinking>IsWidgetLinking</IsWidgetLinking>
 	</DB_ItemView>
 	<DB_ItemWatch>
 		<DB_TableName>ItemWatch</DB_TableName>
@@ -325,6 +326,7 @@
 		<Subject>Subject</Subject>
 		<NextSchedule>NextSchedule</NextSchedule>
 		<ExportTypeId>ExportTypeId</ExportTypeId>
+		<MultiExportType>MultiExportType</MultiExportType>
 		<IsEnabled>IsEnabled</IsEnabled>
 		<CreatedById>CreatedById</CreatedById>
 		<ModifiedById>ModifiedById</ModifiedById>
@@ -1086,4 +1088,18 @@
 		<IsActive>IsActive</IsActive>
 		<CanDelete>CanDelete</CanDelete>
 	</DB_ActivityLog>
+	<DB_AICredentials>
+		<DB_TableName>AICredentials</DB_TableName>
+		<Id>Id</Id>
+		<AIModel>AIModel</AIModel>
+		<AIConfiguration>AIConfiguration</AIConfiguration>
+		<CreatedById>CreatedById</CreatedById>
+		<ModifiedById>ModifiedById</ModifiedById>
+		<CreatedDate>CreatedDate</CreatedDate>
+		<ModifiedDate>ModifiedDate</ModifiedDate>
+		<IsActive>IsActive</IsActive>
+		<IsAIModel>IsAIModel</IsAIModel>
+		<EnableAIFeature>EnableAIFeature</EnableAIFeature>
+		<IsAISummariesEnabledGlobally>IsAISummariesEnabledGlobally</IsAISummariesEnabledGlobally>
+	</DB_AICredentials>
 </DB_SyncUMP>

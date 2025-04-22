@@ -1,36 +1,20 @@
-CREATE TABLE BOLDBI_AI_SESSIONS (
-    "SessionID" VARCHAR2(255) PRIMARY KEY,
-    "SessionStartTime" TIMESTAMP,
-    "SessionEndTime" TIMESTAMP,
-    "InputToken" NUMBER,
-    "OutputToken" NUMBER,
-    "TotalToken" NUMBER,
-    "InputTokenCost" FLOAT,
-    "OutputTokenCost" FLOAT,
-    "TotalTokensCost" FLOAT,
-    "UserInfo" VARCHAR2(255),
-    "TenantID" VARCHAR2(255),
-    "Environment" VARCHAR2(255)
+CREATE TABLE BOLDBI_AICredentials (
+Id VARCHAR2(36) NOT NULL PRIMARY KEY,
+AIModel NUMBER NOT NULL,
+AIConfiguration VARCHAR2(4000) NULL,
+CreatedById CHAR(38),
+ModifiedById CHAR(38),
+CreatedDate TIMESTAMP NOT NULL,
+ModifiedDate TIMESTAMP NOT NULL,
+IsActive NUMBER(1) NOT NULL,
+IsAIModel NUMBER(1,0) DEFAULT 0 NOT NULL,
+EnableAIFeature NUMBER(1,0) DEFAULT 0 NOT NULL,
+IsAISummariesEnabledGlobally NUMBER(1,0) DEFAULT 0 NOT NULL
 );
+ALTER TABLE BOLDBI_ScheduleDetail ADD MultiExportType CLOB NULL;
 
-CREATE TABLE BOLDBI_AI_CHAT (
-    "SearchID" VARCHAR2(255) PRIMARY KEY,
-    "SessionID" VARCHAR2(255),
-    "SearchDateTime" TIMESTAMP,
-    "InputToken" NUMBER,
-    "OutputToken" NUMBER,
-    "TotalToken" NUMBER,
-    "InputTokenCost" FLOAT,
-    "OutputTokenCost" FLOAT,
-    "TotalTokensCost" FLOAT,
-    "UserInfo" VARCHAR2(255),
-    "TenantID" VARCHAR2(255),
-    "RequestType" VARCHAR2(255),
-    "Environment" VARCHAR2(255)
-);
+ALTER TABLE BOLDBI_ScheduleDetail MODIFY ExportTypeId NULL;
 
+ALTER TABLE BOLDBI_ItemView ADD IsWidgetLinking NUMBER(1, 0) DEFAULT 0 NOT NULL;
 
-ALTER TABLE BOLDBI_ItemLog Add AnonymousUsername NVARCHAR2(255) NULL
-;
-ALTER TABLE BOLDBI_ScheduleDetail ADD DashboardWidgetIds CLOB
-;
+ALTER TABLE BOLDBI_ItemView MODIFY QueryString CLOB NOT NULL;

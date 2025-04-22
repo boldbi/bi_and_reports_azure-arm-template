@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.common.all.js
-*  version : 11.2.7
+*  version : 11.3.24
 *  Copyright Syncfusion Inc. 2001 - 2025. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -1006,13 +1006,30 @@ window.BoldBIDashboard = window.SyncfusionBoldBIDashboard = window.SyncfusionBol
         setModel: function (options, forceSet) {
             // check for whether to apply values are not. if _setModel function is defined in child,
             //  this will call that function and validate it using return value
+            function deepEqual(obj1, obj2) {
+                if (obj1 === obj2) return true;
+                if (typeof obj1 !== 'object' || typeof obj2 !== 'object' || 
+                    obj1 === null || obj2 === null || obj1 === undefined || obj2 === undefined) {
+                    return obj1 === obj2;
+                }
+                const obj1Keys = Object.keys(obj1);
+                const obj2Keys = Object.keys(obj2);
+                if (obj1Keys.length !== obj2Keys.length) return false;
+                for (const keyName of obj1Keys) {
+                    if (!deepEqual(obj1[keyName], obj2[keyName])) return false;
+                }
+                return true;
+            }
 
             if (this._trigger("modelChange", { "changes": options }))
                 return;
 
             for (var prop in options) {
                 if (!forceSet) {
-                    if (this.model[prop] === options[prop]) {
+                    const isEqual = this.sfType === 'BoldBIDashboard.Autocomplete'
+                        ? deepEqual(this.model[prop], options[prop])
+                        : this.model[prop] === options[prop];
+                    if (isEqual) {
                         delete options[prop];
                         continue;
                     }
@@ -1030,7 +1047,7 @@ window.BoldBIDashboard = window.SyncfusionBoldBIDashboard = window.SyncfusionBol
                     if (returnValue !== true)
                         throw "setModel - Invalid input for property :" + prop + " - " + returnValue;
                 }
-                if (this.model.notifyOnEachPropertyChanges && this.model[prop] !== options[prop]) {
+                if (this.model.notifyOnEachPropertyChanges && !deepEqual(this.model[prop], options[prop])) {
                     var arg = {
                         oldValue: this.model[prop],
                         newValue: options[prop]
@@ -6712,6 +6729,112 @@ window.BoldBIDashboard = window.SyncfusionBoldBIDashboard = window.SyncfusionBol
             if (evt.type == "touchmove" || evt.type == "touchstart" || evt.type == "touchend" || evt.type== "taphold" && BoldBIDashboard.browserInfo().name !="msie")
                 coor = evt.originalEvent.changedTouches[0];
             return coor;
+        }
+    });
+
+})(bbdesigner$, SyncfusionBoldBIDashboard);
+;
+/**
+* @fileOverview Plugin to drop the html elements
+* @copyright Copyright SyncfusionBoldBIDashboard Inc. 2001 - 2015. All rights reserved.
+*  Use of this code is subject to the terms of our license.
+*  A copy of the current license can be obtained at any time by e-mailing
+*  licensing@syncfusion.com. Any infringement will be prosecuted under
+*  applicable laws. 
+* @version 12.1 
+* @author <a href="mailto:licensing@syncfusion.com">SyncfusionBoldBIDashboard Inc</a>
+*/
+(function (bbdesigner$, BoldBIDashboard, undefined) { 
+    BoldBIDashboard.widget("BoldBIDashboardDroppable", "BoldBIDashboard.Droppable", {
+        
+        element: null,        
+        model: null,
+        validTags: ["div", "span", "a"],
+        dropElements : [],
+        defaults: {
+            
+            accept: null,
+            
+            scope: 'default',
+            
+            drop: null,
+            
+            over: null,
+            
+            out: null,
+			
+			create: null,
+            
+            destroy: null
+        },
+
+        
+        _init: function () {
+            this._mouseOver = false;
+			this.dropElements.push(this);
+        },
+
+        _setModel: function (options) {
+
+        },
+        
+        
+        _destroy: function () {
+			 bbdesigner$(this.element).off('mouseup', bbdesigner$.proxy(this._drop, this));
+        },
+
+        _over: function (e) {
+            if (!this._mouseOver) {
+                this._trigger("over", e);
+                this._mouseOver = true;
+            }
+        },
+        _out: function (e) {
+            if (this._mouseOver) {
+                this._trigger("out", e);
+                this._mouseOver = false;
+            }
+        },
+        _drop: function (e, dragElement) {
+			var _target = e.target; 
+			var _parents = bbdesigner$(_target).parents(".e-droppable");
+			if(bbdesigner$(_target).hasClass("e-droppable")) _parents.push(_target);
+			for (var i =0; i< this.dropElements.length; i++ ){
+				if (bbdesigner$(_parents).is(bbdesigner$(this.dropElements[i].element)))
+					this.dropElements[i]._dropEvent.call( this.dropElements[i], e, dragElement );
+			}
+        },
+		_dropEvent : function (e, dragElement){
+			var drag = BoldBIDashboard.widgetBase.droppables[this.model.scope];
+            var isDragged = !BoldBIDashboard.isNullOrUndefined(drag.helper) && drag.helper.is(":visible");
+			if(isDragged && e.type == "touchend") bbdesigner$(drag.helper).hide();
+            var area = this._isDropArea(e);
+			if(isDragged && e.type == "touchend") bbdesigner$(drag.helper).show();
+            if (drag && !BoldBIDashboard.isNullOrUndefined(this.model.drop) && isDragged && area.canDrop) {
+                this.model.drop(bbdesigner$.extend(e, { dropTarget: area.target , dragElement : dragElement }, true), drag);
+            }
+		},
+        _isDropArea: function (e) {
+            // check for touch devices only
+            var area = { canDrop: true, target: bbdesigner$(e.target) };
+            if (e.type == "touchend") {
+                var coor = e.originalEvent.changedTouches[0], _target;
+                _target = document.elementFromPoint(coor.clientX, coor.clientY);
+                area.canDrop = false;
+                var _parents = bbdesigner$(_target).parents();
+
+                for (var i = 0; i < this.element.length; i++) {
+                    if (bbdesigner$(_target).is(bbdesigner$(this.element[i]))) area = { canDrop: true, target: bbdesigner$(_target) };
+                    else for (var j = 0; j < _parents.length; j++) {
+                        if (bbdesigner$(this.element[i]).is(bbdesigner$(_parents[j]))) {
+                            area = { canDrop: true, target: bbdesigner$(_target) };
+                            break;
+                        }
+                    }
+                    if (area.canDrop) break;
+                }
+            }
+            return area;
         }
     });
 
@@ -20664,8 +20787,8 @@ BoldBIDashboard.Dialog.Locale["default"] = BoldBIDashboard.Dialog.Locale["en-US"
             this.listitems = this._getLi();
             for (var k = 0; k < items.length; k++) {
                 for (i = 0; i < this.listitems.length; i++) {
-                    if (this._getAttributeValue(this.listitems[i])) {
-                        this._selectedValue = this._getAttributeValue(this.listitems[i]);
+                    if (this._getAttributeValue(this.listitems[i]) || bbdesigner$(this.listitems[i]).text()) {
+                        this._selectedValue = this._getAttributeValue(this.listitems[i]) || bbdesigner$(this.listitems[i]).text();
                         if (this._selectedValue == items[k]) {
                             this._activeItem = i;
                             if (this._activeItem == this._aselectedItem) this._aselectedItem = null;
@@ -36209,6 +36332,9 @@ BoldBIDashboard.DateRangePicker.Locale['default'] = BoldBIDashboard.DateRangePic
             enableRTL: false,
             highlightAvailableDates: false,
             fixedCalendarSelection: false,
+            limitDateSelection: false,
+            maximumDateSelection: "",
+			customDateSelection: 10,
             limitDate: true,
             specialDates: null,
 			defaultDate: "none",
@@ -36689,6 +36815,14 @@ BoldBIDashboard.DateRangePicker.Locale['default'] = BoldBIDashboard.DateRangePic
                     } else {
                         data.addClass("e-available-date").removeClass("e-unavailable-date");
                     }
+					if (this.model.limitDateSelection && this.selectedStartDate !== null && this.selectedEndDate === null) {
+						var {minDate, maxDate} = this._getCalculatedDays();
+						if (currentDate < minDate || currentDate > maxDate) {
+							data.addClass("e-disabled").css("pointer-events", "none");
+						} else if (data.hasClass("e-disabled")){
+							data.removeClass("e-disabled").css("pointer-events", "auto");
+						}
+					}
                     row.append(data);
                     currentDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + one, zero, zero, zero);
                 }
@@ -37763,6 +37897,12 @@ BoldBIDashboard.DateRangePicker.Locale['default'] = BoldBIDashboard.DateRangePic
                         this._updateCalendar("right");
                     }
                 }
+				if (this.model.limitDateSelection) {
+					var {minDate, maxDate} = this._getCalculatedDays();
+					setTimeout(() => {
+						this._disableOutOfRangeDates(minDate, maxDate);
+					}, 50);
+				}
                 this._selectDate();
                 if (this.selectedStartDate !== null && this.selectedEndDate === null) {
                     this._removeStartDateFocus();
@@ -37781,7 +37921,75 @@ BoldBIDashboard.DateRangePicker.Locale['default'] = BoldBIDashboard.DateRangePic
                 this._updateInputs(false);
             }
         },
+		/**
+		 * Get calculated days for limit date selection based on Weekly, Monthly and Custom Date Selection.
+		 */
+		 _getCalculatedDays() {
+			let selectedMonth = this.selectedStartDate.date.getMonth();
+			let selectedYear = this.selectedStartDate.date.getFullYear();	
+			switch (this.model.maximumDateSelection) {
+				case 0:
+					let dayOfWeek = this.selectedStartDate.date.getDay();
+					// Start of the week (Monday)
+					minDate = new Date(this.selectedStartDate.date);
+					minDate.setDate(this.selectedStartDate.date.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+					// End of the week (Sunday)
+					maxDate = new Date(minDate);
+					maxDate.setDate(minDate.getDate() + 6);
+					break;		
+				case 1:
+					// Start of the month
+					minDate = new Date(selectedYear, selectedMonth, 1);
+							
+					// End of the month
+					maxDate = new Date(selectedYear, selectedMonth + 1, 0);
+					break;
+					// Comment this line as some work pending related to disabling date selection, it will be added in future.
+					// case 2:
+						// let quarterStartMonth = Math.floor(selectedMonth / 3) * 3;  
+						// let quarterEndMonth = quarterStartMonth + 2;
+						// // Start of the quarter
+						// minDate = new Date(selectedYear, quarterStartMonth, 1);
+						// // End of the quarter
+						// maxDate = new Date(selectedYear, quarterEndMonth + 1, 0);
+						// break;
+					// case 3:
+						// // Start of the year
+						// minDate = new Date(selectedYear, 0, 1);
+						// // End of the year
+						// maxDate = new Date(selectedYear, 11, 31);
+						// break;
+				default:
+					// Default to maximum selection range (e.g., 30 days from selected date)
+					minDate = this.selectedStartDate.date;
+					maxDate = new Date(this.selectedStartDate.date);
+					maxDate.setDate(maxDate.getDate() + (this.model.customDateSelection - 1));
+					break;
+			}
+			return {minDate, maxDate};
+		 },
+		/**
+		 * Disable dates that are outside the allowed range (30 days from start date)
+		 */
+		_disableOutOfRangeDates(startDate, maxEndDate) {
+			var that = this;
+			this.container.find(".calendar-table td").each(function (index, el) {
+				var element = bbdesigner$(el);
+				var cellDate = new Date(element.attr("date"));
 
+				if ((cellDate < startDate || cellDate > maxEndDate) && that.selectedStartDate !== null && that.selectedEndDate === null) {
+					element.addClass("e-disabled").css("pointer-events", "none");  // Disable the date
+				} else {
+					element.removeClass("e-disabled").css("pointer-events", "auto");  // Enable the date
+				}
+			});
+			if (this.selectedStartDate !== null && this.selectedEndDate === null) {
+				bbdesigner$(this.container).find(".left-calendar .e-next-month").removeClass("e-arrow-enabled").addClass("e-arrow-diabled");
+				bbdesigner$(this.container).find(".left-calendar .e-prev-month").removeClass("e-arrow-enabled").addClass("e-arrow-diabled");
+			} else {
+				this._updateCalenderArrow();
+			}
+		},
         cancelClick: function () {
             this.container.find(".in-range").removeClass("in-range");
             this.selectedStartDate = this.oldSelectedStartDate;

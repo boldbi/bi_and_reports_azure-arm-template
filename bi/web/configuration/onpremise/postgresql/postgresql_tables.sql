@@ -120,9 +120,10 @@ CREATE TABLE SyncDS_ItemView(
 	ItemId uuid NOT NULL,
 	UserId int NOT NULL,
 	ItemViewId uuid NOT NULL,
-	QueryString varchar(4000) NOT NULL,
+	QueryString text NOT NULL,
 	ModifiedDate timestamp NOT NULL,
-	IsActive smallint NOT NULL)
+	IsActive smallint NOT NULL,
+	IsWidgetLinking smallint NOT NULL)
 ;
 
 CREATE TABLE SyncDS_ItemLogType(
@@ -241,14 +242,15 @@ CREATE TABLE SyncDS_ScheduleDetail(
 	EndDate timestamp NULL,
 	EndAfter int NULL DEFAULT 0,
 	NextSchedule timestamp NULL,
-	ExportTypeId int NOT NULL,
+	ExportTypeId int NULL,
+    MultiExportType text NULL,
 	IsEnabled smallint NOT NULL,
 	CreatedById int NOT NULL,
 	ModifiedById int NOT NULL,
 	CreatedDate timestamp NOT NULL,
 	ModifiedDate timestamp NOT NULL,
 	ScheduleExportInfo text NULL,
-        DashboardWidgetIds text NULL,
+    DashboardWidgetIds text NULL,
 	IsActive smallint NOT NULL)
 ;
 
@@ -987,6 +989,20 @@ CREATE TABLE SyncDS_ai_qnawidgethistory (
    widgetid TEXT)
 ;
 
+CREATE TABLE SyncDS_AICredentials(
+	Id uuid NOT NULL,
+	AIModel INTEGER NOT NULL,
+	AIConfiguration varchar(4000) NULL,
+	CreatedById uuid NULL,
+	ModifiedById uuid NULL,
+	CreatedDate timestamp NOT NULL,
+	ModifiedDate timestamp NOT NULL,
+	IsActive smallint NOT NULL,
+	IsAIModel smallint NOT NULL default 0,
+	EnableAIFeature smallint NOT NULL default 0,
+	IsAISummariesEnabledGlobally smallint NOT NULL default 0)
+;
+
 CREATE TABLE SyncDS_Notification (
     Id SERIAL primary key NOT NULL,
     CurrentUserId int NOT NULL,
@@ -1035,7 +1051,7 @@ CREATE TABLE SyncDS_ApiKeyDetails (
     IsActive smallint NOT NULL)
 ;
 
-CREATE TABLE BOLDBI_AI_CHAT (
+CREATE TABLE SyncDS_AI_CHAT (
     SearchID TEXT,
     SessionID TEXT,
     SearchDateTime TIMESTAMP WITH TIME ZONE,
@@ -1052,7 +1068,7 @@ CREATE TABLE BOLDBI_AI_CHAT (
 );
 
 
-CREATE TABLE BOLDBI_AI_SESSIONS (
+CREATE TABLE SyncDS_AI_SESSIONS (
     SessionID TEXT Primary key,
     SessionStartTime TIMESTAMP WITH TIME ZONE,
     SessionEndTime TIMESTAMP WITH TIME ZONE,
@@ -1066,6 +1082,8 @@ CREATE TABLE BOLDBI_AI_SESSIONS (
     TenantID TEXT,
     Environment TEXT
 );
+
+
 
 ---- PASTE INSERT Queries below this section --------
 

@@ -128,19 +128,6 @@
             <param name="question">User's original question.</param>
             <returns>A ChatResponse containing a greeting message if matched, otherwise the AI's raw response.</returns>
         </member>
-        <member name="M:BoldBi.Ai.Base.AiAssistanceOperations.GenerateAIResponseAsync(BoldBi.Ai.Base.Contracts.IBoldAiProcess,BoldBi.Ai.Core.Enums.AiOperation,System.String,System.String,System.String,System.String,System.String)">
-            <summary>
-            Generates an AI response using the provided AI process and parameters.
-            </summary>
-            <param name="process">The AI process instance.</param>
-            <param name="operation">The AI operation to perform.</param>
-            <param name="question">The input question to the AI.</param>
-            <param name="licenseKey">The license key for the operation.</param>
-            <param name="tableInfo">Optional table information for the AI.</param>
-            <param name="previousHistories">Optional history of previous queries.</param>
-            <param name="modeType">Optional mode type of the dashboard.</param>
-            <returns>The AI-generated response as <see cref="T:BoldBi.Ai.Core.Models.AIResponseBuilder.TextContent"/>.</returns>
-        </member>
         <member name="M:BoldBi.Ai.Base.AiAssistanceOperations.GetTableInfoContent(System.String)">
             <summary>
             Retrieves the table information, such as column names, data types, etc.,
@@ -150,6 +137,20 @@
             <param name="tableInfo">A JSON string containing the table information (e.g., column names, data types, etc.).</param>
             <returns>A string containing the formatted table information based on the provided table details.</returns>
         </member>
+        <member name="M:BoldBi.Ai.Base.AiAssistanceOperations.GenerateAIResponseAsync(BoldBi.Ai.Base.Contracts.IBoldAiProcess,BoldBi.Ai.Core.Enums.AiOperation,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Generates an AI response using the provided AI process and parameters.
+            </summary>
+            <param name="process">The AI process instance.</param>
+            <param name="operation">The AI operation to perform.</param>
+            <param name="question">The input question to the AI.</param>
+            <param name="licenseKey">The license key for the operation.</param>
+            <param name="sessionId">The session ID for the operation.</param>
+            <param name="tableInfo">Optional table information for the AI.</param>
+            <param name="previousHistories">Optional history of previous queries.</param>
+            <param name="modeType">Optional mode type of the dashboard.</param>
+            <returns>The AI-generated response as <see cref="T:BoldBi.Ai.Core.Models.AIResponseBuilder.TextContent"/>.</returns>
+        </member>
         <member name="M:BoldBi.Ai.Base.AiAssistanceOperations.ValidateInput(System.String)">
             <summary>
             Validates and converts the input JSON string into an <see cref="T:BoldBi.Ai.Core.Models.AIInputBuilder.AiAssistanceRequest"/> object.
@@ -157,12 +158,13 @@
             <param name="jsonInput">The JSON string to validate and parse.</param>
             <returns>The parsed <see cref="T:BoldBi.Ai.Core.Models.AIInputBuilder.AiAssistanceRequest"/> object.</returns>
         </member>
-        <member name="M:BoldBi.Ai.Base.AiAssistanceOperations.GenerateJsonResponseUsingAi(System.String,System.String)">
+        <member name="M:BoldBi.Ai.Base.AiAssistanceOperations.GenerateJsonResponseUsingAi(System.String,System.String,System.String)">
             <summary>
             Generates a JSON response using the AI for a specified operation and mode.
             </summary>
             <param name="question">The input question to the AI.</param>
             <param name="licenseKey">The license key for the operation.</param>
+            <param name="sessionId">The session ID for the operation.</param>
             <returns>The AI-generated response as <see cref="T:BoldBi.Ai.Core.Models.AIResponseBuilder.TextContent"/>.</returns>
         </member>
         <member name="M:BoldBi.Ai.Base.AiAssistanceOperations.FormatAndValidateJson(BoldBi.Ai.Core.Models.AIResponseBuilder.TextContent,System.String,BoldBi.Ai.Core.Models.AIInputBuilder.AiAssistanceRequest)">
@@ -358,7 +360,7 @@
             <summary>
             Processes a formatted query from the user and returns a response.
             </summary>
-            <param name="jsonInput">The JSON input containing the user's formnat query.</param>
+            <param name="jsonInput">The JSON input containing the user's format query.</param>
             <param name="licenseKey">The license key required for processing the request.</param>
             <returns>A task representing the asynchronous operation, with an object containing the result of the format query processing.</returns>
         </member>
@@ -521,7 +523,7 @@
             <summary>
             Gets an instance of an AI process based on the provided operation type.
             </summary>
-            <param name="aiOperaton">The type of AI operation for which the process is to be created.</param>
+            <param name="aiOperation">The type of AI operation for which the process is to be created.</param>
             <returns>An instance of <see cref="T:BoldBi.Ai.Base.Contracts.IBoldAiProcess"/> corresponding to the specified operation.</returns>
         </member>
         <member name="T:BoldBi.Ai.Base.CoreProcesses.ChartUpdationProcess">
@@ -1057,11 +1059,12 @@
             Provides utility methods for managing AI credential configurations.
             </summary>
         </member>
-        <member name="M:BoldBi.Ai.Base.CredentialManager.#ctor(BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext)">
+        <member name="M:BoldBi.Ai.Base.CredentialManager.#ctor(BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext,Microsoft.Extensions.Caching.Memory.IMemoryCache)">
             <summary>
             Initializes a new instance of the <see cref="T:BoldBi.Ai.Base.CredentialManager"/> class.
             </summary>
             <param name="context">The database context used for accessing application data.</param>
+            <param name="memoryCache">The memory cache instance used for storage.</param>
         </member>
         <member name="M:BoldBi.Ai.Base.CredentialManager.VerifyDefinedAIConfiguration(System.String,System.String,System.String,System.Boolean,System.String)">
             <summary>
@@ -1072,20 +1075,22 @@
             <param name="apiKey">The API key for authentication.</param>
             <param name="isOpenAi">Finds whether it is openai or not.</param>
             <param name="resourceName">The resource name for the service (optional).</param>
-            <returns>A populated <see cref="T:BoldBi.Ai.Base.CustomAIConfiguration"/> object.</returns>
+            <returns>A populated <see cref="T:BoldBi.Ai.Core.Models.CredentialsConfiguration.CustomAIConfiguration"/> object.</returns>
         </member>
-        <member name="M:BoldBi.Ai.Base.CredentialManager.SetAIConfiguration(BoldBi.Ai.Base.CustomAIConfiguration)">
+        <member name="M:BoldBi.Ai.Base.CredentialManager.SetAIConfiguration(BoldBi.Ai.Core.Models.CredentialsConfiguration.CustomAIConfiguration)">
             <summary>
             Sets the custom AI configuration and determines the AI provider.
             </summary>
             <param name="aiConfiguration">The AI configuration object.</param>
         </member>
-        <member name="M:BoldBi.Ai.Base.CredentialManager.VerifyAIConfiguration(System.String,System.Boolean)">
+        <member name="M:BoldBi.Ai.Base.CredentialManager.VerifyAIConfiguration(System.String,System.Boolean,System.String,BoldBi.Ai.Core.Models.AIInputBuilder.LoggingAssistance)">
             <summary>
             Verifies the AI configuration and connection based on the provided credentials JSON.
             </summary>
             <param name="inputCredentials">Optional property of input credentials.</param>
             <param name="isCredentialsCheck">Optional property of isCredentialsCheck.</param>
+            <param name="sessionId">Optional property of session ID.</param>
+            <param name="loggingAssistance">Optional property of logging class.</param>
             <returns>A JSON response indicating the AI Configuration.</returns>
         </member>
         <member name="M:BoldBi.Ai.Base.CredentialManager.ValidateAndActivate(System.String)">
@@ -1095,10 +1100,11 @@
             <param name="jsonInput">The JSON input containing the tenant ID.</param>
             <returns>An object indicating whether the tenant is allowed access.</returns>
         </member>
-        <member name="M:BoldBi.Ai.Base.CredentialManager.MakeServerRequestAsync">
+        <member name="M:BoldBi.Ai.Base.CredentialManager.MakeServerRequestAsync(BoldBi.Ai.Core.Models.AIInputBuilder.LoggingAssistance)">
             <summary>
             Makes a request to the server to retrieve AI credentials.
             </summary>
+            <param name="loggingAssistance">Logging assistance object contains logging data.</param>
             <returns>A JSON string containing AI credentials based on the provider.</returns>
         </member>
         <member name="M:BoldBi.Ai.Base.CredentialManager.GetServerTokenAsync">
@@ -1107,11 +1113,12 @@
             </summary>
             <returns>The access token as a string if successful; otherwise, an empty string.</returns>
         </member>
-        <member name="M:BoldBi.Ai.Base.CredentialManager.GetAICredentials(System.String)">
+        <member name="M:BoldBi.Ai.Base.CredentialManager.GetAICredentials(System.String,BoldBi.Ai.Core.Models.AIInputBuilder.LoggingAssistance)">
             <summary>
             Retrieves AI credentials using the provided access token.
             </summary>
             <param name="accessToken">The access token required for authentication.</param>
+            <param name="loggingAssistance">The logging details for input.</param>
             <returns>A JSON string containing AI credentials if successful; otherwise, an error message.</returns>
         </member>
         <member name="M:BoldBi.Ai.Base.CredentialManager.LogError(System.String,System.String,System.String)">
@@ -1137,21 +1144,21 @@
             Handles cases where the General configuration is missing in the credentials JSON.
             </summary>
             <param name="credentialJson">The JSON string containing AI credentials.</param>
-            <returns>A fully populated <see cref="T:BoldBi.Ai.Base.CustomAIConfiguration"/> object.</returns>
+            <returns>A fully populated <see cref="T:BoldBi.Ai.Core.Models.CredentialsConfiguration.CustomAIConfiguration"/> object.</returns>
         </member>
         <member name="M:BoldBi.Ai.Base.CredentialManager.VerifyOpenAIConfiguration(BoldBi.Ai.Base.OpenAICredentialManager)">
             <summary>
             Verifies and sets OpenAI configuration values.
             </summary>
             <param name="credentialManager">The OpenAI credential manager.</param>
-            <returns>A populated <see cref="T:BoldBi.Ai.Base.CustomAIConfiguration"/> object.</returns>
+            <returns>A populated <see cref="T:BoldBi.Ai.Core.Models.CredentialsConfiguration.CustomAIConfiguration"/> object.</returns>
         </member>
         <member name="M:BoldBi.Ai.Base.CredentialManager.VerifyAzureAIConfiguration(BoldBi.Ai.Base.AzureAICredentialManager)">
             <summary>
             Verifies and sets Azure AI configuration values.
             </summary>
             <param name="credentialManager">The Azure AI credential manager.</param>
-            <returns>A populated <see cref="T:BoldBi.Ai.Base.CustomAIConfiguration"/> object.</returns>
+            <returns>A populated <see cref="T:BoldBi.Ai.Core.Models.CredentialsConfiguration.CustomAIConfiguration"/> object.</returns>
         </member>
         <member name="M:BoldBi.Ai.Base.CredentialManager.CreateSuccessResponse(System.String)">
             <summary>
@@ -1235,43 +1242,6 @@
         <member name="P:BoldBi.Ai.Base.AzureAICredentialManager.ResourceName">
             <summary>
             Gets or sets the endpoint URL for the Azure AI service.
-            </summary>
-        </member>
-        <member name="T:BoldBi.Ai.Base.CustomAIConfiguration">
-            <summary>
-            Represents the configuration for a custom AI system,
-            including general settings and specific configurations for various AI functionalities.
-            </summary>
-        </member>
-        <member name="P:BoldBi.Ai.Base.CustomAIConfiguration.General">
-            <summary>
-            Gets or sets the general configuration for the AI system,
-            including provider details, model information, API keys, and endpoints.
-            </summary>
-        </member>
-        <member name="P:BoldBi.Ai.Base.CustomAIConfiguration.Classification">
-            <summary>
-            Gets or sets the configuration for AI-based classification functionality.
-            </summary>
-        </member>
-        <member name="P:BoldBi.Ai.Base.CustomAIConfiguration.VisualCreation">
-            <summary>
-            Gets or sets the configuration for visual creation tasks in the AI system.
-            </summary>
-        </member>
-        <member name="P:BoldBi.Ai.Base.CustomAIConfiguration.VisualUpdation">
-            <summary>
-            Gets or sets the configuration for visual updating tasks in the AI system.
-            </summary>
-        </member>
-        <member name="P:BoldBi.Ai.Base.CustomAIConfiguration.Summarization">
-            <summary>
-            Gets or sets the configuration for text summarization functionality.
-            </summary>
-        </member>
-        <member name="P:BoldBi.Ai.Base.CustomAIConfiguration.TextualResponse">
-            <summary>
-            Gets or sets the configuration for generating textual responses using the AI system.
             </summary>
         </member>
         <member name="T:BoldBi.Ai.Base.CustomNullableAttribute">
@@ -1448,7 +1418,7 @@
             <param name="aiModel">The AI model used (e.g., GPT-3, GPT-4).</param>
             <param name="aiAssistanceRequest">The assistance request containing session and query details.</param>
         </member>
-        <member name="M:BoldBi.Ai.Base.Helpers.AmountUpdateHelper.CalculateCostPerRequest(System.Int32,System.Int32,System.Int32,System.String,BoldBi.Ai.Core.Models.AIInputBuilder.AiAssistanceRequest)">
+        <member name="M:BoldBi.Ai.Base.Helpers.AmountUpdateHelper.UpdateTokenPerRequest(System.Int32,System.Int32,System.Int32,System.String,BoldBi.Ai.Core.Models.AIInputBuilder.AiAssistanceRequest)">
             <summary>
             Calculates the cost of a single request based on token usage and the AI model.
             </summary>
@@ -1457,14 +1427,13 @@
             <param name="totalToken">The total number of tokens used (input + output).</param>
             <param name="aiModel">The AI model used to determine the token cost rates.</param>
             <param name="aiAssistanceRequest">The assistance request containing session and query details.</param>
-            <returns>The total cost of the request based on the tokens used.</returns>
         </member>
-        <member name="M:BoldBi.Ai.Base.Helpers.AmountUpdateHelper.FetchAndUpdateRequestLimit(System.String,System.Double,BoldBi.Ai.Core.Models.AIInputBuilder.AiAssistanceRequest)">
+        <member name="M:BoldBi.Ai.Base.Helpers.AmountUpdateHelper.FetchAndUpdateRequestLimit(System.String,System.Int32,BoldBi.Ai.Core.Models.AIInputBuilder.AiAssistanceRequest)">
             <summary>
             Fetches the current license details and updates the request limit based on the calculated cost.
             </summary>
             <param name="licenseKey">The license key associated with the user request.</param>
-            <param name="costPerRequest">The cost of the request based on token usage.</param>
+            <param name="tokenPerRequest">The cost of the request based on token usage.</param>
             <param name="aiAssistanceRequest">The assistance request containing logging details.</param>
         </member>
         <member name="T:BoldBi.Ai.Base.Helpers.CacheManager">
@@ -1508,12 +1477,23 @@
             Retrieves the AI configuration based on the specified provider.
             </summary>
             <param name="provider">The AI provider name (e.g., "openai" or "azureai").</param>
-            <returns>A <see cref="T:BoldBi.Ai.Base.CustomAIConfiguration"/> object containing the provider-specific settings.</returns>
+            <returns>A <see cref="T:BoldBi.Ai.Core.Models.CredentialsConfiguration.CustomAIConfiguration"/> object containing the provider-specific settings.</returns>
         </member>
         <member name="T:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext">
             <summary>
             Represents the database context for the application, providing access to the AI license and usage data.
             </summary>
+        </member>
+        <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext"/> class.
+            </summary>
+        </member>
+        <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext"/> class.
+            </summary>
+            <param name="options">The options to configure the context.</param>
         </member>
         <member name="P:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext.ai_licenses">
             <summary>
@@ -1534,12 +1514,6 @@
             <summary>
             Gets or sets the AI sandbox users data in the database.
             </summary>
-        </member>
-        <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
-            <summary>
-            Configures the database connection using Npgsql.
-            </summary>
-            <param name="optionsBuilder">The builder used to configure the database context.</param>
         </member>
         <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
@@ -1684,43 +1658,36 @@
             Context class for interacting with the audit log database.
             </summary>
         </member>
+        <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext"/> class.
+            </summary>
+        </member>
+        <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext"/> class.
+            </summary>
+            <param name="options">The options to configure the context.</param>
+        </member>
         <member name="P:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.bold_ai_requests">
             <summary>
             Gets or sets the DbSet representing search activities for Bold AI requests.
             </summary>
-            <remarks>
-            This property maps to the "bold_ai_requests" table in the database.
-            </remarks>
         </member>
         <member name="P:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.bold_ai_datasources">
             <summary>
             Gets or sets the DbSet representing data source information for Bold AI.
             </summary>
-            <remarks>
-            This property maps to the "bold_ai_datasources" table in the database.
-            </remarks>
         </member>
         <member name="P:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.bold_ai_users">
             <summary>
             Gets or sets the DbSet representing user activity information for Bold AI.
             </summary>
-            <remarks>
-            This property maps to the "bold_ai_users" table in the database.
-            </remarks>
         </member>
         <member name="P:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.bold_ai_siteinfo">
             <summary>
             Gets or sets the DbSet representing site activity information for Bold AI.
             </summary>
-            <remarks>
-            This property maps to the "bold_ai_siteinfo" table in the database.
-            </remarks>
-        </member>
-        <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
-            <summary>
-            Configures the database connection using Npgsql.
-            </summary>
-            <param name="optionsBuilder">The options builder for configuring the context.</param>
         </member>
         <member name="M:BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext.OnModelCreating(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <summary>
@@ -3594,13 +3561,14 @@
             Manages the creation and termination of AI sessions, along with logging related activities.
             </summary>
         </member>
-        <member name="M:BoldBi.Ai.Base.Helpers.SessionManager.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext,BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext)">
+        <member name="M:BoldBi.Ai.Base.Helpers.SessionManager.#ctor(Microsoft.Extensions.Caching.Memory.IMemoryCache,BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext,BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext,BoldBi.Ai.Base.CredentialManager)">
             <summary>
             Initializes a new instance of the <see cref="T:BoldBi.Ai.Base.Helpers.SessionManager"/> class.
             </summary>
             <param name="memoryCache">Stores memory cache.</param>
             <param name="dbContext">The db context for meta data.</param>
             <param name="usageLogDbContext">The db context for usage data.</param>
+            <param name="credentialManager">The credential manager instance.</param>
         </member>
         <member name="M:BoldBi.Ai.Base.Helpers.SessionManager.CreateSession(System.String)">
             <summary>

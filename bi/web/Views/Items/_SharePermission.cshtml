@@ -316,12 +316,19 @@
                     <div class="col-5 no-padding">
                         <label>Set Screen Size</label>
                     </div>
-                    <div class="col-5 d-flex align-items-center no-padding">
-                        <input type="text" id="embed-width-input" class="form-control text-center" placeholder="" value="100%" style="width: 80px; height: 31px;">
-                        <span class="mx-2">x</span>
-                        <input type="text" id="embed-height-input" class="form-control text-center" placeholder="" value="100%" style="width: 80px; height: 31px;">                        
+
+                    <div class="col-5 no-padding">
+                        <div class="d-flex align-items-center">
+                            <input type="text" id="embed-width-input" class="form-control text-center" value="100%" style="width: 80px; height: 31px;">
+                            <span class="mx-2">x</span>
+                            <input type="text" id="embed-height-input" class="form-control text-center" value="100%" style="width: 80px; height: 31px;">
+                        </div>
+
+                        <div id="width-height-error" style="color:#F25050; display: none; font-size: 10px; margin-top: 1px;">
+                            Please provide a valid input value.
+                        </div>
                     </div>
-                </div>               
+                </div>
                 <div class="embed-config-row col-12 d-flex no-padding datasource-hide" id="embedAccordion" ng-show="currentItemType == @dashboardType">
                 <div class="accordion-item" style="width: 100%;">
                     <h2 class="accordion-header" id="headingDashboard">

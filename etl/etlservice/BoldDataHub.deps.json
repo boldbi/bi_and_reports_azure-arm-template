@@ -16,11 +16,14 @@
           "ClickHouse.Client": "7.8.2",
           "DuckDB.NET.Data.Full": "1.1.2.1",
           "Google.Cloud.BigQuery.V2": "3.10.0",
+          "MailKit": "3.4.3",
           "Microsoft.ApplicationInsights.AspNetCore": "2.22.0",
-          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "6.0.25",
+          "Microsoft.AspNetCore.Authentication.OpenIdConnect": "7.0.0",
           "Microsoft.Extensions.Logging.Log4Net.AspNetCore": "6.1.0",
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.24.0",
+          "Microsoft.Graph": "4.54.0",
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.26.1",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.17.2",
+          "MimeKit": "4.7.1",
           "MongoDB.Driver": "3.1.0",
           "MySqlConnector": "2.3.1",
           "Newtonsoft.Json": "13.0.3",
@@ -37,6 +40,7 @@
           "Syncfusion.Blazor.Navigations": "27.2.2",
           "Syncfusion.Blazor.Notifications": "27.2.2",
           "Syncfusion.Blazor.Popups": "27.2.2",
+          "Syncfusion.Blazor.RichTextEditor": "22.1.37",
           "Syncfusion.Blazor.Themes": "27.2.2",
           "Syncfusion.EJ2.AspNet.Core": "27.2.2",
           "Syncfusion.Licensing": "27.2.2",
@@ -174,11 +178,11 @@
           }
         }
       },
-      "BouncyCastle.Cryptography/2.3.1": {
+      "BouncyCastle.Cryptography/2.4.0": {
         "runtime": {
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.3.1.17862"
+            "fileVersion": "2.4.0.33771"
           }
         }
       },
@@ -373,6 +377,17 @@
           }
         }
       },
+      "MailKit/3.4.3": {
+        "dependencies": {
+          "MimeKit": "4.7.1"
+        },
+        "runtime": {
+          "lib/net6.0/MailKit.dll": {
+            "assemblyVersion": "3.4.0.0",
+            "fileVersion": "3.4.3.0"
+          }
+        }
+      },
       "Microsoft.ApplicationInsights/2.22.0": {
         "dependencies": {
           "System.Diagnostics.DiagnosticSource": "6.0.1"
@@ -468,14 +483,14 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authentication.OpenIdConnect/6.0.25": {
+      "Microsoft.AspNetCore.Authentication.OpenIdConnect/7.0.0": {
         "dependencies": {
-          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.24.0"
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.26.1"
         },
         "runtime": {
-          "lib/net6.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
-            "assemblyVersion": "6.0.25.0",
-            "fileVersion": "6.0.2523.52315"
+          "lib/net7.0/Microsoft.AspNetCore.Authentication.OpenIdConnect.dll": {
+            "assemblyVersion": "7.0.0.0",
+            "fileVersion": "7.0.22.51819"
           }
         }
       },
@@ -832,6 +847,34 @@
         }
       },
       "Microsoft.Extensions.Primitives/8.0.0": {},
+      "Microsoft.Graph/4.54.0": {
+        "dependencies": {
+          "Microsoft.Graph.Core": "2.0.15"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Graph.dll": {
+            "assemblyVersion": "4.54.0.0",
+            "fileVersion": "4.54.0.0"
+          }
+        }
+      },
+      "Microsoft.Graph.Core/2.0.15": {
+        "dependencies": {
+          "Azure.Core": "1.38.0",
+          "Microsoft.Identity.Client": "4.61.3",
+          "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.26.1",
+          "System.Diagnostics.DiagnosticSource": "6.0.1",
+          "System.Net.Http": "4.3.4",
+          "System.Security.Claims": "4.3.0",
+          "System.Text.Json": "8.0.5"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Graph.Core.dll": {
+            "assemblyVersion": "2.0.15.0",
+            "fileVersion": "2.0.15.0"
+          }
+        }
+      },
       "Microsoft.Identity.Client/4.61.3": {
         "dependencies": {
           "Microsoft.IdentityModel.Abstractions": "6.35.0",
@@ -889,27 +932,27 @@
           }
         }
       },
-      "Microsoft.IdentityModel.Protocols/6.24.0": {
+      "Microsoft.IdentityModel.Protocols/6.26.1": {
         "dependencies": {
           "Microsoft.IdentityModel.Logging": "6.34.0",
           "Microsoft.IdentityModel.Tokens": "6.34.0"
         },
         "runtime": {
           "lib/net6.0/Microsoft.IdentityModel.Protocols.dll": {
-            "assemblyVersion": "6.24.0.0",
-            "fileVersion": "6.24.0.31013"
+            "assemblyVersion": "6.26.1.0",
+            "fileVersion": "6.26.1.40207"
           }
         }
       },
-      "Microsoft.IdentityModel.Protocols.OpenIdConnect/6.24.0": {
+      "Microsoft.IdentityModel.Protocols.OpenIdConnect/6.26.1": {
         "dependencies": {
-          "Microsoft.IdentityModel.Protocols": "6.24.0",
+          "Microsoft.IdentityModel.Protocols": "6.26.1",
           "System.IdentityModel.Tokens.Jwt": "6.34.0"
         },
         "runtime": {
           "lib/net6.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll": {
-            "assemblyVersion": "6.24.0.0",
-            "fileVersion": "6.24.0.31013"
+            "assemblyVersion": "6.26.1.0",
+            "fileVersion": "6.26.1.40207"
           }
         }
       },
@@ -962,6 +1005,19 @@
         "dependencies": {
           "System.Security.AccessControl": "5.0.0",
           "System.Security.Principal.Windows": "5.0.0"
+        }
+      },
+      "MimeKit/4.7.1": {
+        "dependencies": {
+          "BouncyCastle.Cryptography": "2.4.0",
+          "System.Formats.Asn1": "8.0.1",
+          "System.Security.Cryptography.Pkcs": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/MimeKit.dll": {
+            "assemblyVersion": "4.7.0.0",
+            "fileVersion": "4.7.1.0"
+          }
         }
       },
       "MongoDB.Bson/3.1.0": {
@@ -1342,7 +1398,7 @@
           "Apache.Arrow": "14.0.2",
           "Azure.Storage.Blobs": "12.13.1",
           "Azure.Storage.Common": "12.12.0",
-          "BouncyCastle.Cryptography": "2.3.1",
+          "BouncyCastle.Cryptography": "2.4.0",
           "Google.Cloud.Storage.V1": "4.10.0",
           "Mono.Unix": "7.1.0-final.1.21458.1",
           "Newtonsoft.Json": "13.0.3",
@@ -1530,6 +1586,22 @@
           "lib/net8.0/Syncfusion.Blazor.Popups.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
+          }
+        }
+      },
+      "Syncfusion.Blazor.RichTextEditor/22.1.37": {
+        "dependencies": {
+          "Syncfusion.Blazor.Buttons": "27.2.2",
+          "Syncfusion.Blazor.Core": "27.2.2",
+          "Syncfusion.Blazor.Inputs": "27.2.2",
+          "Syncfusion.Blazor.Navigations": "27.2.2",
+          "Syncfusion.Blazor.Popups": "27.2.2",
+          "Syncfusion.Blazor.SplitButtons": "27.2.2"
+        },
+        "runtime": {
+          "lib/net7.0/Syncfusion.Blazor.RichTextEditor.dll": {
+            "assemblyVersion": "22.1.37.0",
+            "fileVersion": "22.1.37.0"
           }
         }
       },
@@ -1789,7 +1861,7 @@
           }
         }
       },
-      "System.Formats.Asn1/8.0.0": {},
+      "System.Formats.Asn1/8.0.1": {},
       "System.Globalization/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
@@ -2140,6 +2212,17 @@
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
+      "System.Security.Claims/4.3.0": {
+        "dependencies": {
+          "System.Collections": "4.3.0",
+          "System.Globalization": "4.3.0",
+          "System.IO": "4.3.0",
+          "System.Resources.ResourceManager": "4.3.0",
+          "System.Runtime": "4.3.1",
+          "System.Runtime.Extensions": "4.3.0",
+          "System.Security.Principal": "4.3.0"
+        }
+      },
       "System.Security.Cryptography.Algorithms/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "5.0.0",
@@ -2211,7 +2294,7 @@
       },
       "System.Security.Cryptography.Pkcs/8.0.0": {
         "dependencies": {
-          "System.Formats.Asn1": "8.0.0"
+          "System.Formats.Asn1": "8.0.1"
         }
       },
       "System.Security.Cryptography.Primitives/4.3.0": {
@@ -2277,6 +2360,11 @@
             "assemblyVersion": "4.0.1.0",
             "fileVersion": "4.6.26515.6"
           }
+        }
+      },
+      "System.Security.Principal/4.3.0": {
+        "dependencies": {
+          "System.Runtime": "4.3.1"
         }
       },
       "System.Security.Principal.Windows/5.0.0": {},
@@ -2460,12 +2548,12 @@
       "path": "azure.storage.common/12.12.0",
       "hashPath": "azure.storage.common.12.12.0.nupkg.sha512"
     },
-    "BouncyCastle.Cryptography/2.3.1": {
+    "BouncyCastle.Cryptography/2.4.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-buwoISwecYke3CmgG1AQSg+sNZjJeIb93vTAtJiHZX35hP/teYMxsfg0NDXGUKjGx6BKBTNKc77O2M3vKvlXZQ==",
-      "path": "bouncycastle.cryptography/2.3.1",
-      "hashPath": "bouncycastle.cryptography.2.3.1.nupkg.sha512"
+      "sha512": "sha512-SwXsAV3sMvAU/Nn31pbjhWurYSjJ+/giI/0n6tCrYoupEK34iIHCuk3STAd9fx8yudM85KkLSVdn951vTng/vQ==",
+      "path": "bouncycastle.cryptography/2.4.0",
+      "hashPath": "bouncycastle.cryptography.2.4.0.nupkg.sha512"
     },
     "ClickHouse.Client/7.8.2": {
       "type": "package",
@@ -2565,6 +2653,13 @@
       "path": "log4net/2.0.13",
       "hashPath": "log4net.2.0.13.nupkg.sha512"
     },
+    "MailKit/3.4.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Iewef8mcE1B1LrVudxQjQ0LcriPPeTbxmWMoHQzFS+P6TpEY2eVDbdKdB0Qnbmqr/5w7WfK2mNWuoSX9pI470g==",
+      "path": "mailkit/3.4.3",
+      "hashPath": "mailkit.3.4.3.nupkg.sha512"
+    },
     "Microsoft.ApplicationInsights/2.22.0": {
       "type": "package",
       "serviceable": true,
@@ -2614,12 +2709,12 @@
       "path": "microsoft.applicationinsights.windowsserver.telemetrychannel/2.22.0",
       "hashPath": "microsoft.applicationinsights.windowsserver.telemetrychannel.2.22.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authentication.OpenIdConnect/6.0.25": {
+    "Microsoft.AspNetCore.Authentication.OpenIdConnect/7.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-y4XEtl+dtAv8aJrJVI3xM45Jns/etKO7WflTrxpR0PwjxnA6C7OWnK7c6N1rjvu/BjAwL3BQcBmxhF+tDRxIIg==",
-      "path": "microsoft.aspnetcore.authentication.openidconnect/6.0.25",
-      "hashPath": "microsoft.aspnetcore.authentication.openidconnect.6.0.25.nupkg.sha512"
+      "sha512": "sha512-hAPVV6xD9KQaf0je+YhhPBvGv421DRthL7qBsKxmjL2ELB4cbogD2FcHg9z80hy6P1ABZ09leKknJ2xRkXFCMA==",
+      "path": "microsoft.aspnetcore.authentication.openidconnect/7.0.0",
+      "hashPath": "microsoft.aspnetcore.authentication.openidconnect.7.0.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authorization/8.0.10": {
       "type": "package",
@@ -2929,6 +3024,20 @@
       "path": "microsoft.extensions.primitives/8.0.0",
       "hashPath": "microsoft.extensions.primitives.8.0.0.nupkg.sha512"
     },
+    "Microsoft.Graph/4.54.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-i0YbssvaLF19OvX5wyZbrfQT9tDkMx0a7bjh7Si4KWh8gYDiJUcNO7rVxu4or89KcKpFUGEk7PjXD1Z+9ErCaw==",
+      "path": "microsoft.graph/4.54.0",
+      "hashPath": "microsoft.graph.4.54.0.nupkg.sha512"
+    },
+    "Microsoft.Graph.Core/2.0.15": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2nHKc1IgKniH2tHhRqFZAHqbu9vwZUjhjig/AVwauTsVqmgg9crlsrzJmzH7YTEFHTMPIF9jsQj8N5WLbOnTng==",
+      "path": "microsoft.graph.core/2.0.15",
+      "hashPath": "microsoft.graph.core.2.0.15.nupkg.sha512"
+    },
     "Microsoft.Identity.Client/4.61.3": {
       "type": "package",
       "serviceable": true,
@@ -2964,19 +3073,19 @@
       "path": "microsoft.identitymodel.logging/6.34.0",
       "hashPath": "microsoft.identitymodel.logging.6.34.0.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Protocols/6.24.0": {
+    "Microsoft.IdentityModel.Protocols/6.26.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+NzKCkvsQ8X1r/Ff74V7CFr9OsdMRaB6DsV+qpH7NNLdYJ8O4qHbmTnNEsjFcDmk/gVNDwhoL2gN5pkPVq0lwQ==",
-      "path": "microsoft.identitymodel.protocols/6.24.0",
-      "hashPath": "microsoft.identitymodel.protocols.6.24.0.nupkg.sha512"
+      "sha512": "sha512-icZMVqD1xX9+LzrxZZoSXbmwBC5/5ckU9pYEbJjBzNFWUMBL74G0YrajM+FKcE6Q2G0730P5WbTQcKju/SrF6w==",
+      "path": "microsoft.identitymodel.protocols/6.26.1",
+      "hashPath": "microsoft.identitymodel.protocols.6.26.1.nupkg.sha512"
     },
-    "Microsoft.IdentityModel.Protocols.OpenIdConnect/6.24.0": {
+    "Microsoft.IdentityModel.Protocols.OpenIdConnect/6.26.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-a/2RRrc8C9qaw8qdD9hv1ES9YKFgxaqr/SnwMSLbwQZJSUQDd4qx1K4EYgWaQWs73R+VXLyKSxN0f/uE9CsBiQ==",
-      "path": "microsoft.identitymodel.protocols.openidconnect/6.24.0",
-      "hashPath": "microsoft.identitymodel.protocols.openidconnect.6.24.0.nupkg.sha512"
+      "sha512": "sha512-JeZSQUtjWT/+wZIMtdrdBWPSOphXE70bPxPBehYzXyRXu796DPXqT/4K6i0Z9nVqTU9anzvM8hAiypEWZDcZ+w==",
+      "path": "microsoft.identitymodel.protocols.openidconnect/6.26.1",
+      "hashPath": "microsoft.identitymodel.protocols.openidconnect.6.26.1.nupkg.sha512"
     },
     "Microsoft.IdentityModel.Tokens/6.34.0": {
       "type": "package",
@@ -3040,6 +3149,13 @@
       "sha512": "sha512-dDoKi0PnDz31yAyETfRntsLArTlVAVzUzCIvvEDsDsucrl33Dl8pIJG06ePTJTI3tGpeyHS9Cq7Foc/s4EeKcg==",
       "path": "microsoft.win32.registry/5.0.0",
       "hashPath": "microsoft.win32.registry.5.0.0.nupkg.sha512"
+    },
+    "MimeKit/4.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Qoj4aVvhX14A1FNvaJ33hzOP4VZI2j+Mr38I9wSGcjMq4BYDtWLJG89aJ9nRW2cNfH6Czjwyp7+Mh++xv3AZvg==",
+      "path": "mimekit/4.7.1",
+      "hashPath": "mimekit.4.7.1.nupkg.sha512"
     },
     "MongoDB.Bson/3.1.0": {
       "type": "package",
@@ -3384,6 +3500,13 @@
       "path": "syncfusion.blazor.popups/27.2.2",
       "hashPath": "syncfusion.blazor.popups.27.2.2.nupkg.sha512"
     },
+    "Syncfusion.Blazor.RichTextEditor/22.1.37": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LVwXkyIrPJz3wmvxQs87g2qSucP/JGC+PgkZDK0T+IOkFeAJYKZWw50RFZbWxV5Z0SeJPXZEdQKLwlDSc+Wwqw==",
+      "path": "syncfusion.blazor.richtexteditor/22.1.37",
+      "hashPath": "syncfusion.blazor.richtexteditor.22.1.37.nupkg.sha512"
+    },
     "Syncfusion.Blazor.Spinner/27.2.2": {
       "type": "package",
       "serviceable": true,
@@ -3559,12 +3682,12 @@
       "path": "system.directoryservices.protocols/8.0.0",
       "hashPath": "system.directoryservices.protocols.8.0.0.nupkg.sha512"
     },
-    "System.Formats.Asn1/8.0.0": {
+    "System.Formats.Asn1/8.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-AJukBuLoe3QeAF+mfaRKQb2dgyrvt340iMBHYv+VdBzCUM06IxGlvl0o/uPOS7lHnXPN6u8fFRHSHudx5aTi8w==",
-      "path": "system.formats.asn1/8.0.0",
-      "hashPath": "system.formats.asn1.8.0.0.nupkg.sha512"
+      "sha512": "sha512-XqKba7Mm/koKSjKMfW82olQdmfbI5yqeoLV/tidRp7fbh5rmHAQ5raDI/7SU0swTzv+jgqtUGkzmFxuUg0it1A==",
+      "path": "system.formats.asn1/8.0.1",
+      "hashPath": "system.formats.asn1.8.0.1.nupkg.sha512"
     },
     "System.Globalization/4.3.0": {
       "type": "package",
@@ -3839,6 +3962,13 @@
       "path": "system.security.accesscontrol/5.0.0",
       "hashPath": "system.security.accesscontrol.5.0.0.nupkg.sha512"
     },
+    "System.Security.Claims/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-P/+BR/2lnc4PNDHt/TPBAWHVMLMRHsyYZbU1NphW4HIWzCggz8mJbTQQ3MKljFE7LS3WagmVFuBgoLcFzYXlkA==",
+      "path": "system.security.claims/4.3.0",
+      "hashPath": "system.security.claims.4.3.0.nupkg.sha512"
+    },
     "System.Security.Cryptography.Algorithms/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -3915,6 +4045,13 @@
       "sha512": "sha512-9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
       "path": "system.security.permissions/4.5.0",
       "hashPath": "system.security.permissions.4.5.0.nupkg.sha512"
+    },
+    "System.Security.Principal/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I1tkfQlAoMM2URscUtpcRo/hX0jinXx6a/KUtEQoz3owaYwl3qwsO8cbzYVVnjxrzxjHo3nJC+62uolgeGIS9A==",
+      "path": "system.security.principal/4.3.0",
+      "hashPath": "system.security.principal.4.3.0.nupkg.sha512"
     },
     "System.Security.Principal.Windows/5.0.0": {
       "type": "package",

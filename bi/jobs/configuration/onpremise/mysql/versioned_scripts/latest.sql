@@ -1,36 +1,21 @@
-CREATE TABLE {database_name}.BOLDBI_AI_CHAT (
-    SearchID VARCHAR(255) PRIMARY KEY,
-    SessionID TEXT,
-    SearchDateTime DATETIME,
-    InputToken INT,
-    OutputToken INT,
-    TotalToken INT,
-    InputTokenCost DOUBLE,
-    OutputTokenCost DOUBLE,
-    TotalTokensCost DOUBLE,
-    UserInfo TEXT,
-    TenantID TEXT,
-    RequestType TEXT,
-    Environment TEXT) ROW_FORMAT=DYNAMIC
+CREATE TABLE {database_name}.BOLDBI_AICredentials(
+Id char(38) NOT NULL,
+AIModel INT NOT NULL,
+AIConfiguration varchar(4000) NULL,
+CreatedById char(38) NULL,
+ModifiedById char(38) NULL,
+CreatedDate datetime NOT NULL,
+ModifiedDate datetime NOT NULL,
+IsActive tinyint NOT NULL,
+IsAISummariesEnabledGlobally tinyint NOT NULL DEFAULT 0,
+EnableAIFeature tinyint NOT NULL DEFAULT 0,
+IsAIModel tinyint NOT NULL DEFAULT 0,
+PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
+ALTER TABLE {database_name}.BOLDBI_ScheduleDetail ADD MultiExportType text NULL;
 
+ALTER TABLE {database_name}.BOLDBI_ScheduleDetail MODIFY ExportTypeId int NULL;
 
-CREATE TABLE {database_name}.BOLDBI_AI_SESSIONS (
-    SessionID VARCHAR(255) PRIMARY KEY,
-    SessionStartTime DATETIME,
-    SessionEndTime DATETIME,
-    InputToken INT,
-    OutputToken INT,
-    TotalToken INT,
-    InputTokenCost DOUBLE,
-    OutputTokenCost DOUBLE,
-    TotalTokensCost DOUBLE,
-    UserInfo TEXT,
-    TenantID TEXT,
-    Environment TEXT) ROW_FORMAT=DYNAMIC
-;
+ALTER TABLE {database_name}.BOLDBI_ItemView MODIFY QueryString text NOT NULL;
 
-ALTER TABLE {database_name}.BOLDBI_ScheduleDetail ADD DashboardWidgetIds text NULL
-;
-ALTER TABLE {database_name}.BOLDBI_ItemLog ADD AnonymousUsername varchar(255) NULL
-;
+ALTER TABLE {database_name}.BOLDBI_ItemView ADD IsWidgetLinking tinyint(1) NOT NULL default 0;

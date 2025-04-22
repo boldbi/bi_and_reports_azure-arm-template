@@ -34,7 +34,7 @@
           "Newtonsoft.Json": "13.0.3",
           "Parquet.Net": "4.16.4",
           "PuppeteerSharp": "6.2.0",
-          "SSH.NET": "2020.0.2",
+          "SSH.NET": "2024.2.0",
           "SecurityCodeScan.VS2019": "5.6.7",
           "SkiaSharp": "3.116.1",
           "SkiaSharp.NativeAssets.Linux": "3.116.1",
@@ -58,23 +58,23 @@
           "TimeZoneConverter": "3.3.0",
           "WindowsAzure.Storage": "8.7.0",
           "log4net": "2.0.17",
-          "Bold.Data.Analytics.Base": "11.2.7.0",
-          "BoldBi.Ai.Core": "11.2.7.0",
-          "BoldBI.Dashboard.Service.Extensions": "11.2.7.0",
+          "Bold.Data.Analytics.Base": "11.3.24.0",
+          "BoldBi.Ai.Core": "11.3.24.0",
+          "BoldBI.Dashboard.Service.Extensions": "11.3.24.0",
           "Syncfusion.BoldBI.Localization": "1.0.0.0",
-          "Syncfusion.Dashboard.Core.Configuration": "11.2.7.0",
-          "Syncfusion.Dashboard.Core": "11.2.7.0",
-          "Syncfusion.Dashboard.Core.JsonRepository": "11.2.7.0",
-          "Syncfusion.Dashboard.Core.XmlRepository": "11.2.7.0",
-          "Syncfusion.Dashboard.DataManager": "11.2.7.0",
-          "Syncfusion.Dashboard.Designer.Logger": "11.2.7.0",
-          "Syncfusion.Dashboard.Json.Base": "11.2.7.0",
-          "Syncfusion.Dashboard.Service.Base": "11.2.7.0",
-          "Syncfusion.Dashboard.Web.Data.Handler": "11.2.7.0",
-          "syncfusion.dashboard.web.oauth": "11.2.7.0",
-          "Syncfusion.Dashboard.Web.Serialization": "11.2.7.0",
-          "Syncfusion.Dashboard.Web.Serialization.DOM": "11.2.7.0",
-          "Syncfusion.Dashboard.Xml.Base": "11.2.7.0"
+          "Syncfusion.Dashboard.Core.Configuration": "11.3.24.0",
+          "Syncfusion.Dashboard.Core": "11.3.24.0",
+          "Syncfusion.Dashboard.Core.JsonRepository": "11.3.24.0",
+          "Syncfusion.Dashboard.Core.XmlRepository": "11.3.24.0",
+          "Syncfusion.Dashboard.DataManager": "11.3.24.0",
+          "Syncfusion.Dashboard.Designer.Logger": "11.3.24.0",
+          "Syncfusion.Dashboard.Json.Base": "11.3.24.0",
+          "Syncfusion.Dashboard.Service.Base": "11.3.24.0",
+          "Syncfusion.Dashboard.Web.Data.Handler": "11.3.24.0",
+          "syncfusion.dashboard.web.oauth": "11.3.24.0",
+          "Syncfusion.Dashboard.Web.Serialization": "11.3.24.0",
+          "Syncfusion.Dashboard.Web.Serialization.DOM": "11.3.24.0",
+          "Syncfusion.Dashboard.Xml.Base": "11.3.24.0"
         },
         "runtime": {
           "Syncfusion.Dashboard.Designer.Web.Service.dll": {}
@@ -238,6 +238,14 @@
           "lib/netstandard2.1/BoldBI.EJ2.Pivot.dll": {
             "assemblyVersion": "22.1.38.0",
             "fileVersion": "22.1.38.0"
+          }
+        }
+      },
+      "BouncyCastle.Cryptography/2.4.0": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.4.0.33771"
           }
         }
       },
@@ -1769,22 +1777,14 @@
           }
         }
       },
-      "SSH.NET/2020.0.2": {
+      "SSH.NET/2024.2.0": {
         "dependencies": {
-          "SshNet.Security.Cryptography": "1.3.0"
+          "BouncyCastle.Cryptography": "2.4.0"
         },
         "runtime": {
-          "lib/netstandard2.0/Renci.SshNet.dll": {
-            "assemblyVersion": "2020.0.2.0",
-            "fileVersion": "2020.0.2.0"
-          }
-        }
-      },
-      "SshNet.Security.Cryptography/1.3.0": {
-        "runtime": {
-          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {
-            "assemblyVersion": "1.3.0.0",
-            "fileVersion": "1.3.0.0"
+          "lib/net8.0/Renci.SshNet.dll": {
+            "assemblyVersion": "2024.2.0.1",
+            "fileVersion": "2024.2.0.1"
           }
         }
       },
@@ -2766,27 +2766,27 @@
           }
         }
       },
-      "Bold.Data.Analytics.Base/11.2.7.0": {
+      "Bold.Data.Analytics.Base/11.3.24.0": {
         "runtime": {
           "Bold.Data.Analytics.Base.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "BoldBi.Ai.Core/11.2.7.0": {
+      "BoldBi.Ai.Core/11.3.24.0": {
         "runtime": {
           "BoldBi.Ai.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "BoldBI.Dashboard.Service.Extensions/11.2.7.0": {
+      "BoldBI.Dashboard.Service.Extensions/11.3.24.0": {
         "runtime": {
           "BoldBI.Dashboard.Service.Extensions.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
@@ -2798,107 +2798,107 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Core.Configuration/11.2.7.0": {
+      "Syncfusion.Dashboard.Core.Configuration/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.Configuration.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Core/11.2.7.0": {
+      "Syncfusion.Dashboard.Core/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Core.JsonRepository/11.2.7.0": {
+      "Syncfusion.Dashboard.Core.JsonRepository/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.JsonRepository.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Core.XmlRepository/11.2.7.0": {
+      "Syncfusion.Dashboard.Core.XmlRepository/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.XmlRepository.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.DataManager/11.2.7.0": {
+      "Syncfusion.Dashboard.DataManager/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.DataManager.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Designer.Logger/11.2.7.0": {
+      "Syncfusion.Dashboard.Designer.Logger/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Designer.Logger.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Json.Base/11.2.7.0": {
+      "Syncfusion.Dashboard.Json.Base/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Json.Base.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Service.Base/11.2.7.0": {
+      "Syncfusion.Dashboard.Service.Base/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Service.Base.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Web.Data.Handler/11.2.7.0": {
+      "Syncfusion.Dashboard.Web.Data.Handler/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Web.Data.Handler.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "syncfusion.dashboard.web.oauth/11.2.7.0": {
+      "syncfusion.dashboard.web.oauth/11.3.24.0": {
         "runtime": {
           "syncfusion.dashboard.web.oauth.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Web.Serialization/11.2.7.0": {
+      "Syncfusion.Dashboard.Web.Serialization/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Web.Serialization.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Web.Serialization.DOM/11.2.7.0": {
+      "Syncfusion.Dashboard.Web.Serialization.DOM/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Web.Serialization.DOM.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Xml.Base/11.2.7.0": {
+      "Syncfusion.Dashboard.Xml.Base/11.3.24.0": {
         "runtime": {
           "Syncfusion.Dashboard.Xml.Base.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "11.3.24.0",
+            "fileVersion": "11.3.24.0"
           }
         }
       },
@@ -3017,6 +3017,13 @@
       "sha512": "sha512-HMP4qU44J8/sSb8qo1126zeWn/bPjDHE43gvl9CBYlyDxjikpjx7Fb2AzCvcFB83bFIu0YEY3pYbAuLePoElEg==",
       "path": "boldbi.ej2.pivot/22.1.38",
       "hashPath": "boldbi.ej2.pivot.22.1.38.nupkg.sha512"
+    },
+    "BouncyCastle.Cryptography/2.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SwXsAV3sMvAU/Nn31pbjhWurYSjJ+/giI/0n6tCrYoupEK34iIHCuk3STAd9fx8yudM85KkLSVdn951vTng/vQ==",
+      "path": "bouncycastle.cryptography/2.4.0",
+      "hashPath": "bouncycastle.cryptography.2.4.0.nupkg.sha512"
     },
     "FuzzySharp/2.0.2": {
       "type": "package",
@@ -4110,19 +4117,12 @@
       "path": "snappier/1.1.1",
       "hashPath": "snappier.1.1.1.nupkg.sha512"
     },
-    "SSH.NET/2020.0.2": {
+    "SSH.NET/2024.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-G0dNlTBAM00KZXv1wWVwgg26d9/METcM6qWBpNQwllzQmmbu+Zu+FS1L1X4fFgGdPu3e8k9mmTBu6SwtQ0614g==",
-      "path": "ssh.net/2020.0.2",
-      "hashPath": "ssh.net.2020.0.2.nupkg.sha512"
-    },
-    "SshNet.Security.Cryptography/1.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-5pBIXRjcSO/amY8WztpmNOhaaCNHY/B6CcYDI7FSTgqSyo/ZUojlLiKcsl+YGbxQuLX439qIkMfP0PHqxqJi/Q==",
-      "path": "sshnet.security.cryptography/1.3.0",
-      "hashPath": "sshnet.security.cryptography.1.3.0.nupkg.sha512"
+      "sha512": "sha512-9r+4UF2P51lTztpd+H7SJywk7WgmlWB//Cm2o96c6uGVZU5r58ys2/cD9pCgTk0zCdSkfflWL1WtqQ9I4IVO9Q==",
+      "path": "ssh.net/2024.2.0",
+      "hashPath": "ssh.net.2024.2.0.nupkg.sha512"
     },
     "StackExchange.Redis/2.1.58": {
       "type": "package",
@@ -4845,17 +4845,17 @@
       "path": "zstdsharp.port/0.7.2",
       "hashPath": "zstdsharp.port.0.7.2.nupkg.sha512"
     },
-    "Bold.Data.Analytics.Base/11.2.7.0": {
+    "Bold.Data.Analytics.Base/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "BoldBi.Ai.Core/11.2.7.0": {
+    "BoldBi.Ai.Core/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "BoldBI.Dashboard.Service.Extensions/11.2.7.0": {
+    "BoldBI.Dashboard.Service.Extensions/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -4865,67 +4865,67 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core.Configuration/11.2.7.0": {
+    "Syncfusion.Dashboard.Core.Configuration/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core/11.2.7.0": {
+    "Syncfusion.Dashboard.Core/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core.JsonRepository/11.2.7.0": {
+    "Syncfusion.Dashboard.Core.JsonRepository/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core.XmlRepository/11.2.7.0": {
+    "Syncfusion.Dashboard.Core.XmlRepository/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.DataManager/11.2.7.0": {
+    "Syncfusion.Dashboard.DataManager/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Designer.Logger/11.2.7.0": {
+    "Syncfusion.Dashboard.Designer.Logger/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Json.Base/11.2.7.0": {
+    "Syncfusion.Dashboard.Json.Base/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Service.Base/11.2.7.0": {
+    "Syncfusion.Dashboard.Service.Base/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Web.Data.Handler/11.2.7.0": {
+    "Syncfusion.Dashboard.Web.Data.Handler/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "syncfusion.dashboard.web.oauth/11.2.7.0": {
+    "syncfusion.dashboard.web.oauth/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Web.Serialization/11.2.7.0": {
+    "Syncfusion.Dashboard.Web.Serialization/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Web.Serialization.DOM/11.2.7.0": {
+    "Syncfusion.Dashboard.Web.Serialization.DOM/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Xml.Base/11.2.7.0": {
+    "Syncfusion.Dashboard.Xml.Base/11.3.24.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

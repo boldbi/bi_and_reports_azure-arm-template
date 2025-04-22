@@ -11,8 +11,8 @@
     {
       "Name": "BoldBI",
       "SetupName": "BoldBIEnterpriseEdition",
-      "Version": "11.2.7",
-      "IDPVersion": "5.1.6",
+      "Version": "11.3.24",
+      "IDPVersion": "5.1.8",
       "IsCommonLogin": true
     },
     {

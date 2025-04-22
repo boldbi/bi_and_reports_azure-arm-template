@@ -94,7 +94,7 @@
       "wwwroot/scripts/administration/api-keys.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-VAC/oDGQAJK7UrGTzCkMaSP1M9PXLyiQqWRspifYi43WehB9a7DdRrVzCtXOaZTq"
+    "integrity": "sha384-HTgeFBk49pDzyNBKrq34C+9OxD/5elCB4FdNPMGSmNkhydX4pI3cN7NNCHIvE3hg"
   },
   {
     "bundles/js/auth-settings-page.js": [
@@ -151,7 +151,7 @@
       "wwwroot/scripts/password/passwordpolicy.js",
       "wwwroot/scripts/password/showhidepassword.js"
     ],
-    "integrity": "sha384-RrWACiD8b49XVL8C9sYX0BU4V9PMeNxg4OUJL8GPJx05WbTX5NTsFlsZJIsljx4G"
+    "integrity": "sha384-dpA34AfLrvV9vJXtwQHDjHbvLXhJEceZVKHHgxsa/tBqHNJScN3MxgxbD0knfKF4"
   },
   {
     "bundles/js/iframe.js": [
@@ -186,7 +186,7 @@
       "wwwroot/scripts/password/showhidepassword.js",
       "wwwroot/scripts/tenants/customattribute.js"
     ],
-    "integrity": "sha384-BYsubkSJ6eCVJMTG37CShU6WTCBk04kxD8s0UeW2xrlFYFzAaqCwohJqTe33KVnG"
+    "integrity": "sha384-DXzU3O4LEaKc9dYdtGWEphH1/CoSr6XHBRjKGspRatjCOzt8cqCRQbVBNCRu5sKq"
   },
   {
     "bundles/js/addtenantiframe.js": [
@@ -210,7 +210,7 @@
       "wwwroot/scripts/tenants/addtenant.js",
       "wwwroot/scripts/tenants/mastersite.js"
     ],
-    "integrity": "sha384-cHX6y/T4sIaMmOOJtTunHeEnnEb82V5RVbBcMzvs4ejadj1Wyy+ju80d6yLaAM9D"
+    "integrity": "sha384-GhZb76hHtRxgGCyMzgskVBNQmM5e+D0SkrSJd2E1t6qvP3eEr2sCYUtsHdy6QEHV"
   },
   {
     "bundles/js/ej2.js": [

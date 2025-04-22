@@ -923,7 +923,7 @@
                                     <input type="text" id="dashboard-mobile-search-items" class="float-end no-margin" ng-change="doDashboardSearch()" ng-model="dashboardSearchQuery" ng-focus="isFocus = true" ng-blur="onSearchFocusOut()" placeholder="@T["Search dashboards"]" />
                                 </div>
                             </div>
-                            <span class="text-right ng-hide" id="order" ng-show="isTablet && !showSearch && !hideSortOption" data-bs-toggle="modal" data-target="#dashboard-sort-modal" data-container="body" ng-class="{'descending': sortDirection == 'descending', 'ascending': sortDirection == 'ascending', 'col-1 no-padding': isTablet}">
+                            <span class="text-right ng-hide" id="order" ng-show="isTablet && !showSearch && !hideSortOption" data-bs-toggle="modal" data-bs-target="#dashboard-sort-modal" data-container="body" ng-class="{'descending': sortDirection == 'descending', 'ascending': sortDirection == 'ascending', 'col-1 no-padding': isTablet}">
                                 &nbsp;
                                 <i class="su su-sort"></i>
                             </span>

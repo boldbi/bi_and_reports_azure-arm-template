@@ -309,7 +309,7 @@
             {{/if}}
 
             {{if ~checkMobile()}}
-            {{if ItemType == "@((int)ItemType.Datasource)" && DatasourceType =="@((int)ConnectionMode.Extract)" && !IsDraft && ExtractEngine != "@ExtractEngine.DataHub.ToString().ToLower()"}}
+            {{if ItemType == "@((int)ItemType.Datasource)" && DatasourceType =="@((int)ConnectionMode.Extract)" && !IsDraft}}
             <li class="@((schemes != null && !schemes.RefreshData) || canHideDataSourceOptions ? "hide" : string.Empty)">
                 <a href="javascript:void(0);" title="" class="refresh-data-menu" data-itemname="{{:Name}}" data-item-id="{{:Id}}" data-item-extract-engine="{{:ExtractEngine}}">
                     <i class="su su-refresh"></i>
@@ -328,16 +328,13 @@
                     <span>@T["Refresh Settings"]</span>
                 </a>
             </li>
-            {{if ExtractEngine == "@ExtractEngine.DataHub.ToString().ToLower()"}}
-            <li role="separator" class="divider @(canHideDataSourceOptions ? "hide" : string.Empty)"></li>
-            {{/if}}
             {{/if}}
             {{/if}}
             {{/if}}
 
             {{if ~checkMobile()}}
             {{if !IsDraft}}
-            {{if ItemType == "@((int)ItemType.Datasource)" && DatasourceType =="@((int)ConnectionMode.Extract)" && ExtractEngine != "@ExtractEngine.DataHub.ToString().ToLower()"}}
+            {{if ItemType == "@((int)ItemType.Datasource)" && DatasourceType =="@((int)ConnectionMode.Extract)"}}
             <li class="@(canHideDataSourceOptions ? "hide" : string.Empty)">
                 <a href="javascript:void(0);" title="" class="refresh-history" data-itemname="{{:Name}}" data-item-id="{{:Id}}" data-itemtype="{{:ItemType}}" data-item-extract-engine="{{:ExtractEngine}}">
                     <i class="su su-refresh-history"></i>
@@ -532,6 +529,18 @@
             </div>
             {{/if}}
         </div>
+        {{else ScheduleStatus=="@((int)ScheduleStatus.RateLimited)"}}
+        <div>
+            <span class="refresh-data" data-bs-toggle="tooltip" data-placement="top" data-icon="failed" data-last-attempt="@Html.Raw(String.Format(T["RateLimited - Failure at {0}"].Value, "{{:LastAttemptAt}}"))" data-status="failed" title='{{:~refreshEncode(IsScheduleEnabled, LastAttemptAt)}}'>
+                <span class="failed data-refresh-status su su-schedule-status {{:LastSuccessfulAttemptAt == null ? '' : 'has-last-success'}}"></span>
+                {{if !IsScheduleEnabled}}
+                       <Span class="data-refresh">@T["Refresh Disabled"]</span>
+                  {{else}}
+                       <span class="data-refresh">@T["RateLimited"]</span>
+                       <span class="last-attempt-fail">@Html.Raw(String.Format(T["Failure at {0}"].Value, "{{:LastAttemptAt}}"))</span>
+                 {{/if}}
+            </span>
+        </div>
         {{else ScheduleStatus=="@((int)ScheduleStatus.Run)"}}
         <div>
             <span data-bs-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Refresh Started at {0}"].Value, "{{:LastAttemptAt}}"))">
@@ -569,7 +578,7 @@
     {{else DatasourceType=="@((int)ConnectionMode.Extract)" && ExtractEngine == "@ExtractEngine.DataHub.ToString().ToLower()"}}
     <div>
         <span class="not-applicable data-refresh-status su su-schedule-status"></span>
-        <span data-bs-toggle="tooltip" data-placement="top" title="@T["Not synced with Data Hub"]">@T["Not synced with Data Hub"]</span>
+        <span data-bs-toggle="tooltip" data-placement="top" title="@Html.Raw(String.Format(T["Not synced with {0}"].Value,"Data Hub"))">@Html.Raw(String.Format(T["Not synced with {0}"].Value,"Data Hub"))</span>
     </div>
     {{else DatasourceType=="@((int)ConnectionMode.ExtractWithoutRefresh)"}}
     <div>
@@ -718,7 +727,7 @@
                 },
                 {
                     headerText: "@T["Data Refresh Status"]",
-                    width: 85,
+                    width: 90,
                     field: "ModifiedDate",
                     visible: ("@isMobile.ToString().ToLower()" == "false" && (window.innerWidth > 1200) && (gridName == "datasources")),
                     template: true,

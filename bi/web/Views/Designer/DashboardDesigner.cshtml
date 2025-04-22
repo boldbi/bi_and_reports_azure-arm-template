@@ -58,9 +58,9 @@
     var canCreateDatasource = permissions[ItemType.Datasource];
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var dashboardDesignerResourceUrl = globalAppSettings.SystemSettings.DesignerCdnLink.TrimEnd('/');
-    var isAIEnabledGlobally = ServerAppConfig.EnableAiFeature;
-    var isAiSummariesEnabledGlobally = ServerAppConfig.IsAiSummariesEnabledGlobally;
-    var isBoldAISelected = ServerAppConfig.IsAiModel;
+    var isAIEnabledGlobally = ViewBag.AICredentials != null ? ViewBag.AICredentials.EnableAIFeature : ServerAppConfig.EnableAiFeature;
+    var isAiSummariesEnabledGlobally = ViewBag.AICredentials != null ? ViewBag.AICredentials.IsAISummariesEnabledGlobally : ServerAppConfig.IsAiSummariesEnabledGlobally;
+    var isBoldAISelected = isSelfHosted ? (ViewBag.AICredentials != null ? ViewBag.AICredentials.IsAIModel : ServerAppConfig.IsAiModel) : true ;
     var etlEndpointPrefix = ServerAppConfig.IsSelfHosted ? ServerAppConfig.InternalAppIdpUrl : ServerAppConfig.AppSettings.EndPoints.ETLSiteURL;
     var navigateETLUrl = etlEndpointPrefix + (ServerAppConfig.IsSelfHosted ? $"/etlservice/{globalAppSettings.SystemSettings.TenantId.ToString()}" : $"/{globalAppSettings.SystemSettings.TenantId.ToString()}");
 

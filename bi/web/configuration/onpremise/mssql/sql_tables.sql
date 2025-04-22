@@ -127,9 +127,10 @@ CREATE TABLE [BOLDBI_ItemView](
 	[ItemId] [uniqueidentifier] NOT NULL,
 	[UserId] [int] NOT NULL,
 	[ItemViewId] [uniqueidentifier] NOT NULL,
-	[QueryString] [nvarchar](4000) NOT NULL,
+	[QueryString] nvarchar(max) NOT NULL,
 	[ModifiedDate] [datetime] NOT NULL,
-	[IsActive] [bit] NOT NULL)
+	[IsActive] [bit] NOT NULL,
+	IsWidgetLinking [bit] NOT NULL)
 ;
 
 CREATE TABLE [BOLDBI_ItemLogType](
@@ -249,7 +250,8 @@ CREATE TABLE [BOLDBI_ScheduleDetail](
 	[EndDate] [datetime] NULL,
 	[EndAfter] [int] NULL DEFAULT 0,
 	[NextSchedule] [datetime] NULL,
-	[ExportTypeId] [int] NOT NULL,
+	[ExportTypeId] [int] NULL,
+    [MultiExportType] [nvarchar](max) NULL,
 	[IsEnabled] [bit] NOT NULL,
 	[CreatedById] [int] NOT NULL,
 	[ModifiedById] [int] NOT NULL,
@@ -1071,6 +1073,21 @@ CREATE TABLE [BOLDBI_AI_CHAT] (
     [RequestType] NVARCHAR(MAX),
     [Environment] NVARCHAR(MAX)
     );
+
+CREATE TABLE [BOLDBI_AICredentials](
+    [Id] uniqueidentifier NOT NULL,
+    [AIModel] [int] NOT NULL,
+    [AIConfiguration] [nvarchar](4000) NULL,
+    [CreatedById] [uniqueidentifier] NULL,
+    [ModifiedById] [uniqueidentifier] NULL,
+    [CreatedDate] [datetime] NOT NULL,
+    [ModifiedDate] [datetime] NOT NULL,
+    [IsActive] [bit] NOT NULL,
+    [IsAIModel][bit] NOT NULL DEFAULT (0),
+    [EnableAIFeature][bit] NOT NULL DEFAULT (0),
+    [IsAISummariesEnabledGlobally][bit] NOT NULL DEFAULT (0)
+    )
+;
 
 ---- PASTE INSERT Queries below this section --------
 

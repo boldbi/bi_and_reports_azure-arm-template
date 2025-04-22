@@ -374,7 +374,7 @@
             <param name="apiDashboardUpdate">Details about the dashboard passed will be updated to the specified dashboard id.</param>
             <returns>The response is sent as ApiItemResponse object</returns>
         </member>
-        <member name="M:Syncfusion.Server.API.Controllers.V5.DashboardsController.GetDashboard(System.Guid)">
+        <member name="M:Syncfusion.Server.API.Controllers.V5.DashboardsController.GetDashboard(System.Guid,System.Boolean)">
             <summary>
             Returns dashboard details from the server for a specified item.
             </summary>
@@ -382,6 +382,7 @@
             Server retrieves the respective dashboard details of dashboardId parameter for the current user.
             </remarks>
             <param name="dashboardId">Dashboard ID</param>
+            <param name="canIgnorePublishDetails">Can Ignore Publish Details</param>
             <returns>The response is sent as ApiSpecifiedItemDetailV4 object</returns>
         </member>
         <member name="M:Syncfusion.Server.API.Controllers.V5.DashboardsController.GetDashboards(System.String,System.String,System.Int32)">

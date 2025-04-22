@@ -34,7 +34,7 @@
                         <select id="multiselect-dropdown" class="form-control selectpicker" data-size="5" multiple="" data-actions-box="true" data-live-search="true" data-none-results-text="@T["No results matched"]" data-select-all-text="@T["Select All"]" data-deselect-all-text="@T["Deselect All"]" data-none-Selected-text="@T["Nothing selected"]"></select>
                     </div>
                     <span class="col-1 input-group-btn no-padding" id="add-external-sites" ng-if="publishType == '@PublishType.External.ToString()'">
-                        <button class="btn btn-default" type="button" data-placement="right" title="@T["Add external sites"]" data-bs-toggle="tooltip" onclick="getExternalSitesDetailDialog()"><span class="su-add"></span></button>
+                        <button class="btn btn-default" type="button" data-bs-placement="right" title="@T["Add external sites"]" data-bs-toggle="tooltip" onclick="getExternalSitesDetailDialog()"><span class="su-add"></span></button>
                     </span>
                 </div>
                 <span id="active-sites-validation" class="validation-message text"></span>
@@ -53,12 +53,12 @@
                 <div id="use-source-name-checkbox" ng-if="itemType == '@((int)ItemType.Dashboard)'">
                     <input type="checkbox" id="use-source-name" class="material-checkbox" />
                     <input name="use-source-name" type="hidden" value="false">
-                    <label for="use-source-name" data-bs-toggle="tooltip" data-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]">@T["Use source dashboard and data source name."]</label>
+                    <label for="use-source-name" data-bs-toggle="tooltip" data-bs-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]">@T["Use source dashboard and data source name."]</label>
                 </div>
                 <div id="use-source-name-checkbox" ng-if="itemType == '@((int)ItemType.Datasource)'">
                     <input type="checkbox" id="use-source-name" class="material-checkbox" />
                     <input name="use-source-name" type="hidden" value="false">
-                    <label for="use-source-name" data-bs-toggle="tooltip" data-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if data source with the same name exists in the destination site, the publishing will fail."]">@T["Use original data source and linked data source name."]</label>
+                    <label for="use-source-name" data-bs-toggle="tooltip" data-bs-placement="bottom" data-container="#use-source-name-checkbox" title="@T["On enabling this, if data source with the same name exists in the destination site, the publishing will fail."]">@T["Use original data source and linked data source name."]</label>
                 </div>
                 <label ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Dashboard description"] </label>
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Data Source Description"]</label>
@@ -114,7 +114,7 @@
                 <ul class="col-11 publish-detail" ng-repeat="sites in selectedSites" ng-class="{active : activeMenu.TenantId === sites.TenantId}">
                     <li class="publish-active-sites" ng-click="setActive(sites, $event)">
                         <span>{{sites.TenantName}}</span>
-                        <span id="warning-info" title="@T["One or more details are invalid"]" data-bs-toggle="tooltip" data-placement="top" data-container="#publish-site-dialog" style="display: none">
+                        <span id="warning-info" title="@T["One or more details are invalid"]" data-bs-toggle="tooltip" data-bs-placement="top" data-container="#publish-site-dialog" style="display: none">
                             <i class="su su-info"></i>
                         </span>
                     </li>
@@ -143,12 +143,12 @@
                 <div ng-if="itemType == '@((int)ItemType.Dashboard)'" id="advanced-source-name-checkbox">
                     <input type="checkbox" id="advanced-source-name" class="material-checkbox" ng-model="p.UseSourceItemName" />
                     <input name="advanced-source-name" type="hidden" value="false" ng-model="p.UseSourceItemName">
-                    <label for="advanced-source-name" data-bs-toggle="tooltip" data-placement="bottom" title='@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source dashboard and data source name."]</label>
+                    <label for="advanced-source-name" data-bs-toggle="tooltip" data-bs-placement="bottom" title='@T["On enabling this, if a dashboard or data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source dashboard and data source name."]</label>
                 </div>
                 <div ng-if="itemType == '@((int)ItemType.Datasource)'" id="advanced-source-name-checkbox">
                     <input type="checkbox" id="advanced-source-name" class="material-checkbox" ng-model="p.UseSourceItemName" />
                     <input name="advanced-source-name" type="hidden" value="false" ng-model="p.UseSourceItemName">
-                    <label for="advanced-source-name" data-bs-toggle="tooltip" data-placement="bottom" title='@T["On enabling this, if a data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source data source and linked data source name."]</label>
+                    <label for="advanced-source-name" data-bs-toggle="tooltip" data-bs-placement="bottom" title='@T["On enabling this, if a data source with the same name exists in the destination site, the publishing will fail."]'>@T["Use source data source and linked data source name."]</label>
                 </div>
                 <label ng-if="itemType == '@((int)ItemType.Dashboard)'">@T["Dashboard description"]</label>
                 <label ng-if="itemType == '@((int)ItemType.Datasource)'">@T["Data Source Description"]</label>

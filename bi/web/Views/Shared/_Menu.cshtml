@@ -301,19 +301,22 @@
                                     <li id="more-sites-id">
                                     </li>
                                 }
-                                @if (showManageSite)
+                                @if (showManageSite && !ServerAppConfig.IsSandbox)
                                 {
                                     @if (showYourSites)
                                     {
                                         <li class="sf-sub-menu-separator admin-privilege" style="display: none;"></li>
                                     }
-                                    <li class="sub-menu-item sub-menu-profile admin-privilege" style="display: none;">
-                                        <a rel="alternate" hreflang="en" href="@manageSitesUrl" target="_blank">
-                                            <div class="manage-site">@T["Manage sites (Admin access)"]</div>
-                                        </a>
-                                    </li>
+                                    @if (!ServerAppConfig.IsSandbox)
+                                    {
+                                        <li class="sub-menu-item sub-menu-profile admin-privilege" style="display: none;">
+                                            <a rel="alternate" hreflang="en" href="@manageSitesUrl" target="_blank">
+                                                <div class="manage-site">@T["Manage sites (Admin access)"]</div>
+                                            </a>
+                                        </li>
+                                    }
                                 }
-                                @if (showMyProfile)
+                                @if (showMyProfile && !ServerAppConfig.IsSandbox)
                                 {
                                     <li class="sf-sub-menu-separator"></li>
                                 }

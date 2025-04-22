@@ -1516,7 +1516,8 @@
       "wwwroot/Styles/scss/pages/Admin/send-test-mail.css",
       "wwwroot/Styles/scss/pages/Components/Radiobutton.css",
       "wwwroot/Styles/Editor/easymde.min.css",
-      "wwwroot/Styles/scss/pages/Grid.css"
+      "wwwroot/Styles/scss/pages/Grid.css",
+      "wwwroot/Styles/scss/pages/AiService.css"
     ]
   },
   {
@@ -1553,7 +1554,8 @@
       "wwwroot/Scripts/Editor/easymde.min.js",
       "wwwroot/Scripts/EssentialJS/ej.tooltip.min.js",
       "wwwroot/Scripts/EssentialJS/ej.uploadbox.min.js",
-      "wwwroot/Scripts/administration/send-test-mail.js"
+      "wwwroot/Scripts/Administration/send-test-mail.js",
+      "wwwroot/Scripts/Administration/aiservice.js"
     ]
   },
   {

@@ -1,37 +1,22 @@
-CREATE TABLE BOLDBI_AI_CHAT (
-    SearchID TEXT,
-    SessionID TEXT,
-    SearchDateTime TIMESTAMP WITH TIME ZONE,
-    InputToken INTEGER,
-    OutputToken INTEGER,
-    TotalToken INTEGER,
-    InputTokenCost DOUBLE PRECISION,
-    OutputTokenCost DOUBLE PRECISION,
-    TotalTokensCost DOUBLE PRECISION,
-    UserInfo TEXT,
-    TenantID TEXT,
-    RequestType TEXT,
-    Environment TEXT
-);
-
-
-CREATE TABLE BOLDBI_AI_SESSIONS (
-    SessionID TEXT Primary key,
-    SessionStartTime TIMESTAMP WITH TIME ZONE,
-    SessionEndTime TIMESTAMP WITH TIME ZONE,
-    InputToken INTEGER,
-    OutputToken INTEGER,
-    TotalToken INTEGER,
-    InputTokenCost DOUBLE PRECISION,
-    OutputTokenCost DOUBLE PRECISION,
-    TotalTokensCost DOUBLE PRECISION,
-    UserInfo TEXT,
-    TenantID TEXT,
-    Environment TEXT
-);
-
-
-ALTER TABLE SyncDS_ItemLog ADD COLUMN AnonymousUsername varchar(255) NULL
+CREATE TABLE SyncDS_AICredentials(
+Id uuid NOT NULL,
+SiteId uuid NULL,
+AIModel INTEGER NOT NULL,
+AIConfiguration varchar(4000) NULL,
+CreatedById uuid NULL,
+ModifiedById uuid NULL,
+CreatedDate timestamp NOT NULL,
+ModifiedDate timestamp NOT NULL,
+IsActive smallint NOT NULL,
+IsAIModel smallint NOT NULL default 0,
+EnableAIFeature smallint NOT NULL default 0,
+IsAISummariesEnabledGlobally smallint NOT NULL default 0
+)
 ;
-ALTER TABLE SyncDS_ScheduleDetail ADD COLUMN DashboardWidgetIds text NULL
-;
+ALTER TABLE SyncDS_ScheduleDetail ADD COLUMN MultiExportType text NULL;
+
+ALTER TABLE SyncDS_ScheduleDetail ALTER COLUMN ExportTypeId DROP NOT NULL;
+
+ALTER TABLE SyncDS_ItemView ADD COLUMN IsWidgetLinking SMALLINT NOT NULL DEFAULT 0;
+
+ALTER TABLE SyncDS_ItemView ALTER COLUMN QueryString TYPE TEXT, ALTER COLUMN QueryString SET NOT NULL;

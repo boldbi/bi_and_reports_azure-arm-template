@@ -310,6 +310,12 @@
             <param name="configuration">The configuration manager instance.</param>
             <param name="appConfiguration">The application configuration.</param>
         </member>
+        <member name="M:BoldBi.Ai.Service.ConfigManager.FileConfigReader.UpdateInternalInforomation(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Updates internal information using the provided application configuration.
+            </summary>
+            <param name="appConfiguration">An instance of <see cref="T:Microsoft.Extensions.Configuration.IConfiguration"/> that provides application settings.</param>
+        </member>
         <member name="T:BoldBi.Ai.Service.Controllers.AiAssistanceController">
             <summary>
             Controller for handling AI assistance operations including chat, QnA, sessions, and feedback.
@@ -594,17 +600,34 @@
             </summary>
             <returns>A task that represents the asynchronous operation. The task result contains the generated token.</returns>
         </member>
+        <member name="T:BoldBi.Ai.Service.ExceptionMiddleware">
+            <summary>
+            Middleware to handle exceptions globally and log errors.
+            </summary>
+        </member>
+        <member name="M:BoldBi.Ai.Service.ExceptionMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            Initializes a new instance of the <see cref="T:BoldBi.Ai.Service.ExceptionMiddleware"/> class.
+            </summary>
+            <param name="next">The next middleware delegate in the request pipeline.</param>
+        </member>
+        <member name="M:BoldBi.Ai.Service.ExceptionMiddleware.Invoke(Microsoft.AspNetCore.Http.HttpContext)">
+            <summary>
+            Invokes the middleware to process HTTP requests and handle exceptions.
+            </summary>
+            <param name="context">The HTTP context of the current request.</param>
+            <returns>A task that represents the completion of request processing.</returns>
+        </member>
         <member name="T:BoldBi.Ai.Service.HealthChecks.PostgresHealthCheck">
             <summary>
             A health check class that checks the health of a PostgreSQL database connection.
             </summary>
         </member>
-        <member name="M:BoldBi.Ai.Service.HealthChecks.PostgresHealthCheck.#ctor(BoldBi.Ai.Base.Helpers.DatabaseContext.AppDbContext,BoldBi.Ai.Base.Helpers.DatabaseContext.UsageLogDbContext)">
+        <member name="M:BoldBi.Ai.Service.HealthChecks.PostgresHealthCheck.#ctor(Microsoft.Extensions.DependencyInjection.IServiceScopeFactory)">
             <summary>
             Initializes a new instance of the <see cref="T:BoldBi.Ai.Service.HealthChecks.PostgresHealthCheck"/> class.
             </summary>
-            <param name="appDbContext">The meta DB context.</param>
-            <param name="usageLogDbContext">The usage log DB context.</param>
+            <param name="serviceScopeFactory">The service scope factory which contains scoped instances.</param>
         </member>
         <member name="M:BoldBi.Ai.Service.HealthChecks.PostgresHealthCheck.CheckHealthAsync(Microsoft.Extensions.Diagnostics.HealthChecks.HealthCheckContext,System.Threading.CancellationToken)">
             <summary>
