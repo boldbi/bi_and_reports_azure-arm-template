@@ -132,6 +132,16 @@
                     </span>
                 </li>
             }
+            @if (ServerAppConfig.IsSandbox)
+            {
+                <li class="icon-list-item accounts-list-item">
+                    <span id="accounts-page-download-container" class="icon-container">
+                        <a href="https://www.boldbi.com/account/downloads" target="_blank">
+                            <i class="su su-download"></i>
+                        </a>
+                    </span>
+                </li>
+            }
             @if (showProfile)
             {
                 <li class="icon-list-item profile-section-list listing-dropdown" id="dropdown-profile">
@@ -152,17 +162,20 @@
                                 <li id="more-sites-id">
                                 </li>
                             }
-                            @if (showManageSite)
+                            @if (showManageSite && !ServerAppConfig.IsSandbox)
                             {
                                 @if (showYourSites)
                                 {
                                     <li class="sf-sub-menu-separator admin-privilege" style="display: none;"></li>
                                 }
-                                <li class="sub-menu-item sub-menu-profile admin-privilege" style="display: none;">
-                                    <a rel="alternate" hreflang="en" href="@manageSitesUrl" target="_blank">
-                                        <div class="manage-site">@T["Manage sites (Admin access)"]</div>
-                                    </a>
-                                </li>
+                                @if (!ServerAppConfig.IsSandbox)
+                                {
+                                    <li class="sub-menu-item sub-menu-profile admin-privilege" style="display: none;">
+                                        <a rel="alternate" hreflang="en" href="@manageSitesUrl" target="_blank">
+                                            <div class="manage-site">@T["Manage sites (Admin access)"]</div>
+                                        </a>
+                                    </li>
+                                }
                             }
                             @if (showMyProfile)
                             {
@@ -178,6 +191,25 @@
                                         <div class="sub-menu-user-name"><div class="sub-menu-user-name-style">@displayName</div><div class="sub-menu-user-email-style">@userEmailAddress</div></div>
                                         <div class="profile-pic-tag" data-id="@idpreferenceId" data-type="user" data-display-name="@displayName" data-image-size="28"></div>
                                     </div>
+                                </a>
+                            </li>
+                        }
+                        @if (ServerAppConfig.IsSandbox)
+                        {
+                            <li class="sf-sub-menu-separator"></li>
+                            <li class="sub-menu-item">
+                                <a href="https://www.boldbi.com/account" target="_blank">
+                                    @T["View Account"]
+                                </a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="https://www.boldbi.com/pricing" target="_blank">
+                                    @T["Pricing Plan"]
+                                </a>
+                            </li>
+                            <li class="sub-menu-item">
+                                <a href="https://help.boldbi.com" target="_blank">
+                                    @T["Help Documentation"]
                                 </a>
                             </li>
                         }

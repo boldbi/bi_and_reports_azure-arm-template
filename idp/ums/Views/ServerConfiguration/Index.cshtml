@@ -8,10 +8,13 @@
     var containerName = GlobalAppSettings.Configuration["IdP:AzureBlobContainerName"];
     var helpLinkData = ViewBag.TenantType == TenantType.BoldBIOnPremise ? AppBranding.Bold.ProductName : AppBranding.BoldReports.ProductName;
     var pathbase = Context.Request.PathBase;
-    var serverUserHelp = string.Format(T["Please refer to {0}this{1} documentation to know about what are the permissions need to be assigned to allow {2} to connect and use the database."].Value, "<a class='text-decoration-none' target='_blank' href='" + await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.IdDatabaseConfiguration, ViewBag.TenantType) + "'>", "</a>", helpLinkData);
+    var productName = ViewBag.TenantType == TenantType.BoldBIOnPremise ? GlobalAppSettings.GetDescription(ProductName.BoldBIOnPremise) : GlobalAppSettings.GetDescription(ProductName.BoldReportsOnPremise);
+    var serverUserHelp = string.Format(T["Please refer to the {0}documentation{1} for details on the permissions required to allow {2} Server to connect to and use the database."].Value, "<a target='_blank' class='text-decoration-none' href='" + (await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.IdDatabaseConfiguration, ViewBag.TenantType)) + "'>", "</a>", productName);
     var sqlParameter = await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.MSSQL_Connection_Parameters);
     var postgresSQLParameter = await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.PostgreSQL_Connection_Parameters);
     var mySQLParameter = await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.MySQL_Connection_Parameters);
+    var requestUrl = new Uri(Context.Request.GetDisplayUrl());
+    var requestUrlPath = requestUrl.AbsolutePath.ToString().ToLower();
     var oracleParameter = await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.Oracle_Connection_Parameters);
     var nonce = Context.Items["ScriptNonce"];
     var isBoldBI = GlobalAppSettings.BrandingDisplayName == AppBranding.Bold.DisplayName;
@@ -63,9 +66,15 @@
         var blobExist = "@Url.Action("IsBlobExists", "ServerConfiguration")";
         var updateLicenseKeyUrl = "@Url.Action("ApplyLicenseKey", "ServerConfiguration")";
         var validateLicenseKeyUrl = "@Url.Action("ValidateLicenseKey", "ServerConfiguration")";
+        var amazons3Exist = "@Url.Action("IsAmazonS3Exists", "ServerConfiguration")";
         var validateStartupUrl = "@Url.Action("ValidateStartup", "ServerConfiguration")";
+        var isOCIStorageExist = "@Url.Action("IsOCIStorageExists", "ServerConfiguration")";
         var useSingleTenantDb = "@useSingleTenantDb".toLowerCase() === "true";
         var storageType = "@ViewBag.StorageType";
+        var requestUrlPath = "@requestUrlPath";
+        var getAddTenantUrl = "@Url.Action("AddTenants", "TenantsManagement")";
+        var isAmazonS3 = ("@ViewBag.IsAmazonS3".toLowerCase() === "true");
+        var IsOciObjectStorage = ("@ViewBag.IsOciObjectStorage".toLowerCase() === "true");
 
         var serverSetupImageUrl = "@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/server-startup-image.svg")";
         var adminSetupImageUrl = "@Url.Content("~/images/" + GlobalAppSettings.Branding + "/application/server-admin-setup.svg")";
@@ -91,6 +100,9 @@
         var isSiteCreation = false;
         var isSimpleModeValue = "true";
         var actionType = "";
+        var requestUrlPath = "@requestUrlPath";
+        var getAddTenantUrl = "@Url.Action("AddTenants", "TenantsManagement")";
+        var isAmazonS3 = ("@ViewBag.IsAmazonS3".toLowerCase() === "true");
         var biProductname = "@AppBranding.Bold.ProductName";
         var reportsProductname = "@AppBranding.BoldReports.ProductName";
         var isWhiteLabelling = "@CloudAppConfig.Branding.IsWhiteLabelling".toLowerCase() == "true";
@@ -122,6 +134,7 @@
                             <div class="startup-content display-none">
                                 <span class="first-content">@T["Step 1: You’re an administrator"]</span>
                                 <span class="second-content">@T["Administrators have complete control over the application."]</span>
+                                <span class="third-content"></span>
                                 @if (!CloudAppConfig.IsHideHelpLink)
                                 {
                                     <a class="text-decoration-none" id="help-link" href="@(await HelpSiteManager.GetHelpSiteUrl(HelpSiteUrlNames.AdminCreation))" target="_blank">@T["Need help?"]</a>

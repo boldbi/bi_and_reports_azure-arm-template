@@ -1,6 +1,6 @@
 /*!
 *  filename: ej1.grid.all.js
-*  version : 11.2.7
+*  version : 12.1.5
 *  Copyright Syncfusion Inc. 2001 - 2025. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
@@ -834,18 +834,20 @@
                 var headerCell;
                 this._fieldColumnNames = this._headerColumnNames = [];
                 for (var count = 0; count < columns.length; count++) {
-                    this._fieldColumnNames[columns[count].headerText] = columns[count].field;
-                    this._headerColumnNames[columns[count].field] = columns[count].headerText;
-                    headerCell = bbdesigner$(bbdesigner$headerCell[count]);
-                    if (!BoldBIDashboard.isNullOrUndefined(columns[count].headerTemplateID))
-                        headerCell.html(bbdesigner$(columns[count]["headerTemplateID"]).html());
-                    else
-                    columns[count].disableHtmlEncode ? headerCell.text(columns[count].headerText) : headerCell.html(columns[count].headerText);
-                    if (this.model.groupSettings.showToggleButton && (BoldBIDashboard.isNullOrUndefined(columns[count].allowGrouping) || columns[count].allowGrouping)) {
-                        if (bbdesigner$.inArray(columns[count].field, this.model.groupSettings.groupedColumns) != -1)
-                            headerCell.append(this._getToggleButton().addClass("e-toggleungroup"));
+                    if (columns[count].field !== "" && columns[count].headerText !== "Checkbox") {
+                        this._fieldColumnNames[columns[count].headerText] = columns[count].field;
+                        this._headerColumnNames[columns[count].field] = columns[count].headerText;
+                        headerCell = bbdesigner$(bbdesigner$headerCell[count]);
+                        if (!BoldBIDashboard.isNullOrUndefined(columns[count].headerTemplateID))
+                            headerCell.html(bbdesigner$(columns[count]["headerTemplateID"]).html());
                         else
-                            headerCell.append(this._getToggleButton().addClass("e-togglegroup"));
+                        columns[count].disableHtmlEncode ? headerCell.text(columns[count].headerText) : headerCell.html(columns[count].headerText);
+                        if (this.model.groupSettings.showToggleButton && (BoldBIDashboard.isNullOrUndefined(columns[count].allowGrouping) || columns[count].allowGrouping)) {
+                            if (bbdesigner$.inArray(columns[count].field, this.model.groupSettings.groupedColumns) != -1)
+                                headerCell.append(this._getToggleButton().addClass("e-toggleungroup"));
+                            else
+                                headerCell.append(this._getToggleButton().addClass("e-togglegroup"));
+                        }
                     }
                 }
                 if (this.model.allowGrouping && this.model.allowSorting != true) {
@@ -12460,7 +12462,7 @@
         },
         getSelectedRecords: function () {
             var records = [];
-            if (!this._enableCheckSelect && this._virtualScrollingSelection)
+            if (!this._enableCheckSelect && this._virtualScrollingSelection && !BoldBIDashboard.isNullOrUndefined(this._virtualSelRecords))
                 return this._virtualSelRecords;
             for (var i = 0; i < this.selectedRowsIndexes.length; i++) {
                 if (this.selectedRowsIndexes[i] != -1) {
@@ -12507,6 +12509,628 @@
     };
 })(bbdesigner$, SyncfusionBoldBIDashboard);
 ;
+(function (bbdesigner$, BoldBIDashboard, undefined) {
+    BoldBIDashboard.gridFeatures = BoldBIDashboard.gridFeatures || {};
+    BoldBIDashboard.gridFeatures.dragAndDrop = {
+        _headerCellgDragDrop: function () {
+            var proxy = this;
+            this.dragHeaderElement();
+            var bbdesigner$droppableElements = this.element.children("div.e-groupdroparea");
+            bbdesigner$droppableElements.BoldBIDashboardDroppable({
+                accept: bbdesigner$droppableElements,
+                drop: function (event, ui) {
+                    if (BoldBIDashboard.isNullOrUndefined(ui.helper) || !ui.helper.is(":visible"))
+                        return;
+                    var field = bbdesigner$(ui.draggable[0]).find("div").attr("ej-mappingname");
+                    var column = proxy.getColumnByField(!BoldBIDashboard.isNullOrUndefined(field) ? field.trim(): "");
+                    ui.helper.remove();
+                    if (proxy._disabledGroupableColumns.length && bbdesigner$.inArray(column["field"], proxy._disabledGroupableColumns) != -1)
+                        return;
+                    if (!(BoldBIDashboard.isNullOrUndefined(column)) && (!(BoldBIDashboard.isNullOrUndefined(column.field) || column.field == "")))
+                        proxy.groupColumn(column.field);
+                    if (proxy.model.allowGrouping)
+                        proxy.collapseGroupDropArea();
+                }
+            });
+        },
+        _headerCellreorderDragDrop: function () {
+            var proxy = this;
+            this.dragHeaderElement();
+            var bbdesigner$droppableElements = this.element.find(".e-headercell").not(".e-detailheadercell,.e-stackedHeaderCell");
+            bbdesigner$droppableElements.BoldBIDashboardDroppable({
+                accept: bbdesigner$droppableElements,
+                drop: function (event, ui) {
+                    if (BoldBIDashboard.isNullOrUndefined(ui.helper) || !ui.helper.is(":visible") || bbdesigner$(ui.draggable[0]).closest('.e-grid').attr("id") != proxy._id)
+                        return;
+                    if (ui.draggable.attr("aria-sort") == "ascending" || ui.draggable.attr("aria-sort") == "descending") {
+                        var field = bbdesigner$(ui.draggable[0]).find("div").attr("ej-mappingname");
+                        var scolumn = proxy.getColumnByField(!BoldBIDashboard.isNullOrUndefined(field) ? field.trim() : "");
+                        if (proxy.model.allowSorting && proxy.model.allowMultiSorting)
+                            proxy._scolumns.push(scolumn.field);
+                        else
+                            proxy._gridSort = scolumn.field;
+                    }
+                    var column, dropcolumn, fromindex, toindex, droppedIndex;
+                    var draggedIndex = ui.draggable.index();
+                    if (event.dropTarget.hasClass("e-headercelldiv"))
+                        droppedIndex = event.dropTarget.parent().index();
+                    else if (event.dropTarget.parent().hasClass("e-headercell") || event.dropTarget.hasClass("e-headercell"))
+                        droppedIndex = event.dropTarget.index();
+                    if (bbdesigner$(event.dropTarget).hasClass("e-number") || bbdesigner$(event.dropTarget).hasClass("e-icon") || event.dropTarget.closest(".e-headercelldiv"))
+                        droppedIndex = event.dropTarget.closest(".e-headercell").index();
+                    if (proxy.model.scrollSettings.frozenColumns > 0) {
+                        fromindex = ui.draggable.closest('.e-frozenheaderdiv').length > 0 ? draggedIndex : draggedIndex + proxy.model.scrollSettings.frozenColumns;
+                        toindex = event.dropTarget.closest('.e-frozenheaderdiv').length > 0 ? droppedIndex : droppedIndex + proxy.model.scrollSettings.frozenColumns;
+                    }
+                    else {
+                        fromindex = draggedIndex;
+                        toindex = droppedIndex;
+                    }
+                    if (proxy.model.allowGrouping && proxy.model.groupSettings.groupedColumns.length > 0) {
+                        fromindex = fromindex - proxy.model.groupSettings.groupedColumns.length;
+                        toindex = toindex - proxy.model.groupSettings.groupedColumns.length;
+                    }
+                    if (proxy.model.detailsTemplate != null || proxy.model.childGrid != null) {
+                        fromindex = fromindex - 1;
+                        toindex = toindex - 1;
+                    }
+                    column = proxy.getColumnByIndex(fromindex);
+                    dropcolumn = proxy.getColumnByIndex(toindex);
+                    var field = !BoldBIDashboard.isNullOrUndefined(column) && !BoldBIDashboard.isNullOrUndefined(column.field) && column.field != "" ? column.field : null;
+                    var field2 = !BoldBIDashboard.isNullOrUndefined(dropcolumn.field) && dropcolumn.field != "" ? dropcolumn.field : null;
+                    ui.helper.remove();
+                    var header = bbdesigner$(event.dropTarget).clone();
+                    header.find(".e-number").remove();
+                    if (!BoldBIDashboard.isNullOrUndefined(field) && !BoldBIDashboard.isNullOrUndefined(field2)) {
+                        if (bbdesigner$(event.dropTarget).hasClass("e-droppable")) {
+                            header = header.children(".e-headercelldiv");
+                            var eDropTarget = bbdesigner$(event.dropTarget).children(".e-headercelldiv");
+                        }
+                        else {
+                            header = bbdesigner$(event.dropTarget).siblings(".e-headercelldiv");
+                            var eDropTarget = bbdesigner$(event.dropTarget);
+                            if (bbdesigner$(eDropTarget).hasClass("e-filtericon"))
+                                eDropTarget = header = bbdesigner$(eDropTarget).siblings(".e-headercelldiv");
+                        }
+                        var HeaderField = header.attr("ej-mappingname"), dropTargetField = eDropTarget.attr("ej-mappingname");
+                        if (proxy.model.allowSorting && proxy.model.allowMultiSorting){
+                            if (event.dropTarget.hasClass("e-number") || event.dropTarget.hasClass("e-icon")) 
+                                var toColumn = proxy.getColumnByField(!BoldBIDashboard.isNullOrUndefined(HeaderField) ? HeaderField.trim() : "");							                            
+                            else 
+                                var toColumn = proxy.getColumnByField(!BoldBIDashboard.isNullOrUndefined(dropTargetField) ? dropTargetField.trim() : "");
+                            }
+                        else {
+                            if (event.dropTarget.hasClass("e-icon") && !event.dropTarget.hasClass("e-filtericon"))
+                                var toColumn = proxy.getColumnByField(!BoldBIDashboard.isNullOrUndefined(HeaderField) ? HeaderField.trim() : "");
+                            else
+                                var toColumn = proxy.getColumnByField(!BoldBIDashboard.isNullOrUndefined(dropTargetField) ? dropTargetField.trim() : "");
+                        }
+						if(BoldBIDashboard.isNullOrUndefined(toColumn) && event.dropTarget.closest(".e-headercelldiv")){
+                            var headercellName = eDropTarget.closest(".e-headercelldiv").attr("ej-mappingname");
+                            var toColumn = proxy.getColumnByField(!BoldBIDashboard.isNullOrUndefined(headercellName) ? headercellName.trim() : "");
+                        }
+                        proxy.reorderColumns(column.field, toColumn.field);
+                    }
+                    else {
+                        proxy.reorderColumns(fromindex, toindex);
+                    }
+                    if (proxy.model.allowGrouping)
+                        proxy.collapseGroupDropArea();
+                }
+            });
+        },
+
+        dragHeaderElement: function () {
+            var proxy = this;
+            var bbdesigner$dragableElements = this.element.children("div.e-gridheader").find("th.e-headercell").not(".e-detailheadercell,.e-stackedHeaderCell");
+            var bbdesigner$visualElement = BoldBIDashboard.buildTag('div.e-cloneproperties', "", { 'height': '20px', 'z-index': 2 }), column;
+            //header element columnDrag
+            bbdesigner$dragableElements.BoldBIDashboardDraggable({
+                cursorAt: { top: 0, left: 0 },
+                helper: function (event, ui) {
+                    if (proxy.element.find(".e-dragclone").length > 0) proxy.element.find(".e-dragclone").remove();
+                    var bbdesigner$th, hcell;
+                    if (bbdesigner$(event.element).hasClass("e-headercell"))
+                        bbdesigner$th = bbdesigner$(event.element);
+                    else
+                        bbdesigner$th = bbdesigner$(event.element).closest("th");
+                    hcell = bbdesigner$th.find(".e-headercelldiv");
+                    var columnIndex = bbdesigner$(event.element).index();
+                    if (proxy.model.allowGrouping && proxy.model.groupSettings.groupedColumns.length > 0)
+                        columnIndex = columnIndex - proxy.model.groupSettings.groupedColumns.length;
+                    else if (proxy.model.detailsTemplate != null || proxy.model.childGrid != null)
+                        columnIndex = columnIndex - 1;
+                    column = proxy.getColumnByIndex(columnIndex);
+                    proxy._bbdesigner$curSElementTarget = hcell; 
+                    if (proxy.model.allowSorting && proxy.model.allowMultiSorting) {
+                        var header = bbdesigner$(bbdesigner$th).clone();
+                        header.find(".e-number").remove();
+                        return bbdesigner$visualElement.text(header.text()).clone().width(bbdesigner$th.outerWidth() + 2).height(bbdesigner$th.height() + 2).css({ "font-size": parseInt((bbdesigner$th.height() + 3) / 2) }).addClass("e-dragclone").appendTo(proxy.element);
+                    }
+                    else
+                        return bbdesigner$visualElement.text(bbdesigner$th.text()).clone().width(bbdesigner$th.outerWidth() + 2).height(bbdesigner$th.height() + 2).css({ "font-size": parseInt((bbdesigner$th.height() + 3) / 2) }).addClass("e-dragclone").appendTo(proxy.element);
+                },
+                dragStart: function (args) {
+                    if (column.field === "" && column.headerText === "Checkbox") {
+                        args.cancel = true;
+                        return;
+                    }
+                    var target = args.target , bbdesigner$target = bbdesigner$(target);
+                    var data = { target: target, draggableType: "headercell", column: column }, isGrouped, toggleClass, dragOnToggle = false;
+                    if (proxy.model.groupSettings.showToggleButton && column && column.allowGrouping) {
+                        isGrouped = bbdesigner$.inArray(column.field, proxy.model.groupSettings.groupedColumns);
+                        toggleClass = bbdesigner$(args.element).find(".e-togglegroupbutton").hasClass("e-togglegroup");
+                        if ((isGrouped != -1 && toggleClass) || (isGrouped == -1 && !toggleClass))
+                            dragOnToggle = true;
+                    }
+                    if ((proxy._resizer != null && proxy._resizer._expand) || dragOnToggle || bbdesigner$target.eq(0).hasClass("e-filtericon") || (column && column.allowGrouping == false && column.allowReordering == false)) {
+                        bbdesigner$(".e-dragclone").remove();
+                        return false;
+                    }
+                    proxy._dragActive = true;
+                    if (proxy.model.allowGrouping)
+                        proxy.expandGroupDropArea();
+                    if (proxy._trigger("columnDragStart", data))
+                        return false;
+                },
+                drag: function (args) {
+                    var bbdesigner$target = bbdesigner$(args.target);
+                    var data = { target: bbdesigner$target, draggableType: "headercell", column: column };
+                    if (proxy._trigger("columnDrag", data))
+                        return false;
+                    if (bbdesigner$target.closest(".e-grid").attr("id") !== proxy._id)
+                        return;
+                    proxy.getHeaderTable().find(".e-headercell").removeClass("e-reorderindicate");
+                    if (proxy.model.allowReordering && (bbdesigner$target.hasClass('e-headercelldiv') || bbdesigner$target.hasClass('e-headercell')) && !bbdesigner$target.hasClass('e-detailheadercell') && !bbdesigner$target.hasClass('e-stackedHeaderCell') && !bbdesigner$target.parent().hasClass("e-grouptopleftcell")) {
+                        document.body.style.cursor = '';
+                        bbdesigner$target.addClass("e-allowDrop");
+                        proxy.getHeaderTable().find(".e-reorderindicate").removeClass("e-reorderindicate");
+                        if (bbdesigner$target.hasClass('e-headercell')) bbdesigner$target.addClass("e-reorderindicate");
+                        else bbdesigner$target.parent().addClass("e-reorderindicate");
+                    }
+                    if (proxy.model.allowScrolling) {
+                        var pos = args.event.type == "touchmove" ? args.event.originalEvent.touches[0].pageX : args.event.pageX;
+                        proxy._dragAutoScrollX(pos, args);
+                    }
+                    if (bbdesigner$target.hasClass('e-groupdroparea') || bbdesigner$target.closest('.e-groupdroparea').length) {
+                        document.body.style.cursor = 'default';
+                        bbdesigner$target.addClass("e-allowDrop");
+                    }
+                    else if (bbdesigner$target.hasClass('e-headercelldiv') || bbdesigner$target.hasClass('e-headercell')) {
+                        document.body.style.cursor = 'pointer';
+                    } else if (bbdesigner$target.hasClass("e-rowcell"))
+                        document.body.style.cursor = 'not-allowed';
+                },
+                dragStop: function (args) {
+                    if (!args.element.dropped) {
+                        var bbdesigner$target = bbdesigner$(args.target);
+                        var data = { target: bbdesigner$target, draggableType: "headercell", column: column };
+                        proxy._trigger("columnDrop", data);
+                        proxy.element.find(".e-groupdroparea").removeClass("e-hover");
+                        proxy.getHeaderTable().find(".e-columnheader").find(".e-headercellactive").removeClass("e-headercellactive").removeClass("e-active");
+                        if (!(bbdesigner$(args.target).closest(".e-groupdroparea").length || (bbdesigner$(args.target).closest(".e-columnheader").length && proxy.model.allowReordering && !bbdesigner$(args.target).hasClass("e-stackedHeaderCell"))))
+                            bbdesigner$(".e-dragclone").remove();
+                        if (bbdesigner$(args.target).hasClass("e-rowcell") || bbdesigner$(args.target).hasClass("e-stackedHeaderCell"))
+                            proxy.collapseGroupDropArea();
+                        proxy._dragActive = false;
+                        proxy.getHeaderTable().find(".e-reorderindicate").removeClass("e-reorderindicate");
+                        document.body.style.cursor = '';
+                        bbdesigner$(proxy._Indicator).css('display', 'none');
+                    }
+                }
+            });
+        },
+        _groupHeaderCelldrag: function () {
+            //grouped header cell drag.
+            var bbdesigner$visualElement = BoldBIDashboard.buildTag('div.e-cloneproperties e-grid', "", { 'height': '20px', 'z-index': 2 }), proxy;
+            proxy = this;
+            var bbdesigner$groupedHeaderCells = this.element.children(".e-groupdroparea").find(".e-groupheadercell");
+            bbdesigner$groupedHeaderCells.BoldBIDashboardDraggable({
+                cursorAt: { top: 0, left: 0 },
+                helper: function (event, ui) {
+                    var bbdesigner$div = bbdesigner$(event.sender.target).closest(".e-grid-icon");
+                    return bbdesigner$visualElement.text(bbdesigner$(event.sender.target).closest(".e-groupheadercell").text()).clone().width(bbdesigner$div.width() + 2).height(bbdesigner$div.height() + 2).addClass("e-dragclone").appendTo(proxy.element);
+                },
+                dragStart: function (args) {
+                    var target = args.target;
+                    args.model.cursorAt = { top: 0, left: 0 };
+                    var data = { target: target, draggableType: "groupheadercell" };
+                    if (proxy._trigger("columnDragStart", data))
+                        return false;
+                },
+                drag: function (args) {
+                    bbdesigner$(".Sibling").remove();
+                    var bbdesigner$target = bbdesigner$(args.target);
+                    var data = { target: bbdesigner$target, draggableType: "groupheadercell" };
+                    if (proxy._trigger("columnDrag", data))
+                        return false;
+                    if (bbdesigner$target.closest('div.e-gridcontent').length) {
+                        document.body.style.cursor = '';
+                        bbdesigner$target.addClass("e-allowDrop");
+                    }
+                    else if (bbdesigner$(args.target).closest(".e-columnheader").length > 0) {
+                        document.body.style.cursor = 'pointer';
+                    }
+                    else
+                        document.body.style.cursor = 'not-allowed';
+                },
+                dragStop: function (args) {
+                    bbdesigner$(args.element).data("targetInstance", proxy);
+                    if (!args.element.dropped) {
+                        var bbdesigner$target = bbdesigner$(args.target);
+                        var data = { target: bbdesigner$target, draggableType: "groupheadercell" };
+                        if (!(bbdesigner$(args.target).closest(".e-rowcell").length || bbdesigner$(args.target).closest(".e-groupcaption").length || bbdesigner$(args.target).closest(".e-columnheader").length ))
+                            bbdesigner$(".e-dragclone").remove();
+                        document.body.style.cursor = '';
+                    }
+                }
+            });
+
+            //grid content drop
+            var bbdesigner$contentDroppableElements = this.element.children(".e-gridcontent, .e-gridheader");
+            bbdesigner$contentDroppableElements.BoldBIDashboardDroppable({
+                accept: proxy.element.children("div.e-groupdroparea").find(".e-groupheadercell"),
+                drop: function (event, ui) {
+                    if (BoldBIDashboard.isNullOrUndefined(ui.helper) || !ui.helper.is(":visible") || !ui.draggable.hasClass("e-groupheadercell"))
+                        return;
+                    var field = bbdesigner$(ui.draggable[0]).find("div").attr("ej-mappingname");
+                    ui.helper.remove();
+                    if (!BoldBIDashboard.isNullOrUndefined(field)) {
+                        var childProxy = bbdesigner$(ui.draggable).data("targetInstance");
+                        childProxy.ungroupColumn(field);
+                    }
+                }
+            });
+        },
+
+        //Rows DragAndDrop
+        _rowsDragAndDrop: function () {
+            this.dragRowElement();
+            var bbdesigner$droppableElements = this.getContent();
+            var proxy = this;
+            bbdesigner$droppableElements.BoldBIDashboardDroppable({
+                accept: bbdesigner$droppableElements,
+                drop: function (event, ui) {
+                    var targetRow = bbdesigner$(event.dropTarget).closest("tr"), srcControl, currentPageIndex;
+                    if (!ui.helper.find("tr.e-srcgridinfo").length)
+                        return false;
+                    proxy._draggedGridID = ui.helper.find("tr.e-srcgridinfo").children("td").text();
+                    if (proxy._draggedGridID != proxy._id)
+                        srcControl = bbdesigner$("#" + proxy._draggedGridID).BoldBIDashboardGrid("instance");
+                    else
+                        srcControl = proxy;
+                    if (srcControl._id != proxy._id && srcControl.model.rowDropSettings.dropTargetID != "#" + proxy._id)
+                        return false;
+                    var records =srcControl.selectedRowsIndexes.length >0 ? srcControl.getSelectedRecords():bbdesigner$(srcControl._currentJsonData[srcControl._dragIndex]);
+                    if(!BoldBIDashboard.isNullOrUndefined(srcControl._dragIndex))
+					  srcControl._dragIndex = null;
+					var targetIndex = currentPageIndex = proxy.getIndexByRow(targetRow), count = 0;
+                    if (targetIndex == -1){
+                        targetIndex = currentPageIndex = 0;
+                        if(proxy.getRows().length != 0)
+                            targetIndex = proxy.getRows().length;
+                    }
+                    var currentPage = proxy._currentPage() || 1;
+                    targetIndex = targetIndex + (currentPage * proxy.model.pageSettings.pageSize) - proxy.model.pageSettings.pageSize;
+                    var dropDetails = { sourceID: srcControl._id, destinationID: proxy._id, destinationRowIndex: targetIndex };
+                    var args = { target: targetRow, targetIndex: targetIndex, draggedRecords: records, dropDetails: dropDetails };
+                    if (proxy._trigger("beforeRowDrop", args)){
+                        bbdesigner$(".e-dragclone").remove();
+                        return;
+                    }                   
+                    var dataSource = proxy._dataSource() instanceof BoldBIDashboard.DataManager ? proxy._dataSource().dataSource : proxy._dataSource();
+                    if (!BoldBIDashboard.isNullOrUndefined(proxy.model.rowDropSettings.dropMapper)) {
+                        if (BoldBIDashboard.isNullOrUndefined(dataSource.headers))
+                            dataSource.headers = [];
+                        dataSource.headers.push({ rowDropDetails: JSON.stringify(dropDetails) });
+                    }
+                    if (proxy._id != srcControl._id) {
+                        var dm = proxy._dataManager, adaptor = proxy._dataSource().adaptor;
+                        var srcBatch = srcControl.getBatchChanges();
+                        if(srcControl.model.rowDropSettings.dragBehavior == "move")
+                        srcBatch["deleted"] = records;
+                        var args = { dropDetails: dropDetails, records: records, requestType: BoldBIDashboard.Grid.Actions.Refresh, targetIndex: targetIndex, action: "rowDragged" };
+                        proxy._processDropRequest(srcControl, srcBatch, "drag", args);
+
+                        var batch = proxy.getBatchChanges(); batch["added"] = records;
+                        args.action = "rowDropped";
+                        proxy._processDropRequest(proxy, batch, "drop", args);
+                    }
+                    else {
+                        if (proxy._draggedGridID == proxy._id) {
+                            proxy.reorderRows(srcControl.selectedRowsIndexes, currentPageIndex);
+                            bbdesigner$(".e-dragclone").remove();
+                        }
+                    }
+                }
+            });
+        },
+        _dragAutoScrollX: function (pos, args) {
+            var Position = pos - this.element.offset().left;
+            var contentwidth = this.element.width() - this.model.scrollSettings.scrollerSize;
+            var scrollObj = this.getScrollObject();
+            var proxy = this;
+            if (scrollObj && scrollObj._hScrollbar) {
+                if (Position < 5) {
+                    this._dragLeftInterval = setInterval(function () {
+                        if (proxy._dragLeftInterval) {
+                            var scrolLeft = scrollObj.scrollLeft();
+                            var AvgWidth = BoldBIDashboard.sum(proxy.columnsWidthCollection) / proxy.model.columns.length;
+                            if (scrolLeft > scrollObj._hScrollbar.model.minimum) {
+                                if (scrolLeft > AvgWidth)
+                                    scrollObj.scrollX(scrollObj.scrollLeft() - AvgWidth, true);
+                                else
+                                    scrollObj.scrollX(scrollObj._hScrollbar.model.minimum, true);
+                            }
+                            else
+                                proxy._dragLeftInterval && (proxy._dragLeftInterval = clearInterval(proxy._dragLeftInterval));
+                        }
+                    }, 500);
+                }
+                else if (Position > (contentwidth - 5)) {
+                    this._dragRightInterval = setInterval(function () {
+                        if (proxy._dragRightInterval) {
+                            var scrollLeft = scrollObj.scrollLeft();
+                            var AvgWidth = BoldBIDashboard.sum(proxy.columnsWidthCollection) / proxy.model.columns.length;
+                            if (Math.round(scrollLeft) < scrollObj._hScrollbar.model.maximum)
+                                scrollObj.scrollX(scrollObj.scrollLeft() + AvgWidth, true);
+                            else
+                                proxy._dragRightInterval && (proxy._dragRightInterval = clearInterval(proxy._dragRightInterval));
+                        }
+                    }, 500);
+                }
+                else {
+                    this._dragLeftInterval && (this._dragLeftInterval = clearInterval(this._dragLeftInterval));
+                    this._dragRightInterval && (this._dragRightInterval = clearInterval(this._dragRightInterval));
+                }
+            }
+        },
+        _dragAutoScroll: function (proxy, args) {
+            var scrollObj = proxy.getContent().data("BoldBIDashboardScroller");
+            var contentOffset = proxy.getContent()[0].getBoundingClientRect();
+            if (!contentOffset)
+                contentOffset = proxy.getContent().offset();
+            if (scrollObj && scrollObj._vScrollbar) {
+                if (contentOffset.top >= args.event.clientY) {
+                    proxy._dragUpInterval = setInterval(function () {
+                        if (proxy._dragUpInterval) {
+                            var scrollPixel = -proxy.getRowHeight();
+                            var scrolTop = scrollObj.scrollTop();
+                            if (scrolTop != 0)
+                                scrollObj.scrollY(scrollObj.scrollTop() + scrollPixel, true);
+                            else
+                                proxy._dragUpInterval && (proxy._dragUpInterval = clearInterval(proxy._dragUpInterval));
+
+                        }
+                    }, 500);
+
+                }
+                else if (contentOffset.top + proxy.getContent().height() <= args.event.clientY) {
+                    proxy._dragDownInterval = setInterval(function () {
+                        if (proxy._dragDownInterval) {
+                            var scrollPixel = proxy.getRowHeight();
+                            var scrolTop = scrollObj.scrollTop();
+                            if (Math.round(scrolTop) <= scrollObj._vScrollbar.model.maximum)
+                                scrollObj.scrollY(scrollObj.scrollTop() + scrollPixel, true);
+                            else
+                                proxy._dragDownInterval && (proxy._dragDownInterval = clearInterval(proxy._dragDownInterval));
+
+                        }
+                    }, 500);
+
+                }
+                else {
+                    proxy._dragUpInterval && (proxy._dragUpInterval = clearInterval(proxy._dragUpInterval));
+                    proxy._dragDownInterval && (proxy._dragDownInterval = clearInterval(proxy._dragDownInterval));
+                }
+            }
+        },
+        dragRowElement: function () {
+            var proxy = this;
+            var bbdesigner$dragableElements = bbdesigner$(this.getRows());
+            var column;
+            //header element columnDrag
+            bbdesigner$dragableElements.BoldBIDashboardDraggable({
+                cursorAt: { top: -8, left: -8 },
+                helper: function (event, ui) {
+                    this.clone = true;
+                    var tr = bbdesigner$(event.element).closest("tr"),bbdesigner$tr;
+                    if (proxy._selectDrag || !tr.length || (bbdesigner$.inArray(proxy.getIndexByRow(tr), proxy.selectedRowsIndexes) == -1 && proxy.model.selectionType != "single") )
+                        return false;
+                    var bbdesigner$visualElement = BoldBIDashboard.buildTag('div.e-cloneproperties e-draganddrop e-grid e-js', "", { 'height': 'auto', 'z-index': 2, 'position': 'absolute', 'width': proxy.element.width() }), bbdesigner$tr;
+                    bbdesigner$visualElement.append(BoldBIDashboard.buildTag("table", "", { 'width': proxy.element.width() }));
+                    var rows = bbdesigner$(proxy.getRows()).clone().removeClass();
+                    var height = 0;
+					if(proxy.model.selectionType != "single" && proxy.selectedRowsIndexes.length >0){
+						bbdesigner$tr = bbdesigner$.map(rows, function (ele, idx) {
+						if (bbdesigner$.inArray(idx, proxy.selectedRowsIndexes) != -1) {
+                            return ele
+                        }
+						bbdesigner$(bbdesigner$tr).find("td").removeClass("e-selectionbackground e-active");
+						if (!tr.find("td.e-selectionbackground").length)
+							bbdesigner$visualElement.css("display", "none");
+						});
+					}
+					else
+						bbdesigner$tr = tr.clone();
+                    var infoTr = BoldBIDashboard.buildTag('tr.e-srcgridinfo e-grid', "", { 'display': 'none', 'height': 'auto' }).append("<td>" + proxy._id + "</td>");
+                    bbdesigner$tr.push(infoTr[0]);
+                    bbdesigner$visualElement.find("table").append(bbdesigner$tr);
+                      return bbdesigner$visualElement.addClass("e-dragclone").appendTo(bbdesigner$('body'));
+                },
+                dragStart: function (args) {
+                    var tr = bbdesigner$(args.target).closest("tr");
+                    if (proxy._selectDrag ||(bbdesigner$.inArray(proxy.getIndexByRow(tr), proxy.selectedRowsIndexes) == -1 && proxy.model.selectionType != "single"))
+                        return false;
+                    var target = args.target;
+                    var rows = proxy.selectedRowsIndexes.length >0  ?proxy.getRowByIndex(proxy.selectedRowsIndexes[0], proxy.selectedRowsIndexes[proxy.selectedRowsIndexes.length]):tr;
+                    if(proxy.model.selectionType != "single" && proxy.selectedRowsIndexes.length >0)
+					{
+						var records = proxy.getSelectedRecords();	
+					}
+					 else{
+						proxy._dragIndex=proxy.getIndexByRow(tr);
+						var records = proxy._currentJsonData[proxy._dragIndex];				
+					}	
+                    var data = { target: rows, currentTarget: target, draggableType: "rows", data: records, draggedRecords: records };
+                    if (proxy._trigger("rowDragStart", data)){
+                        bbdesigner$(".e-dragclone").remove();
+                        return false;
+                    }
+                },
+                drag: function (args) {
+                    var bbdesigner$target = bbdesigner$(args.target), isGrid = bbdesigner$target.closest(".e-grid");
+                    if (args.event.type == 'touchmove' && isGrid.length) {
+                        isGrid.find(".e-row.e-hover,.e-alt_row.e-hover").removeClass("e-hover");
+                        bbdesigner$target.closest(".e-rowcell").parent().addClass("e-hover");
+                    }
+                    var rows = proxy.selectedRowsIndexes.length >0?proxy.getRowByIndex(proxy.selectedRowsIndexes[0], proxy.selectedRowsIndexes[proxy.selectedRowsIndexes.length]):proxy.getRowByIndex(proxy._dragIndex);
+                    var records = proxy.selectedRowsIndexes.length >0?proxy.getSelectedRecords():proxy._currentJsonData[proxy._dragIndex];
+					var data = { target: rows, currentTarget: bbdesigner$target, draggableType: "rows", data: records, draggedRecords: records};
+                    proxy._dragAutoScroll(proxy, args);
+                    if (proxy._trigger("rowDrag", data)){
+                        bbdesigner$(".e-dragclone").remove();
+                        return false;
+                    }
+                    document.body.style.cursor = 'not-allowed';
+                    var dropEle = bbdesigner$(proxy.model.rowDropSettings.dropTargetID);
+                    if (bbdesigner$target.closest(proxy.model.rowDropSettings.dropTargetID).length || bbdesigner$target.closest("#" + proxy._id).length) {
+                        if (bbdesigner$target.closest(".e-grid").length && (bbdesigner$target.closest(".e-rowcell").length || bbdesigner$target.closest(".emptyrecord").length))
+                            bbdesigner$target.closest("table").addClass("e-allowRowDrop")
+                        else if (!dropEle.hasClass("e-grid"))
+                            dropEle.addClass("e-allowRowDrop");
+                    }
+                },
+                dragStop: function (args) {
+                    var bbdesigner$target = bbdesigner$(args.target), isGrid = bbdesigner$target.closest(".e-grid");
+                    if (args.event.type == 'touchend' && isGrid.length)
+                        isGrid.find(".e-row.e-hover,.e-alt_row.e-hover").removeClass("e-hover");
+                    if (!args.element.dropped) {
+                        proxy._dragUpInterval && (proxy._dragUpInterval = clearInterval(proxy._dragUpInterval));
+                        proxy._dragDownInterval && (proxy._dragDownInterval = clearInterval(proxy._dragDownInterval));
+                        var rows = proxy.selectedRowsIndexes.length >0?proxy.getRowByIndex(proxy.selectedRowsIndexes[0], proxy.selectedRowsIndexes[proxy.selectedRowsIndexes.length]):proxy.getRowByIndex(proxy._dragIndex);
+                        var records = proxy.selectedRowsIndexes.length >0?proxy.getSelectedRecords():proxy._currentJsonData[proxy._dragIndex];
+						document.body.style.cursor = '';
+                        var dropEle = bbdesigner$(proxy.model.rowDropSettings.dropTargetID);
+                        dropEle.hasClass("e-grid") ? dropEle.find(".e-gridcontent").find("table").removeClass("e-allowRowDrop") : dropEle.removeClass("e-allowRowDrop");
+                        proxy.getContent().find("table").removeClass("e-allowRowDrop");
+                        var data = { rows: rows, target: bbdesigner$target, draggableType: "rows", data: records, droppedRecords: records };
+						if(BoldBIDashboard.isNullOrUndefined(this._checkTargetElement(args.event)))
+						  bbdesigner$(".e-dragclone").remove();
+                        if (proxy._trigger("rowDrop", data))
+                            return false;
+                    }
+                }
+            });
+        },
+        _processDropRequest: function (cntrl, batch, action, args) {
+			if(args.action == "rowDragged")
+				bbdesigner$(".e-dragclone").remove();
+            var mapper = cntrl._dataManager.dataSource.batchUrl;
+            cntrl._dataManager.dataSource.batchUrl = cntrl.model.rowDropSettings[action + "Mapper"];
+            if (cntrl._isRemoteSaveAdaptor && cntrl._dataManager.dataSource.batchUrl == null) {
+                if (action == "drop")
+                    for (i = 0; i < batch.added.length; i++)
+                        BoldBIDashboard.JsonAdaptor.prototype.insert(cntrl._dataManager, batch.added[i]);
+                else
+                    for (i = 0; i < batch.deleted.length; i++)
+                        BoldBIDashboard.JsonAdaptor.prototype.remove(cntrl._dataManager, cntrl._primaryKeys[0], batch.deleted[i]);
+            }
+            var dragPromise = cntrl._dataManager.saveChanges(batch, cntrl._primaryKeys[0], cntrl.model.query._fromTable);
+            if (bbdesigner$.isFunction(dragPromise.promise) && cntrl._dataManager.dataSource.batchUrl != null) {
+                bbdesigner$("#" + cntrl._id).data("BoldBIDashboardWaitingPopup").show();
+                dragPromise.done(function (e) {
+                    if (cntrl._isLocalData && (action == "drop")) {
+                        if (args.dropDetails.sourceID == args.dropDetails.destinationID)
+                            cntrl._moveDroppedRowIndex(args.targetIndex, args.records, args.draggedRowIndexes);
+                        else
+                            cntrl._moveDroppedRowIndex(args.targetIndex, args.records);
+                    }
+                    if (action == "drop")
+                        cntrl._dataSource() instanceof BoldBIDashboard.DataManager ? cntrl._dataSource().dataSource.headers.pop() : cntrl._dataSource().headers.pop();
+                    cntrl._dataManager.dataSource.batchUrl = mapper;
+                    cntrl.refreshBatchEditChanges();
+                    bbdesigner$("#" + cntrl._id).data("BoldBIDashboardWaitingPopup").hide();
+                    cntrl._processBindings(args);
+                });
+                dragPromise.fail(function (e) {
+                    cntrl._dataManager.dataSource.batchUrl = mapper;
+                    bbdesigner$("#" + cntrl._id).data("BoldBIDashboardWaitingPopup").hide();
+                    args.error = (e && e.error) ? e.error : e;
+                    cntrl._trigger("actionFailure", args)
+                });
+            }
+            else {
+                cntrl.refreshBatchEditChanges();
+                cntrl._dataManager.dataSource.batchUrl = mapper;
+                if (action == "drop")
+                    cntrl._moveDroppedRowIndex(args.targetIndex, args.records);
+                if (!(args.dropDetails.sourceID == args.dropDetails.destinationID && action == "drag"))
+                    cntrl._processBindings(args);
+            }
+        },
+        reorderRows: function (indexes, toIndex) {
+            if (!this.model.sortSettings.sortedColumns.length) {
+                var records = this.getSelectedRecords();
+                this.selectedRowsIndexes = [];
+                var args = { requestType: BoldBIDashboard.Grid.Actions.Refresh, action: "rowReordering", draggedRowIndexes: indexes, targetIndex: toIndex, dropDetails: { sourceID: this._id, destinationID: this._id, DestinationRowIndex: toIndex }, records: records };
+                if (BoldBIDashboard.isNullOrUndefined(this.model.rowDropSettings.dropMapper)) {
+                    if (this._trigger("actionBegin", args))
+                        return false;
+                    this._moveDroppedRowIndex(toIndex, records, indexes);
+                    this._trigger("actionComplete", args)
+                } else {
+                    var batch = this.getBatchChanges();
+                    batch["changed"] = records;
+                    this._processDropRequest(this, batch, "drop", args);
+                }
+            }
+        },
+        _moveDroppedRowIndex: function (targetIndex, records, reorderFrom) {
+            if (!BoldBIDashboard.isNullOrUndefined(reorderFrom)) {
+                var reorderFrom = reorderFrom.sort(function (a, b) { return a - b });
+                var currentargetIndex = targetIndex, skip, index, count = 0;
+                var currentRecords = this.model.currentViewData.slice();
+                var targetRow = this.getRowByIndex(targetIndex);
+                targetIndex += (this._currentPage() * this.model.pageSettings.pageSize) - this.model.pageSettings.pageSize;
+                for (var i = 0; i < reorderFrom.length; i++) {
+                    var data = currentRecords[reorderFrom[i]];
+                    index = reorderFrom[i] - count;
+                    skip = 0;
+                    var rows = this._excludeDetailRows();
+                    var srcRow = bbdesigner$(rows[index]);
+                    if (currentargetIndex > index)
+                        count++;
+                    if (this.model.allowPaging)
+                        skip = (this._currentPage() * this.model.pageSettings.pageSize) - this.model.pageSettings.pageSize;
+                    index = skip + index;
+                    this.selectedRowsIndexes.push(currentargetIndex - count);
+                    if (i == reorderFrom.length - 1)
+                        this.model.selectedRowIndex = this.selectedRowsIndexes[0];
+                    if ((this.model.detailsTemplate != null || this.model.childGrid != null) && srcRow.next().hasClass("e-detailrow"))
+                        srcRow = srcRow.add(srcRow.next()[0]);
+                    targetRow.before(srcRow);
+                    if (currentargetIndex < reorderFrom[i] - count)
+                        currentargetIndex++
+                    else
+                        targetIndex--;
+                    if (!(this._dataSource() instanceof BoldBIDashboard.DataManager))
+                        this._dataSource().splice(targetIndex + i, 0, this._dataSource().splice(index, 1)[0])
+                    else
+                        this._dataSource().dataSource.json.splice(targetIndex + i, 0, this._dataSource().dataSource.json.splice(index, 1)[0])
+                    this.model.currentViewData.splice(targetIndex + i - skip, 0, this.model.currentViewData.splice(index - skip, 1)[0])
+                }
+            }
+            else if (targetIndex > -1) {
+                var data = this._dataSource() instanceof BoldBIDashboard.DataManager ? this._dataSource().dataSource.json : this._dataSource();
+                var currentIndex = targetIndex + (this._currentPage() * this.model.pageSettings.pageSize) - this.model.pageSettings.pageSize;
+                for (var i = 0; i < records.length; i++) {
+                    data.splice(targetIndex++, 0, data.splice(data.length - records.length + i, 1)[0]);
+                }
+            }
+        },
+    };
+})(jQuery, SyncfusionBoldBIDashboard);;
 (function (bbdesigner$, BoldBIDashboard, undefined) {
     BoldBIDashboard.gridFeatures = BoldBIDashboard.gridFeatures || {};
     
@@ -13990,7 +14614,7 @@
                 predicate && queryManagar.where(predicate);
                 if (this._isLocalData) {
                     var fresults = this._dataManager.executeLocal(queryManagar);
-                    this._filteredRecordsCount = (!BoldBIDashboard.isNullOrUndefined(isTake) && isTake) ? fresults.result.length : fresults.count;
+                    this._filteredRecordsCount = (!(typeof isTake === 'undefined') && !BoldBIDashboard.isNullOrUndefined(isTake) && isTake) ? fresults.result.length : fresults.count;
                     var lastPage = (this._filteredRecordsCount % this.model.pageSettings.pageSize == 0) ? (this._filteredRecordsCount / this.model.pageSettings.pageSize) : (parseInt(this._filteredRecordsCount / this.model.pageSettings.pageSize, 10) + 1);
                     if (this._currentPage() > lastPage)
                         this._currentPage(lastPage);
@@ -15967,7 +16591,7 @@
                     this.getFooterTable().find("colgroup").first().replaceWith(this.getHeaderTable().find("colgroup").clone());                
             }
             var scrollObj = !BoldBIDashboard.isNullOrUndefined(this.getContent().data("BoldBIDashboardScroller")) ? this.getScrollObject() : null;
-            if(scrollObj && scrollObj.isVScroll() && !BoldBIDashboard.isNullOrUndefined(this.getFooterContent()))
+            if(scrollObj && scrollObj.isHScroll() && !BoldBIDashboard.isNullOrUndefined(this.getFooterContent()))
             {
                 this.getFooterContent().find("colgroup").append("<col style='width : " + this.model.scrollSettings.scrollerSize + "px'></col>");
                 if(!this.getFooterContent().find("tr.e-gridSummaryRows td.e-scrollindent").length)
@@ -17783,30 +18407,42 @@
         },
         _getContentWidth: function (cellindx) {
             var contentWidth = 0;
-            var bbdesigner$span = BoldBIDashboard.buildTag('span', {}, {}), proxy = this.gridInstance, tdWidth;
+            proxy = this.gridInstance;
             if (!BoldBIDashboard.isNullOrUndefined(proxy._gridRows)) {
                 var rows = proxy._gridRows;
                 if (this.gridInstance.model.scrollSettings.frozenColumns && cellindx >= this.gridInstance.model.scrollSettings.frozenColumns) {
                     rows = rows[1];
                     cellindx = cellindx - this.gridInstance.model.scrollSettings.frozenColumns;
                 }
-                bbdesigner$.each(rows, function (indx, row) {
-                    if (bbdesigner$(row).is('.e-row,.e-alt_row') && !bbdesigner$(row).is('.e-editedrow')){
-					    var td = bbdesigner$(row).find('td.e-rowcell').eq(cellindx);
-					    var content = bbdesigner$(td).html();
-					    if (proxy.model.columns[cellindx]["commands"])
-					        bbdesigner$span.html(bbdesigner$(content).children());
-					    else if (td.hasClass("e-validError"))
-					        bbdesigner$span.html(bbdesigner$(content).attr("value"));
-					    else
-						    bbdesigner$span.html(content);
-					    bbdesigner$(td).html(bbdesigner$span);
-					    tdWidth = td.find('span:first').width() > 0 ? td.find('span:first').width() + parseInt(td.css("padding-left")) + parseInt(td.css("padding-right")) : td.find('span:first').width();
-					    if (tdWidth > contentWidth)
-						    contentWidth = tdWidth;
-					    bbdesigner$(td).html(content);
-                    }
-				});
+                const cellsArray = Array.from(bbdesigner$(rows).find("td.e-rowcell:nth-child(" + (cellindx + 1) + ")"));
+
+                const maxWidth = cellsArray.reduce((acc, td) => {
+                    const tdelement = bbdesigner$(td);
+
+                    // Get computed font from the TD element
+                    const computedFont = tdelement.css("font");
+
+                    // Measure text width using Canvas API
+                    const content = tdelement.html().trim();
+                    const canvas = document.createElement("canvas");
+                    const context = canvas.getContext("2d");
+                    context.font = computedFont;
+                    let contentWidth = context.measureText(content).width;
+
+                    // Get padding values and ensure they are numbers
+                    const paddingLeft = parseInt(tdelement.css("padding-left")) || 0;
+                    const paddingRight = parseInt(tdelement.css("padding-right")) || 0;
+                    
+                    // Calculate total width
+                    let tdWidth = contentWidth + paddingLeft + paddingRight;
+
+                    // Ensure final width is at least as wide as content width
+                    const width = Math.max(tdWidth, contentWidth);
+
+                    return Math.max(acc, width); // Return the max width
+                }, 0); // Initialize max width as 0
+
+                contentWidth = Math.round(maxWidth);
 			}
             proxy._refreshUnboundTemplate(this.gridInstance.getContentTable());
             return contentWidth;

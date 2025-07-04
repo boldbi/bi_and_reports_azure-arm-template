@@ -1,36 +1,25 @@
-CREATE TABLE BOLDBI_AI_SESSIONS (
-    "SessionID" VARCHAR2(255) PRIMARY KEY,
-    "SessionStartTime" TIMESTAMP,
-    "SessionEndTime" TIMESTAMP,
-    "InputToken" NUMBER,
-    "OutputToken" NUMBER,
-    "TotalToken" NUMBER,
-    "InputTokenCost" FLOAT,
-    "OutputTokenCost" FLOAT,
-    "TotalTokensCost" FLOAT,
+CREATE TABLE BOLDBI_AI_REQUESTS (
+    "MessageId" VARCHAR2(255) PRIMARY KEY,
+    "SearchDate" TIMESTAMP,
+    "Message" VARCHAR2(255),
+    "DatasourceId" VARCHAR2(255),
+    "SessionId" VARCHAR2(255),
+    "HasError" NUMBER(1),
+    "Response" VARCHAR2(255),
+    "StatusMessage" VARCHAR2(255),
+    "AiModel" VARCHAR2(255),
+    "TenantId" VARCHAR2(255),
+    "UserEmail" VARCHAR2(255),
+    "Feedback" VARCHAR2(255),
     "UserInfo" VARCHAR2(255),
-    "TenantID" VARCHAR2(255),
-    "Environment" VARCHAR2(255)
-);
-
-CREATE TABLE BOLDBI_AI_CHAT (
-    "SearchID" VARCHAR2(255) PRIMARY KEY,
-    "SessionID" VARCHAR2(255),
-    "SearchDateTime" TIMESTAMP,
-    "InputToken" NUMBER,
-    "OutputToken" NUMBER,
-    "TotalToken" NUMBER,
-    "InputTokenCost" FLOAT,
-    "OutputTokenCost" FLOAT,
-    "TotalTokensCost" FLOAT,
-    "UserInfo" VARCHAR2(255),
-    "TenantID" VARCHAR2(255),
     "RequestType" VARCHAR2(255),
-    "Environment" VARCHAR2(255)
+    "Environment" VARCHAR2(255),
+    "IsValidResponse" NUMBER(1),
+    "IsWidgetRendered" NUMBER(1)
 );
 
+ALTER TABLE BOLDBI_CustomEmailTemplate ADD CustomVisibilityOptions CLOB;
 
-ALTER TABLE BOLDBI_ItemLog Add AnonymousUsername NVARCHAR2(255) NULL
-;
-ALTER TABLE BOLDBI_ScheduleDetail ADD DashboardWidgetIds CLOB
-;
+UPDATE BOLDBI_CustomEmailTemplate SET CustomVisibilityOptions = '{}';
+
+ALTER TABLE BOLDBI_CustomEmailTemplate MODIFY CustomVisibilityOptions NOT NULL;

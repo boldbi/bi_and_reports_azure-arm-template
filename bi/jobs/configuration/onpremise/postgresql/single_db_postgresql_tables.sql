@@ -124,9 +124,10 @@ CREATE TABLE SyncDS_ItemView(
 	ItemId uuid NOT NULL,
 	UserId int NOT NULL,
 	ItemViewId uuid NOT NULL,
-	QueryString varchar(4000) NOT NULL,
+	QueryString text NOT NULL,
 	ModifiedDate timestamp NOT NULL,
-	IsActive smallint NOT NULL)
+	IsActive smallint NOT NULL,
+	IsWidgetLinking smallint NOT NULL)
 ;
 
 CREATE TABLE SyncDS_ItemLogType(
@@ -236,7 +237,7 @@ CREATE TABLE SyncDS_ScheduleDetail(
 	DashboardWidgetIds text NULL,
 	DashboardViewId uuid NULL,
 	Name varchar(150) NOT NULL,
-    Parameter text NULL,
+        Parameter text NULL,
 	RecurrenceTypeId int NULL,
 	RecurrenceInfo varchar(4000) NULL,
 	Subject varchar(4000) NULL,
@@ -247,7 +248,8 @@ CREATE TABLE SyncDS_ScheduleDetail(
 	EndDate timestamp NULL,
 	EndAfter int NULL DEFAULT 0,
 	NextSchedule timestamp NULL,
-	ExportTypeId int NOT NULL,
+	ExportTypeId int NULL,
+        MultiExportType text NULL,
 	IsEnabled smallint NOT NULL,
 	CreatedById int NOT NULL,
 	ModifiedById int NOT NULL,
@@ -1033,14 +1035,15 @@ CREATE TABLE SyncDS_CustomEmailTemplate (
     MailBody TEXT NOT NULL,
     CreatedDate TIMESTAMP NOT NULL,
     ModifiedDate TIMESTAMP,
-	SendEmailAsHTML smallint NOT NULL,
+    SendEmailAsHTML smallint NOT NULL,
+    CustomVisibilityOptions TEXT NOT NULL,
     IsActive smallint NOT NULL,
-	TemplateId INTEGER NOT NULL,
-	IsDefaultTemplate smallint NOT NULL,
-	IsSystemDefault smallint NOT NULL,
-	Description VARCHAR(255) NULL,
-	ModifiedBy int NULL,
-	TemplateLocalizationKey VARCHAR(255) NULL
+    TemplateId INTEGER NOT NULL,
+    IsDefaultTemplate smallint NOT NULL,
+    IsSystemDefault smallint NOT NULL,
+    Description VARCHAR(255) NULL,
+    ModifiedBy int NULL,
+    TemplateLocalizationKey VARCHAR(255) NULL
 );
 
 CREATE TABLE SyncDS_ApiKeyDetails (
@@ -1057,7 +1060,22 @@ CREATE TABLE SyncDS_ApiKeyDetails (
     IsActive smallint NOT NULL
 );
 
-CREATE TABLE BOLDBI_AI_CHAT (
+CREATE TABLE SyncDS_AICredentials(
+    Id uuid primary key NOT NULL,
+    SiteId uuid NOT NULL,
+    AIModel INTEGER NOT NULL,
+    AIConfiguration varchar(4000) NULL,
+    CreatedById uuid NULL,
+    ModifiedById uuid NULL,
+    CreatedDate timestamp NOT NULL,
+    ModifiedDate timestamp NOT NULL,
+    IsActive smallint NOT NULL,
+    IsAIModel smallint NOT NULL default 0,
+    EnableAIFeature smallint NOT NULL default 0,
+    IsAISummariesEnabledGlobally smallint NOT NULL default 0
+);
+
+CREATE TABLE SyncDS_AI_CHAT (
     SearchID TEXT,
     SessionID TEXT,
     SearchDateTime TIMESTAMP WITH TIME ZONE,
@@ -1074,7 +1092,7 @@ CREATE TABLE BOLDBI_AI_CHAT (
 );
 
 
-CREATE TABLE BOLDBI_AI_SESSIONS (
+CREATE TABLE SyncDS_AI_SESSIONS (
     SessionID TEXT Primary key,
     SessionStartTime TIMESTAMP WITH TIME ZONE,
     SessionEndTime TIMESTAMP WITH TIME ZONE,
@@ -1087,6 +1105,26 @@ CREATE TABLE BOLDBI_AI_SESSIONS (
     UserInfo TEXT,
     TenantID TEXT,
     Environment TEXT
+);
+
+CREATE TABLE SyncDS_AI_REQUESTS (
+    MessageId TEXT PRIMARY KEY NOT NULL,
+    SearchDate TIMESTAMP WITH TIME ZONE,
+    Message TEXT,
+    DatasourceId TEXT,
+    SessionId TEXT,
+    HasError BOOLEAN,
+    Response TEXT,
+    StatusMessage TEXT,
+    AiModel TEXT,
+    TenantId TEXT,
+    UserEmail TEXT,
+    Feedback TEXT,
+    UserInfo TEXT,
+    RequestType TEXT,
+    Environment TEXT,
+    IsValidResponse BOOLEAN,
+    IsWidgetRendered BOOLEAN
 );
 
 ---- PASTE INSERT Queries below this section --------
@@ -1829,6 +1867,8 @@ INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) V
 ;
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (11,N'IsCloseRequest',N'IsCloseRequest',now() at time zone 'utc',1)
 ;
+INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (11,N'SiteId',N'SiteId',now() at time zone 'utc',1)
+;
 
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (12,N'UserPermissionsManagement',N'Manage User Permissions',now() at time zone 'utc',1)
 ;
@@ -1910,6 +1950,8 @@ INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) V
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (15,N'Groups',N'Groups',now() at time zone 'utc',1)
 ;
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (15,N'AzureGroups',N'Azure Groups',now() at time zone 'utc',1)
+;
+INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (15,N'SiteId',N'SiteId',now() at time zone 'utc',1)
 ;
 
 INSERT into SyncDS_LogField (ModuleId,Field,Description,ModifiedDate,IsActive) VALUES (16,N'AzureADGroup',N'Azure AD groups Synchronization',now() at time zone 'utc',1)

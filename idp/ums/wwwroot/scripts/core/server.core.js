@@ -842,7 +842,7 @@ function getMaxZIndex() {
 }
 
 function IsEmail(email) {
-    var filter = /^([\wÀ-ÖØ-öø-ÿŒœŸÿ€ß.-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\wÀ-ÖØ-öø-ÿŒœŸÿ€ß-]+\.)+))([a-zA-Z]{2,63}|[0-9]{1,3})(\]?)$/u;
+    var filter = /^([\wÀ-ÖØ-öø-ÿŒœŸÿ€ß.+-]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\wÀ-ÖØ-öø-ÿŒœŸÿ€ß-]+\.)+))([a-zA-Z]{2,63}|[0-9]{1,3})(\]?)$/u;
     if (filter.test(email)) {
         return true;
     }
@@ -852,7 +852,7 @@ function IsEmail(email) {
 }
 
 function UsernameValidation(username) {
-    var filter = /^(?:(?!\.{2}|_{2}|-{2})[\p{L}\p{N}0-9_À-ÖØ-öø-ÿŒœŸÿ€ß'.`-]+@[\p{L}\p{N}\-]+(\.[\p{L}\-]+)*|[\p{L}\p{N}0-9_À-ÖØ-öø-ÿŒœŸÿ€ß'.`-]+)$/u;
+    var filter = /^(?:(?!\.{2}|_{2}|-{2})[\p{L}\p{N}0-9_À-ÖØ-öø-ÿŒœŸÿ€ß'.`+\-]+@[\p{L}\p{N}\-]+(\.[\p{L}\-]+)*|[\p{L}\p{N}0-9_À-ÖØ-öø-ÿŒœŸÿ€ß'.`+\-]+)$/u;
     if (filter.test(username)) {
         return true;
     }
@@ -873,6 +873,11 @@ function IsValidUsernameLength(username) {
     else {
         return false;
     }
+}
+
+function IsValideCopyRightInfo(inputString) {
+    var regex = /<(?!\/?a(?=\s|>))[^>]+>/gi;
+    return !regex.test(inputString);
 }
 
 $(document).on("click", "#license-warning-icon", function () {
@@ -1018,10 +1023,10 @@ function messageBox(messageIcon, messageHeader, messageText, type, successCallba
 function IsValidName(validationType, inputString) {
     var regex;
     if (validationType.toLowerCase() === "username") {
-        regex = new RegExp(/[*\[\\\]\|\/\:\<\>\%\+\#\&\?\"\@\;\,]/);
+        regex = new RegExp(/[*\[\\\]\|\/\:\<\>\%\#\&\?\"\@\;\,]/);
     }
     else {
-        regex = new RegExp(/[*\[\\\]\|\/\:\<\>\%\+\#\?\"\;\,]/);
+        regex = new RegExp(/[*\[\\\]\|\/\:\<\>\%\#\?\"\;\,]/);
     }
     return !regex.test(inputString);
 }

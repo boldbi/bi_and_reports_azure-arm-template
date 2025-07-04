@@ -1,4 +1,9 @@
 ﻿// wwwroot/scripts/custom.js
+let dotnetHelper;
+
+window.registerCurrentSection = function(dotnetObjRef){
+        dotnetHelper = dotnetObjRef;
+}
 
 window.clearTokenFromUrl = function (removeText) {
     // Convert removeText to a string
@@ -190,7 +195,7 @@ window.openAuthWindow = function (authenticationUrl, width, height) {
                     reject(new Error("Authentication window closed before completion."));
                     return;
                 }
-
+                
                 let url = authWindow.location.href;
                 if (url.includes("code=")) {
                     let params = new URLSearchParams(url.split('?')[1]);
@@ -201,7 +206,7 @@ window.openAuthWindow = function (authenticationUrl, width, height) {
                         clearInterval(interval);
                         authWindow.close();
                         resolve(authCode);
-
+                        
                     }
                 }
             } catch (e) {
@@ -298,4 +303,11 @@ window.inputfileclick = () => {
         element.click();
 
     }
+}
+
+window.ClosePipelinePanel = () => {
+    if (dotnetHelper) {
+        dotnetHelper.invokeMethodAsync("UpdateCurrentSection", 'settings-nav');
+    }
+
 }

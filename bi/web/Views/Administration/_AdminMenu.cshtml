@@ -28,6 +28,7 @@
     var bulkImportUrlForUser = Url.Action("BulkImportResult", "UserManagement");
     var webhookSettingsPageUrl = Url.Action("WebhookSettings", "Administration");
     var apiKeySettingsPageUrl = Url.Action("ApiKeySettings", "Administration");
+    var aiServiceSettingPageUrl = Url.Action("AiServiceSettings", "administration") ?? string.Empty;
     var editWebhookSettingsPageUrl = Url.Action("EditWebhook", "Administration");
     var lookAndFeelSettingsPageUrl = Url.Action("LookAndFeel", "Administration");
     var userPageUrl = Url.Action("User", "UserManagement");
@@ -110,6 +111,17 @@
                 </li>
             }
 
+            @if (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.AiService])))
+            {
+                    <li class="mobile-hidden admin-menu-item @(currentUrl.IndexOf(aiServiceSettingPageUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
+                <a id="webhook-settings-link" href="@aiServiceSettingPageUrl">
+                    <i class="su su-ai-model"></i>
+                    <span>@T["AI"]</span>
+                            <span class="beta-icon badge badge-secondary1 badge-secondary2">Beta</span>
+                </a>
+            </li>
+            }
+
             @if (!ServerAppConfig.IsSelfHosted)
             {
                 @if (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.SupportSettings])))
@@ -131,7 +143,7 @@
         {
                 <label for="admin-menu-category-designer">@T["Designer"]</label>
             <ul class="admin-menu-category" id="admin-menu-category-designer">
-                @if (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.DataStoreSettings])))
+                @if (!ServerAppConfig.IsSandbox && (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.DataStoreSettings]))))
                 {
                     <li class="admin-menu-item @(currentUrl.IndexOf(dataStoreSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                         <a id="dataStore-settings-link" href="@dataStoreSettingsUrl">
@@ -204,7 +216,7 @@
                     </a>
                 </li>
             }
-            @if (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.AuthenticationSettings])))
+            @if (!ServerAppConfig.IsSandbox && (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.AuthenticationSettings]))))
             {
                 <li class="mobile-hidden admin-menu-item @(currentUrl.IndexOf(authenticationSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                     <a id="authentication-settings-link" class="" href="@authenticationSettingsUrl">
@@ -221,7 +233,7 @@
         <ul class="admin-menu-category" id="admin-menu-category-Notification">
             @if (ServerAppConfig.IsSelfHosted)
             {
-                @if (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.Email])))
+                @if (!ServerAppConfig.IsSandbox && (isAdmin || (model != null && (model[SettingsScopes.All] || model[SettingsScopes.Email]))))
                 {
                     <li class="admin-menu-item @(currentUrl.IndexOf(emailSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 || currentUrl.IndexOf(emailConfigureUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)">
                         <a id="email-settings-link" href="@emailSettingsUrl">

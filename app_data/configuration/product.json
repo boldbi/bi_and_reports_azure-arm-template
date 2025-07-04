@@ -11,15 +11,15 @@
     {
       "Name": "BoldBI",
       "SetupName": "BoldBIEnterpriseEdition",
-      "Version": "11.2.7",
-      "IDPVersion": "5.1.6",
+      "Version": "12.1.5",
+      "IDPVersion": "5.1.9",
       "IsCommonLogin": true
     },
     {
       "Name": "BoldReports",
       "SetupName": "BoldReports_EnterpriseReporting",
       "Version": "8.1.1",
-      "IDPVersion": "5.1.6",
+      "IDPVersion": "5.1.9",
       "IsCommonLogin": true
     }
   ]

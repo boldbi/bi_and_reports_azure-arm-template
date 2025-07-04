@@ -127,9 +127,10 @@ CREATE TABLE BOLDBI_ItemView (
     ItemId VARCHAR(36) NOT NULL,
     UserId NUMBER NOT NULL,
     ItemViewId VARCHAR(36) NOT NULL,
-    QueryString NVARCHAR2(2000) NOT NULL,
+    QueryString CLOB NOT NULL,
     ModifiedDate TIMESTAMP NOT NULL,
-    IsActive NUMBER(1,0) NOT NULL
+    IsActive NUMBER(1,0) NOT NULL,
+    IsWidgetLinking NUMBER(1,0) NOT NULL
 );
 
 CREATE TABLE BOLDBI_ItemLogType (
@@ -247,7 +248,8 @@ CREATE TABLE BOLDBI_ScheduleDetail (
     EndDate TIMESTAMP,
     EndAfter NUMBER DEFAULT 0,
     NextSchedule TIMESTAMP,
-    ExportTypeId NUMBER NOT NULL,
+    ExportTypeId NUMBER NULL,
+    MultiExportType CLOB NULL,
     IsEnabled NUMBER(1,0) NOT NULL,
     CreatedById NUMBER NOT NULL,
     ModifiedById NUMBER NOT NULL,
@@ -992,6 +994,7 @@ CREATE TABLE BOLDBI_CustomEmailTemplate (
     CreatedDate TIMESTAMP NOT NULL,
     ModifiedDate TIMESTAMP NULL,
     SendEmailAsHTML NUMBER(1,0) NOT NULL,
+    CustomVisibilityOptions NCLOB NOT NULL,
     IsActive NUMBER(1,0) NOT NULL,
     TemplateId NUMBER NOT NULL,
     IsDefaultTemplate NUMBER(1,0) NOT NULL,
@@ -1072,6 +1075,40 @@ CREATE TABLE BOLDBI_AI_CHAT (
     "TenantID" VARCHAR2(255),
     "RequestType" VARCHAR2(255),
     "Environment" VARCHAR2(255)
+);
+
+CREATE TABLE BOLDBI_AICredentials (
+  Id VARCHAR2(36) NOT NULL PRIMARY KEY,
+  AIModel NUMBER NOT NULL,
+  AIConfiguration VARCHAR2(4000) NULL,
+  CreatedById CHAR(38),
+  ModifiedById CHAR(38),
+  CreatedDate TIMESTAMP NOT NULL,
+  ModifiedDate TIMESTAMP NOT NULL,
+  IsActive NUMBER(1) NOT NULL,
+  IsAIModel NUMBER(1,0) DEFAULT 0 NOT NULL,
+  EnableAIFeature NUMBER(1,0) DEFAULT 0 NOT NULL,
+  IsAISummariesEnabledGlobally NUMBER(1,0) DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE BOLDBI_AI_REQUESTS (
+    "MessageId" VARCHAR2(255) PRIMARY KEY,
+    "SearchDate" TIMESTAMP,
+    "Message" VARCHAR2(255),
+    "DatasourceId" VARCHAR2(255),
+    "SessionId" VARCHAR2(255),
+    "HasError" NUMBER(1),
+    "Response" VARCHAR2(255),
+    "StatusMessage" VARCHAR2(255),
+    "AiModel" VARCHAR2(255),
+    "TenantId" VARCHAR2(255),
+    "UserEmail" VARCHAR2(255),
+    "Feedback" VARCHAR2(255),
+    "UserInfo" VARCHAR2(255),
+    "RequestType" VARCHAR2(255),
+    "Environment" VARCHAR2(255),
+    "IsValidResponse" NUMBER(1),
+    "IsWidgetRendered" NUMBER(1)
 );
 
 ---- PASTE INSERT Queries below this section --------

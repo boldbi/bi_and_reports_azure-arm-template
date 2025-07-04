@@ -11,7 +11,7 @@
     var designerServiceUrl = ServerAppConfig.GetServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings);
     var dns = url.GetLeftPart(UriPartial.Authority);
     var disableWidgetScheduleExport = ViewBag.DisableWidgetScheduleExport != null ? ViewBag.DisableWidgetScheduleExport : false;
-    var widgetName = disableWidgetScheduleExport && Context.Request.Query["actionType"].ToString().ToLower() == "edit" && ViewBag.WidgetName != null ? @T[ViewBag.WidgetName].Value : string.Empty;
+    var widgetName = disableWidgetScheduleExport && Context.Request.Query["actionType"].ToString().ToLower() == "edit" && @ViewBag.WidgetNames != null ? @ViewBag.WidgetNames : string.Empty;
     var widgetId = disableWidgetScheduleExport && Context.Request.Query["actionType"].ToString().ToLower() == "edit" && ViewBag.WidgetId != null ? @ViewBag.WidgetId : string.Empty;
     var viewName = ViewBag.ViewName != null ? @T[ViewBag.ViewName].Value : string.Empty;
     var viewId = ViewBag.ViewId != null ? @ViewBag.ViewId : string.Empty;
@@ -355,7 +355,7 @@
     var canDisableCategoryChange = @Json.Serialize(canDisableCategoryChange);
     var canDisableViewChange = @Json.Serialize(canDisableViewChange);
     var canShowViewDropDown = @Json.Serialize(canShowViewDropDown);
-    var widgetName = "@widgetName";
+    var widgetName = @Json.Serialize(widgetName);
     var viewName = "@viewName";
     var getwidgetsDetailUrl = "@Url.Action("GetWidgetsDetails", "scheduler")";
     var getViewsByItemIdUrl = "@Url.Action("GetViewsByItemId","Items")";
