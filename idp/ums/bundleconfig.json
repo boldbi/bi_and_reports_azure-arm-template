@@ -255,9 +255,10 @@
       "wwwroot/scripts/administration/dropdown-initialization.js",
       "wwwroot/scripts/core/server.core.js",
       "wwwroot/scripts/system/validationmethods.js",
-      "wwwroot/scripts/administration/proxy-settings.js"
+      "wwwroot/scripts/administration/proxy-settings.js",
+      "wwwroot/scripts/administration/admin-common.js"
     ],
-    "integrity": "sha384-eemHWWhtKehMH36n8B5zUnyMKDZGZD88Q1gTGpNBcLmFPv3yyQVG+qA2402kJlPx"
+    "integrity": "sha384-sP+sdY7LiT6IfujyrPsH2sZ5BVv+ttC+JZ0mDQu+yiAi0scxOxj4G1jMab/pk3cT"
   },
   {
     "bundles/js/api-validation.js": [
