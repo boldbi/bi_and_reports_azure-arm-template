@@ -1,1 +1,2 @@
-INSERT INTO BOLDRS_GroupPermission (PermissionAccessId,PermissionEntityId,ItemId,GroupId,IsActive) VALUES (16,'17',NULL,'1','1')
+ALTER TABLE BOLDRS_DeploymentReports ADD IsMakeReportPublic NUMBER(5) NOT NULL
+;

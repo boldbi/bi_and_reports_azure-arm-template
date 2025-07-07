@@ -1,11 +1,12 @@
-﻿window.initializeMonacoEditor = function (elementId, language, initialContent, dotNetHelper) {
+window.initializeMonacoEditor = function (elementId, language, initialContent, dotNetHelper) {
     require.config({ paths: { 'vs': 'monaco-editor/min/vs' }});
     require(['vs/editor/editor.main'], function () {
         window.monacoEditor = monaco.editor.create(document.getElementById(elementId), {
             value: initialContent,
             language: language,
             theme: 'vs-light',
-            automaticLayout: true
+            automaticLayout: true,
+            minimap: {enabled: false}
         });
         window.monacoEditor.onDidChangeModelContent(function (event) {
             const content = window.monacoEditor.getValue();

@@ -1,36 +1,27 @@
-CREATE TABLE {database_name}.BOLDBI_AI_CHAT (
-    SearchID VARCHAR(255) PRIMARY KEY,
-    SessionID TEXT,
-    SearchDateTime DATETIME,
-    InputToken INT,
-    OutputToken INT,
-    TotalToken INT,
-    InputTokenCost DOUBLE,
-    OutputTokenCost DOUBLE,
-    TotalTokensCost DOUBLE,
+CREATE TABLE {database_name}.BOLDBI_AI_REQUESTS (
+    MessageId VARCHAR(255) NOT NULL PRIMARY KEY,
+    SearchDate DATETIME,
+    Message TEXT,
+    DatasourceId VARCHAR(255),
+    SessionId VARCHAR(255),
+    HasError BOOLEAN,
+    Response TEXT,
+    StatusMessage TEXT,
+    AiModel VARCHAR(255),
+    TenantId VARCHAR(255),
+    UserEmail VARCHAR(255),
+    Feedback TEXT,
     UserInfo TEXT,
-    TenantID TEXT,
-    RequestType TEXT,
-    Environment TEXT) ROW_FORMAT=DYNAMIC
+    RequestType VARCHAR(255),
+    Environment VARCHAR(255),
+    IsValidResponse BOOLEAN,
+    IsWidgetRendered BOOLEAN) ROW_FORMAT=DYNAMIC
 ;
 
+SET SQL_SAFE_UPDATES = 0;
 
-CREATE TABLE {database_name}.BOLDBI_AI_SESSIONS (
-    SessionID VARCHAR(255) PRIMARY KEY,
-    SessionStartTime DATETIME,
-    SessionEndTime DATETIME,
-    InputToken INT,
-    OutputToken INT,
-    TotalToken INT,
-    InputTokenCost DOUBLE,
-    OutputTokenCost DOUBLE,
-    TotalTokensCost DOUBLE,
-    UserInfo TEXT,
-    TenantID TEXT,
-    Environment TEXT) ROW_FORMAT=DYNAMIC
-;
+ALTER TABLE {database_name}.BOLDBI_CustomEmailTemplate ADD COLUMN CustomVisibilityOptions TEXT NOT NULL;
 
-ALTER TABLE {database_name}.BOLDBI_ScheduleDetail ADD DashboardWidgetIds text NULL
-;
-ALTER TABLE {database_name}.BOLDBI_ItemLog ADD AnonymousUsername varchar(255) NULL
-;
+UPDATE {database_name}.BOLDBI_CustomEmailTemplate SET CustomVisibilityOptions = '{}'
+
+SET SQL_SAFE_UPDATES = 1;

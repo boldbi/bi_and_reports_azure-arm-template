@@ -562,5 +562,29 @@
     "BoldBiUrl": "/working-with-data-sources/working-with-bold-etl/",
     "RedirectOnPremiseId": 108,
     "RedirectCloudId": null
+  },
+  {
+    "UrlName": "AiModel",
+    "BoldBiUrl": "/legal/privacy/",
+    "RedirectOnPremiseId": 21005,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "SetupHelp",
+    "BoldBiUrl": "/application-startup/",
+    "RedirectOnPremiseId": 109,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "Downloads",
+    "BoldBiUrl": "/account/downloads/embedded/",
+    "RedirectOnPremiseId": 110,
+    "RedirectCloudId": null
+  },
+  {
+    "UrlName": "Pricing",
+    "BoldBiUrl": "/pricing/",
+    "RedirectOnPremiseId": 111,
+    "RedirectCloudId": null
   }
 ] 

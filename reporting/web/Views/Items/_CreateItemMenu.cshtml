@@ -19,13 +19,14 @@
     var createNewDatasourceUrl = "@Url.Action("CreateDataSource", "DataSources")";
     var addReportIframeUrl = "@Url.Action("addreport", "reports")";
     var addDatasetUrl = "@Url.Action("AddDataset", "DataSets")";
-     var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
+    var addFileUrl = "@Url.Action("AddFiles", "Files")";
+    var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
 </script>
 
 <div id="create-item-container">
     <aside class="create-menu create-menu-effect">
-        <div class="create-dashboard-section col-xs-12">
-            <div class="create-dashboard-header-section col-xs-12 no-padding">
+        <div class="create-dashboard-section col-12">
+            <div class="create-dashboard-header-section col-12 no-padding">
                 <div class="create-dashboard-header-title">
                     @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Report) && itemPermissions[ItemType.Report] || (itemPermissions.ContainsKey(ItemType.Dataset) && (itemPermissions[ItemType.Dataset])) || (itemPermissions.ContainsKey(ItemType.Datasource) && (itemPermissions[ItemType.Datasource])) || (itemPermissions.ContainsKey(ItemType.Schedule) && (itemPermissions[ItemType.Schedule])))
                     {
@@ -37,8 +38,8 @@
                     }
                 </div>
             </div>
-            <div class="create-item-body-section col-xs-12 no-padding">
-                <ul class="col-xs-12 no-padding">
+            <div class="create-item-body-section col-12 no-padding">
+                <ul class="col-12 no-padding">
                     @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Report) && itemPermissions[ItemType.Report])
                     {
                         <li class="create-dashboard-scratch">
@@ -112,9 +113,9 @@
                 </ul>
             </div>
         </div>
-        <div class="create-item-section col-xs-12">
-            <div class="create-item-body-section col-xs-12 no-padding">
-                <ul class="col-xs-12 no-padding">
+        <div class="create-item-section col-12">
+            <div class="create-item-body-section col-12 no-padding">
+                <ul class="col-12 no-padding">
                     @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Category) && itemPermissions[ItemType.Category] && showImport)
                     {
                 <li id="add-new-category">
@@ -192,6 +193,22 @@
                             </div>
                         </li>
                     }
+                    @*@if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Report) && itemPermissions[ItemType.Report])
+                    {
+                        <li id="upload-file" data-action="Upload">
+                            <div class="create-item-list-section">
+                                <div class="create-item-list-icon" style="float: left;">
+                                    <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/add-file.svg">
+                                </div>
+                                <div class="create-item-list-title">
+                                    <label>[[[Upload Files]]]</label><br>
+                                    <span>
+                                        [[[Upload your files to the server.]]]
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                    }*@
                     @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Schedule) && itemPermissions[ItemType.Schedule] && itemsCount != null && itemsCount.ContainsKey(ItemType.Report) && itemsCount[ItemType.Report] > 0)
                     {
                         <li id="create_schedule">
@@ -219,7 +236,7 @@
         <div class="save-draft-content-section">
             <div class="save-draft-title"></div>
             <div class="row save-draft-input-section">
-                <div class="col-xs-12 save-draft-input-segment">
+                <div class="col-12 save-draft-input-segment">
                     <span>
                         <input class="save-draft-input" id="save-draft-input" name="dashboardName" maxlength="255" tabindex="1" data-msg-containerid="plugin_validation" />
                     </span>
@@ -251,4 +268,7 @@
 </div>
 <div id="select_datasource_popup" class="col-md-12" style="display:none">
     <iframe id="datasource_iframe" class="EditIframe"></iframe>
+</div>
+<div id="addFileDom" style="display:none">
+    <iframe id="file_popup" class="fileDialog"></iframe>
 </div>

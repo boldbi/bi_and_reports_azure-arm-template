@@ -9,7 +9,7 @@
       "Syncfusion.Dashboard.Connection.MongoDB/1.0.0": {
         "dependencies": {
           "Syncfusion.Dashboard.Connection.MongoDB.Model": "1.0.0",
-          "Syncfusion.Dashboard.Connection.MongoDB.Model.Reference": "11.2.7.0"
+          "Syncfusion.Dashboard.Connection.MongoDB.Model.Reference": "12.1.5.0"
         },
         "runtime": {
           "Syncfusion.Dashboard.Connection.MongoDB.dll": {}
@@ -31,6 +31,14 @@
           "lib/netcoreapp3.1/AWSSDK.SecurityToken.dll": {
             "assemblyVersion": "3.3.0.0",
             "fileVersion": "3.7.100.14"
+          }
+        }
+      },
+      "BouncyCastle.Cryptography/2.4.0": {
+        "runtime": {
+          "lib/net6.0/BouncyCastle.Cryptography.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.4.0.33771"
           }
         }
       },
@@ -209,22 +217,14 @@
           }
         }
       },
-      "SSH.NET/2020.0.2": {
+      "SSH.NET/2024.2.0": {
         "dependencies": {
-          "SshNet.Security.Cryptography": "1.3.0"
+          "BouncyCastle.Cryptography": "2.4.0"
         },
         "runtime": {
-          "lib/netstandard2.0/Renci.SshNet.dll": {
-            "assemblyVersion": "2020.0.2.0",
-            "fileVersion": "2020.0.2.0"
-          }
-        }
-      },
-      "SshNet.Security.Cryptography/1.3.0": {
-        "runtime": {
-          "lib/netstandard2.0/SshNet.Security.Cryptography.dll": {
-            "assemblyVersion": "1.3.0.0",
-            "fileVersion": "1.3.0.0"
+          "lib/net8.0/Renci.SshNet.dll": {
+            "assemblyVersion": "2024.2.0.1",
+            "fileVersion": "2024.2.0.1"
           }
         }
       },
@@ -601,7 +601,7 @@
       "Syncfusion.Dashboard.Connection.MongoDB.Model/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3",
-          "SSH.NET": "2020.0.2",
+          "SSH.NET": "2024.2.0",
           "System.Buffers": "4.5.1",
           "System.Net.Http": "4.3.4",
           "System.Text.RegularExpressions": "4.3.1",
@@ -613,11 +613,11 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Connection.MongoDB.Model.Reference/11.2.7.0": {
+      "Syncfusion.Dashboard.Connection.MongoDB.Model.Reference/12.1.5.0": {
         "runtime": {
           "Syncfusion.Dashboard.Connection.MongoDB.Model.dll": {
-            "assemblyVersion": "11.2.7.0",
-            "fileVersion": "11.2.7.0"
+            "assemblyVersion": "12.1.5.0",
+            "fileVersion": "12.1.5.0"
           }
         }
       }
@@ -642,6 +642,13 @@
       "sha512": "sha512-dGCVuVo0CFUKWW85W8YENO+aREf8sCBDjvGbnNvxJuNW4Ss+brEU9ltHhq2KfZze2VUNK1/wygbPG1bmbpyXEw==",
       "path": "awssdk.securitytoken/3.7.100.14",
       "hashPath": "awssdk.securitytoken.3.7.100.14.nupkg.sha512"
+    },
+    "BouncyCastle.Cryptography/2.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-SwXsAV3sMvAU/Nn31pbjhWurYSjJ+/giI/0n6tCrYoupEK34iIHCuk3STAd9fx8yudM85KkLSVdn951vTng/vQ==",
+      "path": "bouncycastle.cryptography/2.4.0",
+      "hashPath": "bouncycastle.cryptography.2.4.0.nupkg.sha512"
     },
     "DnsClient/1.6.1": {
       "type": "package",
@@ -839,19 +846,12 @@
       "path": "snappier/1.0.0",
       "hashPath": "snappier.1.0.0.nupkg.sha512"
     },
-    "SSH.NET/2020.0.2": {
+    "SSH.NET/2024.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-G0dNlTBAM00KZXv1wWVwgg26d9/METcM6qWBpNQwllzQmmbu+Zu+FS1L1X4fFgGdPu3e8k9mmTBu6SwtQ0614g==",
-      "path": "ssh.net/2020.0.2",
-      "hashPath": "ssh.net.2020.0.2.nupkg.sha512"
-    },
-    "SshNet.Security.Cryptography/1.3.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-5pBIXRjcSO/amY8WztpmNOhaaCNHY/B6CcYDI7FSTgqSyo/ZUojlLiKcsl+YGbxQuLX439qIkMfP0PHqxqJi/Q==",
-      "path": "sshnet.security.cryptography/1.3.0",
-      "hashPath": "sshnet.security.cryptography.1.3.0.nupkg.sha512"
+      "sha512": "sha512-9r+4UF2P51lTztpd+H7SJywk7WgmlWB//Cm2o96c6uGVZU5r58ys2/cD9pCgTk0zCdSkfflWL1WtqQ9I4IVO9Q==",
+      "path": "ssh.net/2024.2.0",
+      "hashPath": "ssh.net.2024.2.0.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",
@@ -1124,7 +1124,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Connection.MongoDB.Model.Reference/11.2.7.0": {
+    "Syncfusion.Dashboard.Connection.MongoDB.Model.Reference/12.1.5.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""

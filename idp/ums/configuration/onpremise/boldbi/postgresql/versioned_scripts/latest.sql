@@ -1,37 +1,21 @@
-CREATE TABLE BOLDBI_AI_CHAT (
-    SearchID TEXT,
-    SessionID TEXT,
-    SearchDateTime TIMESTAMP WITH TIME ZONE,
-    InputToken INTEGER,
-    OutputToken INTEGER,
-    TotalToken INTEGER,
-    InputTokenCost DOUBLE PRECISION,
-    OutputTokenCost DOUBLE PRECISION,
-    TotalTokensCost DOUBLE PRECISION,
+CREATE TABLE SyncDS_AI_REQUESTS (
+    MessageId TEXT PRIMARY KEY NOT NULL,
+    SearchDate TIMESTAMP WITH TIME ZONE,
+    Message TEXT,
+    DatasourceId TEXT,
+    SessionId TEXT,
+    HasError BOOLEAN,
+    Response TEXT,
+    StatusMessage TEXT,
+    AiModel TEXT,
+    TenantId TEXT,
+    UserEmail TEXT,
+    Feedback TEXT,
     UserInfo TEXT,
-    TenantID TEXT,
     RequestType TEXT,
-    Environment TEXT
+    Environment TEXT,
+    IsValidResponse BOOLEAN,
+    IsWidgetRendered BOOLEAN
 );
 
-
-CREATE TABLE BOLDBI_AI_SESSIONS (
-    SessionID TEXT Primary key,
-    SessionStartTime TIMESTAMP WITH TIME ZONE,
-    SessionEndTime TIMESTAMP WITH TIME ZONE,
-    InputToken INTEGER,
-    OutputToken INTEGER,
-    TotalToken INTEGER,
-    InputTokenCost DOUBLE PRECISION,
-    OutputTokenCost DOUBLE PRECISION,
-    TotalTokensCost DOUBLE PRECISION,
-    UserInfo TEXT,
-    TenantID TEXT,
-    Environment TEXT
-);
-
-
-ALTER TABLE SyncDS_ItemLog ADD COLUMN AnonymousUsername varchar(255) NULL
-;
-ALTER TABLE SyncDS_ScheduleDetail ADD COLUMN DashboardWidgetIds text NULL
-;
+ALTER TABLE SyncDS_CustomEmailTemplate ADD COLUMN CustomVisibilityOptions text NOT NULL DEFAULT '{}';

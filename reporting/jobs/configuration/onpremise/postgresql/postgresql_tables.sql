@@ -173,7 +173,7 @@ CREATE TABLE BOLDRS_ItemLog(
 	FromCategoryId uuid NULL,
 	ToCategoryId uuid NULL,
 	UpdatedUserId int NOT NULL,	
-	AdditionalLogInfo varchar(100) NULL,
+	AdditionalLogInfo text NULL,
 	ModifiedDate timestamp NOT NULL,
 	IsActive smallint NOT NULL)
 ;
@@ -642,6 +642,7 @@ CREATE TABLE BOLDRS_DeploymentReports(
 	IsReportLocked smallint NOT NULL,
 	IsDatasourceLocked smallint NOT NULL,
 	IsDatasetLocked smallint NOT NULL,
+	IsMakeReportPublic smallint NOT NULL,
 	Description varchar(1026) NULL,
 	CreatedById int NOT NULL,
 	CreatedDate timestamp NOT NULL,

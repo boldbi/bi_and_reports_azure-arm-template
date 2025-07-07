@@ -3,6 +3,10 @@
     var displayName = GlobalAppSettings.BrandingDisplayName;
     var redirectUrl = ServerAppConfig.InternalAppIdpUrl;
     var subscriptionUrl = ViewBag.SubscriptionUrl;
+    var helpSiteBaseUrl = ServerAppConfig.AppSettings.Documentation.BaseUri;
+    var setupHelpLink = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.SetupHelp);
+    var downloadHelpLink = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.Downloads);
+    var pricingHelpLink = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.Pricing);
     var cdnLink = string.Empty;
     var faviconLogo = string.Empty;
     var dashboardServerResourceUrl = GlobalAppSettings.HttpPathBase + ServerAppConfig.AppSettings.EndPoints.CdnLink;
@@ -66,7 +70,7 @@
                                 <span class="first-content">@T["See Clearly. Act Boldly."]</span>
                                 @if (!ServerAppConfig.IsHideHelpLink)
                                 {
-                                    <a href="@(GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.SetupHelp))" target="_blank">@T["Need setup help?"]</a>
+                                    <a href="@setupHelpLink" target="_blank">@T["Need setup help?"]</a>
                                 }
                             </div>
                         </div>
@@ -87,7 +91,7 @@
                                     <button type="button" id="offline-license" license-service-url="@ViewBag.SubscriptionUrl" class="proceed-button content-display">@T["Upload license file"]</button>
                                 </div>
                                 <div class="col-xs-12  align-center">
-                                    <span class="link-header">@T["Don’t have an account?"] <a class="link-decoration" target="_blank" href="@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.Pricing)">@T["Sign Up"]</a></span>
+                                    <span class="link-header">@T["Don’t have an account?"] <a class="link-decoration" target="_blank" href="@pricingHelpLink">@T["Sign Up"]</a></span>
                                 </div>
                                 <div class="divider-container col-xs-12">
                                     <hr class="connect-line-left"><div class="content text-body">@T["or"]</div><hr class="connect-line-right">
@@ -99,7 +103,7 @@
                             else
                             {
                                 <div class="btn-holder">
-                                    <button type="button" id="offline-license" class="proceed-button content-display" data-offlinelicense-url="@GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.Downloads)" data-tenant-type="@((int)TenantType.BoldBIOnPremise)">@T["Upload your unlock Key file."]</button>
+                                    <button type="button" id="offline-license" class="proceed-button content-display" data-offlinelicense-url="@downloadHelpLink" data-tenant-type="@((int)TenantType.BoldBIOnPremise)">@T["Upload your unlock Key file."]</button>
                                 </div>
                             }
                         </div>

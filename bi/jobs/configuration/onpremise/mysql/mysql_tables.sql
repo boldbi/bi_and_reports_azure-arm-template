@@ -129,9 +129,10 @@ CREATE TABLE {database_name}.BOLDBI_ItemView(
 	ItemId Char(38) NOT NULL,
 	UserId int NOT NULL,
 	ItemViewId Char(38) NOT NULL,
-	QueryString varchar(4000) NOT NULL,
+	QueryString text NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
+	IsWidgetLinking tinyint NOT NULL,
 	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
@@ -261,7 +262,8 @@ CREATE TABLE {database_name}.BOLDBI_ScheduleDetail(
 	EndDate datetime NULL,
 	EndAfter int NULL DEFAULT 0,
 	NextSchedule datetime NULL,
-	ExportTypeId int NOT NULL,
+	ExportTypeId int NULL,
+        MultiExportType text NULL,
 	IsEnabled tinyint NOT NULL,
 	CreatedById int NOT NULL,
 	ModifiedById int NOT NULL,
@@ -1102,13 +1104,14 @@ CREATE TABLE {database_name}.BOLDBI_CustomEmailTemplate (
     CreatedDate DATETIME NOT NULL,
     ModifiedDate DATETIME,
     SendEmailAsHTML BIT NOT NULL,
+    CustomVisibilityOptions TEXT NOT NULL,
     IsActive BIT NOT NULL,
-	TemplateId INT NOT NULL,
-	IsDefaultTemplate BIT NOT NULL,
-	IsSystemDefault BIT NOT NULL,
-	Description VARCHAR(255) NULL,
-	ModifiedBy int NOT NULL,
-	TemplateLocalizationKey VARCHAR(255) NULL) ROW_FORMAT=DYNAMIC
+    TemplateId INT NOT NULL,
+    IsDefaultTemplate BIT NOT NULL,
+    IsSystemDefault BIT NOT NULL,
+    Description VARCHAR(255) NULL,
+    ModifiedBy int NOT NULL,
+    TemplateLocalizationKey VARCHAR(255) NULL) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDBI_ApiKeyDetails (
@@ -1155,6 +1158,41 @@ CREATE TABLE {database_name}.BOLDBI_AI_SESSIONS (
     UserInfo TEXT,
     TenantID TEXT,
     Environment TEXT) ROW_FORMAT=DYNAMIC
+;
+
+CREATE TABLE {database_name}.BOLDBI_AICredentials(
+    Id char(38) NOT NULL,
+    AIModel INT NOT NULL,
+    AIConfiguration varchar(4000) NULL,
+    CreatedById char(38) NULL,
+    ModifiedById char(38) NULL,
+    CreatedDate datetime NOT NULL,
+    ModifiedDate datetime NOT NULL,
+    IsActive tinyint NOT NULL,
+    IsAISummariesEnabledGlobally tinyint NOT NULL DEFAULT 0,
+    EnableAIFeature tinyint NOT NULL DEFAULT 0,
+    IsAIModel tinyint NOT NULL DEFAULT 0,
+    PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
+;
+
+CREATE TABLE {database_name}.BOLDBI_AI_REQUESTS (
+    MessageId VARCHAR(255) NOT NULL PRIMARY KEY,
+    SearchDate DATETIME,
+    Message TEXT,
+    DatasourceId VARCHAR(255),
+    SessionId VARCHAR(255),
+    HasError BOOLEAN,
+    Response TEXT,
+    StatusMessage TEXT,
+    AiModel VARCHAR(255),
+    TenantId VARCHAR(255),
+    UserEmail VARCHAR(255),
+    Feedback TEXT,
+    UserInfo TEXT,
+    RequestType VARCHAR(255),
+    Environment VARCHAR(255),
+    IsValidResponse BOOLEAN,
+    IsWidgetRendered BOOLEAN) ROW_FORMAT=DYNAMIC
 ;
 
 -- -- PASTE INSERT Queries below this section --------

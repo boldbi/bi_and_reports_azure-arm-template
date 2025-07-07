@@ -32,9 +32,9 @@
     var isPublic = globalAppSettings.SystemSettings.IsMarkItemsPublic && ViewBag.MultiDashboardDetails.IsPublic;
     var dashboardCutomTheme = string.Empty;
     var embedThemeEnabled = false;
-    var isAIEnabledGlobally = ServerAppConfig.EnableAiFeature;
-    var isAiSummariesEnabledGlobally = ServerAppConfig.IsAiSummariesEnabledGlobally;
-    var isBoldAISelected = ServerAppConfig.IsAiModel;
+    var isAIEnabledGlobally = ViewBag.AICredentials != null ? ViewBag.AICredentials.EnableAIFeature : ServerAppConfig.EnableAiFeature;
+    var isAiSummariesEnabledGlobally = ViewBag.AICredentials != null ? ViewBag.AICredentials.IsAISummariesEnabledGlobally : ServerAppConfig.IsAiSummariesEnabledGlobally;
+    var isBoldAISelected = isSelfHosted ? (ViewBag.AICredentials != null ? ViewBag.AICredentials.IsAIModel : ServerAppConfig.IsAiModel) : true ;
     var applyURLFilterAlone = ViewBag.ApplyURLFilterAlone != null;
     var faviconLogo = globalAppSettings.SystemSettings.FavIcon;
     var aiLogo = globalAppSettings.SystemSettings.AILogo;
