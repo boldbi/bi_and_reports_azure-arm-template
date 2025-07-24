@@ -52,7 +52,7 @@
 		},
 		"WebAppSvcPlanWorkerSize": "0",
 		"WebAppSvcPlanSKU": "PremiumV3",
-		"WebAppSvcPlanName": "BoldBIAppSvcPlan",
+		"WebAppSvcPlanName": "BoldServicesAppSvcPlan",
 		"WebAppSvcPlanSize": "[variables('sizeMapping')[parameters('appServicePlanSize')]]",
 		"WebAppSvcPlanCapacity": 1
 	},
