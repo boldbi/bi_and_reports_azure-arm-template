@@ -10,6 +10,18 @@
 				"description": "App name for Bold BI and Reports services. The name must be between 3 and 24 characters long, and can contain only numbers and lowercase letters."
 			}
 		},
+	        "appServicePlanSize": {
+	        	"type": "string",
+	      		"allowedValues": [
+				"P1v3: 2core-8gb_RAM",
+				"P2v3: 4core-16gb_RAM",
+				"P3v3: 8core-32gb_RAM"
+	      		],
+	      		"defaultValue": "P2v3: 4core-16gb_RAM",
+	      		"metadata": {
+				"description": "The pricing tier size for the App Service Plan."
+	      		}
+	    	},
 		"storageAccountName": {
 			"type": "string",
 			"maxLength": 24,
@@ -33,25 +45,36 @@
 		}
 	},
 	"variables": {
+		"sizeMapping": {
+			"P1v3: 2core-8gb_RAM": "P1v3",
+			"P2v3: 4core-16gb_RAM": "P2v3",
+			"P3v3: 8core-32gb_RAM": "P3v3"
+		},
 		"WebAppSvcPlanWorkerSize": "0",
-		"WebAppSvcPlanSKU": "Basic",
-		"WebAppSvcPlanName": "BoldServicesAppSvcPlan"
+		"WebAppSvcPlanSKU": "PremiumV3",
+		"WebAppSvcPlanName": "BoldBIAppSvcPlan",
+		"WebAppSvcPlanSize": "[variables('sizeMapping')[parameters('appServicePlanSize')]]",
+		"WebAppSvcPlanCapacity": 1
 	},
 	"resources": [
-		{
-			"name": "[variables('WebAppSvcPlanName')]",
-			"type": "Microsoft.Web/serverfarms",
-			"location": "[resourceGroup().location]",
-			"apiVersion": "2014-06-01",
-			"dependsOn": [],
-			"tags": {
-				"displayName": "AppSvcPlan"
-			},
-			"properties": {
-				"name": "[variables('WebAppSvcPlanName')]",
-				"sku": "[variables('WebAppSvcPlanSKU')]",
-				"workerSize": "[variables('WebAppSvcPlanWorkerSize')]"
-			}
+    		{
+      			"name": "[variables('WebAppSvcPlanName')]",
+      			"type": "Microsoft.Web/serverfarms",
+      			"location": "[resourceGroup().location]",
+      			"apiVersion": "2021-02-01",
+      			"dependsOn": [],
+      			"tags": {
+      				"displayName": "AppSvcPlan"
+      			},
+      			"sku": {
+      				"name": "[variables('WebAppSvcPlanSize')]",
+      				"tier": "[variables('WebAppSvcPlanSKU')]",
+      				"size": "[variables('WebAppSvcPlanSize')]",
+      				"capacity": "[variables('WebAppSvcPlanCapacity')]"
+      			},
+      			"properties": {
+      				"reserved": false
+     			}		
 		},
 		{
 			"name": "[parameters('WebAppName')]",
