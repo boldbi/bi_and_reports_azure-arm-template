@@ -19,7 +19,7 @@
     var host = Context.Request.Host.ToString();
     var fragement = new Uri(Context.Request.GetDisplayUrl()).Fragment;
     var url = new URLHelper(actionContextAccessor.ActionContext).GenerateUrl("http", host, null, fragement);
-
+    string targetValue = @ServerAppConfig.SameTabReportRender ? "_self" : "_blank";
     if (!string.IsNullOrWhiteSpace(ViewBag.itemName))
     {
         absolutePath = dashboardUrl;
@@ -168,12 +168,12 @@
                     {{if ItemType=="@((int)ItemType.Dashboard)" || ItemType=="@((int)ItemType.Widget)"}}
                     <li>
                         {{if ItemType=="@((int)ItemType.Dashboard)"}}
-                        <span class="open-item option-click" href="{{:~urlWithoutSection(CategoryName, Name, Id)}}" title="" target="_blank">
+                        <span class="open-item option-click" href="{{:~urlWithoutSection(CategoryName, Name, Id)}}" title="" target="@targetValue">
                             <i class="su su-open"><i class="su su-open path1"></i></i>
                             <span>[[[Open]]]</span>
                         </span>
                         {{else ItemType=="@((int)ItemType.Widget)" }}
-                        <span class="open-item option-click" href="{{:~widgetUrlEncode(Name, Id)}}" title="" target="_blank">
+                        <span class="open-item option-click" href="{{:~widgetUrlEncode(Name, Id)}}" title="" target="@targetValue">
                             <i class="su su-open"><i class="su su-open path1"></i></i>
                             <span>[[[Open]]]</span>
                         </span>
@@ -446,12 +446,12 @@
                     {{if ItemType=="@((int)ItemType.Dashboard)" || ItemType=="@((int)ItemType.Widget)"}}
                     <li>
                         {{if ItemType=="@((int)ItemType.Dashboard)"}}
-                        <span class="open-item option-click" href="{{:~childUrlWithoutSection(ParentCategoryName, CategoryName, Name, CategoryId)}}" title="" target="_blank">
+                        <span class="open-item option-click" href="{{:~childUrlWithoutSection(ParentCategoryName, CategoryName, Name, CategoryId)}}" title="" target="@targetValue">
                             <i class="su su-open"><i class="su su-open path1"></i></i>
                             <span>[[[Open]]]</span>
                         </span>
                         {{else ItemType=="@((int)ItemType.Widget)" }}
-                        <span class="open-item option-click" href="{{:~widgetUrlEncode(Name, Id)}}" title="" target="_blank">
+                        <span class="open-item option-click" href="{{:~widgetUrlEncode(Name, Id)}}" title="" target="@targetValue">
                             <i class="su su-open"><i class="su su-open path1"></i></i>
                             <span>[[[Open]]]</span>
                         </span>
@@ -546,12 +546,12 @@
                     {{if ItemType=="@((int)ItemType.Dashboard)" || ItemType=="@((int)ItemType.Widget)"}}
                     <li>
                         {{if ItemType=="@((int)ItemType.Dashboard)"}}
-                        <span class="open-item option-click" href="{{:~urlWithoutSection(CategoryName, Name, Id)}}" title="" target="_blank">
+                        <span class="open-item option-click" href="{{:~urlWithoutSection(CategoryName, Name, Id)}}" title="" target="@targetValue">
                             <i class="su su-open"><i class="su su-open path1"></i></i>
                             <span>[[[Open]]]</span>
                         </span>
                         {{else ItemType=="@((int)ItemType.Widget)" }}
-                        <span class="open-item option-click" href="{{:~widgetUrlEncode(Name, Id)}}" title="" target="_blank">
+                        <span class="open-item option-click" href="{{:~widgetUrlEncode(Name, Id)}}" title="" target="@targetValue">
                             <i class="su su-open"><i class="su su-open path1"></i></i>
                             <span>[[[Open]]]</span>
                         </span>
@@ -787,6 +787,8 @@
     var toolbarItems = [{ templateID: "#OpenTemplate" }, { templateID: "#openwithdashboarddesignerTemplate" }, { templateID: "#DownloadTemplate" }, { templateID: "#Separator1" }, { templateID: "#CanEditTemplate" }, { templateID: "#CanDeleteTemplate" }, { templateID: "#Separator2" }, { templateID: "#MoveTemplate" }, { templateID: "#CopyTemplate" }, { templateID: "#CloneTemplate" }, { templateID: "#Separator3" }, { templateID: "#ScheduleTemplate" }, { templateID: "#Separator4" }, { templateID: "#VersionTemplate" }];
     var categoryName = decodeHtmlAsString("@categoryName");
     var filters = { filterType: "menu" };
+    var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
+    var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
     if ("@gridName" === "dashboards" && categoryName !== "") {
         filters = { filterType: "menu", filteredColumns: [{ field: "CategoryName", operator: "equal", value: categoryName }] };
     }
@@ -795,7 +797,7 @@
 
         $(document).on("click", "a.view-name", function () {
             var url = $(this).attr("href");
-            window.open(url, '_blank');
+           ReportRenderingTargetType(url);
         });
 
         $('[data-bs-toggle="tooltip"]').tooltip();

@@ -1,12 +1,17 @@
 ﻿<script nonce="@Context.Items["ScriptNonce"]">
     var isDataSetExistUrl = "@Url.Action("IsDatasetExists", "DataSets")";
+    var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
+    var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
 </script>
+@{
+    string targetValue = @ServerAppConfig.SameTabReportRender ? "_self" : "_blank";
+}
 <div class="dataset-form-scroller rs-scroller">
     <div class="dataset-form-header">
         {{dataSourceName}}
     </div>
     <div class="dataset-form-container">
-        <form action="@Url.Action("DatasetDesigner", "Reports")" class="dataset-form" method="POST" target="_blank">
+        <form action="@Url.Action("DatasetDesigner", "Reports")" class="dataset-form" method="POST" target="@targetValue">
             @Html.AntiForgeryToken()
             <table unselectable="on" class="dataset-form-name-container">
                 <tr>

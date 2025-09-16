@@ -8,6 +8,8 @@
     var itemPermissions = ViewBag.ItemAddOptions as Dictionary<ItemType, bool>;
     var itemsCount = ViewBag.ItemsCount as Dictionary<ItemType, int>;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
+    var targetValue = @ServerAppConfig.SameTabReportRender ? "_self" : "_blank";
+    var IsHideGuidInUrl = ViewBag.IsHideGuidInUrl;
 }
 
 @model List<ItemDetail>
@@ -49,6 +51,9 @@
         var datasourceId = "@ViewBag.DataSourceId";
         var datasourceName = decodeHtmlAsString("@ViewBag.DataSourceName");
         var designerInstallationHelpUrl = "@(ServerAppConfig.AppSettings.Documentation.Uri + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DesignerInstallation))";
+        var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
+        var targetValue = enableRenderSameTab ? "_self" : "_blank";
+        var isHideGuidInUrl = @Json.Serialize(IsHideGuidInUrl);
 
         $(document).ready(function () {
             $("#search-items").val("");

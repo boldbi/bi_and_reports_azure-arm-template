@@ -14,6 +14,8 @@
     {
         reportServerResourceUrl = ServerAppConfig.AppSettings.EndPoints.CdnLink.TrimEnd('/');
     }
+
+    var errorMessage = string.IsNullOrWhiteSpace(ViewBag.IdpConnectionErrorMessage) ? string.Empty : ViewBag.IdpConnectionErrorMessage;
 }
 <!DOCTYPE html>
 <html>
@@ -67,6 +69,13 @@
                         <br />
                         <span>[[[If the problem persists, please contact your administrator.]]]</span>
                     </div>
+                    @if (!string.IsNullOrWhiteSpace(errorMessage))
+                    {
+                        <div id="deploy-error-container">
+                            <textarea type="text" id="deploy-error-box" disabled>@errorMessage</textarea>
+                            <span class="su su-copy text focus" id="deploy-error-copy" data-bs-toggle="tooltip" title="[[[Click to copy]]]"></span>
+                        </div>
+                    }
                     <div class="take-me-back-to-home-page">
                         <span class="error-page-cursor">
                             <a class="error-to-beck-text-color" href="javascript:window.location.reload(true)">[[[Refresh the page]]]</a>

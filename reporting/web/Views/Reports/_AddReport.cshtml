@@ -1,4 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
+@using Syncfusion.Server.Base.Helpers
 
 <!DOCTYPE html>
 @{ 
@@ -27,6 +27,8 @@
             var reportDesignerUrl = "@Url.Action("ReportDesigner", "Reports")";
             var canCreateCategory = "@canCreateCategory";
             var tagList = @Json.Serialize(ViewBag.Tag);
+            var addmultiplerdlreportUrl = "@Url.Action("AddMultipleRdlReport", "reports")";
+            var dashboardUrl = "@Url.Action("Reports", "Reports")";
 
             function load() {
                 window.parent.parent.$("#report_popup_wrapper").ejWaitingPopup("hide");
@@ -67,7 +69,7 @@
             @{
                 if (ViewBag.Action == "Upload")
                 {
-                    <span class="PopupTitle">[[[Upload Report]]]</span>
+                    <span class="PopupTitle">[[[Upload Report(s)]]]</span>
                 }
                 else if(ViewBag.Action == "Create")
                 {
@@ -144,9 +146,9 @@
                         if (ViewBag.Action == "Upload")
                         {
                             <tr>
-                                <td class="col-2"><div class="bottom-margin35 float-end">[[[RDL File]]]<span class="mandatory">*</span></div></td>
+                                <td class="col-2"><div class="bottom-margin35 float-end">[[[RDL File(s)]]]<span class="mandatory">*</span></div></td>
                                 <td class="col-12">
-                                    <iframe id="report_upload_iframe" class="bottom-margin30" style="height: 35px" src="@Url.Action("UploadReportView", "Reports")" scrolling="no" tabindex="-1"></iframe>
+                                    <iframe id="report_upload_iframe" class="bottom-margin30" style="height: 35px" src="@Url.Action("UploadReportView", "Reports", new { allowMultiple = "true", isEditReport = "false" })" scrolling="no" tabindex="-1"></iframe>
                                     <span id="uploadValidation"></span>
                                 </td>
                             </tr>
@@ -184,17 +186,104 @@
                         </td>
                     </tr>
                 </table>
-                <div class="col-md-12 DisplayNone no-padding" id="datasource_list">
-                    <h4>[[[Select Data Source(s)]]]</h4>
-                    <table id="datasource_list_table"></table>
-                </div>
-                <div class="col-md-12 DisplayNone no-padding" id="dataset_list">
-                    <h4>[[[Select Dataset(s)]]]</h4>
-                    <table id="dataset_list_table"></table>
-                </div>
-                <div id="automap-message"></div>
             </div>
         </form>
+
+        <div id="upload-advanced-container" class="col-md-12" style="display: none">
+            <div class="report-list-container col-md-4">
+                <div class="report-list">
+                    <ul class="publish-list" id="report-list">
+                        <!-- Report list items will be populated by JavaScript -->
+                    </ul>
+                    <div id="report-list-empty" class="report-list-empty" style="display: none;">
+                        No reports uploaded yet
+                    </div>
+                </div>
+            </div>
+
+            <div class="report-details-container col-md-8">
+                <div id="report-details-empty" class="report-details-empty">
+                    Select a report from the list to view and edit its details
+                </div>
+                
+                <div id="report-details-content" class='dialog-body col-12' style="display: none;">
+                    <div class='col-12 padding-bottom20 new-rdl-content-holder' id='report-details-holder'>
+                        <table cellspacing='10' cellpadding='0' border='0' width='100%'>
+                            <tr>
+                                <td class="col-2">
+                                    <div class="bottom-margin35 float-end">[[[Category]]]<span class="mandatory">*</span></div>
+                                </td>
+                                <td class="col-12">
+                                    <div class="input-group @(canCreateCategory ? "can-create-category" : "")">
+                                        <select id="report-category-select"
+                                                data-live-search="true"
+                                                title="[[[Select category]]]"
+                                                name="categoryId"
+                                                class="selectpicker form-control bottom-margin30"
+                                                data-none-results-text="[[[No results match]]]"
+                                                data-size="5"
+                                                style="width:100%; margin-bottom:15px;">
+                                            <option value="" selected="selected" class="hide-option" disabled="disabled">[[[Select category]]]</option>
+                                        </select>
+                                        @if (canCreateCategory)
+                                        {
+                                            <div class="input-group-btn no-padding" style="vertical-align: top; margin-left: auto" id="add-new-category-advanced">
+                                                <button class="btn btn-default"
+                                                        type="button"
+                                                        data-bs-toggle="tooltip"
+                                                        aria-label="Add new Category"
+                                                        title="[[[Add new Category]]]">
+                                                    <span class="su-add"></span>
+                                                </button>
+                                            </div>
+                                        }                                
+                                    </div>
+                                    <span id="report-category-message" class="validation-messages d-none">[[[Please select category]]]</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-2"><div class="bottom-margin30 float-end">[[[Name]]]<span class="mandatory">*</span></div></td>
+                                <td class="col-12">
+                                    <div>
+                                        <input type='text' class='form-control bottom-margin30 edit-field text' name='report_name' id='report-name-input' maxlength="255" />
+                                        <span id='report-name-validation-error' class='validation-messages text' style="margin-top: 0px;"></span>
+                                        <div id="report-plugin-validation" class="validation-messages text" style="margin-top: 0px;"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-2"><div class="bottom-margin30 float-end">[[[Description]]]</div></td>
+                                <td class="col-12">
+                                    <textarea style="resize: none;" id='report-description-input' class='form-control bottom-margin35' maxlength="1024"></textarea>
+                                    <span class="notification help-text">
+                                        <span class="help-text-mandatory">*</span>[[[1024 characters maximum]]]
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="col-2"><div class="bottom-margin40 float-end">[[[Tag Name]]]</div></td>
+                                <td class="col-12">
+                                    <div id="report-taginfo" class="add-report-page-taginfo" style="border-radius:4px;">
+                                        <input type='text' class='form-control dropdown-border' id="report-taglist" name="report-taglist" />
+                                        <span style="padding-top:25px;" id='report-tag-validation-error' class='validation-messages text'></span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div class="col-md-12 DisplayNone no-padding" id="datasource_list">
+                            <h4>[[[Select Data Source(s)]]]</h4>
+                            <table id="datasource_list_table"></table>
+                        </div>
+                        <div class="col-md-12 DisplayNone no-padding" id="dataset_list">
+                            <h4>[[[Select Dataset(s)]]]</h4>
+                            <table id="dataset_list_table"></table>
+                        </div>
+                        <div id="automap-message"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <form action="@Url.Action("ReportDesigner", "Reports")" id="create-report-form" method="POST" target="_blank">
             <input id="report-name" name="reportName" type="hidden" value="">
@@ -214,6 +303,10 @@
 
                     else if (ViewBag.Action == "Upload")
                     {
+                        <input type="button" title="" value="[[[Next]]]" id="map_data" class="btn primary-button app-btn-primary small-right-margin" disabled>
+                        
+                        <input type="button" title="" value="[[[Back]]]" id="map_data_back" class="btn primary-button app-btn-primary small-right-margin" style="display:none;">
+
                         <input type="button" title="" value="[[[Save]]]" id="publish_report" class="btn primary-button app-btn-primary small-right-margin" disabled>
                     }
                 }                

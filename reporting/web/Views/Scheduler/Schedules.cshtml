@@ -19,6 +19,7 @@
     var showDownload = schemes?.Download ?? true;
     var showDelete = schemes?.Delete ?? true;
     var showContextMenu = (schemes?.ContextMenu ?? true) && (showRunNow || showRunHistory || showEdit || showEnable || showDisable || showDownload || showDelete);
+    var isHideGuidInUrl = ServerAppConfig.IsHideGuidInUrl;
 }
 @model List<ScheduleViewModel>
 
@@ -231,7 +232,11 @@
             </script>
             <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="dashboard-template">
                 <div class="item-dashboard grid-content" title="{{:ItemName}}" data-bs-toggle="tooltip" data-bs-placement="top">
-                    <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:ItemCategoryName}}/{{:ItemName}}" target="_blank">{{:ItemName}}</a></span>
+                    {{if @(Convert.ToBoolean(isHideGuidInUrl).ToString().ToLower()) == true }}
+                        <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemCategoryName}}/{{:ItemName}}" target="_blank">{{:ItemName}}</a></span>
+                    {{else}}
+                        <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:ItemCategoryName}}/{{:ItemName}}" target="_blank">{{:ItemName}}</a></span>
+                    {{/if}}
                 </div>
             </script>
             <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="status-template">

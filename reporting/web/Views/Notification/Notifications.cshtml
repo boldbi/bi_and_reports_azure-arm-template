@@ -27,6 +27,7 @@
     </environment>
 
     <script nonce="@Context.Items["ScriptNonce"]">
+        var isHideGuidInUrl = @Json.Serialize(ServerAppConfig.IsHideGuidInUrl);
         $(document).ready(function () {
             $("#notifciation-page-container #user-notification-container").show();
             $("#user-system-notification").hide();

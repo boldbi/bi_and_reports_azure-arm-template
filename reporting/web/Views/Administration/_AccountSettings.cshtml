@@ -84,6 +84,9 @@
                 <div class="user-default-group col-lg-12">
                     <label class="app-textbox-label col-3 is-email-required">[[[Default Group for New Users]]]</label>
                     <div class="col-sm-6 col-6 col-lg-4 filename-dropdown default-group-dropdown">
+                        @{
+                            #pragma warning disable SCS0029
+                        }
                         <select id="default-group" data-live-search="true" title="[[[Select groups]]]" name="" class="selectpicker file-template" style="width:183px;" data-size="7" data-none-results-text="[[[No results match]]]">
                             @if (ViewBag.GroupList != null)
                             {
@@ -96,6 +99,9 @@
                             }
 
                         </select>
+                        @{
+                            #pragma warning restore SCS0029
+                        }
                     </div>
                     <div class="tool-tip col-1 no-caret">
                             <span class="dropdown-toggle no-caret-icon" data-bs-toggle="dropdown">

@@ -44,6 +44,7 @@
     var isExludeEjDialog = ViewBag.IsExludeEjDialog != null ? ViewBag.IsExludeEjDialog : false;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var faviconFallbackPath = reportServerResourceUrl + "/cdn/images/application/" + ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + IconFileNames.Favicon;
+    var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
 }
 <!DOCTYPE html>
 <html class="dashboard-server" lang="@globalAppSettings.SystemSettings.Language">

@@ -45,6 +45,10 @@
     var categoryName = HttpUtility.HtmlDecode(ViewBag.categoryName);
     var isShowImportSampleData = globalAppSettings.SystemSettings.IsShowImportSampleData;
     var isHideIconBasedOnDnsName = GlobalAppSettings.IsUrlInDnsList(globalAppSettings.DisplayUri);
+    var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
+    var customFontFolderPath = ViewBag.CustomFontFolder;
+    var isUseFontsFromDirectory = ViewBag.IsUseFontsFromDirectory;
+    var isHideGuidInUrl = ViewBag.IsHideGuidInUrl;
 }
 
 <html lang="en" style="height:100%;width:100%">
@@ -68,6 +72,7 @@
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.dialog.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/pdf.signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/shape.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/document.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/v2.0/tailwind-light/bold.report-designer.min.css" />
@@ -80,6 +85,7 @@
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.dialog.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/pdf.signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/shape.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/document.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/essentialjs/v2.0/tailwind-light/bold.report-designer.min.css" />
@@ -103,6 +109,7 @@
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/qrbarcode.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.dialog.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdf.signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/shape.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdfdocument.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/htmldocument.reportitem.js"></script>
@@ -119,6 +126,7 @@
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.dialog.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdf.signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/shape.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdfdocument.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/htmldocument.reportitem.js"></script>
@@ -135,6 +143,7 @@
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.dialog.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/pdf.signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/shape.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/document.reportitem.css" />
         </environment>
@@ -144,12 +153,14 @@
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/barcode.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.dialog.css" />
+            <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/pdf.signature.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/shape.reportitem.css" />
             <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/document.reportitem.css" />
         </environment>
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/extensions/barcode.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/extensions/signature.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/extensions/signature.dialog.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/extensions/pdf.signature.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/extensions/shape.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/extensions/document.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServiceCdnLink/cdn/css/essentialjs/v2.0/tailwind-light/bold.report-designer.min.css" />
@@ -177,6 +188,7 @@
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.dialog.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdf.signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/shape.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdfdocument.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/htmldocument.reportitem.js"></script>
@@ -191,6 +203,7 @@
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.dialog.js"></script>
+            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdf.signature.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/shape.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdfdocument.reportitem.js"></script>
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/htmldocument.reportitem.js"></script>
@@ -200,6 +213,7 @@
         <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/barcode.reportitem.js'></script>
         <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/signature.reportitem.js'></script>
         <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/signature.dialog.js'></script>
+        <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/pdf.signature.reportitem.js'></script>
         <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src="@reportServiceCdnLink/extensions/shape.reportitem.js"></script>
         <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/pdfdocument.reportitem.js'></script>
         <script nonce="@Context.Items["ScriptNonce"]" type='text/javascript' src='@reportServiceCdnLink/extensions/htmldocument.reportitem.js'></script>
@@ -403,6 +417,7 @@
         var categoryName = decodeHtmlAsString("@categoryName");
         var showImportSampleData = @Json.Serialize(isShowImportSampleData);
         var isHideIconBasedOnDnsName = @Json.Serialize(isHideIconBasedOnDnsName);
+        var isHideGuidInUrl = @Json.Serialize(isHideGuidInUrl);
 
         if (isEdit === "true") {
             isEditReport = true;
@@ -535,6 +550,17 @@
                     @: addCustomFonts("@font.Key", "@font.Value");
                 }
             }
+            else if (isUseFontsFromDirectory)
+            {
+                var fonts = System.IO.Directory.GetFiles(customFontFolderPath, "*.ttf");
+                foreach (var fontPath in fonts)
+                {
+                    var fontKeyName = System.IO.Path.GetFileNameWithoutExtension(fontPath);
+                    var fontFileName = System.IO.Path.GetFileName(fontPath);
+                    @:customFontsName.push(decodeHtmlAsString("@fontKeyName"));
+                    @:addCustomFonts(decodeHtmlAsString("@fontKeyName"), decodeHtmlAsString("@fontFileName"));
+                }
+            }
         }
 
         function isFontFaceExist() {
@@ -596,7 +622,12 @@
                 if (hasDataSet) {
                     var newTitle = reportPartName + ' - Design Report Part - ' + pageTitle;
                     document.title = newTitle;
-                    history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + categoryName + '/' + reportPartName);
+                    if(isHideGuidInUrl){
+                        history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + categoryName + '/' + reportPartName);
+                    }
+                    else{
+                        history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + categoryName + '/' + reportPartName);
+                    }
                     designer.newServerReport(reportPartName, datasetName);
                 } else if (hasReportPartName) {
                     designer.newServerReport(reportPartName);
@@ -714,9 +745,19 @@
                 document.title = newTitle;
                 $('#' + controlId + '_designer_header_reportPartName').val(reportPartName);
                 if (isDraft === 'false' && version) {
-                    history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + reportPartName + '?v=' + version);
+                    if(isHideGuidInUrl){
+                        history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartName + '?v=' + version);
+                    }
+                    else{   
+                        history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + reportPartName + '?v=' + version);
+                    }
                 } else {
-                    history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + reportPartName);
+                    if(isHideGuidInUrl){
+                        history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartName);
+                    }
+                    else{
+                        history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + reportPartName);
+                    }
                 }
                 isDraft = designer.isNewServerReport().toString();
                 alertMessage(true, window.Server.App.LocalizationContent.Success + "!", window.Server.App.LocalizationContent.PartPublishSuccess);
@@ -768,7 +809,12 @@
             isEditReport = false;
             var newTitle = reportPartName + ' - Design Report Part - ' + pageTitle;
             document.title = newTitle;
-            history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + reportPartName);
+            if(isHideGuidInUrl){
+                history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartName);
+            }
+            else{
+                history.pushState('', newTitle, window.location.href.split("report-part")[0] + "report-part" + '/' + reportPartId + '/' + reportPartName);
+            }
             designer.newReport(reportPartName);
         }
 

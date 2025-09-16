@@ -32,6 +32,8 @@
     var description = HttpUtility.HtmlDecode(ViewBag.description);
     var datasetName = HttpUtility.HtmlDecode(ViewBag.datasetName);
     var faviconFallbackPath = reportServerResourceUrl + "/cdn/images/application/" + ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + IconFileNames.Favicon;
+    var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
+    var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
 }
 
 <html lang="en" style="height:100%;width:100%">
@@ -80,7 +82,7 @@
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
         </environment>
         <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/querydesigner/ej.localetexts.@string.Concat(language,".min.js")"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/i18n/ej.culture.@string.Concat(language,".min.js")"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/l10n/ej.localetexts.@string.Concat(language,".min.js")"></script>
     }
     else
     {
@@ -116,7 +118,7 @@
             <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/custombranding.config.js"></script>
         </environment>
         <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/querydesigner/ej.localetexts.@string.Concat(language,".min.js")"></script>
-        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/i18n/ej.culture.@string.Concat(language,".min.js")"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/l10n/ej.localetexts.@string.Concat(language,".min.js")"></script>
     }
 
     <link rel="icon" href="@faviconLogo" id="favicon-link" />

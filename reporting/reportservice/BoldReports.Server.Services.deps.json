@@ -6,24 +6,24 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v8.0": {
-      "BoldReports.Server.Services/10.1.11": {
+      "BoldReports.Server.Services/11.1.10": {
         "dependencies": {
           "Asp.Versioning.Mvc": "8.1.0",
           "Azure.Storage.Blobs": "12.23.0",
-          "Bold.Licensing": "10.1.11",
-          "BoldReports.Base.Logger": "10.1.11",
-          "BoldReports.CRI.Barcode": "10.1.11",
-          "BoldReports.CRI.Html": "10.1.11",
-          "BoldReports.CRI.Pdf": "10.1.11",
-          "BoldReports.CRI.PredictiveAnalytics": "10.1.11",
-          "BoldReports.CRI.Shape": "10.1.11",
-          "BoldReports.CRI.Signature": "10.1.11",
-          "BoldReports.Data.Csv": "10.1.11",
-          "BoldReports.Data.ElasticSearch": "10.1.11",
-          "BoldReports.Data.Excel": "10.1.11",
-          "BoldReports.Data.SSAS": "10.1.11",
-          "BoldReports.Data.WebData": "10.1.11",
-          "BoldReports.Net.Core": "10.1.11",
+          "Bold.Licensing": "11.1.10",
+          "BoldReports.Base.Logger": "11.1.10",
+          "BoldReports.CRI.Barcode": "11.1.10",
+          "BoldReports.CRI.Html": "11.1.10",
+          "BoldReports.CRI.Pdf": "11.1.10",
+          "BoldReports.CRI.PredictiveAnalytics": "11.1.10",
+          "BoldReports.CRI.Shape": "11.1.10",
+          "BoldReports.CRI.Signature": "11.1.10",
+          "BoldReports.Data.Csv": "11.1.10",
+          "BoldReports.Data.ElasticSearch": "11.1.10",
+          "BoldReports.Data.Excel": "11.1.10",
+          "BoldReports.Data.SSAS": "11.1.10",
+          "BoldReports.Data.WebData": "11.1.10",
+          "BoldReports.Net.Core": "11.1.10",
           "Exceptionless": "6.0.4",
           "Exceptionless.Log4net": "6.0.4",
           "Microsoft.ApplicationInsights.AspNetCore": "2.23.0",
@@ -35,6 +35,7 @@
           "Microsoft.CodeAnalysis.VisualBasic": "4.12.0",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.2",
           "Newtonsoft.Json": "13.0.3",
+          "PuppeteerSharp": "20.2.2",
           "Syncfusion.Server.Base.Encryption.Core": "3.1.0.2",
           "System.CodeDom": "9.0.2",
           "System.Configuration.ConfigurationManager": "9.0.2",
@@ -161,49 +162,49 @@
           }
         }
       },
-      "Bold.Data.Analytics.Base/10.1.11": {
+      "Bold.Data.Analytics.Base/11.1.10": {
         "runtime": {
           "lib/net8.0/Bold.Data.Analytics.Base.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "Bold.Licensing/10.1.11": {
+      "Bold.Licensing/11.1.10": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net8.0/Bold.Licensing.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.Base.Logger/10.1.11": {
+      "BoldReports.Base.Logger/11.1.10": {
         "dependencies": {
           "log4net": "3.0.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.Base.Logger.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.CRI.Barcode/10.1.11": {
+      "BoldReports.CRI.Barcode/11.1.10": {
         "dependencies": {
           "BarcodeLib": "3.1.4",
           "Syncfusion.Pdf.Imaging.Net.Core": "28.2.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.CRI.Barcode.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.CRI.Html/10.1.11": {
+      "BoldReports.CRI.Html/11.1.10": {
         "dependencies": {
           "Syncfusion.HtmlToPdfConverter.Net.Linux": "28.2.3",
           "Syncfusion.HtmlToPdfConverter.Net.Mac": "28.2.3",
@@ -211,107 +212,107 @@
         },
         "runtime": {
           "lib/net8.0/BoldReports.CRI.Html.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.CRI.Pdf/10.1.11": {
+      "BoldReports.CRI.Pdf/11.1.10": {
         "dependencies": {
           "Syncfusion.PdfToImageConverter.Net": "28.2.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.CRI.Pdf.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.CRI.PredictiveAnalytics/10.1.11": {
+      "BoldReports.CRI.PredictiveAnalytics/11.1.10": {
         "dependencies": {
-          "Bold.Data.Analytics.Base": "10.1.11"
+          "Bold.Data.Analytics.Base": "11.1.10"
         },
         "runtime": {
           "lib/net8.0/BoldReports.CRI.PredictiveAnalytics.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.CRI.Shape/10.1.11": {
+      "BoldReports.CRI.Shape/11.1.10": {
         "runtime": {
           "lib/net8.0/BoldReports.CRI.Shape.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.CRI.Signature/10.1.11": {
+      "BoldReports.CRI.Signature/11.1.10": {
         "runtime": {
           "lib/net8.0/BoldReports.CRI.Signature.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.Data.Csv/10.1.11": {
+      "BoldReports.Data.Csv/11.1.10": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.Data.Csv.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.Data.ElasticSearch/10.1.11": {
+      "BoldReports.Data.ElasticSearch/11.1.10": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.Data.ElasticSearch.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.Data.Excel/10.1.11": {
+      "BoldReports.Data.Excel/11.1.10": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.Data.Excel.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.Data.SSAS/10.1.11": {
+      "BoldReports.Data.SSAS/11.1.10": {
         "dependencies": {
           "Microsoft.AnalysisServices.AdomdClient": "19.88.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.Data.SSAS.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.Data.WebData/10.1.11": {
+      "BoldReports.Data.WebData/11.1.10": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.3"
         },
         "runtime": {
           "lib/net8.0/BoldReports.Data.WebData.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
-      "BoldReports.Net.Core/10.1.11": {
+      "BoldReports.Net.Core/11.1.10": {
         "dependencies": {
-          "Bold.Licensing": "10.1.11",
+          "Bold.Licensing": "11.1.10",
           "Microsoft.CodeAnalysis.VisualBasic": "4.12.0",
           "Microsoft.Data.SqlClient": "6.0.1",
           "Microsoft.SqlServer.TransactSql.ScriptDom": "170.18.0",
@@ -337,8 +338,8 @@
         },
         "runtime": {
           "lib/net8.0/BoldReports.Web.dll": {
-            "assemblyVersion": "10.1800.11.0",
-            "fileVersion": "10.1800.11.0"
+            "assemblyVersion": "11.1800.10.0",
+            "fileVersion": "11.1800.10.0"
           }
         }
       },
@@ -893,7 +894,7 @@
           "Microsoft.Extensions.DependencyInjection": "8.0.1",
           "Microsoft.Extensions.FileProviders.Physical": "3.1.0",
           "Microsoft.Extensions.Hosting.Abstractions": "8.0.1",
-          "Microsoft.Extensions.Logging": "2.1.1",
+          "Microsoft.Extensions.Logging": "8.0.0",
           "Microsoft.Extensions.Options": "8.0.2",
           "System.Diagnostics.DiagnosticSource": "9.0.2",
           "System.Reflection.Metadata": "8.0.0"
@@ -1538,11 +1539,6 @@
           "Microsoft.Extensions.Primitives": "8.0.0"
         }
       },
-      "Microsoft.Extensions.Configuration.Binder/2.1.1": {
-        "dependencies": {
-          "Microsoft.Extensions.Configuration": "3.1.0"
-        }
-      },
       "Microsoft.Extensions.Configuration.EnvironmentVariables/2.1.1": {
         "dependencies": {
           "Microsoft.Extensions.Configuration": "3.1.0"
@@ -1661,10 +1657,9 @@
           }
         }
       },
-      "Microsoft.Extensions.Logging/2.1.1": {
+      "Microsoft.Extensions.Logging/8.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "2.1.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.2",
+          "Microsoft.Extensions.DependencyInjection": "8.0.1",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.2",
           "Microsoft.Extensions.Options": "8.0.2"
         }
@@ -1684,7 +1679,7 @@
       "Microsoft.Extensions.Logging.ApplicationInsights/2.23.0": {
         "dependencies": {
           "Microsoft.ApplicationInsights": "2.23.0",
-          "Microsoft.Extensions.Logging": "2.1.1"
+          "Microsoft.Extensions.Logging": "8.0.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.ApplicationInsights.dll": {
@@ -2067,6 +2062,17 @@
           "lib/netstandard2.0/Newtonsoft.Json.Bson.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.2.22727"
+          }
+        }
+      },
+      "PuppeteerSharp/20.2.2": {
+        "dependencies": {
+          "Microsoft.Extensions.Logging": "8.0.0"
+        },
+        "runtime": {
+          "lib/net8.0/PuppeteerSharp.dll": {
+            "assemblyVersion": "20.2.2.0",
+            "fileVersion": "20.2.2.0"
           }
         }
       },
@@ -3588,7 +3594,7 @@
     }
   },
   "libraries": {
-    "BoldReports.Server.Services/10.1.11": {
+    "BoldReports.Server.Services/11.1.10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -3656,110 +3662,110 @@
       "path": "bitmiracle.libtiff.net/2.4.649",
       "hashPath": "bitmiracle.libtiff.net.2.4.649.nupkg.sha512"
     },
-    "Bold.Data.Analytics.Base/10.1.11": {
+    "Bold.Data.Analytics.Base/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-edVFmlBCn9AZwBz0mlDxFeVg2jNjXGwYblzby0AJwS6cnnu0NHBbZXLR0r4n306ozHRFaSxScn7so/56PNv6IA==",
-      "path": "bold.data.analytics.base/10.1.11",
-      "hashPath": "bold.data.analytics.base.10.1.11.nupkg.sha512"
+      "sha512": "sha512-7y6j1PAadTjwB+upVZaWa1gaYhzReHL8X3o2u9ZX8jxr2Z7YHn/PRGCnB7EnyhRIOOTVOIjlMN/JrNLBo4gWSg==",
+      "path": "bold.data.analytics.base/11.1.10",
+      "hashPath": "bold.data.analytics.base.11.1.10.nupkg.sha512"
     },
-    "Bold.Licensing/10.1.11": {
+    "Bold.Licensing/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-sJ1BbSK/s/aQYL+i3K5dT5mC96VvUdsucl9d1e8yo4y8AOIKj7NNcNIXAQXP+BHDM/Fp09vLdGTmDvX21eJdsQ==",
-      "path": "bold.licensing/10.1.11",
-      "hashPath": "bold.licensing.10.1.11.nupkg.sha512"
+      "sha512": "sha512-RuqHITdep1YF5CyWS9X/ZI+nhqt/ANinaeQcMqm+ysQn2SQDDCiUVsXZzMyDGVtOIKOwaY3NoaAQ1HQponLVLw==",
+      "path": "bold.licensing/11.1.10",
+      "hashPath": "bold.licensing.11.1.10.nupkg.sha512"
     },
-    "BoldReports.Base.Logger/10.1.11": {
+    "BoldReports.Base.Logger/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-QZfqjcoGVvO6fz/lLHLafPR87elVbDtZUYND5p+ubQSkF7xgu+rl7XGpmJLvMlmz7JhExxoaOGeMs/m0rl0i5A==",
-      "path": "boldreports.base.logger/10.1.11",
-      "hashPath": "boldreports.base.logger.10.1.11.nupkg.sha512"
+      "sha512": "sha512-i2y/IRIU9clPhUdNV2N/8zjkoD7JZoXfswH8DrUKpGGPp7iUujN2/moSEgeekV65IFd1PMcKQtmM78cz4l9/BQ==",
+      "path": "boldreports.base.logger/11.1.10",
+      "hashPath": "boldreports.base.logger.11.1.10.nupkg.sha512"
     },
-    "BoldReports.CRI.Barcode/10.1.11": {
+    "BoldReports.CRI.Barcode/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-onAO7oM4H5su/SmupoRn39G1m0cEiYmsFUsMbMVfIwXFTE5ETNr6K1OrsXrNAsO+jZXZm+ERcA2s7Nza9weN/A==",
-      "path": "boldreports.cri.barcode/10.1.11",
-      "hashPath": "boldreports.cri.barcode.10.1.11.nupkg.sha512"
+      "sha512": "sha512-rmddHHyPKTrKy7aitcaGLyR8PZOZdPz2chSIutrCrrAINCwdDmtIq1IOJDvFanzWyRA8D3ZeHUD2PyNgoYA95A==",
+      "path": "boldreports.cri.barcode/11.1.10",
+      "hashPath": "boldreports.cri.barcode.11.1.10.nupkg.sha512"
     },
-    "BoldReports.CRI.Html/10.1.11": {
+    "BoldReports.CRI.Html/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u61dL2Cnycqc98jnukb5r1txAN38iJ/+UH0f+br9UN4ILL9en/GSmmQoEFJU7wgKzHHFQ/44/RQFeB5t4mUqJQ==",
-      "path": "boldreports.cri.html/10.1.11",
-      "hashPath": "boldreports.cri.html.10.1.11.nupkg.sha512"
+      "sha512": "sha512-E3mmugPfY2cUOEZqQJJdzHVFyn7EUJVxmmqB+SDlIjUZcqzlJ+8tydvVKdW/QJ0b73mvkrl+v+HEjWS9USDgoA==",
+      "path": "boldreports.cri.html/11.1.10",
+      "hashPath": "boldreports.cri.html.11.1.10.nupkg.sha512"
     },
-    "BoldReports.CRI.Pdf/10.1.11": {
+    "BoldReports.CRI.Pdf/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-EwAcPAeyP+18NLAJ+Sjzv46celyKgR3tBqeW+VBRWMcS4tf6kxHgA8kc+wWgVxcDRJ5LvzTmcqZU2R8u7zpOSg==",
-      "path": "boldreports.cri.pdf/10.1.11",
-      "hashPath": "boldreports.cri.pdf.10.1.11.nupkg.sha512"
+      "sha512": "sha512-O3y/obyOdwA/xIJxXRWst6SfYTSSuRWyfUwJp2ECJtTZmQuxA/w7mWk3qiWHLnha2hQ4kGm5r1VwTWDSACIhlg==",
+      "path": "boldreports.cri.pdf/11.1.10",
+      "hashPath": "boldreports.cri.pdf.11.1.10.nupkg.sha512"
     },
-    "BoldReports.CRI.PredictiveAnalytics/10.1.11": {
+    "BoldReports.CRI.PredictiveAnalytics/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-3Enoscgagg0kU8t8nteeZL/rUEkrA+Xo2oxGwLOsWwcqP01LQhmtBDrpgzG2uH2A4BjxmNdu+elJ0uURbla1og==",
-      "path": "boldreports.cri.predictiveanalytics/10.1.11",
-      "hashPath": "boldreports.cri.predictiveanalytics.10.1.11.nupkg.sha512"
+      "sha512": "sha512-st26UGKupizaYq6Zgci8MWyC8/guxi/XvTp23Ix6fpHxYDUc/QJnz5lEV6QLjb3EHrD7n/7ZowpGAp7gkFzREA==",
+      "path": "boldreports.cri.predictiveanalytics/11.1.10",
+      "hashPath": "boldreports.cri.predictiveanalytics.11.1.10.nupkg.sha512"
     },
-    "BoldReports.CRI.Shape/10.1.11": {
+    "BoldReports.CRI.Shape/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bxe7blTZnuur09ky30FOfkmO32qdXU5sPsudcep6LITHOOpC5VNtDPxo0tC6PA2IndFRiR5crYlX+h3FcLEyuA==",
-      "path": "boldreports.cri.shape/10.1.11",
-      "hashPath": "boldreports.cri.shape.10.1.11.nupkg.sha512"
+      "sha512": "sha512-X/j6U4TQsCwRhppX2pHbQbD8mHZDGJfgtdKqftXsvefQd2sAKFOMslOR8vP2JPNnlN8PzyS6O/3VCcu2f9LR0Q==",
+      "path": "boldreports.cri.shape/11.1.10",
+      "hashPath": "boldreports.cri.shape.11.1.10.nupkg.sha512"
     },
-    "BoldReports.CRI.Signature/10.1.11": {
+    "BoldReports.CRI.Signature/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Ue0DAppkwhhbzr3Sy612mc+Xc4+51j7pu1CHGptQp/VjnruUuQyo33g5tUgapV3AADVb9bkg43hSyJoNyDEIgA==",
-      "path": "boldreports.cri.signature/10.1.11",
-      "hashPath": "boldreports.cri.signature.10.1.11.nupkg.sha512"
+      "sha512": "sha512-zt7Ff7Wt9xPcz3ZPUl1+CBeU77a0OfFQUvBx7m4lWJTQxu3oH2dn/XhSeMWkBOgiFWqzPLp6lGTrVfsNQkrPnA==",
+      "path": "boldreports.cri.signature/11.1.10",
+      "hashPath": "boldreports.cri.signature.11.1.10.nupkg.sha512"
     },
-    "BoldReports.Data.Csv/10.1.11": {
+    "BoldReports.Data.Csv/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7KioJ2bSeHwEjh9auR06IHabaCXgiGN73eu3FzgSbmWTM4a45kt62Oxw4U0+NHkHOytLoZ78JGD7Vn+B8/9Xvg==",
-      "path": "boldreports.data.csv/10.1.11",
-      "hashPath": "boldreports.data.csv.10.1.11.nupkg.sha512"
+      "sha512": "sha512-Tysg5aILCNkEFePGuoEUpV30Nv3JDDOkQevf6Jq5w3uI4Wqq+0H34feOB1AKM3qQQLbQFV+GDJHqiO4HBI0IGw==",
+      "path": "boldreports.data.csv/11.1.10",
+      "hashPath": "boldreports.data.csv.11.1.10.nupkg.sha512"
     },
-    "BoldReports.Data.ElasticSearch/10.1.11": {
+    "BoldReports.Data.ElasticSearch/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-afP7IXED3erVmI1G64Fd+U2gfJlF9KSY/9BQOPWUV89g8Y3hiJ/mjWIQ/v3Hft83Kyn79qDG7VXft+QJ/FmLww==",
-      "path": "boldreports.data.elasticsearch/10.1.11",
-      "hashPath": "boldreports.data.elasticsearch.10.1.11.nupkg.sha512"
+      "sha512": "sha512-1KaHqiAlngkPe+zBZ7YL7/7xKbiqexRnHvMmx8jSqAjK91jb9WFYF42SVzEY6y87PCEBsXigZ+l+3QQ8O59GRw==",
+      "path": "boldreports.data.elasticsearch/11.1.10",
+      "hashPath": "boldreports.data.elasticsearch.11.1.10.nupkg.sha512"
     },
-    "BoldReports.Data.Excel/10.1.11": {
+    "BoldReports.Data.Excel/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-njVrEuWOJpKYZA/+NZKiWHxr85B9OeUQbc6AhYQJX85+ZEIIQgZ7JVpyNK8opNvma9QIQYjsJgkHX8M6UaudGw==",
-      "path": "boldreports.data.excel/10.1.11",
-      "hashPath": "boldreports.data.excel.10.1.11.nupkg.sha512"
+      "sha512": "sha512-M9rwttCCylmucCE+vwlIJxrmIzwlLLHd23LurEH1s2jv7N4JV2KDiVSFxfltDA5Qj7x4WgoF5pgI84C4Z8p7kA==",
+      "path": "boldreports.data.excel/11.1.10",
+      "hashPath": "boldreports.data.excel.11.1.10.nupkg.sha512"
     },
-    "BoldReports.Data.SSAS/10.1.11": {
+    "BoldReports.Data.SSAS/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Fyb3GgBBtjUn24yr4KL3OskFII5RXS0R3QKhRUoaZsD3EDhHpfnJ2E578bbshGwiYK+0txOc8/cYhcbmI/hSAQ==",
-      "path": "boldreports.data.ssas/10.1.11",
-      "hashPath": "boldreports.data.ssas.10.1.11.nupkg.sha512"
+      "sha512": "sha512-5bA/HcHoBuRh/aGK6tcTx9qj0dXPKpn5cid+IpOAyizy0iaM7S2vqeL5i8yX20hVoQU7B4W2WJfd8SKbyuOVGw==",
+      "path": "boldreports.data.ssas/11.1.10",
+      "hashPath": "boldreports.data.ssas.11.1.10.nupkg.sha512"
     },
-    "BoldReports.Data.WebData/10.1.11": {
+    "BoldReports.Data.WebData/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hfsNfTFDfWbGFOaAydx7h/7MRzWCACmM+hmskrRbMpE6bYDtTUCTkL6kHo6vgkIRO/X/artrO5luMlcDzHpP/A==",
-      "path": "boldreports.data.webdata/10.1.11",
-      "hashPath": "boldreports.data.webdata.10.1.11.nupkg.sha512"
+      "sha512": "sha512-/UFTofYWBEe0XnbkYwemG+3Tef+9HPgJejIfZaIeK5Ok+l0pY0ACv+yMIjxDR1N14ok6CfAtVqEMSqKhIIEPNg==",
+      "path": "boldreports.data.webdata/11.1.10",
+      "hashPath": "boldreports.data.webdata.11.1.10.nupkg.sha512"
     },
-    "BoldReports.Net.Core/10.1.11": {
+    "BoldReports.Net.Core/11.1.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-YBMMDpYWWbVg0lvW4gWFfRRRW7QCsek8Uy06oqvCKo35WjBPGfXMPrJAxgh/ZTYpWOtGKgNgnyDFQxrllV0zfw==",
-      "path": "boldreports.net.core/10.1.11",
-      "hashPath": "boldreports.net.core.10.1.11.nupkg.sha512"
+      "sha512": "sha512-GPfOjgA79+9mpN+FO/BAVjiGbpvQpHyaO0lp7+Aup+pBm/Ly0EVD7i9Cmu7Qb8BOC9kVPM3a4MQg8S2E9MyPmQ==",
+      "path": "boldreports.net.core/11.1.10",
+      "hashPath": "boldreports.net.core.11.1.10.nupkg.sha512"
     },
     "BouncyCastle.Cryptography/2.5.1": {
       "type": "package",
@@ -4307,13 +4313,6 @@
       "path": "microsoft.extensions.configuration.abstractions/8.0.0",
       "hashPath": "microsoft.extensions.configuration.abstractions.8.0.0.nupkg.sha512"
     },
-    "Microsoft.Extensions.Configuration.Binder/2.1.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-fcLCTS03poWE4v9tSNBr3pWn0QwGgAn1vzqHXlXgvqZeOc7LvQNzaWcKRQZTdEc3+YhQKwMsOtm3VKSA2aWQ8w==",
-      "path": "microsoft.extensions.configuration.binder/2.1.1",
-      "hashPath": "microsoft.extensions.configuration.binder.2.1.1.nupkg.sha512"
-    },
     "Microsoft.Extensions.Configuration.EnvironmentVariables/2.1.1": {
       "type": "package",
       "serviceable": true,
@@ -4412,12 +4411,12 @@
       "path": "microsoft.extensions.localization.abstractions/8.0.11",
       "hashPath": "microsoft.extensions.localization.abstractions.8.0.11.nupkg.sha512"
     },
-    "Microsoft.Extensions.Logging/2.1.1": {
+    "Microsoft.Extensions.Logging/8.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hh+mkOAQDTp6XH80xJt3+wwYVzkbwYQl9XZRCz4Um0JjP/o7N9vHM3rZ6wwwtr+BBe/L6iBO2sz0px6OWBzqZQ==",
-      "path": "microsoft.extensions.logging/2.1.1",
-      "hashPath": "microsoft.extensions.logging.2.1.1.nupkg.sha512"
+      "sha512": "sha512-tvRkov9tAJ3xP51LCv3FJ2zINmv1P8Hi8lhhtcKGqM+ImiTCC84uOPEI4z8Cdq2C3o9e+Aa0Gw0rmrsJD77W+w==",
+      "path": "microsoft.extensions.logging/8.0.0",
+      "hashPath": "microsoft.extensions.logging.8.0.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging.Abstractions/9.0.2": {
       "type": "package",
@@ -4614,6 +4613,13 @@
       "sha512": "sha512-QYFyxhaABwmq3p/21VrZNYvCg3DaEoN/wUuw5nmfAf0X3HLjgupwhkEWdgfb9nvGAUIv3osmZoD3kKl4jxEmYQ==",
       "path": "newtonsoft.json.bson/1.0.2",
       "hashPath": "newtonsoft.json.bson.1.0.2.nupkg.sha512"
+    },
+    "PuppeteerSharp/20.2.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-66l7Uzh4mzTaFqRkkP62Jno/lh+ORNEHY2QjtevbQwqQ6TO1w80wZqNGeUR416aw8AEEFZs8vO9MOaJx8i9ySw==",
+      "path": "puppeteersharp/20.2.2",
+      "hashPath": "puppeteersharp.20.2.2.nupkg.sha512"
     },
     "runtime.android-arm.runtime.native.System.IO.Ports/9.0.2": {
       "type": "package",

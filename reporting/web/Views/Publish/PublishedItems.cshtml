@@ -5,6 +5,7 @@
     ViewBag.Title = "[[[Published Resources]]] - " + globalAppSettings.SystemSettings.OrganizationName;
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.ManagePublishedReports);
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
+    var isHideGuidInUrl = ServerAppConfig.IsHideGuidInUrl;
 }
 
 @section MainSection{
@@ -71,7 +72,11 @@
                         </script>
                         <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="dashboard-template">
                             <div class="item-dashboard grid-content" title="{{:Name}}" data-bs-toggle="tooltip" data-bs-placement="top">
-                                <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:CategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a></span>
+                                {{if @(Convert.ToBoolean(isHideGuidInUrl).ToString().ToLower()) == true }}
+                                <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:SourceCategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a></span>
+                                {{else}}
+                                <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:SourceCategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a></span>
+                                {{/if}}
                             </div>
                         </script>
                         <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="status-template">

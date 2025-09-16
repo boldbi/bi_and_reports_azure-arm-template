@@ -40,7 +40,7 @@
     var dashboardItemCount = "@itemsCount[ItemType.Report]";
     var reportPartEditUrl = "@Url.Action("ReportPart", "Designer")";
     $(document).ready(function () {
-        $('#content-area').css('overflow', 'hidden');
+    $('#content-area').css('overflow', 'hidden');
     });
 </script>
 @await Html.PartialAsync("../Shared/_TopHeaderSection", new ViewDataDictionary(ViewData) { { "PageHeader", pageHeader } })
@@ -55,20 +55,23 @@
             if (!isMobile && model != null && model.ContainsKey(ItemType.Report) && model[ItemType.Report])
             {
                 <button class="sf-primary-button app-btn-primary" data-action="create-items">[[[Create my first Report]]]</button>
-                <div class="dashboard-notification">
-                    <img class="stacked-column" src="@(GlobalAppSettings.CdnDomain)/static/default-pages/v1/report-notification.svg">
-                    <div class="dashboard-main">
-                        <h2 class="default-pages-header">[[[Report Samples]]]</h2>
-                        <span class="notification-close su-close"></span>
-                        <p class="message">[[[Explore our features and see what]]] @(GlobalAppSettings.Branding == AppBranding.Syncfusion.Identifier ? "Syncfusion" : "Bold Reports") [[[is capable of with our sample reports.]]]</p>
-                        <div class="explore">
-                            <a class="sf-nav-link">
-                                [[[Explore]]]
-                                <span class="arrow su-arrow-right"></span>
-                            </a>
+                if (!ServerAppConfig.IsHideSampleReports)
+                {
+                    <div class="dashboard-notification">
+                        <img class="stacked-column" src="@(GlobalAppSettings.CdnDomain)/static/default-pages/v1/report-notification.svg">
+                        <div class="dashboard-main">
+                            <h2 class="default-pages-header">[[[Report Samples]]]</h2>
+                            <span class="notification-close su-close"></span>
+                            <p class="message">[[[Explore our features and see what]]] @(GlobalAppSettings.Branding == AppBranding.Syncfusion.Identifier ? "Syncfusion" : "Bold Reports") [[[is capable of with our sample reports.]]]</p>
+                            <div class="explore">
+                                <a class="sf-nav-link">
+                                    [[[Explore]]]
+                                    <span class="arrow su-arrow-right"></span>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             }
         }
         else if (itemType == ItemType.Datasource)

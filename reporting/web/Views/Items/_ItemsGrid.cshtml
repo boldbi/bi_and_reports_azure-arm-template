@@ -34,6 +34,10 @@
     var showDatasetUpdate = datasetSchemes?.Update ?? true;
     var showDatasetDelete = datasetSchemes?.Delete ?? true;
     var showDatasetContextMenu = (datasetSchemes?.ContextMenu ?? true) && (showDatasetCreateReport || showDatasetCreateReportPart || showDatasetDownload || showDatasetEdit || showDatasetChangeDatasource || showDatasetShare || showDatasetVersionHistory || showDatasetInfo || showDatasetEditAsXml || showDatasetUpdate || showDatasetDelete);
+#pragma warning disable SCS0029 //There is no direct user input process for this issue.
+    var datasourceSchemesJson = Html.Raw(Json.Serialize(datasourceSchemes));
+    var datasetSchemesJson = Html.Raw(Json.Serialize(datasetSchemes));
+#pragma warning restore SCS0029 //There is no direct user input process for this issue.
 }
 <script nonce="@Context.Items["ScriptNonce"]">
     var copyIframeUrl = "@Url.Action("copyviewitem", "items")";
@@ -60,8 +64,8 @@
     var viewDashboardUrlAction = "@Url.Action("Reports", "Reports")";
     var getLinkDialogViewUrl = "@Url.Action("GetLinkView", "items")";
     var itemsGrid;
-    var datasourceSchemesDetails = @Html.Raw(Json.Serialize(datasourceSchemes));
-    var datasetSchemesDetails = @Html.Raw(Json.Serialize(datasetSchemes));
+    var datasourceSchemesDetails = @datasourceSchemesJson;
+    var datasetSchemesDetails = @datasetSchemesJson;
 </script>
 <!--[if LT IE  10]>
         <script nonce="@Context.Items["ScriptNonce"]">

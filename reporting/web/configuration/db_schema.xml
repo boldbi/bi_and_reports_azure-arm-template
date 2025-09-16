@@ -855,7 +855,7 @@
     <ModifiedDate>ModifiedDate</ModifiedDate>  
     <IsActive>IsActive</IsActive>
 </DB_ReportPartTypeInfo>
-<DB_UserSession>
+  <DB_UserSession>
     <DB_TableName>UserSession</DB_TableName>
     <Id>Id</Id>
     <IdpReferenceId>IdpReferenceId</IdpReferenceId>
@@ -866,5 +866,13 @@
     <SessionId>SessionId</SessionId>
     <Browser>Browser</Browser>
     <LastActive>LastActive</LastActive>
-</DB_UserSession>	
+  </DB_UserSession>
+  <DB_FileDetail>
+    <DB_TableName>FileDetail</DB_TableName>
+    <Id>Id</Id>
+    <FileId>FileId</FileId>
+    <Password>Password</Password>
+    <ModifiedDate>ModifiedDate</ModifiedDate>
+    <IsActive>IsActive</IsActive>
+  </DB_FileDetail>
 </DB_SyncUMP>

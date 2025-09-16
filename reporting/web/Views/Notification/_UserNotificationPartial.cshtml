@@ -2,6 +2,7 @@
     Layout = null;
     var globalAppSettings = _globalAppSettings;
     var idPAvatarUrl = globalAppSettings.SystemSettings.IDPUrl + "/User/Avatar";
+    var targetValue = @ServerAppConfig.SameTabReportRender ? "_self" : "_blank";
 }
 
 <script nonce="@Context.Items["ScriptNonce"]">
@@ -64,7 +65,7 @@
                         </span>
                         <span ng-switch="item.ItemTypeId" class="notification-link-content">
                             <span ng-switch-when="@((int) ItemType.Report)">
-                                <a target="_blank" class="notification-item-link" href="{{getNotificationUrl(item)}}">{{item.ItemName}}</a>
+                                <a target="@targetValue" class="notification-item-link" href="{{getNotificationUrl(item)}}">{{item.ItemName}}</a>
                             </span>
                             <span ng-switch-default>
                                 {{item.ItemName}}

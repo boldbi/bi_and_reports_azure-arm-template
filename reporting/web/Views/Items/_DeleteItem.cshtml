@@ -47,6 +47,10 @@
             {
                     <input type="button" class="app-button app-critical-action-button app-btn-danger" value="[[[Yes]]]" id="delete-report-part" data-item-id="@ViewData["ItemId"]" data-item-name="@ViewData["ItemName"]" data-itemtype="@(Model.Value)" tabindex="1" autofocus />
             }
+            else if (itemType == ItemType.File)
+            {
+                <input type="button" class="app-button app-critical-action-button app-btn-danger" value="[[[Yes]]]" id="delete-file" data-item-id="@ViewData["ItemId"]" data-item-name="@ViewData["ItemName"]" data-itemtype="@(Model.Value)" tabindex="1" autofocus />
+            }
             else
             {
             <input type="button" class="app-button app-critical-action-button app-btn-danger" value="[[[Yes]]]" id="delete-item" data-item-id="@ViewData["ItemId"]" data-datasource-type="@ViewData[" DatasourceType"]" data-itemtype="@(Model.Value)" tabindex="1" autofocus />

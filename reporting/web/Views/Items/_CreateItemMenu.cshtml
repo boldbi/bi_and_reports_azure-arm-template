@@ -19,7 +19,7 @@
     var createNewDatasourceUrl = "@Url.Action("CreateDataSource", "DataSources")";
     var addReportIframeUrl = "@Url.Action("addreport", "reports")";
     var addDatasetUrl = "@Url.Action("AddDataset", "DataSets")";
-    var addFileUrl = "@Url.Action("AddFiles", "Files")";
+    var addFileUrl = "@Url.Action("AddFileView", "Files")";
     var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
 </script>
 
@@ -56,28 +56,34 @@
 
                         if (ServerAppConfig.IsSelfHosted && showImport)
                         {
-                            <li class="deploy-template-dashboard add-sample-button">
-                                <div class="create-item-list-section">
-                                    <div class="create-item-list-icon" style="float: left;">
-                                        <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/template-dashboard.svg">
+                            if (!ServerAppConfig.IsHideSampleReports)
+                            {
+                                <li class="deploy-template-dashboard add-sample-button">
+                                    <div class="create-item-list-section">
+                                        <div class="create-item-list-icon" style="float: left;">
+                                            <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/template-dashboard.svg">
+                                        </div>
+                                        <div class="create-item-list-title">
+                                            <label>[[[Sample Reports]]]</label><br>
+                                            <span>[[[Explore the sample reports gallery.]]]</span>
+                                        </div>
                                     </div>
-                                    <div class="create-item-list-title">
-                                        <label>[[[Sample Reports]]]</label><br>
-                                        <span>[[[Explore the sample reports gallery.]]]</span>
+                                </li>
+                            }
+                            if (!ServerAppConfig.IsHideSampleReportParts)
+                            {
+                                <li class="deploy-template-dashboard add-sample-report-part-button">
+                                    <div class="create-item-list-section">
+                                        <div class="create-item-list-icon" style="float: left;">
+                                            <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/template-report-part.svg">
+                                        </div>
+                                        <div class="create-item-list-title">
+                                            <label>[[[Sample Report Parts]]]</label><br>
+                                            <span>[[[Explore the sample report parts gallery.]]]</span>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                            <li class="deploy-template-dashboard add-sample-report-part-button">
-                                <div class="create-item-list-section">
-                                    <div class="create-item-list-icon" style="float: left;">
-                                        <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/template-report-part.svg">
-                                    </div>
-                                    <div class="create-item-list-title">
-                                        <label>[[[Sample Report Parts]]]</label><br>
-                                        <span>[[[Explore the sample report parts gallery.]]]</span>
-                                    </div>
-                                </div>
-                            </li>
+                                </li>
+                            }
                         }
 
                         if (showImport)
@@ -88,7 +94,7 @@
                                         <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/upload-report.svg">
                                     </div>
                                     <div class="create-item-list-title">
-                                        <label>[[[Upload Report]]]</label><br>
+                                        <label>[[[Upload Report(s)]]]</label><br>
                                         <span>[[[Upload your RDL file to the server.]]]</span>
                                     </div>
                                 </div>
@@ -164,7 +170,8 @@
                                 </div>
                             </div>
                         </li>
-                    }                    @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dataset) && itemPermissions[ItemType.Dataset])
+                    }                    
+                    @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Dataset) && itemPermissions[ItemType.Dataset])
                     {
                         <li id="create-dataset-connection">
                             <div class="create-item-list-section">
@@ -193,7 +200,7 @@
                             </div>
                         </li>
                     }
-                    @*@if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Report) && itemPermissions[ItemType.Report])
+                    @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Report) && itemPermissions[ItemType.Report])
                     {
                         <li id="upload-file" data-action="Upload">
                             <div class="create-item-list-section">
@@ -201,14 +208,14 @@
                                     <img id="templates-img" class="smiley" src="@(GlobalAppSettings.CdnDomain)/static/sidebar/v1/add-file.svg">
                                 </div>
                                 <div class="create-item-list-title">
-                                    <label>[[[Upload Files]]]</label><br>
+                                    <label>[[[Upload File]]]</label><br>
                                     <span>
-                                        [[[Upload your files to the server.]]]
+                                        [[[Upload your file to the server.]]]
                                     </span>
                                 </div>
                             </div>
                         </li>
-                    }*@
+                    }
                     @if (isItemPageRequested && itemPermissions != null && itemPermissions.ContainsKey(ItemType.Schedule) && itemPermissions[ItemType.Schedule] && itemsCount != null && itemsCount.ContainsKey(ItemType.Report) && itemsCount[ItemType.Report] > 0)
                     {
                         <li id="create_schedule">

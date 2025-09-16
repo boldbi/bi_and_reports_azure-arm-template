@@ -36,30 +36,23 @@
         </div>
         <div id="concierge-settings-body" class="admin-page-body">
             <div class="row input-field-wrapper">
-                <div class="col-8 field-container-dashboard bottom-width ">
-                    <div class="col-md-6 col-4">
-                    </div>
-
-                    <div class="col-md-2 notification-header">
-                        <strong>[[[Allow]]]</strong>
-
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8 field-container-dashboard">
-                        <label class="col-md-6 col-4 app-textbox-label activation">
-                            [[[Allow support team to access my account.]]]
-                        </label>
-                        <div class="col-md-2 switch-align no-padding">
-                            <span class="material-switch float-end">
-                                <input type="checkbox" id="concierge-support-access" @(isConciergeSupportHasAccess ? "checked" : string.Empty) />
-
-                                <label for="concierge-support-access" class="label-primary"></label>
-                            </span>
-                            @*<div class="tool-tip col-1 no-padding">
-                                <span class="dropdown-toggle" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
-                                <div class="dropdown-menu" role="menu">[[[Please check our ]]] <a class="app-hyperlink" href="http://files2.syncfusion.com/syncfusionio/support/sla/syncfusion-concierge-service-agreement_v1.pdf" target="_blank">[[[license agreement]]] </a> [[[ for this access.]]]</div>
-                            </div>*@
+                <div class="col-10 field-container-dashboard bottom-width d-flex align-items-end">
+                    <label class="col-md-4 app-textbox-label activation cls-margin-top">
+                        [[[Allow support team to access my account.]]]
+                    </label>
+                    <div class="col-md-6">
+                        <div class="d-flex flex-column align-items-start">
+                            <strong class="mb-2 notification-header" style="margin-left: 10px;">Allow</strong>
+                            <div class="d-flex align-items-center switch-align no-padding">
+                                    <span class="material-switch float-end">
+                                        <input type="checkbox" id="concierge-support-access" @(isConciergeSupportHasAccess ? "checked" : string.Empty) />
+                                        <label for="concierge-support-access" class="label-primary"></label>
+                                    </span>
+                                    @*<div class="tool-tip col-1 no-padding">
+                                    <span class="dropdown-toggle" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
+                                    <div class="dropdown-menu" role="menu">[[[Please check our ]]] <a class="app-hyperlink" href="http://files2.syncfusion.com/syncfusionio/support/sla/syncfusion-concierge-service-agreement_v1.pdf" target="_blank">[[[license agreement]]] </a> [[[ for this access.]]]</div>
+                                    </div>*@
+                            </div>
                         </div>
                     </div>
                 </div>

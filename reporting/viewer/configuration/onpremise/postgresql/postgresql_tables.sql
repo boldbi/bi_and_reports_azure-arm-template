@@ -618,6 +618,14 @@ CREATE TABLE BOLDRS_DataSourceDetail(
 	IsActive smallint NOT NULL)
 ;
 
+CREATE TABLE BOLDRS_FileDetail(
+    Id SERIAL PRIMARY KEY NOT NULL,
+    FileId uuid NOT NULL,
+    Password varchar(255) NOT NULL,
+    ModifiedDate timestamp NOT NULL,
+    IsActive smallint NOT NULL)
+;
+
 CREATE TABLE BOLDRS_DatasetLinkage(
 	Id SERIAL PRIMARY KEY NOT NULL,
 	DatasetItemId uuid NOT NULL,
@@ -1151,6 +1159,8 @@ INSERT into BOLDRS_Source (Name,IsActive) VALUES ( N'Web',1)
 INSERT into BOLDRS_Source (Name,IsActive) VALUES ( N'API',1)
 ;
 INSERT into BOLDRS_Source (Name,IsActive) VALUES ( N'Schedule',1)
+;
+INSERT into BOLDRS_Source (Name,IsActive) VALUES ( N'Viewer',1)
 ;
 
 INSERT into BOLDRS_LogStatus (Name,IsActive) VALUES ( N'Start',1)
@@ -1992,6 +2002,8 @@ ALTER TABLE BOLDRS_ReportDataSource  ADD FOREIGN KEY(DataSourceItemId) REFERENCE
 ;
 
 ALTER TABLE BOLDRS_DataSourceDetail ADD FOREIGN KEY(DataSourceId) REFERENCES BOLDRS_Item (Id)
+;
+ALTER TABLE BOLDRS_FileDetail ADD FOREIGN KEY(FileId) REFERENCES BOLDRS_Item (Id)
 ;
 
 ALTER TABLE BOLDRS_DatasetLinkage  ADD FOREIGN KEY(DatasetItemId) REFERENCES BOLDRS_Item (Id)

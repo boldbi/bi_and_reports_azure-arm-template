@@ -29,6 +29,11 @@
                     <textarea id="custom-attribute-descrition" autocomplete="off" class="form-control" placeholder="[[[Write a description about this attribute.]]]" maxlength="1024"> </textarea>
                 </div>
                 <div class="entry-checkbox">
+                    @Html.CheckBox("overwrite-custom-attribute", new { @class = "material-checkbox" })
+                    @Html.Hidden("overwrite-custom-attribute")
+                    @Html.Label("overwrite-custom-attribute", "[[[Overwrite attribute]]]", new { @class = "toggle-space" })
+                </div>
+                <div class="entry-checkbox">
                     @Html.CheckBox("encrypt-custom-attribute", new { @class = "material-checkbox" })
                     @Html.Hidden("encrypt-custom-attribute")
                     @Html.Label("encrypt-custom-attribute", "[[[Encrypt this attribute]]]", new { @class = "toggle-space" })

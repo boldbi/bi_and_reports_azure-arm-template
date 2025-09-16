@@ -231,6 +231,52 @@
             </summary>
             <returns>Configuration list</returns>
         </member>
+        <member name="T:BoldReports.Server.Services.Helper.RateLimitHelper">
+            <summary>
+            Provides rate limiting functionality with automatic memory cleanup to prevent memory leaks.
+            Tracks request limits per user and action, automatically removing unused limiters.
+            </summary>
+        </member>
+        <member name="M:BoldReports.Server.Services.Helper.RateLimitHelper.#cctor">
+            <summary>
+            Initializes the rate limit helper and starts automatic cleanup timer.
+            Runs once when the class is first accessed.
+            </summary>
+        </member>
+        <member name="M:BoldReports.Server.Services.Helper.RateLimitHelper.IsRateLimitExceeded(System.String,System.String,System.String,BoldReports.Server.Services.HttpContextModel)">
+            <summary>
+            Checks if a request should be allowed or blocked based on rate limiting rules.
+            Sets response headers for rate limit information.
+            </summary>
+            <param name="actionName">The action being performed</param>
+            <param name="tenant">Tenant name of the current request.</param>
+            <param name="userId">The user making the request (falls back to IP if empty)</param>
+            <param name="contextModel">Current HTTP request context for setting headers</param>
+            <returns>True if request is allowed, false if rate limit exceeded</returns>
+        </member>
+        <member name="M:BoldReports.Server.Services.Helper.RateLimitHelper.SetRateLimitHeaders(BoldReports.Server.Services.HttpContextModel,System.Int32,System.Int32,System.Int64,System.Boolean)">
+            <summary>
+            Sets standard rate limiting headers in the HTTP response.
+            Includes limit, remaining requests, reset time, and retry-after if blocked.
+            </summary>
+            <param name="contextModel">Current HTTP context to set headers on</param>
+            <param name="permitLimit">Maximum requests allowed in the window</param>
+            <param name="remaining">Number of requests remaining in current window</param>
+            <param name="resetSeconds">Seconds until the rate limit window resets</param>
+            <param name="isAcquired">Whether the current request was allowed</param>
+        </member>
+        <member name="M:BoldReports.Server.Services.Helper.RateLimitHelper.CleanupExpiredLimiters(System.Object)">
+            <summary>
+            Removes inactive rate limiters from memory to prevent memory leaks.
+            Runs automatically every 30 minutes via timer. Tests each limiter and removes unused ones.
+            </summary>
+            <param name="state">Timer state parameter (not used)</param>
+        </member>
+        <member name="T:BoldReports.Server.Services.Helper.RateLimitSettings">
+            <summary>
+            Represents configuration settings for rate limiting
+            </summary>
+        </member>
         <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.CanRead">
             <summary>
             Specifies the read permission of the item
@@ -359,6 +405,11 @@
         <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.ItemCreatedDate">
             <summary>
             Date created of item in date format
+            </summary>
+        </member>
+        <member name="P:BoldReports.Server.Report.Model.ApiItemDetail.Extension">
+            <summary>
+            Gets or sets the file extension as a string
             </summary>
         </member>
         <member name="P:BoldReports.Server.Report.Model.ApiItemResponse.ApiStatus">

@@ -1,4 +1,4 @@
-﻿@using Syncfusion.Server.Base.Helpers
+@using Syncfusion.Server.Base.Helpers
 
 <!DOCTYPE html>
 @{ 
@@ -113,7 +113,8 @@
                             <td class="col-2"><div class="bottom-margin35 float-end">[[[RDL File]]]<span class="mandatory">*</span></div></td>
                             <td class="col-12">
                                 <input type="hidden" name="rdl_filename" id="rdl_filename" />
-                                <iframe id="report_upload_iframe" style="height:35px" class="bottom-margin30" src="@Url.Action("UploadReportView", "Reports")" scrolling="no" tabindex="-1"></iframe>
+                                <input type="hidden" name="edit-report-dialog" id="edit-report-dialog" value="true"/>
+                                <iframe id="report_upload_iframe" style="height:35px" class="bottom-margin30" src="@Url.Action("UploadReportView", "Reports", new { allowMultiple = "false", isEditReport = "true" })" scrolling="no" tabindex="-1"></iframe>
                                 <span id="uploadValidation" class="ErrorMessage text"></span>
                             </td>
                         </tr>

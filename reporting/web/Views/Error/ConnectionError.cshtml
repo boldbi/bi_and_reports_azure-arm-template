@@ -14,6 +14,7 @@
         reportServerResourceUrl = ServerAppConfig.AppSettings.EndPoints.CdnLink.TrimEnd('/');
     }
     var faviconFallbackPath = reportServerResourceUrl + "/cdn/images/application/" + ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + IconFileNames.Favicon;
+    var errorMessage = Context.Items["ErrorMessage"] as string;
 }
 <!DOCTYPE html>
 <html>
@@ -58,13 +59,23 @@
                 </div>
                 <div class="error-type">[[[Database connection error]]]</div>
                 <div class="error-text">
-                    [[[Sorry! Server has encountered an error while establishing the connection to application database. This error could be occurred due to below possible causes:]]]
-
-                    <ul class="list-style">
-                        <li>[[[The database server might have been down.]]]</li>
-                        <li>[[[The login credentials for the database might have been changed.]]]</li>
-                        <li>[[[The database might have been corrupted.]]]</li>
-                    </ul>
+                    @if (!string.IsNullOrWhiteSpace(errorMessage))
+                    {
+                        <span>[[[Sorry! Server has encountered an error while establishing the connection to application database.]]]</span>
+                        <div id="deploy-error-container">
+                            <textarea type="text" id="deploy-error-box" disabled>@errorMessage</textarea>
+                            <span class="su su-copy text focus" id="deploy-error-copy" data-bs-toggle="tooltip" title="[[[Click to copy]]]"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <span>[[[Sorry! Server has encountered an error while establishing the connection to application database. This error could be occurred due to below possible causes:]]]</span>
+                        <ul class="list-style">
+                            <li>[[[The database server might have been down.]]]</li>
+                            <li>[[[The login credentials for the database might have been changed.]]]</li>
+                            <li>[[[The database might have been corrupted.]]]</li>
+                        </ul>
+                    }
                 </div>
             </div>
         </div>

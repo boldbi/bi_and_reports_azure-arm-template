@@ -18,8 +18,8 @@
     {
       "Name": "BoldReports",
       "SetupName": "BoldReports_EnterpriseReporting",
-      "Version": "10.1.11",
-      "IDPVersion": "5.1.11",
+      "Version": "11.1.10",
+      "IDPVersion": "5.1.13",
       "IsCommonLogin": true
     }
   ]

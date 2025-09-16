@@ -29,6 +29,8 @@
     var requestUrl = new Uri(Context.Request.GetDisplayUrl());
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var faviconFallbackPath = reportServerResourceUrl + "/cdn/images/application/" + ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + IconFileNames.Favicon;
+    var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
+    var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
 }
 <html style="height: 100%">
 <head>

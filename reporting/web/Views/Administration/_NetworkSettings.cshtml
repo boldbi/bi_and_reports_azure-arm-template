@@ -3,10 +3,13 @@
     var RuleData = (globalAppSettings.SystemSettings.NetworkSettings != null && globalAppSettings.SystemSettings.NetworkSettings.IPWhitelistingRules != null) ? globalAppSettings.SystemSettings.NetworkSettings.IPWhitelistingRules : new List<IPWhitelistingRules>();
     var currentUserIP = Context.Request.HttpContext.Connection.RemoteIpAddress.ToString();
     var networkSettingsIsEnabled = globalAppSettings.SystemSettings.NetworkSettings != null && globalAppSettings.SystemSettings.NetworkSettings.IsEnabled != null ? globalAppSettings.SystemSettings.NetworkSettings.IsEnabled : false;
+#pragma warning disable SCS0029 //There is no direct user input process for this issue.
+    var ruleDataJson = Html.Raw(Json.Serialize(RuleData));
+#pragma warning restore SCS0029 //There is no direct user input process for this issue.
 }
 
 <script nonce="@Context.Items["ScriptNonce"]">
-    var dataSourceRule = @(RuleData != null ? Html.Raw(Json.Serialize(RuleData)) : "[]");
+    var dataSourceRule = @(RuleData != null ? ruleDataJson : "[]");
 </script>
 <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="application-edit">
     <div class="item-header">

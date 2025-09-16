@@ -20,30 +20,19 @@
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/save-view.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/save-view.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
     </environment>
-    @if (ViewBag.ViewerType == "v2")
-    {
-        <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view-v2.js")" crossorigin="anonymous"></script>
-        </environment>
-        <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view-v2.min.js")" crossorigin="anonymous"></script>
-        </environment>
-    }
-    else
-    {
-        <environment include="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view.js")" crossorigin="anonymous"></script>
-        </environment>
-        <environment exclude="Development,CloudDevelopment">
-            <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view.min.js")" crossorigin="anonymous"></script>
-        </environment>
-    }
+    <environment include="Development,CloudDevelopment">
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view-v2.js")" crossorigin="anonymous"></script>
+    </environment>
+    <environment exclude="Development,CloudDevelopment">
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/save-view-v2.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/save-view-v2.min.js")" crossorigin="anonymous"></script>
+    </environment>
 
     <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
         var rootUrlAction = "@Url.Action("", "")";
         var addViewUrl = { "web": "@Url.Action("onfiltersave", "ReportViews")", "api": "/items/views/add" };
         var getSavedViewUrl = { "web": "@Url.Action("GetViews", "ReportViews")", "api": "/items/views/get-by-item-id" };
-
+        var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
+        var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
         var sameOrigin;
         try {
             sameOrigin = window.parent.location.host == window.location.host;
@@ -98,5 +87,3 @@
     </environment>
 </body>
 </html>
-
-

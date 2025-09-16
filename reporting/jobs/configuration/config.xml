@@ -14,12 +14,12 @@
     <EnableVirtualEvaluation>false</EnableVirtualEvaluation>
     <DisablePageSplitting>false</DisablePageSplitting>
     <MaxResponseTimeInterval>0</MaxResponseTimeInterval>
+	<ToolBarRenderMode>Native</ToolBarRenderMode>
     <RoundLayoutMeasures>true</RoundLayoutMeasures>
     <Exporting UsePuppeteer="true" PuppeteerPath=""></Exporting>
     <EnableParameterOperator>false</EnableParameterOperator>
   </ReportViewerFeatures>
-  <IsOldViewerDesigner>false</IsOldViewerDesigner>
-  <CustomFont></CustomFont>
+  <CustomFont UseFontsFromDirectory="false"></CustomFont>
   <CustomStyleSheet>
 	<FilePath></FilePath>
   </CustomStyleSheet>
@@ -29,4 +29,9 @@
   <EnableViewsInReportsMenu>false</EnableViewsInReportsMenu>
   <IsHideETLOption>false</IsHideETLOption>
   <IsHideReportViewerHeader>false</IsHideReportViewerHeader>
+  <SameTabReportRender>false</SameTabReportRender>
+  <IsHideSampleReports>false</IsHideSampleReports>
+  <IsHideSampleReportParts>false</IsHideSampleReportParts>
+  <IsHideGuidInUrl>false</IsHideGuidInUrl>
+  <ShowStackTrace>true</ShowStackTrace>
 </SystemSettings>

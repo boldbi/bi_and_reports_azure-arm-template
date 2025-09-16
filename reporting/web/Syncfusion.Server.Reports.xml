@@ -503,7 +503,7 @@
             <param name="dataSourceDefinition">Request elements which is saved as object</param>
             <returns>Status of the operation</returns>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Models.DataSourceManager.UploadRdlFile(System.IO.Stream,System.Int32)">
+        <member name="M:Syncfusion.Server.Reports.Models.DataSourceManager.UploadRdlFile(System.IO.Stream,System.Int32,System.String,Microsoft.AspNetCore.Http.IFormFile)">
             <summary>
             This method is used to upload the RDL file for data source processing. The uploaded file will be saved in temporary folder.
             </summary>
@@ -520,7 +520,7 @@
             <param name="currentUserId">Current user id</param>
             <returns>Status of the operation</returns>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Models.DataSourceManager.AddEmbeddedRdlReport(Syncfusion.Server.Base.DataClasses.ItemDetail,System.String,System.Int32)">
+        <member name="M:Syncfusion.Server.Reports.Models.DataSourceManager.AddEmbeddedRdlReport(Syncfusion.Server.Base.DataClasses.ItemDetail,System.String,System.Int32,System.String)">
             <summary>
             This method is used to add embedded RDL report in server
             </summary>
@@ -542,6 +542,9 @@
             </summary>
             <param name="reportMappingInfos">ReportMappingInfos which is saved as an report reference in the report</param>
         </member>
+        <member name="M:Syncfusion.Server.Reports.Models.DataSourceManager.MapDatasetDatasoure(System.String,System.String)">
+            
+        </member>
         <member name="M:Syncfusion.Server.Reports.Models.ItemModel.GetMatchingResourcesList(System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ItemDetail},System.Collections.Generic.List{System.String})">
             <summary>
             This method will return the matching shared datasources and datasets while uploading the reports.
@@ -550,7 +553,7 @@
             <param name="uploadedResourcesList"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Models.ItemModel.AddRdlReport(Syncfusion.Server.Base.DataClasses.ItemDetail,System.String,System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.DataSourceMappingInfo},System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.DataSetMappingInfo},System.Int32,Syncfusion.Server.Base.DataClasses.TenantInfo)">
+        <member name="M:Syncfusion.Server.Reports.Models.ItemModel.AddRdlReport(Syncfusion.Server.Base.DataClasses.ItemDetail,System.String,System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.DataSourceMappingInfo},System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.DataSetMappingInfo},System.Int32,Syncfusion.Server.Base.DataClasses.TenantInfo,System.String)">
             <summary>
             This method will add RDL report with shared data sources and map the appropriate data sources with selected data sources
             </summary>
@@ -615,7 +618,7 @@
             <param name="scheduleId"></param>
             <param name="resultList"></param>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Models.SystemStartupPageModel.AddSystemAdmin(System.String,System.String,System.String,System.String,Syncfusion.Server.Base.DataClasses.TenantAppInfo,System.Nullable{System.Int32})">
+        <member name="M:Syncfusion.Server.Reports.Models.SystemStartupPageModel.AddSystemAdmin(System.String,System.String,System.String,System.String,Syncfusion.Server.Base.DataClasses.TenantAppInfo,System.Nullable{System.Int32},System.Boolean)">
             <summary>
             Add System Admin
             </summary>

@@ -632,6 +632,14 @@ CREATE TABLE [BOLDRS_DataSourceDetail](
 	[IsActive] [bit] NOT NULL)
 ;
 
+CREATE TABLE [BOLDRS_FileDetail](
+    [Id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+    [FileId] [uniqueidentifier] NOT NULL,
+    [Password] [nvarchar](255) NOT NULL,
+    [ModifiedDate] [datetime] NOT NULL,
+    [IsActive] [bit] NOT NULL)
+;
+
 CREATE TABLE [BOLDRS_DatasetLinkage](
 	[Id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
 	[DatasetItemId] [uniqueidentifier] NOT NULL,
@@ -1166,6 +1174,8 @@ INSERT into [BOLDRS_Source] (Name,IsActive) VALUES ( N'Web',1)
 INSERT into [BOLDRS_Source] (Name,IsActive) VALUES ( N'API',1)
 ;
 INSERT into [BOLDRS_Source] (Name,IsActive) VALUES ( N'Schedule',1)
+;
+INSERT into [BOLDRS_Source] (Name,IsActive) VALUES ( N'Viewer',1)
 ;
 
 INSERT into [BOLDRS_LogStatus] (Name,IsActive) VALUES ( N'Start',1)
@@ -1992,6 +2002,8 @@ ALTER TABLE [BOLDRS_ReportDataSource]  ADD FOREIGN KEY([DataSourceItemId]) REFER
 ;
 
 ALTER TABLE [BOLDRS_DataSourceDetail] ADD FOREIGN KEY([DataSourceId]) REFERENCES [BOLDRS_Item] ([Id])
+;
+ALTER TABLE [BOLDRS_FileDetail] ADD FOREIGN KEY([FileId]) REFERENCES [BOLDRS_Item] ([Id])
 ;
 
 ALTER TABLE [BOLDRS_DatasetLinkage]  ADD FOREIGN KEY([DatasetItemId]) REFERENCES [BOLDRS_Item] ([Id])

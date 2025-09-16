@@ -19,7 +19,7 @@
 	IsActivated tinyint NOT NULL,
 	IsActive tinyint NOT NULL,
 	IsDeleted tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_Group(
@@ -31,7 +31,7 @@ CREATE TABLE  {database_name}.BOLDRS_Group(
     DirectoryTypeId int NOT NULL DEFAULT 0,
     ExternalProviderId varchar(100) NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_UserGroup(
@@ -41,14 +41,14 @@ CREATE TABLE  {database_name}.BOLDRS_UserGroup(
 	ModifiedDate datetime NOT NULL,
 	ExternalProviderId varchar(100) NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_UserLogType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NOT NULL UNIQUE,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_UserLog(
@@ -64,7 +64,7 @@ CREATE TABLE  {database_name}.BOLDRS_UserLog(
     LogStatusId int NOT NULL,
 	CreatedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 
@@ -75,7 +75,7 @@ CREATE TABLE  {database_name}.BOLDRS_UserLogin(
 	IpAddress varchar(50) NOT NULL,
 	LoggedInTime datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_UserPreference(
@@ -92,14 +92,14 @@ CREATE TABLE  {database_name}.BOLDRS_UserPreference(
 	ServerFeatures text(4000) NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NOT NULL UNIQUE,
 	IsActive tinyint NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_Item(
@@ -122,7 +122,7 @@ CREATE TABLE  {database_name}.BOLDRS_Item(
 	IsUserBased tinyint NULL,
 	IsLocked tinyint NULL DEFAULT 0,
 	ViewerFeatures varchar(4000) NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemView(
@@ -133,14 +133,14 @@ CREATE TABLE  {database_name}.BOLDRS_ItemView(
 	QueryString varchar(4000) NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemLogType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NULL UNIQUE,
 	IsActive tinyint NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemTrash(
@@ -149,7 +149,7 @@ CREATE TABLE  {database_name}.BOLDRS_ItemTrash(
 	TrashedById int NOT NULL,
 	TrashedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemTrashDeleted(
@@ -159,7 +159,7 @@ CREATE TABLE  {database_name}.BOLDRS_ItemTrashDeleted(
 	DeletedById int NOT NULL,
 	DeletedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemVersion(
@@ -174,7 +174,7 @@ CREATE TABLE  {database_name}.BOLDRS_ItemVersion(
 	CreatedById int NOT NULL,
 	CreatedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemLog(
@@ -190,7 +190,7 @@ CREATE TABLE  {database_name}.BOLDRS_ItemLog(
 	AdditionalLogInfo text NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_PermissionEntity(
@@ -199,7 +199,7 @@ CREATE TABLE  {database_name}.BOLDRS_PermissionEntity(
 	EntityType int NOT NULL,
 	ItemTypeId int NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_UserPermission(
@@ -212,7 +212,7 @@ CREATE TABLE  {database_name}.BOLDRS_UserPermission(
 	ScopeGroupId int NULL,
 	ItemTypeId int NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_GroupPermission(
@@ -225,7 +225,7 @@ CREATE TABLE  {database_name}.BOLDRS_GroupPermission(
 	ScopeGroupId int NULL,
 	ItemTypeId int NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 
@@ -234,14 +234,14 @@ CREATE TABLE  {database_name}.BOLDRS_RecurrenceType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(30) NOT NULL UNIQUE,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ExportType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(20) NOT NULL UNIQUE,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ScheduleDetail(
@@ -277,7 +277,7 @@ CREATE TABLE  {database_name}.BOLDRS_ScheduleDetail(
 	ExportFileName varchar(130) NULL,
 	ScheduleExportInfo text(500) NULL,
 	ScheduleBucketExportInfo text NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SubscribedUser(
@@ -288,7 +288,7 @@ CREATE TABLE  {database_name}.BOLDRS_SubscribedUser(
 	SubscribedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SubscribedGroup(
@@ -299,7 +299,7 @@ CREATE TABLE  {database_name}.BOLDRS_SubscribedGroup(
 	SubscribedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SubscrExtnRecpt(
@@ -310,14 +310,14 @@ CREATE TABLE  {database_name}.BOLDRS_SubscrExtnRecpt(
 	SubscribedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 	
 CREATE TABLE  {database_name}.BOLDRS_ScheduleStatus(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ScheduleLogUser(
@@ -328,7 +328,7 @@ CREATE TABLE  {database_name}.BOLDRS_ScheduleLogUser(
 	DeliveredDate datetime NOT NULL,
 	IsOnDemand tinyint NOT NULL,	
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ScheduleLogGroup(
@@ -340,7 +340,7 @@ CREATE TABLE  {database_name}.BOLDRS_ScheduleLogGroup(
 	DeliveredDate datetime NOT NULL,
 	IsOnDemand tinyint NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SchdLogExtnRecpt(
@@ -351,7 +351,7 @@ CREATE TABLE  {database_name}.BOLDRS_SchdLogExtnRecpt(
 	DeliveredDate datetime NOT NULL,
 	IsOnDemand tinyint NOT NULL,	
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 	
 CREATE TABLE  {database_name}.BOLDRS_ScheduleLog(
@@ -363,7 +363,7 @@ CREATE TABLE  {database_name}.BOLDRS_ScheduleLog(
 	Message text NULL,
 	IsOnDemand tinyint NOT NULL DEFAULT 0,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SystemSettings(
@@ -373,13 +373,13 @@ CREATE TABLE  {database_name}.BOLDRS_SystemSettings(
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
 	PRIMARY KEY (Id),
-	CONSTRAINT UK_BOLDRS_SystemSettings_Key UNIQUE(`Key`))
+	CONSTRAINT UK_BOLDRS_SystemSettings_Key UNIQUE(`Key`)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ServerVersion(
 	Id int NOT NULL,
 	VersionNumber varchar(20) NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_Comment(
@@ -392,7 +392,7 @@ CREATE TABLE  {database_name}.BOLDRS_Comment(
     ModifiedDate datetime NOT NULL,
     ModifiedById int NOT NULL,
     IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemWatch(
@@ -402,14 +402,14 @@ CREATE TABLE  {database_name}.BOLDRS_ItemWatch(
 	ModifiedDate datetime NOT NULL,
 	IsWatched tinyint NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
  
 CREATE TABLE  {database_name}.BOLDRS_ItemCommentLogType(
     Id int NOT NULL AUTO_INCREMENT,
     Name varchar(100) NULL UNIQUE,
     IsActive tinyint NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ItemCommentLog(
@@ -426,7 +426,7 @@ CREATE TABLE  {database_name}.BOLDRS_ItemCommentLog(
     ModifiedDate datetime NOT NULL,
     IsRead tinyint NOT NULL,
     IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_FavoriteItem(
@@ -434,7 +434,7 @@ CREATE TABLE  {database_name}.BOLDRS_FavoriteItem(
 	UserId int NOT NULL,
 	ItemId char(38) NOT NULL,
 	IsActive tinyint NOT NULL,
-    PRIMARY KEY (Id))
+    PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_AzureADCredential(
@@ -444,7 +444,7 @@ CREATE TABLE  {database_name}.BOLDRS_AzureADCredential(
 	ClientSecret varchar(100),
 	IsActive tinyint NOT NULL,
 	DeleteGroupUsers tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ADCredential(
@@ -456,7 +456,7 @@ CREATE TABLE  {database_name}.BOLDRS_ADCredential(
 	DistinguishedName varchar(150),
 	PortNo int not null,
 	IsActive tinyint not null,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SAMLSettings(
@@ -467,13 +467,13 @@ CREATE TABLE  {database_name}.BOLDRS_SAMLSettings(
 	TenantName varchar(100),
 	MobileAppId varchar(100),
 	IsEnabled tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_UserType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Type varchar(100) UNIQUE,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_DBCredential(
@@ -502,7 +502,7 @@ CREATE TABLE  {database_name}.BOLDRS_DBCredential(
     FirstNameRelationId int NULL,
     IsActiveRelationId int NULL,
     LastNameRelationId int NULL,
-    PRIMARY KEY (Id))
+    PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 CREATE TABLE  {database_name}.BOLDRS_TableRelation(
    Id int NOT NULL AUTO_INCREMENT,
@@ -517,14 +517,14 @@ CREATE TABLE  {database_name}.BOLDRS_TableRelation(
    RightTableCondition varchar(255) NOT NULL,
    RightTableName varchar(255) NOT NULL,
    RightTableSchema varchar(255) NOT NULL,
-   PRIMARY KEY (Id))
+   PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_Source(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NULL UNIQUE,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_PermissionAccess(
@@ -532,7 +532,7 @@ CREATE TABLE  {database_name}.BOLDRS_PermissionAccess(
 	Name varchar(100) NULL UNIQUE,
     AccessId int NOT NULL UNIQUE,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_PermissionAccEntity(
@@ -540,14 +540,14 @@ CREATE TABLE  {database_name}.BOLDRS_PermissionAccEntity(
    PermissionEntityId int NOT NULL,
    PermissionAccessId int NOT NULL,
    IsActive tinyint NOT NULL,
-   PRIMARY KEY (Id))
+   PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_PermissionLogType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NULL UNIQUE,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_UserPermissionLog(
@@ -558,7 +558,7 @@ CREATE TABLE  {database_name}.BOLDRS_UserPermissionLog(
 	LogTypeId int NULL,
 	CreatedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_GroupPermissionLog(
@@ -569,21 +569,21 @@ CREATE TABLE  {database_name}.BOLDRS_GroupPermissionLog(
 	LogTypeId int NULL,
 	CreatedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SystemLogType(
 	Id int NOT NULL AUTO_INCREMENT,
     Name varchar(100) NULL UNIQUE,
     IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_LogStatus(
 	Id int NOT NULL AUTO_INCREMENT,
     Name varchar(100) NULL UNIQUE,
     IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_SystemLog(
@@ -596,7 +596,7 @@ CREATE TABLE  {database_name}.BOLDRS_SystemLog(
 	UpdatedUserId int NOT NULL,
 	CreatedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_LogModule(
@@ -604,7 +604,7 @@ CREATE TABLE  {database_name}.BOLDRS_LogModule(
     Name varchar(100) NULL UNIQUE,
     ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_LogField(
@@ -614,14 +614,14 @@ CREATE TABLE  {database_name}.BOLDRS_LogField(
     Description varchar(4000) NOT NULL,
     ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_GroupLogType(
 	Id int NOT NULL AUTO_INCREMENT,
     Name varchar(100) NULL UNIQUE,
     IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_GroupLog(
@@ -637,7 +637,7 @@ CREATE TABLE  {database_name}.BOLDRS_GroupLog(
 	LogStatusId int NOT NULL,
 	CreatedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ProcessOption(
@@ -648,7 +648,7 @@ CREATE TABLE  {database_name}.BOLDRS_ProcessOption(
     CreatedDate datetime NOT NULL,
     ModifiedDate datetime NOT NULL,
     IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ProcessOptionMap(
@@ -656,7 +656,7 @@ CREATE TABLE  {database_name}.BOLDRS_ProcessOptionMap(
     ItemId char(38) NOT NULL,
     ProcessOptionId int NOT NULL,
     IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
  
  CREATE TABLE  {database_name}.BOLDRS_ReportDataSource(
@@ -666,7 +666,7 @@ CREATE TABLE  {database_name}.BOLDRS_ProcessOptionMap(
 	Name varchar(255) NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_DataSourceDetail(
@@ -675,7 +675,16 @@ CREATE TABLE  {database_name}.BOLDRS_DataSourceDetail(
 	Password varchar(255) NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
+;
+
+CREATE TABLE  {database_name}.BOLDRS_FileDetail(
+    Id int NOT NULL AUTO_INCREMENT,
+    FileId char(38) NOT NULL,
+    Password varchar(255) NOT NULL,
+    ModifiedDate datetime NOT NULL,
+    IsActive tinyint NOT NULL,
+    PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
  CREATE TABLE  {database_name}.BOLDRS_DatasetLinkage(
@@ -685,7 +694,7 @@ CREATE TABLE  {database_name}.BOLDRS_DataSourceDetail(
 	Name varchar(255) NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_ScheduleParameter(
@@ -693,7 +702,7 @@ CREATE TABLE  {database_name}.BOLDRS_ScheduleParameter(
     ScheduleId char(38) NOT NULL,
     Parameter text NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_DeploymentReports(
@@ -710,7 +719,7 @@ CREATE TABLE {database_name}.BOLDRS_DeploymentReports(
 	CreatedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_ExternalSites(
@@ -722,7 +731,7 @@ CREATE TABLE {database_name}.BOLDRS_ExternalSites(
 	CreatedById int NOT NULL,
 	CreatedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_PublishedItem(
@@ -740,7 +749,7 @@ CREATE TABLE {database_name}.BOLDRS_PublishedItem(
 	CreatedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_PublishJobs(
@@ -752,7 +761,7 @@ CREATE TABLE {database_name}.BOLDRS_PublishJobs(
 	CompletedDate datetime NOT NULL,
 	Status varchar(255) NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_UserAttributes(
@@ -767,7 +776,7 @@ CREATE TABLE {database_name}.BOLDRS_UserAttributes(
     CreatedDate datetime NOT NULL,
     ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_GroupAttributes(
@@ -782,7 +791,7 @@ CREATE TABLE {database_name}.BOLDRS_GroupAttributes(
     CreatedDate datetime NOT NULL,
     ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_SiteAttributes(
@@ -796,17 +805,17 @@ CREATE TABLE {database_name}.BOLDRS_SiteAttributes(
     CreatedDate datetime NOT NULL,
     ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE  {database_name}.BOLDRS_AttributeType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Type varchar(100) NOT NULL UNIQUE,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
-Create TABLE {database_name}.BOLDRS_ItemAttribute(
+CREATE TABLE {database_name}.BOLDRS_ItemAttribute(
 	Id int NOT NULL AUTO_INCREMENT,
 	ItemTypeId int NOT NULL,
 	ItemId char(38) NOT NULL,
@@ -817,21 +826,21 @@ Create TABLE {database_name}.BOLDRS_ItemAttribute(
 	CreatedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;	
 
 CREATE TABLE {database_name}.BOLDRS_SettingsType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NOT NULL UNIQUE,
 	IsActive tinyint NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_ReportPartType(
 	Id int NOT NULL AUTO_INCREMENT,
 	Name varchar(100) NOT NULL UNIQUE,
 	IsActive tinyint null,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_ReportPartTypeInfo(
@@ -845,7 +854,7 @@ CREATE TABLE {database_name}.BOLDRS_ReportPartTypeInfo(
 	CreatedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_ReportPartLinkage(
@@ -857,7 +866,7 @@ CREATE TABLE {database_name}.BOLDRS_ReportPartLinkage(
 	CreatedDate datetime NOT NULL,
 	ModifiedDate datetime NOT NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 CREATE TABLE {database_name}.BOLDRS_UserSession(
@@ -870,7 +879,7 @@ CREATE TABLE {database_name}.BOLDRS_UserSession(
 	LoggedInTime datetime NOT NULL,
 	LastActive datetime NULL,
 	IsActive tinyint NOT NULL,
-	PRIMARY KEY (Id))
+	PRIMARY KEY (Id)) ROW_FORMAT=DYNAMIC
 ;
 
 /*INSERT Queries below this section*/ 
@@ -1227,6 +1236,8 @@ INSERT into  {database_name}.BOLDRS_Source (Name,IsActive) VALUES ( 'Web',1)
 INSERT into  {database_name}.BOLDRS_Source (Name,IsActive) VALUES ( 'API',1)
 ;
 INSERT into  {database_name}.BOLDRS_Source (Name,IsActive) VALUES ( 'Schedule',1)
+;
+INSERT into  {database_name}.BOLDRS_Source (Name,IsActive) VALUES ( 'Viewer',1)
 ;
 
 INSERT into  {database_name}.BOLDRS_LogStatus (Name,IsActive) VALUES ( 'Start',1)
@@ -2067,6 +2078,8 @@ ALTER TABLE  {database_name}.BOLDRS_ReportDataSource  ADD FOREIGN KEY(DataSource
 ;
 
 ALTER TABLE  {database_name}.BOLDRS_DataSourceDetail ADD FOREIGN KEY(DataSourceId) REFERENCES  {database_name}.BOLDRS_Item (Id)
+;
+ALTER TABLE  {database_name}.BOLDRS_FileDetail ADD FOREIGN KEY(FileId) REFERENCES  {database_name}.BOLDRS_Item (Id)
 ;
 
 ALTER TABLE  {database_name}.BOLDRS_DatasetLinkage  ADD FOREIGN KEY(DatasetItemId) REFERENCES  {database_name}.BOLDRS_Item (Id)

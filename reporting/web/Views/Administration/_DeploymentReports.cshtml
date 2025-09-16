@@ -5,9 +5,10 @@
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var helpSiteBaseUrl = ServerAppConfig.AppSettings.Documentation.BaseUri;
+	var isHideGuidInUrl = ServerAppConfig.IsHideGuidInUrl;
 }
 
-<script type="text/javascript">
+<script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
     var deploymentDashboardsUrl = "@Url.Action("AddDeploymentDashboard", "Publish")";
     var isDashboardNameExistUrl = "@Url.Action("IsDeploymentDashboardNameExists", "Publish")";
     var getDeploymentDashboardsUrl = "@Url.Action("GetDeploymentDashboards", "Publish")";
@@ -19,7 +20,11 @@
 
 <script type="text/x-jsrender" id="dashboard-template">
     <div class="grid-content" title="{{:Name}}" data-bs-toggle="tooltip" data-bs-placement="top">
-        <span><a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:CategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a></span>
+    {{if @(Convert.ToBoolean(isHideGuidInUrl).ToString().ToLower()) == true }}
+     <a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:SourceCategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a>
+     {{else}}
+     <a class="grid-content" href="@Url.Action("Reports", "Reports")/{{:ItemId}}/{{:SourceCategoryName}}/{{:Name}}" target="_blank">{{:Name}}</a>
+     {{/if}}
     </div>
 </script>
 <script type="text/x-jsrender" id="dashboard-name-template">

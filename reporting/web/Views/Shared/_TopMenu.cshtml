@@ -34,7 +34,7 @@
     var navigationUrl = Url.Action("Index", "Home");
     var widgetsPageUrl = Url.Action("Widgets", "Widgets");
     var profilePageUrl = Url.Action("Profilepage", "User");
-    var itemPermissions = ViewBag.ItemPermission as Dictionary<ItemType, bool>;
+    var itemPermissions = ViewBag.ItemAddOptions != null ? ViewBag.ItemAddOptions as Dictionary<ItemType, bool> : new Dictionary<ItemType, bool>();
     var isItemPageRequested = (requestUrl.AbsolutePath == "/" || requestUrl.AbsolutePath == Url.Content("~/") || requestUrl.ToString().IndexOf("/reports", StringComparison.CurrentCultureIgnoreCase) > 0 || requestUrl.ToString().IndexOf("/data-sources", StringComparison.CurrentCultureIgnoreCase) > 0 || requestUrl.ToString().IndexOf("/datasets", StringComparison.CurrentCultureIgnoreCase) > 0 || requestUrl.ToString().IndexOf("/schedules", StringComparison.CurrentCultureIgnoreCase) > 0) && !isMobile;
     var showImport = requestUrl.LocalPath.ToLower() == Url.Action("Reports", "Reports");
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');

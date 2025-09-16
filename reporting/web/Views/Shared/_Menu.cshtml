@@ -63,6 +63,9 @@
     var iscustomUIProfile = customUI?.Profiles != null && customUI.Profiles[0].Reports != null;
     var isAdmin = _identityResponse.IsAdmin;
     var hideMenusAndOptions = iscustomUIProfile && !isAdmin && customUI.Profiles[0].Reports.HideMenusAndOptions;
+#pragma warning disable SCS0029 //There is no direct user input process for this issue.
+    var customUiJson = Html.Raw(Json.Serialize(customUI));
+#pragma warning restore SCS0029 //There is no direct user input process for this issue.
     
     if (allItemsCount == null && ServerAppConfig.IsUserBasedMenu && hideMenusAndOptions)
     {
@@ -239,6 +242,6 @@
     var hasOwnedReport = @Json.Serialize(hasOwnedReport);
     var isHideIconBasedOnDnsName = @Json.Serialize(isHideIconBasedOnDnsName);
     var isHideETLOption = @Json.Serialize(ServerAppConfig.IsHideETLOption);
-    var customUI = @Html.Raw(Json.Serialize(globalAppSettings.SystemSettings.CustomUI));
+    var customUI = @customUiJson;
     var hideMenusAndOptions = @Json.Serialize(hideMenusAndOptions);
 </script>

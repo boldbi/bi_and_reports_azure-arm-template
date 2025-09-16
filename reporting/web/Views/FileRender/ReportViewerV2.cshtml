@@ -41,11 +41,16 @@
     var hideEdit = iscustomUIProfile && (hideMenusAndOptions || customUI.Profiles[0].Reports.HideEdit);
     var hideComments = iscustomUIProfile && (hideMenusAndOptions || customUI.Profiles[0].Reports.HideComments);
     var hideViews = iscustomUIProfile && (hideMenusAndOptions || customUI.Profiles[0].Reports.HideViews);
+#pragma warning disable SCS0029 //There is no direct user input process for this issue.
+    var schemesJson = Html.Raw(Json.Serialize(schemes));
+#pragma warning restore SCS0029 //There is no direct user input process for this issue.
 
     if (embedConfig.IsEmbedReport || embedConfig.IsEmbedCode)
     {
         canEdit = false;
     }
+    var customFontFolderPath = ViewBag.CustomFontFolder;
+    var isUseFontsFromDirectory = ViewBag.IsUseFontsFromDirectory;
 }
 <!DOCTYPE html>
 <html style="height: 100%">
@@ -120,6 +125,7 @@
         var pageurl = "@requestUrl.LocalPath";
         var reportId = "@ViewBag.ItemId.Split('/')[0]";
         var reportPath = "@ViewBag.ItemId";
+        var _toolbarRenderMode = "@ServerAppConfig.ToolBarRenderMode";
         var sameOrigin = true;
         var isSubmit = true;
         var canHideSaveViewBtn = false;
@@ -147,8 +153,9 @@
         var hideEdit = @Json.Serialize(hideEdit);
         var hideComments = @Json.Serialize(hideComments);
         var hideViews = @Json.Serialize(hideViews);
-        var schemesDetails = @Html.Raw(Json.Serialize(schemes));
-
+        var schemesDetails = @schemesJson;
+        var isSelfHosted = @Json.Serialize(ServerAppConfig.IsSelfHosted);
+        var enableRenderSameTab = @ServerAppConfig.SameTabReportRender.ToString().ToLower();
         if (isCommonCacheEnabled){
             dateFormat = "@globalAppSettings.SystemSettings.DateFormat";
             timeFormat = @Json.Serialize(globalAppSettings.SystemSettings.TimeFormat) ? "HH:mm" : "hh:mm tt";
@@ -233,12 +240,14 @@
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-v2.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-v2.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.dialog.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/pdf.signature.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/shape.reportitem.css" />
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-ej-dependencies.js")" crossorigin="anonymous"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-v2.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-v2.js")" crossorigin="anonymous"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.reportitem.js"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.dialog.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdf.signature.reportitem.js"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/shape.reportitem.js"></script>
     </environment>
     <environment exclude="Development,CloudDevelopment">
@@ -247,12 +256,14 @@
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/report-viewer-v2.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/report-viewer-v2.min.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/signature.dialog.css" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/pdf.signature.reportitem.css" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/extensions/shape.reportitem.css" />
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-ej-dependencies.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-ej-dependencies.min.js")" crossorigin="anonymous"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/report-viewer-v2.min.js" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/scripts/report-viewer-v2.min.js")" crossorigin="anonymous"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/extension.config.js"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.reportitem.js"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/signature.dialog.js"></script>
+        <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/pdf.signature.reportitem.js"></script>
         <script nonce="@Context.Items["ScriptNonce"]" asp-append-version="true" src="@reportServerResourceUrl/extensions/shape.reportitem.js"></script>
     </environment>
     <link rel="stylesheet" asp-append-version="true" href="@ServerAppConfig.CustomFontUrl(globalAppSettings?.SystemSettings?.FontPreference, reportServerResourceUrl)" />
@@ -346,6 +357,17 @@
                 {
                     @:customFontsName.push("@font.Key");
                     @:addCustomFonts("@font.Key", "@font.Value");
+                }
+            }
+            else if (isUseFontsFromDirectory)
+            {
+                var fonts = System.IO.Directory.GetFiles(customFontFolderPath, "*.ttf");
+                foreach (var fontPath in fonts)
+                {
+                    var fontKeyName = System.IO.Path.GetFileNameWithoutExtension(fontPath);
+                    var fontFileName = System.IO.Path.GetFileName(fontPath);
+                    @:customFontsName.push(decodeHtmlAsString("@fontKeyName"));
+                    @:addCustomFonts(decodeHtmlAsString("@fontKeyName"), decodeHtmlAsString("@fontFileName"));
                 }
             }
         }

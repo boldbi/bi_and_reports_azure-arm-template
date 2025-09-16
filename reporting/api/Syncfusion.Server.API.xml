@@ -401,7 +401,7 @@
             <param name="apiReportAddV6">Report details</param>
             <returns>The response is sent as ApiItemResponse object</returns>
         </member>
-        <member name="M:Syncfusion.Server.API.Controllers.ItemsController.ReportAddV2(Syncfusion.Server.Base.DataClasses.ApiCopyReportRequestV5)">
+        <member name="M:Syncfusion.Server.API.Controllers.ItemsController.ReportAddV2(Syncfusion.Server.Base.DataClasses.ApiCopyReportRequestV4)">
             <summary>
             Add report.
             </summary>
@@ -490,6 +490,14 @@
             <param name="apiScheduleRequest">Details about the schedule passed will be added to the server.</param>
             <returns>The response is sent as a ApiScheduleResponse object</returns>
         </member>
+        <member name="M:Syncfusion.Server.API.Controllers.ItemsController.AddScheduleV5(Syncfusion.Server.Base.DataClasses.ApiScheduleRequestV5)">
+            <summary>
+            Add Schedule
+            </summary>
+            <remarks>Users who have create access for schedule can add new schedule to the server by providing respective details in the request body.</remarks>
+            <param name="apiScheduleRequest">Details about the schedule passed will be added to the server.</param>
+            <returns>The response is sent as a ApiScheduleResponse object</returns>
+        </member>
         <member name="M:Syncfusion.Server.API.Controllers.ItemsController.UpdateSchedule(System.Guid,Syncfusion.Server.Base.DataClasses.ApiUpdateScheduleRequest)">
             <summary>
             Update Schedule
@@ -508,6 +516,15 @@
             <returns></returns>
         </member>
         <member name="M:Syncfusion.Server.API.Controllers.ItemsController.UpdateScheduleV4(System.Guid,Syncfusion.Server.Base.DataClasses.ApiUpdateScheduleRequestV4)">
+            <summary>
+            Update Schedule
+            </summary>
+            <remarks>Users who have write access for schedule can update an existing schedule to the server by providing details of the respective schedule in the request body.</remarks>
+            <param name="scheduleid">Schedule ID.</param>
+            <param name="apiUpdateScheduleRequestV4">Details about the schedule passed will be updated to the server.</param>
+            <returns>The response is sent as a ApiScheduleResponse object</returns>
+        </member>
+        <member name="M:Syncfusion.Server.API.Controllers.ItemsController.UpdateScheduleV5(System.Guid,Syncfusion.Server.Base.DataClasses.ApiUpdateScheduleRequestV5)">
             <summary>
             Update Schedule
             </summary>
@@ -538,6 +555,16 @@
             </summary>
             <param name="scheduleName"></param>
             <returns></returns>
+        </member>
+        <member name="M:Syncfusion.Server.API.Controllers.ItemsController.GetScheduleItemDetailV5(System.Guid)">
+            <summary>
+            Returns scheduled item details from the server for a specified item
+            </summary>
+            <remarks>
+            Server retrieves the respective scheduled item details for the values (ScheduleId) provided in id parameter for the current user.
+            </remarks>
+            <param name="id">Item ID</param>
+            <returns>The response is sent as ApiResponse object</returns>
         </member>
         <member name="M:Syncfusion.Server.API.Controllers.ItemsController.RunScheduleReport(System.Guid)">
             <summary>
@@ -1230,6 +1257,27 @@
             <param name="apiScheduleRequest"></param>
             <returns></returns>
         </member>
+        <member name="M:Syncfusion.Server.API.Models.SchedulerManagementModel.AddScheduleV5(Syncfusion.Server.Base.DataClasses.ApiScheduleRequestV5,System.Boolean,System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ApiReportParameter})">
+            <summary>
+            Adds a new schedule based on the specified schedule request, validates configuration, manages export options,
+            sets up user/group/external recipient subscriptions, and handles permissions for the scheduled report.
+            </summary>
+            <param name="apiScheduleRequestV5">The request object containing schedule configuration and export settings.</param>
+            <param name="userId">The ID of the user creating the schedule.</param>
+            <param name="enabled">Indicates if the schedule should be enabled upon creation.</param>
+            <param name="reportParameter">Report parameter configuration (if any) associated with the schedule.</param>
+            <returns>
+            An <see cref="T:Syncfusion.Server.Base.DataClasses.ApiScheduleResponse"/> containing information about the created schedule, including its name, ID,
+            schedule type, and next run time.
+            </returns>
+            <exception cref="T:Syncfusion.Server.Base.DataClasses.ApiException">
+            Thrown if there are issues processing the request, such as invalid date/time, 
+            export option misconfiguration, invalid export credentials, or errors in adding the schedule.
+            </exception>
+            <exception cref="T:System.Exception">
+            Thrown for any unexpected errors encountered while adding the schedule.
+            </exception>
+        </member>
         <member name="M:Syncfusion.Server.API.Models.SchedulerManagementModel.IsReportParameterEnabled(BoldReports.RDL.DOM.ReportDefinition,System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ApiReportParameter})">
             <summary>
             Returning boolean values, whether to enable the parameters or not for the schedule.
@@ -1268,11 +1316,11 @@
             <param name="groupId">Group ID</param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Server.API.Models.UserManagementModel.AddUserInGroupV2(System.Collections.Generic.List{System.String},System.Int32)">
+        <member name="M:Syncfusion.Server.API.Models.UserManagementModel.AddUserInGroupV2(Syncfusion.Server.Base.DataClasses.ApiGroupUsers,System.Int32)">
             <summary>
             Add list of user's in the specified group
             </summary>
-            <param name="userNameList">list of user Email</param>
+            <param name="apiGroupUsers">list of users</param>
             <param name="groupId">Group ID</param>
             <returns></returns>
         </member>
