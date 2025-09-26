@@ -15,7 +15,7 @@
     <DisablePageSplitting>false</DisablePageSplitting>
     <MaxResponseTimeInterval>0</MaxResponseTimeInterval>
     <RoundLayoutMeasures>true</RoundLayoutMeasures>
-    <Exporting UsePuppeteer="true" PuppeteerPath=""></Exporting>
+	<Exporting UsePlaywright="true" PlaywrightPath=""></Exporting>
     <EnableParameterOperator>false</EnableParameterOperator>
   </ReportViewerFeatures>
   <IsOldViewerDesigner>false</IsOldViewerDesigner>

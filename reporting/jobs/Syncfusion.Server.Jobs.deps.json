@@ -429,7 +429,7 @@
       },
       "Azure.Core/1.38.0": {
         "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "System.ClientModel": "1.0.0",
           "System.Diagnostics.DiagnosticSource": "6.0.1",
           "System.Memory.Data": "1.0.2",
@@ -1140,7 +1140,7 @@
         "dependencies": {
           "Microsoft.AspNetCore.Mvc.Core": "2.2.0",
           "Microsoft.Extensions.Localization": "2.2.0",
-          "System.ComponentModel.Annotations": "4.5.0"
+          "System.ComponentModel.Annotations": "5.0.0"
         }
       },
       "Microsoft.AspNetCore.Mvc.Formatters.Json/2.2.0": {
@@ -1228,11 +1228,11 @@
           "System.Text.Encodings.Web": "8.0.0"
         }
       },
-      "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+      "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
-            "assemblyVersion": "5.0.0.0",
-            "fileVersion": "5.0.20.51904"
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.21.52210"
           }
         },
         "compile": {
@@ -1889,6 +1889,22 @@
       },
       "Microsoft.NETCore.Platforms/1.1.1": {},
       "Microsoft.NETCore.Targets/1.1.3": {},
+      "Microsoft.Playwright/1.52.0": {
+        "dependencies": {
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
+          "System.ComponentModel.Annotations": "5.0.0",
+          "System.Text.Json": "8.0.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Playwright.dll": {
+            "assemblyVersion": "1.52.0.0",
+            "fileVersion": "1.52.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Playwright.dll": {}
+        }
+      },
       "Microsoft.SqlServer.Server/1.0.0": {
         "runtime": {
           "lib/netstandard2.0/Microsoft.SqlServer.Server.dll": {
@@ -2119,7 +2135,7 @@
       "PuppeteerSharp/6.2.0": {
         "dependencies": {
           "Microsoft.AspNetCore.WebUtilities": "2.2.0",
-          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "Microsoft.Extensions.Logging": "2.1.1",
           "Newtonsoft.Json": "13.0.3",
           "SharpZipLib": "1.3.3"
@@ -2759,7 +2775,7 @@
           "System.Runtime": "4.3.1"
         }
       },
-      "System.ComponentModel.Annotations/4.5.0": {},
+      "System.ComponentModel.Annotations/5.0.0": {},
       "System.ComponentModel.Composition/9.0.2": {
         "runtime": {
           "lib/net8.0/System.ComponentModel.Composition.dll": {
@@ -3370,7 +3386,7 @@
       },
       "System.Private.ServiceModel/4.10.0": {
         "dependencies": {
-          "Microsoft.Bcl.AsyncInterfaces": "5.0.0",
+          "Microsoft.Bcl.AsyncInterfaces": "6.0.0",
           "Microsoft.Extensions.ObjectPool": "5.0.10",
           "System.Numerics.Vectors": "4.5.0",
           "System.Reflection.DispatchProxy": "4.7.1",
@@ -4354,6 +4370,7 @@
           "BoldReports.Data.WebData": "8.1.1",
           "BoldReports.Net.Core": "8.1.1",
           "Microsoft.CodeAnalysis.Common": "4.12.0",
+          "Microsoft.Playwright": "1.52.0",
           "ProDotNetZip": "1.20.0",
           "PuppeteerSharp": "6.2.0",
           "Renci.SshNet.Async": "1.4.0",
@@ -6274,77 +6291,77 @@
     "Bold.Data.Analytics.Base/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-73B66LZaLN7TM9Q5imbakPAjnXYhGwV7QGsRRLYizibcY8xAHYZk9zn4+HznqeNd3H0KpZ09lJP+fI6iqivhfg==",
+      "sha512": "sha512-akY5253GsTBd8iY0g2RClZ5pTPl7U3kIkcl+uWx4XSvVMHnQRtyPXKzPF8CkXWMJcW+ZDC3OaCPM1kipbS3n0A==",
       "path": "bold.data.analytics.base/8.1.1",
       "hashPath": "bold.data.analytics.base.8.1.1.nupkg.sha512"
     },
     "Bold.Licensing/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-64N2jfL/9lblnWmoUlH9zSvQcp9ExssBm8KiSIF09CR/ne4dYsAmfHDGqT7VpwXEuyyRgrYTsxpfoj4eCOvX0g==",
+      "sha512": "sha512-BdVJbCNWFEW6sW9O4hnMK/AJyLb/RnFg21QbcneaZnXIiU6/SuU1TgPZLZLTBtSoFxHo6Ku5ZeS5QdTt8ocYAA==",
       "path": "bold.licensing/8.1.1",
       "hashPath": "bold.licensing.8.1.1.nupkg.sha512"
     },
     "BoldReports.CRI.Barcode/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-y8Of9rnSD+iuV9Etu+Phdh3o5atSZAkcqCx7uAvsB2P073Fb17fhM3KKsy0w50XXgm4vHB8jc0R2LIal+EUe6A==",
+      "sha512": "sha512-iBAzLovYuMKMWiLwOWCipKVpWFQor2Ge9WEpR/PiqvtHrSM2BC2nwQ0vK9I6fUm4sYjOFCcILWKrn1EGDW0hCw==",
       "path": "boldreports.cri.barcode/8.1.1",
       "hashPath": "boldreports.cri.barcode.8.1.1.nupkg.sha512"
     },
     "BoldReports.CRI.PredictiveAnalytics/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Vr3eFKZ7QkjZAnyerIgXujeaqp/SMbGOV8uBfj47gow96vOG9XmdDMw+D2sQbAXcyLaeOqD83AqShzRbW5l1Pw==",
+      "sha512": "sha512-g31PqC4ZNRHjBsVn49WMAdJ9o9KkNCCcsF6SCLF8ye9dTw2smEYXxsAVu20yjTHxuxt3C2pA511K3goiiuimwA==",
       "path": "boldreports.cri.predictiveanalytics/8.1.1",
       "hashPath": "boldreports.cri.predictiveanalytics.8.1.1.nupkg.sha512"
     },
     "BoldReports.CRI.Signature/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4gqeQNjfbrZ5gLbUk8iP9KHkqnfQ3jqVKRPhY/UrR/euYNNMtaX/PfpehNSG1rvd6dh5EZl3s1/6N47dP3Y82Q==",
+      "sha512": "sha512-KDQ8x7CYSGRe+QM3aPfA7EROajsj8OV1xBoAXPI7orA0YxwJby/2FnDHiKOQcyWJ0SmYdH4blmNR2dX7b6qVrg==",
       "path": "boldreports.cri.signature/8.1.1",
       "hashPath": "boldreports.cri.signature.8.1.1.nupkg.sha512"
     },
     "BoldReports.Data.Csv/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+94RdPrC66WMnqhd4/u/B+AjTXzQfhFCD6wBP2oUOApSDHp8+MUWR5ZbTC47uLfBdNJS47udfVPlGNFaXpXiiw==",
+      "sha512": "sha512-mXJAGQmH6ORSwOZ0sJH65+yXzfJYk3BBqOSKxvRKAkcNdmO51I2SdeySd9oEu363V6n+gTtHLdvFPF11i5qwiw==",
       "path": "boldreports.data.csv/8.1.1",
       "hashPath": "boldreports.data.csv.8.1.1.nupkg.sha512"
     },
     "BoldReports.Data.ElasticSearch/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-550kkCxIkbFn9qCL6nBADSNy7qkcbcYoPmCzwQh0fZLJPQl0nmb54CXzKoDVdNZSRWykO0eWo+Xfq8iCVpf/cw==",
+      "sha512": "sha512-hBU1ewWSqw1EFvyuDI2qo3LAxsEjkhc7uR6ILQnEx/0N6kl6N455kTOE0TaDl6R85MAGQcDil5mKGomot40UEQ==",
       "path": "boldreports.data.elasticsearch/8.1.1",
       "hashPath": "boldreports.data.elasticsearch.8.1.1.nupkg.sha512"
     },
     "BoldReports.Data.Excel/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vglQJEZT9Uy+OrLJN22G6YxYsJ5glTYID1tMdDAjU7gZ2bhu0k5g3A3EjAyVUWdxoJ4FJLqciVjigUoFwY5UHQ==",
+      "sha512": "sha512-5ooJ9goUSDCmepAJiSO17jWS5KxQdIHr+yoW7AtdC2akismLpaBF4GslQIWlUJpFMsdCv6fQQ1x8ZbA6jfD6pw==",
       "path": "boldreports.data.excel/8.1.1",
       "hashPath": "boldreports.data.excel.8.1.1.nupkg.sha512"
     },
     "BoldReports.Data.SSAS/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-SuLmaF/gZwBPzwMc9xrpPSGfmtxl2r/vPDT5HZiHc2D4pibd2K1bJmIuo9oy/I2UWiZZrzsVcD51mhLBhy9CLg==",
+      "sha512": "sha512-Cs/Kd6kbfSOhQ7pJP7CRpxr1F8nZlfOm2nTt4DISZ6uAwqiO6lRyFg9bbUqsQqVm7dLcxgKO+TnshWUZ2dCTUA==",
       "path": "boldreports.data.ssas/8.1.1",
       "hashPath": "boldreports.data.ssas.8.1.1.nupkg.sha512"
     },
     "BoldReports.Data.WebData/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-OR9Xej76CMiqKfvRSDOWwJDqDkaqdmOH1A2z3azn8QgfH156lLSYD8x+eZdd3VSFJSY0sXpnBk0LZ0gYvG33Ag==",
+      "sha512": "sha512-uUys6X1UjoljOWzHAEZu8VY0csO6S3GTz4a/yUmGRi5j1Cb4avve9LOEOAWUsGUpLbpeKnni/CFVmmJA4/E/4Q==",
       "path": "boldreports.data.webdata/8.1.1",
       "hashPath": "boldreports.data.webdata.8.1.1.nupkg.sha512"
     },
     "BoldReports.Net.Core/8.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-Wf/jaqknMrFxAKtlFca7qQcl2FJjWKIjBdONJCkFedyMfOWuMvdRdCRKB5wNt5Fpm0OB4C+s1yVGf1BPf38BCA==",
+      "sha512": "sha512-8ZboTkHFYWeeAQHhc4pLzlSQKvh3OeqdYdNElbpmgMIoXFrPcQnjDNmls4T927f9akJiS26C4dxIasDGj2Aizg==",
       "path": "boldreports.net.core/8.1.1",
       "hashPath": "boldreports.net.core.8.1.1.nupkg.sha512"
     },
@@ -6670,12 +6687,12 @@
       "path": "microsoft.aspnetcore.webutilities/2.2.0",
       "hashPath": "microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512"
     },
-    "Microsoft.Bcl.AsyncInterfaces/5.0.0": {
+    "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-W8DPQjkMScOMTtJbPwmPyj9c3zYSFGawDW3jwlBOOsnY+EzZFLgNQ/UMkK35JmkNOVPdCyPr2Tw7Vv9N+KA3ZQ==",
-      "path": "microsoft.bcl.asyncinterfaces/5.0.0",
-      "hashPath": "microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512"
+      "sha512": "sha512-UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
+      "path": "microsoft.bcl.asyncinterfaces/6.0.0",
+      "hashPath": "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512"
     },
     "Microsoft.Bcl.Cryptography/9.0.2": {
       "type": "package",
@@ -7082,6 +7099,13 @@
       "sha512": "sha512-3Wrmi0kJDzClwAC+iBdUBpEKmEle8FQNsCs77fkiOIw/9oYA07bL1EZNX0kQ2OMN3xpwvl0vAtOCYY3ndDNlhQ==",
       "path": "microsoft.netcore.targets/1.1.3",
       "hashPath": "microsoft.netcore.targets.1.1.3.nupkg.sha512"
+    },
+    "Microsoft.Playwright/1.52.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-zH8a7OiXtq8BC6i0yYHAG/DSN8J8/bVyQYVESK7mK1ZJF19eY1ca51BAQpQxzF+Qm/A20x6Rsl8cT+QYXSfxbw==",
+      "path": "microsoft.playwright/1.52.0",
+      "hashPath": "microsoft.playwright.1.52.0.nupkg.sha512"
     },
     "Microsoft.SqlServer.Server/1.0.0": {
       "type": "package",
@@ -7671,12 +7695,12 @@
       "path": "system.componentmodel/4.3.0",
       "hashPath": "system.componentmodel.4.3.0.nupkg.sha512"
     },
-    "System.ComponentModel.Annotations/4.5.0": {
+    "System.ComponentModel.Annotations/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
-      "path": "system.componentmodel.annotations/4.5.0",
-      "hashPath": "system.componentmodel.annotations.4.5.0.nupkg.sha512"
+      "sha512": "sha512-dMkqfy2el8A8/I76n2Hi1oBFEbG1SfxD2l5nhwXV3XjlnOmwxJlQbYpJH4W51odnU9sARCSAgv7S3CyAFMkpYg==",
+      "path": "system.componentmodel.annotations/5.0.0",
+      "hashPath": "system.componentmodel.annotations.5.0.0.nupkg.sha512"
     },
     "System.ComponentModel.Composition/9.0.2": {
       "type": "package",
