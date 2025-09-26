@@ -448,6 +448,16 @@
     "tokenRefreshUrl": "https://api.helpscout.net/v2/oauth2/token",
     "tokenRevokeUrl": "",
     "meUrl": "https://api.helpscout.net/v2/users/me"
+  },
+  {
+    "provider": "OracleNetSuite",
+    "clientId": "",
+    "clientSecret": "",
+    "authorizationUrl": "https://accountID.app.netsuite.com/app/login/oauth2/authorize.nl?",
+    "tokenUrl": "https://accountID.suitetalk.api.netsuite.com/services/rest/auth/oauth2/v1/token",
+    "tokenRefreshUrl": "https://accountID.suitetalk.api.netsuite.com/services/rest/auth/oauth2/v1/token",
+    "tokenRevokeUrl": "",
+    "meUrl": ""
   }
 
 ]
