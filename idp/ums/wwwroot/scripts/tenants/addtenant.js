@@ -323,20 +323,6 @@ $(document).ready(function () {
                         document.getElementById("server-table-prefix").ej2_instances[0].value = defaultValues.DefaultPrefixForBI;
                     }
                 }
-
-                if (!isBoldReportsTenantType() && (!IsBiPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
-                }
-                else if (!isBoldReportsTenantType() && (IsBiPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
-                }
-
-                if (isBoldReportsTenantType() && (!IsReportsPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("d-block").addClass("d-none");
-                }
-                else if (isBoldReportsTenantType() && (IsReportsPrefixSchema)) {
-                    $(".schema-prefix-hide").removeClass("d-none").addClass("d-block");
-                }
             }
             else if ($(this).hasClass("storage-config") && $(".tenant-database-form").find(".e-error").length == 0) {
                 if (useSingleTenantDb) {
@@ -600,10 +586,6 @@ $(document).ready(function () {
             $(this).removeAttr("disabled");
         }
 
-        if (isSiteCreation) {
-            $(".id-schema-prefix-hide").removeClass("d-block").addClass("visually-hidden");
-        }
-
         var obj = document.getElementById("database-type");
         var itemsList = obj.ej2_instances[0].list.querySelectorAll('.e-list-item');
         if (isBoldReportsTenantType() && !IsOracleSupportReports) {
@@ -701,10 +683,6 @@ $(document).ready(function () {
                 $('.auth-type').removeClass("d-block").addClass("d-none");
             } else {
                 $('.auth-type').removeClass("d-none").addClass("d-block");
-            }
-
-            if (!isBoldReportsTenantType() || getDropDownValue("database-type").toLowerCase() === "mysql" || getDropDownValue("database-type").toLowerCase() === "oracle") {
-                $('.database-schema-prefix-hide').removeClass("d-block").addClass("visually-hidden");
             }
 
             $("#search-area").hide();
@@ -958,8 +936,6 @@ function getTenant(id) {
                 var databaseInformation = JSON.parse(data.DatabaseDetails);
                 var authentication = "";
                 $("#admin-nav").hide();
-                $("#table-prefix-ums").hide();
-                $("#table-prefix-name").hide();
                 if (databaseInformation.ServerType == 0) {
                     fillCommonDatbaseValues(databaseInformation);
                     $("#secure-sql-connection").prop("checked", databaseInformation.SslEnabled);
@@ -975,15 +951,11 @@ function getTenant(id) {
                         document.getElementById("txt-login").ej2_instances[0].enabled = false;
                         document.getElementById("txt-password-db").ej2_instances[0].enabled = false;
                     }
-                    $("#table-prefix-name").hide();
-                    $("#table-prefix-ums").hide();
                 } else if (databaseInformation.ServerType === 1) {
                     document.getElementById("database-type").ej2_instances[0].value = "MySQL";
                     fillCommonDatbaseValues(databaseInformation);
                     $('.auth-type').removeClass("d-block").addClass("d-none");
                     $('.port-num').removeClass("d-block").addClass("d-none");
-                    $("#table-prefix-ums").hide();
-                    $("#table-prefix-name").hide();
                     document.getElementById("txt-portnumber").ej2_instances[0].value = databaseInformation.Port;
                     $("#secure-sql-connection").prop("checked", databaseInformation.SslEnabled);
                     document.getElementById("txt-login").ej2_instances[0].value = databaseInformation.UserName;
@@ -993,8 +965,6 @@ function getTenant(id) {
                     fillCommonDatbaseValues(databaseInformation);
                     $('.auth-type').removeClass("d-block").addClass("d-none");
                     $('.port-num, .maintenancedb').removeClass("d-none").addClass("d-block");
-                    $("#table-prefix-ums").hide();
-                    $("#table-prefix-name").hide();
                     document.getElementById("maintenance-db").ej2_instances[0].value = data.TenantDetails.MaintenanceDatabase;
                     document.getElementById("txt-portnumber").ej2_instances[0].value = databaseInformation.Port;
                     $("#secure-sql-connection").prop("checked", databaseInformation.SslEnabled);
