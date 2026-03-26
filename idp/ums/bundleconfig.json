@@ -1,0 +1,640 @@
+[
+  {
+    "bundles/js/layout.js": [
+      "wwwroot/scripts/jquery/jquery-3.7.1.min.js",
+      "wwwroot/scripts/bootstrap/bootstrap.bundle.min.js",
+      "wwwroot/scripts/angularjs/angular.min.js",
+      "wwwroot/scripts/angularjs/angular-sanitize.min.js",
+      "wwwroot/scripts/core/server.core.js",
+      "wwwroot/scripts/core/profilepicture.js",
+      "wwwroot/scripts/angularjs/serverapp.js"
+    ],
+    "integrity": "sha384-rv5OObrxoqGAjfSgbBFGuQ1z3uUvJbRtE/jjWD9/NqJGmeUTDpp1ieX7pmXain5p"
+  },
+  {
+    "bundles/js/layout-mobile.js": [
+      "wwwroot/scripts/jquery/jquery-3.7.1.min.js",
+      "wwwroot/scripts/angularjs/angular.min.js",
+      "wwwroot/scripts/angularjs/angular-sanitize.min.js",
+      "wwwroot/scripts/core/server.core.js",
+      "wwwroot/scripts/angularjs/serverapp.js",
+      "wwwroot/scripts/core/mobilemenu.js"
+    ],
+    "integrity": "sha384-SRgb4s4BTgv4nFHj5PLrhXq9e81kexXkKBiHl3abMLIpT8Ne3pkJI4aaqQgxidM8"
+  },
+  {
+    "bundles/js/additional-settings.js": [
+      "wwwroot/scripts/administration/additionalsettings.js"
+    ],
+    "integrity": "sha384-ZMGWi4LVCjv6xLvby00FiTsKvd+lna96OVCCgsfPCYKwD9cMJy30ow+mdEYaYwaq"
+  },
+  {
+    "bundles/js/site-settings.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/administration/dropdown-initialization.js",
+      "wwwroot/scripts/administration/systemsettings.js",
+      "wwwroot/scripts/password/showhidepassword.js",
+      "wwwroot/scripts/administration/send-test-mail.js",
+      "wwwroot/scripts/administration/admin-common.js",
+      "wwwroot/scripts/administration/emailactivitylog.js",
+      "wwwroot/scripts/administration/managelanguage.js"
+    ],
+    "integrity": "sha384-kEyA8G4n4lfnP7fqwyOqO6Ow/iGcAOhg1Id1IwlFEGcegT1xYh1JFJAijO1a8YA3"
+  },
+  {
+    "bundles/js/user-activity-log.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/administration/dropdown-initialization.js",
+      "wwwroot/scripts/administration/admin-common.js",
+      "wwwroot/scripts/administration/useractivitylog.js"
+    ],
+    "integrity": "sha384-1JxiP5M72dJT0BZtGvQQLyx48vHq1QsAaH+krY94mm/uGNUlmiiLrxlk+pToTiWB"
+  },
+  {
+    "bundles/js/user-settings.js": [
+      "wwwroot/scripts/administration/usersettings.js",
+      "wwwroot/scripts/administration/admin-common.js"
+    ],
+    "integrity": "sha384-4/pyXruKOugX5Wkff2Ws878qkwRBBnOW70jSNAqVAqsTCC39RFEQGqYyBrc+oiS+"
+  },
+  {
+    "bundles/js/licenese-settings.js": [
+      "wwwroot/scripts/administration/licensesettings.js"
+    ],
+    "integrity": "sha384-a+iMuAZzGPbPEl9fVCiBAQ3S4MHvKKL4jlhGqkgMdcUUmZGyiQ88Cujy0M1bcUb/"
+  },
+  {
+    "bundles/js/homepage.js": [
+      "wwwroot/scripts/jquery/jquery-3.7.1.min.js",
+      "wwwroot/scripts/bootstrap/bootstrap.bundle.min.js",
+      "wwwroot/scripts/core/server.core.js",
+      "wwwroot/scripts/home/home.js",
+      "wwwroot/scripts/core/profilepicture.js"
+    ],
+    "integrity": "sha384-9YDjpY0PPMyf2wqBofAXhCGStdzcuaamJhPH+1f/rKScsuGdmOfdcYWxgYJGp+mX"
+  },
+  {
+    "bundles/js/sites.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/tenants/viewsite.js",
+      "wwwroot/scripts/tenants/customattribute.js",
+      "wwwroot/scripts/system/checkmailsettings.js",
+      "wwwroot/scripts/user/adduser.js",
+      "wwwroot/scripts/password/passwordpolicy.js",
+      "wwwroot/scripts/password/showhidepassword.js",
+      "wwwroot/scripts/administration/api-keys.js",
+      "wwwroot/scripts/tenants/mastersite.js"
+    ],
+    "integrity": "sha384-nFysAEPdBN4W3IrFi40K1VNGxXeFvlh3rrtHvdo5hBh1v1zvFsLv2XDc7/+dtaFT"
+  },
+  {
+    "bundles/js/auth-settings-page.js": [
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/password/showhidepassword.js",
+      "wwwroot/scripts/administration/dropdown-initialization.js",
+      "wwwroot/scripts/administration/authsettings.js",
+      "wwwroot/scripts/administration/admin-common.js"
+    ],
+    "integrity": "sha384-zx1nbOMgUOqmJaN/X3i1TdZierLbD2vyW+jEg1AukYSUn06WvBVPxDwjnhjFSQd8"
+  },
+  {
+    "bundles/js/change-password.js": [
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/password/passwordpolicy.js",
+      "wwwroot/scripts/password/changepassword.js",
+      "wwwroot/scripts/password/showhidepassword.js"
+    ],
+    "integrity": "sha384-4CDGTshwyJA/1zVj3Y2roCgT98bo9lyUAiTQuF7cv/+JlqoessMGuQ05wDZP05gV"
+  },
+  {
+    "bundles/js/view-user-profile.js": [
+      "wwwroot/scripts/user/userdelete.js"
+    ],
+    "integrity": "sha384-Vb+HO3zA/Nsic/3fVQ+dnxXGjOKqO6T00KDD/b7di+K/+5CCo/GI9tYZeXAN19+T"
+  },
+  {
+    "bundles/js/user-management-profile.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/jcrop/jcrop.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/password/passwordpolicy.js",
+      "wwwroot/scripts/user/usermanagementprofile.js",
+      "wwwroot/scripts/user/unlockuser.js",
+      "wwwroot/scripts/system/checkmailsettings.js",
+      "wwwroot/scripts/password/showhidepassword.js",
+      "wwwroot/scripts/tenants/customattribute.js",
+      "wwwroot/scripts/user/userattributes.js"
+    ],
+    "integrity": "sha384-5ss3V+MBo20ZhVnmPACKarOgYRUPXX9EqzOI9g/cUc0nbjq3PDINWaFcesehTHSO"
+  },
+  {
+    "bundles/js/user-management.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/user/usermanagement.js",
+      "wwwroot/scripts/user/unlockuser.js",
+      "wwwroot/scripts/system/checkmailsettings.js",
+      "wwwroot/scripts/user/adduser.js",
+      "wwwroot/scripts/password/passwordpolicy.js",
+      "wwwroot/scripts/password/showhidepassword.js"
+    ],
+    "integrity": "sha384-dpA34AfLrvV9vJXtwQHDjHbvLXhJEceZVKHHgxsa/tBqHNJScN3MxgxbD0knfKF4"
+  },
+  {
+    "bundles/js/iframe.js": [
+      "wwwroot/scripts/jquery/jquery-3.7.1.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/angularjs/angular.min.js",
+      "wwwroot/scripts/core/server.core.js"
+    ],
+    "integrity": "sha384-ASuQBWxz+t6W9kBSatJuojNzyhYMFB/MCQiqCUItUOs4LQZMJkbOCRYm8xmUi45u"
+  },
+  {
+    "bundles/js/system-configuration.js": [
+      "wwwroot/scripts/jquery/jquery-3.7.1.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/angularjs/angular.min.js",
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/bootstrap/bootstrap.bundle.min.js",
+      "wwwroot/scripts/system/inputboxcustom.js",
+      "wwwroot/scripts/core/server.core.js",
+      "wwwroot/scripts/password/passwordpolicy.js",
+      "wwwroot/scripts/system/validationmethods.js",
+      "wwwroot/scripts/system/systemsettings.js",
+      "wwwroot/scripts/system/storageconfiguration.js",
+      "wwwroot/scripts/system/useraccount.js",
+      "wwwroot/scripts/system/configurationmode.js",
+      "wwwroot/scripts/system/databaseconfiguration.js",
+      "wwwroot/scripts/system/licenseselection.js",
+      "wwwroot/scripts/password/showhidepassword.js",
+      "wwwroot/scripts/tenants/customattribute.js"
+    ],
+    "integrity": "sha384-CD1pEowHIc5MjAJuBfw6r7YJ1FxYEFM1tXvdeoRc0vT81SJVyCGw36mWzy5KcwW8"
+  },
+  {
+    "bundles/js/addtenantiframe.js": [
+      "wwwroot/scripts/jquery/jquery-3.7.1.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/bootstrap/bootstrap.bundle.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/system/inputboxcustom.js",
+      "wwwroot/scripts/core/server.core.js",
+      "wwwroot/scripts/system/systemsettings.js",
+      "wwwroot/scripts/system/databaseconfiguration.js",
+      "wwwroot/scripts/system/storageconfiguration.js",
+      "wwwroot/scripts/system/configurationmode.js",
+      "wwwroot/scripts/tenants/siteconfiguration.js",
+      "wwwroot/scripts/tenants/customattribute.js",
+      "wwwroot/scripts/tenants/adminselection.js",
+      "wwwroot/scripts/system/validationmethods.js",
+      "wwwroot/scripts/password/showhidepassword.js",
+      "wwwroot/scripts/tenants/addtenant.js",
+      "wwwroot/scripts/tenants/mastersite.js"
+    ],
+    "integrity": "sha384-peCbTd7BsoY2J7GOcr5mRQ9zxpPhkVi3tXHW7/Zj+1ml5mf85uIL8J4i50ZTTkgh"
+  },
+  {
+    "bundles/js/ej2.js": [
+      "wwwroot/scripts/essentialjs2/ej2.min.js"
+    ],
+    "integrity": "sha384-41B4fK8Zmt1PYgV7AavFfUh3cFD0Dd0vgRipU4oB6I9YPPqC9AEqAn0cTHOovTwL"
+  },
+  {
+    "bundles/js/email-configuration.js": [
+      "wwwroot/scripts/essentialjs2/ej2.min.js",
+      "wwwroot/scripts/essentialjs2/ej2.rte.min.js",
+      "wwwroot/scripts/essentialjs2/marked.min.js",
+      "wwwroot/scripts/administration/dropdown-initialization.js",
+      "wwwroot/scripts/administration/emailconfigure.js"
+    ],
+    "integrity": "sha384-WQAmTjJt8M03W2vgvyeV4PMYWJfECWW8QGf6z8EVlIjZqnMN+1nHLRGIDc0gPsj1"
+  },
+  {
+    "bundles/js/embed-settings.js": [
+      "wwwroot/scripts/administration/embed.settings.js"
+    ],
+    "integrity": "sha384-wDskLBlolvAWlhu4wvbfiQxoPrKAS1yWYM/8/QLjEf7CuUVA/vWnNuP+Wfws87OO"
+  },
+  {
+    "bundles/js/offline-license-update.js": [
+      "wwwroot/scripts/administration/offlinelicenseupdate.js"
+    ],
+    "integrity": "sha384-N5orFmkKuS0SsSp/y5y6CshpSBNSukPbHVjas+Y+mpVCEtrUdpwV6nwfCDb9n9S3"
+  },
+  {
+    "bundles/js/api-keys.js": [
+      "wwwroot/scripts/administration/api-keys.js"
+    ],
+    "integrity": "sha384-WoF/k2+blyFk8A0YttZmGIKgjK8eezAZCDT4II3Rt/USPEERw4TJlXqakg8A2z89"
+  },
+  {
+    "bundles/js/proxy-settings.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/administration/dropdown-initialization.js",
+      "wwwroot/scripts/core/server.core.js",
+      "wwwroot/scripts/system/validationmethods.js",
+      "wwwroot/scripts/administration/proxy-settings.js",
+      "wwwroot/scripts/administration/admin-common.js"
+    ],
+    "integrity": "sha384-eNJVJ9pwOFFtdArWTPizXk9CYxcSZHHSHjyK6fNUmDiwG+4+e+QtFaHvYWTovj9q"
+  },
+  {
+    "bundles/js/api-validation.js": [
+      "wwwroot/scripts/administration/api-validation.js"
+    ],
+    "integrity": "sha384-dtxkf2428aRshifRsGRBxugeXjF01haKo0LfbTv4A8nTdfjvMhnzfOFvb+2HeWRq"
+  },
+  {
+    "bundles/js/look-and-feel.js": [
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/administration/dropdown-initialization.js",
+      "wwwroot/scripts/administration/look-feel.js",
+      "wwwroot/scripts/administration/admin-common.js"
+    ],
+    "integrity": "sha384-4lJVgzRhtV/w6IQwRgVGYDT8jQYBut9C9aPcfxhTJOA9eoXydaxbN+SnEscy1CzQ"
+  },
+  {
+    "bundles/js/security-settings.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/administration/securitysettings.js",
+      "wwwroot/scripts/administration/addrules.js",
+      "wwwroot/scripts/administration/admin-common.js"
+    ],
+    "integrity": "sha384-lhKVD0vK6zkpHmdWYIhxcqUQwFPgZGoW/50Ru2TP1kMVnsAufxiLlGPY5faAmiYX"
+  },
+  {
+    "bundles/js/import-export-settings.js": [
+      "wwwroot/scripts/jquery/jquery.easing-1.4.2.min.js",
+      "wwwroot/scripts/jquery/jquery.globalize.min.js",
+      "wwwroot/scripts/jquery/jquery.validate.min.js",
+      "wwwroot/scripts/jquery/jsrender.min.js",
+      "wwwroot/scripts/administration/addrules.js",
+      "wwwroot/scripts/administration/importexportsettings.js",
+      "wwwroot/scripts/administration/admin-common.js"
+    ],
+    "integrity": "sha384-UfP2sKbaqFFDJR8jyvFOcx7S3VsvMRegQGV0ASCxKEEDBHIIeL9MHHpWXkie8pUj"
+  },
+  {
+    "bundles/js/error.js": [
+      "wwwroot/scripts/jquery/jquery-3.7.1.min.js",
+      "wwwroot/scripts/bootstrap/bootstrap.bundle.min.js",
+      "wwwroot/scripts/error/error.js"
+    ],
+    "integrity": "sha384-CnjrwOm2MgDYSj9TvRueNuCSyuZkKeKjgnhw+9Ie2gGuIfOjRfEvN9wtN+uj8oW3"
+  },
+  {
+    "bundles/js/auto-deployment.js": [
+      "wwwroot/scripts/system/autodeployment.js"
+    ],
+    "integrity": "sha384-g+4PQWd/FiHTmBEToLVtJZbH1ulOft4yoOAiDC0EXHPYfHLEBw9vs4zJ1peLL+QU"
+  },
+  {
+    "bundles/css/layout.css": [
+      "wwwroot/styles/essentialjs2/material-theme/material.min.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/spinner-customization.css",
+      "wwwroot/styles/bootstrap/bootstrap.min.css",
+      "wwwroot/styles/fonts/font-server.css",
+      "wwwroot/styles/scss/pages/components/buttons.css",
+      "wwwroot/styles/scss/pages/newmaster.css",
+      "wwwroot/styles/scss/pages/components/dialogs.css",
+      "wwwroot/styles/scss/pages/footer-onpremise.css",
+      "wwwroot/styles/scss/pages/error/error-message.css",
+      "wwwroot/styles/scss/pages/topmenu.css"
+    ],
+    "integrity": "sha384-Yr/WxKU3erDcv6LjQ21MySmqZu/gpwrs9SXFW3pfBu07LklbsTcs29uI7msiqkse"
+  },
+  {
+    "bundles/css/ej2-theme.css": [
+      "wwwroot/styles/essentialjs2/fusion-theme-compatability/ej.theme.css"
+    ],
+    "integrity": "sha384-Nw4NqGKO2kZj1Qi+P83pbwc7UWiQ7IySVUQENwjDd1x2M7xQwfQ1WhCi4AoivYf2"
+  },
+  {
+    "bundles/css/account-page.css": [
+      "wwwroot/styles/scss/pages/accounts/login.css"
+    ],
+    "integrity": "sha384-uHpcPfQACf1aiQBgvwr9tZJnlbwHB815NDOHmOQ+ev+orq5MV7UGvOUPsszXmrXj"
+  },
+  {
+    "bundles/css/site-settings.css": [
+      "wwwroot/styles/essentialjs2/rte/material.min.css",
+      "wwwroot/styles/scss/ej2customization/date-range-picker-customization.css",
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/systemsettings.css",
+      "wwwroot/styles/scss/pages/administration/mail-settings.css",
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/administration/emailactivitylog.css",
+      "wwwroot/styles/scss/pages/administration/EmailConfigure.css",
+      "wwwroot/styles/scss/pages/administration/managelanguage.css",
+      "wwwroot/styles/scss/pages/components/grid.css"
+    ],
+    "integrity": "sha384-p3otgDfrJo2xhBxlXxuoFLFkg1dDKTpnrEaSYWX+m3b5oDcaTgQRK+Gozudw4Nom"
+  },
+  {
+    "bundles/css/user-activity.css": [
+      "wwwroot/styles/scss/ej2customization/date-range-picker-customization.css",
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/mail-settings.css",
+      "wwwroot/styles/scss/pages/administration/emailactivitylog.css",
+      "wwwroot/styles/scss/pages/components/grid.css"
+    ],
+    "integrity": "sha384-k2OHc6yUQ4oHgfruwKFqM1WRxSsjCjDA88V/smL0UC/hXCY4eWbrxQivQO0/KD9y"
+  },
+  {
+    "bundles/css/user-settings.css": [
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/usersettings.css"
+    ],
+    "integrity": "sha384-qI4iZwXFcZguXRF19z/12FdtkCQVa7jzNJMvosZ4F1W4jm8BPMigm+eCmTYqip5G"
+  },
+  {
+    "bundles/css/auth-settings-page.css": [
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/authsettings.css"
+    ],
+    "integrity": "sha384-CoODqmrqDKCwkhLUjLtjUlnxG5H1xlRXmAHSThfBbWn7TZZJVQ57+arllDscSaqx"
+  },
+  {
+    "bundles/css/license-settings.css": [
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/licensesettings.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css"
+    ],
+    "integrity": "sha384-6Vl6iexRzFq88uTKFXAh/wDLZu63zyQvNYU0EL2orFphLjZFlE35o4Lfw491P0Kd"
+  },
+  {
+    "bundles/css/user-management-profile.css": [
+      "wwwroot/styles/jcrop/jcrop.min.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/usermanagement/usermanagement.css",
+      "wwwroot/styles/scss/pages/passwordpolicyrules.css",
+      "wwwroot/styles/scss/pages/customattribute/custom-attribute.css",
+      "wwwroot/styles/scss/pages/sites/viewsite.css",
+      "wwwroot/styles/scss/pages/usermanagement/usermanagementprofile.css"
+    ],
+    "integrity": "sha384-eaxPm1y2Kz+6EoxjW0EdQ9hBl1phr/s/pUXUumGDGmjtbOXBlX8cPPop7QDdgBMs"
+  },
+  {
+    "bundles/css/user-management-module.css": [
+      "wwwroot/styles/scss/pages/usermanagement/usermanagement.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/passwordpolicyrules.css",
+      "wwwroot/styles/scss/pages/usermanagement/userlist.css",
+      "wwwroot/styles/scss/pages/usermanagement/importuserscsv.css"
+    ],
+    "integrity": "sha384-a9BGo7l2R/eLGO6rApyHvqUNtGyPmaN4FeG1N0a3H4nGw06kr05j5Zss6l875cBZ"
+  },
+  {
+    "bundles/css/iframe.css": [
+      "wwwroot/styles/bootstrap/bootstrap.min.css",
+      "wwwroot/styles/fonts/font-server.css",
+      "wwwroot/styles/scss/pages/newmaster.css"
+    ],
+    "integrity": "sha384-/Sgd/IgQcyp4YlzWzUYdL7tJcEQ5LV36ITe5KM8GZrPN5KTzNcfqsW+XA5VQ0pl1"
+  },
+  {
+    "bundles/css/homepage.css": [
+      "wwwroot/styles/bootstrap/bootstrap.min.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/ej2customization/spinner-customization.css",
+      "wwwroot/styles/fonts/font-server.css",
+      "wwwroot/styles/scss/pages/newthemes/mixins.css",
+      "wwwroot/styles/essentialjs2/material-theme/material.min.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/components/buttons.css",
+      "wwwroot/styles/scss/pages/components/dialogs.css",
+      "wwwroot/styles/scss/pages/profile.css",
+      "wwwroot/styles/scss/homepage.css"
+    ],
+    "integrity": "sha384-/zGv5kPfPNm9llu9VY2mZTMJdni92terIgOzCtnuO/uQGKyOLBF36khknFrOeIZX"
+  },
+  {
+    "bundles/css/sites.css": [
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/sites/sites.css",
+      "wwwroot/styles/scss/pages/sites/sitemanagement.css"
+    ],
+    "integrity": "sha384-gMa0AhlLv/ug/cQR9eQG/IWquZXi/K2AFtJgCi+NNgB0Hcr43XqMMP02PhUqoj0c"
+  },
+  {
+    "bundles/css/view-site.css": [
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/components/dialogs.css",
+      "wwwroot/styles/scss/pages/usermanagement/userlist.css",
+      "wwwroot/styles/scss/pages/sites/sitemanagement.css",
+      "wwwroot/styles/scss/pages/customattribute/custom-attribute.css",
+      "wwwroot/styles/scss/pages/sites/viewsite.css"
+    ],
+    "integrity": "sha384-xRfS20Qe46QDox+yAbivFli34tCmlQpq1t5N3WM9i84+W1dqXcEUG9M9iJ8T5DsJ"
+  },
+  {
+    "bundles/css/error-page.css": [
+      "wwwroot/styles/bootstrap/bootstrap.min.css",
+      "wwwroot/styles/fonts/font-server.css",
+      "wwwroot/styles/scss/pages/footer-onpremise.css",
+      "wwwroot/styles/scss/pages/error/error-page.css"
+    ],
+    "integrity": "sha384-HIiBK3sA4zEujNaFP1ht1KEGphsVAvsejFBFG6dIrcU5nOEtFlXW5GWf41VAtjRG"
+  },
+  {
+    "bundles/css/system-configuration.css": [
+      "wwwroot/styles/bootstrap/bootstrap.min.css",
+      "wwwroot/styles/fonts/font-server.css",
+      "wwwroot/styles/essentialjs2/material-theme/material.min.css",
+      "wwwroot/styles/scss/pages/components/dialogs.css",
+      "wwwroot/styles/scss/pages/components/buttons.css",
+      "wwwroot/styles/scss/pages/newthemes/mixins.css",
+      "wwwroot/styles/scss/pages/newmaster.css",
+      "wwwroot/styles/scss/pages/serverconfiguration/systemsettings.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/radio-button-customization.css",
+      "wwwroot/styles/scss/ej2customization/spinner-customization.css",
+      "wwwroot/styles/scss/pages/components/radiobutton.css"
+    ],
+    "integrity": "sha384-Z+UFhTBewG3SGwCAjqWZJdvObZ+mKY8fEsM9BnW3aGsWiUozYNCXkg/nOjoTE5W9"
+  },
+  {
+    "bundles/css/addtenantiframe.css": [
+      "wwwroot/styles/bootstrap/bootstrap.min.css",
+      "wwwroot/styles/fonts/font-server.css",
+      "wwwroot/styles/essentialjs2/material-theme/material.min.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/radio-button-customization.css",
+      "wwwroot/styles/scss/ej2customization/spinner-customization.css",
+      "wwwroot/styles/scss/pages/components/buttons.css",
+      "wwwroot/styles/scss/pages/newthemes/mixins.css",
+      "wwwroot/styles/scss/pages/newmaster.css",
+      "wwwroot/styles/scss/pages/components/dialogs.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/loadericon.css",
+      "wwwroot/styles/scss/pages/serverconfiguration/systemsettings.css",
+      "wwwroot/styles/scss/pages/customattribute/custom-attribute.css",
+      "wwwroot/styles/scss/pages/addtenant.css"
+    ],
+    "integrity": "sha384-mnOeI7yqILule9isxUlzSp3D/DTTu/iTe2WtgVTQ4Tuc5o9JtGm0oHx+5NRnLnV7"
+  },
+  {
+    "bundles/fonts/font-robotoregular.css": [
+      "wwwroot/styles/fonts/font-robotoregular.css"
+    ],
+    "integrity": "sha384-HgX2NWcCVnku3erOb/8bu/S8mhM+rNR20lrBbo4uRa4qi65KwIzbFneOhFAPj/7g"
+  },
+  {
+    "bundles/css/embed-settings.css": [
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/embed-settings.css"
+    ],
+    "integrity": "sha384-GI+TAUpgrH3EI4rOWAbNWYLZDP+tXB8xAves1RMDXWWCCrW478cQWOig+tCasN1D"
+  },
+  {
+    "bundles/css/api-keys.css": [
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/api-keys.css"
+    ],
+    "integrity": "sha384-AbeaKT/NrkYBbgW0Gt7WznUknN0mvcjIqIa2cDVt9h7aWQpPehhBvWefO3wqxvyB"
+  },
+  {
+    "bundles/css/proxy-settings.css": [
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/proxy-settings.css",
+      "wwwroot/styles/scss/pages/components/switch.css"
+    ],
+    "integrity": "sha384-ciA/IKG2tEMq2x8f9njkyEOfzcT5qsD5Q40TUiqhNvjQt7pqJUE2YVpJ7QeBZo46"
+  },
+  {
+    "bundles/css/api-validation.css": [
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/api-validation.css"
+    ],
+    "integrity": "sha384-dgvChPZaVah10WoaTgEPuUUihr30Riov9wqq1wlweqIvCo+hSn3KuffzZFK7aSWr"
+  },
+  {
+    "bundles/css/additional-settings.css": [
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/ej2customization/input-box-customization.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/additional-settings.css"
+    ],
+    "integrity": "sha384-dw6zeka1Y2REMyaki2GOjJUZnqCP3bYGk8psvCnz441wbIt3x/d8XUGhP3Ce4bY5"
+  },
+  {
+    "bundles/css/look-and-feel.css": [
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/ej2customization/drop-down-customization.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/look-feel.css"
+    ],
+    "integrity": "sha384-2hFb5/QvddquGMkx8puUH2gZRniTCam7QAlSvG/l8eXTJi3gZciqF+411lYCGmwn"
+  },
+  {
+    "bundles/css/security-settings.css": [
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/ej2customization/numeric-box-customization.css",
+      "wwwroot/styles/scss/pages/administration/securitysettings.css"
+    ],
+    "integrity": "sha384-8dDd8kGD8IWoj2OX2md91Oa6vVNR9j/nxTiASeqvdrDxs8YRYpEcQGviRwwPJhFx"
+  },
+  {
+    "bundles/css/import-export-settings.css": [
+      "wwwroot/styles/scss/pages/components/radiobutton.css",
+      "wwwroot/styles/scss/pages/components/switch.css",
+      "wwwroot/styles/scss/pages/components/grid.css",
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/ej2customization/numeric-box-customization.css",
+      "wwwroot/styles/scss/pages/administration/importexportsettings.css",
+      "wwwroot/styles/scss/pages/administration/importsettings.css"
+    ],
+    "integrity": "sha384-9Mk0ktJNkJUAA5LQ25IESonq92dHhNIONP08OizAkNXeV/EIFKFUA3eimMPJZL1y"
+  },
+  {
+    "bundles/css/error-page-layout.css": [
+      "wwwroot/styles/scss/pages/error/error-page-layout.css"
+    ],
+    "integrity": "sha384-sOOQnq+ivb2MXNmx15Vr/owIsB94iCbAh9ICpRjsCyVAqa4OeBrSfUC57sGZ6zIG"
+  },
+  {
+    "bundles/css/boldservice-version.css": [
+      "wwwroot/styles/scss/pages/administration/adminmenu.css",
+      "wwwroot/styles/scss/pages/administration/boldservice-version.css"
+    ],
+    "integrity": "sha384-Ec7J3AmF+DmcAKQMSIMOqJu6qPWdjVXtrEpQ8MjPoCUb8p74TARMST0KYVdgL8hJ"
+  },
+  {
+    "bundles/css/auto-deploy.css": [
+      "wwwroot/styles/fonts/font-server.css",
+      "wwwroot/styles/bootstrap/bootstrap.min.css",
+      "wwwroot/styles/scss/pages/newmaster.css",
+      "wwwroot/styles/scss/pages/serverconfiguration/autodeployment.css"
+    ],
+    "integrity": "sha384-Bjx3pVtwhGpgTjh1wrDg9fa/O6YR4g+PJUpvYw+fsM04gwFENigX1CNAP2ihYObF"
+  },
+  {
+    "bundles/css/cssloader.css": [
+      "wwwroot/styles/scss/pages/components/cssloader.css"
+    ],
+    "integrity": "sha384-xLDu4lVI3Ofkykcl+0tLO7RZ5bNmGjAZ7UkSuc1X1pqRxnwI7Qt95RcFYWE40SPL"
+  },
+  {
+    "bundles/css/lighttheme.css": [
+      "wwwroot/styles/scss/default/light_default.css"
+    ],
+    "integrity": "sha384-a+ZRdsaM7HT/0rO4Dh66GrnabXpWsJNUruq0fRVuozyqQYUomGnkzWDp0vKb2mFY"
+  },
+  {
+    "bundles/css/darktheme.css": [
+      "wwwroot/styles/scss/default/dark_default.css"
+    ],
+    "integrity": "sha384-LvTVLteu1LvPwuQi8BmR3M74HOuSi/TmoKECN2NnDjy5qS/AgfzEBx+g+Sg2qD26"
+  }
+]

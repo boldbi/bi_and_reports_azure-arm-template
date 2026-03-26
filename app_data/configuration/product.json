@@ -1,0 +1,26 @@
+{
+  "InternalAppUrl": {
+    "Idp": "https://localhost:44349",
+    "Bi": "http://localhost:51894/bi",
+    "BiDesigner": "http://localhost:5000/bi/designer",
+    "AiService": "http://localhost:5000/aiservice",
+    "Reports": "http://localhost:5000/reporting",
+    "ReportsService": "http://localhost:5000/reporting/reportservice"
+  },
+  "BoldProducts": [
+    {
+      "Name": "BoldBI",
+      "SetupName": "BoldBIEnterpriseEdition",
+      "Version": "14.2.4",
+      "IDPVersion": "5.1.15",
+      "IsCommonLogin": true
+    },
+    {
+      "Name": "BoldReports",
+      "SetupName": "BoldReports_EnterpriseReporting",
+      "Version": "12.2.6",
+      "IDPVersion": "5.1.18",
+      "IsCommonLogin": true
+    }
+  ]
+}
