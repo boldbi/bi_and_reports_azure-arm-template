@@ -27,7 +27,7 @@
                  currentUrl.IndexOf(".gif", StringComparison.CurrentCultureIgnoreCase) > 0 ||
                  currentUrl.IndexOf(".svg", StringComparison.CurrentCultureIgnoreCase) > 0;
 
-    var idPUrl = _globalAppSettings.SystemSettings.IDPUrl;
+    var idPUrl = ServerAppConfig.GetClientServiceUrl(_globalAppSettings.SystemSettings.IDPUrl, Context);
     var isMobile = new DeviceDetection(Context).IsMobile;
     var defaultAppLogo = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/') + "/cdn/images/application/" + ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + IconFileNames.MainLogo;
     var appLogo = (globalAppSettings.SystemSettings.MainScreenLogo.EndsWith(IconFileNames.MainLogo) || globalAppSettings.SystemSettings.MainScreenLogo.EndsWith("main_logo.png")) ? defaultAppLogo : globalAppSettings.SystemSettings.MainScreenLogo;
@@ -47,9 +47,9 @@
     var allItemsCount = ViewBag.ItemsCount as Dictionary<ItemType, int>;
     var isSelfHosted = ServerAppConfig.IsSelfHosted;
     var etlEndpointPrefix = isSelfHosted ? ServerAppConfig.InternalAppIdpUrl : ServerAppConfig.AppSettings.EndPoints.ETLSiteURL;
-    var navigateETLUrl = etlEndpointPrefix + (ServerAppConfig.IsSelfHosted ? $"/{ServerAppConfig.ETLHostName}/{globalAppSettings.SystemSettings.TenantId.ToString()}" : $"/{globalAppSettings.SystemSettings.TenantId.ToString()}");
+    var etlUrlWithService = ServerAppConfig.GetClientServiceUrl(etlEndpointPrefix.TrimEnd('/'), Context);
+    var navigateETLUrl = etlUrlWithService.TrimEnd('/') + (isSelfHosted ? $"/etlservice/{globalAppSettings.SystemSettings.TenantId.ToString()}" : $"/{globalAppSettings.SystemSettings.TenantId.ToString()}");
     var isHideIconBasedOnDnsName = GlobalAppSettings.IsUrlInDnsList(globalAppSettings.DisplayUri);
-
     var showLicenseWarningIcon = ServerAppConfig.ShowLicenseWarning;
     var customUI = globalAppSettings.SystemSettings.CustomUI;
     var profile = customUI?.Profiles?.FirstOrDefault();
@@ -214,12 +214,15 @@
 
             <li class="li-logout mobile-visible">
                 <img data-src="@(Model +"/images/divider_dark.png")" class="upper-divider" />
-                <a class="" href="@Url.Action("logout", "accounts" )">
-                    <span class="menu-icon-container">
-                        <i class="su su-logout"></i>
-                    </span>
-                    <span class="menu-label">[[[Sign out]]]</span>
-                </a>
+                <form action="@Url.Action("logout", "accounts")" method="post" style="display:inline;">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="profile-menu-action form-logout col-12">
+                        <span class="menu-icon-container">
+                            <i class="su su-logout"></i>
+                        </span>
+                        <span class="menu-label">Sign out</span>
+                    </button>
+                </form>
             </li>
         </ul>
     </nav>

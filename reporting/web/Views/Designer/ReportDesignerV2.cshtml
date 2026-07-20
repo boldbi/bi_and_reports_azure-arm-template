@@ -13,15 +13,15 @@
     var globalAppSettings = _globalAppSettings;
     var tenantAppConfiguration = new TenantAppConfiguration(globalAppSettings);
     var language = CultureInfo.CurrentCulture.Name;
-    var baseUrl = globalAppSettings.SystemSettings.BaseUrl;
-    var reportServerApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
+    var baseUrl = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.BaseUrl, Context);
+    var reportServerApiUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl(), _globalAppSettings, Context);
     var tourCookie = Context.Request.Cookies["syncfusion.reports.designer.tour"];
     var tourObj = new TourCookie();
     var isSelfHosted = ServerAppConfig.IsSelfHosted;
     var isAzureApplication = ServerAppConfig.IsAzureApplication;
     var reportUrl = Url.Action("Reports", "Reports");
     var rootUrlAction = reportUrl.TrimEnd('/').Remove(reportUrl.LastIndexOf('/'));
-   
+
     if (tourCookie != null)
     {
         tourObj = JsonConvert.DeserializeObject<TourCookie>(JsonConvert.DeserializeObject(tourCookie).ToString());
@@ -30,7 +30,7 @@
 #if (BoldReportsCloud)
     var designerServiceUrl = globalAppSettings.SystemSettings.ReportServiceEndPoint.TrimEnd('/');
 #else
-    var designerServiceUrl = ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/');
+    var designerServiceUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings, Context);
 #endif
     var reportServiceUrl = designerServiceUrl + "/api/Designer";
     if (!string.IsNullOrWhiteSpace(ViewBag.categoryName) && !string.IsNullOrWhiteSpace(ViewBag.reportName))
@@ -64,6 +64,7 @@
     var isSandbox = ServerAppConfig.Sandbox.Reports.Enabled;
     var GoogleTagManagerHeadScript = ServerAppConfig.GoogleTagManagerHeadScript;
     var GoogleTagManagerBodyScript = ServerAppConfig.GoogleTagManagerBodyScript;
+    var favicon = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.FavIcon, Context);
 }
 
 <html lang="en" style="height:100%;width:100%">
@@ -241,8 +242,7 @@
         <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/reportdesigner/ej.localetexts.@string.Concat(language, ".min.js")"></script>
         <script nonce="@Context.Items["ScriptNonce"]" src="@reportServerResourceUrl/cdn/scripts/localization/v2.0/l10n/ej.localetexts.@string.Concat(language, ".min.js")"></script>
     }
-
-    <link rel="icon" href="@Url.Content(globalAppSettings.SystemSettings.FavIcon)" id="favicon-link" />
+    <link rel="icon" href="@Url.Content(favicon)" id="favicon-link" />
 
     <style>
         .e-rptdesigner-header-selection {
@@ -1002,7 +1002,8 @@
                 },
                 {
                     'id': controlId + '_designer_header_reportName',
-                    'spellcheck': 'false'
+                    'spellcheck': 'false',
+                    'maxlength': '255'
                 });
             reportNameOuterDiv.append(reportNameInnerDiv);
             reportNameInnerDiv.append(rptNameEle);

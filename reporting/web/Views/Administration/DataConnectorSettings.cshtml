@@ -4,13 +4,13 @@
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.DataConnectors);
     var globalAppSettings = _globalAppSettings;
     var language = CultureInfo.CurrentCulture.Name;
-    var boldReportsApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
+    var boldReportsApiUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl(), _globalAppSettings, Context);
     var isAdmin = Context.Session.GetString("IsAdmin") != null && Convert.ToBoolean(Context.Session.GetString("IsAdmin"));
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 #if (BoldReportsCloud)
     var reportServiceUrl = globalAppSettings.SystemSettings.ReportServiceEndPoint.TrimEnd('/');
 #else
-    var reportServiceUrl = ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/');
+    var reportServiceUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings, Context);
 #endif
     var isAzureApplication = ServerAppConfig.IsAzureApplication;
 }

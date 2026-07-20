@@ -18,7 +18,7 @@
     var isMobile = new DeviceDetection(Context).IsMobile;
     var menuClass = isMobile ? "collapse width" : "collapse in";
     var includeMessageBox = ViewBag.MessageBox == null || ViewBag.MessageBox == true;
-    var faviconLogo = globalAppSettings.SystemSettings.FavIcon;
+    var faviconLogo = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.FavIcon, Context);
     var isAdmin = Context.Session.GetString("IsAdmin") != null && Convert.ToBoolean(Context.Session.GetString("IsAdmin"));
     var tourCookie = Context.Request.Cookies["syncfusion.dashboards.server.tour"];
     var isItemPageRequested = (url.AbsolutePath == "/" || url.AbsolutePath == Url.Content("~/") || url.ToString().IndexOf("/homepages", StringComparison.CurrentCultureIgnoreCase) > 0
@@ -466,6 +466,9 @@
                 <div id="message">
                     <h1 id="message-header"></h1>
                     <span id="message-content"></span>
+                </div>
+                <div class="close-div">
+                    <span id="close-content">[[[Close]]]</span>
                 </div>
             </div>
             <div id="warning-alert">

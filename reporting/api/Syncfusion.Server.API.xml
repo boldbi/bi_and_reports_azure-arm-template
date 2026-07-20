@@ -533,6 +533,13 @@
             <param name="apiUpdateScheduleRequestV4">Details about the schedule passed will be updated to the server.</param>
             <returns>The response is sent as a ApiScheduleResponse object</returns>
         </member>
+        <member name="M:Syncfusion.Server.API.Controllers.ItemsController.ScheduleDownloadJson(Syncfusion.Server.Base.DataClasses.ItemRequest)">
+            <summary>
+            To download the items for user
+            </summary>
+            <param name="itemRequest">Item request for download item</param>
+            <returns>To return api item download responses</returns>
+        </member>
         <member name="M:Syncfusion.Server.API.Controllers.ItemsController.GetScheduleItems">
             <summary>
             Returns list of scheduled items from the server.
@@ -1233,6 +1240,12 @@
             </summary>
             <param name="apiReportDataSourceAddV2">WebApi Datasource Definition details</param>
         </member>
+        <member name="M:Syncfusion.Server.API.Models.ReportServer.Designer.ValidateWebApiCustomPropertyDetails(Syncfusion.Server.Base.DataClasses.WebApiConnectionString)">
+            <summary>
+            This method is used to validate the WebApi details for the data source type
+            </summary>
+            <param name="apiReportDataSourceAddV2">WebApi Datasource Definition details</param>
+        </member>
         <member name="M:Syncfusion.Server.API.Models.ReportServer.Designer.IsValidWebApiDetails(Syncfusion.Server.Base.DataClasses.ApiReportDataSourceAdd)">
             <summary>
             This method is used to validate the WebApi details for the data source
@@ -1255,6 +1268,12 @@
             <param name="isDecryptPassword">isDecryptPassword default value false</param>
             <param name="itemRequest">item request class object</param>
             <returns>Class type ItemResponse</returns>
+        </member>
+        <member name="M:Syncfusion.Server.API.Models.SchedulerManagementModel.ValidateNoDataOptions(Syncfusion.Server.Base.DataClasses.ApiUpdateScheduleRequestV5)">
+            <summary>
+            Validate no-data options for update requests (V5).
+            </summary>
+            <param name="apiUpdateScheduleRequestV5">The update schedule request V5 DTO.</param>
         </member>
         <member name="M:Syncfusion.Server.API.Models.SchedulerManagementModel.AddSchedule(Syncfusion.Server.Base.DataClasses.ApiScheduleRequest,System.Boolean,System.Collections.Generic.List{Syncfusion.Server.Base.DataClasses.ApiReportParameter})">
             <summary>

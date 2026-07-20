@@ -1,4 +1,5 @@
-﻿@using Syncfusion.Server.Base.Helpers
+﻿@using Newtonsoft.Json
+@using Syncfusion.Server.Base.Helpers
 @model string
 
 @{
@@ -358,7 +359,7 @@
 
            $("#add-new-category [data-toggle='tooltip']").tooltip();
            parent.window.IsCopyOrMoveDashboard = true;
-            window.parent.$('#ItemAction_wrapper').ejWaitingPopup("hide");
+            window.$('#ItemAction_wrapper').ejWaitingPopup("hide");
         });
         function copyCategoryValueChange(className) {
             var dropDownTreeInstance = document.querySelector('.e-dropdowntree').ej2_instances[0];
@@ -386,7 +387,7 @@
             $("#tenantList").selectpicker('destroy');
             $("#tenantList").selectpicker();
             $("#tenantList").selectpicker('val', siteName);
-            window.parent.$('#ItemAction_wrapper').ejWaitingPopup("hide");
+            window.$('#ItemAction_wrapper').ejWaitingPopup("hide");
         });
     </script>
     <script nonce="@Model">
@@ -404,7 +405,7 @@
             if (sharedDataSource && sharedDataSource.length > 0) {
                 renderSharedDataSource(sharedDataSource, availableSharedDataSource);
             }
-            window.parent.$('#ItemAction_wrapper').ejWaitingPopup("hide");
+            window.$('#ItemAction_wrapper').ejWaitingPopup("hide");
         });
 
         function renderSharedDataset(mappedDS, availableDS) {
@@ -448,9 +449,22 @@
     <script nonce="@Model">
         $(document).ready(function () {
             var reportCategoryList = @Json.Serialize(ViewBag.CategoryDetails);
-            var drillthroughreportReferences = @Json.Serialize(ViewBag.itemReferences["drillthroughreport"]);
-            var subreportReferences = @Json.Serialize(ViewBag.itemReferences["subreport"]);
+            
+    @using System.Collections.Generic  
 
+    @{  
+        var dict = ViewBag.ItemReferences as Dictionary<string, object[]> ?? new Dictionary<string, object[]>();  
+    }
+
+    var drillthroughreportReferences = @Html.Raw(Json.Serialize(  
+        dict.ContainsKey("drillthroughreport") ? dict["drillthroughreport"] : System.Array.Empty<object>()  
+    ));  
+
+    var subreportReferences = @Html.Raw(Json.Serialize(  
+        dict.ContainsKey("subreport") ? dict["subreport"] : System.Array.Empty<object>()  
+    ));  
+
+   
             if ((drillthroughreportReferences && drillthroughreportReferences.length > 0) || (subreportReferences && subreportReferences.length > 0)) {
                 $("#copyreport_advance_button").css('display', 'block');
             }
@@ -463,7 +477,7 @@
                 renderDrillthroughreportList(reportCategoryList, drillthroughreportReferences);
             }
 
-            window.parent.$('#ItemAction_wrapper').ejWaitingPopup("hide");
+            window.$('#ItemAction_wrapper').ejWaitingPopup("hide");
         });
 
         function renderSubreportList(reportCategoryList, itemReferences) {

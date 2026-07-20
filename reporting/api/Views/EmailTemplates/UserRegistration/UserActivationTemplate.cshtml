@@ -81,7 +81,7 @@
        </o:OfficeDocumentSettings>
     </xml>
     <![endif]-->
-    <span style="display:none !important; visibility:hidden; font-size:1px; color:#ffffff; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
+    <span data-id="hidden" style="display:none !important; visibility:hidden; font-size:1px; color:#ffffff; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
         Welcome to @Model.BrandingDisplayName.
     </span>
     <center>
@@ -130,7 +130,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="font-size: 16px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: right;height: 40px;vertical-align: bottom;">
-                                                            <span style="color: #3f3f3f;">
+                                                            <span data-id="hidden" style="color: #3f3f3f;">
                                                                 <a href="@Model.BaseUrl/login" target='' style="text-decoration: none; color:#4A90E2; font-weight: normal;">Sign in</a>
                                                             </span>
                                                         </td>
@@ -170,7 +170,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px;font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif;">
                                                         <span>
-                                                            Hi @Model.DisplayName,
+                                                            Hi @Model.DisplayName,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -196,7 +196,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif; line-height: 20px;">
                                                         <span>
-                                                            @Model.WelcomeNote
+                                                            @Model.WelcomeNote<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -222,7 +222,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif; line-height: 20px;">
                                                         <span>
-                                                            Please confirm your account information and start accessing reports by logging in.
+                                                            Please confirm your account information and start accessing reports by logging in.<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -247,8 +247,8 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: center; color: #ffffff; font-weight: normal; padding-left: 18px; padding-right: 18px; padding-top: 3px;padding-bottom: 3px;background-color: #2196F3; border-radius: 4px;" align="center" bgcolor="#bfbfbf" height="26" valign="middle" width="auto">
-                                                        <a href="@Model.ActivationUrl" target='_new' style="text-decoration: none; color: #ffffff; font-weight: bold;">ACTIVATE</a>
-                                                    </td>
+                                                        <span data-id="hidden"><a href="@Model.ActivationUrl" target='_new' style="text-decoration: none; color: #ffffff; font-weight: bold;">ACTIVATE</a>
+                                                    </td></span>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -271,7 +271,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="line-height:20px;padding-left:20px;padding-right:20px;font-size: 14px; color: #3f3f3f; font-family:Arial, Helvetica, sans-serif">
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             This link will only be valid until @Model.ActivationExpirationDate.
                                                         </span>
                                                     </td>
@@ -299,7 +299,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px;font-size: 14px; color: #3f3f3f; font-family:Arial, Helvetica, sans-serif;">
                                                         <span>
-                                                            Thanks,
+                                                            Thanks,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -382,7 +382,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style=" line-height:20px; padding-left:20px;padding-right:20px;font-size: 12px; color: #7a7a7a; opacity:0.5; font-family:Arial, Helvetica, sans-serif;">
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             This is an automatically generated message, please do not reply to this mail. If you have any question, please contact your administrator.
                                                         </span>
                                                     </td>
@@ -415,7 +415,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="padding-left:20px;padding-right:20px;font-size: 12px; color: #3f3f3f;font-family:Arial, Helvetica, sans-serif; background-color:#f7f8f9;">
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             @Model.CopyrightInformation
                                                         </span>
                                                     </td>

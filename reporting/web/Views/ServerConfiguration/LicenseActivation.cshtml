@@ -4,14 +4,14 @@
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
-    var redirectUrl = ServerAppConfig.InternalAppIdpUrl;
+    var redirectUrl = ServerAppConfig.GetClientServiceUrl(ServerAppConfig.InternalAppIdpUrl, Context);
     var faviconLogo = string.Empty;
     var cdnLink = @GlobalAppSettings.CdnDomain;
     var reportServerResourceUrl = _globalAppSettings.HttpPathBase + ServerAppConfig.AppSettings.EndPoints.CdnLink;
     if (ServerAppConfig.IsSelfHosted)
     {
     cdnLink = (_globalAppSettings.HttpPathBase.ToString().Equals("/") ? string.Empty : _globalAppSettings.HttpPathBase.ToString()) + ServerAppConfig.AppSettings.EndPoints.CdnLink + "/cdn/images";
-    faviconLogo = reportServerResourceUrl + "/cdn/images/application/boldreports/favicon.ico";
+    faviconLogo = ServerAppConfig.GetClientServiceUrl(ServerAppConfig.InternalAppIdpUrl, Context) + "/ums/logos?type=favicon";
     }
     else
     {
@@ -107,7 +107,7 @@
                                 <hr class="connect-line-left"><div class="content text-body">[[[or]]]</div><hr class="connect-line-right">
                             </div>
                             <div class="col-12 align-center">
-                                <a id="skip-license-activation" class="link-decoration" href="@ServerAppConfig.InternalAppIdpUrl">[[[Proceed with 30-day trial]]]</a>
+                                <a id="skip-license-activation" class="link-decoration" href="@redirectUrl">[[[Proceed with 30-day trial]]]</a>
                             </div>
                         </div>
                     </div>

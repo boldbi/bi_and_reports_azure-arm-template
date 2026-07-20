@@ -134,7 +134,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style='font-size: 16px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: right; height: 40px;vertical-align:bottom;'>
-                                                                    <span>
+                                                                    <span data-id="hidden">
                                                                         <a href="@Model.BaseUrl/login" target='' style="text-decoration: none; color: #3f3f3f; font-weight: normal;">Sign in</a>
                                                                     </span>
                                                                 </td>
@@ -186,21 +186,21 @@
                                                                 {
                                                                     if (Model.FailureOccurrence == Model.FailureLimit)
                                                                     {
-                                                                        <span>
+                                                                        <span data-id="hidden">
                                                                             Your scheduled report has been disabled.
                                                                         </span>
                                                                     }
                                                                     else
                                                                     {
-                                                                        <span>
-                                                                            Your scheduled report failed.
+                                                                        <span data-id="hidden">
+                                                                            Your scheduled report has failed.
                                                                         </span>
                                                                     }
                                                                 }
                                                             }
                                                             else
                                                             {
-                                                                <span>
+                                                                <span data-id="hidden">
                                                                     Failed to export the report
                                                                 </span>
                                                             }
@@ -231,7 +231,7 @@
                                                 <tr>
                                                     <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif;'>
                                                         <span>
-                                                            Hello @Model.FullName,
+                                                            Hello @Model.FullName,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -293,13 +293,13 @@
                                                                         if (Model.FailureOccurrence == Model.FailureLimit)
                                                                         {
                                                                             <span>
-                                                                                The scheduled report <b>@Model.ScheduleName</b> has been disabled due to @Model.FailureLimit consecutive failures. You can re-enable the schedule once the error has been resolved.
+                                                                                The scheduled report <b>@Model.ScheduleName</b> has been disabled due to @Model.FailureLimit consecutive failures. You can re-enable the schedule once the error has been resolved.<br />
                                                                             </span>
                                                                         }
                                                                         else
                                                                         {
                                                                             <span>
-                                                                                Your scheduled report <b>@Model.ScheduleName</b> failed due to the following error:
+                                                                                Your scheduled report <b>@Model.ScheduleName</b> has failed due to the following error:<br />
                                                                             </span>
                                                                         }
                                                                     }
@@ -313,16 +313,14 @@
                                                                                 var reportLink = isHideGuidInUrl ? @Model.BaseUrl.TrimEnd('/') + "/reports/" + @Model.CategoryName + "/" + @Model.ReportName
                                                                                 : @Model.BaseUrl.TrimEnd('/') + "/reports/" + @Model.ItemId + "/" + @Model.CategoryName + "/" + @Model.ReportName;
                                                                             }
-                                                                            Schedule-
-                                                                            @Model.ScheduleName has failed to export
+                                                                            Schedule - @Model.ScheduleName failed to export
                                                                             <a href="@reportLink" style='color: #4a90e2;font-size: 14px;sans-serif;text-decoration: none;'>@Model.ReportName</a>.
                                                                         </span>
                                                                     }
                                                                     else
                                                                     {
                                                                         <span>
-                                                                            Schedule-
-                                                                            @Model.ScheduleName has failed to export @Model.ReportName.
+                                                                            Schedule - @Model.ScheduleName failed to export @Model.ReportName.
                                                                         </span>
                                                                     }
                                                                 }
@@ -351,7 +349,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #000000;background-color: #fafafa;border: 0px;font-weight: 600;padding-left: 20px;padding-top: 15px;padding-right: 20px; padding-bottom: 15px">
-                                                                                        <span>@Model.Message</span>
+                                                                                        <span>@Model.Message</span><br />
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -408,7 +406,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #000000;background-color: #fafafa;border: 0px;font-weight: 600;padding-left: 20px;padding-top: 15px;padding-right: 20px; padding-bottom: 15px">
-                                                                                        <span>@Model.Message</span>
+                                                                                        <span>@Model.Message</span><br />
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -444,7 +442,7 @@
                                                 <tr>
                                                     <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-weight:normal; font-family:Arial, Helvetica, sans-serif;'>
                                                         <span>
-                                                            Regards,
+                                                            Regards,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -535,7 +533,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style=' line-height:20px; padding-left:20px;padding-right:20px; font-size: 12px; color: #7a7a7a; opacity:0.5; font-family:Arial, Helvetica, sans-serif;'>
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             This is an automatically generated message, please do not reply to this mail. If you have any question, please contact your administrator.
                                                         </span>
                                                     </td>
@@ -572,7 +570,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style='padding-left:20px;padding-right:20px;font-size: 12px; color: #3f3f3f;font-family:Arial, Helvetica, sans-serif; background-color:#f7f8f9;'>
-                                                            <span>
+                                                            <span data-id="hidden">
                                                                 @Model.CopyrightInformation
                                                             </span>
                                                         </td>

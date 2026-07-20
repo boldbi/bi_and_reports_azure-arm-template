@@ -14,7 +14,11 @@
     authControl = ViewBag.AuthControl as List<TenantAuthControl>;
     authControl = authControl != null && authControl.Count > 0 ? authControl : null;
 #else
-cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
+    cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
+#endif
+    var enableSigningKeyOptions = false;
+#if BoldReportsOnPremise
+    enableSigningKeyOptions = !string.IsNullOrEmpty(ViewBag.JwtSettings.JWTSettings.SigningKey);
 #endif
     var isAzureApplication = ServerAppConfig.IsAzureApplication;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -37,6 +41,7 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
     var authenticationControlHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.AuthenticationSettings);
     var authenticationOAuthHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.OAuthSettings);
     var authenticationOpenIdHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.OpenIdSettings);
+    var authenticationJWTHelpSiteUrl = helpSiteBaseUrl + GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.JWTSettings);
     var providerName= HttpUtility.HtmlDecode(ViewBag.OAuthSettings.OAuthAuthSettings.ProviderName);
     var authorizationEndPoint = HttpUtility.HtmlDecode(ViewBag.OAuthSettings.OAuthAuthSettings.AuthorizationEndPoint);
     var tokenEndPoint = HttpUtility.HtmlDecode(ViewBag.OAuthSettings.OAuthAuthSettings.TokenEndPoint);
@@ -47,10 +52,13 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
     var userInfoLastname = HttpUtility.HtmlDecode(ViewBag.OAuthSettings.OAuthAuthSettings.UserInfoLastname);
     var logoutEndPoint = HttpUtility.HtmlDecode((ViewBag.OAuthSettings.OAuthAuthSettings.LogoutEndPoint));
     var OpenIDProviderName = HttpUtility.HtmlDecode(ViewBag.OpenIDSettings.OIDCAuthSettings.ProviderName);
+    var jwtProviderName = HttpUtility.HtmlDecode(ViewBag.JwtSettings.JWTSettings.Name);
     var authority = HttpUtility.HtmlDecode(ViewBag.OpenIDSettings.OIDCAuthSettings.Authority);
     var openIDClientId = HttpUtility.HtmlDecode(ViewBag.OpenIDSettings.OIDCAuthSettings.ClientId);
     var identifier = HttpUtility.HtmlDecode(ViewBag.OpenIDSettings.OIDCAuthSettings.Identifier);
     var logoutUrl = HttpUtility.HtmlDecode((ViewBag.OpenIDSettings.OIDCAuthSettings.LogoutUrl));
+    var jwtloginurl = HttpUtility.HtmlDecode(ViewBag.JwtSettings.JWTSettings.LoginUrl);
+    var jwtlogouturl = HttpUtility.HtmlDecode(ViewBag.JwtSettings.JWTSettings.LogOutUrl);
     var openIdEnableGroupClaim = @Html.Raw(Json.Serialize(ViewBag.OpenIDSettings?.OIDCAuthSettings?.GroupClaimsSettings != null ?ViewBag.OpenIDSettings.OIDCAuthSettings.GroupClaimsSettings.EnableGroupClaims : false));
     var openIdEnableRemoveExistGroupMapping = @Html.Raw(Json.Serialize(ViewBag.OpenIDSettings?.OIDCAuthSettings?.GroupClaimsSettings != null ?ViewBag.OpenIDSettings.OIDCAuthSettings.GroupClaimsSettings.RemoveExistGroupMapping : false));
     var oauthEnableGroupClaim = @Html.Raw(Json.Serialize(ViewBag.OAuthSettings?.OAuthAuthSettings?.GroupClaimsSettings != null ?ViewBag.OAuthSettings.OAuthAuthSettings.GroupClaimsSettings.EnableGroupClaims : false));
@@ -64,15 +72,16 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
     </environment>
     <environment exclude="Development,CloudDevelopment">
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/site-settings.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/site-settings.min.css")" crossorigin="anonymous" />
-        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.min.css")" crossorigin="anonymous" />
+        <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/user-database-import.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/user-database-import.css")" crossorigin="anonymous" />
         <link rel="stylesheet" asp-append-version="true" href="@reportServerResourceUrl/cdn/css/emaileditor.min.css" integrity="@IntegrityTagHelper.GetIntegrity("wwwroot/cdn/css/emaileditor.min.css")" crossorigin="anonymous" />
     </environment>
 }
-@section scripts{
+@section scripts {
     <script nonce="@Context.Items["ScriptNonce"]">
         serverApp.controller("adSettingsController", ["$scope", function ($scope) {
             $scope.regex = '^(?!(ftp|https?):\/\/)([a-zA-Z0-9-_]+\.)*[a-zA-Z0-9][a-zA-Z0-9-]+(\.[a-z]{2,6})?(:\d{1,5})?(\/[a-zA-Z0-9]+[a-zA-Z0-9]*(\.[a-z]{2,8})?)*?$';
             $scope.distinguishedNameRegex = /^(\w+[=]{1}[a-zA-Z0-9-_\s]+)([\,{1}]\w+[=]{1}[a-zA-Z0-9-_\s]+)*$/;
+            $scope.jwtIsEnabled = jwtEnabled;
             $scope.openIdEnableGroupClaim = openIdEnableGroupClaim;
             $scope.openIdEnableRemoveExistGroupMapping = openIdEnableRemoveExistGroupMapping;
             $scope.oauthEnableGroupClaim = oauthEnableGroupClaim;
@@ -86,6 +95,7 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
         var userDirectoryAuthControl = "@authenticationControlHelpSiteUrl";
         var userDirectoryOauth = "@authenticationOAuthHelpSiteUrl";
         var userDirectoryOpenid = "@authenticationOpenIdHelpSiteUrl";
+        var userDirectoryJwt = "@authenticationJWTHelpSiteUrl"
         var updateauthsettingsUrl = "@Url.Action("UpdateAuthenticationSettings", "Administration")";
         var updateauthcontrolUrl = "@Url.Action("UpdateAuthControl", "Administration")";
         var updateLoginOptionsUrl = "@Url.Action("UpdateLoginOptions", "Administration")";
@@ -100,6 +110,8 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
         var isOAuthCustomMailOptionEnabled = @Json.Serialize(isOAuthCustomMailOptionEnabled);
         var openIdCustomMailContent = @Json.Serialize(openIdCustomMailContent);
         var oAuthCustomMailContent = @Json.Serialize(oAuthCustomMailContent);
+        var jwtEnabled = @Html.Raw(Json.Serialize((ViewBag.JwtSettings.IsEnabled)));
+        var refreshSigningKeyUrl = "@Url.Action("RegenerateSigningKey", "Administration")";
         var openIdEnableGroupClaim = @Html.Raw(Json.Serialize(ViewBag.OpenIDSettings?.OIDCAuthSettings?.GroupClaimsSettings != null ? ViewBag.OpenIDSettings.OIDCAuthSettings.GroupClaimsSettings.EnableGroupClaims : false));
         var openIdEnableRemoveExistGroupMapping = @Html.Raw(Json.Serialize(ViewBag.OpenIDSettings?.OIDCAuthSettings?.GroupClaimsSettings != null ? ViewBag.OpenIDSettings.OIDCAuthSettings.GroupClaimsSettings.RemoveExistGroupMapping : false));
         var oauthEnableGroupClaim = @Html.Raw(Json.Serialize(ViewBag.OAuthSettings?.OAuthAuthSettings?.GroupClaimsSettings != null ? ViewBag.OAuthSettings.OAuthAuthSettings.GroupClaimsSettings.EnableGroupClaims : false));
@@ -219,6 +231,9 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
                     <li role="presentation" class="nav-item">
                         <a href="#openid-settings-tab" id="openid-settings" class="nav-link" aria-controls="openid-settings-tab" role="tab" data-bs-toggle="tab">[[[OpenID Connect]]]</a>
                     </li>
+                    <li role="presentation" class="nav-item">
+                        <a href="#jwt-settings-tab" id="jwt-settings" class="nav-link" aria-controls="jwt-settings-tab" role="tab" data-bs-toggle="tab">[[[JWT]]]</a>
+                    </li>
                 }
             </ul>
 
@@ -304,7 +319,7 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
                                             <label class="app-textbox-label col-md-4 no-margin">[[[Provider Name]]]</label>
                                             <div class="col-md-8 no-margin form-input-field float-end input-with-icon" ng-class="(oauthSettingsForm.oauthProviderName.$dirty && oauthSettingsForm.oauthProviderName.$invalid) ? 'has-error' : ''">
                                                 <input type="text" class="form-control no-margin" ng-model="oauthProviderName" ng-init="oauthProviderName='@providerName'" name="oauthProviderName" placeholder="[[[Provider Name]]]" id="oauth-provider-name" data-ng-disabled="!oauthIsEnabled" required />
-                                            <span id="oauth-provider-name-info" class="su su-info info-popup" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-content="[[[Name of the authentication provider to be displayed in the login page.]]]" tabindex="0"></span>
+                                                <span id="oauth-provider-name-info" class="su su-info info-popup" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-content="[[[Name of the authentication provider to be displayed in the login page.]]]" tabindex="0"></span>
                                             </div>
                                             <span class="validation-message d-flex justify-content-center" ng-show="oauthSettingsForm.oauthProviderName.$error.required && oauthSettingsForm.oauthProviderName.$dirty && oauthIsEnabled">[[[Please enter the OAuth provider name.]]]</span>
                                         </div>
@@ -615,7 +630,7 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
                                             </div>
                                         </div>
                                     </div>
-                                   <div class="col-md-12 form-group">
+                                    <div class="col-md-12 form-group">
                                         <div class="col-md-6 no-padding no-margin">
                                             <label class="app-textbox-label col-md-4 no-margin">[[[Provider Name]]]</label>
                                             <div class="col-md-8 no-margin form-input-field float-end input-with-icon" ng-class="(openidSettingsForm.openidProviderName.$dirty && openidSettingsForm.openidProviderName.$invalid) ? 'has-error' : ''">
@@ -843,9 +858,101 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
                                 </form>
                             </div>
                         </div>
-                        }
+                        <div role="tabpanel" class="tab-pane" id="jwt-settings-tab" aria-labelledby="jwt-settings-tab-label">
+                            <div id="jwt-page-body" class="col-lg-12 col-md-12 col-sm-12 admin-page-body no-padding">
+                                <form id="jwt-setting" name="jwtSettingsForm" class="auth-settings-form col-lg-12 col-md-12 col-sm-12 no-padding" method="post" enctype="multipart/form-data" autocomplete="off">
+                                    <input type="hidden" name="jwtAuthenticationProvider" value="@ViewBag.JwtSettings.AuthProvider">
+                                    <input type="hidden" name="jwtLogo" value="@ViewBag.JwtSettings.JWTSettings.Logo">
+                                 
+                                    <!--Enable JWT Login -->
+                                    <div class="col-md-12 form-group">
+                                        <div class="col-md-6 no-padding no-margin enable-jwt-label">
+                                            @Html.Label("enable-jwt", "[[[Enable JWT Login]]]", new { @class = "app-textbox-label col-md-4 col-form-label pe-0" })
+                                            <div class="col-md-8 form-input-field float-end switch-align">
+                                                <span class="material-switch text-left">
+                                                    <input type="checkbox" id="enable-jwt" name="jwtIsEnabled" ng-model="jwtIsEnabled" ng-init="jwtIsEnabled = @(ViewBag.JwtSettings.IsEnabled ? "true" : "false")" ng-change="hideValidationMessage(jwtIsEnabled, 'jwt')" />
+                                                    <label for="enable-jwt" class="label-primary"></label>
+                                                </span>
+                                                <span class="validation-message"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Provider Name -->
+                                    <div class="col-md-12 form-group">
+                                        <div class="col-md-6 no-padding no-margin">
+                                            <label class="app-textbox-label col-md-4 no-margin">[[[Provider Name]]]</label>
+                                            <div class="col-md-8 no-margin form-input-field float-end input-with-icon" ng-class="(jwtSettingsForm.jwtProviderName.$dirty && jwtSettingsForm.jwtProviderName.$invalid) ? 'has-error' : ''">
+                                                <input type="text" class="form-control no-margin" ng-model="jwtProviderName" ng-init="jwtProviderName='@jwtProviderName'" name="jwtProviderName" ng-required="jwtIsEnabled" placeholder="[[[Provider Name]]]" id="jwt-provider-name" data-ng-disabled="!jwtIsEnabled" required />
+                                                <span id="jwt-provider-name-info" class="su su-info info-popup" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-content="[[[Name of the authentication provider to be displayed on the login page.]]]" tabindex="0"></span>
+                                            </div>
+                                            <span class="validation-message d-flex justify-content-center" ng-show="jwtSettingsForm.jwtProviderName.$error.required && jwtSettingsForm.jwtProviderName.$dirty && jwtIsEnabled">[[[Please enter the JWT provider name.]]] </span>
+                                        </div>
+                                    </div>
+                                    <!-- Provider Logo -->
+                                    <div class="col-md-12 form-group">
+                                        <div class="col-md-6 no-padding no-margin">
+                                            <label class="app-textbox-label col-md-4 no-margin">[[[Provider Logo]]]</label>
+                                            <div class="col-md-8 logo-container float-end">
+                                                <div id="jwt-image-upload-box" class="auth-image-upload-box">
+                                                    <div class="js-image-preview" style="background-image:{{jwtLogoUrl}}"></div>
+                                                    <div class="upload-options">
+                                                        <label>
+                                                            <span>[[[Change logo]]]</span>
+                                                            <input type="file" class="image-upload" name="jwtLogoUrl" accept="image/png,image/jpeg,image/svg+xml" ng-required="jwtIsEnabled" ng-model="jwtLogoUrl" ng-init="jwtLogoUrl='@ViewBag.JwtSettings.LogoUrl'" name="jwtLogoUrl" data-ng-disabled="!jwtIsEnabled" required />
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <span id="jwt-settings-tab" class="su su-info info-popup" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-html="true" title="" data-bs-content="[[[Logo of the authentication provider to be displayed on the login page.]]]"></span>
+                                                <span class="validation-message top-padding" ng-show="jwtSettingsForm.jwtLogoUrl.$error.required && jwtSettingsForm.jwtLogoUrl.$dirty && jwtIsEnabled">
+                                                    [[[Please select JWT provider logo]]]
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Remote Login URL -->
+                                    <div class="col-md-12 form-group">
+                                        <div class="col-md-6 no-padding no-margin">
+                                            <label for="jwt-login-url" class="app-textbox-label col-md-4 no-margin">[[[Remote Login URL]]]</label>
+                                            <div class="col-md-8 no-margin form-input-field float-end input-with-icon" ng-class="(jwtSettingsForm.jwtLoginUrl.$dirty && jwtSettingsForm.jwtLoginUrl.$invalid) ? 'has-error' : ''">
+                                                <input type="text" class="form-control col-md-6 no-margin" id="jwt-login-url" name="jwtLoginUrl" ng-required="jwtIsEnabled" placeholder="[[[Remote Login URL]]]" ng-model="jwtLoginUrl" ng-init="jwtLoginUrl='@ViewBag.JwtSettings?.JWTSettings?.LoginUrl'" ng-pattern="@oauthRegEx" data-ng-disabled="!jwtIsEnabled" required />
+                                                <span class="su su-info info-popup" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-content="[[[A remote login URL where the resource owner grants authorization to the client to access protected resources.]]]"></span>
+                                            </div>
+                                            <span class="validation-message d-flex justify-content-center" ng-show="jwtSettingsForm.jwtLoginUrl.$error.required && jwtSettingsForm.jwtLoginUrl.$dirty && jwtIsEnabled">[[[Please enter the login URL.]]]</span>
+                                            <span class="validation-message d-flex justify-content-center" ng-show="jwtSettingsForm.jwtLoginUrl.$error.pattern && jwtSettingsForm.jwtLoginUrl.$dirty && jwtIsEnabled">[[[Please enter a valid login URL.]]]</span>
+                                        </div>
+                                    </div>
+                                    <!-- Remote Logout URL -->
+                                    <div class="col-md-12 form-group">
+                                        <div class="col-md-6 no-padding no-margin">
+                                            <label for="jwt-logout-url" class="app-textbox-label col-md-4 col-form-label">[[[Remote Logout URL]]]</label>
+                                            <div class="col-md-8 no-margin form-input-field float-end input-with-icon" ng-class="(jwtSettingsForm.jwtLogoutUrl.$dirty && jwtSettingsForm.jwtLogoutUrl.$invalid) ? 'has-error' : ''">
+                                                <input type="text" class="form-control col-md-6 no-margin" id="jwt-logout-url" name="jwtLogoutUrl" ng-required="jwtIsEnabled" placeholder="[[[Remote Logout URL]]]" ng-model="jwtLogoutUrl" ng-init="jwtLogoutUrl='@ViewBag.JwtSettings?.JWTSettings?.LogOutUrl'" ng-pattern="@oauthRegEx" data-ng-disabled="!jwtIsEnabled" required />
+                                                <span class="su su-info info-popup" tabindex="0" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-html="true" title="" data-bs-content="[[[We support logout endpoints that have static request parameters.]]]"></span>
+                                            </div>
+                                            <span class="validation-message d-flex justify-content-center" ng-show="jwtSettingsForm.jwtLogoutUrl.$error.required && jwtSettingsForm.jwtLogoutUrl.$dirty && jwtIsEnabled">[[[Please enter the logout URL.]]]</span>
+                                            <span class="validation-message d-flex justify-content-center" ng-show="jwtSettingsForm.jwtLogoutUrl.$error.pattern && jwtSettingsForm.jwtLogoutUrl.$dirty && jwtIsEnabled">[[[Please enter a valid logout URL.]]]</span>
+                                        </div>
+                                    </div>
+                                    <!-- Signing Key -->
+                                    <div class="col-md-12 form-group">
+                                        <div class="row col-md-6 no-padding no-margin">
+                                            <label for="jwt-signing-key" class="app-textbox-label col-md-4 col-form-label">[[[Signing Key]]]</label>
+                                            <div class="col-md-8 no-margin form-input-field input-with-icon">
+                                                <input type="password" id="jwt-signing-key" readonly class="form-control txt-holder validation-padding signing-key-values @(!enableSigningKeyOptions ? "signing-key-width" : string.Empty)" name="jwtSigningKey"
+                                                       placeholder="&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;&#9679;" value="@ViewBag.JwtSettings.JWTSettings.SigningKey" style="width:300px !important" />
+                                                <div class="form-control su su-eye text show-hide-password focus" id="show-signing-key" readonly data-bs-toggle="tooltip" title="[[[Show key]]]"></div>
+                                                <div class="form-control su su-copy text focus" id="jwt-signing-key-copy" readonly data-bs-toggle="tooltip" title="[[[Click to copy]]]"></div>
+                                                <div class="form-control su su-synchronize text focus" id="generate-signing-key" ng-disabled="jwtSettingsForm.$invalid" readonly data-bs-toggle="tooltip" title="[[[Regenerate the key]]]"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
                     }
-                </div>
+                }
+            </div>
         </div>
 
         @if (ViewBag.ThirdPartyLogins)
@@ -856,8 +963,17 @@ cloudAuthControl = ViewBag.AuthControl as TenantAuthControl;
                 <button type="submit" id="update-auth-control" class="primary-button app-btn-primary float-end" style="display:none">[[[Save]]]</button>
                 <button type="submit" id="update-oauth-settings" class="primary-button app-btn-primary float-end update-auth-settings" ng-disabled="oauthSettingsForm.$invalid" style="display:none">[[[Save]]]</button>
                 <button type="submit" id="update-openid-settings" class="primary-button app-btn-primary float-end update-auth-settings" ng-disabled="openidSettingsForm.$invalid" style="display:none">[[[Save]]]</button>
+                <button type="submit" id="update-jwt-settings" class="primary-button app-btn-primary float-end update-auth-settings" ng-disabled="jwtSettingsForm.$invalid" style="display:none"> [[[Save]]]</button>
             </div>
         }
+        <div id="dialog" class="custom-template"></div>
+        <div id="dlgContent" style="display: none;" class="dialogContent">
+            <span class="dialogText">
+                <span class="su su-warning-alt" id="warning-icon"></span>
+                <span class="dialog-text-text">[[[Beware! Any script or application using this signing key need to be updated.]]]</span>
+            </span>
+            <button id="RegenerateSigningKey" class="e-btn e-primary">[[[Regenerate Signing Key]]]</button>
+        </div>
 
     </div>
 }

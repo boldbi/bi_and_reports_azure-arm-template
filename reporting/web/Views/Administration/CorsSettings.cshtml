@@ -146,6 +146,9 @@
                             [[[This field value specifies the maximum time a preflight request's results can be cached.]]]
                         </div>
                         <input type="text" id="txt-preflightmaxage" name="preflight_maxage" class="form-control validation-padding txt-holder" value="@preflightMaxAge" placeholder="[[[Pre flight max age]]]" autocomplete="off" @((bool)!corsSettings.EnableCors ? "disabled" : string.Empty)>
+                        <span class="notification help-text">
+                            <span class="help-text-mandatory">*</span>[[[Input must be between 5 and 600 seconds (maximum allowed: 600)]]]
+                        </span>
                         <span class="validation-errors"></span>
                     </div>
                 </form>

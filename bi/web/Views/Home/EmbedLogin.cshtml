@@ -1,9 +1,8 @@
 ﻿@{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
-    var isDefaultLoginLogo = _identityResponse != null && _identityResponse.LoginLogo != null ? _identityResponse.LoginLogo.EndsWith(ServerAppConfig.BrandingJson.BrandingImages.LoginLogo) : false;
     var defaultAppLogo = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/') + "/cdn/images/application/" + ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + ServerAppConfig.BrandingJson.BrandingImages.LoginLogo;
-    var appLogo = isDefaultLoginLogo ? defaultAppLogo : _identityResponse.LoginLogo;
+    var appLogo = string.IsNullOrWhiteSpace(globalAppSettings.SystemSettings.LoginLogo) ? defaultAppLogo : globalAppSettings.SystemSettings.LoginLogo;
     var dashboardServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var LoginDescription = (string)Context.Items["LoginDescription"];
     var showContainer = (ViewBag.HasSSO ?? ViewBag.HasSSO == true && !string.IsNullOrWhiteSpace(ViewBag.ExternalLogin)) ? "none" : "block";
@@ -14,7 +13,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@T["Embed"] - @globalAppSettings.SystemSettings.OrganizationName</title>
-    <link rel="icon" href="@globalAppSettings.SystemSettings.FavIcon" id="favicon-link" />
+    <link rel="icon" href="@ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.FavIcon, Context)" id="favicon-link" />
      <script nonce="@Context.Items["ScriptNonce"]" type="text/javascript">
         var idLogin = '@globalAppSettings.SystemSettings.IDPUrl';
         var serverUrl = '@globalAppSettings.SystemSettings.BaseUrl.TrimEnd('/')';
@@ -46,7 +45,7 @@
         <link rel="stylesheet" asp-append-version="true" href="@dashboardServerResourceUrl/cdn/css/embed-login.min.css" />
     </environment>
 
-    <link rel="icon" href="@globalAppSettings.SystemSettings.FavIcon" id="favicon-link" />
+    <link rel="icon" href="@ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.FavIcon, Context)" id="favicon-link" />
 </head>
 <body>
     <div class="container" style="display: @showContainer">

@@ -4,7 +4,7 @@
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
-    var idPUrl = globalAppSettings.SystemSettings.IDPUrl;
+    var idPUrl = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.IDPUrl, Context);
     var isItemWatched = ViewBag.IsWatched != null ? ViewBag.IsWatched : false;
     var userId = ViewBag.UserId;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
@@ -44,7 +44,7 @@
     var unWatchUrl = { "web": "@Url.Action("UnWatch", "items")", "api":  "/items/un-watch" };
     var userMentionDataSourceUrl = { "web": "@Url.Action("GetUserMentionSuggestionList", "comments")", "api": "/comments/user-mention-list" };
     var watchUrl = { "web": "@Url.Action("Watch", "items")", "api": "/items/watch" };
-    var idpUrl = "@globalAppSettings.SystemSettings.IDPUrl";
+    var idpUrl = "@idPUrl";
     var avatarUrl = "@idPUrl/User/Avatar";
     var i_am_ie9 = false;
     var getdefaultavatarUrl="@Url.Action("getdefaultavatar", "User")";

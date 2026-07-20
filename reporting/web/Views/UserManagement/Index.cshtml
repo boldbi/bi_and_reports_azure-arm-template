@@ -142,7 +142,7 @@
     <script nonce="@Context.Items["ScriptNonce"]" type="text/x-jsrender" id="options">
         <div class="user-hover-options" data-content="{{:Email}}">
             {{if Email == "@systemUserEmail"}}
-                <a href="#" class="add-user-to-group" title="[[[You cannot assign system user to any group]]]" data-userid="{{:UserId}}" data-firstname="{{:FirstName}}" data-lastname="{{:LastName}}" data-bs-toggle="tooltip">
+                <a href="#" class="add-user-to-group" title="[[[You cannot assign the System user to any group]]]" data-userid="{{:UserId}}" data-firstname="{{:FirstName}}" data-lastname="{{:LastName}}" data-bs-toggle="tooltip">
                     <i class="su su-group-1 disabled-icon-color"></i>
                 </a>
             {{else}}
@@ -153,14 +153,14 @@
             {{if Email == "@systemUserEmail"}}
             @if (isAdmin || permissions[PermissionEntity.AllPermissions] || permissions[PermissionEntity.SpecificPermissions])
             {
-                <a href="#" class="prevent-default-action" title="[[[You cannot manage system user permissions]]]" data-toggle="tooltip">
+                <a href="#" class="prevent-default-action" title="[[[You cannot manage System user permissions]]]" data-toggle="tooltip">
                     <i class="su su-manage-permission disabled-icon-color"></i>
                 </a>
             }
             {{else Email == "@superAdminUserEmail"}}
             @if (isAdmin || permissions[PermissionEntity.AllPermissions] || permissions[PermissionEntity.SpecificPermissions])
             {
-                <a href="#" class="prevent-default-action" title="[[[You cannot manage super admin user permissions]]]" data-toggle="tooltip">
+                <a href="#" class="prevent-default-action" title="[[[You cannot manage Super Admin user permissions]]]" data-toggle="tooltip">
                     <i class="su su-manage-permission disabled-icon-color"></i>
                 </a>
             }
@@ -180,15 +180,15 @@
                 <i class="su su-delete disabled-icon-color"></i>
             </a>
             {{else Email == "@systemUserEmail"}}
-            <a href="#" class="prevent-default-action" title="[[[You cannot delete the system user]]]" data-toggle="tooltip" data-content="{{:UserId}}" data-email="{{:Email}}">
+            <a href="#" class="prevent-default-action" title="[[[You cannot delete the System user]]]" data-toggle="tooltip" data-content="{{:UserId}}" data-email="{{:Email}}">
                 <i class="su su-delete disabled-icon-color"></i>
             </a>
             {{else Email == "@superAdminUserEmail"}}
-            <a href="#" class="prevent-default-action" title="[[[You cannot delete the super admin user]]]" data-toggle="tooltip" data-content="{{:UserId}}" data-email="{{:Email}}">
+            <a href="#" class="prevent-default-action" title="[[[You cannot delete the Super Admin user]]]" data-toggle="tooltip" data-content="{{:UserId}}" data-email="{{:Email}}">
                 <i class="su su-delete disabled-icon-color"></i>
             </a>
             {{else IsAdmin && ~isAdmin() == false}}
-            <a href="#" class="prevent-default-action" title="[[[You cannot delete the system administrator]]]" data-bs-toggle="tooltip" data-content="{{:UserId}}" data-email="{{:Email}}">
+            <a href="#" class="prevent-default-action" title="[[[You cannot delete the System Administrator]]]" data-bs-toggle="tooltip" data-content="{{:UserId}}" data-email="{{:Email}}">
                 <i class="su su-delete disabled-icon-color"></i>
             </a>
             {{else}}

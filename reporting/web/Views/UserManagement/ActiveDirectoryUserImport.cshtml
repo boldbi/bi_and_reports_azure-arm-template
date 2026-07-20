@@ -157,7 +157,7 @@
                         { field: "Username", cssClass: "username", headerText: "[[[Username]]]", templateID: "#username-template", headerTemplateID: "#user-name-header", width: 80, type: "string", visible: isSelfHosted },
                         { field: "EmailId", cssClass: "email-id", headerText: "[[[Email Address]]]",  templateID: "#email-id-template", headerTemplateID: "#email-id-header", width: 80, type: "string" },
                         { field: "ContactNumber", cssClass: "mobile-no", headerText: "[[[Mobile No]]]", headerTemplateID: "#contact-header", width: 10, visible: false },
-                        { field: "UserId", cssClass: "item-id", headerText: "[[[User Id]]]", headerTemplateID: "#UserIdHeader", width: 10, visible: false }
+                        { field: "UserId", cssClass: "item-id", headerText: "[[[User ID]]]", headerTemplateID: "#UserIdHeader", width: 10, visible: false }
                     ]
                 });
                 $.views.helpers({
@@ -237,9 +237,9 @@
                     <div class="col-12  col-md-12 no-padding no-margin">
                         <div id="grid-validation-messages" class="list grid-error-validation">
                             <div class="col-12">
-                                <span id="grid-validation" class="grid-validation no-padding"><span id="user-count" class="user-count">@ViewBag.UserCount</span> [[[User(s) has been imported and activated successfully.]]]</span>
-                                <span id="grid-error-validation" class="grid-error-validation no-padding">[[[Duplicate or Invalid data is found. Please change the data accordingly and re-import]]]. </span>
-                                <span id="empty-validation" class="validation-message empty-validation no-padding">[[[Please select user(s) to import]]]</span>
+                                <span id="grid-validation" class="grid-validation no-padding"><span id="user-count" class="user-count">@ViewBag.UserCount</span> [[[User(s) have been imported and activated successfully.]]]</span>
+                                <span id="grid-error-validation" class="grid-error-validation no-padding">[[[Duplicate or invalid data found. Please change the data accordingly and re-import.]]]</span>
+                                <span id="empty-validation" class="validation-message empty-validation no-padding">[[[Please select user(s) to import.]]]</span>
                             </div>
                         </div>
                     </div>

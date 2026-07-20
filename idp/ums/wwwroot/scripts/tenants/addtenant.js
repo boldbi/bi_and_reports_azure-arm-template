@@ -109,7 +109,7 @@ $(document).ready(function () {
         $(".selector").addClass("selector-alignment");
     }
 
-    if (isCommonLogin && !isBoldReportsTenantType()) {
+    if (!isBoldReportsTenantType()) {
         $("#enable-ssl").val(biScheme);
         $("#input-domain").val(biDomain);
     }
@@ -800,7 +800,8 @@ function addTenant() {
         TenantIdentifier: $("#tenant-identifier").val(),
         DNS: $(".site-domain").html(),
         UseSiteIdentifier: useSiteIdentifierEnable,
-        IsMaster: $(".make-master-checkbox").is(":checked")
+        IsMaster: $(".make-master-checkbox").is(":checked"),
+        PreventTenantProxyDomainAutoUpdate: $(".prevent-proxy-url-auto-update").is(":checked")
     };
 
     var brandingType = getDropDownValue("branding-type");
@@ -893,10 +894,13 @@ function getTenant(id) {
                 document.getElementById("tenant-type").ej2_instances[0].enabled = false;
                 $("#input-domain").val(data.DNS);
                 $("#enable-ssl").val(data.Protocol);
+                $(".prevent-proxy-url-auto-update").prop("checked", data.PreventTenantProxyDomainAutoUpdate);
                 prevDomain = $("#input-domain").val();
                 $(".site-domain").html("");
                 if (data.TenantDetails.Tenant.UseSiteIdentifier) {
                     $(".site-domain").html("").html(data.TenantDetails.Tenant.DNS + "/site/" + tenantInformation.Tenant.TenantIdentifier);
+                    $(".site-default-text").html("");
+                    $(".site-id-name").html("");
                 }
                 else {
                     $(".site-domain").html("").html(data.TenantDetails.Tenant.DNS);
@@ -1037,10 +1041,11 @@ function updateTenant(waitingPopUpElement, connectionString) {
     var additionalParameters = $("#additional-parameter").val();
     var schemaName = $("#schema-name").val();
     var tenantPrefix = $("#txt-server-prefix").val();
+    var preventTenantProxyDomainAutoUpdate = $(".prevent-proxy-url-auto-update").is(":checked");
     $.ajax({
         type: "POST",
         url: updateTenantDetailsUrl,
-        data: { tenantId: tenantId, tenantName: name, tenantIdentifier: tenantIdentifier.toLowerCase(), tenantUrl: tenantUrl, databaseDetails: connectionString, additionalParameters: additionalParameters, useSiteIdentifier: siteIdentifier, SchemaName: schemaName, Prefix: tenantPrefix },
+        data: { tenantId: tenantId, tenantName: name, tenantIdentifier: tenantIdentifier.toLowerCase(), tenantUrl: tenantUrl, databaseDetails: connectionString, additionalParameters: additionalParameters, useSiteIdentifier: siteIdentifier, SchemaName: schemaName, Prefix: tenantPrefix, PreventTenantProxyDomainAutoUpdate: preventTenantProxyDomainAutoUpdate },
         success: function (data) {
             if (data.result == true) {
                 parent.hideWaitingPopup(waitingPopUpElement);

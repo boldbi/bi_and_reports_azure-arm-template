@@ -453,6 +453,9 @@ function databaseConfiguration(clickedButton) {
                                 else {
                                     $("#db-config-submit").prop("disabled", false);
                                     errorContent = result.Data.value;
+                                    messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+                                        onCloseMessageBox();
+                                    });
                                 }
                                 changeFooterPostion();
                             }
@@ -478,6 +481,9 @@ function databaseConfiguration(clickedButton) {
                                     var id = result.Data.isServerError ? "#server-existing-dbname" : "#database-name";
                                     $(id).closest(".txt-holder").addClass("has-error");
                                     $(id).parent().find(">.startup-validation").html(databaseValidationMessage).show();
+                                    messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+                                        onCloseMessageBox();
+                                    });
                                     $("#sql-existing-db-submit").prop("disabled", false);
                                 } else if (!result.Data.key && items.length <= 0) {
                                     doAjaxPost("POST", generateSQLTablesUrl,
@@ -493,6 +499,9 @@ function databaseConfiguration(clickedButton) {
                                                 $("#sql-existing-db-submit").prop("disabled", false);
                                                 $("#db_loader").hide();
                                                 errorContent = result.Data.value;
+                                                messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+                                                    onCloseMessageBox();
+                                                });
                                             }
                                         }
                                     );
@@ -504,6 +513,9 @@ function databaseConfiguration(clickedButton) {
                                     $("#db_config_generate, #db-config-submit").hide();
                                     $("#sql-existing-db-submit").show().prop("disabled", false);
                                     errorContent = result.Data.value;
+                                    messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+                                        onCloseMessageBox();
+                                    });
                                 }
                             });
                     }
@@ -597,7 +609,10 @@ function registration(isSimpleMode) {
         azureStep();
     }
     else {
-        if (IsOciObjectStorage) {
+        if (IsStorageConfigurationValid) {
+            registerApplication(isSimpleMode);
+        }
+        else if (IsOciObjectStorage) {
             document.getElementById("storage-type").ej2_instances[0].value = "4";
             registerApplication(isSimpleMode);
         }

@@ -109,7 +109,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="font-size: 16px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: right; height: 40px;vertical-align:bottom;">
-                                                            <span>
+                                                            <span data-id="hidden">
                                                                 <a href="@Model.BaseUrl/login" target='' style='text-decoration: none; color: #3f3f3f; font-weight: normal;'>Sign in</a>
                                                             </span>
                                                         </td>
@@ -152,7 +152,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style='padding-left:20px;padding-right:20px; font-size: 18px; color: #3f3f3f; font-weight:bold; font-family:arial, helvetica, sans-serif;'>
-                                                        <span>   
+                                                        <span data-id="hidden">   
                                                          Your profile has been updated
                                                         </span>
                                                     </td>
@@ -182,7 +182,7 @@
                                                 <tr>
                                                     <td style='padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif;'>
                                                         <span>
-                                                            Hello @Model.FullName,
+                                                            Hello @Model.FullName,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -217,7 +217,7 @@
 														{ 
 														  @:by @Model.Admin
 														}
-														.
+														.<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -281,7 +281,7 @@
                                                                                             @:<span>Changed from <span style='font-weight:bold;'>
 																							@Model.PreviousFirstName
 																							@:</span> to <span style='font-weight:bold;'>
-																							@Model.FirstName
+																							@Model.FirstName <br />
                                                                                             @:</span></span>
                                                                                         @:</td>
                                                                                     @:</tr>
@@ -328,7 +328,7 @@
                                                                                             @:<span>Changed from <span style='font-weight:bold;'>
 																							@(string.IsNullOrWhiteSpace(Model.PreviousLastName) ? "Empty" : Model.PreviousLastName)
 																							@:</span> to <span style='font-weight:bold;'>
-																							@(string.IsNullOrWhiteSpace(Model.LastName) ? "Empty" : Model.LastName)
+																							@(string.IsNullOrWhiteSpace(Model.LastName) ? "Empty" : Model.LastName) <br />
 																							@:</span></span>
                                                                                         @:</td>
                                                                                     @:</tr>
@@ -375,7 +375,7 @@
 																								@(string.IsNullOrWhiteSpace(Model.PreviousMobile) ? "Empty" : Model.PreviousMobile)
 																								@:</span> to <span style='font-weight: bold;'>
 																								@(string.IsNullOrWhiteSpace(Model.Mobile) ? "Empty" : Model.Mobile)
-																								@:</span>
+																								@:</span><br />
                                                                                             @:</span>
                                                                                         @:</td>
                                                                                     @:</tr>
@@ -420,7 +420,7 @@
                                                 @:<tr>
                                                     @:<td style='padding-left:20px;padding-right:20px;font-size: 12px;color: #3f3f3f;font-family:arial, helvetica, sans-serif;line-height: 20px;'>
                                                         @:<span>
-                                                        @:If you are unable to access your account, please contact your System Administrator
+                                                        @:If you are unable to access your account, please contact your System Administrator<br />
                                                         @:</span>
                                                     @:</td>
                                                 @:</tr>
@@ -447,7 +447,7 @@
                                                 <tr>
                                                     <td style="padding-left:20px;padding-right:20px;font-size: 14px; color: #3f3f3f; font-family:Arial, Helvetica, sans-serif;">
                                                         <span>
-                                                            Thanks,
+                                                            Thanks,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -530,7 +530,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="line-height:20px; padding-left:20px;padding-right:20px;font-size: 14px; color: #7a7a7a; opacity:0.5; font-family:Arial, Helvetica, sans-serif;">
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             This is an automatically generated message, please do not reply to this mail. If you have any question, please contact your administrator.
                                                         </span>
                                                     </td>
@@ -563,7 +563,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="padding-left:20px;padding-right:20px;font-size: 12px; color: #3f3f3f;font-family:Arial, Helvetica, sans-serif; background-color:#f7f8f9";>
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             @Model.CopyrightInformation
                                                         </span>
                                                     </td>

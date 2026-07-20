@@ -256,26 +256,42 @@
                         </div>
 
                         <div class="col-sm-12 col-12 no-padding nodatadisabled-div">
-                            <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-start">
                                 <div class="col-sm-2 col-2 no-padding">
-                                    @Html.Label("nodata-disable", "[[[Disable Attachments with No Data]]]", new { @class = "" })
+                                    @Html.Label("nodata-options", "[[[No Data Options]]]", new { @class = "" })
                                 </div>
-                                <div class="col-sm-5 col-5 float-end no-margin nodatadisabled-label-div line-removal">
-                                    <span class="material-switch text-left">
-                                        <input type="checkbox" name="DisableNoDataReports" id="nodata-disable" checked />
-                                        <label class="label-primary" for="nodata-disable"></label>
-                                    </span>
-                                    <div class="nodata-disable-tag label-align-center no-margin no-caret">
-                                        <span class="dropdown-toggle cursor-type" id="nodata-disable-info" data-bs-toggle="dropdown"><span class="su su-info" title=""></span></span>
-                                        <div class="col-2 dropdown-menu" id="nodata-disable-help-message" role="menu">
-                                            [[[When enabled, attachments will be excluded if the report contains no data.]]]
+                                <div class="col-sm-5 col-5 float-end no-margin nodatadisabled-label-div">
+                                    <div class="d-flex align-items-center">
+                                        <span class="material-switch text-left me-3">
+                                            <input type="checkbox" name="IsNoDataEnabled" id="nodata-options" />
+                                            <label class="label-primary" for="nodata-options"></label>
+                                        </span>
+                                        <div class="nodata-options-tag label-align-center no-margin no-caret">
+                                            <span class="dropdown-toggle cursor-type" id="nodata-options-info" data-bs-toggle="dropdown" style="margin-left:16px"><span class="su su-info" title=""></span></span>
+                                            <div class="col-4 dropdown-menu" id="nodata-options-help-message" role="menu" style="width:500px !important">
+                                                [[[When enabled select one action: send mail without attachment, or skip sending the mail when the report has no data.]]]
+                                            </div>
                                         </div>
                                     </div>
-                                    <span class="validation-message"></span>
-                                </div>
+                                    <div class="no-data-actions mt-4" style="display:none;margin-left: 20px;">
+
+                                        <label class="no-data-action-card" style="display:block; margin-bottom:10px;">
+                                            <input type="radio" name="nodata-action" id="skip_attachment" value="skip_attachment" style="vertical-align: middle; margin-right: 6px;">
+                                            <span class="card-title" style="vertical-align: middle; display: inline-block; font-weight:bold;">[[[Send mail without attachment]]]</span>
+                                        </label>
+
+                                        <label class="no-data-action-card" style="display:block; margin-bottom:10px;">
+                                            <input type="radio"  name="nodata-action" id="skip_mail" value="skip_mail" style="vertical-align: middle; margin-right: 6px;">
+                                            <span class="card-title" style="vertical-align: middle; display: inline-block;">[[[Do not send mail]]]</span>
+                                        </label>
+
+                                        <div class="nodata-error validation-message"
+                                             style="display:none; margin-top:6px; color:#a94442; font-size:13px; width:100%;">
+                                        </div>
+
+                                    </div>
                             </div>
                         </div>
-
                         <div class="col-sm-12 col-12 no-padding enabled-div">
                             <div class="d-flex align-items-center">
                                 <div class="col-sm-2 col-2 no-padding">

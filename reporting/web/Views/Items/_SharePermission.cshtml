@@ -14,7 +14,8 @@
     var currentUserId = _identityResponse.User.UserId;
     var data = new List<ItemUsers>();
     var accessModeDetail = new List<Syncfusion.Server.Reports.Models.SearchObject>();
-    var idPUrl = globalAppSettings.SystemSettings.IDPUrl;
+    var idPUrl = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.IDPUrl, Context);
+    var baseUrl = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.BaseUrl, Context);
     var IsMarkItemsPublic = globalAppSettings.SystemSettings.IsMarkItemsPublic;
     var granularPermissions = ViewBag.GranularPermissions as Dictionary<object, bool>;
     var specificGroupEntity = (int)PermissionEntity.SpecificGroup;
@@ -105,7 +106,7 @@
     var getGroupOwnersUrl = "@Url.Action("GetGroupOwners", "Group")";
     var addGroupOwnerPermissionUrl = "@Url.Action("AddGroupOwnerPermission","Permission")";
     var idpUrl = "@idPUrl";
-    var baseUrl = "@globalAppSettings.SystemSettings.BaseUrl";
+    var baseUrl = "@baseUrl";
     var isMarkItemsPublic = @Json.Serialize(globalAppSettings.SystemSettings.IsMarkItemsPublic);
     window.currentUserId = "@currentUserId";
     window.sharedUserGroupList = @Json.Serialize(@data);
@@ -172,7 +173,7 @@
                         <div class="private-public-description"><span class="bg-warning text-warning">[[[Public Reports are disabled in ]]]<a class="app-hyperlink" target="_blank" href="@Url.Action("ReportSettings", "Administration")">[[[report settings.]]]</a></span></div>
                     </div>
                     <div class="public-private-content" ng-show="!hasDashboardSettingsPermission">
-                        <div class="private-public-description"><span class="bg-warning text-warning">[[[Public Reports are disabled by the system administrator. Please contact your system administrator to enable this.]]]</span></div>
+                        <div class="private-public-description"><span class="bg-warning text-warning">[[[Public reports are disabled by the System Administrator. Please contact your System Administrator to enable this.]]]</span></div>
                     </div>
                 </div>
             </div>

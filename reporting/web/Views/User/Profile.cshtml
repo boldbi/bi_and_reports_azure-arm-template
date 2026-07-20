@@ -16,7 +16,8 @@
     var isPasswordUpdateSuccess = ViewBag.IsPasswordUpdateSuccess;
     var isPasswordUpdateFailure = ViewBag.IsPasswordUpdateFailure;
     var idpreferenceId = Context.Session.GetString("idpReferenceId") != null ? Context.Session.GetString("idpReferenceId").ToString() : string.Empty;
-    var idPUrl = globalAppSettings.SystemSettings.IDPUrl;
+    var idPUrl = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.IDPUrl, Context);
+
     ViewBag.HelpSiteUrl = GlobalAppSettings.GetHelpSiteUrl(HelpSiteUrlNames.UserProfile);
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
 }
@@ -48,6 +49,8 @@
         var passwordFailureMessage = "@isPasswordUpdateFailure";
         var isViewerEnabled = @Json.Serialize(ViewBag.IsViewerV2Enabled);
         var isDesignerEnabled = @Json.Serialize(ViewBag.IsDesignerV2Enabled);
+        var isEditProfile = @Json.Serialize(ViewBag.EditProfile);
+        var isEditNotification = @Json.Serialize(ViewBag.EditNotification);
 
         window.onload = function (e) {
             if (successMessage.toLowerCase() === "true" && successMessage != null) {
@@ -67,10 +70,10 @@
         $(document).ready(function () {
             $("#avatar-button-click, #avatar-delete-click").css("display","none");
             $(".ej2-user-preference-toggle-disabled").attr("disabled", true);
-            if (@ViewBag.EditProfile > 0) {
+            if (isEditProfile > 0) {
                 $("#edit").trigger("click");
             }
-            if(@ViewBag.EditNotification > 0){
+            if(isEditNotification > 0){
                 $("#edit-settings").trigger("click");
             }
 
@@ -185,11 +188,11 @@
             {
                 if (ServerAppConfig.IsSelfHosted)
                 {
-                    <div id="azure-user-info" class="col-12 no-padding">*[[[ Editing user profile except the picture is not currently supported for]]] Azure Active Directory, Windows Active Directory, Office 365, database, OAuth [[[and]]] OpenID Connect [[[accounts]]]</div>
+                    <div id="azure-user-info" class="col-12 no-padding">*[[[Editing user profile except the picture is not currently supported for]]] Azure Active Directory, Windows Active Directory, Office 365, database, OAuth [[[and]]] OpenID Connect [[[accounts.]]]</div>
                 }
                 else
                 {
-                    <div id="azure-user-info" class="col-12 no-padding">*[[[ Editing user profile except the picture is not currently supported for]]] Azure Active Directory, Office 365 [[[and]]] database [[[accounts.]]]</div>
+                    <div id="azure-user-info" class="col-12 no-padding">*[[[Editing user profile except the picture is not currently supported for]]] Azure Active Directory, Office 365 [[[and]]] database [[[accounts.]]]</div>
                 }
             }
             <div class="profile-section profile-section-second-div col-lg-12 col-md-12 col-sm-12 col-12 no-padding admin-page-body">

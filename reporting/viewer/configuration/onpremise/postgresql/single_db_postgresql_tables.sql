@@ -124,7 +124,7 @@ CREATE TABLE BOLDRS_ItemView(
 	ItemId uuid NOT NULL,
 	UserId int NOT NULL,
 	ItemViewId uuid NOT NULL,
-	QueryString varchar(4000) NOT NULL,
+	QueryString Text NOT NULL,
 	ModifiedDate timestamp NOT NULL,
 	IsActive smallint NOT NULL)
 ;
@@ -178,7 +178,7 @@ CREATE TABLE BOLDRS_ItemLog(
 	FromCategoryId uuid NULL,
 	ToCategoryId uuid NULL,
 	UpdatedUserId int NOT NULL,	
-	AdditionalLogInfo varchar(100) NULL,
+	AdditionalLogInfo text NULL,
 	ModifiedDate timestamp NOT NULL,
 	IsActive smallint NOT NULL)
 ;
@@ -245,6 +245,8 @@ CREATE TABLE BOLDRS_ScheduleDetail(
 	ExportTypeId int NOT NULL,
 	IsEnabled smallint NOT NULL,
 	IsNoDataEnabled smallint NULL,
+		SkipAttachment smallint NULL,
+		SkipMail smallint NULL,
 	IsParameterEnabled smallint NOT NULL,
 	IsSaveAsFile smallint NOT NULL,
     IsSendAsMail smallint NOT NULL DEFAULT 1,
@@ -260,7 +262,8 @@ CREATE TABLE BOLDRS_ScheduleDetail(
 	ExportFileName varchar(150) NULL,
 	ScheduleExportInfo varchar(4000) NULL,
 	ScheduleBucketExportInfo varchar(4000) NULL,
-	ReplytoEmail varchar(640) NULL)
+	ReplytoEmail varchar(640) NULL,
+	ScheduleRunStatus varchar(1000) NULL )
 ;
 
 CREATE TABLE BOLDRS_SubscribedUser(
@@ -833,6 +836,27 @@ CREATE TABLE BOLDRS_UserSession(
 	LoggedInTime timestamp NULL,
 	LastActive timestamp NULL,
 	IsActive smallint NOT NULL)
+;
+
+CREATE TABLE BOLDRS_EmailActivityLog(
+    Id  SERIAL PRIMARY KEY NOT NULL,
+    SiteId uuid NOT NULL,
+    Event varchar(255) NOT NULL,
+    RecipientEmail varchar(255) NOT NULL,
+    SenderEmail varchar(255) NOT NULL,
+    MailSubject varchar(255) NOT NULL,
+    MailBody text NULL,
+    CreatedDate timestamp NOT NULL,
+    ModifiedDate timestamp  NULL,
+    InitiatedBy int NOT NULL,
+    UserId int NULL,
+    GroupId int NULL,
+    ItemId uuid NULL,
+    CommentId int NULL,
+    PermissionId int NULL,
+    Status int NOT NULL,
+    StatusMessage text NULL,
+    IsActive smallint NOT NULL)
 ;
 
 ---- PASTE INSERT Queries below this section --------
@@ -2076,6 +2100,15 @@ ALTER TABLE BOLDRS_ReportPartLinkage  ADD FOREIGN KEY(ReportId) REFERENCES BOLDR
 ALTER TABLE BOLDRS_ReportPartLinkage ADD FOREIGN KEY(CreatedById) REFERENCES BOLDRS_User (Id)
 ;
 ALTER TABLE BOLDRS_ReportPartLinkage  ADD FOREIGN KEY(ModifiedById) REFERENCES BOLDRS_User (Id)
+;
+
+ALTER TABLE BOLDRS_EmailActivityLog  ADD  FOREIGN KEY(UserId) REFERENCES BOLDRS_User (Id)
+;
+ALTER TABLE BOLDRS_EmailActivityLog  ADD  FOREIGN KEY(GroupId) REFERENCES BOLDRS_Group (Id)
+;
+ALTER TABLE BOLDRS_EmailActivityLog  ADD  FOREIGN KEY(ItemId) REFERENCES BOLDRS_Item (Id)
+;
+ALTER TABLE BOLDRS_EmailActivityLog  ADD FOREIGN KEY(CommentId) REFERENCES BOLDRS_Comment (Id)
 ;
 
 ALTER TABLE BOLDRS_MultiTabReport  ADD FOREIGN KEY(ParentReportId) REFERENCES BOLDRS_Item (Id)

@@ -7,7 +7,7 @@
                     @Html.Label("enable-defaultauthentication", "[[[Enable Default Authentication]]]", new { @class = "app-textbox-label col-md-4 no-margin" })
                     <div class="col-md-8 form-input-field switch-align float-end">
                         <span class="material-switch text-left">
-                            @if ((bool)ViewBag.OpenIDSettings.IsDefaultAuthentication || (bool)ViewBag.OAuthSettings.IsDefaultAuthentication)
+                            @if ((bool)ViewBag.OpenIDSettings.IsDefaultAuthentication || (bool)ViewBag.OAuthSettings.IsDefaultAuthentication || (bool)ViewBag.JwtSettings.IsDefaultAuthentication)
                             {
                                 <input type="checkbox" id="enable-defaultauthentication" name="defaultauthenticationIsEnabled" ng-model="defaultauthenticationIsEnabled" ng-init="defaultauthenticationIsEnabled=true" ng-click="hideValidationMessage(defaultauthenticationIsEnabled, 'defaultauthentication')" ng-checked=true />
                             }
@@ -40,6 +40,10 @@
                             @if ((bool)ViewBag.OAuthSettings.IsEnabled && !(bool)ViewBag.OAuthSettings.IsDefaultAuthentication)
                             {
                                 <option class="no-margin-dropdown-ul">[[[OAuth 2.0]]]</option>
+                            }
+                            @if ((bool)ViewBag.JwtSettings.IsEnabled && !(bool)ViewBag.JwtSettings.IsDefaultAuthentication)
+                            {
+                                <option class="no-margin-dropdown-ul">JWT</option>
                             }
                         </select>
                         <span class="validation-message" ng-show="defaultsettingsForm.loginProvider.$error.required && defaultsettingsForm.loginProvider.$dirty && enable-defaultauthentication">[[[Please Select the Login Provider.]]]</span>

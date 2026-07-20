@@ -44,35 +44,53 @@
         </span>
         <div ng-if="((ActivityLogDetail.UserLogDetails.EventLog.Source == '@ImportSource.CSV.ToString()' || ActivityLogDetail.UserLogDetails.EventLog.Source == '@DirectoryType.OAuth2.ToString()' || ActivityLogDetail.UserLogDetails.EventLog.Source == '@DirectoryType.OpenIDConnect.ToString()' || ActivityLogDetail.UserLogDetails.EventLog.Source == '@ImportSource.Azure.ToString()' || ActivityLogDetail.UserLogDetails.EventLog.Source == '@ImportSource.Windows.ToString()' || ActivityLogDetail.UserLogDetails.EventLog.Source == '@ImportSource.Database.ToString()' || ActivityLogDetail.UserLogDetails.EventLog.Source == '@DirectoryType.AzureADB2C.ToString()') && ActivityLogDetail.EventCategoryString == '@ActivityLogModule.Permission.ToString()') || (ActivityLogDetail.UserLogDetails.EventLog.Source !== '@ImportSource.CSV.ToString()' && ActivityLogDetail.UserLogDetails.EventLog.Source !== '@DirectoryType.OAuth2.ToString()' && ActivityLogDetail.UserLogDetails.EventLog.Source !== '@DirectoryType.OpenIDConnect.ToString()' && ActivityLogDetail.UserLogDetails.EventLog.Source !== '@DirectoryType.JWTSSO.ToString()' && ActivityLogDetail.UserLogDetails.EventLog.Source !== '@ImportSource.Azure.ToString()' && ActivityLogDetail.UserLogDetails.EventLog.Source !== '@ImportSource.Windows.ToString()' && ActivityLogDetail.UserLogDetails.EventLog.Source !== '@ImportSource.Database.ToString()' && ActivityLogDetail.UserLogDetails.EventLog.Source !== '@DirectoryType.AzureADB2C.ToString()')">
             <span class="col-12 no-margin no-padding" ng-if="ActivityLogDetail.EventTypeString === '@ActivityLogType.Added.ToString()' || ActivityLogDetail.EventTypeString === '@ActivityLogType.Updated.ToString()'">
-                <span class="col-12 activity-log-details" ng-if="showChangesLogs()">
-                    <span class="col-12 horizontal-line"></span>
-                    <label class="changes-logs-label">@T["Change Summary"]</label>
-                    <span ng-if="ActivityLogDetail.EventTypeString === '@ActivityLogType.Added.ToString()'">
-                        <span class="col-12 no-margin no-padding activity-changed-log">
-                            <label class="activity-log-label">@T["Updated Field"]</label>
-                            <span class="change-item">{{ ActivityLogDetail.EventCategoryString || '-' }}</span>
+                <span ng-if="ActivityLogDetail.EventCategoryString !== '@ActivityLogModule.Group.ToString()'">
+                    <span class="col-12 activity-log-details" ng-if="showChangesLogs()">
+                        <span class="col-12 horizontal-line"></span>
+                        <label class="changes-logs-label">@T["Change Summary"]</label>
+                        <span ng-if="ActivityLogDetail.EventTypeString === '@ActivityLogType.Added.ToString()'">
+                            <span class="col-12 no-margin no-padding activity-changed-log">
+                                <label class="activity-log-label">@T["Updated Field"]</label>
+                                <span class="change-item">{{ ActivityLogDetail.EventCategoryString || '-' }}</span>
+                            </span>
+                            <span class="col-12 no-margin no-padding activity-changed-log">
+                                <label class="activity-log-label">@T["Changes"]</label>
+                                <span class="change-item">{{ ActivityLogDetail.Summary || '-' }}</span>
+                            </span>
                         </span>
-                        <span class="col-12 no-margin no-padding activity-changed-log">
-                            <label class="activity-log-label">@T["Changes"]</label>
-                            <span class="change-item">{{ ActivityLogDetail.Summary || '-' }}</span>
+                        <span class="col-12 no-margin no-padding" ng-if="ActivityLogDetail.EventTypeString === '@ActivityLogType.Updated.ToString()'">
+                            <div ng-repeat="change in ActivityLogDetail.UserLogDetails.EventLog.ChangeLogCollection">
+                                <span ng-repeat="log in change.ChangeLog">
+                                    <span class="col-12 no-margin no-padding activity-changed-log">
+                                        <label class="activity-log-label">@T["Updated Field"]</label>
+                                        <span class="change-item">{{ log.ChangedItem || '-' }}</span>
+                                    </span>
+                                    <span class="col-12 no-margin no-padding activity-changed-log">
+                                        <label class="activity-log-label">@T["Old Value"]</label>
+                                        <span class="change-item">{{ capitalizeFirstLetter(log.From) || '-' }}</span>
+                                    </span>
+                                    <span class="col-12 no-margin no-padding activity-changed-log">
+                                        <label class="activity-log-label">@T["New Value"]</label>
+                                        <span class="change-item">{{ capitalizeFirstLetter(log.To) || '-' }}</span>
+                                    </span>
+                                    <span class="col-12 horizontal-line" ng-if="!$last"></span>
+                                </span>
+                            </div>
                         </span>
                     </span>
-                    <span class="col-12 no-margin no-padding" ng-if="ActivityLogDetail.EventTypeString === '@ActivityLogType.Updated.ToString()'">
-                        <div ng-repeat="change in ActivityLogDetail.UserLogDetails.EventLog.ChangeLogCollection">
-                            <span ng-repeat="log in change.ChangeLog">
-                                <span class="col-12 no-margin no-padding activity-changed-log">
-                                    <label class="activity-log-label">@T["Updated Field"]</label>
-                                    <span class="change-item">{{ log.ChangedItem || '-' }}</span>
-                                </span>
-                                <span class="col-12 no-margin no-padding activity-changed-log">
-                                    <label class="activity-log-label">@T["Old Value"]</label>
-                                    <span class="change-item">{{ capitalizeFirstLetter(log.From) || '-' }}</span>
-                                </span>
-                                <span class="col-12 no-margin no-padding activity-changed-log">
-                                    <label class="activity-log-label">@T["New Value"]</label>
-                                    <span class="change-item">{{ capitalizeFirstLetter(log.To) || '-' }}</span>
-                                </span>
-                                <span class="col-12 horizontal-line" ng-if="!$last"></span>
+                </span>
+                <span ng-if="ActivityLogDetail.EventCategoryString === '@ActivityLogModule.Group.ToString()'">
+                    <span class="col-12 activity-log-details" ng-if="showChangesLogs()">
+                        <span class="col-12 horizontal-line"></span>
+                        <label class="changes-logs-label">@T["Action Summary"]</label>
+                        <div ng-repeat="action in ActivityLogDetail.UserLogDetails.EventLog.ActionLogCollection">
+                            <span class="col-12 no-margin no-padding activity-changed-log">
+                                <label class="activity-log-label">@T["Action Type"]</label>
+                                <span class="change-item">{{ action.Operation || '-' }}</span>
+                            </span>
+                            <span class="col-12 no-margin no-padding activity-changed-log">
+                                <label class="activity-log-label">@T["Details"]</label>
+                                <span class="change-item">{{ ActivityLogDetail.Summary || '-' }}</span>
                             </span>
                         </div>
                     </span>

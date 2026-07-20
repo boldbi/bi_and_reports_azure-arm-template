@@ -11,7 +11,7 @@
     var tenantAppConfiguration = new TenantAppConfiguration(globalAppSettings);
     var language = CultureInfo.CurrentCulture.Name;
     var baseUrl = globalAppSettings.SystemSettings.BaseUrl;
-    var reportServerApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
+    var reportServerApiUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl(), _globalAppSettings, Context);
     var tourCookie = Context.Request.Cookies["syncfusion.reports.designer.tour"];
     var tourObj = new TourCookie();
     var isSelfHosted = ServerAppConfig.IsSelfHosted;
@@ -24,7 +24,7 @@
 #if (BoldReportsCloud)
     var designerServiceUrl = globalAppSettings.SystemSettings.ReportServiceEndPoint.TrimEnd('/');
 #else
-    var designerServiceUrl = ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/');
+    var designerServiceUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings, Context);
 #endif
     var reportServiceUrl = designerServiceUrl + "/api/Designer";
     var datasourcePermisions = ViewBag.DatasourcePermission;
@@ -913,7 +913,8 @@
                 },
                 {
                     'id': controlId + '_designer_header_reportPartName',
-                    'spellcheck': 'false'
+                    'spellcheck': 'false',
+                    'maxlength': '255'
                 });
             reportNameOuterDiv.append(reportNameInnerDiv);
             reportNameInnerDiv.append(rptNameEle);
