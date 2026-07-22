@@ -1,4 +1,5 @@
-﻿@using Syncfusion.Server.Base.Helpers
+@using Newtonsoft.Json
+@using Syncfusion.Server.Base.Helpers
 
 @{
     Layout = null;
@@ -29,6 +30,11 @@
 <body>
     <input type="hidden" value="@ViewBag.Username" id="userName" />
     <div class="col-sm-12 col-12 no-padding parameter-popup-body" id="parameters-panel">
+        <div id="parameter-headers" class="d-flex no-padding">
+            <div class="col-sm-2 col-2 parameter-header no-padding fw-bold text-decoration-underline">[[[Parameter]]]</div>
+            <div class="col-sm-4 col-4 parameter-header fw-bold text-decoration-underline">[[[Value/Expression]]]</div>
+            <div class="col-sm-4 col-4 parameter-header fw-bold text-decoration-underline">[[[Source of value]]]</div>
+        </div>
         @foreach (var parameter in @Model)
         {
             foreach (var param in ViewBag.ReportParameter)
@@ -91,6 +97,10 @@
                                 }
                             </select>
                         </div>
+                        <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                            <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                            <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title="Invalid expression. Please enter a valid expression."> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
+                        </div>
 
 
                     }
@@ -107,6 +117,10 @@
                                     }
                                 }
                             </select>
+                        </div>
+                        <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                           <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                           <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title=""> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
                         </div>
 
                     }
@@ -126,6 +140,11 @@
                                 <label for="false" class="pointer normal-font notransition">[[[False]]]</label>
                             </div>
                         </div>
+
+                        <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                            <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                           <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title=""> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
+                        </div>
                     }
                     else
                     {
@@ -140,6 +159,11 @@
                             </div>
                         </div>
 
+                        <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                            <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                           <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title=""> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
+                        </div>
+
                     }
 
                 }
@@ -150,11 +174,21 @@
                         <div class="col-sm-4 col-4 parameter-input parameter-datetime" style="padding-left: 6px;">
                             <input type="text" class="@hasdependentValue form-control" name="@parameter.Name" id="@parameter.Name" @(isParameterHidden ? "disabled" : "")>
                         </div>
+
+                        <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                            <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                           <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title=""> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
+                        </div>
                     }
                     else
                     {
                         <div class="col-sm-4 col-4 parameter-input parameter-datetime" style="padding-left: 6px; display:@showHiddenParameter;">
                             <input type="text" class="@hasdependentValue form-control" name="@parameter.Name" id="@parameter.Name" @(isParameterHidden ? "disabled" : "")>
+                        </div>
+
+                        <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                            <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                           <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title=""> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
                         </div>
                     }
                 }
@@ -167,11 +201,21 @@
                             <div class="col-sm-4 col-4 parameter-input parameter-text">
                                 <input type="text" class="@hasdependentValue form-control" id="@parameter.Name" name="@parameter.Name" dataType="@parameter.DataType" value="@String.Join(",", parameter.Values.Count> 0? new List<string>() : parameter.Values.ToList())" @(isParameterHidden ? "disabled" : "")>
                             </div>
+
+                            <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                                <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                               <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title=""> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
+                            </div>
                         }
                         else
                         {
                             <div class="col-sm-4 col-4 parameter-input parameter-text" style="display:@showHiddenParameter;">
                                 <input type="text" class="@hasdependentValue form-control" id="@parameter.Name" name="@parameter.Name" dataType="@parameter.DataType" value="@String.Join(",", parameter.Values.Count> 0? new List<string>() : parameter.Values.ToList())" @(isParameterHidden ? "disabled" : "")>
+                            </div>
+
+                            <div id="@parameter.Name-expression" class="col-sm-4 col-4 expression-input input-group" style="display:none">
+                                <input type="text" class="hasdependentValue form-control use-expression" id="@parameter.Name-use-expression" name="@parameter.Name" placeholder="=Expression" autocomplete="off">
+                               <span id="@parameter.Name-info-icon" class="expression-input-icon input-group-text text-danger" style="display:none; cursor:pointer;" data-bs-toggle="tooltip" data-bs-placement="right" title=""> <i class="su su-info text-danger" style="font-size: 11px !important;"></i> </span>
                             </div>
                         }
                     }
@@ -193,40 +237,12 @@
                 }
                 @if (isAdmin || itemPermission)
                 {
-                    <div class="page-indent text">
-                        @if (parameter.Values == null || !parameter.Values.Any())
-                        {
-                            @Html.CheckBox(@parameter.Name + "-use-default", isParameterHidden, new { @class = "material-checkbox use-default", @dataAttrId = @parameter.Name, @dataAttrType = @parameter.ElementType, @id = @parameter.Name + "-use-default", disabled = "true" })
-                            @Html.Label(@parameter.Name + "-use-default", "[[[Use Default]]]", new { @class = "normal-font" })
-                            <div class="parameter-tool-tip">
-                                <span class="dropdown-toggle" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
-                                <div class="dropdown-menu" id="parameter" role="menu">[[[There is no default value configured for this parameter.]]]</div>
-                            </div>
-                        }
-                        else
-                        {
-                            @Html.CheckBox(@parameter.Name + "-use-default", isParameterHidden, new { @class = "material-checkbox use-default", @dataAttrId = @parameter.Name, @dataAttrType = @parameter.ElementType, @id = @parameter.Name + "-use-default" })
-                            @Html.Label(@parameter.Name + "-use-default", "[[[Use Default]]]", new { @class = "normal-font" })
-                        }
+                    <div id="@parameter.Name-select-section" class="page-indent text">
                     </div>
                 }
                 else
                 {
-                    <div class="page-indent text" style="display:@showHiddenParameter;">
-                        @if (parameter.Values == null || !parameter.Values.Any())
-                        {
-                            @Html.CheckBox(@parameter.Name + "-use-default", isParameterHidden, new { @class = "material-checkbox use-default", @dataAttrId = @parameter.Name, @dataAttrType = @parameter.ElementType, @id = @parameter.Name + "-use-default", disabled = "true" })
-                            @Html.Label(@parameter.Name + "-use-default", "[[[Use Default]]]", new { @class = "normal-font" })
-                            <div class="parameter-tool-tip">
-                                <span class="dropdown-toggle" data-toggle="dropdown"><span class="su su-info" title=""></span></span>
-                                <div class="dropdown-menu" id="parameter" role="menu">[[[There is no default value configured for this parameter.]]]</div>
-                            </div>
-                        }
-                        else
-                        {
-                            @Html.CheckBox(@parameter.Name + "-use-default", isParameterHidden, new { @class = "material-checkbox use-default", @dataAttrId = @parameter.Name, @dataAttrType = @parameter.ElementType, @id = @parameter.Name + "-use-default" })
-                            @Html.Label(@parameter.Name + "-use-default", "[[[Use Default]]]", new { @class = "normal-font" })
-                        }
+                    <div id="@parameter.Name-select-section" class="page-indent text" style="display:@showHiddenParameter;">
                     </div>
                 }
 
@@ -252,7 +268,8 @@
 </html>
 <script nonce="@ViewBag.Nonce">
      var isAdmin=@Json.Serialize(isAdmin);
-    var itemPermission= @Json.Serialize(itemPermission);
+     var itemPermission= @Json.Serialize(itemPermission);
+     var reportId = @Json.Serialize(ViewBag.ReportId);
      window.parameterObj = @Json.Serialize(Model);
      window.reportparameterObj = @Json.Serialize(ViewBag.ReportParameter);
      window.defaultValue = @Html.Raw(Json.Serialize(ViewBag.ParameterDefaultValues));

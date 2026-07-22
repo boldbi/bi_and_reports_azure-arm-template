@@ -134,7 +134,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style='font-size: 16px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: right; height: 40px;vertical-align:bottom;'>
-                                                                    <span>
+                                                                    <span data-id="hidden">
                                                                         <a href="@Model.BaseUrl/login" target='' style="text-decoration: none; color: #3f3f3f; font-weight: normal;">Sign in</a>
                                                                     </span>
                                                                 </td>
@@ -183,7 +183,7 @@
                                                         <tbody>
                                                             <tr>
                                                                 <td style=' padding-left:20px;padding-right:20px; font-size: 18px; color: #3f3f3f; font-weight:bold; font-family:arial, helvetica, sans-serif;'>
-                                                                    <span>
+                                                                    <span data-id="hidden">
                                                                         Scheduled Report
                                                                     </span>
                                                                 </td>
@@ -212,7 +212,7 @@
                                                             <tr>
                                                                 <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif;'>
                                                                     <span>
-                                                                        Hello @Model.FullName,
+                                                                        Hello @Model.FullName,<br />
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -242,7 +242,7 @@
                                                             <tr>
                                                                 <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif; line-height: 20px;'>
                                                                     <span>
-                                                                        Please find attached the report you requested.
+                                                                        Please find attached the report you requested.<br />
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -277,13 +277,13 @@
                                                                                 : @Model.BaseUrl.TrimEnd('/') + "/reports/" + @Model.ItemId + "/" + @Model.CategoryName + "/" + @Model.ReportName;
                                                                             }
                                                                             The schedule @Model.ScheduleName has successfully exported the report. You can access it here:
-                                                                            <a href='@reportLink' style='color: #4a90e2;font-size: 14px;sans-serif;text-decoration: none;'>@Model.ReportName</a>.
+                                                                            <a href='@reportLink' style='color: #4a90e2;font-size: 14px;sans-serif;text-decoration: none;'>@Model.ReportName</a>.<br />
                                                                         </span>
                                                                     }
                                                                     else
                                                                     {
                                                                         <span>
-                                                                            The schedule @Model.ScheduleName has successfully exported the report @Model.ReportName.
+                                                                            The schedule @Model.ScheduleName has successfully exported the report @Model.ReportName.<br />
                                                                         </span>
                                                                     }
                                                                 </td>
@@ -315,7 +315,7 @@
                                                                     <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif; line-height: 20px;'>
                                                                         <span>
                                                                             <b style='font-family: Segoe UI, Helvetica, sans-serif; color: #353535; font-size: 14px;'>Password Hint :</b><br />
-                                                                            @Model.AlertHtmlMessage
+                                                                            @Model.AlertHtmlMessage<br />
                                                                         </span>
                                                                     </td>
                                                                 </tr>
@@ -345,7 +345,7 @@
                                                             <tr>
                                                                 <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-weight:normal; font-family:Arial, Helvetica, sans-serif;'>
                                                                     <span>
-                                                                        Regards,
+                                                                        Regards,<br />
                                                                     </span>
                                                                 </td>
                                                             </tr>
@@ -556,7 +556,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style=' line-height:20px; padding-left:20px;padding-right:20px; font-size: 12px; color: #7a7a7a; opacity:0.5; font-family:Arial, Helvetica, sans-serif;'>
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             This is an automatically generated message, please do not reply to this mail. If you have any question, please contact your administrator.
                                                         </span>
                                                     </td>
@@ -593,7 +593,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style='padding-left:20px;padding-right:20px;font-size: 12px; color: #3f3f3f;font-family:Arial, Helvetica, sans-serif; background-color:#f7f8f9;'>
-                                                            <span>
+                                                            <span data-id="hidden">
                                                                 @Model.CopyrightInformation
                                                             </span>
                                                         </td>

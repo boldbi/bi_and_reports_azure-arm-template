@@ -128,7 +128,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style='font-size: 16px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: right; height: 40px;vertical-align: bottom;'>
-                                                            <span>
+                                                            <span data-id="hidden">
                                                                 <a href="@Model.BaseUrl/login" target='' style="text-decoration: none; color: #3f3f3f; font-weight: normal;">Sign in</a>
                                                             </span>
                                                         </td>
@@ -171,7 +171,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style=' padding-left:20px;padding-right:20px; font-size: 18px; color: #3f3f3f; font-weight:bold; font-family:arial, helvetica, sans-serif;'>
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             New comment added
                                                         </span>
                                                     </td>
@@ -201,7 +201,7 @@
                                                 <tr>
                                                     <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif;'>
                                                         <span>
-                                                            Hello @Model.DisplayName,
+                                                            Hello @Model.DisplayName,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -235,7 +235,7 @@
                                                             @{
                                                                 #pragma warning disable SCS0029 //There is no direct user input process for this issue. it will process on based user id from server end.
                                                             }
-                                                            @Html.Raw(Model.MailHeaderContent)
+                                                            @Html.Raw(Model.MailHeaderContent)<br />
                                                             @{
                                                                 #pragma warning restore SCS0029 //There is no direct user input process for this issue. it will process on based user id from server end.
                                                             }
@@ -272,12 +272,12 @@
                                                                     <tbody>
                                                                         <tr>
                                                                             <td style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #000000;background-color: #fafafa;border: 0px;font-weight: 600;padding-left: 20px;padding-top: 15px;padding-right: 20px;">
-                                                                                <span>@Model.CommentedUserName</span>
+                                                                                <span>@Model.CommentedUserName</span><br />
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
                                                                             <td style="text-align: left; font-size: 11px; font-family: Arial, Helvetica, sans-serif; color: #6d6d6d;background-color: #fafafa;border: 0px;padding-left: 20px;padding-top: 10px;padding-right: 20px;">
-                                                                                <span>@Model.CommentTime - (@Model.TimeZone)</span>
+                                                                                <span>@Model.CommentTime - (@Model.TimeZone)</span><br />
                                                                             </td>
                                                                         </tr>
                                                                         <tr>
@@ -295,7 +295,7 @@
                                                                         </tr>
                                                                         <tr>
                                                                             <td style="text-align: left; font-size: 13px; font-family: Arial, Helvetica, sans-serif; color: #4a90e2;background-color: #fafafa;border: 0px;padding-left: 20px;padding-top: 20px;padding-bottom: 15px;padding-right: 20px;">
-                                                                                <span>
+                                                                                <span data-id="hidden">
                                                                                     <a href="@Model.ReplyUrl" target='' style="text-decoration: none; color: #4a90e2; font-weight: normal;">Reply to the comment</a>
                                                                             </span>
                                                                         </td>
@@ -330,7 +330,7 @@
                                             <tr>
                                                 <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-weight:normal; font-family:Arial, Helvetica, sans-serif;'>
                                                     <span>
-                                                        Regards,
+                                                        Regards,<br />
                                                     </span>
                                                 </td>
                                             </tr>
@@ -422,7 +422,7 @@
                                         <tbody>
                                             <tr>
                                                 <td style=' line-height:20px; padding-left:20px;padding-right:20px; font-size: 12px; color: #7a7a7a; opacity:0.5; font-family:Arial, Helvetica, sans-serif;'>
-                                                    <span>
+                                                    <span data-id="hidden">
                                                         This is an automatically generated message, please do not reply to this mail. If you have any question, please contact your administrator.
                                                     </span>
                                                 </td>
@@ -459,7 +459,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style='padding-left:20px;padding-right:20px;font-size: 12px; color: #3f3f3f;font-family:Arial, Helvetica, sans-serif; background-color:#f7f8f9;'>
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             @Model.CopyrightInformation
                                                         </span>
                                                     </td>

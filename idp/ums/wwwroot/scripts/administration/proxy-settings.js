@@ -20,6 +20,12 @@
             return true;
     }, window.Server.App.LocalizationContent.IsValidUrl);
 
+    if (preventTenantProxyDomainAutoUpdate) {
+        $("#lock-site-url").prop("checked", true);
+    }
+    else {
+        $("#lock-site-url").prop("checked", false);
+    }
 });
 
 $(document).on("click", "#update-proxy-settings", function () {
@@ -45,9 +51,10 @@ $(document).on("click", "#update-proxy-settings", function () {
         var systemSettingsData = {
 
             BaseUrl: getSslValue() + "://" + $("#site_url").val(),
-            EnableDomainChange: $("#domain-change").is(":checked"),
+            ForceAllSites: $("#force-all-sites").is(":checked"),
             IsSecureConnection: getSslValue() === "https",
-            IgnoreSslValidation: $("#ssl-certificate").is(":checked")
+            IgnoreSslValidation: $("#ssl-certificate").is(":checked"),
+            PreventTenantProxyDomainAutoUpdate: $("#lock-site-url").is(":checked")
         };
 
         $.ajax({

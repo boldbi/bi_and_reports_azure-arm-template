@@ -13,11 +13,13 @@
         EnablePasswordConditionSection();
         $("#password-condition-container").show();
         $("#default-password-info").hide();
+        $("#custom-password-info").show();
     };
     function DisablePasswordCondition() {
         DisablePasswordConditionSection();
         $("#password-condition-container").hide();
         $("#default-password-info").show();
+        $("#custom-password-info").hide();
     };
 
     $(document)
@@ -81,6 +83,9 @@
                 </div>
                 <div class="bg-info col-lg-8 col-md-8 col-sm-8" id="default-password-info">
                     [[[Default password creation uses the first and last four characters of your email address.]]]
+                </div>
+                    <div class="bg-info col-lg-8 col-md-8 col-sm-8" id="custom-password-info" style="display:none; width:auto; height:auto; padding:6px 10px;">
+                    [[[Custom passwords apply only to Bold Reports Server users and cannot be used for external recipients.]]]
                 </div>
             </div>
         </div>

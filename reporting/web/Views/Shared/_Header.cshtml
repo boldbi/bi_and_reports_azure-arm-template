@@ -12,7 +12,7 @@
     var defaultAppLogo = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/') + "/cdn/images/application/" + ServerAppConfig.AppSettings.AppBranding.Identifier + "/" + IconFileNames.MainLogo;
     var requestUrl = new Uri(Context.Request.GetDisplayUrl());
     var absolutePath = requestUrl.AbsolutePath;
-    var idPUrl = globalAppSettings.SystemSettings.IDPUrl;
+    var idPUrl = ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.IDPUrl, Context);
     var isMobile = new DeviceDetection(Context).IsMobile;
     var navigationUrl = Url.Action("Index", "Home");
 }
@@ -77,9 +77,13 @@
                     <a href="@Url.Action("ProfilePage", "User")" class="profile-menu-action col-12">
                         [[[Edit Profile]]]
                     </a>
-                    <a href="@Url.Action("logout", "accounts")" class="profile-menu-action col-12">
-                        [[[Sign out]]]
-                    </a>
+                    <form action="@Url.Action("logout", "accounts")" method="post" style="display:inline;">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="profile-menu-action form-logout col-12">
+                            Sign out
+                        </button>
+                    </form>
+
                     <a class="profile-menu-action col-12 separator bottom"></a>
                 </div>
             </div>

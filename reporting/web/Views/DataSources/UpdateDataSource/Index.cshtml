@@ -11,9 +11,9 @@
 #if (BoldReportsCloud)
     var designerServiceUrl = globalAppSettings.SystemSettings.ReportServiceEndPoint.TrimEnd('/');
 #else
-    var designerServiceUrl = ServerAppConfig.InternalAppDataServiceUrl.TrimEnd('/');
+    var designerServiceUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(ServerAppConfig.InternalAppDataServiceUrl, _globalAppSettings, Context);
 #endif
-    var reportServerApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
+    var reportServerApiUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl(), _globalAppSettings, Context);
     var reportServiceUrl = designerServiceUrl + "/api/Designer";
     var reportServiceCdnLink = globalAppSettings.SystemSettings.ReportServiceCdnLink.TrimEnd('/');
     var cdnDomain = GlobalAppSettings.CdnDomain;

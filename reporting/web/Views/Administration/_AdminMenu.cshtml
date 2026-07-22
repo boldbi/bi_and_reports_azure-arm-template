@@ -184,18 +184,21 @@
             }
             else
             {
-                @if (isAdmin || (model != null && model[SettingsScopes.All] || model[SettingsScopes.ManageLicense]))
+                @if (!isSandbox || currentUserEmail == ServerAppConfig.SystemUser || currentUserEmail == ServerAppConfig.Sandbox.Reports.AdminEmail)
                 {
-                    <li class="mobile-hidden">
-                        <a id="license-settings-link" class="admin-menu-item @(currentUrl.IndexOf(manageLicenseSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)" href="@manageLicenseSettingsUrl" role="tab">
-                            <i class="su su-license-settings"></i>
-                            <span>[[[Manage License]]]</span>
-                            @if (!isValidLicense)
-                            {
-                                <span id="license-notification-indicator"></span>
-                            }
-                        </a>
-                    </li>
+                    @if (isAdmin || (model != null && model[SettingsScopes.All] || model[SettingsScopes.ManageLicense]))
+                    {
+                        <li class="mobile-hidden">
+                            <a id="license-settings-link" class="admin-menu-item @(currentUrl.IndexOf(manageLicenseSettingsUrl, StringComparison.CurrentCultureIgnoreCase) > -1 ? "active" : string.Empty)" href="@manageLicenseSettingsUrl" role="tab">
+                                <i class="su su-license-settings"></i>
+                                <span>[[[Manage License]]]</span>
+                                @if (!isValidLicense)
+                                {
+                                    <span id="license-notification-indicator"></span>
+                                }
+                            </a>
+                        </li>
+                    }
                 }
             }
         </ul>

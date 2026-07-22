@@ -131,7 +131,7 @@ CREATE TABLE [BOLDRS_ItemView](
 	[ItemId] [uniqueidentifier] NOT NULL,
 	[UserId] [int] NOT NULL,
 	[ItemViewId] [uniqueidentifier] NOT NULL,
-	[QueryString] [nvarchar](4000) NOT NULL,
+	[QueryString] [nvarchar](max) NOT NULL,
 	[ModifiedDate] [datetime] NOT NULL,
 	[IsActive] [bit] NOT NULL)
 ;
@@ -252,6 +252,8 @@ CREATE TABLE [BOLDRS_ScheduleDetail](
 	[ExportTypeId] [int] NOT NULL,
 	[IsEnabled] [bit] NOT NULL,
 	[IsNoDataEnabled] [bit] NULL,
+	[SkipAttachment] [bit] NULL,
+	[SkipMail] [bit] NULL,
 	[IsParameterEnabled] [bit] NOT NULL,
 	[IsSaveAsFile] [bit] NOT NULL,
     [IsSendAsMail] [bit] NOT NULL DEFAULT 1,
@@ -267,7 +269,8 @@ CREATE TABLE [BOLDRS_ScheduleDetail](
 	[ExportFileName] [nvarchar](150) NULL,
 	[ScheduleExportInfo] [nvarchar](4000) NULL,
 	[ScheduleBucketExportInfo] [nvarchar](4000) NULL,
-	[ReplytoEmail] [nvarchar](640) NULL)
+	[ReplytoEmail] [nvarchar](640) NULL,
+    [ScheduleRunStatus] [nvarchar](1000) NULL )
 ;
 
 CREATE TABLE [BOLDRS_SubscribedUser](
@@ -839,6 +842,27 @@ CREATE TABLE [BOLDRS_UserSession](
 	[LoggedInTime] [datetime] NOT NULL,
 	[LastActive] [datetime] NULL,
 	[IsActive] [bit] NOT NULL)
+;
+
+CREATE TABLE [BOLDRS_EmailActivityLog](
+    [Id] [int] IDENTITY(1,1) PRIMARY KEY NOT NULL,
+	[SiteId] [uniqueidentifier] NOT NULL,
+    [Event] [nvarchar](255) NOT NULL,
+    [RecipientEmail] [nvarchar](255) NOT NULL,
+    [SenderEmail] [nvarchar](255) NOT NULL,
+    [MailSubject] [nvarchar](255) NOT NULL,
+    [MailBody] [nvarchar](max) NULL,
+    [CreatedDate] [datetime] NOT NULL,
+    [ModifiedDate] [datetime] NULL,
+    [InitiatedBy] int NOT NULL,
+    [UserId] [int] NULL,
+    [GroupId] [int] NULL,
+    [ItemId] [uniqueidentifier] NULL,
+    [CommentId] [int] NULL,
+    [PermissionId] [int] NULL,
+    [Status] [int] NOT NULL,
+    [StatusMessage] [nvarchar](max) NULL,
+    [IsActive] [bit] NOT NULL)
 ;
 
 ---- PASTE INSERT Queries below this section --------
@@ -2075,6 +2099,17 @@ ALTER TABLE [BOLDRS_MultiTabReport]  ADD FOREIGN KEY([ParentReportId]) REFERENCE
 ;
 ALTER TABLE [BOLDRS_MultiTabReport]  ADD FOREIGN KEY([ChildReportId]) REFERENCES [BOLDRS_Item] ([Id])
 ;
+
+
+ALTER TABLE [BOLDRS_EmailActivityLog]  ADD  FOREIGN KEY([UserId]) REFERENCES [BOLDRS_User] ([Id])
+;
+ALTER TABLE [BOLDRS_EmailActivityLog]  ADD  FOREIGN KEY([GroupId]) REFERENCES [BOLDRS_Group] ([Id])
+;
+ALTER TABLE [BOLDRS_EmailActivityLog]  ADD  FOREIGN KEY([ItemId]) REFERENCES [BOLDRS_Item] ([Id])
+;
+ALTER TABLE [BOLDRS_EmailActivityLog]  ADD FOREIGN KEY([CommentId]) REFERENCES [BOLDRS_Comment] ([Id])
+;
+
 
 CREATE NONCLUSTERED INDEX [IX_BOLDRS_ScheduleDetail_ScheduleId] ON [BOLDRS_ScheduleDetail]([ScheduleId]) WITH (ONLINE = ON)
 

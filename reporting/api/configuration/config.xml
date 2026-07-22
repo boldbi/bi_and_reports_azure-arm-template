@@ -36,4 +36,5 @@
   <IsHideGuidInUrl>false</IsHideGuidInUrl>
   <ShowStackTrace>true</ShowStackTrace>
   <EnableMultiTabbedReports>false</EnableMultiTabbedReports>
+  <ScheduleTimeInterval>10</ScheduleTimeInterval>
 </SystemSettings>

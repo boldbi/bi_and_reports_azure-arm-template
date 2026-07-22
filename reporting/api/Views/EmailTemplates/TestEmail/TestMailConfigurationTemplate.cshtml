@@ -81,7 +81,7 @@
        </o:OfficeDocumentSettings>
     </xml>
     <![endif]-->
-    <span style="display:none !important; visibility:hidden; font-size:1px; color:#ffffff; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
+    <span  data-id="hidden" style="display:none !important; visibility:hidden; font-size:1px; color:#ffffff; line-height:1px; max-height:0px; max-width:0px; opacity:0; overflow:hidden;">
         Welcome to @Model.OrganizationName.
     </span>
     <center>
@@ -157,7 +157,7 @@
                                                 <tr>
                                                     <td style=' padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif;'>
                                                         <span>
-                                                            Hello @Model.Username,
+                                                            Hello @Model.Username,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -183,7 +183,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif; line-height: 20px;">
                                                         <span>
-                                                            @Model.WelcomeNote
+                                                            @Model.WelcomeNote<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -209,7 +209,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px;font-size: 14px; color: #3f3f3f; font-family:Arial, Helvetica, sans-serif;">
                                                         <span>
-                                                            Thanks,
+                                                            Thanks,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -292,7 +292,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style=" line-height:20px; padding-left:20px;padding-right:20px;font-size: 12px; color: #7a7a7a; opacity:0.5; font-family:Arial, Helvetica, sans-serif;">
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             This is an automatically generated message, please do not reply to this mail. If you have any question, please contact your administrator.
                                                         </span>
                                                     </td>
@@ -327,7 +327,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="padding-left:20px;padding-right:20px;font-size: 12px; color: #3f3f3f;font-family:Arial, Helvetica, sans-serif; background-color:#f7f8f9;">
-                                                            <span>
+                                                            <span data-id="hidden">
                                                                 @Model.CopyrightInformation
                                                             </span>
                                                         </td>

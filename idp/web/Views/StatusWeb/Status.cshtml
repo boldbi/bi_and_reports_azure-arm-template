@@ -70,7 +70,7 @@
                                 <td>
                                     <p class="left">
                                         <span>@platform.ApplicationName</span> <br />
-                                        <a href="@platform.ApplicationUrl/health-check" target="_blank" class="application-link text-decoration-none">@platform.ApplicationUrl/health-check</a>
+                                        <a href="@(await GlobalAppSettings.GetClientServiceUrl(platform.ApplicationUrl, Context))/health-check" target="_blank" class="application-link text-decoration-none">@platform.ApplicationUrl/health-check</a>
                                     </p>
 
                                     <p class="right">

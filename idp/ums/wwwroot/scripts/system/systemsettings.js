@@ -546,6 +546,10 @@ function checkingExistingDB(element) {
                             }
                             html += "</ol>";
                             errorContent = html;
+                            messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+                                onCloseMessageBox();
+                            });
+                            isDatabaseErrorDialogOpen = true;
                         } else if (!result.Data.key && items.length <= 0) {
                             delete window.serverName;
                             delete window.portNumber;
@@ -562,6 +566,10 @@ function checkingExistingDB(element) {
                             $('#details-next').removeAttr("disabled");
                             parent.hideWaitingPopup(element);
                             errorContent = result.Data.value;
+                            messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+                                onCloseMessageBox();
+                            });
+                            isDatabaseErrorDialogOpen = true;
                         }
                     }
                 });
@@ -570,6 +578,10 @@ function checkingExistingDB(element) {
                 parent.hideWaitingPopup(element);
                 $('#details-next').removeAttr("disabled");
                 errorContent = result.Data.value;
+                messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+                    onCloseMessageBox();
+                });
+                isDatabaseErrorDialogOpen = true;
             }
         }
     });
@@ -630,6 +642,11 @@ function checkingNewDBConnection(element, actionType) {
         if (result.Data != undefined) {
             errorContent = result.Data.value;
         }
+        messageBox("su-login-error", window.Server.App.LocalizationContent.DatabaseError, errorContent, "success", function () {
+            onCloseMessageBox();
+        });
+        isDatabaseErrorDialogOpen = true;
+        
     }
 }
 

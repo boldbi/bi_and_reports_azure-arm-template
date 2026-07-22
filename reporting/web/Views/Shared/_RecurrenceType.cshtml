@@ -6,6 +6,7 @@
     var globalAppSettings = _globalAppSettings;
     var reportServerResourceUrl = globalAppSettings.SystemSettings.CDNLink.TrimEnd('/');
     var isSandbox = ServerAppConfig.Sandbox.Reports.Enabled;
+    var scheduleTimeInterval = ServerAppConfig.ScheduleTimeInterval;
 }
 <!DOCTYPE html>
 <html class="dashboard-server">
@@ -35,6 +36,7 @@
          var getRecurrenceTypeUrl = "@Url.Action("GetRecurrenceType", "scheduler")";
          var getNextScheduleUrl = "@Url.Action("GetNextScheduleDate", "scheduler")";
         var isSandbox = @Json.Serialize(isSandbox);
+        var scheduleTimeInterval = @Json.Serialize(scheduleTimeInterval);
     </script>
     @* <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej.editor.min.js"></script> *@
     <script nonce="@Model" asp-append-version="true" src="@reportServerResourceUrl/cdn/scripts/essentialjs/ej2.numerictextbox.min.js"></script>

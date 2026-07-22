@@ -5,8 +5,8 @@
 @{
     Layout = null;
     var globalAppSettings = _globalAppSettings;
-    var reportServerApiUrl = new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl();
-    var reportServerApiUrlForServerEmbed = new ReportServerApiEndPoints(globalAppSettings, true).ReportServerApiUrl();
+    var reportServerApiUrl = ServerAppConfig.GetDesignerServiceEndPointUrl(new ReportServerApiEndPoints(globalAppSettings).ReportServerApiUrl(), globalAppSettings, Context);
+    var reportServerApiUrlForServerEmbed = ServerAppConfig.GetDesignerServiceEndPointUrl(new ReportServerApiEndPoints(globalAppSettings, true).ReportServerApiUrl(), globalAppSettings, Context);
     var language = CultureInfo.CurrentCulture.Name;
     var isUserAuthenticatedInCurrentTenant = ViewBag.IsUserAuthenticatedInCurrentTenant;
     var itemDetail = ViewBag.itemDetail as ItemDetail;
@@ -104,8 +104,8 @@
         var userId = "@userId";
         var userName = "@userName";
         var viewId = "@ViewBag.ViewId";
-        var baseUrl = "@globalAppSettings.SystemSettings.BaseUrl";
-        var viewerUrl = "@globalAppSettings.SystemSettings.ViewerUrl";
+        var baseUrl = "@ServerAppConfig.GetDesignerServiceEndPointUrl(globalAppSettings.SystemSettings.BaseUrl, globalAppSettings, Context)";
+        var viewerUrl = "@ServerAppConfig.GetDesignerServiceEndPointUrl(globalAppSettings.SystemSettings.ViewerUrl, globalAppSettings, Context)";
         var language = "@language";
         var isUserAuthenticated = "@isUserAuthenticated";
         var enableComment = '@enableComment';
@@ -300,6 +300,9 @@
         <div id="message">
             <h1 id="message-header"></h1>
             <span id="message-content"></span>
+        </div>
+        <div class="close-div">
+            <span id="close-content">[[[Close]]]</span>
         </div>
     </div>
     <div id="warning-alert" class="custom-bootstrap-styles">

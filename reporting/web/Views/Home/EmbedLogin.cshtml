@@ -16,10 +16,10 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Embed - @globalAppSettings.SystemSettings.OrganizationName</title>
-    <link rel="icon" href="@globalAppSettings.SystemSettings.FavIcon" id="favicon-link" />
+    <link rel="icon" href="@ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.FavIcon, Context)" id="favicon-link" />
     <script nonce="@Context.Items["ScriptNonce"]">
-        var idLogin = '@globalAppSettings.SystemSettings.IDPUrl';
-        var serverUrl = '@globalAppSettings.SystemSettings.BaseUrl';
+        var idLogin = '@ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.IDPUrl, Context)';
+        var serverUrl = '@ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.BaseUrl, Context)';
         var showContainer = '@showContainer';
         var loginProvider = '@loginProvider';
     </script>
@@ -49,6 +49,7 @@
             });
         });
     </script>
+    <link rel="icon" href="@ServerAppConfig.GetClientServiceUrl(globalAppSettings.SystemSettings.FavIcon, Context)" id="favicon-link" />
 </head>
 <body>
     <div class="container" style="display: @showContainer">

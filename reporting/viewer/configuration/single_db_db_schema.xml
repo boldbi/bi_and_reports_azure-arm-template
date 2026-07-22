@@ -307,8 +307,11 @@
     <IsNotifySaveAs>IsNotifySaveAs</IsNotifySaveAs>
     <ScheduleExportInfo>ScheduleExportInfo</ScheduleExportInfo>
     <IsNoDataEnabled>IsNoDataEnabled</IsNoDataEnabled>
+    <SkipAttachment>SkipAttachment</SkipAttachment>
+	  <SkipMail>SkipMail</SkipMail>
     <ScheduleBucketExportInfo>ScheduleBucketExportInfo</ScheduleBucketExportInfo>
-	<ReplytoEmail>ReplytoEmail</ReplytoEmail>
+	  <ReplytoEmail>ReplytoEmail</ReplytoEmail>
+    <ScheduleRunStatus>ScheduleRunStatus</ScheduleRunStatus>
   </DB_ScheduleDetail>
   <DB_ScheduleLog>
     <DB_TableName>ScheduleLog</DB_TableName>
@@ -855,6 +858,27 @@
     <Name>Name</Name>
     <IsActive>IsActive</IsActive>
   </DB_SettingsType>
+  <DB_EmailActivityLog>
+		<DB_TableName>EmailActivityLog</DB_TableName>
+		<Id>Id</Id>
+		<SiteId>SiteId</SiteId>
+		<Event>Event</Event>
+		<RecipientEmail>RecipientEmail</RecipientEmail>
+		<SenderEmail>SenderEmail</SenderEmail>
+		<MailSubject>MailSubject</MailSubject>
+		<MailBody>MailBody</MailBody>
+		<CreatedDate>CreatedDate</CreatedDate>
+		<ModifiedDate>ModifiedDate</ModifiedDate>
+		<InitiatedBy>InitiatedBy</InitiatedBy>
+		<UserId>UserId</UserId>
+		<GroupId>GroupId</GroupId>
+		<ItemId>ItemId</ItemId>
+		<CommentId>CommentId</CommentId>
+		<PermissionId>PermissionId</PermissionId>
+		<Status>Status</Status>
+		<StatusMessage>StatusMessage</StatusMessage>
+		<IsActive>IsActive</IsActive>
+	</DB_EmailActivityLog>
   <DB_ReportPartType>
     <DB_TableName>ReportPartType</DB_TableName>
     <Id>Id</Id>

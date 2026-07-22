@@ -112,7 +112,7 @@
              <param name="tenantName"></param>
              <returns></returns>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Controllers.Items.ItemsController.TenantCopy(System.Guid,System.Guid,System.String,System.String)">
+        <member name="M:Syncfusion.Server.Reports.Controllers.Items.ItemsController.TenantCopy(System.Guid,System.Guid,System.String,System.String,System.Boolean)">
              <summary>
             
              </summary>
@@ -649,7 +649,7 @@
             <param name="data"></param>
             <returns></returns>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Models.UserManagementModel.ProfileUpdateByAdmin(Microsoft.AspNetCore.Mvc.ControllerContext,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String,System.String)">
+        <member name="M:Syncfusion.Server.Reports.Models.UserManagementModel.ProfileUpdateByAdmin(Microsoft.AspNetCore.Mvc.ControllerContext,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String,System.String,System.Int32)">
             <summary>
             Admin updates the user information
             </summary>
@@ -660,7 +660,7 @@
             <returns>True,Updated user profile mailed successfully
             </returns>
         </member>
-        <member name="M:Syncfusion.Server.Reports.Models.UserManagementModel.ProfileUpdateByUser(Microsoft.AspNetCore.Mvc.ControllerContext,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String)">
+        <member name="M:Syncfusion.Server.Reports.Models.UserManagementModel.ProfileUpdateByUser(Microsoft.AspNetCore.Mvc.ControllerContext,System.Collections.Generic.Dictionary{System.String,System.String},System.String,System.String,System.Int32)">
             <summary>
             Updates the user information
             </summary>

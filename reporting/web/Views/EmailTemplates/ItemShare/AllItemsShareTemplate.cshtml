@@ -127,7 +127,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="font-size: 16px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align: right; height: 40px;vertical-align:bottom;">
-                                                            <span>
+                                                            <span data-id="hidden">
                                                                 <a href="@Model.BaseUrl/login" target='' style='text-decoration: none; color: #3f3f3f; font-weight: normal;'>Sign in</a>
                                                             </span>
                                                         </td>
@@ -172,14 +172,14 @@
                                                     <td style=" padding-left:20px;padding-right:20px; font-size: 18px; color: #3f3f3f; font-weight:bold; font-family:arial, helvetica, sans-serif;">
                                                         @if (Model.ItemType == "Settings")
                                                         {
-                                                            <span>
+                                                            <span data-id="hidden">
 
                                                                 You have been given access to @(Model.ItemType)
                                                             </span>
                                                         }
                                                         else if (Model.ItemType == "UserManagement")
                                                         {
-                                                            <span>
+                                                            <span data-id="hidden">
 
                                                                 You have been given access to @(Model.ItemType)
                                                             </span>
@@ -187,7 +187,7 @@
                                                         }
                                                         else if (Model.ItemType == "Permissions")
                                                         {
-                                                            <span>
+                                                            <span data-id="hidden">
 
                                                                 You have been given access to manage all @(Model.ItemType)
                                                             </span>
@@ -195,7 +195,7 @@
                                                         }
                                                         else if (Model.ItemType == "AllGroups")
                                                         {
-                                                            <span>
+                                                            <span data-id="hidden">
 
                                                                 You have been given @Model.PermissionType access to all groups.
                                                             </span>
@@ -203,7 +203,7 @@
                                                         }
                                                         else
                                                         {
-                                                            <span>
+                                                            <span data-id="hidden">
 
                                                                 You have been given @Model.PermissionType access to all the @(Model.ItemType + "s")
                                                             </span>
@@ -235,7 +235,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-family:arial, helvetica, sans-serif;">
                                                         <span>
-                                                            Hello @Model.DisplayName,
+                                                            Hello @Model.DisplayName,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -270,35 +270,35 @@
                                                             {
                                                                 <span>
 
-                                                                    @Model.Admin has given you access to all @Model.ItemType.
+                                                                    @Model.Admin has given you access to all @Model.ItemType.<br />
                                                                 </span>
                                                             }
                                                             else if (Model.ItemType == "UserManagement")
                                                             {
                                                                 <span>
 
-                                                                    @Model.Admin has given you access to @Model.ItemType.
+                                                                    @Model.Admin has given you access to @Model.ItemType.<br />
                                                                 </span>
                                                             }
                                                             else if (Model.ItemType == "Permissions")
                                                             {
                                                                 <span>
 
-                                                                    @Model.Admin has given you access to manage all @(Model.ItemType).
+                                                                    @Model.Admin has given you access to manage all @(Model.ItemType).<br />
                                                                 </span>
                                                             }
                                                             else if (Model.ItemType == "AllGroups")
                                                             {
                                                                 <span>
 
-                                                                    @Model.Admin has given you @Model.PermissionType access to all groups.
+                                                                    @Model.Admin has given you @Model.PermissionType access to all groups.<br />
                                                                 </span>
                                                             }
                                                             else
                                                             {
                                                                 <span>
 
-                                                                    @Model.Admin has given you @Model.PermissionType access to all the @(Model.ItemType + "s")
+                                                                    @Model.Admin has given you @Model.PermissionType access to all the @(Model.ItemType + "s")<br />
                                                                 </span>
 
                                                             }
@@ -333,7 +333,7 @@
                                                         @if (Model.ItemType == "Settings")
                                                     {
                                                         <td style="padding-left:20px;padding-right:20px;font-size: 14px; padding-right: 20px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;">
-                                                            <span style="color: #3f3f3f;">
+                                                            <span data-id="hidden" style="color: #3f3f3f;">
                                                                 <a href="@Model.BaseUrl/@Model.ItemUrl" target='' style='text-decoration: none; word-break:break-all; color: #4a90e2; font-weight: normal;'>All @(Model.ItemType)</a>
                                                             </span>
                                                         </td>
@@ -341,7 +341,7 @@
                                                     else if (Model.ItemType == "UserManagement")
                                                     {
                                                         <td style="padding-left:20px;padding-right:20px;font-size: 14px; padding-right: 20px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;">
-                                                            <span style="color: #3f3f3f;">
+                                                            <span data-id="hidden" style="color: #3f3f3f;">
                                                                 <a href="@Model.BaseUrl/@Model.ItemUrl" target='' style='text-decoration: none; word-break:break-all; color: #4a90e2; font-weight: normal;'>@(Model.ItemType)</a>
                                                             </span>
                                                         </td>
@@ -349,7 +349,7 @@
                                                     else if (Model.ItemType == "Permissions")
                                                     {
                                                         <td style="padding-left:20px;padding-right:20px;font-size: 14px; padding-right: 20px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;">
-                                                            <span style="color: #3f3f3f;">
+                                                            <span data-id="hidden" style="color: #3f3f3f;">
                                                                 <a href="@Model.BaseUrl/@Model.ItemUrl" target='' style='text-decoration: none; word-break:break-all; color: #4a90e2; font-weight: normal;'>All @(Model.ItemType)</a>
                                                             </span>
                                                         </td>
@@ -357,7 +357,7 @@
                                                     else if (Model.ItemType == "AllGroups")
                                                     {
                                                         <td style="padding-left:20px;padding-right:20px;font-size: 14px; padding-right: 20px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;">
-                                                            <span style="color: #3f3f3f;">
+                                                            <span data-id="hidden" style="color: #3f3f3f;">
                                                                 <a href="@Model.BaseUrl/@Model.ItemUrl" target='' style='text-decoration: none; word-break:break-all; color: #4a90e2; font-weight: normal;'>@(Model.ItemType)</a>
                                                             </span>
                                                         </td>
@@ -365,7 +365,7 @@
                                                     else
                                                     {
                                                         <td style="padding-left:20px;padding-right:20px;font-size: 14px; padding-right: 20px;font-family: Arial, Helvetica, sans-serif; color: #3f3f3f; text-align:left;">
-                                                            <span style="color: #3f3f3f;">
+                                                            <span data-id="hidden" style="color: #3f3f3f;">
                                                                 <a href="@Model.BaseUrl/@Model.ItemUrl" target='' style='text-decoration: none; word-break:break-all; color: #4a90e2; font-weight: normal;'>All @(Model.ItemType + "s")</a>
                                                             </span>
                                                         </td>
@@ -397,7 +397,7 @@
                                                 <tr>
                                                     <td style=" padding-left:20px;padding-right:20px; font-size: 14px; color: #3f3f3f; font-weight:normal; font-family:Arial, Helvetica, sans-serif;">
                                                         <span>
-                                                            Regards,
+                                                            Regards,<br />
                                                         </span>
                                                     </td>
                                                 </tr>
@@ -489,7 +489,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style=" line-height:20px; padding-left:20px;padding-right:20px; font-size: 12px; color: #7a7a7a; opacity:0.5; font-family:Arial, Helvetica, sans-serif;">
-                                                        <span>
+                                                        <span data-id="hidden">
                                                             This is an automatically generated message, please do not reply to this mail. If you have any question, please contact your administrator.
                                                         </span>
                                                     </td>
@@ -526,7 +526,7 @@
                                                 <tbody>
                                                     <tr>
                                                         <td style="padding-left:20px;padding-right:20px;font-size: 12px; color: #3f3f3f;font-family:Arial, Helvetica, sans-serif; background-color:#f7f8f9;">
-                                                            <span>
+                                                            <span data-id="hidden">
                                                                 @Model.CopyrightInformation
                                                             </span>
                                                         </td>

@@ -35,13 +35,13 @@ var addmultiplerdlreportUrl = "@Url.Action("AddMultipleRdlReport", "reports")";
             var dashboardUrl = "@Url.Action("Reports", "Reports")";
             var categoriesList = @Json.Serialize(ViewBag.CategoryDetails);
             function load() {
-                window.parent.parent.$("#report_popup_wrapper").ejWaitingPopup("hide");
+                window.$("#report_popup_wrapper").ejWaitingPopup("hide");
                 $('[data-bs-toggle="tooltip"]').tooltip();
-                if (($(parent.window).width()) > 1400) {
+                if (($(window).width()) > 1400) {
                     $(".dialog").addClass("iframe");
                 }
 
-                if (($(parent.window).width()) < 1400) {
+                if (($(window).width()) < 1400) {
                     $(".dialog").removeClass("iframe");
                 }
             }
