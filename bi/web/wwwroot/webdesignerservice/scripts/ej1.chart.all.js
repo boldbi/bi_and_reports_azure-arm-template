@@ -1,7 +1,7 @@
 /*!
 *  filename: ej1.chart.all.js
-*  version : 14.2.4
-*  Copyright Syncfusion Inc. 2001 - 2025. All rights reserved.
+*  version : 15.3.8
+*  Copyright Syncfusion Inc. 2001 - 2026. All rights reserved.
 *  Use of this code is subject to the terms of our license.
 *  A copy of the current license can be obtained at any time by e-mailing
 *  licensing@syncfusion.com. Any infringement will be prosecuted under
@@ -30526,7 +30526,7 @@ var Gradient = function (colors) {
         legendMode = legend.mode;
         enableMultiRange = legend.enableMultiRange;
         if (isElement && series) {
-            if (series.highlightSettings.enable || (!enableMultiRange && legendMode == "range"))
+            if (series.highlightSettings.enable)
                 this.highlight(chart, evt, series);
         }
 
