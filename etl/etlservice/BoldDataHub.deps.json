@@ -1,11 +1,11 @@
 {
   "runtimeTarget": {
-    "name": ".NETCoreApp,Version=v8.0",
+    "name": ".NETCoreApp,Version=v10.0",
     "signature": ""
   },
   "compilationOptions": {},
   "targets": {
-    ".NETCoreApp,Version=v8.0": {
+    ".NETCoreApp,Version=v10.0": {
       "BoldDataHub/1.0.0": {
         "dependencies": {
           "AWSSDK.S3": "3.7.404.1",
@@ -25,7 +25,7 @@
           "Microsoft.Graph": "4.54.0",
           "Microsoft.Identity.Client": "4.66.0",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.26.1",
-          "MimeKit": "4.7.1",
+          "MimeKit": "4.15.1",
           "Minio": "6.0.0",
           "MongoDB.Driver": "3.1.0",
           "MySqlConnector": "2.3.1",
@@ -38,6 +38,7 @@
           "SSH.NET": "2025.0.0",
           "Snowflake.Data": "4.4.1",
           "Syncfusion.Blazor.Buttons": "27.2.2",
+          "Syncfusion.Blazor.Core": "27.2.2",
           "Syncfusion.Blazor.DropDowns": "27.2.2",
           "Syncfusion.Blazor.Grid": "27.2.2",
           "Syncfusion.Blazor.Navigations": "27.2.2",
@@ -166,17 +167,16 @@
           }
         }
       },
-      "BouncyCastle.Cryptography/2.5.1": {
+      "BouncyCastle.Cryptography/2.6.2": {
         "runtime": {
           "lib/net6.0/BouncyCastle.Cryptography.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.5.1.28965"
+            "fileVersion": "2.6.2.46322"
           }
         }
       },
       "ClickHouse.Client/7.8.2": {
         "dependencies": {
-          "Microsoft.Extensions.Http": "8.0.1",
           "Microsoft.IO.RecyclableMemoryStream": "3.0.1",
           "NodaTime": "3.1.12"
         },
@@ -259,8 +259,7 @@
       },
       "FluentValidation.DependencyInjectionExtensions/12.0.0": {
         "dependencies": {
-          "FluentValidation": "12.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
+          "FluentValidation": "12.0.0"
         },
         "runtime": {
           "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll": {
@@ -284,8 +283,7 @@
       "Google.Api.Gax.Rest/4.8.0": {
         "dependencies": {
           "Google.Api.Gax": "4.8.0",
-          "Google.Apis.Auth": "1.67.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
+          "Google.Apis.Auth": "1.67.0"
         },
         "runtime": {
           "lib/netstandard2.0/Google.Api.Gax.Rest.dll": {
@@ -390,7 +388,7 @@
       },
       "MailKit/3.4.3": {
         "dependencies": {
-          "MimeKit": "4.7.1"
+          "MimeKit": "4.15.1"
         },
         "runtime": {
           "lib/net6.0/MailKit.dll": {
@@ -494,63 +492,6 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Authorization/8.0.10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Metadata": "8.0.10",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
-          "Microsoft.Extensions.Options": "8.0.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Authorization.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46804"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.Components/8.0.10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Authorization": "8.0.10"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46804"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.Components.Forms/8.0.10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "8.0.10"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Forms.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46804"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.Components.Web/8.0.10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Components": "8.0.10",
-          "Microsoft.AspNetCore.Components.Forms": "8.0.10",
-          "Microsoft.Extensions.DependencyInjection": "8.0.1",
-          "Microsoft.JSInterop": "8.0.10"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Components.Web.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46804"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.Metadata/8.0.10": {
-        "runtime": {
-          "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46804"
-          }
-        }
-      },
       "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
         "runtime": {
           "lib/netstandard2.1/Microsoft.Bcl.AsyncInterfaces.dll": {
@@ -559,91 +500,9 @@
           }
         }
       },
-      "Microsoft.Extensions.DependencyInjection/8.0.1": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.DependencyInjection.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
-          }
-        }
-      },
-      "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
-          }
-        }
-      },
-      "Microsoft.Extensions.Diagnostics/8.0.1": {
-        "dependencies": {
-          "Microsoft.Extensions.Diagnostics.Abstractions": "8.0.1"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Diagnostics.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
-          }
-        }
-      },
-      "Microsoft.Extensions.Diagnostics.Abstractions/8.0.1": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
-          "Microsoft.Extensions.Options": "8.0.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
-          }
-        }
-      },
-      "Microsoft.Extensions.Http/8.0.1": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
-          "Microsoft.Extensions.Diagnostics": "8.0.1",
-          "Microsoft.Extensions.Logging": "8.0.1",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
-          "Microsoft.Extensions.Options": "8.0.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Http.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
-          }
-        }
-      },
-      "Microsoft.Extensions.Logging/8.0.1": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "8.0.1",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
-          "Microsoft.Extensions.Options": "8.0.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Logging.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46610"
-          }
-        }
-      },
-      "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Logging.Abstractions.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1325.6609"
-          }
-        }
-      },
       "Microsoft.Extensions.Logging.ApplicationInsights/2.22.0": {
         "dependencies": {
-          "Microsoft.ApplicationInsights": "2.22.0",
-          "Microsoft.Extensions.Logging": "8.0.1"
+          "Microsoft.ApplicationInsights": "2.22.0"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.Logging.ApplicationInsights.dll": {
@@ -654,24 +513,12 @@
       },
       "Microsoft.Extensions.Logging.Log4Net.AspNetCore/6.1.0": {
         "dependencies": {
-          "Microsoft.Extensions.Logging": "8.0.1",
           "log4net": "2.0.13"
         },
         "runtime": {
           "lib/net6.0/Microsoft.Extensions.Logging.Log4Net.AspNetCore.dll": {
             "assemblyVersion": "6.1.0.0",
             "fileVersion": "6.1.0.0"
-          }
-        }
-      },
-      "Microsoft.Extensions.Options/8.0.2": {
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2"
-        },
-        "runtime": {
-          "lib/net8.0/Microsoft.Extensions.Options.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.224.6711"
           }
         }
       },
@@ -795,30 +642,20 @@
           }
         }
       },
-      "Microsoft.JSInterop/8.0.10": {
-        "runtime": {
-          "lib/net8.0/Microsoft.JSInterop.dll": {
-            "assemblyVersion": "8.0.0.0",
-            "fileVersion": "8.0.1024.46804"
-          }
-        }
-      },
-      "MimeKit/4.7.1": {
+      "MimeKit/4.15.1": {
         "dependencies": {
-          "BouncyCastle.Cryptography": "2.5.1"
+          "BouncyCastle.Cryptography": "2.6.2"
         },
         "runtime": {
-          "lib/net8.0/MimeKit.dll": {
-            "assemblyVersion": "4.7.0.0",
-            "fileVersion": "4.7.1.0"
+          "lib/net10.0/MimeKit.dll": {
+            "assemblyVersion": "4.15.0.0",
+            "fileVersion": "4.15.1.0"
           }
         }
       },
       "Minio/6.0.0": {
         "dependencies": {
           "CommunityToolkit.HighPerformance": "8.2.1",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
-          "Microsoft.Extensions.Logging": "8.0.1",
           "System.IO.Hashing": "7.0.0",
           "System.Reactive": "6.0.0"
         },
@@ -840,7 +677,6 @@
       "MongoDB.Driver/3.1.0": {
         "dependencies": {
           "DnsClient": "1.6.1",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "MongoDB.Bson": "3.1.0",
           "SharpCompress": "0.30.1",
           "Snappier": "1.0.0",
@@ -954,9 +790,6 @@
         }
       },
       "MySqlConnector/2.3.1": {
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3"
-        },
         "runtime": {
           "lib/net8.0/MySqlConnector.dll": {
             "assemblyVersion": "2.0.0.0",
@@ -981,9 +814,6 @@
         }
       },
       "Npgsql/8.0.5": {
-        "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3"
-        },
         "runtime": {
           "lib/net8.0/Npgsql.dll": {
             "assemblyVersion": "8.0.5.0",
@@ -1024,7 +854,6 @@
       },
       "Quartz/3.7.0": {
         "dependencies": {
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3",
           "System.Configuration.ConfigurationManager": "8.0.0"
         },
         "runtime": {
@@ -1101,7 +930,7 @@
           "Apache.Arrow": "14.0.2",
           "Azure.Storage.Blobs": "12.13.1",
           "Azure.Storage.Common": "12.12.0",
-          "BouncyCastle.Cryptography": "2.5.1",
+          "BouncyCastle.Cryptography": "2.6.2",
           "Google.Cloud.Storage.V1": "4.10.0",
           "Mono.Unix": "7.1.0-final.1.21458.1",
           "Newtonsoft.Json": "13.0.3",
@@ -1118,11 +947,10 @@
       },
       "SSH.NET/2025.0.0": {
         "dependencies": {
-          "BouncyCastle.Cryptography": "2.5.1",
-          "Microsoft.Extensions.Logging.Abstractions": "8.0.3"
+          "BouncyCastle.Cryptography": "2.6.2"
         },
         "runtime": {
-          "lib/net8.0/Renci.SshNet.dll": {
+          "lib/net9.0/Renci.SshNet.dll": {
             "assemblyVersion": "2025.0.0.1",
             "fileVersion": "2025.0.0.1"
           }
@@ -1133,7 +961,7 @@
           "Syncfusion.Blazor.Core": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Buttons.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Buttons.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1147,7 +975,7 @@
           "Syncfusion.Blazor.Lists": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Calendars.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Calendars.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1155,11 +983,10 @@
       },
       "Syncfusion.Blazor.Core/27.2.2": {
         "dependencies": {
-          "Microsoft.AspNetCore.Components.Web": "8.0.10",
           "Syncfusion.Licensing": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Core.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Core.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1170,7 +997,7 @@
           "Syncfusion.Blazor.Core": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Data.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Data.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1186,7 +1013,7 @@
           "Syncfusion.Blazor.Spinner": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.DropDowns.dll": {
+          "lib/net9.0/Syncfusion.Blazor.DropDowns.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1207,7 +1034,7 @@
           "Syncfusion.PdfExport.Net.Core": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Grids.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Grids.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1222,7 +1049,7 @@
           "Syncfusion.Blazor.SplitButtons": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Inputs.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Inputs.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1235,7 +1062,7 @@
           "Syncfusion.Blazor.Data": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Lists.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Lists.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1253,7 +1080,7 @@
           "Syncfusion.Blazor.Spinner": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Navigations.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Navigations.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1265,7 +1092,7 @@
           "Syncfusion.Blazor.Core": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Notifications.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Notifications.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1277,7 +1104,7 @@
           "Syncfusion.Blazor.Core": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Popups.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Popups.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1304,7 +1131,7 @@
           "Syncfusion.Blazor.Core": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Spinner.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Spinner.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1318,7 +1145,7 @@
           "Syncfusion.Blazor.Spinner": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.SplitButtons.dll": {
+          "lib/net9.0/Syncfusion.Blazor.SplitButtons.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1326,7 +1153,7 @@
       },
       "Syncfusion.Blazor.Themes/27.2.2": {
         "runtime": {
-          "lib/net8.0/Syncfusion.Blazor.Themes.dll": {
+          "lib/net9.0/Syncfusion.Blazor.Themes.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1346,7 +1173,7 @@
           "Syncfusion.Licensing": "27.2.2"
         },
         "runtime": {
-          "lib/net8.0/Syncfusion.EJ2.dll": {
+          "lib/net9.0/Syncfusion.EJ2.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1354,7 +1181,7 @@
       },
       "Syncfusion.ExcelExport.Net.Core/27.2.2": {
         "runtime": {
-          "lib/net8.0/Syncfusion.ExcelExport.Net.dll": {
+          "lib/net9.0/Syncfusion.ExcelExport.Net.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1362,7 +1189,7 @@
       },
       "Syncfusion.Licensing/27.2.2": {
         "runtime": {
-          "lib/net8.0/Syncfusion.Licensing.dll": {
+          "lib/net9.0/Syncfusion.Licensing.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1370,7 +1197,7 @@
       },
       "Syncfusion.PdfExport.Net.Core/27.2.2": {
         "runtime": {
-          "lib/net8.0/Syncfusion.PdfExport.Net.dll": {
+          "lib/net9.0/Syncfusion.PdfExport.Net.dll": {
             "assemblyVersion": "27.2.2.0",
             "fileVersion": "27.2.2.0"
           }
@@ -1655,12 +1482,12 @@
       "path": "azure.storage.common/12.12.0",
       "hashPath": "azure.storage.common.12.12.0.nupkg.sha512"
     },
-    "BouncyCastle.Cryptography/2.5.1": {
+    "BouncyCastle.Cryptography/2.6.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zy8TMeTP+1FH2NrLaNZtdRbBdq7u5MI+NFZQOBSM69u5RFkciinwzV2eveY6Kjf5MzgsYvvl6kTStsj3JrXqkg==",
-      "path": "bouncycastle.cryptography/2.5.1",
-      "hashPath": "bouncycastle.cryptography.2.5.1.nupkg.sha512"
+      "sha512": "sha512-7oWOcvnntmMKNzDLsdxAYqApt+AjpRpP2CShjMfIa3umZ42UQMvH0tl1qAliYPNYO6vTdcGMqnRrCPmsfzTI1w==",
+      "path": "bouncycastle.cryptography/2.6.2",
+      "hashPath": "bouncycastle.cryptography.2.6.2.nupkg.sha512"
     },
     "ClickHouse.Client/7.8.2": {
       "type": "package",
@@ -1844,96 +1671,12 @@
       "path": "microsoft.aspnetcore.authentication.openidconnect/7.0.0",
       "hashPath": "microsoft.aspnetcore.authentication.openidconnect.7.0.0.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.Authorization/8.0.10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mENBehQP1H9oTB4Diu1l7vR1BeZrBNWA9sHZsln4l2oIs7D3qH3fokopU/8FWa9JSxQYNBT1MeYBCwguYOBjMQ==",
-      "path": "microsoft.aspnetcore.authorization/8.0.10",
-      "hashPath": "microsoft.aspnetcore.authorization.8.0.10.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Components/8.0.10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-qTsPBcK6Z2Yyt+A5GPub9CiUxfmSIrNQ22BT8efzXiz50Vx0KKTsE82pxbipgGU9XNXZhEtYSNTqQFuWyRlIRw==",
-      "path": "microsoft.aspnetcore.components/8.0.10",
-      "hashPath": "microsoft.aspnetcore.components.8.0.10.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Components.Forms/8.0.10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-YOdsdG/da7xc5uA0dRIe8qUz1rVbbptnYA2CrsxPNka3Nv7Sbh3rArlACGWPBkST3qTRollCx4dLEXpwg/6eEw==",
-      "path": "microsoft.aspnetcore.components.forms/8.0.10",
-      "hashPath": "microsoft.aspnetcore.components.forms.8.0.10.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Components.Web/8.0.10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gJa07Ni77Eoer/+3tocjnCzxfRcL0TJbKnzBP5auk/cxO5nxzJEHuTADX8gAzlyuLvdrnrtfqRAhR66MGkHmww==",
-      "path": "microsoft.aspnetcore.components.web/8.0.10",
-      "hashPath": "microsoft.aspnetcore.components.web.8.0.10.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.Metadata/8.0.10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-E9YwEujZjXhMLi1hqJh+7iLk2DzNxa4dB9wYY8lHYpAzZdVqoGjaFsaaIzwCvSZZxd7S7Cds01Trlye2mTqeZA==",
-      "path": "microsoft.aspnetcore.metadata/8.0.10",
-      "hashPath": "microsoft.aspnetcore.metadata.8.0.10.nupkg.sha512"
-    },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-UcSjPsst+DfAdJGVDsu346FX0ci0ah+lw3WRtn18NUwEqRt70HaOQ7lI72vy3+1LxtqI3T5GWwV39rQSrCzAeg==",
       "path": "microsoft.bcl.asyncinterfaces/6.0.0",
       "hashPath": "microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512"
-    },
-    "Microsoft.Extensions.DependencyInjection/8.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-BmANAnR5Xd4Oqw7yQ75xOAYODybZQRzdeNucg7kS5wWKd2PNnMdYtJ2Vciy0QLylRmv42DGl5+AFL9izA6F1Rw==",
-      "path": "microsoft.extensions.dependencyinjection/8.0.1",
-      "hashPath": "microsoft.extensions.dependencyinjection.8.0.1.nupkg.sha512"
-    },
-    "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3iE7UF7MQkCv1cxzCahz+Y/guQbTqieyxyaWKhrRO91itI9cOKO76OHeQDahqG4MmW5umr3CcCvGmK92lWNlbg==",
-      "path": "microsoft.extensions.dependencyinjection.abstractions/8.0.2",
-      "hashPath": "microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Diagnostics/8.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-doVPCUUCY7c6LhBsEfiy3W1bvS7Mi6LkfQMS8nlC22jZWNxBv8VO8bdfeyvpYFst6Kxqk7HBC6lytmEoBssvSQ==",
-      "path": "microsoft.extensions.diagnostics/8.0.1",
-      "hashPath": "microsoft.extensions.diagnostics.8.0.1.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Diagnostics.Abstractions/8.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-elH2vmwNmsXuKmUeMQ4YW9ldXiF+gSGDgg1vORksob5POnpaI6caj1Hu8zaYbEuibhqCoWg0YRWDazBY3zjBfg==",
-      "path": "microsoft.extensions.diagnostics.abstractions/8.0.1",
-      "hashPath": "microsoft.extensions.diagnostics.abstractions.8.0.1.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Http/8.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kDYeKJUzh0qeg/AI+nSr3ffthmXYQTEb0nS9qRC7YhSbbuN4M4NPbaB77AJwtkTnCV9XZ7qYj3dkZaNcyl73EA==",
-      "path": "microsoft.extensions.http/8.0.1",
-      "hashPath": "microsoft.extensions.http.8.0.1.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Logging/8.0.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4x+pzsQEbqxhNf1QYRr5TDkLP9UsLT3A6MdRKDDEgrW7h1ljiEPgTNhKYUhNCCAaVpQECVQ+onA91PTPnIp6Lw==",
-      "path": "microsoft.extensions.logging/8.0.1",
-      "hashPath": "microsoft.extensions.logging.8.0.1.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Logging.Abstractions/8.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-dL0QGToTxggRLMYY4ZYX5AMwBb+byQBd/5dMiZE07Nv73o6I5Are3C7eQTh7K2+A4ct0PVISSr7TZANbiNb2yQ==",
-      "path": "microsoft.extensions.logging.abstractions/8.0.3",
-      "hashPath": "microsoft.extensions.logging.abstractions.8.0.3.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging.ApplicationInsights/2.22.0": {
       "type": "package",
@@ -1948,13 +1691,6 @@
       "sha512": "sha512-qHb3GudscgrgEVByh86kAq3FMmjOdPIVoqvff3eokEP+QkZHzr42l4PlgxBsqhhlIX02SazC7ZdbfiFGDPRv9A==",
       "path": "microsoft.extensions.logging.log4net.aspnetcore/6.1.0",
       "hashPath": "microsoft.extensions.logging.log4net.aspnetcore.6.1.0.nupkg.sha512"
-    },
-    "Microsoft.Extensions.Options/8.0.2": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-dWGKvhFybsaZpGmzkGCbNNwBD1rVlWzrZKANLW/CcbFJpCEceMCGzT7zZwHOGBCbwM0SzBuceMj5HN1LKV1QqA==",
-      "path": "microsoft.extensions.options/8.0.2",
-      "hashPath": "microsoft.extensions.options.8.0.2.nupkg.sha512"
     },
     "Microsoft.Graph/4.54.0": {
       "type": "package",
@@ -2033,19 +1769,12 @@
       "path": "microsoft.io.recyclablememorystream/3.0.1",
       "hashPath": "microsoft.io.recyclablememorystream.3.0.1.nupkg.sha512"
     },
-    "Microsoft.JSInterop/8.0.10": {
+    "MimeKit/4.15.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-VxiFlNValVtpRQomua6h1FOUBK0fiyQbNIh+PMRs9DMHczOHIZpLJmm5LO5h9voBXjW+V/cUE8aNH2GcWps40A==",
-      "path": "microsoft.jsinterop/8.0.10",
-      "hashPath": "microsoft.jsinterop.8.0.10.nupkg.sha512"
-    },
-    "MimeKit/4.7.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Qoj4aVvhX14A1FNvaJ33hzOP4VZI2j+Mr38I9wSGcjMq4BYDtWLJG89aJ9nRW2cNfH6Czjwyp7+Mh++xv3AZvg==",
-      "path": "mimekit/4.7.1",
-      "hashPath": "mimekit.4.7.1.nupkg.sha512"
+      "sha512": "sha512-cxCcQhD0zhboFoG136jJuJtQjNRDJ+BxBm3f2vWn+53bff/CRo+K1mAkWjsW4Wuyy5O22F40MdMG2nRzQu1cJw==",
+      "path": "mimekit/4.15.1",
+      "hashPath": "mimekit.4.15.1.nupkg.sha512"
     },
     "Minio/6.0.0": {
       "type": "package",
@@ -2337,7 +2066,7 @@
     "Syncfusion.XlsIO.Net.Core/22.1.37": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-XsYUnK8v0tktUQXPzBNjrnd4Kidnq1MWv4US8pTYVLQn+2wgmnwf4z8b26ew+SUPqPXvzpsBvucx2/Kr6xDktQ==",
+      "sha512": "sha512-JRxHmQ4o4ncorNdj4mnPR6SqRmBWUFpDtHAoDRQgU+St6T2l0qMfJDuRoaWctS7Wvm4cYEB5BF4ctzx6iYeQhQ==",
       "path": "syncfusion.xlsio.net.core/22.1.37",
       "hashPath": "syncfusion.xlsio.net.core.22.1.37.nupkg.sha512"
     },
