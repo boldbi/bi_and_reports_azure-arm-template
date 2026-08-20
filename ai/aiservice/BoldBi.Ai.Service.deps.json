@@ -27,7 +27,7 @@
           "OpenTelemetry.Instrumentation.Http": "1.11.1",
           "Swashbuckle.AspNetCore": "6.4.0",
           "log4net": "2.0.17",
-          "Syncfusion.Dashboard.Core": "15.3.8.0"
+          "Syncfusion.Dashboard.Core": "15.3.11.0"
         },
         "runtime": {
           "BoldBi.Ai.Service.dll": {}
@@ -85,7 +85,7 @@
           "Azure.Core": "1.44.1",
           "Microsoft.Identity.Client": "4.61.3",
           "Microsoft.Identity.Client.Extensions.Msal": "4.61.3",
-          "System.Security.Cryptography.ProtectedData": "10.0.5",
+          "System.Security.Cryptography.ProtectedData": "10.0.10",
           "System.Text.Json": "9.0.0-rc.2.24473.5"
         },
         "runtime": {
@@ -128,7 +128,7 @@
       },
       "log4net/2.0.17": {
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "10.0.5"
+          "System.Configuration.ConfigurationManager": "10.0.10"
         },
         "runtime": {
           "lib/netstandard2.0/log4net.dll": {
@@ -169,7 +169,7 @@
           "Microsoft.IdentityModel.JsonWebTokens": "6.35.0",
           "Microsoft.IdentityModel.Protocols.OpenIdConnect": "6.35.0",
           "Microsoft.SqlServer.Server": "1.0.0",
-          "System.Configuration.ConfigurationManager": "10.0.5",
+          "System.Configuration.ConfigurationManager": "10.0.10",
           "System.Runtime.Caching": "8.0.0"
         },
         "runtime": {
@@ -608,7 +608,7 @@
           "Microsoft.Extensions.Logging": "9.0.4",
           "Microsoft.Extensions.Logging.Abstractions": "9.0.4",
           "Microsoft.Extensions.Options": "9.0.4",
-          "System.Diagnostics.EventLog": "10.0.5"
+          "System.Diagnostics.EventLog": "10.0.10"
         },
         "runtime": {
           "lib/net8.0/Microsoft.Extensions.Logging.EventLog.dll": {
@@ -691,7 +691,7 @@
       "Microsoft.Identity.Client.Extensions.Msal/4.61.3": {
         "dependencies": {
           "Microsoft.Identity.Client": "4.61.3",
-          "System.Security.Cryptography.ProtectedData": "10.0.5"
+          "System.Security.Cryptography.ProtectedData": "10.0.10"
         },
         "runtime": {
           "lib/net6.0/Microsoft.Identity.Client.Extensions.Msal.dll": {
@@ -1209,15 +1209,15 @@
           }
         }
       },
-      "System.Configuration.ConfigurationManager/10.0.5": {
+      "System.Configuration.ConfigurationManager/10.0.10": {
         "dependencies": {
-          "System.Diagnostics.EventLog": "10.0.5",
-          "System.Security.Cryptography.ProtectedData": "10.0.5"
+          "System.Diagnostics.EventLog": "10.0.10",
+          "System.Security.Cryptography.ProtectedData": "10.0.10"
         },
         "runtime": {
           "lib/net8.0/System.Configuration.ConfigurationManager.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.526.15411"
+            "fileVersion": "10.0.1026.32716"
           }
         }
       },
@@ -1229,11 +1229,11 @@
           }
         }
       },
-      "System.Diagnostics.EventLog/10.0.5": {
+      "System.Diagnostics.EventLog/10.0.10": {
         "runtime": {
           "lib/net8.0/System.Diagnostics.EventLog.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.526.15411"
+            "fileVersion": "10.0.1026.32716"
           }
         },
         "runtimeTargets": {
@@ -1247,7 +1247,7 @@
             "rid": "win",
             "assetType": "runtime",
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.526.15411"
+            "fileVersion": "10.0.1026.32716"
           }
         }
       },
@@ -1336,7 +1336,7 @@
       },
       "System.Runtime.Caching/8.0.0": {
         "dependencies": {
-          "System.Configuration.ConfigurationManager": "10.0.5"
+          "System.Configuration.ConfigurationManager": "10.0.10"
         },
         "runtime": {
           "lib/net8.0/System.Runtime.Caching.dll": {
@@ -1353,11 +1353,11 @@
           }
         }
       },
-      "System.Security.Cryptography.ProtectedData/10.0.5": {
+      "System.Security.Cryptography.ProtectedData/10.0.10": {
         "runtime": {
           "lib/net8.0/System.Security.Cryptography.ProtectedData.dll": {
             "assemblyVersion": "10.0.0.0",
-            "fileVersion": "10.0.526.15411"
+            "fileVersion": "10.0.1026.32716"
           }
         }
       },
@@ -1415,26 +1415,26 @@
           "Microsoft.SemanticKernel.Process.Core": "1.41.0-alpha",
           "Microsoft.SemanticKernel.Process.LocalRuntime": "1.41.0-alpha",
           "Newtonsoft.Json": "13.0.3",
-          "System.Configuration.ConfigurationManager": "10.0.5",
+          "System.Configuration.ConfigurationManager": "10.0.10",
           "log4net": "2.0.17"
         },
         "runtime": {
           "BoldBi.Ai.Base.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
       "BoldBi.Ai.Configuration/1.0.0": {
         "dependencies": {
           "Microsoft.SemanticKernel.Core": "1.41.0",
-          "System.Configuration.ConfigurationManager": "10.0.5",
+          "System.Configuration.ConfigurationManager": "10.0.10",
           "System.Drawing.Common": "6.0.0"
         },
         "runtime": {
           "BoldBi.Ai.Configuration.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
@@ -1448,8 +1448,8 @@
         },
         "runtime": {
           "BoldBi.Ai.ConnectionManager.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
@@ -1463,24 +1463,24 @@
         },
         "runtime": {
           "BoldBi.Ai.Core.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Core/15.3.8.0": {
+      "Syncfusion.Dashboard.Core/15.3.11.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Web.Serialization.DOM/15.3.8.0": {
+      "Syncfusion.Dashboard.Web.Serialization.DOM/15.3.11.0": {
         "runtime": {
           "Syncfusion.Dashboard.Web.Serialization.DOM.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
@@ -1492,19 +1492,19 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Json.Base/15.3.8.0": {
+      "Syncfusion.Dashboard.Json.Base/15.3.11.0": {
         "runtime": {
           "Syncfusion.Dashboard.Json.Base.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
-      "Syncfusion.Dashboard.Xml.Base/15.3.8.0": {
+      "Syncfusion.Dashboard.Xml.Base/15.3.11.0": {
         "runtime": {
           "Syncfusion.Dashboard.Xml.Base.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
@@ -1532,11 +1532,11 @@
           }
         }
       },
-      "Syncfusion.Dashboard.Core.XmlRepository/15.3.8.0": {
+      "Syncfusion.Dashboard.Core.XmlRepository/15.3.11.0": {
         "runtime": {
           "Syncfusion.Dashboard.Core.XmlRepository.dll": {
-            "assemblyVersion": "15.3.8.0",
-            "fileVersion": "15.3.8.0"
+            "assemblyVersion": "15.3.11.0",
+            "fileVersion": "15.3.11.0"
           }
         }
       },
@@ -2166,12 +2166,12 @@
       "path": "system.clientmodel/1.2.1",
       "hashPath": "system.clientmodel.1.2.1.nupkg.sha512"
     },
-    "System.Configuration.ConfigurationManager/10.0.5": {
+    "System.Configuration.ConfigurationManager/10.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-9UHU7hldEOVgcOHUX7Pa+owDfpzhW+a1gshEvyknAoDA++G6FV+N1cPoUbtsXEO7GgPErGSg8MHrI/YqrLoiGA==",
-      "path": "system.configuration.configurationmanager/10.0.5",
-      "hashPath": "system.configuration.configurationmanager.10.0.5.nupkg.sha512"
+      "sha512": "sha512-64jtHt9yLYi6VHMF5AwDj6BGM/MZrygv55SXl0MOIkFsFjGwRuxV3/QgEm7NTp3TQIx+YNX4S6dNpY08fJ3+3g==",
+      "path": "system.configuration.configurationmanager/10.0.10",
+      "hashPath": "system.configuration.configurationmanager.10.0.10.nupkg.sha512"
     },
     "System.Diagnostics.DiagnosticSource/9.0.4": {
       "type": "package",
@@ -2180,12 +2180,12 @@
       "path": "system.diagnostics.diagnosticsource/9.0.4",
       "hashPath": "system.diagnostics.diagnosticsource.9.0.4.nupkg.sha512"
     },
-    "System.Diagnostics.EventLog/10.0.5": {
+    "System.Diagnostics.EventLog/10.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wugvy+pBVzjQEnRs9wMTWwoaeNFX3hsaHeVHFDIvJSWXp7wfmNWu3mxAwBIE6pyW+g6+rHa1Of5fTzb0QVqUTA==",
-      "path": "system.diagnostics.eventlog/10.0.5",
-      "hashPath": "system.diagnostics.eventlog.10.0.5.nupkg.sha512"
+      "sha512": "sha512-OvGz3PrzuAI/Sj7LTcXcCe3FClRI1IyRMZjNONcZtFh+Ww7nAtSh4kh08r8KVe/xxkXJPjR0Y1jF7H+N42d4xQ==",
+      "path": "system.diagnostics.eventlog/10.0.10",
+      "hashPath": "system.diagnostics.eventlog.10.0.10.nupkg.sha512"
     },
     "System.Drawing.Common/6.0.0": {
       "type": "package",
@@ -2243,12 +2243,12 @@
       "path": "system.runtime.caching/8.0.0",
       "hashPath": "system.runtime.caching.8.0.0.nupkg.sha512"
     },
-    "System.Security.Cryptography.ProtectedData/10.0.5": {
+    "System.Security.Cryptography.ProtectedData/10.0.10": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kxR4O/8o32eNN3m4qbLe3UifYqeyEpallCyVAsLvL5ZFJVyT3JCb+9du/WHfC09VyJh1Q+p/Gd4+AwM7Rz4acg==",
-      "path": "system.security.cryptography.protecteddata/10.0.5",
-      "hashPath": "system.security.cryptography.protecteddata.10.0.5.nupkg.sha512"
+      "sha512": "sha512-BKt0SQgq2lq3ESE68jkeLwv95ypANrPDtkTOIFGcnhg2aRUeUUBDrQlkVDZctrg1WenVcvn5P5XZnuYI7q6rFQ==",
+      "path": "system.security.cryptography.protecteddata/10.0.10",
+      "hashPath": "system.security.cryptography.protecteddata.10.0.10.nupkg.sha512"
     },
     "System.Text.Encodings.Web/9.0.0-rc.2.24473.5": {
       "type": "package",
@@ -2291,12 +2291,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core/15.3.8.0": {
+    "Syncfusion.Dashboard.Core/15.3.11.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Web.Serialization.DOM/15.3.8.0": {
+    "Syncfusion.Dashboard.Web.Serialization.DOM/15.3.11.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2306,12 +2306,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Json.Base/15.3.8.0": {
+    "Syncfusion.Dashboard.Json.Base/15.3.11.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Xml.Base/15.3.8.0": {
+    "Syncfusion.Dashboard.Xml.Base/15.3.11.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
@@ -2331,7 +2331,7 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Syncfusion.Dashboard.Core.XmlRepository/15.3.8.0": {
+    "Syncfusion.Dashboard.Core.XmlRepository/15.3.11.0": {
       "type": "reference",
       "serviceable": false,
       "sha512": ""
